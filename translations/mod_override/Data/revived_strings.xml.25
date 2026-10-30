@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- the DLL's own texts (translations\dll_strings.txt), made by translations\tools\build_data.py -->
+<ROOT>
+	<STRING en="AI ASSISTANT">ИИ-ПОМОЩНИК</STRING>
+	<STRING en="NO CONTROL">БЕЗ КОНТРОЛЯ</STRING>
+	<STRING en="CUSTOM">ВЫБОРОЧНО</STRING>
+	<STRING en="FULL CONTROL">ПОЛНЫЙ КОНТРОЛЬ</STRING>
+	<STRING en="Only in single player games">Только в одиночной игре</STRING>
+	<STRING en="The computer plays your nation">Компьютер играет за вашу нацию</STRING>
+	<STRING en="The computer plays, only what is ticked">Компьютер играет, только отмеченное</STRING>
+	<STRING en="You play your nation">Вы играете за свою нацию</STRING>
+	<STRING en="THE COMPUTER MAY BUY">КОМПЬЮТЕР МОЖЕТ ПОКУПАТЬ</STRING>
+	<STRING en="Keep at least %d of each resource">Оставлять не менее %d каждого ресурса</STRING>
+	<STRING en="Economy">Экономика</STRING>
+	<STRING en="Military">Армия</STRING>
+	<STRING en="Research">Исследования</STRING>
+	<STRING en="New cities">Новые города</STRING>
+	<STRING en="Wonders and Data Center">Чудеса и дата-центр</STRING>
+	<STRING en="Private">Рядовой</STRING>
+	<STRING en="Private First Class">Ефрейтор</STRING>
+	<STRING en="Corporal">Младший сержант</STRING>
+	<STRING en="Sergeant">Сержант</STRING>
+	<STRING en="Staff Sergeant">Старший сержант</STRING>
+	<STRING en="Master Sergeant">Старшина</STRING>
+	<STRING en="Lieutenant">Лейтенант</STRING>
+	<STRING en="Captain">Капитан</STRING>
+	<STRING en="Major">Майор</STRING>
+	<STRING en="Colonel">Полковник</STRING>
+	<STRING en="Brigadier General">Генерал-майор</STRING>
+	<STRING en="Rank: {%s} (level %d of %d)">Звание: {%s} (уровень %d из %d)</STRING>
+	<STRING en="Experience: %d%% of the way to %s">Опыт: %d%% до звания %s</STRING>
+	<STRING en="Experience: highest rank">Опыт: высшее звание</STRING>
+	<STRING en="Earns experience from the damage it deals.">Получает опыт за нанесённый урон.</STRING>
+	<STRING en="Earns experience from its abilities.">Получает опыт за применение способностей.</STRING>
+	<STRING en="Bonuses:">Бонусы:</STRING>
+	<STRING en=" +%d%% attack,"> +%d%% к атаке,</STRING>
+	<STRING en=" +%d%% hit points"> +%d%% к здоровью</STRING>
+	<STRING en=", +1 sight">, +1 к обзору</STRING>
+	<STRING en="+%d%% attack rate,">+%d%% к скорости атаки,</STRING>
+	<STRING en="-%d%% damage taken,">-%d%% к получаемому урону,</STRING>
+	<STRING en="+1 range,">+1 к дальности,</STRING>
+	<STRING en="heals out of combat,">лечится вне боя,</STRING>
+	<STRING en="Military buildings: select all your Barracks, Stables, Siege Factories and Airbases (Auto Plants and Factories in later ages), and train from all of them.">Военные здания: выбрать все ваши казармы, конюшни, осадные мастерские и авиабазы (в поздних эпохах — автозаводы и заводы) и обучать во всех сразу.</STRING>
+	<STRING en="Army: select all your military units.">Армия: выбрать все ваши боевые юниты.</STRING>
+	<STRING en="Airbases: select all your Airbases, and build aircraft from all of them.">Авиабазы: выбрать все ваши авиабазы и строить самолёты во всех сразу.</STRING>
+	<STRING en="Docks: select all your Docks (Anchorages and Shipyards in later ages), and build ships from all of them.">Доки: выбрать все ваши доки (в поздних эпохах — якорные стоянки и верфи) и строить корабли во всех сразу.</STRING>
+	<STRING en="AI assistant: let the computer play your nation (Full control) or take it back (No control) with one click, choose what it may buy (economy, military, research, new cities, wonders) and how much of each resource it must leave you.">ИИ-помощник: одним щелчком позвольте компьютеру играть за вашу нацию (Полный контроль) или верните себе управление (Без контроля), выберите, что он может покупать (экономика, армия, исследования, новые города, чудеса) и сколько каждого ресурса он должен вам оставить.</STRING>
+	<STRING en="PLAY">ИГРАТЬ</STRING>
+	<STRING en="Survive">Продержись</STRING>
+	<STRING en="Next wave in">Следующая волна через</STRING>
+	<STRING en="Boss wave in">Волна босса через</STRING>
+	<STRING en="Survived!">Выжили!</STRING>
+	<STRING en="No Nukes">Без ядерного оружия</STRING>
+</ROOT>

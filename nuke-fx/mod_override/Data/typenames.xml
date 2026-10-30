@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 2 (Big Huge Games) -->
+<!--LOCALIZATION -->
+<!--LOCALIZATION -->
+<!--LOCALIZATION: All STRING elements.-->
+<!--LOCALIZATION -->
+<!--LOCALIZATION -->
+<ROOT>
+  <AGES>
+    <STRING hash="8843171" needed="1">Classical Age</STRING>
+    <STRING hash="6818848" needed="1">Medieval Age</STRING>
+    <STRING hash="7683271" needed="1">Gunpowder Age</STRING>
+    <STRING hash="13782908" needed="1">Enlightenment Age</STRING>
+    <STRING hash="9696711" needed="1">Industrial Age</STRING>
+    <STRING hash="4270575" needed="1">Modern Age</STRING>
+    <STRING hash="11109641" needed="1">Information Age</STRING>
+  </AGES>
+  <TECHS>
+    <STRING hash="7422563" needed="1">Written Word</STRING>
+    <STRING hash="7558886" needed="1">Mathematics</STRING>
+    <STRING hash="4209181" needed="1">Chemistry</STRING>
+    <STRING hash="10931720" needed="1">Laws of Nature</STRING>
+    <STRING hash="7436541" needed="1">Electricity</STRING>
+    <STRING hash="7373131" needed="1">Electronics</STRING>
+    <STRING hash="12979145" needed="1">Computerization</STRING>
+    <STRING hash="1692249" needed="1">Barter</STRING>
+    <STRING hash="2317946" needed="1">Coinage</STRING>
+    <STRING hash="1055307" needed="1">Trade</STRING>
+    <STRING hash="8189112" needed="1">Mercantilism</STRING>
+    <STRING hash="2772098" needed="1">Finance</STRING>
+    <STRING hash="8662151" needed="1">Assembly Line</STRING>
+    <STRING hash="10212836" needed="1">Globalization</STRING>
+    <STRING hash="5616641" needed="1">City State</STRING>
+    <STRING hash="1455381" needed="1">Empire</STRING>
+    <STRING hash="4168087" needed="1">Feudalism</STRING>
+    <STRING hash="7124203" needed="1">Divine Right</STRING>
+    <STRING hash="7851435" needed="1">Constitution</STRING>
+    <STRING hash="6478898" needed="1">Great Power</STRING>
+    <STRING hash="17211729" needed="1">International Law</STRING>
+    <STRING hash="10578054" needed="1">The Art of War</STRING>
+    <STRING hash="6849444" needed="1">Mercenaries</STRING>
+    <STRING hash="8563678" needed="1">Standing Army</STRING>
+    <STRING hash="8048945" needed="1">Conscription</STRING>
+    <STRING hash="10185392" needed="1">Levee en Masse</STRING>
+    <STRING hash="10290156" needed="1">Nation-in-Arms</STRING>
+    <STRING hash="16302664" needed="1">Selective Service</STRING>
+  </TECHS>
+  <MISC>
+    <STRING hash="9426192" needed="1">Missile Shield</STRING>
+    <STRING hash="30604825" needed="1">Artificial Intelligence</STRING>
+    <STRING hash="16526569" needed="1">Global Prosperity</STRING>
+    <STRING hash="13424671" needed="1">World Government</STRING>
+    <STRING hash="3073683" needed="1">Tactics</STRING>
+    <STRING hash="5502441" needed="1">Operations</STRING>
+    <STRING hash="3277741" needed="1">Strategy</STRING>
+    <STRING hash="2820121" needed="1">Religion</STRING>
+    <STRING hash="4969036" needed="1">Monotheism</STRING>
+    <STRING hash="10952500" needed="1">Existentialism</STRING>
+    <STRING hash="3410006" needed="1">Taxation</STRING>
+    <STRING hash="4575496" needed="1">Vassalage</STRING>
+    <STRING hash="14255071" needed="1">Social Contract</STRING>
+    <STRING hash="5809773" needed="1">Income Tax</STRING>
+    <STRING hash="9957886" needed="1">Fortification</STRING>
+    <STRING hash="6780593" needed="1">Bombardment</STRING>
+    <STRING hash="17966690" needed="1">Strategic Reserves</STRING>
+    <STRING hash="5757926" needed="1">Allegiance</STRING>
+    <STRING hash="10825577" needed="1">Oath of Fealty</STRING>
+    <STRING hash="5321711" needed="1">Patriotism</STRING>
+    <STRING hash="6842975" needed="1">Nationalism</STRING>
+    <STRING hash="8429887" needed="1">Construction</STRING>
+    <STRING hash="8406841" needed="1">Architecture</STRING>
+    <STRING hash="5867465" needed="1">Engineering</STRING>
+    <STRING hash="6504674" needed="1">Herbal Lore</STRING>
+    <STRING hash="3060060" needed="1">Medicine</STRING>
+    <STRING hash="14777164" needed="1">Pharmaceuticals</STRING>
+    <STRING hash="1660645" needed="1">Forage</STRING>
+    <STRING hash="1722154" needed="1">Supply</STRING>
+    <STRING hash="4572512" needed="1">Logistics</STRING>
+    <STRING hash="4346421" needed="1">Carpentry</STRING>
+    <STRING hash="13894977" needed="1">Logging Industry</STRING>
+    <STRING hash="3938041" needed="1">Papermill</STRING>
+    <STRING hash="6797357" needed="1">Agriculture</STRING>
+    <STRING hash="9608007" needed="1">Crop Rotation</STRING>
+    <STRING hash="9355065" needed="1">Food Industry</STRING>
+    <STRING hash="3959017" needed="1">Literacy</STRING>
+    <STRING hash="10082689" needed="1">Printing Press</STRING>
+    <STRING hash="15111817" needed="1">Scientific Method</STRING>
+    <STRING hash="29708143" needed="1">Institutional Research</STRING>
+    <STRING hash="11227186" needed="1">Supercomputers</STRING>
+    <STRING hash="7771103" needed="1">Metal Alloys</STRING>
+    <STRING hash="7639625" needed="1">Cold Casting</STRING>
+    <STRING hash="895218" needed="1">Steel</STRING>
+    <STRING hash="4006343" needed="1">Despotism</STRING>
+    <STRING hash="3833320" needed="1">Republic</STRING>
+    <STRING hash="3752145" needed="1">Monarchy</STRING>
+    <STRING hash="5495194" needed="1">Democracy</STRING>
+    <STRING hash="4431157" needed="1">Socialism</STRING>
+    <STRING hash="5553684" needed="1">Capitalism</STRING>
+  </MISC>
+  <GOODS>
+    <STRING hash="564640" needed="1">Food</STRING>
+    <STRING hash="1799276" needed="1">Timber</STRING>
+    <STRING hash="1700464" needed="1">Wealth</STRING>
+    <STRING hash="3520419" needed="1">Knowledge</STRING>
+    <STRING hash="1211192" needed="1">Metal</STRING>
+    <STRING hash="336002" needed="1">Oil</STRING>
+    <STRING hash="583548" needed="1">Fish</STRING>
+    <STRING hash="1922011" needed="1">Relics</STRING>
+    <STRING hash="578117" needed="1">Wine</STRING>
+    <STRING hash="2616402" needed="1">Papyrus</STRING>
+    <STRING hash="333260" needed="1">Dye</STRING>
+    <STRING hash="593963" needed="1">Silk</STRING>
+    <STRING hash="1194455" needed="1">Spice</STRING>
+    <STRING hash="790674" needed="1">Salt</STRING>
+    <STRING hash="1583615" needed="1">Horses</STRING>
+    <STRING hash="2037823" needed="1">Rubber</STRING>
+    <STRING hash="2346145" needed="1">Sulphur</STRING>
+    <STRING hash="1137060" needed="1">Amber</STRING>
+    <STRING hash="1571768" needed="1">Silver</STRING>
+    <STRING hash="3502615" needed="1">Tobacco</STRING>
+    <STRING hash="1865394" needed="1">Marble</STRING>
+    <STRING hash="683830" needed="1">Furs</STRING>
+    <STRING hash="1622088" needed="1">Cotton</STRING>
+    <STRING hash="978052" needed="1">Bison</STRING>
+    <STRING hash="1536898" needed="1">Copper</STRING>
+    <STRING hash="3880631" needed="1">Peacocks</STRING>
+    <STRING hash="1690721" needed="1">Citrus</STRING>
+    <STRING hash="1249341" needed="1">Sugar</STRING>
+    <STRING hash="3076733" needed="1">Diamonds</STRING>
+    <STRING hash="619184" needed="1">Gems</STRING>
+    <STRING hash="3029794" needed="1">Aluminum</STRING>
+    <STRING hash="1713625" needed="1">Whales</STRING>
+    <STRING hash="3383353" needed="1">Obsidian</STRING>
+    <STRING hash="642149" needed="1">Wool</STRING>
+    <STRING hash="788789" needed="1">Coal</STRING>
+    <STRING hash="2481507" needed="1">Uranium</STRING>
+    <STRING hash="3274537" needed="1">Titanium</STRING>
+    <STRING hash="1623896" needed="1">Cattle</STRING>
+    <STRING hash="611601" needed="1">Dogs</STRING>
+    <STRING hash="2338619" needed="1">Incense</STRING>
+    <STRING hash="3613460" needed="1">Olive Oil</STRING>
+    <STRING hash="1673538" needed="1">Gypsum</STRING>
+    <STRING hash="7644907" needed="1">Beaver Pelts</STRING>
+    <STRING hash="553030" needed="1">Gold</STRING>
+    <STRING hash="382076" needed="1">Rum</STRING>
+    <STRING hash="1296381" needed="1">Coffee</STRING>
+    <STRING hash="3000278" needed="1">Bananas</STRING>
+    <STRING hash="1696293" needed="1">Salmon</STRING>
+    <STRING hash="2833684" needed="1">Iron Ore</STRING>
+    <STRING hash="1099045" needed="1">Maize</STRING>
+    <STRING hash="2175628" needed="1">Huskies</STRING>
+  </GOODS>
+  <BUILDS>
+    <STRING hash="5143517" needed="1">Small City</STRING>
+    <STRING hash="5001885" needed="1">Large City</STRING>
+    <STRING hash="5116697" needed="1">Major City</STRING>
+    <STRING hash="756488" needed="1">Farm</STRING>
+    <STRING hash="15948114" needed="1">Woodcutter's Camp</STRING>
+    <STRING hash="560225" needed="1">Mine</STRING>
+    <STRING hash="5428677" needed="1">University</STRING>
+    <STRING hash="2882524" needed="1">Oil Well</STRING>
+    <STRING hash="8028649" needed="1">Oil Platform</STRING>
+    <STRING hash="2914764" needed="1">Granary</STRING>
+    <STRING hash="6179481" needed="1">Lumber Mill</STRING>
+    <STRING hash="2188528" needed="1">Smelter</STRING>
+    <STRING hash="3001744" needed="1">Refinery</STRING>
+    <STRING hash="3868075" needed="1">Barracks</STRING>
+    <STRING hash="1932724" needed="1">Stable</STRING>
+    <STRING hash="5642409" needed="1">Auto Plant</STRING>
+    <STRING hash="10083382" needed="1">Siege Factory</STRING>
+    <STRING hash="2802178" needed="1">Factory</STRING>
+    <STRING hash="815783" needed="1">Dock</STRING>
+    <STRING hash="4309085" needed="1">Anchorage</STRING>
+    <STRING hash="3296260" needed="1">Shipyard</STRING>
+    <STRING hash="2939733" needed="1">Library</STRING>
+    <STRING hash="1674717" needed="1">Market</STRING>
+    <STRING hash="1445184" needed="1">Temple</STRING>
+    <STRING hash="1009206" needed="1">Tower</STRING>
+    <STRING hash="568153" needed="1">Keep</STRING>
+    <STRING hash="3366022" needed="1">Stockade</STRING>
+    <STRING hash="1515894" needed="1">Bunker</STRING>
+    <STRING hash="672063" needed="1">Fort</STRING>
+    <STRING hash="1618681" needed="1">Castle</STRING>
+    <STRING hash="3070364" needed="1">Fortress</STRING>
+    <STRING hash="2703085" needed="1">Redoubt</STRING>
+    <STRING hash="2736903" needed="1">Airbase</STRING>
+    <STRING hash="7207851" needed="1">Missile Silo</STRING>
+    <STRING hash="2382931" needed="1">Lookout</STRING>
+    <STRING hash="14303594" needed="1">Observation Post</STRING>
+    <STRING hash="10963680" needed="1">Air Defense Gun</STRING>
+    <STRING hash="14036329" needed="1">Radar Air Defense</STRING>
+    <STRING hash="15017895" needed="1">SAM Installation</STRING>
+    <STRING hash="3155697" needed="1">Pyramids</STRING>
+    <STRING hash="3202471" needed="1">Colossus</STRING>
+    <STRING hash="14090616" needed="1">Terra Cotta Army</STRING>
+    <STRING hash="4006251" needed="1">Colosseum</STRING>
+    <STRING hash="11789295" needed="1">Temple of Tikal</STRING>
+    <STRING hash="12394052" needed="1">Porcelain Tower</STRING>
+    <STRING hash="5629591" needed="1">Angkor Wat</STRING>
+    <STRING hash="5275053" needed="1">Versailles</STRING>
+    <STRING hash="4734371" needed="1">Taj Mahal</STRING>
+    <STRING hash="2136242" needed="1">Kremlin</STRING>
+    <STRING hash="16071921" needed="1">Statue of Liberty</STRING>
+    <STRING hash="7396078" needed="1">Eiffel Tower</STRING>
+    <STRING hash="8960296" needed="1">Supercollider</STRING>
+    <STRING hash="9900249" needed="1">Space Program</STRING>
+    <STRING hash="1740233" needed="1">Senate</STRING>
+    <STRING hash="11924638" needed="1">Hanging Gardens</STRING>
+    <STRING hash="9898085" needed="1">Forbidden City</STRING>
+    <STRING hash="2942926" needed="1">Red Fort</STRING>
+    <STRING hash="2929874" needed="1">Bastille</STRING>
+    <STRING hash="4174297" needed="1">Housing District</STRING>
+    <STRING hash="11137768" needed="1">Tower of London</STRING>
+    <STRING hash="969271" needed="1">House</STRING>
+    <STRING hash="18671484" needed="1">Commerce District</STRING>
+    <STRING hash="5004373" needed="1">Industrial District</STRING>
+    <STRING hash="5412046" needed="1">Apartments</STRING>
+    <STRING hash="11265150" needed="1">Office Building</STRING>
+    <STRING hash="19695529" needed="1">Washington Monument</STRING>
+    <STRING hash="8104532" needed="1">Field Fortification</STRING>
+  </BUILDS>
+  <UNITS>
+    <STRING hash="2221484" needed="1">Citizen</STRING>
+    <STRING hash="2751620" needed="1">Scholar</STRING>
+    <STRING hash="2501488" needed="1">General</STRING>
+    <STRING hash="423174" needed="1">Spy</STRING>
+    <STRING hash="3026652" needed="1">Caravan</STRING>
+    <STRING hash="3634926" needed="1">Merchant</STRING>
+    <STRING hash="8123947" needed="1">Supply Wagon</STRING>
+    <STRING hash="2580139" needed="1">Militia</STRING>
+    <STRING hash="4398051" needed="1">Minuteman</STRING>
+    <STRING hash="3574192" needed="1">Partisan</STRING>
+    <STRING hash="1234467" needed="1">Scout</STRING>
+    <STRING hash="2971245" needed="1">Explorer</STRING>
+    <STRING hash="3152264" needed="1">Commando</STRING>
+    <STRING hash="11414320" needed="1">Special Forces</STRING>
+    <STRING hash="23496102" needed="1">Elite Special Forces</STRING>
+    <STRING hash="2912095" needed="1">Slingers</STRING>
+    <STRING hash="6271876" needed="1">Javelineers</STRING>
+    <STRING hash="15379376" needed="1">Elite Javelineers</STRING>
+    <STRING hash="3046598" needed="1">Atl-Atls</STRING>
+    <STRING hash="10143002" needed="1">Royal Atl-Atls</STRING>
+    <STRING hash="12984243" needed="1">Xopilli Atl-Atls</STRING>
+    <STRING hash="14124675" needed="1">Balamob Slingers</STRING>
+    <STRING hash="28279121" needed="1">Royal Balamob Slingers</STRING>
+    <STRING hash="27980832" needed="1">Eagle Balamob Slingers</STRING>
+    <STRING hash="7858530" needed="1">Inti Clubmen</STRING>
+    <STRING hash="8149328" needed="1">Inti Macemen</STRING>
+    <STRING hash="3556822" needed="1">Umpakati</STRING>
+    <STRING hash="17413041" needed="1">Yangombi Umpakati</STRING>
+    <STRING hash="597681" needed="1">Impi</STRING>
+    <STRING hash="7117550" needed="1">Fire Lances</STRING>
+    <STRING hash="16497142" needed="1">Heavy Fire Lances</STRING>
+    <STRING hash="8091119" needed="1">Arquebusiers</STRING>
+    <STRING hash="5030159" needed="1">Musketeers</STRING>
+    <STRING hash="2732698" needed="1">Riflemen</STRING>
+    <STRING hash="3448211" needed="1">Infantry</STRING>
+    <STRING hash="14910540" needed="1">Assault Infantry</STRING>
+    <STRING hash="21046206" needed="1">Red Guards Infantry</STRING>
+    <STRING hash="11409132" needed="1">Shock Infantry</STRING>
+    <STRING hash="12198643" needed="1">Volksgrenadiers</STRING>
+    <STRING hash="13274171" needed="1">Jaguar Infantry</STRING>
+    <STRING hash="32427586" needed="1">Jaguar Assault Infantry</STRING>
+    <STRING hash="6809974" needed="1">Janissaries</STRING>
+    <STRING hash="16843832" needed="1">Royal Janissaries</STRING>
+    <STRING hash="6459227" needed="1">Highlanders</STRING>
+    <STRING hash="7818082" needed="1">Black Watch</STRING>
+    <STRING hash="15712841" needed="1">Manchu Musketeers</STRING>
+    <STRING hash="11637510" needed="1">Manchu Riflemen</STRING>
+    <STRING hash="13245267" needed="1">Manchu Infantry</STRING>
+    <STRING hash="6205127" needed="1">Machine Gun</STRING>
+    <STRING hash="15720375" needed="1">Heavy Machine Gun</STRING>
+    <STRING hash="22252131" needed="1">Advanced Machine Gun</STRING>
+    <STRING hash="337164" needed="1">MG42</STRING>
+    <STRING hash="7851322" needed="1">Flamethrower</STRING>
+    <STRING hash="2939856" needed="1">Hoplites</STRING>
+    <STRING hash="2839030" needed="1">Phalanx</STRING>
+    <STRING hash="2060855" needed="1">Pikemen</STRING>
+    <STRING hash="8221659" needed="1">Elite Pikemen</STRING>
+    <STRING hash="3904621" needed="1">Fusiliers</STRING>
+    <STRING hash="11535451" needed="1">Anti-tank Rifle</STRING>
+    <STRING hash="2792777" needed="1">Bazooka</STRING>
+    <STRING hash="15231344" needed="1">Anti-Tank Missile</STRING>
+    <STRING hash="10089468" needed="1">Recoilless Gun</STRING>
+    <STRING hash="14498849" needed="1">Dragon AT Missile</STRING>
+    <STRING hash="2215527" needed="1">Legions</STRING>
+    <STRING hash="13400324" needed="1">Caesar's Legions</STRING>
+    <STRING hash="16529548" needed="1">Praetorian Guards</STRING>
+    <STRING hash="2749055" needed="1">Scutari</STRING>
+    <STRING hash="10541371" needed="1">Royal Scutari</STRING>
+    <STRING hash="2565159" needed="1">Tercios</STRING>
+    <STRING hash="9826501" needed="1">Royal Tercios</STRING>
+    <STRING hash="2218110" needed="1">Solduri</STRING>
+    <STRING hash="6341588" needed="1">Barbarians</STRING>
+    <STRING hash="2664093" needed="1">Vandals</STRING>
+    <STRING hash="8305918" needed="1">Landsknechts</STRING>
+    <STRING hash="16097864" needed="1">Ashigaru Spearmen</STRING>
+    <STRING hash="925380" needed="1">Bushi</STRING>
+    <STRING hash="5811238" needed="1">Elite Bushi</STRING>
+    <STRING hash="2729576" needed="1">Samurai</STRING>
+    <STRING hash="7334482" needed="1">Gun Samurai</STRING>
+    <STRING hash="1519671" needed="1">Bowmen</STRING>
+    <STRING hash="2437686" needed="1">Archers</STRING>
+    <STRING hash="6749852" needed="1">Crossbowmen</STRING>
+    <STRING hash="9426064" needed="1">Heavy Archers</STRING>
+    <STRING hash="12128397" needed="1">Kushite Archers</STRING>
+    <STRING hash="24712871" needed="1">Royal Kushite Archers</STRING>
+    <STRING hash="13971934" needed="1">Apedemak Archers</STRING>
+    <STRING hash="5363679" needed="1">Longbowmen</STRING>
+    <STRING hash="16003280" needed="1">King's Longbowmen</STRING>
+    <STRING hash="13018015" needed="1">King's Yeomanry</STRING>
+    <STRING hash="2678272" needed="1">Hwarang</STRING>
+    <STRING hash="9766582" needed="1">Elite Hwarang</STRING>
+    <STRING hash="10138104" needed="1">Royal Hwarang</STRING>
+    <STRING hash="21703388" needed="1">Elite Royal Hwarang</STRING>
+    <STRING hash="7633946" needed="1">Horse Archer</STRING>
+    <STRING hash="17605544" needed="1">Heavy Horse Archer</STRING>
+    <STRING hash="2394210" needed="1">Dragoon</STRING>
+    <STRING hash="5553487" needed="1">Carabineer</STRING>
+    <STRING hash="7702055" needed="1">Camel Archer</STRING>
+    <STRING hash="17790409" needed="1">Heavy Camel Archer</STRING>
+    <STRING hash="7609557" needed="1">Camel Raider</STRING>
+    <STRING hash="6206627" needed="1">Camel Corps</STRING>
+    <STRING hash="2454520" needed="1">Chariot</STRING>
+    <STRING hash="9451088" needed="1">Heavy Chariot</STRING>
+    <STRING hash="2937285" needed="1">Mameluke</STRING>
+    <STRING hash="10638089" needed="1">Royal Mameluke</STRING>
+    <STRING hash="1150372" needed="1">Nomad</STRING>
+    <STRING hash="7707478" needed="1">Steppe Nomad</STRING>
+    <STRING hash="862803" needed="1">Horde</STRING>
+    <STRING hash="6839153" needed="1">Golden Horde</STRING>
+    <STRING hash="5968353" needed="1">Light Horse</STRING>
+    <STRING hash="10061941" needed="1">Light Cavalry</STRING>
+    <STRING hash="21080609" needed="1">Elite Light Cavalry</STRING>
+    <STRING hash="1970399" needed="1">Hussar</STRING>
+    <STRING hash="6153218" needed="1">Light Camel</STRING>
+    <STRING hash="9578409" needed="1">Camel Warrior</STRING>
+    <STRING hash="20573215" needed="1">Elite Camel Warrior</STRING>
+    <STRING hash="6265708" needed="1">Armored Car</STRING>
+    <STRING hash="16327071" needed="1">Armored Scout Car</STRING>
+    <STRING hash="13171980" needed="1">Armored Cavalry</STRING>
+    <STRING hash="10673820" needed="1">Tank Destroyer</STRING>
+    <STRING hash="6111439" needed="1">Tank Killer</STRING>
+    <STRING hash="10023222" needed="1">Rusiny Lancer</STRING>
+    <STRING hash="2960039" needed="1">Cossack</STRING>
+    <STRING hash="7454192" needed="1">Don Cossack</STRING>
+    <STRING hash="6673410" needed="1">Cataphract</STRING>
+    <STRING hash="1501480" needed="1">Knight</STRING>
+    <STRING hash="7437672" needed="1">Heavy Knight</STRING>
+    <STRING hash="5367551" needed="1">Cuirassier</STRING>
+    <STRING hash="4210523" needed="1">Companion</STRING>
+    <STRING hash="12568111" needed="1">Royal Companion</STRING>
+    <STRING hash="5879341" needed="1">Stratiotai</STRING>
+    <STRING hash="15547751" needed="1">Royal Stratiotai</STRING>
+    <STRING hash="4090116" needed="1">Chevalier</STRING>
+    <STRING hash="12238222" needed="1">Heavy Chevalier</STRING>
+    <STRING hash="11767956" needed="1">Horse Grenadier</STRING>
+    <STRING hash="24262978" needed="1">Horse Guard Grenadier</STRING>
+    <STRING hash="5341897" needed="1">Light Tank</STRING>
+    <STRING hash="745334" needed="1">Tank</STRING>
+    <STRING hash="14352003" needed="1">Main Battle Tank</STRING>
+    <STRING hash="5324692" needed="1">Tiger Tank</STRING>
+    <STRING hash="8175683" needed="1">Leopard Tank</STRING>
+    <STRING hash="3395554" needed="1">T80 Tank</STRING>
+    <STRING hash="3504308" needed="1">Catapult</STRING>
+    <STRING hash="4578313" needed="1">Trebuchet</STRING>
+    <STRING hash="2715057" needed="1">Bombard</STRING>
+    <STRING hash="1686578" needed="1">Cannon</STRING>
+    <STRING hash="4044681" needed="1">Artillery</STRING>
+    <STRING hash="3111150" needed="1">Howitzer</STRING>
+    <STRING hash="13748366" needed="1">Rocket Artillery</STRING>
+    <STRING hash="1960398" needed="1">Mortar</STRING>
+    <STRING hash="8133644" needed="1">Siege Mortar</STRING>
+    <STRING hash="15499797" needed="1">Basilica Bombard</STRING>
+    <STRING hash="13031479" needed="1">Basilica Cannon</STRING>
+    <STRING hash="13144786" needed="1">Katyusha Rocket</STRING>
+    <STRING hash="8864040" needed="1">Flaming Arrow</STRING>
+    <STRING hash="19698416" needed="1">Heavy Flaming Arrow</STRING>
+    <STRING hash="16156158" needed="1">Anti-Aircraft Gun</STRING>
+    <STRING hash="26524171" needed="1">Anti-Aircraft Battery</STRING>
+    <STRING hash="24835168" needed="1">Anti-Aircraft Missile</STRING>
+    <STRING hash="2398355" needed="1">Biplane</STRING>
+    <STRING hash="2132227" needed="1">Fighter</STRING>
+    <STRING hash="5994736" needed="1">Jet Fighter</STRING>
+    <STRING hash="13153657" needed="1">Advanced Fighter</STRING>
+    <STRING hash="7313136" needed="1">Hawk Fighter</STRING>
+    <STRING hash="8335340" needed="1">Eagle Fighter</STRING>
+    <STRING hash="1787274" needed="1">Bomber</STRING>
+    <STRING hash="14414589" needed="1">Strategic Bomber</STRING>
+    <STRING hash="10788607" needed="1">Stealth Bomber</STRING>
+    <STRING hash="14502340" needed="1">Lancaster Bomber</STRING>
+    <STRING hash="10487415" needed="1">Fighter Bomber</STRING>
+    <STRING hash="17403956" needed="1">Jet Fighter Bomber</STRING>
+    <STRING hash="5425090" needed="1">Helicopter</STRING>
+    <STRING hash="22818152" needed="1">Transport Helicopter</STRING>
+    <STRING hash="4278905" needed="1">V2 Rocket</STRING>
+    <STRING hash="9875698" needed="1">Cruise Missile</STRING>
+    <STRING hash="12012826" needed="1">Nuclear Missile</STRING>
+    <STRING hash="6979733" needed="1">Nuclear ICBM</STRING>
+    <STRING hash="3749364" needed="1">Fishermen</STRING>
+    <STRING hash="10196653" needed="1">Merchant Fleet</STRING>
+    <STRING hash="24371934" needed="1">Modern Merchant Fleet</STRING>
+    <STRING hash="11981198" needed="1">Transport Barge</STRING>
+    <STRING hash="15736732" needed="1">Transport Galleon</STRING>
+    <STRING hash="19043523" needed="1">Transport Freighter</STRING>
+    <STRING hash="1570178" needed="1">Dromon</STRING>
+    <STRING hash="2557314" needed="1">Caravel</STRING>
+    <STRING hash="1007218" needed="1">Sloop</STRING>
+    <STRING hash="4093348" needed="1">Destroyer</STRING>
+    <STRING hash="2223053" needed="1">Cruiser</STRING>
+    <STRING hash="11534641" needed="1">Missile Cruiser</STRING>
+    <STRING hash="4250328" needed="1">Fire Raft</STRING>
+    <STRING hash="12110344" needed="1">Heavy Fire Raft</STRING>
+    <STRING hash="2833092" needed="1">Fireship</STRING>
+    <STRING hash="10129818" needed="1">Heavy Fireship</STRING>
+    <STRING hash="4315997" needed="1">Submarine</STRING>
+    <STRING hash="15367664" needed="1">Attack Submarine</STRING>
+    <STRING hash="2070876" needed="1">Trireme</STRING>
+    <STRING hash="1714725" needed="1">Galley</STRING>
+    <STRING hash="3072219" needed="1">Carrack</STRING>
+    <STRING hash="2423170" needed="1">Frigate</STRING>
+    <STRING hash="5606523" needed="1">Man o' War</STRING>
+    <STRING hash="6438890" needed="1">Bomb Vessel</STRING>
+    <STRING hash="5692558" needed="1">Bomb Ketch</STRING>
+    <STRING hash="6451385" needed="1">Dreadnought</STRING>
+    <STRING hash="5072733" needed="1">Battleship</STRING>
+    <STRING hash="20101660" needed="1">Advanced Battleship</STRING>
+    <STRING hash="14244592" needed="1">Aircraft Carrier</STRING>
+    <STRING hash="3462612" needed="1">Wild Bird</STRING>
+    <STRING hash="4754137" needed="1">Flock Bird</STRING>
+    <STRING hash="3519784" needed="1">Gull Bird</STRING>
+    <STRING hash="2879048" needed="1">Farm Pig</STRING>
+    <STRING hash="7757665" needed="1">Farm Chicken</STRING>
+    <STRING hash="4834015" needed="1">Herd Horse</STRING>
+    <STRING hash="4679109" needed="1">Herd Sheep</STRING>
+    <STRING hash="4802943" needed="1">Herd Bison</STRING>
+    <STRING hash="4049688" needed="1">Herd Bear</STRING>
+    <STRING hash="3575160" needed="1">Herd Fish</STRING>
+    <STRING hash="6586501" needed="1">Herd Whales</STRING>
+    <STRING hash="9185103" needed="1">Herd Peacock</STRING>
+    <STRING hash="16545078" needed="1">Attack Helicopter</STRING>
+    <STRING hash="731698" needed="1">Bark</STRING>
+    <STRING hash="2968518" needed="1">Corvette</STRING>
+    <STRING hash="3819158" needed="1">Boadicea</STRING>
+    <STRING hash="4884264" needed="1">Pathfinder</STRING>
+    <STRING hash="2115754" needed="1">Pioneer</STRING>
+    <STRING hash="1621540" needed="1">Ranger</STRING>
+    <STRING hash="2313787" needed="1">Marines</STRING>
+    <STRING hash="11205266" needed="1">Marine Riflemen</STRING>
+    <STRING hash="12813023" needed="1">Marine Infantry</STRING>
+    <STRING hash="12567134" needed="1">Assault Marines</STRING>
+    <STRING hash="4499025" needed="1">Immortals</STRING>
+    <STRING hash="2775650" needed="1">Anusiya</STRING>
+    <STRING hash="4513220" needed="1">Athanatoi</STRING>
+    <STRING hash="11798069" needed="1">Immortal Bowmen</STRING>
+    <STRING hash="12756454" needed="1">Anusiya Archers</STRING>
+    <STRING hash="16185980" needed="1">Athanatoi Archers</STRING>
+    <STRING hash="7561726" needed="1">Sunka Wakan</STRING>
+    <STRING hash="19075282" needed="1">Eagle Feather Horse</STRING>
+    <STRING hash="7303434" needed="1">Musket Horse</STRING>
+    <STRING hash="22928087" needed="1">Repeating Rifle Horse</STRING>
+    <STRING hash="8152989" needed="1">War Elephant</STRING>
+    <STRING hash="1783401" needed="1">Mahout</STRING>
+    <STRING hash="5595655" needed="1">Gun Mahout</STRING>
+    <STRING hash="12418082" needed="1">Culverin Mahout</STRING>
+    <STRING hash="4076737" needed="1">Alexander</STRING>
+    <STRING hash="3017560" needed="1">Napoleon</STRING>
+    <STRING hash="3000023" needed="1">Parmenio</STRING>
+    <STRING hash="4299955" needed="1">Antipater</STRING>
+    <STRING hash="2324064" needed="1">Ptolemy</STRING>
+    <STRING hash="1768727" needed="1">Darius</STRING>
+    <STRING hash="1546345" needed="1">Memnon</STRING>
+    <STRING hash="5253546" needed="1">Spitamenes</STRING>
+    <STRING hash="23457065" needed="1">Chandragupta Maurya</STRING>
+    <STRING hash="1086684" needed="1">Porus</STRING>
+    <STRING hash="10420802" needed="1">Armed Caravan</STRING>
+    <STRING hash="11429998" needed="1">Armed Merchant</STRING>
+    <STRING hash="18319383" needed="1">Armed Supply Wagon</STRING>
+    <STRING hash="552662" needed="1">Brig</STRING>
+    <STRING hash="1115697" needed="1">Fluyt</STRING>
+    <STRING hash="2167087" needed="1">Clipper</STRING>
+    <STRING hash="5046858" needed="1">Wellington</STRING>
+    <STRING hash="20545258" needed="1">Continental Marines</STRING>
+    <STRING hash="16731118" needed="1">Arquebus Immortal</STRING>
+    <STRING hash="3718008" needed="1">Siegeship</STRING>
+    <STRING hash="13572651" needed="1">Archduke Charles</STRING>
+    <STRING hash="2760720" needed="1">Djezzar</STRING>
+    <STRING hash="10697315" needed="1">Advisor Fouché</STRING>
+    <STRING hash="32873769" needed="1">Commander Schwarzenberg</STRING>
+    <STRING hash="12471697" needed="1">General Blucher</STRING>
+    <STRING hash="12663209" needed="1">General Kutosov</STRING>
+    <STRING hash="12225527" needed="1">Commander Paoli</STRING>
+    <STRING hash="8207598" needed="1">Conquistador</STRING>
+    <STRING hash="18428844" needed="1">Elite Conquistador</STRING>
+    <STRING hash="6980785" needed="1">Arquebus Immortal</STRING>
+    <STRING hash="3101971" needed="1">Spearmen</STRING>
+    <STRING hash="12494856" needed="1">Mohawk Spearmen</STRING>
+    <STRING hash="25571948" needed="1">Heavy Mohawk Spearmen</STRING>
+    <STRING hash="25200830" needed="1">Elite Mohawk Spearmen</STRING>
+    <STRING hash="12157126" needed="1">Ship of the Line</STRING>
+    <STRING hash="2264008" needed="1">Junkers</STRING>
+    <STRING hash="5909556" needed="1">Patrol Jeep</STRING>
+    <STRING hash="15132084" needed="1">Paratroopers</STRING>
+    <STRING hash="4222311" needed="1">Mi-24 Hind</STRING>
+    <STRING hash="4337422" needed="1">Red Coats</STRING>
+    <STRING hash="384593" needed="1">Interceptor</STRING>
+    <STRING hash="5987504" needed="1">Transport Helicopter</STRING>
+    <STRING hash="6756338" needed="1">Patrol Boat</STRING>
+    <STRING hash="1460525" needed="1">Humvee</STRING>
+    <STRING hash="6781286" needed="1">Royal Guard</STRING>
+    <STRING hash="16323899" needed="1">Greek Mercenaries</STRING>
+    <STRING hash="2279228" needed="1">Galleon</STRING>
+    <STRING hash="3596236" needed="1">Ironclad</STRING>
+    <STRING hash="20863828" needed="1">Nuclear Missile Sub</STRING>
+    <STRING hash="8984905" needed="1">Catapult Ship</STRING>
+    <STRING hash="6802343" needed="1">Fur Trapper</STRING>
+    <STRING hash="8110594" needed="1">Bandeirantes</STRING>
+    <STRING hash="18223964" needed="1">Elite Bandeirantes</STRING>
+    <STRING hash="5044549" needed="1">The Despot</STRING>
+    <STRING hash="6886735" needed="1">The Senator</STRING>
+    <STRING hash="7345279" needed="1">The Monarch</STRING>
+    <STRING hash="8611244" needed="1">The President</STRING>
+    <STRING hash="6173159" needed="1">The Citizen</STRING>
+    <STRING hash="1922260" needed="1">The CEO</STRING>
+    <STRING hash="14761279" needed="1">Barbarian Archer</STRING>
+    <STRING hash="25490673" needed="1">Barbarian Javelineers</STRING>
+    <STRING hash="18086489" needed="1">Barbarian Phalanx</STRING>
+    <STRING hash="12870995" needed="1">Advisor Fouché</STRING>
+    <STRING hash="16775293" needed="1">District Builder</STRING>
+    <STRING hash="10825523" needed="1">Imperial Guard</STRING>
+    <STRING hash="10853451" needed="0">Darius Chariot</STRING>
+    <STRING hash="6809782" needed="1">War Chariot</STRING>
+    <STRING hash="1687475" needed="1">Takohs</STRING>
+    <STRING hash="1543137" needed="1">Akweks</STRING>
+    <STRING hash="1816090" needed="1">Okwari</STRING>
+    <STRING hash="6337910" needed="1">The Comrade</STRING>
+  </UNITS>
+  <ITEMS>
+    <STRING hash="3776560" needed="1">Goody Box</STRING>
+  </ITEMS>
+  <SPELLS>
+    <STRING hash="1152079" needed="1">Bribe</STRING>
+    <STRING hash="14621965" needed="1">Pilfer Resources</STRING>
+    <STRING hash="20104467" needed="1">Counterintelligence</STRING>
+    <STRING hash="5394599" needed="1">Assimilate</STRING>
+    <STRING hash="1583434" needed="1">Heal</STRING>
+    <STRING hash="9664256" needed="1">Create Decoys</STRING>
+    <STRING hash="1757765" needed="1">Ambush</STRING>
+    <STRING hash="8696396" needed="1">Forced March</STRING>
+    <STRING hash="3342997" needed="1">Entrench</STRING>
+    <STRING hash="13981346" needed="1">Restock Supplies</STRING>
+    <STRING hash="2895784" needed="1">Informer</STRING>
+    <STRING hash="3490332" needed="1">Sabotage</STRING>
+    <STRING hash="1529192" needed="1">Sniper</STRING>
+    <STRING hash="5373519" needed="1">Blow Tread</STRING>
+    <STRING hash="4842857" needed="1">Jam Radar</STRING>
+    <STRING hash="3362543" needed="1">Airdrop</STRING>
+    <STRING hash="15084354" needed="1">Research Project</STRING>
+    <STRING hash="772144" needed="1">Raze</STRING>
+    <STRING hash="15272294" needed="1">Leave Fortification</STRING>
+    <STRING hash="4301527" needed="1">Lock Gate</STRING>
+    <STRING hash="6744513" needed="1">Unlock Gate</STRING>
+    <STRING hash="4376064" needed="1">Transport</STRING>
+    <STRING hash="957551" needed="1">Pack</STRING>
+    <STRING hash="1652836" needed="1">Deploy</STRING>
+    <STRING hash="3291885" needed="1">Civilian</STRING>
+    <STRING hash="2217284" needed="1">To Arms</STRING>
+    <STRING hash="11354781" needed="1">Build Aircraft</STRING>
+    <STRING hash="956773" needed="1">Morph</STRING>
+    <STRING hash="2330416" needed="1">Upgrade</STRING>
+    <STRING hash="2688591" needed="1">Disband</STRING>
+    <STRING hash="7293826" needed="1">Declare War</STRING>
+    <STRING hash="13168313" needed="1">Cancel Alliance</STRING>
+    <STRING hash="3885310" needed="1">Go Ranged</STRING>
+    <STRING hash="2613214" needed="1">Go Melee</STRING>
+  </SPELLS>
+</ROOT>

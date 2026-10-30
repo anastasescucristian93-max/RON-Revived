@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- the DLL's own texts (translations\dll_strings.txt), made by translations\tools\build_data.py -->
+<ROOT>
+	<STRING en="AI ASSISTANT">ASISTENT IA</STRING>
+	<STRING en="NO CONTROL">FĂRĂ CONTROL</STRING>
+	<STRING en="CUSTOM">PERSONALIZAT</STRING>
+	<STRING en="FULL CONTROL">CONTROL TOTAL</STRING>
+	<STRING en="Only in single player games">Doar în jocurile cu un singur jucător</STRING>
+	<STRING en="The computer plays your nation">Calculatorul îți joacă națiunea</STRING>
+	<STRING en="The computer plays, only what is ticked">Calculatorul joacă doar ce e bifat</STRING>
+	<STRING en="You play your nation">Tu îți joci națiunea</STRING>
+	<STRING en="THE COMPUTER MAY BUY">CALCULATORUL POATE CUMPĂRA</STRING>
+	<STRING en="Keep at least %d of each resource">Păstrează cel puțin %d din fiecare resursă</STRING>
+	<STRING en="Economy">Economie</STRING>
+	<STRING en="Military">Armată</STRING>
+	<STRING en="Research">Cercetare</STRING>
+	<STRING en="New cities">Orașe noi</STRING>
+	<STRING en="Wonders and Data Center">Minuni și Centru de date</STRING>
+	<STRING en="Private">Soldat</STRING>
+	<STRING en="Private First Class">Fruntaș</STRING>
+	<STRING en="Corporal">Caporal</STRING>
+	<STRING en="Sergeant">Sergent</STRING>
+	<STRING en="Staff Sergeant">Sergent major</STRING>
+	<STRING en="Master Sergeant">Plutonier</STRING>
+	<STRING en="Lieutenant">Locotenent</STRING>
+	<STRING en="Captain">Căpitan</STRING>
+	<STRING en="Major">Maior</STRING>
+	<STRING en="Colonel">Colonel</STRING>
+	<STRING en="Brigadier General">General de brigadă</STRING>
+	<STRING en="Rank: {%s} (level %d of %d)">Grad: {%s} (nivelul %d din %d)</STRING>
+	<STRING en="Experience: %d%% of the way to %s">Experiență: %d%% până la %s</STRING>
+	<STRING en="Experience: highest rank">Experiență: gradul maxim</STRING>
+	<STRING en="Earns experience from the damage it deals.">Câștigă experiență din daunele pe care le provoacă.</STRING>
+	<STRING en="Earns experience from its abilities.">Câștigă experiență din abilitățile sale.</STRING>
+	<STRING en="Bonuses:">Bonusuri:</STRING>
+	<STRING en=" +%d%% attack,"> +%d%% atac,</STRING>
+	<STRING en=" +%d%% hit points"> +%d%% puncte de viață</STRING>
+	<STRING en=", +1 sight">, +1 vizibilitate</STRING>
+	<STRING en="+%d%% attack rate,">+%d%% viteză de atac,</STRING>
+	<STRING en="-%d%% damage taken,">-%d%% daune primite,</STRING>
+	<STRING en="+1 range,">+1 rază,</STRING>
+	<STRING en="heals out of combat,">se vindecă în afara luptei,</STRING>
+	<STRING en="Military buildings: select all your Barracks, Stables, Siege Factories and Airbases (Auto Plants and Factories in later ages), and train from all of them.">Clădiri militare: selectează toate cazărmile, grajdurile, atelierele de asediu și bazele aeriene (uzinele auto și fabricile în epocile ulterioare) și antrenează din toate deodată.</STRING>
+	<STRING en="Army: select all your military units.">Armată: selectează toate unitățile tale militare.</STRING>
+	<STRING en="Airbases: select all your Airbases, and build aircraft from all of them.">Baze aeriene: selectează toate bazele aeriene și construiește avioane din toate deodată.</STRING>
+	<STRING en="Docks: select all your Docks (Anchorages and Shipyards in later ages), and build ships from all of them.">Docuri: selectează toate docurile (radele și șantierele navale în epocile ulterioare) și construiește nave din toate deodată.</STRING>
+	<STRING en="AI assistant: let the computer play your nation (Full control) or take it back (No control) with one click, choose what it may buy (economy, military, research, new cities, wonders) and how much of each resource it must leave you.">Asistent IA: lasă calculatorul să-ți joace națiunea (Control total) sau preia-o înapoi (Fără control) cu un singur click, alege ce poate cumpăra (economie, armată, cercetare, orașe noi, minuni) și cât din fiecare resursă trebuie să-ți lase.</STRING>
+	<STRING en="PLAY">JOACĂ</STRING>
+	<STRING en="Survive">Supraviețuiește</STRING>
+	<STRING en="Next wave in">Următorul val în</STRING>
+	<STRING en="Boss wave in">Val boss în</STRING>
+	<STRING en="Survived!">Ai supraviețuit!</STRING>
+	<STRING en="No Nukes">Fără arme nucleare</STRING>
+</ROOT>

@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 2 (Big Huge Games) --><!--LOCALIZATION --><!--LOCALIZATION --><!--LOCALIZATION: All STRING elements.--><!--LOCALIZATION --><!--LOCALIZATION --><ROOT>
+  <AGES>
+    <STRING hash="8843171" needed="1">Epoka klasyczna</STRING>
+    <STRING hash="6818848" needed="1">Średniowiecze</STRING>
+    <STRING hash="7683271" needed="1">Epoka prochu</STRING>
+    <STRING hash="13782908" needed="1">Oświecenie</STRING>
+    <STRING hash="9696711" needed="1">Epoka przemysłowa</STRING>
+    <STRING hash="4270575" needed="1">Epoka nowoczesna</STRING>
+    <STRING hash="11109641" needed="1">Epoka informacji</STRING>
+  </AGES>
+  <TECHS>
+    <STRING hash="7422563" needed="1">Pismo</STRING>
+    <STRING hash="7558886" needed="1">Matematyka</STRING>
+    <STRING hash="4209181" needed="1">Chemia</STRING>
+    <STRING hash="10931720" needed="1">Prawa natury</STRING>
+    <STRING hash="7436541" needed="1">Elektryczność</STRING>
+    <STRING hash="7373131" needed="1">Elektronika</STRING>
+    <STRING hash="12979145" needed="1">Komputeryzacja</STRING>
+    <STRING hash="1692249" needed="1">Handel wymienny</STRING>
+    <STRING hash="2317946" needed="1">Mennictwo</STRING>
+    <STRING hash="1055307" needed="1">Handel</STRING>
+    <STRING hash="8189112" needed="1">Merkantylizm</STRING>
+    <STRING hash="2772098" needed="1">Finanse</STRING>
+    <STRING hash="8662151" needed="1">Linia montażowa</STRING>
+    <STRING hash="10212836" needed="1">Globalizacja</STRING>
+    <STRING hash="5616641" needed="1">Miasto-państwo</STRING>
+    <STRING hash="1455381" needed="1">Imperium</STRING>
+    <STRING hash="4168087" needed="1">Feudalizm</STRING>
+    <STRING hash="7124203" needed="1">Boskie prawo</STRING>
+    <STRING hash="7851435" needed="1">Konstytucja</STRING>
+    <STRING hash="6478898" needed="1">Mocarstwo</STRING>
+    <STRING hash="17211729" needed="1">Prawo międzynarodowe</STRING>
+    <STRING hash="10578054" needed="1">Sztuka wojny</STRING>
+    <STRING hash="6849444" needed="1">Najemnicy</STRING>
+    <STRING hash="8563678" needed="1">Stała armia</STRING>
+    <STRING hash="8048945" needed="1">Pobór</STRING>
+    <STRING hash="10185392" needed="1">Pospolite ruszenie</STRING>
+    <STRING hash="10290156" needed="1">Naród pod bronią</STRING>
+    <STRING hash="16302664" needed="1">Powszechny pobór</STRING>
+  </TECHS>
+  <MISC>
+    <STRING hash="9426192" needed="1">Tarcza antyrakietowa</STRING>
+    <STRING hash="30604825" needed="1">Sztuczna inteligencja</STRING>
+    <STRING hash="16526569" needed="1">Globalny dobrobyt</STRING>
+    <STRING hash="13424671" needed="1">Rząd światowy</STRING>
+    <STRING hash="3073683" needed="1">Taktyka</STRING>
+    <STRING hash="5502441" needed="1">Operacje</STRING>
+    <STRING hash="3277741" needed="1">Strategia</STRING>
+    <STRING hash="2820121" needed="1">Religia</STRING>
+    <STRING hash="4969036" needed="1">Monoteizm</STRING>
+    <STRING hash="10952500" needed="1">Egzystencjalizm</STRING>
+    <STRING hash="3410006" needed="1">Opodatkowanie</STRING>
+    <STRING hash="4575496" needed="1">Wasalstwo</STRING>
+    <STRING hash="14255071" needed="1">Umowa społeczna</STRING>
+    <STRING hash="5809773" needed="1">Podatek dochodowy</STRING>
+    <STRING hash="9957886" needed="1">Fortyfikacja</STRING>
+    <STRING hash="6780593" needed="1">Ostrzał</STRING>
+    <STRING hash="17966690" needed="1">Rezerwy strategiczne</STRING>
+    <STRING hash="5757926" needed="1">Lojalność</STRING>
+    <STRING hash="10825577" needed="1">Przysięga lenna</STRING>
+    <STRING hash="5321711" needed="1">Patriotyzm</STRING>
+    <STRING hash="6842975" needed="1">Nacjonalizm</STRING>
+    <STRING hash="8429887" needed="1">Budownictwo</STRING>
+    <STRING hash="8406841" needed="1">Architektura</STRING>
+    <STRING hash="5867465" needed="1">Inżynieria</STRING>
+    <STRING hash="6504674" needed="1">Zielarstwo</STRING>
+    <STRING hash="3060060" needed="1">Medycyna</STRING>
+    <STRING hash="14777164" needed="1">Farmaceutyki</STRING>
+    <STRING hash="1660645" needed="1">Furażowanie</STRING>
+    <STRING hash="1722154" needed="1">Zaopatrzenie</STRING>
+    <STRING hash="4572512" needed="1">Logistyka</STRING>
+    <STRING hash="4346421" needed="1">Ciesielstwo</STRING>
+    <STRING hash="13894977" needed="1">Przemysł drzewny</STRING>
+    <STRING hash="3938041" needed="1">Papiernia</STRING>
+    <STRING hash="6797357" needed="1">Rolnictwo</STRING>
+    <STRING hash="9608007" needed="1">Płodozmian</STRING>
+    <STRING hash="9355065" needed="1">Przemysł spożywczy</STRING>
+    <STRING hash="3959017" needed="1">Piśmienność</STRING>
+    <STRING hash="10082689" needed="1">Prasa drukarska</STRING>
+    <STRING hash="15111817" needed="1">Metoda naukowa</STRING>
+    <STRING hash="29708143" needed="1">Badania instytucjonalne</STRING>
+    <STRING hash="11227186" needed="1">Superkomputery</STRING>
+    <STRING hash="7771103" needed="1">Stopy metali</STRING>
+    <STRING hash="7639625" needed="1">Odlewanie na zimno</STRING>
+    <STRING hash="895218" needed="1">Stal</STRING>
+    <STRING hash="4006343" needed="1">Despotyzm</STRING>
+    <STRING hash="3833320" needed="1">Republika</STRING>
+    <STRING hash="3752145" needed="1">Monarchia</STRING>
+    <STRING hash="5495194" needed="1">Demokracja</STRING>
+    <STRING hash="4431157" needed="1">Socjalizm</STRING>
+    <STRING hash="5553684" needed="1">Kapitalizm</STRING>
+  </MISC>
+  <GOODS>
+    <STRING hash="564640" needed="1">Żywność</STRING>
+    <STRING hash="1799276" needed="1">Drewno</STRING>
+    <STRING hash="1700464" needed="1">Bogactwo</STRING>
+    <STRING hash="3520419" needed="1">Wiedza</STRING>
+    <STRING hash="1211192" needed="1">Metal</STRING>
+    <STRING hash="336002" needed="1">Ropa</STRING>
+    <STRING hash="583548" needed="1">Ryby</STRING>
+    <STRING hash="1922011" needed="1">Relikwie</STRING>
+    <STRING hash="578117" needed="1">Wino</STRING>
+    <STRING hash="2616402" needed="1">Papirus</STRING>
+    <STRING hash="333260" needed="1">Barwniki</STRING>
+    <STRING hash="593963" needed="1">Jedwab</STRING>
+    <STRING hash="1194455" needed="1">Przyprawy</STRING>
+    <STRING hash="790674" needed="1">Sól</STRING>
+    <STRING hash="1583615" needed="1">Konie</STRING>
+    <STRING hash="2037823" needed="1">Kauczuk</STRING>
+    <STRING hash="2346145" needed="1">Siarka</STRING>
+    <STRING hash="1137060" needed="1">Bursztyn</STRING>
+    <STRING hash="1571768" needed="1">Srebro</STRING>
+    <STRING hash="3502615" needed="1">Tytoń</STRING>
+    <STRING hash="1865394" needed="1">Marmur</STRING>
+    <STRING hash="683830" needed="1">Futra</STRING>
+    <STRING hash="1622088" needed="1">Bawełna</STRING>
+    <STRING hash="978052" needed="1">Bizony</STRING>
+    <STRING hash="1536898" needed="1">Miedź</STRING>
+    <STRING hash="3880631" needed="1">Pawie</STRING>
+    <STRING hash="1690721" needed="1">Cytrusy</STRING>
+    <STRING hash="1249341" needed="1">Cukier</STRING>
+    <STRING hash="3076733" needed="1">Diamenty</STRING>
+    <STRING hash="619184" needed="1">Klejnoty</STRING>
+    <STRING hash="3029794" needed="1">Aluminium</STRING>
+    <STRING hash="1713625" needed="1">Wieloryby</STRING>
+    <STRING hash="3383353" needed="1">Obsydian</STRING>
+    <STRING hash="642149" needed="1">Wełna</STRING>
+    <STRING hash="788789" needed="1">Węgiel</STRING>
+    <STRING hash="2481507" needed="1">Uran</STRING>
+    <STRING hash="3274537" needed="1">Tytan</STRING>
+    <STRING hash="1623896" needed="1">Bydło</STRING>
+    <STRING hash="611601" needed="1">Psy</STRING>
+    <STRING hash="2338619" needed="1">Kadzidło</STRING>
+    <STRING hash="3613460" needed="1">Oliwa</STRING>
+    <STRING hash="1673538" needed="1">Gips</STRING>
+    <STRING hash="7644907" needed="1">Skóry bobrów</STRING>
+    <STRING hash="553030" needed="1">Złoto</STRING>
+    <STRING hash="382076" needed="1">Rum</STRING>
+    <STRING hash="1296381" needed="1">Kawa</STRING>
+    <STRING hash="3000278" needed="1">Banany</STRING>
+    <STRING hash="1696293" needed="1">Łosoś</STRING>
+    <STRING hash="2833684" needed="1">Ruda żelaza</STRING>
+    <STRING hash="1099045" needed="1">Kukurydza</STRING>
+    <STRING hash="2175628" needed="1">Husky</STRING>
+  </GOODS>
+  <BUILDS>
+    <STRING hash="5143517" needed="1">Małe miasto</STRING>
+    <STRING hash="5001885" needed="1">Duże miasto</STRING>
+    <STRING hash="5116697" needed="1">Metropolia</STRING>
+    <STRING hash="756488" needed="1">Farma</STRING>
+    <STRING hash="15948114" needed="1">Obóz drwali</STRING>
+    <STRING hash="560225" needed="1">Kopalnia</STRING>
+    <STRING hash="5428677" needed="1">Uniwersytet</STRING>
+    <STRING hash="2882524" needed="1">Szyb naftowy</STRING>
+    <STRING hash="8028649" needed="1">Platforma wiertnicza</STRING>
+    <STRING hash="2914764" needed="1">Spichlerz</STRING>
+    <STRING hash="6179481" needed="1">Tartak</STRING>
+    <STRING hash="2188528" needed="1">Huta</STRING>
+    <STRING hash="3001744" needed="1">Rafineria</STRING>
+    <STRING hash="3868075" needed="1">Koszary</STRING>
+    <STRING hash="1932724" needed="1">Stajnia</STRING>
+    <STRING hash="5642409" needed="1">Fabryka pojazdów</STRING>
+    <STRING hash="10083382" needed="1">Warsztat oblężniczy</STRING>
+    <STRING hash="2802178" needed="1">Fabryka</STRING>
+    <STRING hash="815783" needed="1">Przystań</STRING>
+    <STRING hash="4309085" needed="1">Kotwicowisko</STRING>
+    <STRING hash="3296260" needed="1">Stocznia</STRING>
+    <STRING hash="2939733" needed="1">Biblioteka</STRING>
+    <STRING hash="1674717" needed="1">Targ</STRING>
+    <STRING hash="1445184" needed="1">Świątynia</STRING>
+    <STRING hash="1009206" needed="1">Wieża</STRING>
+    <STRING hash="568153" needed="1">Baszta</STRING>
+    <STRING hash="3366022" needed="1">Palisada</STRING>
+    <STRING hash="1515894" needed="1">Bunkier</STRING>
+    <STRING hash="672063" needed="1">Fort</STRING>
+    <STRING hash="1618681" needed="1">Zamek</STRING>
+    <STRING hash="3070364" needed="1">Twierdza</STRING>
+    <STRING hash="2703085" needed="1">Reduta</STRING>
+    <STRING hash="2736903" needed="1">Baza lotnicza</STRING>
+    <STRING hash="7207851" needed="1">Silos rakietowy</STRING>
+    <STRING hash="2382931" needed="1">Strażnica</STRING>
+    <STRING hash="14303594" needed="1">Punkt obserwacyjny</STRING>
+    <STRING hash="10963680" needed="1">Stanowisko przeciwlotnicze</STRING>
+    <STRING hash="14036329" needed="1">Radar przeciwlotniczy</STRING>
+    <STRING hash="15017895" needed="1">Wyrzutnia SAM</STRING>
+    <STRING hash="3155697" needed="1">Piramidy</STRING>
+    <STRING hash="3202471" needed="1">Kolos</STRING>
+    <STRING hash="14090616" needed="1">Terakotowa Armia</STRING>
+    <STRING hash="4006251" needed="1">Koloseum</STRING>
+    <STRING hash="11789295" needed="1">Świątynia w Tikal</STRING>
+    <STRING hash="12394052" needed="1">Porcelanowa Pagoda</STRING>
+    <STRING hash="5629591" needed="1">Angkor Wat</STRING>
+    <STRING hash="5275053" needed="1">Wersal</STRING>
+    <STRING hash="4734371" needed="1">Tadż Mahal</STRING>
+    <STRING hash="2136242" needed="1">Kreml</STRING>
+    <STRING hash="16071921" needed="1">Statua Wolności</STRING>
+    <STRING hash="7396078" needed="1">Wieża Eiffla</STRING>
+    <STRING hash="8960296" needed="1">Superzderzacz</STRING>
+    <STRING hash="9900249" needed="1">Program kosmiczny</STRING>
+    <STRING hash="1740233" needed="1">Senat</STRING>
+    <STRING hash="11924638" needed="1">Wiszące Ogrody</STRING>
+    <STRING hash="9898085" needed="1">Zakazane Miasto</STRING>
+    <STRING hash="2942926" needed="1">Czerwony Fort</STRING>
+    <STRING hash="2929874" needed="1">Bastylia</STRING>
+    <STRING hash="4174297" needed="1">Dzielnica mieszkalna</STRING>
+    <STRING hash="11137768" needed="1">Tower of London</STRING>
+    <STRING hash="969271" needed="1">Dom</STRING>
+    <STRING hash="18671484" needed="1">Dzielnica handlowa</STRING>
+    <STRING hash="5004373" needed="1">Dzielnica przemysłowa</STRING>
+    <STRING hash="5412046" needed="1">Mieszkania</STRING>
+    <STRING hash="11265150" needed="1">Biurowiec</STRING>
+    <STRING hash="19695529" needed="1">Pomnik Waszyngtona</STRING>
+    <STRING hash="8104532" needed="1">Umocnienie polowe</STRING>
+  </BUILDS>
+  <UNITS>
+    <STRING hash="2221484" needed="1">Obywatel</STRING>
+    <STRING hash="2751620" needed="1">Uczony</STRING>
+    <STRING hash="2501488" needed="1">Generał</STRING>
+    <STRING hash="423174" needed="1">Szpieg</STRING>
+    <STRING hash="3026652" needed="1">Karawana</STRING>
+    <STRING hash="3634926" needed="1">Kupiec</STRING>
+    <STRING hash="8123947" needed="1">Wóz zaopatrzeniowy</STRING>
+    <STRING hash="2580139" needed="1">Milicja</STRING>
+    <STRING hash="4398051" needed="1">Minuteman</STRING>
+    <STRING hash="3574192" needed="1">Partyzant</STRING>
+    <STRING hash="1234467" needed="1">Zwiadowca</STRING>
+    <STRING hash="2971245" needed="1">Odkrywca</STRING>
+    <STRING hash="3152264" needed="1">Komandos</STRING>
+    <STRING hash="11414320" needed="1">Siły specjalne</STRING>
+    <STRING hash="23496102" needed="1">Elitarne siły specjalne</STRING>
+    <STRING hash="2912095" needed="1">Procarze</STRING>
+    <STRING hash="6271876" needed="1">Oszczepnicy</STRING>
+    <STRING hash="15379376" needed="1">Elitarni oszczepnicy</STRING>
+    <STRING hash="3046598" needed="1">Atlatlowie</STRING>
+    <STRING hash="10143002" needed="1">Królewscy atlatlowie</STRING>
+    <STRING hash="12984243" needed="1">Atlatlowie xopilli</STRING>
+    <STRING hash="14124675" needed="1">Procarze balamob</STRING>
+    <STRING hash="28279121" needed="1">Królewscy procarze balamob</STRING>
+    <STRING hash="27980832" needed="1">Orli procarze balamob</STRING>
+    <STRING hash="7858530" needed="1">Pałkarze inti</STRING>
+    <STRING hash="8149328" needed="1">Maczugnicy inti</STRING>
+    <STRING hash="3556822" needed="1">Umpakati</STRING>
+    <STRING hash="17413041" needed="1">Umpakati yangombi</STRING>
+    <STRING hash="597681" needed="1">Impi</STRING>
+    <STRING hash="7117550" needed="1">Ogniste lance</STRING>
+    <STRING hash="16497142" needed="1">Ciężkie ogniste lance</STRING>
+    <STRING hash="8091119" needed="1">Arkebuzerzy</STRING>
+    <STRING hash="5030159" needed="1">Muszkieterowie</STRING>
+    <STRING hash="2732698" needed="1">Strzelcy</STRING>
+    <STRING hash="3448211" needed="1">Piechota</STRING>
+    <STRING hash="14910540" needed="1">Piechota szturmowa</STRING>
+    <STRING hash="21046206" needed="1">Piechota Czerwonej Gwardii</STRING>
+    <STRING hash="11409132" needed="1">Piechota uderzeniowa</STRING>
+    <STRING hash="12198643" needed="1">Volksgrenadierzy</STRING>
+    <STRING hash="13274171" needed="1">Piechota jaguarów</STRING>
+    <STRING hash="32427586" needed="1">Szturmowa piechota jaguarów</STRING>
+    <STRING hash="6809974" needed="1">Janczarzy</STRING>
+    <STRING hash="16843832" needed="1">Królewscy janczarzy</STRING>
+    <STRING hash="6459227" needed="1">Górale szkoccy</STRING>
+    <STRING hash="7818082" needed="1">Black Watch</STRING>
+    <STRING hash="15712841" needed="1">Muszkieterowie mandżurscy</STRING>
+    <STRING hash="11637510" needed="1">Strzelcy mandżurscy</STRING>
+    <STRING hash="13245267" needed="1">Piechota mandżurska</STRING>
+    <STRING hash="6205127" needed="1">Karabin maszynowy</STRING>
+    <STRING hash="15720375" needed="1">Ciężki karabin maszynowy</STRING>
+    <STRING hash="22252131" needed="1">Zaawansowany karabin maszynowy</STRING>
+    <STRING hash="337164" needed="1">MG42</STRING>
+    <STRING hash="7851322" needed="1">Miotacz ognia</STRING>
+    <STRING hash="2939856" needed="1">Hoplici</STRING>
+    <STRING hash="2839030" needed="1">Falanga</STRING>
+    <STRING hash="2060855" needed="1">Pikinierzy</STRING>
+    <STRING hash="8221659" needed="1">Elitarni pikinierzy</STRING>
+    <STRING hash="3904621" needed="1">Fizylierzy</STRING>
+    <STRING hash="11535451" needed="1">Karabin ppanc.</STRING>
+    <STRING hash="2792777" needed="1">Bazooka</STRING>
+    <STRING hash="15231344" needed="1">Pocisk ppanc.</STRING>
+    <STRING hash="10089468" needed="1">Działo bezodrzutowe</STRING>
+    <STRING hash="14498849" needed="1">Pocisk ppanc. Dragon</STRING>
+    <STRING hash="2215527" needed="1">Legiony</STRING>
+    <STRING hash="13400324" needed="1">Legiony Cezara</STRING>
+    <STRING hash="16529548" needed="1">Gwardia pretoriańska</STRING>
+    <STRING hash="2749055" needed="1">Scutari</STRING>
+    <STRING hash="10541371" needed="1">Królewscy scutari</STRING>
+    <STRING hash="2565159" needed="1">Tercios</STRING>
+    <STRING hash="9826501" needed="1">Królewskie tercios</STRING>
+    <STRING hash="2218110" needed="1">Solduri</STRING>
+    <STRING hash="6341588" needed="1">Barbarzyńcy</STRING>
+    <STRING hash="2664093" needed="1">Wandalowie</STRING>
+    <STRING hash="8305918" needed="1">Lancknechci</STRING>
+    <STRING hash="16097864" needed="1">Włócznicy ashigaru</STRING>
+    <STRING hash="925380" needed="1">Bushi</STRING>
+    <STRING hash="5811238" needed="1">Elitarni bushi</STRING>
+    <STRING hash="2729576" needed="1">Samuraje</STRING>
+    <STRING hash="7334482" needed="1">Samuraje strzelcy</STRING>
+    <STRING hash="1519671" needed="1">Łucznicy</STRING>
+    <STRING hash="2437686" needed="1">Wprawni łucznicy</STRING>
+    <STRING hash="6749852" needed="1">Kusznicy</STRING>
+    <STRING hash="9426064" needed="1">Ciężcy łucznicy</STRING>
+    <STRING hash="12128397" needed="1">Łucznicy kuszyccy</STRING>
+    <STRING hash="24712871" needed="1">Król. łucznicy kuszyccy</STRING>
+    <STRING hash="13971934" needed="1">Łucznicy Apedemaka</STRING>
+    <STRING hash="5363679" needed="1">Długołucznicy</STRING>
+    <STRING hash="16003280" needed="1">Królewscy długołucznicy</STRING>
+    <STRING hash="13018015" needed="1">Królewscy yeomeni</STRING>
+    <STRING hash="2678272" needed="1">Hwarang</STRING>
+    <STRING hash="9766582" needed="1">Elitarni hwarang</STRING>
+    <STRING hash="10138104" needed="1">Królewscy hwarang</STRING>
+    <STRING hash="21703388" needed="1">Elitarni królewscy hwarang</STRING>
+    <STRING hash="7633946" needed="1">Łucznik konny</STRING>
+    <STRING hash="17605544" needed="1">Ciężki łucznik konny</STRING>
+    <STRING hash="2394210" needed="1">Dragon</STRING>
+    <STRING hash="5553487" needed="1">Karabinier</STRING>
+    <STRING hash="7702055" needed="1">Łucznik na wielbłądzie</STRING>
+    <STRING hash="17790409" needed="1">Ciężki łucznik na wielbłądzie</STRING>
+    <STRING hash="7609557" needed="1">Najeźdźca na wielbłądzie</STRING>
+    <STRING hash="6206627" needed="1">Korpus wielbłądzi</STRING>
+    <STRING hash="2454520" needed="1">Rydwan</STRING>
+    <STRING hash="9451088" needed="1">Ciężki rydwan</STRING>
+    <STRING hash="2937285" needed="1">Mameluk</STRING>
+    <STRING hash="10638089" needed="1">Królewski mameluk</STRING>
+    <STRING hash="1150372" needed="1">Koczownik</STRING>
+    <STRING hash="7707478" needed="1">Koczownik stepowy</STRING>
+    <STRING hash="862803" needed="1">Horda</STRING>
+    <STRING hash="6839153" needed="1">Złota Orda</STRING>
+    <STRING hash="5968353" needed="1">Lekki jeździec</STRING>
+    <STRING hash="10061941" needed="1">Lekka kawaleria</STRING>
+    <STRING hash="21080609" needed="1">Elitarna lekka kawaleria</STRING>
+    <STRING hash="1970399" needed="1">Huzar</STRING>
+    <STRING hash="6153218" needed="1">Lekka jazda wielbłądzia</STRING>
+    <STRING hash="9578409" needed="1">Wojownik na wielbłądzie</STRING>
+    <STRING hash="20573215" needed="1">Elitarny wojownik na wielbłądzie</STRING>
+    <STRING hash="6265708" needed="1">Samochód pancerny</STRING>
+    <STRING hash="16327071" needed="1">Pancerny wóz zwiadowczy</STRING>
+    <STRING hash="13171980" needed="1">Kawaleria pancerna</STRING>
+    <STRING hash="10673820" needed="1">Niszczyciel czołgów</STRING>
+    <STRING hash="6111439" needed="1">Pogromca czołgów</STRING>
+    <STRING hash="10023222" needed="1">Lansjer rusiński</STRING>
+    <STRING hash="2960039" needed="1">Kozak</STRING>
+    <STRING hash="7454192" needed="1">Kozak doński</STRING>
+    <STRING hash="6673410" needed="1">Katafrakt</STRING>
+    <STRING hash="1501480" needed="1">Rycerz</STRING>
+    <STRING hash="7437672" needed="1">Ciężki rycerz</STRING>
+    <STRING hash="5367551" needed="1">Kirasjer</STRING>
+    <STRING hash="4210523" needed="1">Hetajr</STRING>
+    <STRING hash="12568111" needed="1">Królewski hetajr</STRING>
+    <STRING hash="5879341" needed="1">Stradiota</STRING>
+    <STRING hash="15547751" needed="1">Królewski stradiota</STRING>
+    <STRING hash="4090116" needed="1">Chevalier</STRING>
+    <STRING hash="12238222" needed="1">Ciężki chevalier</STRING>
+    <STRING hash="11767956" needed="1">Konny grenadier</STRING>
+    <STRING hash="24262978" needed="1">Konny grenadier gwardii</STRING>
+    <STRING hash="5341897" needed="1">Lekki czołg</STRING>
+    <STRING hash="745334" needed="1">Czołg</STRING>
+    <STRING hash="14352003" needed="1">Czołg podstawowy</STRING>
+    <STRING hash="5324692" needed="1">Czołg Tiger</STRING>
+    <STRING hash="8175683" needed="1">Czołg Leopard</STRING>
+    <STRING hash="3395554" needed="1">Czołg T80</STRING>
+    <STRING hash="3504308" needed="1">Katapulta</STRING>
+    <STRING hash="4578313" needed="1">Trebusz</STRING>
+    <STRING hash="2715057" needed="1">Bombarda</STRING>
+    <STRING hash="1686578" needed="1">Armata</STRING>
+    <STRING hash="4044681" needed="1">Artyleria</STRING>
+    <STRING hash="3111150" needed="1">Haubica</STRING>
+    <STRING hash="13748366" needed="1">Artyleria rakietowa</STRING>
+    <STRING hash="1960398" needed="1">Moździerz</STRING>
+    <STRING hash="8133644" needed="1">Moździerz oblężniczy</STRING>
+    <STRING hash="15499797" needed="1">Bombarda Bazylika</STRING>
+    <STRING hash="13031479" needed="1">Armata Bazylika</STRING>
+    <STRING hash="13144786" needed="1">Katiusza</STRING>
+    <STRING hash="8864040" needed="1">Płonąca strzała</STRING>
+    <STRING hash="19698416" needed="1">Ciężka płonąca strzała</STRING>
+    <STRING hash="16156158" needed="1">Działo przeciwlotnicze</STRING>
+    <STRING hash="26524171" needed="1">Bateria przeciwlotnicza</STRING>
+    <STRING hash="24835168" needed="1">Rakieta przeciwlotnicza</STRING>
+    <STRING hash="2398355" needed="1">Dwupłatowiec</STRING>
+    <STRING hash="2132227" needed="1">Myśliwiec</STRING>
+    <STRING hash="5994736" needed="1">Myśliwiec odrzutowy</STRING>
+    <STRING hash="13153657" needed="1">Zaawansowany myśliwiec</STRING>
+    <STRING hash="7313136" needed="1">Myśliwiec Hawk</STRING>
+    <STRING hash="8335340" needed="1">Myśliwiec Eagle</STRING>
+    <STRING hash="1787274" needed="1">Bombowiec</STRING>
+    <STRING hash="14414589" needed="1">Bombowiec strategiczny</STRING>
+    <STRING hash="10788607" needed="1">Bombowiec stealth</STRING>
+    <STRING hash="14502340" needed="1">Bombowiec Lancaster</STRING>
+    <STRING hash="10487415" needed="1">Myśliwiec-bombowiec</STRING>
+    <STRING hash="17403956" needed="1">Odrzutowy myśliwiec-bombowiec</STRING>
+    <STRING hash="5425090" needed="1">Śmigłowiec</STRING>
+    <STRING hash="22818152" needed="1">Śmigłowiec transportowy</STRING>
+    <STRING hash="4278905" needed="1">Rakieta V2</STRING>
+    <STRING hash="9875698" needed="1">Pocisk manewrujący</STRING>
+    <STRING hash="12012826" needed="1">Pocisk nuklearny</STRING>
+    <STRING hash="6979733" needed="1">Nuklearny ICBM</STRING>
+    <STRING hash="3749364" needed="1">Rybacy</STRING>
+    <STRING hash="10196653" needed="1">Flota handlowa</STRING>
+    <STRING hash="24371934" needed="1">Nowoczesna flota handlowa</STRING>
+    <STRING hash="11981198" needed="1">Barka transportowa</STRING>
+    <STRING hash="15736732" needed="1">Galeon transportowy</STRING>
+    <STRING hash="19043523" needed="1">Frachtowiec transportowy</STRING>
+    <STRING hash="1570178" needed="1">Dromon</STRING>
+    <STRING hash="2557314" needed="1">Karawela</STRING>
+    <STRING hash="1007218" needed="1">Slup</STRING>
+    <STRING hash="4093348" needed="1">Niszczyciel</STRING>
+    <STRING hash="2223053" needed="1">Krążownik</STRING>
+    <STRING hash="11534641" needed="1">Krążownik rakietowy</STRING>
+    <STRING hash="4250328" needed="1">Płonąca tratwa</STRING>
+    <STRING hash="12110344" needed="1">Ciężka płonąca tratwa</STRING>
+    <STRING hash="2833092" needed="1">Brander</STRING>
+    <STRING hash="10129818" needed="1">Ciężki brander</STRING>
+    <STRING hash="4315997" needed="1">Okręt podwodny</STRING>
+    <STRING hash="15367664" needed="1">Szturmowy okręt podwodny</STRING>
+    <STRING hash="2070876" needed="1">Trirema</STRING>
+    <STRING hash="1714725" needed="1">Galera</STRING>
+    <STRING hash="3072219" needed="1">Karaka</STRING>
+    <STRING hash="2423170" needed="1">Fregata</STRING>
+    <STRING hash="5606523" needed="1">Liniowiec</STRING>
+    <STRING hash="6438890" needed="1">Okręt bombardujący</STRING>
+    <STRING hash="5692558" needed="1">Kecz bombardujący</STRING>
+    <STRING hash="6451385" needed="1">Drednot</STRING>
+    <STRING hash="5072733" needed="1">Pancernik</STRING>
+    <STRING hash="20101660" needed="1">Zaawansowany pancernik</STRING>
+    <STRING hash="14244592" needed="1">Lotniskowiec</STRING>
+    <STRING hash="3462612" needed="1">Dziki ptak</STRING>
+    <STRING hash="4754137" needed="1">Ptak stadny</STRING>
+    <STRING hash="3519784" needed="1">Mewa</STRING>
+    <STRING hash="2879048" needed="1">Świnia</STRING>
+    <STRING hash="7757665" needed="1">Kura</STRING>
+    <STRING hash="4834015" needed="1">Stado: koń</STRING>
+    <STRING hash="4679109" needed="1">Stado: owca</STRING>
+    <STRING hash="4802943" needed="1">Stado: bizon</STRING>
+    <STRING hash="4049688" needed="1">Stado: niedźwiedź</STRING>
+    <STRING hash="3575160" needed="1">Ławica: ryby</STRING>
+    <STRING hash="6586501" needed="1">Stado: wieloryby</STRING>
+    <STRING hash="9185103" needed="1">Stado: paw</STRING>
+    <STRING hash="16545078" needed="1">Śmigłowiec szturmowy</STRING>
+    <STRING hash="731698" needed="1">Bark</STRING>
+    <STRING hash="2968518" needed="1">Korweta</STRING>
+    <STRING hash="3819158" needed="1">Boudika</STRING>
+    <STRING hash="4884264" needed="1">Tropiciel</STRING>
+    <STRING hash="2115754" needed="1">Pionier</STRING>
+    <STRING hash="1621540" needed="1">Ranger</STRING>
+    <STRING hash="2313787" needed="1">Marines</STRING>
+    <STRING hash="11205266" needed="1">Strzelcy piechoty morskiej</STRING>
+    <STRING hash="12813023" needed="1">Piechota morska</STRING>
+    <STRING hash="12567134" needed="1">Szturmowi marines</STRING>
+    <STRING hash="4499025" needed="1">Nieśmiertelni</STRING>
+    <STRING hash="2775650" needed="1">Anusiya</STRING>
+    <STRING hash="4513220" needed="1">Athanatoi</STRING>
+    <STRING hash="11798069" needed="1">Łucznicy Nieśmiertelni</STRING>
+    <STRING hash="12756454" needed="1">Łucznicy anusiya</STRING>
+    <STRING hash="16185980" needed="1">Łucznicy athanatoi</STRING>
+    <STRING hash="7561726" needed="1">Sunka Wakan</STRING>
+    <STRING hash="19075282" needed="1">Koń Orlego Pióra</STRING>
+    <STRING hash="7303434" needed="1">Jazda z muszkietami</STRING>
+    <STRING hash="22928087" needed="1">Jazda z repetierami</STRING>
+    <STRING hash="8152989" needed="1">Słoń bojowy</STRING>
+    <STRING hash="1783401" needed="1">Kornak</STRING>
+    <STRING hash="5595655" needed="1">Kornak z bronią palną</STRING>
+    <STRING hash="12418082" needed="1">Kornak z kolubryną</STRING>
+    <STRING hash="4076737" needed="1">Aleksander</STRING>
+    <STRING hash="3017560" needed="1">Napoleon</STRING>
+    <STRING hash="3000023" needed="1">Parmenion</STRING>
+    <STRING hash="4299955" needed="1">Antypater</STRING>
+    <STRING hash="2324064" needed="1">Ptolemeusz</STRING>
+    <STRING hash="1768727" needed="1">Dariusz</STRING>
+    <STRING hash="1546345" needed="1">Memnon</STRING>
+    <STRING hash="5253546" needed="1">Spitamenes</STRING>
+    <STRING hash="23457065" needed="1">Czandragupta Maurja</STRING>
+    <STRING hash="1086684" needed="1">Poros</STRING>
+    <STRING hash="10420802" needed="1">Uzbrojona karawana</STRING>
+    <STRING hash="11429998" needed="1">Uzbrojony kupiec</STRING>
+    <STRING hash="18319383" needed="1">Uzbrojony wóz zaopatrzeniowy</STRING>
+    <STRING hash="552662" needed="1">Bryg</STRING>
+    <STRING hash="1115697" needed="1">Fluita</STRING>
+    <STRING hash="2167087" needed="1">Kliper</STRING>
+    <STRING hash="5046858" needed="1">Wellington</STRING>
+    <STRING hash="20545258" needed="1">Kontynentalni marines</STRING>
+    <STRING hash="16731118" needed="1">Nieśmiertelny z arkebuzem</STRING>
+    <STRING hash="3718008" needed="1">Okręt oblężniczy</STRING>
+    <STRING hash="13572651" needed="1">Arcyksiążę Karol</STRING>
+    <STRING hash="2760720" needed="1">Dżezzar</STRING>
+    <STRING hash="10697315" needed="1">Doradca Fouché</STRING>
+    <STRING hash="32873769" needed="1">Dowódca Schwarzenberg</STRING>
+    <STRING hash="12471697" needed="1">Generał Blücher</STRING>
+    <STRING hash="12663209" needed="1">Generał Kutuzow</STRING>
+    <STRING hash="12225527" needed="1">Dowódca Paoli</STRING>
+    <STRING hash="8207598" needed="1">Konkwistador</STRING>
+    <STRING hash="18428844" needed="1">Elitarny konkwistador</STRING>
+    <STRING hash="6980785" needed="1">Nieśmiertelny z arkebuzem</STRING>
+    <STRING hash="3101971" needed="1">Włócznicy</STRING>
+    <STRING hash="12494856" needed="1">Włócznicy mohawk</STRING>
+    <STRING hash="25571948" needed="1">Ciężcy włócznicy mohawk</STRING>
+    <STRING hash="25200830" needed="1">Elitarni włócznicy mohawk</STRING>
+    <STRING hash="12157126" needed="1">Okręt liniowy</STRING>
+    <STRING hash="2264008" needed="1">Falkarze</STRING>
+    <STRING hash="5909556" needed="1">Viteji</STRING>
+    <STRING hash="15132084" needed="1">Spadochroniarze</STRING>
+    <STRING hash="4222311" needed="1">Mi-24 Hind</STRING>
+    <STRING hash="4337422" needed="1">Lansjerzy roksolańscy</STRING>
+    <STRING hash="384593" needed="1">Interceptor</STRING>
+    <STRING hash="5987504" needed="1">Śmigłowiec transportowy</STRING>
+    <STRING hash="6756338" needed="1">Automitraliera</STRING>
+    <STRING hash="1460525" needed="1">Vanatori de Munte</STRING>
+    <STRING hash="6781286" needed="1">Gwardia królewska</STRING>
+    <STRING hash="16323899" needed="1">Greccy najemnicy</STRING>
+    <STRING hash="2279228" needed="1">Voinici</STRING>
+    <STRING hash="3596236" needed="1">Darabani</STRING>
+    <STRING hash="20863828" needed="1">R-2</STRING>
+    <STRING hash="8984905" needed="1">Renault FT</STRING>
+    <STRING hash="6802343" needed="1">Traper</STRING>
+    <STRING hash="8110594" needed="1">Bandeirantes</STRING>
+    <STRING hash="18223964" needed="1">Comati</STRING>
+    <STRING hash="5044549" needed="1">Despota</STRING>
+    <STRING hash="6886735" needed="1">Senator</STRING>
+    <STRING hash="7345279" needed="1">Monarcha</STRING>
+    <STRING hash="8611244" needed="1">Prezydent</STRING>
+    <STRING hash="6173159" needed="1">Obywatel</STRING>
+    <STRING hash="1922260" needed="1">Prezes</STRING>
+    <STRING hash="14761279" needed="1">Barbarzyński łucznik</STRING>
+    <STRING hash="25490673" needed="1">IAR-80</STRING>
+    <STRING hash="18086489" needed="1">Barbarzyńska falanga</STRING>
+    <STRING hash="12870995" needed="1">Doradca Fouché</STRING>
+    <STRING hash="16775293" needed="1">Budowniczy dzielnic</STRING>
+    <STRING hash="10825523" needed="1">Dorobanti</STRING>
+    <STRING hash="10853451" needed="0">Rydwan Dariusza</STRING>
+    <STRING hash="6809782" needed="1">Rydwan bojowy</STRING>
+    <STRING hash="1687475" needed="1">Takohs</STRING>
+    <STRING hash="1543137" needed="1">Akweks</STRING>
+    <STRING hash="1816090" needed="1">Okwari</STRING>
+    <STRING hash="6337910" needed="1">Towarzysz</STRING>
+  </UNITS>
+  <ITEMS>
+    <STRING hash="3776560" needed="1">Niespodzianka</STRING>
+  </ITEMS>
+  <SPELLS>
+    <STRING hash="1152079" needed="1">Przekupstwo</STRING>
+    <STRING hash="14621965" needed="1">Kradzież zasobów</STRING>
+    <STRING hash="20104467" needed="1">Kontrwywiad</STRING>
+    <STRING hash="5394599" needed="1">Asymiluj</STRING>
+    <STRING hash="1583434" needed="1">Lecz</STRING>
+    <STRING hash="9664256" needed="1">Utwórz wabiki</STRING>
+    <STRING hash="1757765" needed="1">Zasadzka</STRING>
+    <STRING hash="8696396" needed="1">Marsz forsowny</STRING>
+    <STRING hash="3342997" needed="1">Okop się</STRING>
+    <STRING hash="13981346" needed="1">Uzupełnij zapasy</STRING>
+    <STRING hash="2895784" needed="1">Informator</STRING>
+    <STRING hash="3490332" needed="1">Sabotaż</STRING>
+    <STRING hash="1529192" needed="1">Snajper</STRING>
+    <STRING hash="5373519" needed="1">Zerwij gąsienicę</STRING>
+    <STRING hash="4842857" needed="1">Zagłusz radar</STRING>
+    <STRING hash="3362543" needed="1">Zrzut</STRING>
+    <STRING hash="15084354" needed="1">Projekt badawczy</STRING>
+    <STRING hash="772144" needed="1">Zburz</STRING>
+    <STRING hash="15272294" needed="1">Opuść umocnienie</STRING>
+    <STRING hash="4301527" needed="1">Zamknij bramę</STRING>
+    <STRING hash="6744513" needed="1">Otwórz bramę</STRING>
+    <STRING hash="4376064" needed="1">Transportuj</STRING>
+    <STRING hash="957551" needed="1">Złóż</STRING>
+    <STRING hash="1652836" needed="1">Rozstaw</STRING>
+    <STRING hash="3291885" needed="1">Cywil</STRING>
+    <STRING hash="2217284" needed="1">Do broni</STRING>
+    <STRING hash="11354781" needed="1">Buduj samolot</STRING>
+    <STRING hash="956773" needed="1">Przemień</STRING>
+    <STRING hash="2330416" needed="1">Ulepsz</STRING>
+    <STRING hash="2688591" needed="1">Rozwiąż</STRING>
+    <STRING hash="7293826" needed="1">Wypowiedz wojnę</STRING>
+    <STRING hash="13168313" needed="1">Zerwij sojusz</STRING>
+    <STRING hash="3885310" needed="1">Walka dystansowa</STRING>
+    <STRING hash="2613214" needed="1">Walka wręcz</STRING>
+  </SPELLS>
+</ROOT>

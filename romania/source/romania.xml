@@ -1,0 +1,65 @@
+<!-- Romania (romania mod), the 25th nation. Built into mod_override\tribes\ by tools\build_data.py. -->
+<!-- Plain ASCII: the game's fonts have no s / t with comma below (or a breve a). -->
+<TRIBE name="Romania">
+  <LEADERS>
+    <LEADER>King Burebista</LEADER>
+    <LEADER>King Decebalus</LEADER>
+    <LEADER>Mircea the Elder</LEADER>
+    <LEADER>John Hunyadi</LEADER>
+    <LEADER>Vlad the Impaler</LEADER>
+    <LEADER>Stephen the Great</LEADER>
+    <LEADER>Michael the Brave</LEADER>
+    <LEADER>Constantin Brancoveanu</LEADER>
+    <LEADER>Alexandru Ioan Cuza</LEADER>
+    <LEADER>King Carol I</LEADER>
+    <LEADER>Queen Marie</LEADER>
+    <LEADER>King Ferdinand</LEADER>
+    <LEADER>Basarab the Founder</LEADER>
+    <LEADER>Lady Chiajna</LEADER>
+  </LEADERS>
+  <CITIES>
+    <CITY>Bucuresti</CITY>
+    <CITY>Sarmizegetusa</CITY>
+    <CITY>Alba Iulia</CITY>
+    <CITY>Iasi</CITY>
+    <CITY>Cluj</CITY>
+    <CITY>Timisoara</CITY>
+    <CITY>Brasov</CITY>
+    <CITY>Constanta</CITY>
+    <CITY>Craiova</CITY>
+    <CITY>Sibiu</CITY>
+    <CITY>Suceava</CITY>
+    <CITY>Targoviste</CITY>
+    <CITY>Ploiesti</CITY>
+    <CITY>Oradea</CITY>
+    <CITY>Galati</CITY>
+    <CITY>Braila</CITY>
+    <CITY>Arad</CITY>
+    <CITY>Pitesti</CITY>
+    <CITY>Curtea de Arges</CITY>
+    <CITY>Sighisoara</CITY>
+    <CITY>Targu Mures</CITY>
+    <CITY>Bistrita</CITY>
+    <CITY>Baia Mare</CITY>
+    <CITY>Satu Mare</CITY>
+    <CITY>Botosani</CITY>
+    <CITY>Piatra Neamt</CITY>
+    <CITY>Bacau</CITY>
+    <CITY>Focsani</CITY>
+    <CITY>Buzau</CITY>
+    <CITY>Ramnicu Valcea</CITY>
+    <CITY>Drobeta</CITY>
+    <CITY>Deva</CITY>
+    <CITY>Hunedoara</CITY>
+    <CITY>Turda</CITY>
+    <CITY>Medias</CITY>
+    <CITY>Tulcea</CITY>
+    <CITY>Histria</CITY>
+    <CITY>Callatis</CITY>
+    <CITY>Porolissum</CITY>
+    <CITY>Vaslui</CITY>
+  </CITIES>
+  <UNIT_CONTINENT>0 European</UNIT_CONTINENT>
+  <BUILD_CONTINENT>1 NEuro</BUILD_CONTINENT>
+  <BACKUP_BUILD_CONTINENT>0 Med</BACKUP_BUILD_CONTINENT>
+</TRIBE>

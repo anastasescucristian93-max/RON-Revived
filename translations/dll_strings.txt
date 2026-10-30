@@ -1,0 +1,62 @@
+# The DLL's own texts (camera-smooth\src), exactly as written there, one per line. They are looked
+# up through lang_text(); a new or changed text in the C code needs its line here too, then
+# "python tools\extract.py mods" and a translation. printf formats (%d, %s, %%) and the leading or
+# trailing spaces of the pieces are part of the text.
+#
+# assist_panel.c
+AI ASSISTANT
+NO CONTROL
+CUSTOM
+FULL CONTROL
+Only in single player games
+The computer plays your nation
+The computer plays, only what is ticked
+You play your nation
+THE COMPUTER MAY BUY
+Keep at least %d of each resource
+# assistant.c, the assistant panel's rows
+Economy
+Military
+Research
+New cities
+Wonders and Data Center
+# ranks.c, the unit tooltip
+Private
+Private First Class
+Corporal
+Sergeant
+Staff Sergeant
+Master Sergeant
+Lieutenant
+Captain
+Major
+Colonel
+Brigadier General
+Rank: {%s} (level %d of %d)
+Experience: %d%% of the way to %s
+Experience: highest rank
+Earns experience from the damage it deals.
+Earns experience from its abilities.
+Bonuses:
+ +%d%% attack,
+ +%d%% hit points
+, +1 sight
++%d%% attack rate,
+-%d%% damage taken,
++1 range,
+heals out of combat,
+# qol.c, the buttons' help
+Military buildings: select all your Barracks, Stables, Siege Factories and Airbases (Auto Plants and Factories in later ages), and train from all of them.
+Army: select all your military units.
+Airbases: select all your Airbases, and build aircraft from all of them.
+Docks: select all your Docks (Anchorages and Shipyards in later ages), and build ships from all of them.
+AI assistant: let the computer play your nation (Full control) or take it back (No control) with one click, choose what it may buy (economy, military, research, new cities, wonders) and how much of each resource it must leave you.
+# play_button.c
+PLAY
+# survival.c, the Survival mode's clocks (followed by two spaces and m:ss)
+Survive
+Next wave in
+Boss wave in
+Survived!
+# nonukes.c, the check box of the game setup
+No Nukes

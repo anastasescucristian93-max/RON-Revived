@@ -1,0 +1,68 @@
+name: Bug report
+description: Something in RON Revived does not work, crashes, or looks wrong.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report it. The more of this you fill in, the faster it gets fixed.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The version in the zip's name, for example 2026.10.30.
+      placeholder: "2026.10.30"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen
+      description: Nation, map, game mode, age, and what you did just before.
+      placeholder: |
+        1. Play Romania on a random map
+        2. Build ...
+        3. ...
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Single player or multiplayer?
+      options:
+        - Single player
+        - Multiplayer
+        - Both
+        - Launcher / menus
+  - type: dropdown
+    id: language
+    attributes:
+      label: Game language
+      options:
+        - English
+        - German
+        - Spanish
+        - French
+        - Italian
+        - Russian
+        - Brazilian Portuguese
+        - Polish
+        - Turkish
+        - Romanian
+  - type: textarea
+    id: log
+    attributes:
+      label: ron_camera.log and screenshots
+      description: |
+        Drag in ron_camera.log from the game folder (...\steamapps\common\Rise of Nations), right after the problem.
+        A screenshot helps a lot for anything that looks wrong.
+  - type: textarea
+    id: other_mods
+    attributes:
+      label: Other mods
+      description: Any other mods turned on in the game's Mods menu or copied into the game folder.

@@ -1,0 +1,31 @@
+{
+  "boom": {
+    "duration": 12,
+    "variants": 2,
+    "prompts": [
+      "Massive nuclear detonation heard from a few kilometres away: a sharp cracking blast, then a deep sub-bass rumble that rolls on and on, low thunder echoing across a valley, slowly fading. Cinematic, no music.",
+      "Colossal atomic bomb explosion, extremely deep low-frequency boom, ground shaking, a roaring wall of wind and debris after the blast, long rolling tail. Realistic, no music.",
+      "Distant thermonuclear blast: a heavy thud, a short silence, then the shockwave arrives with a huge roar and rattling, followed by a long low rumble echoing off mountains. No music.",
+      "Gigantic nuclear explosion close by, earth-shattering boom with crackling fire and a howling shockwave wind, glass and debris, then a deep rumble dying away. Cinematic, no music."
+    ]
+  },
+  "alarm": {
+    "duration": 8,
+    "variants": 2,
+    "prompts": [
+      "Cold War air-raid siren, a single large mechanical siren winding up and wailing up and down over a city, slightly distant and echoing. No voices, no music.",
+      "Military base nuclear attack alarm: a loud electronic klaxon blaring in a fast repeating pattern, metallic and urgent, in a concrete bunker. No voices, no music.",
+      "Old civil defence siren starting slowly and rising to a long steady wail, a second siren further away joining in, eerie and ominous. No voices, no music."
+    ]
+  },
+  "siren": {
+    "duration": 4,
+    "variants": 2,
+    "prompts": [
+      "Nuclear attack warning siren: a large mechanical air-raid siren that winds up fast from a low growl to a loud piercing wail within the first second, holds the high wail, then winds down at the end. Loud, close, slightly echoing over a city. No voices, no music.",
+      "Cold War civil defence siren, one powerful rotating horn, quick rising wind-up to a high screaming tone, a short sustained wail with a slight up and down, then a short fall. Ominous, urgent. No voices, no music.",
+      "Air-raid siren rising quickly from deep to very high pitch, a long ominous howl echoing between buildings, a second distant siren slightly behind it, ends with the pitch dropping. No voices, no music.",
+      "Heavy industrial nuclear alarm siren, mechanical motor spinning up rapidly, rising shriek, pulsing wail at full volume, then spinning down. Gritty, metallic, cinematic. No voices, no music."
+    ]
+  }
+}

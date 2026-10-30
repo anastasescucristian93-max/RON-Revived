@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+	<CAT hash="587613">
+		<STRING hash="11685233" hash_i="11756429" needed="1">Recurso básico</STRING>
+		<STRING hash="20489380" hash_i="20551444" needed="1">Recurso raro de Comida.</STRING>
+		<STRING hash="147467286" hash_i="156441532" needed="1">Reduz os tempos de pesquisa e de melhoria em $NUMBER0%.</STRING>
+		<STRING hash="113202238" hash_i="120574496" needed="1">Custo das melhorias de unidades reduzido em $NUMBER0%.</STRING>
+		<STRING hash="180822180" hash_i="192662692" needed="1">Custo das pesquisas de #ICON27 Ciência reduzido em $NUMBER0%.</STRING>
+		<STRING hash="172749797" hash_i="187362279" needed="1">Custo das pesquisas #ICON25 Cívicas reduzido em $NUMBER0%.</STRING>
+		<STRING hash="182561711" hash_i="193954395" needed="1">Custo das pesquisas de #ICON26 Comércio reduzido em $NUMBER0%.</STRING>
+		<STRING hash="87506613" hash_i="93518609" needed="1">Renda das Caravanas aumentada em $NUMBER0%.</STRING>
+		<STRING hash="127701008" hash_i="136619784" needed="1">Custo das tropas do Quartel reduzido em $NUMBER0%.</STRING>
+		<STRING hash="108052760" hash_i="115154366" needed="1">Custo das unidades do Estábulo reduzido em $NUMBER0%.</STRING>
+		<STRING hash="132453351" hash_i="141713909" needed="1">Custo das unidades da Fábrica de Veículos reduzido em $NUMBER0%.</STRING>
+		<STRING hash="166713158" hash_i="178869008" needed="1">Custo das unidades de cerco/artilharia reduzido em $NUMBER0%.</STRING>
+		<STRING hash="178361967" hash_i="190646447" needed="1">Preços de venda no Mercado +$NUMBER0 e preços de compra -$NUMBER1.</STRING>
+		<STRING hash="165161095" hash_i="176196279" needed="1">Custo do avanço de #ICON23 Idade reduzido em $NUMBER0%.</STRING>
+		<STRING hash="179338198" hash_i="190089704" needed="1">Cidadãos erguem construções e maravilhas $NUMBER0% mais rápido.</STRING>
+		<STRING hash="112820383" hash_i="120189315" needed="1">Custo para construir Maravilhas reduzido em $NUMBER0%.</STRING>
+		<STRING hash="183793237" hash_i="193611755" needed="1">Custo das pesquisas de #ICON24 Militar reduzido em $NUMBER0%.</STRING>
+		<STRING hash="223947293" hash_i="223468201" needed="1">Tempo de produção de Quartel, Estábulo e Porto reduzido em $NUMBER0%.</STRING>
+		<STRING hash="122452978" hash_i="130056882" needed="1">Custo das pesquisas do Celeiro reduzido em $NUMBER0%.</STRING>
+		<STRING hash="171072432" hash_i="178172594" needed="1">Unidades da Fábrica e do Porto recebem +$NUMBER0% de pontos de vida.</STRING>
+		<STRING hash="94163552" hash_i="96831316" needed="1">+$NUMBER0% no limite de #ICON20 população.</STRING>
+		<STRING hash="69993360" hash_i="69971538" needed="1">Navios no mar se curam automaticamente.</STRING>
+		<STRING hash="76521631" hash_i="82031785" needed="1">Reduz todos os custos de Comida em $NUMBER0%.</STRING>
+		<STRING hash="117828710" hash_i="126659822" needed="1">Eleva o limite de #ICON21 comércio em +$NUMBER0%.</STRING>
+		<STRING hash="42031216" hash_i="46557986" needed="1">Fronteiras Nacionais +$NUMBER0%.</STRING>
+		<STRING hash="219551962" hash_i="224074346" needed="1">Custo das aeronaves reduzido em $NUMBER0%/velocidade aumentada em $NUMBER1%.</STRING>
+		<STRING hash="104712415" hash_i="111694881" needed="1">Aumenta a velocidade dos navios a vela em $NUMBER0%.</STRING>
+		<STRING hash="177991301" hash_i="192101669" needed="1">Arqueiros, Torres, Fortes e Cidades ganham +$NUMBER1 de ataque.</STRING>
+		<STRING hash="172156159" hash_i="185192517" needed="1">Cidadãos produzidos $NUMBER0% mais rápido e $NUMBER1% mais baratos.</STRING>
+		<STRING hash="126026323" hash_i="135826793" needed="1">Reduz todos os custos de #ICON2 Madeira em $NUMBER0%.</STRING>
+		<STRING hash="172570610" hash_i="184862394" needed="1">Mísseis nucleares $NUMBER0% mais rápidos e $NUMBER1% mais baratos.</STRING>
+		<STRING hash="162975423" hash_i="173047229" needed="1">Desgaste em território inimigo reduzido em $NUMBER0%.</STRING>
+		<STRING hash="39526173" hash_i="44052943" needed="1">Fronteiras nacionais +$NUMBER0.</STRING><STRING hash="78654592" hash_i="84318460" needed="1">Aumenta a armadura dos Cidadãos em $NUMBER0.</STRING><STRING hash="73318768" hash_i="78724850" needed="1">Visão dos Batedores aumentada em $NUMBER0.</STRING><STRING hash="126670614" hash_i="134730970" needed="1">Custo das pesquisas do Templo reduzido em $NUMBER0%.</STRING><STRING hash="59762226" hash_i="59829932" needed="1">Permite uma Fazenda extra por cidade.</STRING><STRING hash="55669031" hash_i="59908255" needed="1">Reduz todos os custos em $NUMBER0%.</STRING><STRING hash="39398892" hash_i="39512062" needed="1">Batedores e Mercadores grátis</STRING><STRING hash="87780619" hash_i="93683435" needed="1">Reduz todos os custos de Riqueza em $NUMBER0%.</STRING><STRING hash="106222893" hash_i="113200515" needed="1">Alcance de combate dos navios aumentado em $NUMBER0.</STRING><STRING hash="76101706" hash_i="81508168" needed="1">Renda de recursos aumentada em $NUMBER0%.</STRING><STRING hash="112475487" hash_i="119755375" needed="1">Aumenta os pontos de vida de todas as unidades em $NUMBER0%.</STRING><STRING hash="103602204" hash_i="110387614" needed="1">Reduz o custo das unidades navais em $NUMBER0%.</STRING><STRING hash="82594421" hash_i="88334403" needed="1">Reduz todos os custos de Metal em $NUMBER0%.</STRING><STRING hash="95816745" hash_i="102215257" needed="1">Aumento de custo por unidade reduzido em $NUMBER0%.</STRING><STRING hash="78424887" hash_i="84181125" needed="1">Armadura dos Cidadãos aumentada em $NUMBER0.</STRING><STRING hash="56674842" hash_i="59829932" needed="1">Permite uma Fazenda extra por cidade.</STRING><STRING hash="113861114" hash_i="121458652" needed="1">Pontos de vida de todas as unidades aumentados em $NUMBER0%.</STRING><STRING hash="102440803" hash_i="109209577" needed="1">Custo das unidades navais reduzido em $NUMBER0%.</STRING><STRING hash="81422450" hash_i="87171002" needed="1">Todos os custos de metal reduzidos em $NUMBER0%.</STRING><STRING hash="113325601" hash_i="120697859" needed="1">Aumento de custo por unidade reduzido em $NUMBER0%.</STRING><STRING hash="189871371" hash_i="195578207" needed="1">Custo das unidades de Estábulo e Fábrica de Veículos reduzido em $NUMBER0%.</STRING><STRING hash="114094080" hash_i="121458652" needed="1">Pontos de vida de todas as unidades aumentados em $NUMBER0%.</STRING><STRING hash="213607465" hash_i="212585585" needed="1">Custo das unidades da Oficina de Cerco e da Fábrica reduzido em $NUMBER0%.</STRING><STRING hash="186561244" hash_i="198552306" needed="1">Unidades de Quartel, Estábulo e Porto produzidas $NUMBER0% mais rápido.</STRING><STRING hash="194832482" hash_i="208942850" needed="1">Arqueiros, Torres, Fortes e Cidades ganham +$NUMBER1 de força de ataque.</STRING></CAT>
+	<CAT hash="5799388">
+		<STRING hash="0" hash_i="0" needed="1"/>
+		<STRING hash="18235975" hash_i="18298039" needed="1">Recurso raro de Comida</STRING>
+		<STRING hash="48316772" hash_i="48424200" needed="1">Pesquisa e melhorias mais rápidas</STRING>
+		<STRING hash="20180700" hash_i="20289892" needed="1">Melhorias de unidades baratas</STRING>
+		<STRING hash="28254149" hash_i="30066889" needed="1">Bônus de pesquisa científica</STRING>
+		<STRING hash="23093140" hash_i="24722438" needed="1">Bônus de pesquisa cívica</STRING>
+		<STRING hash="30961383" hash_i="32991505" needed="1">Bônus de pesquisa comercial</STRING>
+		<STRING hash="9549012" hash_i="10503438" needed="1">Bônus de Caravana</STRING>
+		<STRING hash="30587098" hash_i="32405312" needed="1">Tropas do Quartel mais baratas</STRING>
+		<STRING hash="22163518" hash_i="23519296" needed="1">Unidades do Estábulo mais baratas</STRING>
+		<STRING hash="32968667" hash_i="34925325" needed="1">Unidades da Fábrica de Veículos mais baratas</STRING>
+		<STRING hash="49316992" hash_i="52418960" needed="1">Unidades de cerco/artilharia mais baratas</STRING>
+		<STRING hash="17709399" hash_i="19040397" needed="1">Bônus de preço no Mercado</STRING>
+		<STRING hash="20242399" hash_i="22000635" needed="1">Avanço de Idade mais barato</STRING>
+		<STRING hash="24055863" hash_i="25267355" needed="1">Cidadãos constroem mais rápido</STRING>
+		<STRING hash="11828830" hash_i="12706172" needed="1">Maravilhas mais baratas</STRING>
+		<STRING hash="31187895" hash_i="33125419" needed="1">Bônus de pesquisa militar</STRING>
+		<STRING hash="55849638" hash_i="56475694" needed="1">Produção a pé/cavalo/vela mais rápida</STRING>
+		<STRING hash="34474051" hash_i="36338081" needed="1">Pesquisa do Celeiro mais barata</STRING>
+		<STRING hash="35489584" hash_i="36208990" needed="1">PV de navios/artilharia</STRING>
+		<STRING hash="26362468" hash_i="28232524" needed="1">Bônus de limite de população</STRING>
+		<STRING hash="15177844" hash_i="16318806" needed="1">Navios se curam no mar</STRING>
+		<STRING hash="17531243" hash_i="18134095" needed="1">Custos de Comida reduzidos</STRING>
+		<STRING hash="10397967" hash_i="11466707" needed="1">Bônus de comércio</STRING>
+		<STRING hash="36183080" hash_i="40709850" needed="1">Fronteiras Nacionais +$NUMBER0</STRING>
+		<STRING hash="43631754" hash_i="44994796" needed="1">Aeronaves mais baratas e rápidas</STRING>
+		<STRING hash="22178329" hash_i="22313841" needed="1">Navios a vela mais rápidos</STRING>
+		<STRING hash="9048116" hash_i="9994856" needed="1">Bônus de arquearia</STRING>
+		<STRING hash="85845041" hash_i="89559069" needed="1">Civis produzidos mais rápido e mais baratos</STRING>
+		<STRING hash="19809197" hash_i="20628375" needed="1">Custos de Madeira pela metade</STRING>
+		<STRING hash="24772106" hash_i="26275680" needed="1">Unidades nucleares mais baratas</STRING>
+		<STRING hash="15485697" hash_i="16296777" needed="1">Desgaste reduzido</STRING>
+		<STRING hash="22234203" hash_i="23009365" needed="1">Custos de Madeira reduzidos</STRING>
+		<STRING hash="19049350" hash_i="21412358" needed="1">Bônus de armadura do Cidadão</STRING><STRING hash="28014279" hash_i="28085333" needed="1">Visão do Batedor aumentada</STRING><STRING hash="30709710" hash_i="32379444" needed="1">Pesquisa do Templo mais barata</STRING><STRING hash="19124534" hash_i="20783736" needed="1">Mais Fazendas por cidade</STRING><STRING hash="15517638" hash_i="16078122" needed="1">Todos os custos reduzidos</STRING><STRING hash="39398892" hash_i="39512062" needed="1">Batedores e Mercadores grátis</STRING><STRING hash="22135391" hash_i="22908705" needed="1">Custos de Riqueza reduzidos</STRING><STRING hash="25961734" hash_i="26087388" needed="1">Alcance naval aumentado</STRING><STRING hash="6536794" hash_i="6545624" needed="1">Mais renda</STRING><STRING hash="35348627" hash_i="35585433" needed="1">PV das unidades aumentados</STRING><STRING hash="19934643" hash_i="21198105" needed="1">Unidades navais mais baratas</STRING><STRING hash="19953961" hash_i="20638425" needed="1">Custos de Metal reduzidos</STRING><STRING hash="22543340" hash_i="23223708" needed="1">Custos de unidades menores</STRING><STRING hash="19169734" hash_i="20783736" needed="1">Mais Fazendas por cidade</STRING><STRING hash="75763479" hash_i="80245133" needed="1">Unidades do Estábulo e da Fábrica de Veículos mais baratas</STRING><STRING hash="99622589" hash_i="103715263" needed="1">Unidades da Oficina de Cerco e da Fábrica mais baratas</STRING><STRING hash="59042865" hash_i="59668629" needed="1">Produção a pé/cavalo/navios mais rápida</STRING></CAT>
+</ROOT>

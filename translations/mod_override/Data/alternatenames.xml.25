@@ -1,0 +1,688 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+  <!-- LOCALIZATION: All STRING elements under ALTERNATENAMES/EPOCHTYPE and ALTERNATENAMES2/EPOCHTYPE-->
+  <ALTERNATENAMES>
+    <EPOCHTYPE name="Written Word">
+      <STRING>Письменность</STRING>
+      <STRING>Образование</STRING>
+      <STRING>Дедукция</STRING>
+      <STRING>Биология</STRING>
+      <STRING>Анатомия</STRING>
+      <STRING>Термодинамика</STRING>
+      <STRING>Статистика</STRING>
+      <STRING>Ядерная физика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mathematics">
+      <STRING>Орошение</STRING>
+      <STRING>Математика</STRING>
+      <STRING>Счёт времени</STRING>
+      <STRING>Эмпиризм</STRING>
+      <STRING>Механическая энергия</STRING>
+      <STRING>Электромагнетизм</STRING>
+      <STRING>Акустика</STRING>
+      <STRING>Генетика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Chemistry">
+      <STRING>Наблюдение за небом</STRING>
+      <STRING>Энергия воды</STRING>
+      <STRING>Химия</STRING>
+      <STRING>Научный метод</STRING>
+      <STRING>Матанализ</STRING>
+      <STRING>Фармакология</STRING>
+      <STRING>Относительность</STRING>
+      <STRING>Квантовая механика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Laws of Nature">
+      <STRING>Рычаг</STRING>
+      <STRING>Температура</STRING>
+      <STRING>Садоводство</STRING>
+      <STRING>Законы природы</STRING>
+      <STRING>Геология</STRING>
+      <STRING>Иммунизация</STRING>
+      <STRING>Микробиология</STRING>
+      <STRING>Микрочипы</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electricity">
+      <STRING>Календарь</STRING>
+      <STRING>Энергия ветра</STRING>
+      <STRING>Астрономия</STRING>
+      <STRING>Родной язык</STRING>
+      <STRING>Электричество</STRING>
+      <STRING>Аэронавтика</STRING>
+      <STRING>Антибиотики</STRING>
+      <STRING>Астрофизика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electronics">
+      <STRING>Меры и весы</STRING>
+      <STRING>Астрология</STRING>
+      <STRING>Механизмы</STRING>
+      <STRING>Научная литература</STRING>
+      <STRING>Ботаника</STRING>
+      <STRING>Электроника</STRING>
+      <STRING>Метеорология</STRING>
+      <STRING>Лазерная техника</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Computerization">
+      <STRING>Теплопередача</STRING>
+      <STRING>Врачевание</STRING>
+      <STRING>Оптика</STRING>
+      <STRING>Физика</STRING>
+      <STRING>Эволюция</STRING>
+      <STRING>Гидроэнергетика</STRING>
+      <STRING>Компьютеризация</STRING>
+      <STRING>Оптоволокно</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Barter">
+      <STRING>Бартер</STRING>
+      <STRING>Дороги</STRING>
+      <STRING>Картография</STRING>
+      <STRING>Компас</STRING>
+      <STRING>Долгота</STRING>
+      <STRING>Уровень жизни</STRING>
+      <STRING>Частный бизнес</STRING>
+      <STRING>Автомагистрали</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Coinage">
+      <STRING>Вьючные животные</STRING>
+      <STRING>Чеканка монет</STRING>
+      <STRING>Навигация по звёздам</STRING>
+      <STRING>Широта</STRING>
+      <STRING>Центральный банк</STRING>
+      <STRING>Телеграф и телефон</STRING>
+      <STRING>СМИ</STRING>
+      <STRING>Финансовое регулирование</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Trade">
+      <STRING>Ремесло</STRING>
+      <STRING>Исследование мира</STRING>
+      <STRING>Торговля</STRING>
+      <STRING>География</STRING>
+      <STRING>Железные дороги</STRING>
+      <STRING>Фондовая биржа</STRING>
+      <STRING>Денежные резервы</STRING>
+      <STRING>Спутниковая связь</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercantilism">
+      <STRING>Контейнеры</STRING>
+      <STRING>Письменные принадлежности</STRING>
+      <STRING>Бумажные деньги</STRING>
+      <STRING>Меркантилизм</STRING>
+      <STRING>Почтовая служба</STRING>
+      <STRING>Антимонопольный закон</STRING>
+      <STRING>Реклама</STRING>
+      <STRING>Переработка отходов</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Finance">
+      <STRING>Ткачество</STRING>
+      <STRING>Балочные мосты</STRING>
+      <STRING>Измерение расстояний</STRING>
+      <STRING>Землемерие</STRING>
+      <STRING>Финансы</STRING>
+      <STRING>Радио</STRING>
+      <STRING>Точное ремесло</STRING>
+      <STRING>Свободная торговля</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Assembly Line">
+      <STRING>Колёсный транспорт</STRING>
+      <STRING>Абак</STRING>
+      <STRING>Лингвистика</STRING>
+      <STRING>Каналы</STRING>
+      <STRING>Бухгалтерия</STRING>
+      <STRING>Конвейер</STRING>
+      <STRING>Телевидение</STRING>
+      <STRING>Интернет</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Globalization">
+      <STRING>Направление</STRING>
+      <STRING>Бумага и пергамент</STRING>
+      <STRING>Дань</STRING>
+      <STRING>Обмен валют</STRING>
+      <STRING>Защитные пошлины</STRING>
+      <STRING>Фотография и кино</STRING>
+      <STRING>Глобализация</STRING>
+      <STRING>Беспроводная связь</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="City State">
+      <STRING>Полис</STRING>
+      <STRING>Государство</STRING>
+      <STRING>Суверенитет</STRING>
+      <STRING>Политика</STRING>
+      <STRING>Права человека</STRING>
+      <STRING>Конституционная монархия</STRING>
+      <STRING>Популизм</STRING>
+      <STRING>Гражданские права</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Empire">
+      <STRING>Традиции и обряды</STRING>
+      <STRING>Империя</STRING>
+      <STRING>Казна</STRING>
+      <STRING>Колониализм</STRING>
+      <STRING>Федерализм</STRING>
+      <STRING>Пакты и союзы</STRING>
+      <STRING>Налоговая служба</STRING>
+      <STRING>Обновление городов</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Feudalism">
+      <STRING>Указы и постановления</STRING>
+      <STRING>Сенат</STRING>
+      <STRING>Феодализм</STRING>
+      <STRING>Полиция</STRING>
+      <STRING>Разделение властей</STRING>
+      <STRING>Верховенство права</STRING>
+      <STRING>Управление бюджетом</STRING>
+      <STRING>Этика власти</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Divine Right">
+      <STRING>Культ предков</STRING>
+      <STRING>Магистраты</STRING>
+      <STRING>Госслужба</STRING>
+      <STRING>Божье право</STRING>
+      <STRING>Билль о правах</STRING>
+      <STRING>Реальполитик</STRING>
+      <STRING>Всеобщие выборы</STRING>
+      <STRING>Общественное мнение</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Constitution">
+      <STRING>Правящие собрания</STRING>
+      <STRING>Юриспруденция</STRING>
+      <STRING>Госуправление</STRING>
+      <STRING>Бюрократия</STRING>
+      <STRING>Конституция</STRING>
+      <STRING>Лига Наций</STRING>
+      <STRING>Новый курс</STRING>
+      <STRING>Двухпартийность</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Great Power">
+      <STRING>Гражданское право</STRING>
+      <STRING>Законодательство</STRING>
+      <STRING>Юрисдикция</STRING>
+      <STRING>Ветви власти</STRING>
+      <STRING>Право голоса</STRING>
+      <STRING>Великая держава</STRING>
+      <STRING>ООН</STRING>
+      <STRING>Охрана природы</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="International Law">
+      <STRING>Гражданские записи</STRING>
+      <STRING>Мораль</STRING>
+      <STRING>Деспотия</STRING>
+      <STRING>Революция</STRING>
+      <STRING>Партийная политика</STRING>
+      <STRING>Регионализм</STRING>
+      <STRING>Международное право</STRING>
+      <STRING>Новый мировой порядок</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="The Art of War">
+      <STRING>Искусство войны</STRING>
+      <STRING>Офицерский корпус</STRING>
+      <STRING>Феодальное ополчение</STRING>
+      <STRING>Огневая мощь</STRING>
+      <STRING>Военная академия</STRING>
+      <STRING>Генеральный штаб</STRING>
+      <STRING>Военная разведка</STRING>
+      <STRING>Военно-промышленный комплекс</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercenaries">
+      <STRING>Военное дело</STRING>
+      <STRING>Наёмники</STRING>
+      <STRING>Латники</STRING>
+      <STRING>Оружейники</STRING>
+      <STRING>Нацгвардия</STRING>
+      <STRING>Общевойсковая тактика</STRING>
+      <STRING>Психологическая война</STRING>
+      <STRING>Борьба с повстанцами</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Standing Army">
+      <STRING>Армии</STRING>
+      <STRING>Полководчество</STRING>
+      <STRING>Регулярная армия</STRING>
+      <STRING>Баллистика</STRING>
+      <STRING>Интендантская служба</STRING>
+      <STRING>Обман</STRING>
+      <STRING>Радар и сонар</STRING>
+      <STRING>Воинская обязанность</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Conscription">
+      <STRING>Муштра</STRING>
+      <STRING>Набор в армию</STRING>
+      <STRING>Рыцарство и геральдика</STRING>
+      <STRING>Призыв</STRING>
+      <STRING>Иррегулярная война</STRING>
+      <STRING>Окопная война</STRING>
+      <STRING>Высокоточные боеприпасы</STRING>
+      <STRING>Объединённые вооружённые силы</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Levee en Masse">
+      <STRING>Дисциплина</STRING>
+      <STRING>Большая стратегия</STRING>
+      <STRING>Латный доспех</STRING>
+      <STRING>Полковая система</STRING>
+      <STRING>Всеобщая мобилизация</STRING>
+      <STRING>Тактика просачивания</STRING>
+      <STRING>Партизанская война</STRING>
+      <STRING>Высокоточное оружие</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nation-in-Arms">
+      <STRING>Построение</STRING>
+      <STRING>Военные склады</STRING>
+      <STRING>Законы войны</STRING>
+      <STRING>Боевой дух и сплочённость</STRING>
+      <STRING>Войска связи</STRING>
+      <STRING>Народ под ружьём</STRING>
+      <STRING>Совместные операции</STRING>
+      <STRING>Радиоэлектронная борьба</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Selective Service">
+      <STRING>Военная подготовка</STRING>
+      <STRING>Зажигательные смеси</STRING>
+      <STRING>Военный контракт</STRING>
+      <STRING>Секретность</STRING>
+      <STRING>Тотальная война</STRING>
+      <STRING>Блицкриг</STRING>
+      <STRING>Воинская повинность</STRING>
+      <STRING>Внутренняя безопасность</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES>
+  <ALTERNATENAMES2>
+    <EPOCHTYPE name="Tactics">
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+      <STRING>Тактика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Operations">
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+      <STRING>Операции</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategy">
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+      <STRING>Стратегия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Religion">
+      <STRING>Религия</STRING>
+      <STRING>Религия</STRING>
+      <STRING>Религия</STRING>
+      <STRING>Реформация</STRING>
+      <STRING>Реформация</STRING>
+      <STRING>Теократия</STRING>
+      <STRING>Теократия</STRING>
+      <STRING>Теократия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Monotheism">
+      <STRING>Священные тексты</STRING>
+      <STRING>Священные тексты</STRING>
+      <STRING>Монотеизм</STRING>
+      <STRING>Монотеизм</STRING>
+      <STRING>Миссионеры</STRING>
+      <STRING>Миссионеры</STRING>
+      <STRING>Секуляризм</STRING>
+      <STRING>Секуляризм</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Existentialism">
+      <STRING>Духовенство</STRING>
+      <STRING>Духовенство</STRING>
+      <STRING>Религиозные секты</STRING>
+      <STRING>Религиозные секты</STRING>
+      <STRING>Экзистенциализм</STRING>
+      <STRING>Экзистенциализм</STRING>
+      <STRING>Экзистенциализм</STRING>
+      <STRING>Экзистенциализм</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Taxation">
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+      <STRING>Налогообложение</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Vassalage">
+      <STRING>Вассалитет</STRING>
+      <STRING>Вассалитет</STRING>
+      <STRING>Вассалитет</STRING>
+      <STRING>Вассалитет</STRING>
+      <STRING>Дань</STRING>
+      <STRING>Дань</STRING>
+      <STRING>Дань</STRING>
+      <STRING>Дань</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Social Contract">
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+      <STRING>Общественный договор</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Income Tax">
+      <STRING>Сюзеренитет</STRING>
+      <STRING>Сюзеренитет</STRING>
+      <STRING>Сюзеренитет</STRING>
+      <STRING>Подоходный налог</STRING>
+      <STRING>Подоходный налог</STRING>
+      <STRING>Подоходный налог</STRING>
+      <STRING>Подоходный налог</STRING>
+      <STRING>Подоходный налог</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Fortification">
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+      <STRING>Фортификация</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Bombardment">
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+      <STRING>Бомбардировка</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategic Reserves">
+      <STRING>Военная инженерия</STRING>
+      <STRING>Военная инженерия</STRING>
+      <STRING>Военная инженерия</STRING>
+      <STRING>Военная инженерия</STRING>
+      <STRING>Стратегический резерв</STRING>
+      <STRING>Стратегический резерв</STRING>
+      <STRING>Стратегический резерв</STRING>
+      <STRING>Стратегический резерв</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Allegiance">
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+      <STRING>Верность</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Oath of Fealty">
+      <STRING>Вассальная присяга</STRING>
+      <STRING>Вассальная присяга</STRING>
+      <STRING>Вассальная присяга</STRING>
+      <STRING>Вассальная присяга</STRING>
+      <STRING>Гражданство</STRING>
+      <STRING>Гражданство</STRING>
+      <STRING>Гражданство</STRING>
+      <STRING>Гражданство</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Patriotism">
+      <STRING>Отечество</STRING>
+      <STRING>Отечество</STRING>
+      <STRING>Отечество</STRING>
+      <STRING>Патриотизм</STRING>
+      <STRING>Патриотизм</STRING>
+      <STRING>Патриотизм</STRING>
+      <STRING>Патриотизм</STRING>
+      <STRING>Патриотизм</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nationalism">
+      <STRING>Нация</STRING>
+      <STRING>Нация</STRING>
+      <STRING>Нация</STRING>
+      <STRING>Нация</STRING>
+      <STRING>Национализм</STRING>
+      <STRING>Национализм</STRING>
+      <STRING>Национализм</STRING>
+      <STRING>Национализм</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Construction">
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+      <STRING>Строительство</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Architecture">
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+      <STRING>Архитектура</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Engineering">
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+      <STRING>Инженерия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Herbal Lore">
+      <STRING>Траволечение</STRING>
+      <STRING>Траволечение</STRING>
+      <STRING>Траволечение</STRING>
+      <STRING>Траволечение</STRING>
+      <STRING>Гомеопатия</STRING>
+      <STRING>Гомеопатия</STRING>
+      <STRING>Гомеопатия</STRING>
+      <STRING>Гомеопатия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Medicine">
+      <STRING>Медицина</STRING>
+      <STRING>Медицина</STRING>
+      <STRING>Медицина</STRING>
+      <STRING>Медицина</STRING>
+      <STRING>Медицина</STRING>
+      <STRING>Профилактика</STRING>
+      <STRING>Профилактика</STRING>
+      <STRING>Профилактика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Pharmaceuticals">
+      <STRING>Аптекари</STRING>
+      <STRING>Аптекари</STRING>
+      <STRING>Аптекари</STRING>
+      <STRING>Фармацевтика</STRING>
+      <STRING>Фармацевтика</STRING>
+      <STRING>Фармацевтика</STRING>
+      <STRING>Фармацевтика</STRING>
+      <STRING>Фармацевтика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Forage">
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+      <STRING>Фураж</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supply">
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+      <STRING>Снабжение</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logistics">
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+      <STRING>Логистика</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Carpentry">
+      <STRING>Плотничество</STRING>
+      <STRING>Плотничество</STRING>
+      <STRING>Плотничество</STRING>
+      <STRING>Плотничество</STRING>
+      <STRING>Плотничество</STRING>
+      <STRING>Лесоводство</STRING>
+      <STRING>Лесоводство</STRING>
+      <STRING>Лесоводство</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logging Industry">
+      <STRING>Столярное мастерство</STRING>
+      <STRING>Столярное мастерство</STRING>
+      <STRING>Токарный станок</STRING>
+      <STRING>Лесная промышленность</STRING>
+      <STRING>Лесная промышленность</STRING>
+      <STRING>Лесная промышленность</STRING>
+      <STRING>Лесная промышленность</STRING>
+      <STRING>Лесовосстановление</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Papermill">
+      <STRING>Бумажный завод</STRING>
+      <STRING>Бумажный завод</STRING>
+      <STRING>Бумажный завод</STRING>
+      <STRING>Бумажный завод</STRING>
+      <STRING>Бумажный завод</STRING>
+      <STRING>Бумажная индустрия</STRING>
+      <STRING>Бумажная индустрия</STRING>
+      <STRING>Бумажная индустрия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Agriculture">
+      <STRING>Земледелие</STRING>
+      <STRING>Земледелие</STRING>
+      <STRING>Земледелие</STRING>
+      <STRING>Земледелие</STRING>
+      <STRING>Земледелие</STRING>
+      <STRING>Агрономия</STRING>
+      <STRING>Агрономия</STRING>
+      <STRING>Агрономия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Crop Rotation">
+      <STRING>Помол зерна</STRING>
+      <STRING>Помол зерна</STRING>
+      <STRING>Помол зерна</STRING>
+      <STRING>Севооборот</STRING>
+      <STRING>Севооборот</STRING>
+      <STRING>Охрана почв</STRING>
+      <STRING>Охрана почв</STRING>
+      <STRING>Охрана почв</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Food Industry">
+      <STRING>Консервирование</STRING>
+      <STRING>Консервирование</STRING>
+      <STRING>Консервирование</STRING>
+      <STRING>Пищевая промышленность</STRING>
+      <STRING>Пищевая промышленность</STRING>
+      <STRING>Пищевая промышленность</STRING>
+      <STRING>Охлаждение</STRING>
+      <STRING>Охлаждение</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Literacy">
+      <STRING>Грамотность</STRING>
+      <STRING>Грамотность</STRING>
+      <STRING>Грамотность</STRING>
+      <STRING>Грамотность</STRING>
+      <STRING>Рациональность</STRING>
+      <STRING>Рациональность</STRING>
+      <STRING>Рациональность</STRING>
+      <STRING>Рациональность</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Printing Press">
+      <STRING>Писцы</STRING>
+      <STRING>Писцы</STRING>
+      <STRING>Книгопечатание</STRING>
+      <STRING>Книгопечатание</STRING>
+      <STRING>Учёные труды</STRING>
+      <STRING>Учёные труды</STRING>
+      <STRING>Учёные труды</STRING>
+      <STRING>Учёные труды</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Scientific Method">
+      <STRING>Метод Сократа</STRING>
+      <STRING>Метод Сократа</STRING>
+      <STRING>Метод Сократа</STRING>
+      <STRING>Научный метод</STRING>
+      <STRING>Научный метод</STRING>
+      <STRING>Научный метод</STRING>
+      <STRING>Научный метод</STRING>
+      <STRING>Научный метод</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Institutional Research">
+      <STRING>Учёность</STRING>
+      <STRING>Учёность</STRING>
+      <STRING>Учёность</STRING>
+      <STRING>Учёность</STRING>
+      <STRING>Учёность</STRING>
+      <STRING>Учёность</STRING>
+      <STRING>Научные институты</STRING>
+      <STRING>Научные институты</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supercomputers">
+      <STRING>Академия</STRING>
+      <STRING>Академия</STRING>
+      <STRING>Академия</STRING>
+      <STRING>Академия</STRING>
+      <STRING>Академия</STRING>
+      <STRING>Академия</STRING>
+      <STRING>Суперкомпьютеры</STRING>
+      <STRING>Суперкомпьютеры</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Metal Alloys">
+      <STRING>Сплавы металлов</STRING>
+      <STRING>Сплавы металлов</STRING>
+      <STRING>Сплавы металлов</STRING>
+      <STRING>Металлургия</STRING>
+      <STRING>Металлургия</STRING>
+      <STRING>Металлургия</STRING>
+      <STRING>Металлургия</STRING>
+      <STRING>Металлургия</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Cold Casting">
+      <STRING>Печи</STRING>
+      <STRING>Печи</STRING>
+      <STRING>Холодное литьё</STRING>
+      <STRING>Холодное литьё</STRING>
+      <STRING>Доменная печь</STRING>
+      <STRING>Доменная печь</STRING>
+      <STRING>Сварка</STRING>
+      <STRING>Сварка</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Steel">
+      <STRING>Добыча руды</STRING>
+      <STRING>Добыча руды</STRING>
+      <STRING>Латунь</STRING>
+      <STRING>Латунь</STRING>
+      <STRING>Сталь</STRING>
+      <STRING>Сталь</STRING>
+      <STRING>Сталь</STRING>
+      <STRING>Сталь</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES2>
+</ROOT>

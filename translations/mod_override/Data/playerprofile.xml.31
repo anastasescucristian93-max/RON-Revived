@@ -1,0 +1,2001 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Pranas Pauliukonis (Big Huge Games) --><!-- LOCALIZATION: STRING and SHORT_STRING--><ROOT>
+	<KEYS>
+		<KEY enum="SYSTEM_TOGGLE_MP_STAT_WIN" dependent="0">
+			<STRING>ÇO İstatistik Penceresi Aç/Kapa</STRING>
+			<SHORT_STRING>İstatistik Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_BUILDING_ALPHABLEND" dependent="0">
+			<STRING>Bina Saydamlığı Aç/Kapa</STRING>
+			<SHORT_STRING>Bina Saydamlığı</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_FRAME_STATS" dependent="0">
+			<STRING>Kare İstatistiklerini Göster</STRING>
+			<SHORT_STRING>Kare İstatistikleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_FPS_STATS" dependent="0">
+			<STRING>FPS İstatistikleri Aç/Kapa</STRING>
+			<SHORT_STRING>FPS İstatistikleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCREENSHOT" dependent="0">
+			<STRING>Ekran Görüntüsü Al</STRING>
+			<SHORT_STRING>Ekran Görüntüsü</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_NEW_LAND" dependent="0">
+			<STRING>Yeni Arazi Aç/Kapa</STRING>
+			<SHORT_STRING>Yeni Arazi</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_NEW_LAND_OVERLAYS" dependent="0">
+			<STRING>Yeni Arazi Katmanları Aç/Kapa</STRING>
+			<SHORT_STRING>Yeni Arazi Katmanları</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_WIREFRAME" dependent="0">
+			<STRING>Tel Kafes Aç/Kapa</STRING>
+			<SHORT_STRING>Tel Kafes</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_TERRAIN_DETAIL" dependent="0">
+			<STRING>Arazi Ayrıntısını Artır</STRING>
+			<SHORT_STRING>Arazi Ayrıntısını Artır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_TERRAIN_DETAIL" dependent="0">
+			<STRING>Arazi Ayrıntısını Azalt</STRING>
+			<SHORT_STRING>Arazi Ayrıntısını Azalt</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SAVE_GAME" dependent="0">
+			<STRING>Oyunu Kaydet</STRING>
+			<SHORT_STRING>Oyunu Kaydet</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_LOAD_GAME" dependent="0">
+			<STRING>Oyun Yükle</STRING>
+			<SHORT_STRING>Oyun Yükle</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_MP_LOG" dependent="0">
+			<STRING>ÇO Günlüğü Aç/Kapa</STRING>
+			<SHORT_STRING>ÇO Günlüğü</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PATH_SHOW_DEBUG" dependent="0">
+			<STRING>Yolu Göster Aç/Kapa</STRING>
+			<SHORT_STRING>Yolu Göster</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_STEP_FRAME" dependent="0">
+			<STRING>Kare İlerlet</STRING>
+			<SHORT_STRING>Kare İlerlet</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_MESSAGES" dependent="0">
+			<STRING>Hata Ayıklama İletileri Aç/Kapa</STRING>
+			<SHORT_STRING>Hata Ayıklama İletileri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_PATH" dependent="0">
+			<STRING>Sahne Yolu Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Yolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DEBUG_JUMP_TO_ACTION" dependent="0">
+			<STRING>Hata Ayıkl.: Eyleme Git</STRING>
+			<SHORT_STRING>Hata Ayıkl.: Eyleme Git</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DEBUG_JUMP_TO_WAYPOINT" dependent="0">
+			<STRING>Hata Ayıkl.: Ara Noktaya Git</STRING>
+			<SHORT_STRING>Hata Ayıkl.: Ara Noktaya Git</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DISPLAY_PROFILE" dependent="0">
+			<STRING>Profili Göster</STRING>
+			<SHORT_STRING>Profili Göster</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PROFILE_RUNNING" dependent="0">
+			<STRING>Profil Çalıştırma Aç/Kapa</STRING>
+			<SHORT_STRING>Profil Çalışıyor</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PARAM_CONSOLE" dependent="0">
+			<STRING>Param. Konsolu Aç/Kapa</STRING>
+			<SHORT_STRING>Param. Konsolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_GRAPHIC_CONSOLE" dependent="0">
+			<STRING>Grafik Konsolu Aç/Kapa</STRING>
+			<SHORT_STRING>Grafik Konsolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_GAME_CONSOLE" dependent="0">
+			<STRING>Oyun Konsolu Aç/Kapa</STRING>
+			<SHORT_STRING>Oyun Konsolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENARIO_EDITOR" dependent="0">
+			<STRING>Senaryo Düzenleyici Aç/Kapa</STRING>
+			<SHORT_STRING>Senaryo Düzenleyici</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_ACHIEVEMENTS" dependent="0">
+			<STRING>Başarımlar Ekranı Aç/Kapa</STRING>
+			<SHORT_STRING>Başarımlar</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_DEBUG" dependent="0">
+			<STRING>Sahne Hata Ayıkl. Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Hata Ayıkl.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SEE_ALL" dependent="0">
+			<STRING>Her Şeyi Gör Aç/Kapa</STRING>
+			<SHORT_STRING>Her Şeyi Gör</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_RIVERS" dependent="0">
+			<STRING>Sahne Nehirleri Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Nehirleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_HOT" dependent="0">
+			<STRING>Sahne Sıcak Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Sıcak</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_BLOCKED" dependent="0">
+			<STRING>Sahne Engelli Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Engelli</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ROADS" dependent="0">
+			<STRING>Sahne Yolları Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Yolları</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_WET" dependent="0">
+			<STRING>Sahne Islak Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Islak</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_FRACTAL" dependent="0">
+			<STRING>Sahne Fraktal Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Fraktal</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ALL" dependent="0">
+			<STRING>Sahne Tümü Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Tümü</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_START_NUKE_FLASH" dependent="0">
+			<STRING>Nükleer Parlama Başlat</STRING>
+			<SHORT_STRING>Nükleer Parlama</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_SITES" dependent="0">
+			<STRING>Sahne Alanları Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Alanları</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ARMIES" dependent="0">
+			<STRING>Sahne Orduları Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Orduları</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_Z_VALUES" dependent="0">
+			<STRING>Z Değerleri Aç/Kapa</STRING>
+			<SHORT_STRING>Z Değerleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CHEAT_ZERO_TECHS" dependent="0">
+			<STRING>Hile: Teknolojileri Sıfırla</STRING>
+			<SHORT_STRING>Hile: Teknolojileri Sıfırla</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CHEAT_GIVE_TECHS" dependent="0">
+			<STRING>Hile: Teknoloji Ver</STRING>
+			<SHORT_STRING>Teknoloji Ver</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_REDRAW_WORLDMAP_BACKGROUND" dependent="0">
+			<STRING>Dünya Haritasını Yeniden Çiz</STRING>
+			<SHORT_STRING>Dünya Haritasını Yeniden Çiz</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_NET_RATIO" dependent="0">
+			<STRING>Ağ Oranını Artır</STRING>
+			<SHORT_STRING>Ağ Oranını Artır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_AI_SPEED" dependent="0">
+			<STRING>YZ Hızını Artır</STRING>
+			<SHORT_STRING>YZ Hızını Artır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_NET_RATIO" dependent="0">
+			<STRING>Ağ Oranını Azalt</STRING>
+			<SHORT_STRING>Ağ Oranını Azalt</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_AI_SPEED" dependent="0">
+			<STRING>YZ Hızını Azalt</STRING>
+			<SHORT_STRING>YZ Hızını Azalt</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_AI" dependent="0">
+			<STRING>YZ Aç/Kapa</STRING>
+			<SHORT_STRING>YZ</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_WATCH_AI" dependent="0">
+			<STRING>YZ İnşa Önceliklerini Göster</STRING>
+			<SHORT_STRING>YZ İnşaları</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CLEAR_PROFILE" dependent="0">
+			<STRING>Profili Temizle</STRING>
+			<SHORT_STRING>Profili Temizle</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_PROFILE" dependent="0">
+			<STRING>Profili Dök</STRING>
+			<SHORT_STRING>Profili Dök</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_MEM_PROFILE" dependent="0">
+			<STRING>Bellek Profilini Dök</STRING>
+			<SHORT_STRING>Bellek Profilini Dök</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_QUIT" dependent="0">
+			<STRING>Çık</STRING>
+			<SHORT_STRING>Çık</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_BUILD_NEW_WORLD" dependent="0">
+			<STRING>Yeni Dünya Kur</STRING>
+			<SHORT_STRING>Yeni Dünya Kur</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_REGIONS" dependent="0">
+			<STRING>Sahne Bölgeleri Aç/Kapa</STRING>
+			<SHORT_STRING>Sahne Bölgeleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_ZERO_RESOURCES" dependent="0">
+			<STRING>Kaynakları Sıfırla</STRING>
+			<SHORT_STRING>Kaynakları Sıfırla</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_RESOURCES" dependent="0">
+			<STRING>Kaynakları Artır</STRING>
+			<SHORT_STRING>Kaynakları Artır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SWITCH_POINT_OF_VIEW" dependent="0">
+			<STRING>Bakış Açısını Değiştir</STRING>
+			<SHORT_STRING>Bakış Açısı</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_POP" dependent="0">
+			<STRING>Nüfusu Artır</STRING>
+			<SHORT_STRING>Nüfusu Artır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_POP" dependent="0">
+			<STRING>Nüfusu Azalt</STRING>
+			<SHORT_STRING>Nüfusu Azalt</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PLACE_NEW_BUILD" dependent="0">
+			<STRING>Yeni Bina Yerleştir</STRING>
+			<SHORT_STRING>Yeni Bina</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PLACE_NEW_UNIT" dependent="0">
+			<STRING>Yeni Birim Yerleştir</STRING>
+			<SHORT_STRING>Yeni Birim</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HURRY_ACTION" dependent="0">
+			<STRING>Eylemi Hızlandır</STRING>
+			<SHORT_STRING>Eylemi Hızlandır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DAMAGE_OBJECT" dependent="0">
+			<STRING>Nesneye Hasar Ver</STRING>
+			<SHORT_STRING>Nesneye Hasar Ver</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DAMAGE_OBJECT_REALLY" dependent="0">
+			<STRING>Nesneye Ağır Hasar Ver</STRING>
+			<SHORT_STRING>Nesneye Ağır Hasar Ver</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_THOUGHT_BUBBLES" dependent="0">
+			<STRING>Düşünce Balonları Aç/Kapa</STRING>
+			<SHORT_STRING>Balonlar</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_KEYMAP_WINDOW" dependent="0">
+			<STRING>Tuş Haritası Penceresi Aç/Kapa</STRING>
+			<SHORT_STRING>Tuş Haritası Penceresi</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCORE_DETAIL" dependent="0">
+			<STRING>Skor Ayrıntısı Aç/Kapa</STRING>
+			<SHORT_STRING>Skor Ayrıntısı</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEPTH_COMPLEXITY" dependent="0">
+			<STRING>Derinlik Karmaşıklığı Aç/Kapa</STRING>
+			<SHORT_STRING>Derinlik Karmaşıklığı</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_END_SCENARIO_TEST" dependent="0">
+			<STRING>Senaryo Testini Bitir</STRING>
+			<SHORT_STRING>Senaryo Testini Bitir</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_EDITOR" dependent="0">
+			<STRING>Betik Düzenleyici</STRING>
+			<SHORT_STRING>Betik Düzenleyici</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE" dependent="0">
+			<STRING>Hata Ayıklama Konsolu Aç/Kapa</STRING>
+			<SHORT_STRING>Hata Ayıklama Konsolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE_2" dependent="0">
+			<STRING>Hata Ayıklama Konsolu Aç/Kapa</STRING>
+			<SHORT_STRING>Hata Ayıklama Konsolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE_3" dependent="0">
+			<STRING>Hata Ayıklama Konsolu Aç/Kapa</STRING>
+			<SHORT_STRING>Hata Ayıklama Konsolu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_STORMS" dependent="0">
+			<STRING>Yağmur/Kar Fırtınası Aç/Kapa</STRING>
+			<SHORT_STRING>Fırtınalar Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_NEXT_PRIM" dependent="0">
+			<STRING>SYSTEM_NEXT_PRIM</STRING>
+			<SHORT_STRING>SYSTEM_NEXT_PRIM</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PREV_PRIM" dependent="0">
+			<STRING>SYSTEM_PREV_PRIM</STRING>
+			<SHORT_STRING>SYSTEM_PREV_PRIM</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_NORM_RENDER" dependent="0">
+			<STRING>SYSTEM_NORM_RENDER</STRING>
+			<SHORT_STRING>SYSTEM_NORM_RENDER</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT" dependent="0">
+			<STRING>Sonraki Binalar Ekranı</STRING>
+			<SHORT_STRING>Sonraki Binalar Ekranı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BACK" dependent="0">
+			<STRING>Önceki Binalar Ekranı</STRING>
+			<SHORT_STRING>Önceki Binalar Ekranı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_PEASANT" dependent="0">
+			<STRING>Şehir: Vatandaş Üret</STRING>
+			<SHORT_STRING>Şehir Vatandaşı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_PEASANT_UPGRADE" dependent="1">
+			<STRING>Şehir: Vatandaşı Yükselt</STRING>
+			<SHORT_STRING>Vatandaşı Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_RAZE" dependent="0">
+			<STRING>Şehir: Yerle Bir Et</STRING>
+			<SHORT_STRING>Yerle Bir Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_ALL_CLEAR" dependent="0">
+			<STRING>Şehir: Tehlike Geçti</STRING>
+			<SHORT_STRING>Tehlike Geçti</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_ALARM" dependent="0">
+			<STRING>Şehir: Alarm</STRING>
+			<SHORT_STRING>Alarm</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_KNOWLEDGE" dependent="0">
+			<STRING>Üniversite: Bilgi Üretimini Yükselt</STRING>
+			<SHORT_STRING>Bilgi Üretimini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UNIVERSITY_SCHOLAR" dependent="0">
+			<STRING>Üniversite: Âlim Üret</STRING>
+			<SHORT_STRING>Âlim</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_LIGHT" dependent="0">
+			<STRING>Kışla: Hafif Piyade Üret</STRING>
+			<SHORT_STRING>Hafif Piyade</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_LIGHT_UPGRADE" dependent="1">
+			<STRING>Kışla: Hafif Piyadeyi Yükselt</STRING>
+			<SHORT_STRING>H. Piyadeyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_HEAVY" dependent="0">
+			<STRING>Kışla: Ağır Piyade Üret</STRING>
+			<SHORT_STRING>Ağır Piyade</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_HEAVY_UPGRADE" dependent="1">
+			<STRING>Kışla: Ağır Piyadeyi Yükselt</STRING>
+			<SHORT_STRING>A. Piyadeyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_ARCHER" dependent="0">
+			<STRING>Kışla: Okçu Üret</STRING>
+			<SHORT_STRING>Okçu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_ARCHER_UPGRADE" dependent="1">
+			<STRING>Kışla: Okçuyu Yükselt</STRING>
+			<SHORT_STRING>Okçuyu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_SPECIAL" dependent="0">
+			<STRING>Kışla: İzci Üret</STRING>
+			<SHORT_STRING>İzci</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_SPECIAL_UPGRADE" dependent="1">
+			<STRING>Kışla: İzciyi Yükselt</STRING>
+			<SHORT_STRING>İzciyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_LIGHT" dependent="0">
+			<STRING>Ahır: Hafif Süvari Üret</STRING>
+			<SHORT_STRING>Hafif Süvari</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_LIGHT_UPGRADE" dependent="1">
+			<STRING>Ahır: Hafif Süvariyi Yükselt</STRING>
+			<SHORT_STRING>H. Süvariyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_HEAVY" dependent="0">
+			<STRING>Ahır: Ağır Süvari Üret</STRING>
+			<SHORT_STRING>Ağır Süvari</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_HEAVY_UPGRADE" dependent="1">
+			<STRING>Ahır: Ağır Süvariyi Yükselt</STRING>
+			<SHORT_STRING>A. Süvariyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ARCHER" dependent="0">
+			<STRING>Ahır: Atlı Okçu Üret</STRING>
+			<SHORT_STRING>Atlı Okçu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ARCHER_UPGRADE" dependent="1">
+			<STRING>Ahır: Atlı Okçuyu Yükselt</STRING>
+			<SHORT_STRING>Atlı Okçuyu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ELEPHANT" dependent="0">
+			<STRING>Ahır: Savaş Fili Üret</STRING>
+			<SHORT_STRING>Savaş Fili</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ELEPHANT_UPGRADE" dependent="1">
+			<STRING>Ahır: Savaş Filini Yükselt</STRING>
+			<SHORT_STRING>Savaş Filini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_SIEGE" dependent="0">
+			<STRING>Kuşatma Atölyesi: Kuşatma/Top Üret</STRING>
+			<SHORT_STRING>Kuşatma/Top</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_SIEGE_UPGRADE" dependent="1">
+			<STRING>Kuşatma Atölyesi: Kuşatma/Top Yükselt</STRING>
+			<SHORT_STRING>Kuşatma/Top Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_GATLING" dependent="0">
+			<STRING>Kışla: Makineli Tüfek Üret</STRING>
+			<SHORT_STRING>Makineli Tüfek</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_GATLING_UPGRADE" dependent="1">
+			<STRING>Kışla: Makineli Tüfeği Yükselt</STRING>
+			<SHORT_STRING>Makineli Tüfeği Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_WAGON" dependent="0">
+			<STRING>Kuşatma Atölyesi: İkmal Arabası Üret</STRING>
+			<SHORT_STRING>İkmal Arabası</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SIEGE" dependent="0">
+			<STRING>Liman: Bombardıman Gemisi Üret</STRING>
+			<SHORT_STRING>Kuşatma Bombardımanı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SIEGE_UPGRADE" dependent="1">
+			<STRING>Liman: Bombardıman Gemisini Yükselt</STRING>
+			<SHORT_STRING>Bombardıman Gemisini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_STANDARD" dependent="0">
+			<STRING>Liman: Ağır Gemi Üret</STRING>
+			<SHORT_STRING>Ağır Gemi Birimi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_STANDARD_UPGRADE" dependent="1">
+			<STRING>Liman: Ağır Gemiyi Yükselt</STRING>
+			<SHORT_STRING>Ağır Gemiyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FIRESHIP" dependent="0">
+			<STRING>Liman: Ateş Gemisi/Denizaltı Üret</STRING>
+			<SHORT_STRING>Ateş Gemisi/Denizaltı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FIRESHIP_UPGRADE" dependent="1">
+			<STRING>Liman: Ateş Gemisi/Denizaltı Yükselt</STRING>
+			<SHORT_STRING>Ateş Gemisi/Denizaltı Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SCOUT" dependent="0">
+			<STRING>Liman: Hafif Gemi Üret</STRING>
+			<SHORT_STRING>Hafif Gemi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SCOUT_UPGRADE" dependent="1">
+			<STRING>Liman: Hafif Gemiyi Yükselt</STRING>
+			<SHORT_STRING>Hafif Gemiyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CARRIER" dependent="0">
+			<STRING>Liman: Uçak Gemisi Üret</STRING>
+			<SHORT_STRING>Uçak Gemisi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CARRIER_UPGRADE" dependent="1">
+			<STRING>Liman: Uçak Gemisini Yükselt</STRING>
+			<SHORT_STRING>Uçak Gemisini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FISHERMEN" dependent="0">
+			<STRING>Liman: Balıkçı Üret</STRING>
+			<SHORT_STRING>Balıkçılar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FISHERMEN_UPGRADE" dependent="1">
+			<STRING>Liman: Balıkçıları Yükselt</STRING>
+			<SHORT_STRING>Balıkçıları Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CRUISER" dependent="0">
+			<STRING>Liman: Kruvazör Üret</STRING>
+			<SHORT_STRING>Kruvazör</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CRUISER_UPGRADE" dependent="1">
+			<STRING>Liman: Kruvazörü Yükselt</STRING>
+			<SHORT_STRING>Kruvazörü Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTER" dependent="0">
+			<STRING>Hava Üssü: Avcı Uçağı Üret</STRING>
+			<SHORT_STRING>Avcı Uçağı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTER_UPGRADE" dependent="1">
+			<STRING>Hava Üssü: Avcı Uçağını Yükselt</STRING>
+			<SHORT_STRING>Avcı Uçağını Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBER" dependent="0">
+			<STRING>Hava Üssü: Bombacı Üret</STRING>
+			<SHORT_STRING>Bombacı Uçak</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBER_UPGRADE" dependent="1">
+			<STRING>Hava Üssü: Bombacıyı Yükselt</STRING>
+			<SHORT_STRING>Bombacıyı Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELICOPTER" dependent="0">
+			<STRING>Hava Üssü: Helikopter Üret</STRING>
+			<SHORT_STRING>Helikopter</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELICOPTER_UPGRADE" dependent="1">
+			<STRING>Hava Üssü: Helikopteri Yükselt</STRING>
+			<SHORT_STRING>Helikopteri Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_NUKE" dependent="0">
+			<STRING>Silo: Nükleer Füze Üret</STRING>
+			<SHORT_STRING>Nükleer Füze</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_NUKE_UPGRADE" dependent="1">
+			<STRING>Silo: Nükleer Füzeyi Yükselt</STRING>
+			<SHORT_STRING>Nükleer Füzeyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_ROCKET" dependent="0">
+			<STRING>Silo: Roket/Seyir Füzesi Üret</STRING>
+			<SHORT_STRING>Roket/Seyir</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_ROCKET_UPGRADE" dependent="1">
+			<STRING>Silo: Roket/Seyir Füzesi Yükselt</STRING>
+			<SHORT_STRING>Roket/Seyir Füzesi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FOOD" dependent="0">
+			<STRING>Tahıl Ambarı: Yiyecek Üretimini Yükselt</STRING>
+			<SHORT_STRING>Yiyecek Üretimini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TIMBER" dependent="0">
+			<STRING>Hızarhane: Kereste Üretimini Yükselt</STRING>
+			<SHORT_STRING>Kereste Üretimini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_METAL" dependent="0">
+			<STRING>Dökümhane: Metal Üretimini Yükselt</STRING>
+			<SHORT_STRING>Metal Üretimini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FORT" dependent="0">
+			<STRING>Hisar: Yükselt</STRING>
+			<SHORT_STRING>Hisarı Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GORADAR" dependent="0">
+			<STRING>Gözetleme Noktası: Hava Savunmasına Yükselt</STRING>
+			<SHORT_STRING>Hava Savunmasına Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TEMPLE" dependent="0">
+			<STRING>Tapınak: Dini Yükselt</STRING>
+			<SHORT_STRING>Dini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_GENERAL" dependent="0">
+			<STRING>Hisar: General Üret</STRING>
+			<SHORT_STRING>General Üret</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_GENERAL_UPGRADE" dependent="1">
+			<STRING>Hisar: Generali Yükselt</STRING>
+			<SHORT_STRING>Generali Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_SPY" dependent="0">
+			<STRING>Hisar: Casus Üret</STRING>
+			<SHORT_STRING>Casus Üret</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_SPY_UPGRADE" dependent="1">
+			<STRING>Hisar: Casusu Yükselt</STRING>
+			<SHORT_STRING>Casusu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOWER_MILITIA_UPGRADE" dependent="0">
+			<STRING>Kule: Milisi Yükselt</STRING>
+			<SHORT_STRING>Milis Yükseltme</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOWER_ALLEGIANCE" dependent="0">
+			<STRING>Kule: Bağlılığı Yükselt</STRING>
+			<SHORT_STRING>Bağlılık</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_CARAVAN" dependent="0">
+			<STRING>Pazar: Kervan Üret</STRING>
+			<SHORT_STRING>Kervan</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_UPGRADE_CARAVAN" dependent="1">
+			<STRING>Pazar: Kervanı Yükselt</STRING>
+			<SHORT_STRING>Kervanı Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_MERCHANT" dependent="0">
+			<STRING>Pazar: Tüccar Üret</STRING>
+			<SHORT_STRING>Tüccar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_UPGRADE_MERCHANT" dependent="1">
+			<STRING>Pazar: Tüccarı Yükselt</STRING>
+			<SHORT_STRING>Tüccarı Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD" dependent="0">
+			<STRING>Pazar: 100 Yiyecek Al</STRING>
+			<SHORT_STRING>Yiyecek Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER" dependent="0">
+			<STRING>Pazar: 100 Kereste Al</STRING>
+			<SHORT_STRING>Kereste Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL" dependent="0">
+			<STRING>Pazar: 100 Metal Al</STRING>
+			<SHORT_STRING>Metal Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL" dependent="0">
+			<STRING>Pazar: 100 Petrol Al</STRING>
+			<SHORT_STRING>Petrol Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD_500" dependent="0">
+			<STRING>Pazar: 500 Yiyecek Al</STRING>
+			<SHORT_STRING>500 Yiyecek Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER_500" dependent="0">
+			<STRING>Pazar: 500 Kereste Al</STRING>
+			<SHORT_STRING>500 Kereste Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL_500" dependent="0">
+			<STRING>Pazar: 500 Metal Al</STRING>
+			<SHORT_STRING>500 Metal Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL_500" dependent="0">
+			<STRING>Pazar: 500 Petrol Al</STRING>
+			<SHORT_STRING>500 Petrol Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD_ALL" dependent="0">
+			<STRING>Pazar: Azami Yiyecek Al</STRING>
+			<SHORT_STRING>Azami Yiyecek Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER_ALL" dependent="0">
+			<STRING>Pazar: Azami Kereste Al</STRING>
+			<SHORT_STRING>Azami Kereste Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL_ALL" dependent="0">
+			<STRING>Pazar: Azami Metal Al</STRING>
+			<SHORT_STRING>Azami Metal Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL_ALL" dependent="0">
+			<STRING>Pazar: Azami Petrol Al</STRING>
+			<SHORT_STRING>Azami Petrol Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD" dependent="1">
+			<STRING>Pazar: 100 Yiyecek Sat</STRING>
+			<SHORT_STRING>100 Yiyecek Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER" dependent="1">
+			<STRING>Pazar: 100 Kereste Sat</STRING>
+			<SHORT_STRING>100 Kereste Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL" dependent="1">
+			<STRING>Pazar: 100 Metal Sat</STRING>
+			<SHORT_STRING>100 Metal Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL" dependent="1">
+			<STRING>Pazar: 100 Petrol Sat</STRING>
+			<SHORT_STRING>100 Petrol Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD_500" dependent="0">
+			<STRING>Pazar: 500 Yiyecek Sat</STRING>
+			<SHORT_STRING>500 Yiyecek Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER_500" dependent="0">
+			<STRING>Pazar: 500 Kereste Sat</STRING>
+			<SHORT_STRING>500 Kereste Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL_500" dependent="0">
+			<STRING>Pazar: 500 Metal Sat</STRING>
+			<SHORT_STRING>500 Metal Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL_500" dependent="0">
+			<STRING>Pazar: 500 Petrol Sat</STRING>
+			<SHORT_STRING>500 Petrol Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD_ALL" dependent="0">
+			<STRING>Pazar: Tüm Yiyeceği Sat</STRING>
+			<SHORT_STRING>Tüm Yiyeceği Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER_ALL" dependent="0">
+			<STRING>Pazar: Tüm Keresteyi Sat</STRING>
+			<SHORT_STRING>Tüm Keresteyi Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL_ALL" dependent="0">
+			<STRING>Pazar: Tüm Metali Sat</STRING>
+			<SHORT_STRING>Tüm Metali Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL_ALL" dependent="0">
+			<STRING>Pazar: Tüm Petrolü Sat</STRING>
+			<SHORT_STRING>Tüm Petrolü Sat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_AGE" dependent="0">
+			<STRING>Kütüphane: Çağ Atlama Araştır</STRING>
+			<SHORT_STRING>Çağ Atlama</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_MILITARY" dependent="0">
+			<STRING>Kütüphane: Askeri Araştırma</STRING>
+			<SHORT_STRING>Askeri Araştırma</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_SCIENCE" dependent="0">
+			<STRING>Kütüphane: Bilim Araştırması</STRING>
+			<SHORT_STRING>Bilim Araştırması</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_COMMERCE" dependent="0">
+			<STRING>Kütüphane: Ticaret Araştırması</STRING>
+			<SHORT_STRING>Ticaret Araştırması</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_CIVIC" dependent="0">
+			<STRING>Kütüphane: Sivil Araştırma</STRING>
+			<SHORT_STRING>Sivil Araştırma</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_BRIBE" dependent="0">
+			<STRING>Casus: Düşmana Rüşvet</STRING>
+			<SHORT_STRING>Düşmana Rüşvet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_PILFER_FUNDS" dependent="0">
+			<STRING>Casus: Kaynak Yağmala</STRING>
+			<SHORT_STRING>Kaynak Yağmala</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_RALLY" dependent="0">
+			<STRING>General: Toparlan</STRING>
+			<SHORT_STRING>Toparlan</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_FORCED_MARCH" dependent="0">
+			<STRING>General: Zorlu Yürüyüş</STRING>
+			<SHORT_STRING>Zorlu Yürüyüş</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_AMBUSH" dependent="0">
+			<STRING>General: Pusu</STRING>
+			<SHORT_STRING>Pusu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_DECOY" dependent="0">
+			<STRING>General: Sahte Birlik Yarat</STRING>
+			<SHORT_STRING>Sahte Birlik</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_ENTRENCH" dependent="0">
+			<STRING>General: Siper Kaz</STRING>
+			<SHORT_STRING>Siper Kaz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_SABOTAGE" dependent="0">
+			<STRING>Özel Kuvvetler: Sabotaj</STRING>
+			<SHORT_STRING>Sabotaj</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_PARADROP" dependent="0">
+			<STRING>Özel Kuvvetler: Paraşütle İndirme</STRING>
+			<SHORT_STRING>Paraşütle İndirme</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_INFORMER" dependent="0">
+			<STRING>Casus: Muhbir</STRING>
+			<SHORT_STRING>Muhbir</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_COUNTERINTEL" dependent="0">
+			<STRING>İzci: Karşı İstihbarat</STRING>
+			<SHORT_STRING>İzci: Karşı İstihbarat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_SNIPER" dependent="0">
+			<STRING>Özel Kuvvetler: Keskin Nişancı</STRING>
+			<SHORT_STRING>Keskin Nişancı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_JAM_RADAR" dependent="0">
+			<STRING>Özel Kuvvetler: Radar Karıştır</STRING>
+			<SHORT_STRING>Radar Karıştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD" dependent="0">
+			<STRING>Vatandaş: Bina İnşa Et</STRING>
+			<SHORT_STRING>Bina İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY" dependent="0">
+			<STRING>Vatandaş: Askeri Bina İnşa Et</STRING>
+			<SHORT_STRING>Askeri Bina İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER" dependent="0">
+			<STRING>Vatandaş: Harika İnşa Et</STRING>
+			<SHORT_STRING>Harika İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY2" dependent="0">
+			<STRING>Vatandaş: Askeri Bina İnşa Et (2)</STRING>
+			<SHORT_STRING>Askeri Bina İnşa Et (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER2" dependent="0">
+			<STRING>Vatandaş: Harika İnşa Et (2) </STRING>
+			<SHORT_STRING>Harika İnşa Et (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD" dependent="0">
+			<STRING>Vatandaş: Bina İnşa Et</STRING>
+			<SHORT_STRING>Bina İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY" dependent="0">
+			<STRING>Vatandaş: Askeri Bina İnşa Et</STRING>
+			<SHORT_STRING>Askeri Bina İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER" dependent="0">
+			<STRING>Vatandaş: Harika İnşa Et</STRING>
+			<SHORT_STRING>Harika İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PEASANT_TO_ARMS" dependent="0">
+			<STRING>Vatandaş: Silah Başına</STRING>
+			<SHORT_STRING>Silah Başına!</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MILITIA_CIVILIAN" dependent="0">
+			<STRING>Milis: Sivil</STRING>
+			<SHORT_STRING>Milis Sivil</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_AIRDEFENSE" dependent="0">
+			<STRING>Hava Savunması İnşa Et</STRING>
+			<SHORT_STRING>Hava Savunması</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_FARM" dependent="0">
+			<STRING>Çiftlik İnşa Et</STRING>
+			<SHORT_STRING>Çiftlik</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_GRANARY" dependent="0">
+			<STRING>Ambar İnşa Et</STRING>
+			<SHORT_STRING>Tahıl Ambarı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MINE" dependent="0">
+			<STRING>Maden İnşa Et</STRING>
+			<SHORT_STRING>Maden</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SMELTER" dependent="0">
+			<STRING>Dökümhane İnşa Et</STRING>
+			<SHORT_STRING>Dökümhane</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_UNIVERSITY" dependent="0">
+			<STRING>Üniversite İnşa Et</STRING>
+			<SHORT_STRING>Üniversite</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WOODCUTTER" dependent="0">
+			<STRING>Oduncu Kampı İnşa Et</STRING>
+			<SHORT_STRING>Oduncu Kampı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SAWMILL" dependent="0">
+			<STRING>Hızarhane İnşa Et</STRING>
+			<SHORT_STRING>Hızarhane</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_OILWELL" dependent="0">
+			<STRING>Petrol Kuyusu İnşa Et</STRING>
+			<SHORT_STRING>Petrol Kuyusu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_REFINERY" dependent="0">
+			<STRING>Rafineri İnşa Et</STRING>
+			<SHORT_STRING>Rafineri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MARKET" dependent="0">
+			<STRING>Pazar İnşa Et</STRING>
+			<SHORT_STRING>Pazar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_BARRACKS" dependent="0">
+			<STRING>Kışla İnşa Et</STRING>
+			<SHORT_STRING>Kışla</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_STABLE" dependent="0">
+			<STRING>Ahır İnşa Et</STRING>
+			<SHORT_STRING>Ahır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SIEGEFACTORY" dependent="0">
+			<STRING>Kuşatma Atölyesi İnşa Et</STRING>
+			<SHORT_STRING>Kuşatma Atölyesi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_VILLAGE" dependent="0">
+			<STRING>Şehir İnşa Et</STRING>
+			<SHORT_STRING>Şehir</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_VILLAGE2" dependent="0">
+			<STRING>Şehir İnşa Et (2)</STRING>
+			<SHORT_STRING>Şehir İnşa Et (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_TEMPLE" dependent="0">
+			<STRING>Tapınak İnşa Et</STRING>
+			<SHORT_STRING>Tapınak</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_LIBRARY" dependent="0">
+			<STRING>Kütüphane İnşa Et</STRING>
+			<SHORT_STRING>Kütüphane</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_FORT" dependent="0">
+			<STRING>Hisar/Kale/Büyük Kale/Tabya İnşa Et</STRING>
+			<SHORT_STRING>Hisar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_TOWER" dependent="0">
+			<STRING>Kule/Burç/Palanga/Bunker İnşa Et</STRING>
+			<SHORT_STRING>Kule</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_AIRBASE" dependent="0">
+			<STRING>Hava Üssü İnşa Et</STRING>
+			<SHORT_STRING>Hava Üssü</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_DOCK" dependent="0">
+			<STRING>Liman İnşa Et</STRING>
+			<SHORT_STRING>Liman</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SILO" dependent="0">
+			<STRING>Füze Silosu İnşa Et</STRING>
+			<SHORT_STRING>Füze Silosu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_LOOKOUT" dependent="0">
+			<STRING>Gözetleme İnşa Et</STRING>
+			<SHORT_STRING>Gözetleme Kulesi</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_LINE" dependent="0">
+			<STRING>Birim: Hat Düzeni</STRING>
+			<SHORT_STRING>Hat</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_REFUSED" dependent="0">
+			<STRING>Birim: Geri Kanat Düzeni</STRING>
+			<SHORT_STRING>Geri Kanat</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_ENVELOP" dependent="0">
+			<STRING>Birim: Kuşatma Düzeni</STRING>
+			<SHORT_STRING>Kuşatma</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_E_RIGHT" dependent="0">
+			<STRING>Birim: Sağ Kademe Düzeni</STRING>
+			<SHORT_STRING>Sağ Kademe</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_E_LEFT" dependent="0">
+			<STRING>Birim: Sol Kademe Düzeni</STRING>
+			<SHORT_STRING>Sol Kademe</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_AGGRESSIVE" dependent="0">
+			<STRING>Birim: Saldırgan Duruş</STRING>
+			<SHORT_STRING>Saldırgan Duruş</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_RAID" dependent="0">
+			<STRING>Birim: Akın Duruşu</STRING>
+			<SHORT_STRING>Akın Duruşu</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_RAZE" dependent="0">
+			<STRING>Birim: Yıkım Duruşu</STRING>
+			<SHORT_STRING>Yıkım Duruşu</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_HOLDFIRE" dependent="0">
+			<STRING>Birim: Ateş Etme Duruşu</STRING>
+			<SHORT_STRING>Ateş Etme Duruşu</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_DEFENSIVE" dependent="0">
+			<STRING>Birim: Savunma Duruşu</STRING>
+			<SHORT_STRING>Savunma Duruşu</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_STANDGROUND" dependent="0">
+			<STRING>Birim: Yerini Koru</STRING>
+			<SHORT_STRING>Mevzini Koru</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CANCEL" dependent="0">
+			<STRING>Eylemi İptal Et</STRING>
+			<SHORT_STRING>İptal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT" dependent="0">
+			<STRING>Sohbet</STRING>
+			<SHORT_STRING>Sohbet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ALL" dependent="0">
+			<STRING>Herkese Sohbet</STRING>
+			<SHORT_STRING>Herkese Sohbet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ALLIES" dependent="0">
+			<STRING>Müttefiklerle Sohbet</STRING>
+			<SHORT_STRING>Müttefiklerle Sohbet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ENEMIES" dependent="0">
+			<STRING>Düşmanlarla Sohbet</STRING>
+			<SHORT_STRING>Düşmanlarla Sohbet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DIPLO" dependent="0">
+			<STRING>Diplomasi</STRING>
+			<SHORT_STRING>Diplomasi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DIRECT_DIPLO" dependent="0">
+			<STRING>Diplomasi: Teklife Git</STRING>
+			<SHORT_STRING>Teklife Git</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SLOWER" dependent="0">
+			<STRING>Oyunu Yavaşlat</STRING>
+			<SHORT_STRING>Yavaş</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SLOWER2" dependent="0">
+			<STRING>Oyunu Yavaşlat (2)</STRING>
+			<SHORT_STRING>Yavaş</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FASTER" dependent="0">
+			<STRING>Oyunu Hızlandır</STRING>
+			<SHORT_STRING>Hızlı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FASTER2" dependent="0">
+			<STRING>Oyunu Hızlandır (2)</STRING>
+			<SHORT_STRING>Hızlı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RESIGN" dependent="0">
+			<STRING>Pes Et</STRING>
+			<SHORT_STRING>Pes Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_QUIT" dependent="0">
+			<STRING>Çık</STRING>
+			<SHORT_STRING>Çık</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GARRISON" dependent="0">
+			<STRING>Birim: Garnizon</STRING>
+			<SHORT_STRING>Garnizon</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE" dependent="0">
+			<STRING>Şehir Bul</STRING>
+			<SHORT_STRING>Şehir Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY" dependent="0">
+			<STRING>Kütüphane Bul</STRING>
+			<SHORT_STRING>Kütüphane Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET" dependent="0">
+			<STRING>Pazar Bul</STRING>
+			<SHORT_STRING>Pazar Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS" dependent="0">
+			<STRING>Kışla Bul</STRING>
+			<SHORT_STRING>Kışla Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE" dependent="0">
+			<STRING>Ahır veya Araç Fabrikası Bul</STRING>
+			<SHORT_STRING>Ahır veya Araç Fabrikası Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY" dependent="0">
+			<STRING>Kuşatma Atölyesi Bul</STRING>
+			<SHORT_STRING>Kuşatma Atölyesi Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK" dependent="0">
+			<STRING>Liman/Tersane Bul</STRING>
+			<SHORT_STRING>Liman/Tersane Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE" dependent="0">
+			<STRING>Hava Üssü Bul</STRING>
+			<SHORT_STRING>Hava Üssü Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO" dependent="0">
+			<STRING>Füze Silosu Bul</STRING>
+			<SHORT_STRING>Füze Silosu Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY" dependent="0">
+			<STRING>Üniversite Bul</STRING>
+			<SHORT_STRING>Üniversite Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE_NOZOOM" dependent="1">
+			<STRING>Şehir Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Şehir Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY_NOZOOM" dependent="1">
+			<STRING>Kütüphane Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Kütüphane Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET_NOZOOM" dependent="1">
+			<STRING>Pazar Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Pazar Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS_NOZOOM" dependent="1">
+			<STRING>Kışla Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Kışla Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE_NOZOOM" dependent="1">
+			<STRING>Ahır Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Ahır Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY_NOZOOM" dependent="1">
+			<STRING>Kuşatma Atölyesi Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Kuşatma Atölyesi Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK_NOZOOM" dependent="1">
+			<STRING>Liman Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Liman Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE_NOZOOM" dependent="1">
+			<STRING>Hava Üssü Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Hava Üssü Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO_NOZOOM" dependent="1">
+			<STRING>Füze Silosu Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Füze Silosu Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY_NOZOOM" dependent="1">
+			<STRING>Üniversite Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Üniversite Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE_ALL" dependent="1">
+			<STRING>Tüm Şehirleri Seç</STRING>
+			<SHORT_STRING>Tüm Şehirleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY_ALL" dependent="1">
+			<STRING>Tüm Kütüphaneleri Seç</STRING>
+			<SHORT_STRING>Tüm Kütüphaneleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET_ALL" dependent="1">
+			<STRING>Tüm Pazarları Seç</STRING>
+			<SHORT_STRING>Tüm Pazarları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS_ALL" dependent="1">
+			<STRING>Tüm Kışlaları Seç</STRING>
+			<SHORT_STRING>Tüm Kışlaları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE_ALL" dependent="1">
+			<STRING>Tüm Ahırları Seç</STRING>
+			<SHORT_STRING>Tüm Ahırları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY_ALL" dependent="1">
+			<STRING>Tüm Kuşatma Atölyelerini Seç</STRING>
+			<SHORT_STRING>Tüm Kuşatma Atölyelerini Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK_ALL" dependent="1">
+			<STRING>Tüm Limanları Seç</STRING>
+			<SHORT_STRING>Tüm Limanları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE_ALL" dependent="1">
+			<STRING>Tüm Hava Üslerini Seç</STRING>
+			<SHORT_STRING>Tüm Hava Üslerini Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO_ALL" dependent="1">
+			<STRING>Tüm Füze Silolarını Seç</STRING>
+			<SHORT_STRING>Tüm Füze Silolarını Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY_ALL" dependent="1">
+			<STRING>Tüm Üniversiteleri Seç</STRING>
+			<SHORT_STRING>Tüm Üniversiteleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GATHER" dependent="0">
+			<STRING>Bina: Toplanma Noktası Belirle</STRING>
+			<SHORT_STRING>Toplanma Noktası Belirle</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CLEAR_GATHER" dependent="0">
+			<STRING>Bina: Toplanma Noktasını Sil</STRING>
+			<SHORT_STRING>Toplanma Noktasını Kaldır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PAUSE" dependent="0">
+			<STRING>Oyunu Duraklat</STRING>
+			<SHORT_STRING>Oyunu Duraklat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PAUSE2" dependent="0">
+			<STRING>Oyunu Duraklat</STRING>
+			<SHORT_STRING>Oyunu Duraklat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DISBAND" dependent="0">
+			<STRING>Birim/Bina: Dağıt/Yık</STRING>
+			<SHORT_STRING>Dağıt/Yık</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TRANSPORT" dependent="0">
+			<STRING>Birim: Otomatik Nakliye Aç/Kapa</STRING>
+			<SHORT_STRING>Otomatik Nakliye</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM" dependent="0">
+			<STRING>Zoom</STRING>
+			<SHORT_STRING>Zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN" dependent="0">
+			<STRING>Yakınlaştır</STRING>
+			<SHORT_STRING>Yakınlaştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT" dependent="0">
+			<STRING>Uzaklaştır</STRING>
+			<SHORT_STRING>Uzaklaştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN2" dependent="0">
+			<STRING>Yakınlaştır (2)</STRING>
+			<SHORT_STRING>Yakınlaştır (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT2" dependent="0">
+			<STRING>Uzaklaştır (2)</STRING>
+			<SHORT_STRING>Uzaklaştır (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN3" dependent="0">
+			<STRING>Yakınlaştır (3)</STRING>
+			<SHORT_STRING>Yakınlaştır (3)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT3" dependent="0">
+			<STRING>Uzaklaştır (3)</STRING>
+			<SHORT_STRING>Uzaklaştır (3)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SAVE_ZOOM_IN" dependent="0">
+			<STRING>Yakın Görüşü Kaydet</STRING>
+			<SHORT_STRING>Yakın Görüşü Kaydet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SAVE_ZOOM_OUT" dependent="0">
+			<STRING>Uzak Görüşü Kaydet</STRING>
+			<SHORT_STRING>Uzak Görüşü Kaydet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MILITARY" dependent="0">
+			<STRING>Askeri Birim/Grup Bul</STRING>
+			<SHORT_STRING>Askeri Birim/Grup Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PEASANT" dependent="0">
+			<STRING>Boştaki Vatandaşı Bul</STRING>
+			<SHORT_STRING>Boştaki Vatandaşı Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_GENERAL" dependent="0">
+			<STRING>General Bul</STRING>
+			<SHORT_STRING>General Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SCOUT" dependent="0">
+			<STRING>İzci Bul</STRING>
+			<SHORT_STRING>İzci Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SPY" dependent="0">
+			<STRING>Casus Bul</STRING>
+			<SHORT_STRING>Casus Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SUPPLY" dependent="0">
+			<STRING>İkmal Arabası Bul</STRING>
+			<SHORT_STRING>İkmal Arabası Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MILITARY_NOZOOM" dependent="1">
+			<STRING>Askeri Birim Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Askeri Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PEASANT_NOZOOM" dependent="1">
+			<STRING>Boştaki Vatandaşı Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Boştaki Vatandaşı Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_GENERAL_NOZOOM" dependent="1">
+			<STRING>General Seç, Zoomsuz</STRING>
+			<SHORT_STRING>General Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SCOUT_NOZOOM" dependent="1">
+			<STRING>İzci Seç, Zoomsuz</STRING>
+			<SHORT_STRING>İzci Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SPY_NOZOOM" dependent="1">
+			<STRING>Casus Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Casus Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SUPPLY_NOZOOM" dependent="1">
+			<STRING>İkmal Arabası Seç, Zoomsuz</STRING>
+			<SHORT_STRING>İkmal Arabası Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_MILITARY" dependent="1">
+			<STRING>Tüm Askeri Birimleri Seç</STRING>
+			<SHORT_STRING>Tüm Askeri Birimleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_PEASANT" dependent="1">
+			<STRING>Boştaki Tüm Vatandaşları Seç</STRING>
+			<SHORT_STRING>Boştaki Tüm Vatandaşları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_GENERAL" dependent="1">
+			<STRING>Tüm Generalleri Seç</STRING>
+			<SHORT_STRING>Tüm Generalleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SCOUT" dependent="1">
+			<STRING>Tüm İzcileri Seç</STRING>
+			<SHORT_STRING>Tüm İzcileri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SPY" dependent="1">
+			<STRING>Tüm Casusları Seç</STRING>
+			<SHORT_STRING>Tüm Casusları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SUPPLY" dependent="1">
+			<STRING>Tüm İkmal Arabalarını Seç</STRING>
+			<SHORT_STRING>Tüm İkmali Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STANCE" dependent="0">
+			<STRING>Birim: Sonraki Duruş</STRING>
+			<SHORT_STRING>Sonraki Duruş</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_NONIDLE_PEASANT" dependent="0">
+			<STRING>Herhangi Bir Vatandaşı Bul</STRING>
+			<SHORT_STRING>Herhangi Bir Vatandaşı Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_NONIDLE_PEASANT" dependent="1">
+			<STRING>Tüm Vatandaşları Seç</STRING>
+			<SHORT_STRING>Tüm Vatandaşları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NOZOOM_NONIDLE_PEASANT" dependent="1">
+			<STRING>Herhangi Bir Vatandaşı Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Herhangi Bir Vatandaşı Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AUTO_EXPLORE" dependent="0">
+			<STRING>Birim: Otomatik Keşif</STRING>
+			<SHORT_STRING>Otomatik Keşif</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FOLLOW" dependent="0">
+			<STRING>Birim: Takip Et</STRING>
+			<SHORT_STRING>Takip</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GUARD" dependent="0">
+			<STRING>Birim: Koru</STRING>
+			<SHORT_STRING>Koru</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ATTACK_TO" dependent="0">
+			<STRING>Birim: Saldır</STRING>
+			<SHORT_STRING>Saldır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_EXPLORE_TO" dependent="0">
+			<STRING>Birim: Keşfet</STRING>
+			<SHORT_STRING>Keşfet</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FLEE_TO" dependent="0">
+			<STRING>Birim: Kaç</STRING>
+			<SHORT_STRING>Kaç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MOVE_TO" dependent="0">
+			<STRING>Birim: Git</STRING>
+			<SHORT_STRING>Git</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORWARD" dependent="0">
+			<STRING>Birim: İleri</STRING>
+			<SHORT_STRING>İleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORWARD2" dependent="0">
+			<STRING>Birim: İleri (2)</STRING>
+			<SHORT_STRING>İleri (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PATROL" dependent="0">
+			<STRING>Birim: Devriye</STRING>
+			<SHORT_STRING>Devriye</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_HALT" dependent="0">
+			<STRING>Birim: Dur</STRING>
+			<SHORT_STRING>Dur</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ATTACK_GROUND" dependent="0">
+			<STRING>Birim: Bombala</STRING>
+			<SHORT_STRING>Balyemez</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_EJECT_ALL" dependent="0">
+			<STRING>Birim/Bina: Hepsini Çıkar</STRING>
+			<SHORT_STRING>Tümünü Çıkar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_MESSAGE" dependent="0">
+			<STRING>Sonraki İleti</STRING>
+			<SHORT_STRING>Sonraki İleti</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_MESSAGE2" dependent="0">
+			<STRING>Sonraki İleti2</STRING>
+			<SHORT_STRING>Sonraki İleti2</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_MESSAGE" dependent="1">
+			<STRING>Önceki İleti</STRING>
+			<SHORT_STRING>Önceki İleti</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_MESSAGE2" dependent="1">
+			<STRING>Önceki İleti2</STRING>
+			<SHORT_STRING>Önceki İleti2</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SCENE_HELP" dependent="0">
+			<STRING>Sahne Yardımı</STRING>
+			<SHORT_STRING>Sahne Yardımı</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_HELP" dependent="0">
+			<STRING>Yardım Metnini Artır</STRING>
+			<SHORT_STRING>Yardım Metnini Artır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_HELP" dependent="0">
+			<STRING>Yardım Metnini Azalt</STRING>
+			<SHORT_STRING>Yardım Metnini Azalt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_THOUGHTS" dependent="0">
+			<STRING>Düşünce Balonları Aç/Kapa</STRING>
+			<SHORT_STRING>Düşünce Balonları Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_DATA" dependent="0">
+			<STRING>Sonraki Veri Göstergesi</STRING>
+			<SHORT_STRING>Sonraki Veri Göstergesi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_DATA" dependent="1">
+			<STRING>Önceki Veri</STRING>
+			<SHORT_STRING>Önceki Veri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_DATA" dependent="1">
+			<STRING>Veri Aç/Kapa</STRING>
+			<SHORT_STRING>Veri Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT" dependent="0">
+			<STRING>Veri Göstergesini Değiştir</STRING>
+			<SHORT_STRING>Veri Göstergesini Değiştir</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_FF_COLORS" dependent="0">
+			<STRING>Dost/Düşman Renkleri</STRING>
+			<SHORT_STRING>Dost/Düşman Renkleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_CITY_NAMES" dependent="0">
+			<STRING>Şehir Adları Aç/Kapa</STRING>
+			<SHORT_STRING>Şehir Adları Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_STATS" dependent="0">
+			<STRING>Araştırma Çubukları Aç/Kapa</STRING>
+			<SHORT_STRING>Araştırma Çubukları Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_ADVANCED" dependent="0">
+			<STRING>Gelişmiş Menü Aç/Kapa</STRING>
+			<SHORT_STRING>Gelişmiş Menü</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STATWIN" dependent="0">
+			<STRING>İst. Penceresi</STRING>
+			<SHORT_STRING>İst. Penceresi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PING" dependent="0">
+			<STRING>Sinyal Gönder</STRING>
+			<SHORT_STRING>Sinyal Gönder</SHORT_STRING>
+		</KEY>
+		<KEY enum="CHEAT_HURRY_JOB" dependent="0">
+			<STRING>Hile: İşi Hızlandır</STRING>
+			<SHORT_STRING>Hile: İşi Hızlandır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_QUEUE" dependent="0">
+			<STRING>Bina: Sıradan Çıkar</STRING>
+			<SHORT_STRING>Sıradan Çıkar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_OBJECTIVES" dependent="0">
+			<STRING>Hedefleri Göster</STRING>
+			<SHORT_STRING>Hedefleri Göster</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MENU" dependent="0">
+			<STRING>Oyun Menüsü</STRING>
+			<SHORT_STRING>Oyun Menüsü</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_OPTIONS" dependent="0">
+			<STRING>Oyun Seçenekleri</STRING>
+			<SHORT_STRING>Oyun Seçenekleri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_TIME" dependent="0">
+			<STRING>Süre Göstergesi Aç/Kapa</STRING>
+			<SHORT_STRING>Süre Göstergesi Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LEFT" dependent="0">
+			<STRING>Birim: Düzeni Sola Döndür</STRING>
+			<SHORT_STRING>Düzeni Sola Döndür</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RIGHT" dependent="0">
+			<STRING>Birim: Düzeni Sağa Döndür</STRING>
+			<SHORT_STRING>Düzeni Sağa Döndür</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOWN" dependent="0">
+			<STRING>Birim: Düzen Geri Adım</STRING>
+			<SHORT_STRING>Düzen Geri Adım</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UP" dependent="0">
+			<STRING>Kamera: Yukarı</STRING>
+			<SHORT_STRING>Kamera: Yukarı</SHORT_STRING>
+		</KEY>
+		<KEY enum="TERRAINDEBUG" dependent="0">
+			<STRING>Arazi Hata Ayıklama</STRING>
+			<SHORT_STRING>Arazi Hata Ayıklama</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PING2" dependent="0">
+			<STRING>Sinyal Gönder (2)</STRING>
+			<SHORT_STRING>Sinyal Gönder (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CANNON_TIME" dependent="0">
+			<STRING>Yedek Süre Başlat</STRING>
+			<SHORT_STRING>Yedek Süre</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_MAIN" dependent="0">
+			<STRING>Ana Arayüz Aç/Kapa</STRING>
+			<SHORT_STRING>Ana Arayüz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_RESOURCES" dependent="0">
+			<STRING>Kaynak Arayüzü Aç/Kapa</STRING>
+			<SHORT_STRING>Kaynak Arayüzü</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_MARKET" dependent="0">
+			<STRING>Pazar Arayüzü Aç/Kapa</STRING>
+			<SHORT_STRING>Pazar Arayüzü</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_INFRA" dependent="0">
+			<STRING>Altyapı Arayüzü Aç/Kapa</STRING>
+			<SHORT_STRING>Altyapı Arayüzü</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_CURRENT" dependent="0">
+			<STRING>Seçili Türlerin Tümünü Seç</STRING>
+			<SHORT_STRING>Tümünü Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_NORMAL" dependent="0">
+			<STRING>Veri Göstergesi: SİYASİ</STRING>
+			<SHORT_STRING>Veri Göstergesi: SİYASİ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_ECONOMY" dependent="0">
+			<STRING>Veri Göstergesi: EKONOMİ</STRING>
+			<SHORT_STRING>Veri Göstergesi: EKONOMİ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_MARKET" dependent="0">
+			<STRING>Veri Göstergesi: PAZAR</STRING>
+			<SHORT_STRING>Veri Göstergesi: PAZAR</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_MILITARY" dependent="0">
+			<STRING>Veri Göstergesi: ASKERİ</STRING>
+			<SHORT_STRING>Veri Göstergesi: ASKERİ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_LIBRARY" dependent="0">
+			<STRING>Veri Göstergesi: ŞEHİRLER</STRING>
+			<SHORT_STRING>Veri Göstergesi: ŞEHİRLER</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_TECHNOLOGY" dependent="0">
+			<STRING>Veri Göstergesi: YÜKSELTMELER</STRING>
+			<SHORT_STRING>Veri Göstergesi: YÜKSELTMELER</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_GROUPS" dependent="0">
+			<STRING>Veri Göstergesi: GRUPLAR</STRING>
+			<SHORT_STRING>Veri Göstergesi: GRUPLAR</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_DIPLOMACY">
+			<STRING>Veri Göstergesi: DİPLOMASİ</STRING>
+			<SHORT_STRING>Veri Göstergesi: DİPLOMASİ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_WONDERS">
+			<STRING>Veri Göstergesi: HARİKALAR</STRING>
+			<SHORT_STRING>Veri Göstergesi: HARİKALAR</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_TEXTURES" dependent="0">
+			<STRING>SYSTEM_TOGGLE_TEXTURES</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_TEXTURES</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_MEM_WINDOW" dependent="0">
+			<STRING>SYSTEM_TOGGLE_MEM_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_MEM_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MEM_PRINT" dependent="0">
+			<STRING>SYSTEM_MEM_PRINT</STRING>
+			<SHORT_STRING>SYSTEM_MEM_PRINT</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_LOG" dependent="0">
+			<STRING>SYSTEM_SCRIPT_LOG</STRING>
+			<SHORT_STRING>SYSTEM_SCRIPT_LOG</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TEST_XML_WINDOW" dependent="0">
+			<STRING>SYSTEM_TEST_XML_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_TEST_XML_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_RELOAD_XML_WINDOW" dependent="0">
+			<STRING>SYSTEM_RELOAD_XML_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_RELOAD_XML_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_EDITOR_EDIT_MODE" dependent="0">
+			<STRING>SYSTEM_SCRIPT_EDITOR_EDIT_MODE</STRING>
+			<SHORT_STRING>SYSTEM_SCRIPT_EDITOR_EDIT_MODE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_RESEARCH" dependent="0">
+			<STRING>Araştırma Binası Bul</STRING>
+			<SHORT_STRING>Araştırma Binası Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_COUNTERINTEL" dependent="0">
+			<STRING>Casus: Karşı İstihbarat</STRING>
+			<SHORT_STRING>Karşı İstihbarat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_FARM" dependent="0">
+			<STRING>Şehir: Çiftliklerde Toplan</STRING>
+			<SHORT_STRING>Çiftliklerde Toplan</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_WOOD" dependent="0">
+			<STRING>Şehir: Oduncu Kamplarında Toplan</STRING>
+			<SHORT_STRING>Oduncu Kamplarında Toplan</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_MINE" dependent="0">
+			<STRING>Şehir: Madenlerde Toplan</STRING>
+			<SHORT_STRING>Madenlerde Toplan</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_ALL" dependent="0">
+			<STRING>Şehir: Kaynak Binalarında Toplan</STRING>
+			<SHORT_STRING>Kaynak Binalarında Toplan</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_LOW">
+			<STRING>Yardım Ayrıntısı: DÜŞÜK</STRING>
+			<SHORT_STRING>Yardım Ayrıntısı DÜŞÜK</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_MEDIUM">
+			<STRING>Yardım Ayrıntısı: ORTA</STRING>
+			<SHORT_STRING>Yardım Ayrıntısı ORTA</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_HIGH">
+			<STRING>Yardım Ayrıntısı: YÜKSEK</STRING>
+			<SHORT_STRING>Yardım Ayrıntısı YÜKSEK</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_OFF">
+			<STRING>Veri Göstergesini Kapat</STRING>
+			<SHORT_STRING>Veri Göstergesini Kapat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_GRANARY2">
+			<STRING>Tahıl Ambarı: Piyade Bonusunu Yükselt</STRING>
+			<SHORT_STRING>Asker Üretimini Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_LUMBER2">
+			<STRING>Hızarhane: Bina Bonusunu Yükselt</STRING>
+			<SHORT_STRING>Bina Bonusunu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SMELTER2">
+			<STRING>Dökümhane: İkmal Bonusunu Yükselt</STRING>
+			<SHORT_STRING>İkmal Bonusunu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FORT2">
+			<STRING>Hisar: Casus/General Bonusunu Yükselt</STRING>
+			<SHORT_STRING>Casus/General Bonusunu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_INFINITE">
+			<STRING>Bina: Sonsuz Sıra Aç/Kapa</STRING>
+			<SHORT_STRING>Sonsuz Kuyruk</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_SCENE_EVENTS">
+			<STRING>SYSTEM_SHOW_SCENE_EVENTS</STRING>
+			<SHORT_STRING>SYSTEM_SHOW_SCENE_EVENTS</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_FRAMERATE" dependent="0">
+			<STRING>Kare Hızını Dök</STRING>
+			<SHORT_STRING>FPS Dök</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRSTRIKE">
+			<STRING>Hava Birimi: Hava Saldırısı</STRING>
+			<SHORT_STRING>Hava Akını</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TRANSFER">
+			<STRING>Hava Birimi: Aktar</STRING>
+			<SHORT_STRING>Aktar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RETURN">
+			<STRING>Hava Birimi: Üsse Dön</STRING>
+			<SHORT_STRING>Üsse Dön</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_RECALL">
+			<STRING>Hava Üssü: Tüm Uçakları Geri Çağır</STRING>
+			<SHORT_STRING>Tüm Uçakları Geri Çağır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_REPEAT">
+			<STRING>Hava Üssü: Emir Tekrarı Aç/Kapa</STRING>
+			<SHORT_STRING>Emir Tekrarı Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTERS">
+			<STRING>Hava Üssü: Tüm Avcı Uçaklarını Seç</STRING>
+			<SHORT_STRING>Tüm Avcı Uçaklarını Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBERS">
+			<STRING>Hava Üssü: Tüm Bombacıları Seç</STRING>
+			<SHORT_STRING>Tüm Bombacıları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELIS">
+			<STRING>Hava Üssü: Tüm Helikopterleri Seç</STRING>
+			<SHORT_STRING>Tüm Helikopterleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_SCRAMBLE">
+			<STRING>Hava Üssü: Tüm Uçakları Kaldır</STRING>
+			<SHORT_STRING>Tüm Uçakları Kaldır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TEMPLE_2">
+			<STRING>Tapınak: Vergilendirmeyi Yükselt</STRING>
+			<SHORT_STRING>Vergilendirmeyi Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SENATE">
+			<STRING>Senato: Totaliter Yönetim Araştır</STRING>
+			<SHORT_STRING>Totaliter Yönetim Araştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SENATE_2">
+			<STRING>Senato: Uzlaşmacı Yönetim Araştır</STRING>
+			<SHORT_STRING>Uzlaşmacı Yönetim Araştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_BEHIND">
+			<STRING>SYSTEM_TOGGLE_SCENE_BEHIND</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_SCENE_BEHIND</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_RENAME">
+			<STRING>Şehir: Ad Değiştir</STRING>
+			<SHORT_STRING>Yeniden Adlandır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_REPAIR">
+			<STRING>Vatandaş: Onar</STRING>
+			<SHORT_STRING>Onar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PEASANT_ALARM">
+			<STRING>Vatandaş: Alarm</STRING>
+			<SHORT_STRING>Alarm</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORM">
+			<STRING>Birim: Düzeni Değiştir</STRING>
+			<SHORT_STRING>Düzen</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_AIRSTRIKE">
+			<STRING>Uçak Gemisi: Hava Görevi</STRING>
+			<SHORT_STRING>Hava Görevi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_ALLAIR">
+			<STRING>Uçak Gemisi: Tüm Uçakları Seç</STRING>
+			<SHORT_STRING>Tüm Uçakları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_RECALL">
+			<STRING>Uçak Gemisi: Tüm Uçakları Geri Çağır</STRING>
+			<SHORT_STRING>Tüm Uçakları Geri Çağır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_REPEAT">
+			<STRING>Uçak Gemisi: Emir Tekrarı Aç/Kapa</STRING>
+			<SHORT_STRING>Emir Tekrarı Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_BEHIND">
+			<STRING>Binaların Arkasındaki Birimler Aç/Kapa</STRING>
+			<SHORT_STRING>Binaların Arkasındaki Birimler Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_TAUNTS">
+			<STRING>Sesli Alaylar Aç/Kapa</STRING>
+			<SHORT_STRING>Sesli Alaylar Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BACK_TO_WORK">
+			<STRING>Bina: İşe Dön</STRING>
+			<SHORT_STRING>İşe Dön</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DISBAND_ALL">
+			<STRING>Birim: TÜMÜNÜ Dağıt</STRING>
+			<SHORT_STRING>TÜMÜNÜ Dağıt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MESSAGE_UP">
+			<STRING>İleti Listesini YUKARI Kaydır</STRING>
+			<SHORT_STRING>İleti Listesini YUKARI Kaydır</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MESSAGE_DOWN">
+			<STRING>İleti Listesini AŞAĞI Kaydır</STRING>
+			<SHORT_STRING>İleti Listesini AŞAĞI Kaydır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SELECT_FILE">
+			<STRING>Betik Düzenleyici: Yüklü Betikler</STRING>
+			<SHORT_STRING>Yüklü Betikler</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_NEW">
+			<STRING>Betik Düzenleyici: Yeni (Boş Dosya)</STRING>
+			<SHORT_STRING>Yeni (Boş Dosya)</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_NEW_TEMP">
+			<STRING>Betik Düzenleyici: Yeni Senaryo Betiği</STRING>
+			<SHORT_STRING>Yeni Senaryo Betiği</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_LOAD">
+			<STRING>Betik Düzenleyici: Aç</STRING>
+			<SHORT_STRING>Açık</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SAVE">
+			<STRING>Betik Düzenleyici: Kaydet</STRING>
+			<SHORT_STRING>Kaydet</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SAVE_AS">
+			<STRING>Betik Düzenleyici: Farklı Kaydet...</STRING>
+			<SHORT_STRING>Farklı Kaydet...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_CLOSE">
+			<STRING>Betik Düzenleyici: Betiği Kapat</STRING>
+			<SHORT_STRING>Betiği Kapat</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_EXIT">
+			<STRING>Betik Düzenleyici: Düzenleyiciden Çık</STRING>
+			<SHORT_STRING>Çıkış</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_UNDO">
+			<STRING>Betik Düzenleyici: Geri Al</STRING>
+			<SHORT_STRING>Geri Al</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REDO">
+			<STRING>Betik Düzenleyici: Yinele</STRING>
+			<SHORT_STRING>Yinele</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_COPY">
+			<STRING>Betik Düzenleyici: Kopyala</STRING>
+			<SHORT_STRING>Kopyala</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_CUT">
+			<STRING>Betik Düzenleyici: Kes</STRING>
+			<SHORT_STRING>Kes</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_PASTE">
+			<STRING>Betik Düzenleyici: Yapıştır</STRING>
+			<SHORT_STRING>Yapıştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SELECT_ALL">
+			<STRING>Betik Düzenleyici: Tümünü Seç</STRING>
+			<SHORT_STRING>Tümünü Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_LINE">
+			<STRING>Betik Düzenleyici: Satıra Git...</STRING>
+			<SHORT_STRING>Satıra Git...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_TRIGGER">
+			<STRING>Betik Düzenleyici: Tetikleyiciye Git</STRING>
+			<SHORT_STRING>Tetikleyiciye kaydır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_SCRIPT">
+			<STRING>Betik Düzenleyici: Betiğe Git</STRING>
+			<SHORT_STRING>Betiğe kaydır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_TOGGLE_BREAK">
+			<STRING>Betik Düzenleyici: Kesme Noktası Aç/Kapa</STRING>
+			<SHORT_STRING>Kesme Noktası Aç/Kapa</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_FIND">
+			<STRING>Betik Düzenleyici: Bul...</STRING>
+			<SHORT_STRING>Bul...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_FIND_NEXT">
+			<STRING>Betik Düzenleyici: Sonrakini Bul</STRING>
+			<SHORT_STRING>Sonrakini Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REPLACE">
+			<STRING>Betik Düzenleyici: Değiştir...</STRING>
+			<SHORT_STRING>Değiştir...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_TOGGLE_OUTPUT">
+			<STRING>Betik Düzenleyici: Çıktı Günlüğü</STRING>
+			<SHORT_STRING>Çıktı Günlüğü</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SHOW_LOG">
+			<STRING>Betik Düzenleyici: Oyun Betiği Günlüğü</STRING>
+			<SHORT_STRING>Oyun Betiği Günlüğü</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_INSERT_TRIGGER">
+			<STRING>Betik Düzenleyici: Tetikleyici Ekle...</STRING>
+			<SHORT_STRING>Tetikleyici Bloğu Ekle...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_INSERT_FUNC">
+			<STRING>Betik Düzenleyici: İşlev Ekle...</STRING>
+			<SHORT_STRING>Tetikleyici İşlevi Ekle...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_COMPILE">
+			<STRING>Betik Düzenleyici: Derle</STRING>
+			<SHORT_STRING>Derle</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_RUN">
+			<STRING>Betik Düzenleyici: Çalıştır</STRING>
+			<SHORT_STRING>Çalıştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_INTO">
+			<STRING>Betik Düzenleyici: İçine Gir</STRING>
+			<SHORT_STRING>İçine Gir</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_OVER">
+			<STRING>Betik Düzenleyici: Üzerinden Geç</STRING>
+			<SHORT_STRING>Üzerinden Geç</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_OUT">
+			<STRING>Betik Düzenleyici: Dışına Çık</STRING>
+			<SHORT_STRING>Dışarı Çık</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_TO_TRIGGER">
+			<STRING>Betik Düzenleyici: Tetikleyiciye Kadar Adımla</STRING>
+			<SHORT_STRING>Tetikleyiciye Kadar Adımla</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_TO_LINE">
+			<STRING>Betik Düzenleyici: Satıra Kadar Çalıştır</STRING>
+			<SHORT_STRING>Satıra Kadar Çalıştır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STOP">
+			<STRING>Betik Düzenleyici: Durdur</STRING>
+			<SHORT_STRING>Durdur</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_BREAKPOINTS">
+			<STRING>Betik Düzenleyici: Kesme Noktaları</STRING>
+			<SHORT_STRING>Kesme Noktaları</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REMOVE_BREAKS">
+			<STRING>Betik Düzenleyici: Tüm Kesme Noktalarını Kaldır</STRING>
+			<SHORT_STRING>Tüm Kesme Noktalarını Kaldır</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_LOCALS">
+			<STRING>Betik Düzenleyici: Yerel Değişkenleri İzle</STRING>
+			<SHORT_STRING>Yerel Değişkenleri İzle</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_STATICS">
+			<STRING>Betik Düzenleyici: Statik Değişkenleri İzle</STRING>
+			<SHORT_STRING>Statik Değişkenleri İzle</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_TRIGGERS">
+			<STRING>Betik Düzenleyici: Tetikleyicileri İzle</STRING>
+			<SHORT_STRING>Tetikleyicileri İzle</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_CUSTOM">
+			<STRING>Betik Düzenleyici: Özel İzleme</STRING>
+			<SHORT_STRING>Özel İzleme</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_RETURNS">
+			<STRING>Betik Düzenleyici: Dönüş Değerlerini İzle</STRING>
+			<SHORT_STRING>Dönüş Değerlerini İzle</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_FLAME">
+			<STRING>Kışla: Alev Makinesi Üret</STRING>
+			<SHORT_STRING>Alev Makinesi Üret</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_AA">
+			<STRING>Fabrika: Uçaksavar Topu Üret</STRING>
+			<SHORT_STRING>Uçaksavar Topu Üret</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_AA_UPGRADE">
+			<STRING>Fabrika: Uçaksavar Topunu Yükselt</STRING>
+			<SHORT_STRING>Uçaksavar Topunu Yükselt</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SCHOLAR_TO_ARMS">
+			<STRING>Âlim: Silah Başına</STRING>
+			<SHORT_STRING>Silah Başına!</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_GROUND">
+			<STRING>Füze Silosu: Zemine Saldır</STRING>
+			<SHORT_STRING>Zemine saldır</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_RUN_SECTION_PROFILE">
+			<STRING>SYSTEM_RUN_SECTION_PROFILE</STRING>
+			<SHORT_STRING>SYSTEM_RUN_SECTION_PROFILE</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_SECTION_PROFILE">
+			<STRING>SYSTEM_SHOW_SECTION_PROFILE</STRING>
+			<SHORT_STRING>SYSTEM_SHOW_SECTION_PROFILE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT">
+			<STRING>Hisar Bul</STRING>
+			<SHORT_STRING>Hisar Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT_NOZOOM">
+			<STRING>Hisar Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Hisar Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT_ALL">
+			<STRING>Tüm Hisarları Seç</STRING>
+			<SHORT_STRING>Tüm Hisarları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER">
+			<STRING>Kule Bul</STRING>
+			<SHORT_STRING>Kule Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER_NOZOOM">
+			<STRING>Kule Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Kule Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER_ALL">
+			<STRING>Tüm Kuleleri Seç</STRING>
+			<SHORT_STRING>Tüm Kuleleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SENATE">
+			<STRING>Senato Bul</STRING>
+			<SHORT_STRING>Senato Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SENATE_NOZOOM">
+			<STRING>Senato Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Senato Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE">
+			<STRING>Tapınak Bul</STRING>
+			<SHORT_STRING>Tapınak Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE_NOZOOM">
+			<STRING>Tapınak Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Tapınak Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE_ALL">
+			<STRING>Tüm Tapınakları Seç</STRING>
+			<SHORT_STRING>Tüm Tapınakları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MERCHANT">
+			<STRING>Boştaki Tüccarı Bul</STRING>
+			<SHORT_STRING>Boştaki Tüccarı Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MERCHANT_NOZOOM">
+			<STRING>Boştaki Tüccarı Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Boştaki Tüccarı Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_MERCHANT">
+			<STRING>Boştaki Tüm Tüccarları Seç</STRING>
+			<SHORT_STRING>Boştaki Tüm Tüccarları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FISHERMAN">
+			<STRING>Boştaki Balıkçıyı Bul</STRING>
+			<SHORT_STRING>Boştaki Balıkçıyı Bul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FISHERMAN_NOZOOM">
+			<STRING>Boştaki Balıkçıyı Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Boştaki Balıkçıyı Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_FISHERMAN">
+			<STRING>Boştaki Tüm Balıkçıları Seç</STRING>
+			<SHORT_STRING>Boştaki Tüm Balıkçıları Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PATRIOT">
+			<STRING>Vatansever Seç</STRING>
+			<SHORT_STRING>Vatansever Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PATRIOT_NOZOOM">
+			<STRING>Vatansever Seç, Zoomsuz</STRING>
+			<SHORT_STRING>Vatansever Seç, Zoomsuz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELECT_DAMAGED">
+			<STRING>Tüm Hasarlı Birimleri Seç</STRING>
+			<SHORT_STRING>Tüm Hasarlı Birimleri Seç</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FILTER_DAMAGED">
+			<STRING>Seçimi Hasarlı Birimlere Göre Süz</STRING>
+			<SHORT_STRING>Seçimi Hasarlı Birimlere Göre Süz</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FILTER_ONSCREEN">
+			<STRING>Seçimi Ekrandaki Birimlere Göre Süz</STRING>
+			<SHORT_STRING>Seçimi Ekrandaki Birimlere Göre Süz</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MARWAN_START">
+			<STRING>SYSTEM_MARWAN_START</STRING>
+			<SHORT_STRING>SYSTEM_MARWAN_START</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MARWAN_STOP">
+			<STRING>SYSTEM_MARWAN_STOP</STRING>
+			<SHORT_STRING>SYSTEM_MARWAN_STOP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HILITE_UP">
+			<STRING>SYSTEM_HILITE_UP</STRING>
+			<SHORT_STRING>SYSTEM_HILITE_UP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HILITE_DOWN">
+			<STRING>SYSTEM_HILITE_DOWN</STRING>
+			<SHORT_STRING>SYSTEM_HILITE_DOWN</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SENATE">
+			<STRING>Senato İnşa Et</STRING>
+			<SHORT_STRING>Senato İnşa Et</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_h">
+			<STRING>MENU_h</STRING>
+			<SHORT_STRING>MENU_h</SHORT_STRING>
+		</KEY>
+  </KEYS>
+</ROOT>

@@ -1,0 +1,1656 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Brian Reynolds (Big Huge Games) --><OPTIONS xml:space="preserve">
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION: NAME and DESC elements-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="0" clip="0">
+    <ENGLISH_NAME>Buildings</ENGLISH_NAME>
+    <NAME>Edifícios</NAME>
+    <DESC>Clique para construir um novo edifício.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="0" clip="0">
+    <ENGLISH_NAME>Military Buildings</ENGLISH_NAME>
+    <NAME>Edifícios militares</NAME>
+    <DESC>Clique para construir um novo edifício militar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="0" clip="0">
+    <ENGLISH_NAME>Wonders</ENGLISH_NAME>
+    <NAME>Maravilhas</NAME>
+    <DESC>Clique para construir uma nova maravilha.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="0" clip="0">
+    <ENGLISH_NAME>Repair/Build</ENGLISH_NAME>
+    <NAME>Reparar/Construir</NAME>
+    <DESC>Clique para reparar um edifício ou adicionar trabalhadores à construção de um edifício.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Craft</ENGLISH_NAME>
+    <NAME>Destreza</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Move Mode</ENGLISH_NAME>
+    <NAME>Modo movimento</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Guard</ENGLISH_NAME>
+    <NAME>Proteger</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Follow</ENGLISH_NAME>
+    <NAME>Seguir</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="4" clip="0">
+    <ENGLISH_NAME>Patrol</ENGLISH_NAME>
+    <NAME>Patrulhar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="6" clip="0">
+    <ENGLISH_NAME>Move</ENGLISH_NAME>
+    <NAME>Mover</NAME>
+    <DESC>Clique para mover.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Attack</ENGLISH_NAME>
+    <NAME>Atacar</NAME>
+    <DESC>Clique para atacar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="3" clip="0">
+    <ENGLISH_NAME>Explore Move</ENGLISH_NAME>
+    <NAME>Mover explorando</NAME>
+    <DESC>Clique para mover-se explorando ruínas.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="6" clip="0">
+    <ENGLISH_NAME>Flee</ENGLISH_NAME>
+    <NAME>Fugir</NAME>
+    <DESC>Clique para fugir dos inimigos.</DESC>
+  </OPTION>
+  <OPTION tex_col="1" tex_row="2" clip="0">
+    <ENGLISH_NAME>Transport To</ENGLISH_NAME>
+    <NAME>Transportar p/</NAME>
+    <DESC>Clique para mover e atravessar a água em transporte.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="2" clip="0">
+    <ENGLISH_NAME>Auto Transport</ENGLISH_NAME>
+    <NAME>Auto-transporte</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="0" clip="0">
+    <ENGLISH_NAME>Disband</ENGLISH_NAME>
+    <NAME>Dispensar</NAME>
+    <DESC>Clique para dispensar a(s) unidade(s) selecionada(s).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disband All</ENGLISH_NAME>
+    <NAME>Dispensar tudo</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Stance</ENGLISH_NAME>
+    <NAME>Postura</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Stance Back</ENGLISH_NAME>
+    <NAME>Postura anterior</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_x="0" tex_y="0" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Formation</ENGLISH_NAME>
+    <NAME>Formação</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Formation Back</ENGLISH_NAME>
+    <NAME>Formação anterior</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="5" tex_row="11" clip="0">
+    <ENGLISH_NAME>Face Left</ENGLISH_NAME>
+    <NAME>Virar à esq.</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="11" clip="0">
+    <ENGLISH_NAME>Face Right</ENGLISH_NAME>
+    <NAME>Virar à dir.</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>About Face</ENGLISH_NAME>
+    <NAME>Meia-volta</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="6" clip="0">
+    <ENGLISH_NAME>Forward</ENGLISH_NAME>
+    <NAME>Avançar</NAME>
+    <DESC>Clique para avançar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="1" clip="0">
+    <ENGLISH_NAME>Halt</ENGLISH_NAME>
+    <NAME>Alto</NAME>
+    <DESC>Clique para interromper a ação atual.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="1" clip="0">
+    <ENGLISH_NAME>Garrison/Heal</ENGLISH_NAME>
+    <NAME>Guarnecer/Curar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="2" clip="0">
+    <ENGLISH_NAME>Alarm Peasant</ENGLISH_NAME>
+    <NAME>Alertar civil</NAME>
+    <DESC>Clique para mandar este trabalhador a um lugar seguro.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="2" clip="0">
+    <ENGLISH_NAME>Alarm</ENGLISH_NAME>
+    <NAME>Alarme</NAME>
+    <DESC>Clique para soar o alarme.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="2" clip="0">
+    <ENGLISH_NAME>All Clear</ENGLISH_NAME>
+    <NAME>Fim do alarme</NAME>
+    <DESC>Clique para encerrar o alarme.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="7" clip="0">
+    <ENGLISH_NAME>Back To Work</ENGLISH_NAME>
+    <NAME>Voltar ao trabalho</NAME>
+    <DESC>Clique para mandar os cidadãos guarnecidos de volta ao trabalho.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="5" tex_row="1" clip="0">
+    <ENGLISH_NAME>Eject All</ENGLISH_NAME>
+    <NAME>Ejetar todos</NAME>
+    <DESC>Clique para ejetar a carga/guarnição.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="2" clip="0">
+    <ENGLISH_NAME>Disembark</ENGLISH_NAME>
+    <NAME>Desembarcar</NAME>
+    <DESC>Clique para desembarcar unidades em um local específico.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="3" clip="0">
+    <ENGLISH_NAME>Auto Explore</ENGLISH_NAME>
+    <NAME>Auto-explorar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="2" clip="0">
+    <ENGLISH_NAME>Bombard Ground</ENGLISH_NAME>
+    <NAME>Bombardear solo</NAME>
+    <DESC>Clique para bombardear um local do mapa em vez de atacar um alvo específico.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="4" clip="0">
+    <ENGLISH_NAME>Transfer</ENGLISH_NAME>
+    <NAME>Transferir</NAME>
+    <DESC>Clique para transferir unidades para outro edifício.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Air Mission</ENGLISH_NAME>
+    <NAME>Missão aérea</NAME>
+    <DESC>Clique para ordenar um ataque aéreo ou uma patrulha aérea.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Air Patrol</ENGLISH_NAME>
+    <NAME>Patrulha aérea</NAME>
+    <DESC>Clique para enviar uma patrulha aérea a um local específico.</DESC>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="0" clip="0">
+    <ENGLISH_NAME>Flight Orders</ENGLISH_NAME>
+    <NAME>Ordens de voo</NAME>
+    <DESC>Clique para dar ordens às aeronaves selecionadas.</DESC>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Fighters</ENGLISH_NAME>
+    <NAME>Selec. caças</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Bombers</ENGLISH_NAME>
+    <NAME>Selec. bombardeiros</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Helicopters</ENGLISH_NAME>
+    <NAME>Selec. helicópteros</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select All Aircraft</ENGLISH_NAME>
+    <NAME>Selec. todas aeronaves</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="7" clip="0">
+    <ENGLISH_NAME>Scramble</ENGLISH_NAME>
+    <NAME>Decolagem imediata</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="11" clip="0">
+    <ENGLISH_NAME>Repeat Orders</ENGLISH_NAME>
+    <NAME>Repetir ordens</NAME>
+    <DESC>Clique para permitir (ou não) que os aviões repitam as ordens recebidas após pousar e reabastecer.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="1" clip="0">
+    <ENGLISH_NAME>Return To Base</ENGLISH_NAME>
+    <NAME>Voltar à base</NAME>
+    <DESC>Clique para mandar esta aeronave de volta à base.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="10" clip="0">
+    <ENGLISH_NAME>Recall</ENGLISH_NAME>
+    <NAME>Chamar de volta</NAME>
+    <DESC>Clique para chamar de volta todas as aeronaves que decolaram daqui e cancelar todos os voos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Create</ENGLISH_NAME>
+    <NAME>Criar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Research</ENGLISH_NAME>
+    <NAME>Pesquisa</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Research Category</ENGLISH_NAME>
+    <NAME>Categoria pesquisa</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Upgrade</ENGLISH_NAME>
+    <NAME>Aprimorar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="4" clip="0">
+    <ENGLISH_NAME>Rally Point</ENGLISH_NAME>
+    <NAME>Ponto de encontro</NAME>
+    <DESC>Clique para definir o ponto de encontro do edifício.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="3" tex_row="4" clip="0">
+    <ENGLISH_NAME>Clear Rally Point</ENGLISH_NAME>
+    <NAME>Remover ponto encontro</NAME>
+    <DESC>Clique para remover o ponto de encontro do edifício.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Farms</ENGLISH_NAME>
+    <NAME>Reunir nas Fazendas</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="1" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Woodcutter's Camps</ENGLISH_NAME>
+    <NAME>Reunir nos Campos de Lenhadores</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="2" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Mines</ENGLISH_NAME>
+    <NAME>Reunir nas Minas</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="3" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Resource Buildings</ENGLISH_NAME>
+    <NAME>Reunir nos edif. de recursos</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy</ENGLISH_NAME>
+    <NAME>Comp.</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy 500</ENGLISH_NAME>
+    <NAME>Comprar 500</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy All</ENGLISH_NAME>
+    <NAME>Comprar tudo</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell</ENGLISH_NAME>
+    <NAME>Vend.</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell 500</ENGLISH_NAME>
+    <NAME>Vender 500</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell All</ENGLISH_NAME>
+    <NAME>Vender tudo</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="5" clip="0">
+    <ENGLISH_NAME>Building Stance</ENGLISH_NAME>
+    <NAME>Postura do edifício</NAME>
+    <DESC>Clique para definir a postura inicial das unidades produzidas aqui.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Infinite Queue</ENGLISH_NAME>
+    <NAME>Fila infinita</NAME>
+    <DESC>Clique para definir produção infinita neste edifício.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="1" clip="0">
+    <ENGLISH_NAME>Next</ENGLISH_NAME>
+    <NAME>Próximo</NAME>
+    <DESC>Clique para mostrar opções adicionais.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="0" clip="0">
+    <ENGLISH_NAME>Back</ENGLISH_NAME>
+    <NAME>Voltar</NAME>
+    <DESC>Clique para voltar às opções de diplomacia.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="2" clip="0">
+    <ENGLISH_NAME>Cancel</ENGLISH_NAME>
+    <NAME>Cancelar</NAME>
+    <DESC>Clique para cancelar.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Treaty</ENGLISH_NAME>
+    <NAME>Tratado</NAME>
+    <DESC>Clique para oferecer.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Declare</ENGLISH_NAME>
+    <NAME>Declarar</NAME>
+    <DESC>Clique para declarar.</DESC>
+  </OPTION>
+  <OPTION tex_col="3" tex_row="1" clip="0">
+    <ENGLISH_NAME>Tribute</ENGLISH_NAME>
+    <NAME>Tributo</NAME>
+    <DESC>Clique para oferecer tributo.</DESC>
+  </OPTION>
+  <OPTION tex_col="4" tex_row="1" clip="0">
+    <ENGLISH_NAME>Clear Tributes</ENGLISH_NAME>
+    <NAME>Limpar tributos</NAME>
+    <DESC>Clique para limpar os tributos.</DESC>
+  </OPTION>
+  <OPTION tex_col="5" tex_row="1" clip="0">
+    <ENGLISH_NAME>Clear All</ENGLISH_NAME>
+    <NAME>Limpar tudo</NAME>
+    <DESC>Limpar todas as propostas.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Demand Tribute</ENGLISH_NAME>
+    <NAME>Exigir tributo</NAME>
+    <DESC>Clique para exigir tributo.</DESC>
+  </OPTION>
+  <OPTION tex_col="2" tex_row="1" clip="0">
+    <ENGLISH_NAME>Propose Attack</ENGLISH_NAME>
+    <NAME>Propor ataque</NAME>
+    <DESC>Clique para propor um ataque.</DESC>
+  </OPTION>
+  <OPTION tex_col="6" tex_row="1" clip="0">
+    <ENGLISH_NAME>Propose"</ENGLISH_NAME>
+    <NAME>Propor"</NAME>
+    <DESC>Clique para propor a oferta atual.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Accept"</ENGLISH_NAME>
+    <NAME>Aceitar"</NAME>
+    <DESC>Clique para aceitar a oferta atual.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Reject"</ENGLISH_NAME>
+    <NAME>Rejeitar"</NAME>
+    <DESC>Clique para rejeitar a oferta atual.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Current Resources</ENGLISH_NAME>
+    <NAME>Recursos atuais</NAME>
+    <DESC>Mostra seus recursos atuais.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Close Diplomacy</ENGLISH_NAME>
+    <NAME>Fechar Diplomacia</NAME>
+    <DESC>Clique para fechar a diplomacia.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Back to Main Diplomacy</ENGLISH_NAME>
+    <NAME>Voltar à Diplomacia</NAME>
+    <DESC>Clique para voltar ao menu principal de diplomacia.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy Status</ENGLISH_NAME>
+    <NAME>Status diplomático</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat</ENGLISH_NAME>
+    <NAME>Chat</NAME>
+    <DESC>Clique para conversar com outros jogadores.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat All</ENGLISH_NAME>
+    <NAME>Chat todos</NAME>
+    <DESC>Clique para conversar com todos os jogadores.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat Allies</ENGLISH_NAME>
+    <NAME>Chat aliados</NAME>
+    <DESC>Clique para conversar com todos os aliados.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat Enemies</ENGLISH_NAME>
+    <NAME>Chat inimigos</NAME>
+    <DESC>Clique para conversar com todos os inimigos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Signal Other Players</ENGLISH_NAME>
+    <NAME>Sinalizar aos jogadores</NAME>
+    <DESC>Clique para sinalizar neste local.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Resign</ENGLISH_NAME>
+    <NAME>Desistir</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Quit</ENGLISH_NAME>
+    <NAME>Sair</NAME>
+    <DESC>Clique para sair do jogo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Menu</ENGLISH_NAME>
+    <NAME>Menu do Jogo</NAME>
+    <DESC>Clique para abrir o menu do jogo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Options Screen</ENGLISH_NAME>
+    <NAME>Tela de opções</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Speed Slower</ENGLISH_NAME>
+    <NAME>Diminuir velocidade</NAME>
+    <DESC>Clique para deixar o jogo mais lento.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Speed Faster</ENGLISH_NAME>
+    <NAME>Aumentar velocidade</NAME>
+    <DESC>Clique para deixar o jogo mais rápido.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Objectives</ENGLISH_NAME>
+    <NAME>Objetivos</NAME>
+    <DESC>Clique para exibir os objetivos e os requisitos de vitória.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle</ENGLISH_NAME>
+    <NAME>Alternar</NAME>
+    <DESC>Clique para achar a próxima unidade.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Idle Citizen</ENGLISH_NAME>
+    <NAME>Cidadão ocioso</NAME>
+    <DESC>Clique para achar o próximo cidadão ocioso.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Idle Scout</ENGLISH_NAME>
+    <NAME>Batedor ocioso</NAME>
+    <DESC>Clique para achar o próximo batedor ou unidade de forças especiais.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Military</ENGLISH_NAME>
+    <NAME>Próx. militar</NAME>
+    <DESC>Clique para achar a próxima unidade militar.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next General</ENGLISH_NAME>
+    <NAME>Próximo General</NAME>
+    <DESC>Clique para achar o próximo General.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Spy</ENGLISH_NAME>
+    <NAME>Próximo Espião</NAME>
+    <DESC>Clique para achar o próximo Espião.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Supply</ENGLISH_NAME>
+    <NAME>Próx. suprimento</NAME>
+    <DESC>Clique para achar a próxima unidade de suprimentos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next City</ENGLISH_NAME>
+    <NAME>Próxima Cidade</NAME>
+    <DESC>Clique para achar a próxima Cidade.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Research</ENGLISH_NAME>
+    <NAME>Próxima pesquisa</NAME>
+    <DESC>Clique para achar o próximo edifício com pesquisa disponível.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Citizens</ENGLISH_NAME>
+    <NAME>Todos os Cidadãos</NAME>
+    <DESC>Clique para selecionar TODOS os cidadãos ociosos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Scout</ENGLISH_NAME>
+    <NAME>Todos os batedores</NAME>
+    <DESC>Clique para selecionar TODOS os batedores e forças especiais.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Military</ENGLISH_NAME>
+    <NAME>Todos os militares</NAME>
+    <DESC>Clique para selecionar TODAS as unidades militares (até o máximo de seleção).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Generals</ENGLISH_NAME>
+    <NAME>Todos os Generais</NAME>
+    <DESC>Clique para selecionar TODOS os generais.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Spies</ENGLISH_NAME>
+    <NAME>Todos os Espiões</NAME>
+    <DESC>Clique para selecionar TODOS os espiões.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Supply</ENGLISH_NAME>
+    <NAME>Todos os suprimentos</NAME>
+    <DESC>Clique para selecionar TODAS as unidades de suprimentos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Building</ENGLISH_NAME>
+    <NAME>Todos os edifícios</NAME>
+    <DESC>Clique para selecionar TODOS os edifícios deste tipo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Citizen</ENGLISH_NAME>
+    <NAME>Selec. cidadão</NAME>
+    <DESC>Clique para selecionar o próximo cidadão ocioso.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Scout</ENGLISH_NAME>
+    <NAME>Selec. batedor</NAME>
+    <DESC>Clique para selecionar o próximo batedor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Military</ENGLISH_NAME>
+    <NAME>Selec. militar</NAME>
+    <DESC>Clique para selecionar a próxima unidade militar.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select General</ENGLISH_NAME>
+    <NAME>Selec. general</NAME>
+    <DESC>Clique para selecionar o próximo general.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Spy</ENGLISH_NAME>
+    <NAME>Selec. espião</NAME>
+    <DESC>Clique para selecionar o próximo espião.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Supply</ENGLISH_NAME>
+    <NAME>Selec. suprimento</NAME>
+    <DESC>Clique para selecionar a próxima unidade de suprimentos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Building</ENGLISH_NAME>
+    <NAME>Selec. edifício</NAME>
+    <DESC>Clique para selecionar o próximo edifício deste tipo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Alternar cidadão ativo</NAME>
+    <DESC>Clique para achar o próximo cidadão (mesmo se não estiver ocioso).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Todos os cidadãos ativos</NAME>
+    <DESC>Clique para selecionar todos os cidadãos (mesmo os não ociosos).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Selec. cidadão ativo</NAME>
+    <DESC>Clique para selecionar o próximo cidadão (mesmo se não estiver ocioso).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select all of Currently Selected Types</ENGLISH_NAME>
+    <NAME>Selecionados todos os tipos já selecionados</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Clock Display</ENGLISH_NAME>
+    <NAME>Ligar/desligar relógio</NAME>
+    <DESC>Clique para ligar/desligar o relógio do jogo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Game Data</ENGLISH_NAME>
+    <NAME>Ligar/desl. dados do jogo</NAME>
+    <DESC>Clique para ligar/desligar a exibição de dados.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Data Display</ENGLISH_NAME>
+    <NAME>Exibir dados</NAME>
+    <DESC>Clique para alternar a exibição de dados.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Prev Data Display</ENGLISH_NAME>
+    <NAME>Exibição de dados anterior</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Research Display</ENGLISH_NAME>
+    <NAME>Ligar/desl. exibição de pesquisa</NAME>
+    <DESC>Clique para ativar/desativar a exibição de pesquisas.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Help Text Detail</ENGLISH_NAME>
+    <NAME>Detalhe do texto de ajuda</NAME>
+    <DESC>Clique para mudar o detalhe do texto de ajuda.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Prev Help Detail</ENGLISH_NAME>
+    <NAME>Detalhe de ajuda anterior</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Advanced Options</ENGLISH_NAME>
+    <NAME>Opções avançadas</NAME>
+    <DESC>Clique para ativar/desativar os menus avançados.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Clock</ENGLISH_NAME>
+    <NAME>Alternar relógio</NAME>
+    <DESC>Clique para ativar/desativar a exibição do relógio da partida.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Friend/Foe Colors</ENGLISH_NAME>
+    <NAME>Ativ./desat. cores aliado/inimigo</NAME>
+    <DESC>Clique para ativar/desativar as cores de aliado/inimigo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle City Names</ENGLISH_NAME>
+    <NAME>Ativ./desat. nomes de cidades</NAME>
+    <DESC>Clique para ativar/desativar os nomes das cidades.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Units Behind</ENGLISH_NAME>
+    <NAME>Ativ./desat. unidades ocultas</NAME>
+    <DESC>Clique para ativar/desativar a exibição de unidades atrás de construções e árvores.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Audio Taunts</ENGLISH_NAME>
+    <NAME>Ativ./desat. provocações</NAME>
+    <DESC>Clique para ativar/desativar as provocações em áudio.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Goods Display</ENGLISH_NAME>
+    <NAME>Alternar exibição de bens</NAME>
+    <DESC>Clique para alternar a exibição de bens.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Political Data</ENGLISH_NAME>
+    <NAME>Dados políticos</NAME>
+    <DESC>Clique para exibir os dados de POLÍTICA.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Economic Data</ENGLISH_NAME>
+    <NAME>Dados econômicos</NAME>
+    <DESC>Clique para exibir os dados de ECONOMIA.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Market Data</ENGLISH_NAME>
+    <NAME>Dados de mercado</NAME>
+    <DESC>Clique para exibir os dados de MERCADO.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Military Data</ENGLISH_NAME>
+    <NAME>Dados militares</NAME>
+    <DESC>Clique para exibir os dados MILITARES.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cities Data</ENGLISH_NAME>
+    <NAME>Dados das cidades</NAME>
+    <DESC>Clique para exibir os dados de CIDADES.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Upgrade Data</ENGLISH_NAME>
+    <NAME>Dados de melhorias</NAME>
+    <DESC>Clique para exibir os dados de MELHORIAS.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Control Groups</ENGLISH_NAME>
+    <NAME>Grupos de controle</NAME>
+    <DESC>Clique para exibir os dados de GRUPOS.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomacia</NAME>
+    <DESC>Clique para exibir os dados de DIPLOMACIA.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Wonders</ENGLISH_NAME>
+    <NAME>Maravilhas</NAME>
+    <DESC>Clique para exibir os dados de MARAVILHAS.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Data Off</ENGLISH_NAME>
+    <NAME>Dados desativados</NAME>
+    <DESC>Clique para DESATIVAR a exibição de dados.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Stats Display</ENGLISH_NAME>
+    <NAME>Alternar estatísticas</NAME>
+    <DESC>Clique para alternar a exibição de estatísticas.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Options</ENGLISH_NAME>
+    <NAME>Ativ./desat. opções</NAME>
+    <DESC>Clique para ativar/desativar esta opção.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Strategic Map</ENGLISH_NAME>
+    <NAME>Mapa estratégico</NAME>
+    <DESC>Clique para ativar/desativar a visão do mapa estratégico.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Zoom In</ENGLISH_NAME>
+    <NAME>Aproximar</NAME>
+    <DESC>Clique para aproximar.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Zoom Out</ENGLISH_NAME>
+    <NAME>Afastar</NAME>
+    <DESC>Clique para afastar.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save Zoom In</ENGLISH_NAME>
+    <NAME>Salvar aproximar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save Zoom Out</ENGLISH_NAME>
+    <NAME>Salvar afastar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Center</ENGLISH_NAME>
+    <NAME>Centrar</NAME>
+    <DESC>Clique para centralizar no objeto selecionado.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Pause</ENGLISH_NAME>
+    <NAME>Pausa</NAME>
+    <DESC>Clique para pausar a partida.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cannon Time</ENGLISH_NAME>
+    <NAME>Tempo de reserva</NAME>
+    <DESC>Clique para ativar/desativar o "Tempo de reserva".</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Timer</ENGLISH_NAME>
+    <NAME>Cronômetro</NAME>
+    <DESC>Mostra o tempo de "jogo" decorrido e a velocidade atual.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Victory Timer</ENGLISH_NAME>
+    <NAME>Cronômetro de vitória</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Minimap</ENGLISH_NAME>
+    <NAME>Minimapa</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Capital Star</ENGLISH_NAME>
+    <NAME>Estrela da capital</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Flag</ENGLISH_NAME>
+    <NAME>Bandeira nacional</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Govern</ENGLISH_NAME>
+    <NAME>Governar</NAME>
+    <DESC>Clique para mudar de governo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomacia</NAME>
+    <DESC>Clique para conduzir a diplomacia.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomacia</NAME>
+    <DESC>Clique para conduzir a diplomacia.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Good"</ENGLISH_NAME>
+    <NAME>Bens"</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Queue</ENGLISH_NAME>
+    <NAME>Fila</NAME>
+    <DESC>Clique para remover este objeto da fila.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Object</ENGLISH_NAME>
+    <NAME>Objeto</NAME>
+    <DESC>Clique para selecionar este objeto, CTRL+clique para remover, SHIFT+clique para selecionar só objetos deste tipo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Drag</ENGLISH_NAME>
+    <NAME>Arrastar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Mouseover Object</ENGLISH_NAME>
+    <NAME>Objeto sob o mouse</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="6" clip="0">
+    <ENGLISH_NAME>Eject</ENGLISH_NAME>
+    <NAME>Ejetar</NAME>
+    <DESC>Clique para ejetar esta unidade.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Eject Air Fueling</ENGLISH_NAME>
+    <NAME>Ejetar reabastecendo</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Eject Air Ready</ENGLISH_NAME>
+    <NAME>Ejetar prontos</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Click to select this object</ENGLISH_NAME>
+    <NAME>Clique para selecionar este objeto</NAME>
+    <DESC>Clique para selecionar este objeto.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Double clicking selects all objects of this type</ENGLISH_NAME>
+    <NAME>Clique duplo seleciona todos os objetos deste tipo</NAME>
+    <DESC>Clique duplo seleciona todos os objetos deste tipo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Category of research</ENGLISH_NAME>
+    <NAME>Categoria da pesquisa</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Show limits</ENGLISH_NAME>
+    <NAME>Mostrar limites</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Airbase icons</ENGLISH_NAME>
+    <NAME>Ícones da base aérea</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Heads</ENGLISH_NAME>
+    <NAME>Cabeças</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Border</ENGLISH_NAME>
+    <NAME>Borda</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Current Nation</ENGLISH_NAME>
+    <NAME>Nação atual</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation</ENGLISH_NAME>
+    <NAME>Nação</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Current Age</ENGLISH_NAME>
+    <NAME>Idade atual</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Age</ENGLISH_NAME>
+    <NAME>Idade</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Group</ENGLISH_NAME>
+    <NAME>Grupo</NAME>
+    <DESC>Clique direito para criar. Clique esquerdo para selecionar. (Atalhos: CTRL+# para criar; # para selecionar; SHIFT+# para apagar).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Creating Fighter Bomber</ENGLISH_NAME>
+    <NAME>Criando caça-bombardeiro</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="11" clip="0">
+    <ENGLISH_NAME>Must Assimilate City</ENGLISH_NAME>
+    <NAME>Precisa assimilar cidade</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Neutralized</ENGLISH_NAME>
+    <NAME>Neutralizada</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Enemy Territory</ENGLISH_NAME>
+    <NAME>Território inimigo</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>No Nearby City</ENGLISH_NAME>
+    <NAME>Nenhuma cidade próxima</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Building</ENGLISH_NAME>
+    <NAME>Cancelar construção</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Action</ENGLISH_NAME>
+    <NAME>Cancelar ação</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Action</ENGLISH_NAME>
+    <NAME>Cancelar ação</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="11" clip="0">
+    <ENGLISH_NAME>Assimilating</ENGLISH_NAME>
+    <NAME>Assimilando</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Land</ENGLISH_NAME>
+    <NAME>Terra</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Researching</ENGLISH_NAME>
+    <NAME>Pesquisando</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Wonder</ENGLISH_NAME>
+    <NAME>Maravilha</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disbanding</ENGLISH_NAME>
+    <NAME>Dispensando</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select</ENGLISH_NAME>
+    <NAME>Selecionar</NAME>
+    <DESC>Clique para entrar no modo de seleção, no qual você pode selecionar e editar as unidades e construções que colocou no mapa.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Scenario Options</ENGLISH_NAME>
+    <NAME>Opções do cenário</NAME>
+    <DESC>Clique para editar as regras e as configurações de jogo deste cenário.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Options</ENGLISH_NAME>
+    <NAME>Opções de nação</NAME>
+    <DESC>Clique para editar as nações do jogo, incluindo nome, nacionalidade, recursos iniciais e configurações da IA.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Map Generator</ENGLISH_NAME>
+    <NAME>Gerador de mapas</NAME>
+    <DESC>Clique para usar o gerador de mapas para gerar um novo mapa aleatório ou para importar um mapa de um arquivo de imagem.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Terrain</ENGLISH_NAME>
+    <NAME>Terreno</NAME>
+    <DESC>Clique para editar o terreno, incluindo terra/mar, montanhas e florestas.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Rare Resources</ENGLISH_NAME>
+    <NAME>Recursos raros</NAME>
+    <DESC>Clique para adicionar ou remover recursos raros.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Units</ENGLISH_NAME>
+    <NAME>Unidades</NAME>
+    <DESC>Clique para adicionar ou remover unidades.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buildings</ENGLISH_NAME>
+    <NAME>Edifícios</NAME>
+    <DESC>Clique para adicionar ou remover construções.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomacia</NAME>
+    <DESC>Clique para editar a situação diplomática.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomacia</NAME>
+    <DESC>Clique para editar a situação diplomática.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Edit Script</ENGLISH_NAME>
+    <NAME>Editar script</NAME>
+    <DESC>Clique para criar, editar ou depurar o script deste cenário.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Resources</ENGLISH_NAME>
+    <NAME>Recursos iniciais</NAME>
+    <DESC>Clique para editar os recursos iniciais.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Tech</ENGLISH_NAME>
+    <NAME>Tecnol. inicial</NAME>
+    <DESC>Clique para editar a tecnologia inicial que não é da biblioteca.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Library Tech</ENGLISH_NAME>
+    <NAME>Tecnologia inicial da biblioteca</NAME>
+    <DESC>Clique para editar a tecnologia da biblioteca.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>AI settings</ENGLISH_NAME>
+    <NAME>Configurações IA</NAME>
+    <DESC>Clique para editar as configurações da IA dos jogadores do computador.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Leader Name</ENGLISH_NAME>
+    <NAME>Mudar nome do líder</NAME>
+    <DESC>Clique para mudar o nome do líder.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Ignore Pop Cap</ENGLISH_NAME>
+    <NAME>Ignorar limite pop.</NAME>
+    <DESC>Clique para ignorar as restrições de população.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Delete</ENGLISH_NAME>
+    <NAME>Excluir</NAME>
+    <DESC>Clique para excluir esta nação.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Options</ENGLISH_NAME>
+    <NAME>Opções</NAME>
+    <DESC>Clique para abrir o menu de opções do editor de cenários.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Quit</ENGLISH_NAME>
+    <NAME>Sair</NAME>
+    <DESC>Clique para sair do editor de cenários.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save</ENGLISH_NAME>
+    <NAME>Salvar</NAME>
+    <DESC>Clique para salvar este cenário.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Load</ENGLISH_NAME>
+    <NAME>Carregar</NAME>
+    <DESC>Clique para carregar um arquivo de cenário.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Test Scenario</ENGLISH_NAME>
+    <NAME>Testar cenário</NAME>
+    <DESC>Clique para testar este cenário.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Full Editor</ENGLISH_NAME>
+    <NAME>Editor completo</NAME>
+    <DESC>Coisas</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Resume Game</ENGLISH_NAME>
+    <NAME>Retomar partida</NAME>
+    <DESC>Coisas</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Brush</ENGLISH_NAME>
+    <NAME>Selecionar pincel</NAME>
+    <DESC>Coisas</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Place Object</ENGLISH_NAME>
+    <NAME>Colocar objeto</NAME>
+    <DESC>Clique para selecionar este objeto para colocá-lo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Place Item</ENGLISH_NAME>
+    <NAME>Colocar item</NAME>
+    <DESC>Clique para selecionar este item para colocá-lo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Set Status</ENGLISH_NAME>
+    <NAME>Definir situação</NAME>
+    <DESC>Clique para definir a situação diplomática.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="11" clip="0">
+    <ENGLISH_NAME>Increase Hit Points</ENGLISH_NAME>
+    <NAME>Aumentar pontos de vida</NAME>
+    <DESC>Clique para aumentar os pontos de vida do(s) objeto(s) selecionado(s). SHIFT + clique para aumentar mais rápido, ALT + clique para aumentar muito rápido, CTRL + clique para aumentar bem devagar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="11" clip="0">
+    <ENGLISH_NAME>Decrease Hit Points</ENGLISH_NAME>
+    <NAME>Reduzir pontos de vida</NAME>
+    <DESC>Clique para reduzir os pontos de vida do(s) objeto(s) selecionado(s). SHIFT + clique para reduzir mais rápido, ALT + clique para reduzir muito rápido, CTRL + clique para reduzir bem devagar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="8" clip="0">
+    <ENGLISH_NAME>Increase Craft</ENGLISH_NAME>
+    <NAME>Aumentar destreza</NAME>
+    <DESC>Clique para aumentar a destreza do(s) objeto(s) selecionado(s). SHIFT + clique para aumentar mais rápido, ALT + clique para aumentar muito rápido, CTRL + clique para aumentar bem devagar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="9" clip="0">
+    <ENGLISH_NAME>Decrease Craft</ENGLISH_NAME>
+    <NAME>Reduzir destreza</NAME>
+    <DESC>Clique para reduzir a destreza do(s) objeto(s) selecionado(s). SHIFT + clique para reduzir mais rápido, ALT + clique para reduzir muito rápido, CTRL + clique para reduzir bem devagar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="10" clip="0">
+    <ENGLISH_NAME>Activate Building</ENGLISH_NAME>
+    <NAME>Ativar construção</NAME>
+    <DESC>Clique para "ativar" esta construção e transformá-la em uma construção concluída.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="11" clip="0">
+    <ENGLISH_NAME>Deactivate Building</ENGLISH_NAME>
+    <NAME>Desativar construção</NAME>
+    <DESC>Clique para "desativar" esta construção e transformá-la em uma fundação recém-colocada. </DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Delete</ENGLISH_NAME>
+    <NAME>Excluir</NAME>
+    <DESC>Para que serve isto?</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Generate Map</ENGLISH_NAME>
+    <NAME>Gerar mapa</NAME>
+    <DESC>Clique para gerar um novo mapa.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Import Map Image</ENGLISH_NAME>
+    <NAME>Importar imagem de mapa</NAME>
+    <DESC>Clique para importar um mapa a partir de uma imagem.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Map Seed</ENGLISH_NAME>
+    <NAME>Mudar semente do mapa</NAME>
+    <DESC>Clique para mudar a semente do mapa.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Fog of War</ENGLISH_NAME>
+    <NAME>Ativ./desat. névoa de guerra</NAME>
+    <DESC>Clique para ativar/desativar a exibição da névoa de guerra.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="11" clip="0">
+    <ENGLISH_NAME>Make Capital</ENGLISH_NAME>
+    <NAME>Tornar capital</NAME>
+    <DESC>Clique para tornar esta cidade a capital da sua nação.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Always Transport</ENGLISH_NAME>
+    <NAME>Sempre transportar</NAME>
+    <DESC>Coisas</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Never Transport</ENGLISH_NAME>
+    <NAME>Nunca transportar</NAME>
+    <DESC>Coisas</DESC>
+  </OPTION>
+  <OPTION tex_col="1" tex_row="1" clip="0">
+    <ENGLISH_NAME>Select Nation</ENGLISH_NAME>
+    <NAME>Selecionar nação</NAME>
+    <DESC>Clique para selecionar esta nação.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Flip</ENGLISH_NAME>
+    <NAME>Outra nação</NAME>
+    <DESC>Clique para mostrar outras nações.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Nation</ENGLISH_NAME>
+    <NAME>Adicionar nação</NAME>
+    <DESC>Clique para adicionar uma nova nação.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Terrain</ENGLISH_NAME>
+    <NAME>Terreno</NAME>
+    <DESC>Clique para modificar o terreno.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile</ENGLISH_NAME>
+    <NAME>Fértil</NAME>
+    <DESC>Clique para colocar terreno fértil.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile 1</ENGLISH_NAME>
+    <NAME>Fértil 1</NAME>
+    <DESC>Clique para colocar a transição fértil 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile 2</ENGLISH_NAME>
+    <NAME>Fértil 2</NAME>
+    <DESC>Clique para colocar a transição fértil 2.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Arid</ENGLISH_NAME>
+    <NAME>Árido</NAME>
+    <DESC>Clique para colocar terreno árido.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Ocean</ENGLISH_NAME>
+    <NAME>Oceano</NAME>
+    <DESC>Clique para colocar oceano</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Forest</ENGLISH_NAME>
+    <NAME>Floresta</NAME>
+    <DESC>Selecione este botão e clique no mapa para colocar floresta</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Mountains</ENGLISH_NAME>
+    <NAME>Montanhas</NAME>
+    <DESC>Clique para colocar montanhas</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cliffs</ENGLISH_NAME>
+    <NAME>Penhascos</NAME>
+    <DESC>Clique para colocar penhascos</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Rocks</ENGLISH_NAME>
+    <NAME>Rochas</NAME>
+    <DESC>Selecione este botão e clique no mapa para colocar rochas/petróleo. Clique em rochas ou numa jazida de petróleo para alternar entre rochas e petróleo.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Oil</ENGLISH_NAME>
+    <NAME>Petróleo</NAME>
+    <DESC>Clique para colocar petróleo (deve ficar sobre rochas)</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>River</ENGLISH_NAME>
+    <NAME>Rio</NAME>
+    <DESC>Clique para colocar rios</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Feature</ENGLISH_NAME>
+    <NAME>Adicionar elemento</NAME>
+    <DESC>Clique para adicionar arbustos/rochas individualmente</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x1 Brush</ENGLISH_NAME>
+    <NAME>Pincel 1x1</NAME>
+    <DESC>Clique para selecionar o pincel 1x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>3x3 Brush</ENGLISH_NAME>
+    <NAME>Pincel 3x3</NAME>
+    <DESC>Clique para selecionar o pincel 3x3</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 Brush</ENGLISH_NAME>
+    <NAME>Pincel 5x5</NAME>
+    <DESC>Clique para selecionar o pincel 5x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x5 Brush</ENGLISH_NAME>
+    <NAME>Pincel 1x5</NAME>
+    <DESC>Clique para selecionar o pincel 1x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x1 Brush</ENGLISH_NAME>
+    <NAME>Pincel 5x1</NAME>
+    <DESC>Clique para selecionar o pincel 5x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 X Brush</ENGLISH_NAME>
+    <NAME>Pincel X 5x5</NAME>
+    <DESC>Clique para selecionar o pincel X de 5 quadros</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Terrain</ENGLISH_NAME>
+    <NAME>Remover terreno</NAME>
+    <DESC>Clique para remover um elemento do terreno (montanhas/floresta/rochas)</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Rare Resource</ENGLISH_NAME>
+    <NAME>Remover recurso raro</NAME>
+    <DESC>Clique para remover um recurso raro</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove All Rare Resources</ENGLISH_NAME>
+    <NAME>Remover todos os recursos raros</NAME>
+    <DESC>Clique para excluir todos os recursos raros</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Resource</ENGLISH_NAME>
+    <NAME>Dar recurso</NAME>
+    <DESC>Clique para dar $NUMBER0 deste recurso. CTRL + clique para 100, SHIFT + clique para 500, ALT + clique para 10000, CTRL + SHIFT + clique para 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Resource</ENGLISH_NAME>
+    <NAME>Retirar recurso</NAME>
+    <DESC>Clique para retirar $NUMBER0 deste recurso. CTRL + clique para 100, SHIFT + clique para 500, ALT + clique para 10000, CTRL + SHIFT + clique para 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Resource</ENGLISH_NAME>
+    <NAME>Dar recurso</NAME>
+    <DESC>Clique para dar 100 deste recurso</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Resource</ENGLISH_NAME>
+    <NAME>Retirar recurso</NAME>
+    <DESC>Clique para retirar 100 deste recurso</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Default Resources</ENGLISH_NAME>
+    <NAME>Recursos padrão</NAME>
+    <DESC>Clique para restaurar os recursos padrão</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Each Resource</ENGLISH_NAME>
+    <NAME>Dar cada recurso</NAME>
+    <DESC>Clique para dar $NUMBER0 de cada recurso. CTRL + clique para 100, SHIFT + clique para 500, ALT + clique para 10000, CTRL + SHIFT + clique para 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Each Resource</ENGLISH_NAME>
+    <NAME>Dar cada recurso</NAME>
+    <DESC>Clique para dar 100 de cada recurso</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Each Resource</ENGLISH_NAME>
+    <NAME>Retirar cada recurso</NAME>
+    <DESC>Clique para retirar $NUMBER0 de cada recurso. CTRL + clique para 100, SHIFT + clique para 500, ALT + clique para 10000, CTRL + SHIFT + clique para 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Each Resource</ENGLISH_NAME>
+    <NAME>Retirar cada recurso</NAME>
+    <DESC>Clique para retirar 100 de cada recurso</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Scen. Name</ENGLISH_NAME>
+    <NAME>Mudar nome cen.</NAME>
+    <DESC>Clique para mudar o nome do cenário</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Use Scenario Script</ENGLISH_NAME>
+    <NAME>Usar script do cenário</NAME>
+    <DESC>Clique para ativar/desativar o carregamento do script do cenário quando este mapa for jogado</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Set Camera Location</ENGLISH_NAME>
+    <NAME>Definir posição da câmera</NAME>
+    <DESC>Clique para definir a posição inicial da câmera no cenário. A posição e o zoom atuais da câmera serão a visão inicial do jogador quando o cenário começar.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Get Camera Location</ENGLISH_NAME>
+    <NAME>Obter posição da câmera</NAME>
+    <DESC>Clique para ir à visão inicial da câmera do cenário. Mostra a visão que o jogador terá quando o cenário começar.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="6" clip="0">
+    <ENGLISH_NAME>Rename</ENGLISH_NAME>
+    <NAME>Renomear</NAME>
+    <DESC>Clique para renomear esta cidade.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Re-Init Terrain</ENGLISH_NAME>
+    <NAME>Reiniciar terreno</NAME>
+    <DESC>Clique para reiniciar o terreno</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fill Land Types</ENGLISH_NAME>
+    <NAME>Preencher tipos de terra</NAME>
+    <DESC>Clique para preencher aleatoriamente as áreas de terra com tipos de terreno</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear Land Types</ENGLISH_NAME>
+    <NAME>Limpar tipos de terra</NAME>
+    <DESC>Clique para limpar os tipos de terreno das áreas de terra</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Random Terrain</ENGLISH_NAME>
+    <NAME>Adicionar terreno aleatório</NAME>
+    <DESC>Clique para colocar aleatoriamente florestas/montanhas/rochas/petróleo</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear All Terrain</ENGLISH_NAME>
+    <NAME>Limpar todo o terreno</NAME>
+    <DESC>Clique para remover todas as florestas/montanhas/rochas/petróleo</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Random Features</ENGLISH_NAME>
+    <NAME>Adicionar elementos aleatórios</NAME>
+    <DESC>Clique para adicionar arbustos/rochas aleatórios</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove One Feature</ENGLISH_NAME>
+    <NAME>Remover um elemento</NAME>
+    <DESC>Clique para remover um arbusto/rocha</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear All Features</ENGLISH_NAME>
+    <NAME>Limpar todos os elementos</NAME>
+    <DESC>Clique para remover todos os arbustos/rochas</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Research Mode</ENGLISH_NAME>
+    <NAME>Ativ./desat. modo pesquisa</NAME>
+    <DESC>Clique para ativar/desativar o modo de pesquisa</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Edit Terrain</ENGLISH_NAME>
+    <NAME>Editar terreno</NAME>
+    <DESC>Clique para editar terra/mar/montanhas/rios no mapa abstrato</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Adjust Height</ENGLISH_NAME>
+    <NAME>Ajustar altura</NAME>
+    <DESC>Selecione este botão e arraste com o botão esquerdo para elevar o terreno. Selecione este botão e arraste com o botão direito para rebaixar o terreno.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Height Increase</ENGLISH_NAME>
+    <NAME>Aumentar altura</NAME>
+    <DESC>Clique para aumentar a altura do terreno</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Height Decrease</ENGLISH_NAME>
+    <NAME>Reduzir altura</NAME>
+    <DESC>Clique para reduzir a altura do terreno</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Apply Changes</ENGLISH_NAME>
+    <NAME>Aplicar alterações</NAME>
+    <DESC>Clique para aplicar as alterações feitas neste mapa</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel</ENGLISH_NAME>
+    <NAME>Cancelar</NAME>
+    <DESC>Clique para cancelar as alterações</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Feature</ENGLISH_NAME>
+    <NAME>Remover elemento</NAME>
+    <DESC>Clique para remover a última montanha colocada</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x1 Brush</ENGLISH_NAME>
+    <NAME>Pincel 1x1</NAME>
+    <DESC>Clique para selecionar o pincel 1x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>3x3 Brush</ENGLISH_NAME>
+    <NAME>Pincel 3x3</NAME>
+    <DESC>Clique para selecionar o pincel 3x3</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 Brush</ENGLISH_NAME>
+    <NAME>Pincel 5x5</NAME>
+    <DESC>Clique para selecionar o pincel 5x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x5 Brush</ENGLISH_NAME>
+    <NAME>Pincel 1x5</NAME>
+    <DESC>Clique para selecionar o pincel 1x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x1 Brush</ENGLISH_NAME>
+    <NAME>Pincel 5x1</NAME>
+    <DESC>Clique para selecionar o pincel 5x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 X Brush</ENGLISH_NAME>
+    <NAME>Pincel X 5x5</NAME>
+    <DESC>Clique para selecionar o pincel X de 5 quadros</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME/>
+    <NAME/>
+    <DESC>Clique para penhascos maiores</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME/>
+    <NAME/>
+    <DESC>Clique para penhascos menores</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>lt"</ENGLISH_NAME>
+    <NAME>lt"</NAME>
+    <DESC>Clique para o tipo de penhasco anterior</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>gt"</ENGLISH_NAME>
+    <NAME>gt"</NAME>
+    <DESC>Clique para o próximo tipo de penhasco</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add point</ENGLISH_NAME>
+    <NAME>Adicionar ponto</NAME>
+    <DESC>Adicionar ponto de rio</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear all</ENGLISH_NAME>
+    <NAME>Limpar tudo</NAME>
+    <DESC>Remover do mapa todos os pontos de rio atuais</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear prev</ENGLISH_NAME>
+    <NAME>Limpar ant.</NAME>
+    <DESC>Remover o último ponto de rio adicionado</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add river</ENGLISH_NAME>
+    <NAME>Adicionar rio</NAME>
+    <DESC>Adicionar rio ao mapa</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Production AI</ENGLISH_NAME>
+    <NAME>Desativar IA de produção</NAME>
+    <DESC>Clique para ativar/desativar a IA de produção.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Unit AI</ENGLISH_NAME>
+    <NAME>Desativar IA de unidade</NAME>
+    <DESC>Clique para ativar/desativar a IA de todas as unidades.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Combat AI</ENGLISH_NAME>
+    <NAME>Desativar IA de combate</NAME>
+    <DESC>Clique para ativar/desativar a IA de combate.  As unidades militares reagem a ataques conforme sua postura.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="9" clip="0">
+    <ENGLISH_NAME>Disable AI</ENGLISH_NAME>
+    <NAME>Desativar IA</NAME>
+    <DESC>Clique para ativar/desativar a IA desta unidade.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Resource Interface</ENGLISH_NAME>
+    <NAME>Ativ./desat. interf. recursos</NAME>
+    <DESC>Clique para ativar/desativar a interface de recursos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Market Interface</ENGLISH_NAME>
+    <NAME>Ativ./desat. interface mercado</NAME>
+    <DESC>Clique para ativar/desativar a interface de mercado.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Infrastructure Interface</ENGLISH_NAME>
+    <NAME>Ativ./desat. interf. infraestrutura</NAME>
+    <DESC>Clique para ativar/desativar a interface de infraestrutura.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Main Interface</ENGLISH_NAME>
+    <NAME>Ativ./desat. interf. principal</NAME>
+    <DESC>Clique para ativar/desativar a interface principal.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Mini-Library Interface</ENGLISH_NAME>
+    <NAME>Ativ./desat. interface minibiblioteca</NAME>
+    <DESC>Clique para ativar/desativar a interface da minibiblioteca.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Merchant</ENGLISH_NAME>
+    <NAME>Próximo mercador</NAME>
+    <DESC>Clique para encontrar o próximo Mercador ocioso.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Fisherman</ENGLISH_NAME>
+    <NAME>Próximo pescador</NAME>
+    <DESC>Clique para encontrar o próximo Pescador ocioso.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Merchants</ENGLISH_NAME>
+    <NAME>Todos os mercadores</NAME>
+    <DESC>Clique para selecionar TODOS os Mercadores ociosos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Fishermen</ENGLISH_NAME>
+    <NAME>Todos os pescadores</NAME>
+    <DESC>Clique para selecionar TODOS os Pescadores ociosos.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Merchant</ENGLISH_NAME>
+    <NAME>Selecionar mercador</NAME>
+    <DESC>Clique para selecionar o próximo Mercador ocioso.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Fisherman</ENGLISH_NAME>
+    <NAME>Selecionar pescador</NAME>
+    <DESC>Clique para selecionar o próximo Pescador ocioso.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Patriot</ENGLISH_NAME>
+    <NAME>Selecionar Patriota</NAME>
+    <DESC>Clique para selecionar o Patriota.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Patriot, no zoom</ENGLISH_NAME>
+    <NAME>Selecionar Patriota, sem zoom</NAME>
+    <DESC>Clique para selecionar o Patriota sem dar zoom nele.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Damaged Units</ENGLISH_NAME>
+    <NAME>Selecionar unidades danificadas</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Filter Selection for Damaged Units</ENGLISH_NAME>
+    <NAME>Filtrar seleção por unidades danificadas</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Filter Selection for Units on Screen</ENGLISH_NAME>
+    <NAME>Filtrar seleção por unidades na tela</NAME>
+    <DESC/>
+  </OPTION>
+</OPTIONS>

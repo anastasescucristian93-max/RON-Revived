@@ -1,0 +1,2001 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Pranas Pauliukonis (Big Huge Games) --><!-- LOCALIZATION: STRING and SHORT_STRING--><ROOT>
+	<KEYS>
+		<KEY enum="SYSTEM_TOGGLE_MP_STAT_WIN" dependent="0">
+			<STRING>Окно сетевой статистики вкл./выкл.</STRING>
+			<SHORT_STRING>Статистика вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_BUILDING_ALPHABLEND" dependent="0">
+			<STRING>Прозрачность зданий вкл./выкл.</STRING>
+			<SHORT_STRING>Прозрачность зданий</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_FRAME_STATS" dependent="0">
+			<STRING>Показать статистику кадров</STRING>
+			<SHORT_STRING>Статистика кадров</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_FPS_STATS" dependent="0">
+			<STRING>Статистика FPS вкл./выкл.</STRING>
+			<SHORT_STRING>Статистика FPS</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCREENSHOT" dependent="0">
+			<STRING>Сделать снимок экрана</STRING>
+			<SHORT_STRING>Снимок экрана</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_NEW_LAND" dependent="0">
+			<STRING>Новая земля вкл./выкл.</STRING>
+			<SHORT_STRING>Новая земля</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_NEW_LAND_OVERLAYS" dependent="0">
+			<STRING>Наложения новой земли вкл./выкл.</STRING>
+			<SHORT_STRING>Наложения новой земли</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_WIREFRAME" dependent="0">
+			<STRING>Каркас вкл./выкл.</STRING>
+			<SHORT_STRING>Каркас</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_TERRAIN_DETAIL" dependent="0">
+			<STRING>Повысить детализацию ландшафта</STRING>
+			<SHORT_STRING>Повысить детализацию ландшафта</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_TERRAIN_DETAIL" dependent="0">
+			<STRING>Понизить детализацию ландшафта</STRING>
+			<SHORT_STRING>Понизить детализацию ландшафта</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SAVE_GAME" dependent="0">
+			<STRING>Сохранить игру</STRING>
+			<SHORT_STRING>Сохранить игру</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_LOAD_GAME" dependent="0">
+			<STRING>Загрузить игру</STRING>
+			<SHORT_STRING>Загрузить игру</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_MP_LOG" dependent="0">
+			<STRING>Сетевой журнал вкл./выкл.</STRING>
+			<SHORT_STRING>Сетевой журнал</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PATH_SHOW_DEBUG" dependent="0">
+			<STRING>Показ пути вкл./выкл.</STRING>
+			<SHORT_STRING>Показать путь</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_STEP_FRAME" dependent="0">
+			<STRING>Шаг кадра</STRING>
+			<SHORT_STRING>Шаг кадра</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_MESSAGES" dependent="0">
+			<STRING>Отладочные сообщения вкл./выкл.</STRING>
+			<SHORT_STRING>Отладочные сообщения</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_PATH" dependent="0">
+			<STRING>Путь сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Путь сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DEBUG_JUMP_TO_ACTION" dependent="0">
+			<STRING>Отладка: переход к действию</STRING>
+			<SHORT_STRING>Отладка: переход к действию</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DEBUG_JUMP_TO_WAYPOINT" dependent="0">
+			<STRING>Отладка: переход к точке маршрута</STRING>
+			<SHORT_STRING>Отладка: переход к точке маршрута</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DISPLAY_PROFILE" dependent="0">
+			<STRING>Показать профиль</STRING>
+			<SHORT_STRING>Показать профиль</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PROFILE_RUNNING" dependent="0">
+			<STRING>Работа профиля вкл./выкл.</STRING>
+			<SHORT_STRING>Работа профиля</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PARAM_CONSOLE" dependent="0">
+			<STRING>Консоль параметров вкл./выкл.</STRING>
+			<SHORT_STRING>Консоль параметров</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_GRAPHIC_CONSOLE" dependent="0">
+			<STRING>Графическая консоль вкл./выкл.</STRING>
+			<SHORT_STRING>Графическая консоль</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_GAME_CONSOLE" dependent="0">
+			<STRING>Игровая консоль вкл./выкл.</STRING>
+			<SHORT_STRING>Игровая консоль</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENARIO_EDITOR" dependent="0">
+			<STRING>Редактор сценариев вкл./выкл.</STRING>
+			<SHORT_STRING>Редактор сценариев</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_ACHIEVEMENTS" dependent="0">
+			<STRING>Экран достижений вкл./выкл.</STRING>
+			<SHORT_STRING>Достижения</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_DEBUG" dependent="0">
+			<STRING>Отладка сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Отладка сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SEE_ALL" dependent="0">
+			<STRING>Видеть всё вкл./выкл.</STRING>
+			<SHORT_STRING>Видеть всё</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_RIVERS" dependent="0">
+			<STRING>Реки сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Реки сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_HOT" dependent="0">
+			<STRING>Горячие зоны сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Горячие зоны сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_BLOCKED" dependent="0">
+			<STRING>Блок. зоны сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Блок. зоны сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ROADS" dependent="0">
+			<STRING>Дороги сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Дороги сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_WET" dependent="0">
+			<STRING>Влажность сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Влажность сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_FRACTAL" dependent="0">
+			<STRING>Фрактал сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Фрактал сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ALL" dependent="0">
+			<STRING>Всё в сцене вкл./выкл.</STRING>
+			<SHORT_STRING>Всё в сцене</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_START_NUKE_FLASH" dependent="0">
+			<STRING>Запустить ядерную вспышку</STRING>
+			<SHORT_STRING>Ядерная вспышка</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_SITES" dependent="0">
+			<STRING>Места сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Места сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ARMIES" dependent="0">
+			<STRING>Армии сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Армии сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_Z_VALUES" dependent="0">
+			<STRING>Значения Z вкл./выкл.</STRING>
+			<SHORT_STRING>Значения Z</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CHEAT_ZERO_TECHS" dependent="0">
+			<STRING>Чит: обнулить технологии</STRING>
+			<SHORT_STRING>Чит: обнулить технологии</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CHEAT_GIVE_TECHS" dependent="0">
+			<STRING>Чит: дать технологии</STRING>
+			<SHORT_STRING>Дать технологии</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_REDRAW_WORLDMAP_BACKGROUND" dependent="0">
+			<STRING>Перерисовать фон карты мира</STRING>
+			<SHORT_STRING>Перерисовать фон карты мира</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_NET_RATIO" dependent="0">
+			<STRING>Повысить сетевое соотношение</STRING>
+			<SHORT_STRING>Повысить сетевое соотношение</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_AI_SPEED" dependent="0">
+			<STRING>Ускорить ИИ</STRING>
+			<SHORT_STRING>Ускорить ИИ</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_NET_RATIO" dependent="0">
+			<STRING>Понизить сетевое соотношение</STRING>
+			<SHORT_STRING>Понизить сетевое соотношение</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_AI_SPEED" dependent="0">
+			<STRING>Замедлить ИИ</STRING>
+			<SHORT_STRING>Замедлить ИИ</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_AI" dependent="0">
+			<STRING>ИИ вкл./выкл.</STRING>
+			<SHORT_STRING>ИИ</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_WATCH_AI" dependent="0">
+			<STRING>Приоритеты строительства ИИ</STRING>
+			<SHORT_STRING>Стройка ИИ</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CLEAR_PROFILE" dependent="0">
+			<STRING>Очистить профиль</STRING>
+			<SHORT_STRING>Очистить профиль</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_PROFILE" dependent="0">
+			<STRING>Выгрузить профиль</STRING>
+			<SHORT_STRING>Выгрузить профиль</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_MEM_PROFILE" dependent="0">
+			<STRING>Выгрузить профиль памяти</STRING>
+			<SHORT_STRING>Выгрузить профиль памяти</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_QUIT" dependent="0">
+			<STRING>Выйти</STRING>
+			<SHORT_STRING>Выйти</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_BUILD_NEW_WORLD" dependent="0">
+			<STRING>Построить новый мир</STRING>
+			<SHORT_STRING>Построить новый мир</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_REGIONS" dependent="0">
+			<STRING>Регионы сцены вкл./выкл.</STRING>
+			<SHORT_STRING>Регионы сцены</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_ZERO_RESOURCES" dependent="0">
+			<STRING>Обнулить ресурсы</STRING>
+			<SHORT_STRING>Обнулить ресурсы</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_RESOURCES" dependent="0">
+			<STRING>Добавить ресурсы</STRING>
+			<SHORT_STRING>Добавить ресурсы</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SWITCH_POINT_OF_VIEW" dependent="0">
+			<STRING>Сменить точку обзора</STRING>
+			<SHORT_STRING>Точка обзора</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_POP" dependent="0">
+			<STRING>Увеличить население</STRING>
+			<SHORT_STRING>Увеличить население</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_POP" dependent="0">
+			<STRING>Уменьшить население</STRING>
+			<SHORT_STRING>Уменьшить население</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PLACE_NEW_BUILD" dependent="0">
+			<STRING>Разместить новое здание</STRING>
+			<SHORT_STRING>Новое здание</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PLACE_NEW_UNIT" dependent="0">
+			<STRING>Разместить новый юнит</STRING>
+			<SHORT_STRING>Новый юнит</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HURRY_ACTION" dependent="0">
+			<STRING>Ускорить действие</STRING>
+			<SHORT_STRING>Ускорить действие</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DAMAGE_OBJECT" dependent="0">
+			<STRING>Повредить объект</STRING>
+			<SHORT_STRING>Повредить объект</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DAMAGE_OBJECT_REALLY" dependent="0">
+			<STRING>Сильно повредить объект</STRING>
+			<SHORT_STRING>Сильно повредить объект</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_THOUGHT_BUBBLES" dependent="0">
+			<STRING>Облачка мыслей вкл./выкл.</STRING>
+			<SHORT_STRING>Облачка мыслей</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_KEYMAP_WINDOW" dependent="0">
+			<STRING>Окно раскладки клавиш вкл./выкл.</STRING>
+			<SHORT_STRING>Окно раскладки клавиш</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCORE_DETAIL" dependent="0">
+			<STRING>Подробный счёт вкл./выкл.</STRING>
+			<SHORT_STRING>Подробный счёт</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEPTH_COMPLEXITY" dependent="0">
+			<STRING>Сложность глубины вкл./выкл.</STRING>
+			<SHORT_STRING>Сложность глубины</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_END_SCENARIO_TEST" dependent="0">
+			<STRING>Завершить тест сценария</STRING>
+			<SHORT_STRING>Завершить тест сценария</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_EDITOR" dependent="0">
+			<STRING>Редактор скриптов</STRING>
+			<SHORT_STRING>Редактор скриптов</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE" dependent="0">
+			<STRING>Консоль отладки вкл./выкл.</STRING>
+			<SHORT_STRING>Консоль отладки</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE_2" dependent="0">
+			<STRING>Консоль отладки вкл./выкл.</STRING>
+			<SHORT_STRING>Консоль отладки</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE_3" dependent="0">
+			<STRING>Консоль отладки вкл./выкл.</STRING>
+			<SHORT_STRING>Консоль отладки</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_STORMS" dependent="0">
+			<STRING>Дожди и метели вкл./выкл.</STRING>
+			<SHORT_STRING>Непогода вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_NEXT_PRIM" dependent="0">
+			<STRING>SYSTEM_NEXT_PRIM</STRING>
+			<SHORT_STRING>SYSTEM_NEXT_PRIM</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PREV_PRIM" dependent="0">
+			<STRING>SYSTEM_PREV_PRIM</STRING>
+			<SHORT_STRING>SYSTEM_PREV_PRIM</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_NORM_RENDER" dependent="0">
+			<STRING>SYSTEM_NORM_RENDER</STRING>
+			<SHORT_STRING>SYSTEM_NORM_RENDER</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT" dependent="0">
+			<STRING>След. экран зданий</STRING>
+			<SHORT_STRING>След. экран зданий</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BACK" dependent="0">
+			<STRING>Пред. экран зданий</STRING>
+			<SHORT_STRING>Пред. экран зданий</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_PEASANT" dependent="0">
+			<STRING>Город: создать горожанина</STRING>
+			<SHORT_STRING>Горожанин</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_PEASANT_UPGRADE" dependent="1">
+			<STRING>Город: улучшить горожанина</STRING>
+			<SHORT_STRING>Улучшить горожанина</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_RAZE" dependent="0">
+			<STRING>Город: снести</STRING>
+			<SHORT_STRING>Снести</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_ALL_CLEAR" dependent="0">
+			<STRING>Город: отбой тревоги</STRING>
+			<SHORT_STRING>Отбой</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_ALARM" dependent="0">
+			<STRING>Город: тревога</STRING>
+			<SHORT_STRING>Тревога</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_KNOWLEDGE" dependent="0">
+			<STRING>Университет: улучшить выработку знаний</STRING>
+			<SHORT_STRING>Улучшить выработку знаний</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UNIVERSITY_SCHOLAR" dependent="0">
+			<STRING>Университет: создать учёного</STRING>
+			<SHORT_STRING>Учёный</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_LIGHT" dependent="0">
+			<STRING>Казарма: создать лёгкую пехоту</STRING>
+			<SHORT_STRING>Лёгкая пехота</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_LIGHT_UPGRADE" dependent="1">
+			<STRING>Казарма: улучшить лёгкую пехоту</STRING>
+			<SHORT_STRING>Улучшить лёг. пех.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_HEAVY" dependent="0">
+			<STRING>Казарма: создать тяжёлую пехоту</STRING>
+			<SHORT_STRING>Тяжёлая пехота</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_HEAVY_UPGRADE" dependent="1">
+			<STRING>Казарма: улучшить тяжёлую пехоту</STRING>
+			<SHORT_STRING>Улучшить тяж. пех.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_ARCHER" dependent="0">
+			<STRING>Казарма: создать лучника</STRING>
+			<SHORT_STRING>Лучник</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_ARCHER_UPGRADE" dependent="1">
+			<STRING>Казарма: улучшить лучника</STRING>
+			<SHORT_STRING>Улучшить лучника</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_SPECIAL" dependent="0">
+			<STRING>Казарма: создать разведчика</STRING>
+			<SHORT_STRING>Разведчик</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_SPECIAL_UPGRADE" dependent="1">
+			<STRING>Казарма: улучшить разведчика</STRING>
+			<SHORT_STRING>Улучшить разведчика</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_LIGHT" dependent="0">
+			<STRING>Конюшня: создать лёгкую кавалерию</STRING>
+			<SHORT_STRING>Лёгкая кавалерия</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_LIGHT_UPGRADE" dependent="1">
+			<STRING>Конюшня: улучшить лёгкую кавалерию</STRING>
+			<SHORT_STRING>Улучшить лёг. кав.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_HEAVY" dependent="0">
+			<STRING>Конюшня: создать тяжёлую кавалерию</STRING>
+			<SHORT_STRING>Тяжёлая кавалерия</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_HEAVY_UPGRADE" dependent="1">
+			<STRING>Конюшня: улучшить тяжёлую кавалерию</STRING>
+			<SHORT_STRING>Улучшить тяж. кав.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ARCHER" dependent="0">
+			<STRING>Конюшня: создать конного лучника</STRING>
+			<SHORT_STRING>Конный лучник</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ARCHER_UPGRADE" dependent="1">
+			<STRING>Конюшня: улучшить конного лучника</STRING>
+			<SHORT_STRING>Улучшить конн. лучника</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ELEPHANT" dependent="0">
+			<STRING>Конюшня: создать боевого слона</STRING>
+			<SHORT_STRING>Боевой слон</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ELEPHANT_UPGRADE" dependent="1">
+			<STRING>Конюшня: улучшить боевого слона</STRING>
+			<SHORT_STRING>Улучшить боев. слона</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_SIEGE" dependent="0">
+			<STRING>Осадная мастерская: создать осадное орудие/пушку</STRING>
+			<SHORT_STRING>Осадное орудие/пушка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_SIEGE_UPGRADE" dependent="1">
+			<STRING>Осадная мастерская: улучшить осадное орудие/пушку</STRING>
+			<SHORT_STRING>Улучшить осадное орудие/пушку</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_GATLING" dependent="0">
+			<STRING>Казарма: создать пулемёт</STRING>
+			<SHORT_STRING>Пулемёт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_GATLING_UPGRADE" dependent="1">
+			<STRING>Казарма: улучшить пулемёт</STRING>
+			<SHORT_STRING>Улучшить пулемёт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_WAGON" dependent="0">
+			<STRING>Осадная мастерская: создать обоз</STRING>
+			<SHORT_STRING>Обоз</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SIEGE" dependent="0">
+			<STRING>Док: создать бомбардирский корабль</STRING>
+			<SHORT_STRING>Осадная бомбардировка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SIEGE_UPGRADE" dependent="1">
+			<STRING>Док: улучшить бомбардирский корабль</STRING>
+			<SHORT_STRING>Улучшить бомбардирский корабль</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_STANDARD" dependent="0">
+			<STRING>Док: создать тяжёлый корабль</STRING>
+			<SHORT_STRING>Тяжёлый корабль</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_STANDARD_UPGRADE" dependent="1">
+			<STRING>Док: улучшить тяжёлый корабль</STRING>
+			<SHORT_STRING>Улучшить тяжёлый корабль</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FIRESHIP" dependent="0">
+			<STRING>Док: создать брандер/подлодку</STRING>
+			<SHORT_STRING>Брандер/подлодка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FIRESHIP_UPGRADE" dependent="1">
+			<STRING>Док: улучшить брандер/подлодку</STRING>
+			<SHORT_STRING>Улучшить брандер/подлодку</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SCOUT" dependent="0">
+			<STRING>Док: создать лёгкий корабль</STRING>
+			<SHORT_STRING>Лёгкий корабль</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SCOUT_UPGRADE" dependent="1">
+			<STRING>Док: улучшить лёгкий корабль</STRING>
+			<SHORT_STRING>Улучшить лёгкий корабль</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CARRIER" dependent="0">
+			<STRING>Док: создать авианосец</STRING>
+			<SHORT_STRING>Авианосец</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CARRIER_UPGRADE" dependent="1">
+			<STRING>Док: улучшить авианосец</STRING>
+			<SHORT_STRING>Улучшить авианосец</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FISHERMEN" dependent="0">
+			<STRING>Док: создать рыбаков</STRING>
+			<SHORT_STRING>Рыбаки</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FISHERMEN_UPGRADE" dependent="1">
+			<STRING>Док: улучшить рыбаков</STRING>
+			<SHORT_STRING>Улучшить рыбаков</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CRUISER" dependent="0">
+			<STRING>Док: создать крейсер</STRING>
+			<SHORT_STRING>Крейсер</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CRUISER_UPGRADE" dependent="1">
+			<STRING>Док: улучшить крейсер</STRING>
+			<SHORT_STRING>Улучшить крейсер</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTER" dependent="0">
+			<STRING>Авиабаза: создать истребитель</STRING>
+			<SHORT_STRING>Истребитель</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTER_UPGRADE" dependent="1">
+			<STRING>Авиабаза: улучшить истребитель</STRING>
+			<SHORT_STRING>Улучшить истребитель</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBER" dependent="0">
+			<STRING>Авиабаза: создать бомбардировщик</STRING>
+			<SHORT_STRING>Бомбардировщик</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBER_UPGRADE" dependent="1">
+			<STRING>Авиабаза: улучшить бомбардировщик</STRING>
+			<SHORT_STRING>Улучшить бомбардировщик</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELICOPTER" dependent="0">
+			<STRING>Авиабаза: создать вертолёт</STRING>
+			<SHORT_STRING>Вертолёт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELICOPTER_UPGRADE" dependent="1">
+			<STRING>Авиабаза: улучшить вертолёт</STRING>
+			<SHORT_STRING>Улучшить вертолёт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_NUKE" dependent="0">
+			<STRING>Шахта: создать ядерную ракету</STRING>
+			<SHORT_STRING>Ядерная ракета</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_NUKE_UPGRADE" dependent="1">
+			<STRING>Шахта: улучшить ядерную ракету</STRING>
+			<SHORT_STRING>Улучшить ядерную ракету</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_ROCKET" dependent="0">
+			<STRING>Шахта: создать ракету/крылатую ракету</STRING>
+			<SHORT_STRING>Ракета/крылатая</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_ROCKET_UPGRADE" dependent="1">
+			<STRING>Шахта: улучшить ракету/крылатую ракету</STRING>
+			<SHORT_STRING>Улучшить ракету/крылатую</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FOOD" dependent="0">
+			<STRING>Амбар: улучшить добычу пищи</STRING>
+			<SHORT_STRING>Улучшить добычу пищи</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TIMBER" dependent="0">
+			<STRING>Лесопилка: улучшить добычу древесины</STRING>
+			<SHORT_STRING>Улучшить добычу древесины</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_METAL" dependent="0">
+			<STRING>Плавильня: улучшить добычу металла</STRING>
+			<SHORT_STRING>Улучшить добычу металла</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FORT" dependent="0">
+			<STRING>Форт: улучшить</STRING>
+			<SHORT_STRING>Улучшить форт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GORADAR" dependent="0">
+			<STRING>Наблюдательный пост: улучшить до ПВО</STRING>
+			<SHORT_STRING>Улучшить до ПВО</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TEMPLE" dependent="0">
+			<STRING>Храм: улучшить религию</STRING>
+			<SHORT_STRING>Улучшить религию</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_GENERAL" dependent="0">
+			<STRING>Форт: создать генерала</STRING>
+			<SHORT_STRING>Создать генерала</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_GENERAL_UPGRADE" dependent="1">
+			<STRING>Форт: улучшить генерала</STRING>
+			<SHORT_STRING>Улучшить генерала</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_SPY" dependent="0">
+			<STRING>Форт: создать шпиона</STRING>
+			<SHORT_STRING>Создать шпиона</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_SPY_UPGRADE" dependent="1">
+			<STRING>Форт: улучшить шпиона</STRING>
+			<SHORT_STRING>Улучшить шпиона</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOWER_MILITIA_UPGRADE" dependent="0">
+			<STRING>Башня: улучшить ополчение</STRING>
+			<SHORT_STRING>Улучшить ополчение</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOWER_ALLEGIANCE" dependent="0">
+			<STRING>Башня: улучшить верность</STRING>
+			<SHORT_STRING>Верность</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_CARAVAN" dependent="0">
+			<STRING>Рынок: создать караван</STRING>
+			<SHORT_STRING>Караван</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_UPGRADE_CARAVAN" dependent="1">
+			<STRING>Рынок: улучшить караван</STRING>
+			<SHORT_STRING>Улучшить караван</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_MERCHANT" dependent="0">
+			<STRING>Рынок: создать торговца</STRING>
+			<SHORT_STRING>Торговец</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_UPGRADE_MERCHANT" dependent="1">
+			<STRING>Рынок: улучшить торговца</STRING>
+			<SHORT_STRING>Улучшить торговца</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD" dependent="0">
+			<STRING>Рынок: купить 100 пищи</STRING>
+			<SHORT_STRING>Купить пищу</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER" dependent="0">
+			<STRING>Рынок: купить 100 древесины</STRING>
+			<SHORT_STRING>Купить древесину</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL" dependent="0">
+			<STRING>Рынок: купить 100 металла</STRING>
+			<SHORT_STRING>Купить металл</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL" dependent="0">
+			<STRING>Рынок: купить 100 нефти</STRING>
+			<SHORT_STRING>Купить нефть</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD_500" dependent="0">
+			<STRING>Рынок: купить 500 пищи</STRING>
+			<SHORT_STRING>Купить 500 пищи</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER_500" dependent="0">
+			<STRING>Рынок: купить 500 древесины</STRING>
+			<SHORT_STRING>Купить 500 древесины</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL_500" dependent="0">
+			<STRING>Рынок: купить 500 металла</STRING>
+			<SHORT_STRING>Купить 500 металла</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL_500" dependent="0">
+			<STRING>Рынок: купить 500 нефти</STRING>
+			<SHORT_STRING>Купить 500 нефти</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD_ALL" dependent="0">
+			<STRING>Рынок: купить максимум пищи</STRING>
+			<SHORT_STRING>Купить максимум пищи</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER_ALL" dependent="0">
+			<STRING>Рынок: купить максимум древесины</STRING>
+			<SHORT_STRING>Купить максимум древесины</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL_ALL" dependent="0">
+			<STRING>Рынок: купить максимум металла</STRING>
+			<SHORT_STRING>Купить максимум металла</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL_ALL" dependent="0">
+			<STRING>Рынок: купить максимум нефти</STRING>
+			<SHORT_STRING>Купить максимум нефти</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD" dependent="1">
+			<STRING>Рынок: продать 100 пищи</STRING>
+			<SHORT_STRING>Продать 100 пищи</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER" dependent="1">
+			<STRING>Рынок: продать 100 древесины</STRING>
+			<SHORT_STRING>Продать 100 древесины</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL" dependent="1">
+			<STRING>Рынок: продать 100 металла</STRING>
+			<SHORT_STRING>Продать 100 металла</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL" dependent="1">
+			<STRING>Рынок: продать 100 нефти</STRING>
+			<SHORT_STRING>Продать 100 нефти</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD_500" dependent="0">
+			<STRING>Рынок: продать 500 пищи</STRING>
+			<SHORT_STRING>Продать 500 пищи</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER_500" dependent="0">
+			<STRING>Рынок: продать 500 древесины</STRING>
+			<SHORT_STRING>Продать 500 древесины</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL_500" dependent="0">
+			<STRING>Рынок: продать 500 металла</STRING>
+			<SHORT_STRING>Продать 500 металла</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL_500" dependent="0">
+			<STRING>Рынок: продать 500 нефти</STRING>
+			<SHORT_STRING>Продать 500 нефти</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD_ALL" dependent="0">
+			<STRING>Рынок: продать всю пищу</STRING>
+			<SHORT_STRING>Продать всю пищу</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER_ALL" dependent="0">
+			<STRING>Рынок: продать всю древесину</STRING>
+			<SHORT_STRING>Продать всю древесину</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL_ALL" dependent="0">
+			<STRING>Рынок: продать весь металл</STRING>
+			<SHORT_STRING>Продать весь металл</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL_ALL" dependent="0">
+			<STRING>Рынок: продать всю нефть</STRING>
+			<SHORT_STRING>Продать всю нефть</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_AGE" dependent="0">
+			<STRING>Библиотека: переход в новую эпоху</STRING>
+			<SHORT_STRING>Новая эпоха</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_MILITARY" dependent="0">
+			<STRING>Библиотека: военные исследования</STRING>
+			<SHORT_STRING>Военные иссл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_SCIENCE" dependent="0">
+			<STRING>Библиотека: научные исследования</STRING>
+			<SHORT_STRING>Научные исследования</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_COMMERCE" dependent="0">
+			<STRING>Библиотека: торговые исследования</STRING>
+			<SHORT_STRING>Торговые исследования</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_CIVIC" dependent="0">
+			<STRING>Библиотека: гражданские иссл.</STRING>
+			<SHORT_STRING>Гражданские иссл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_BRIBE" dependent="0">
+			<STRING>Шпион: подкуп врага</STRING>
+			<SHORT_STRING>Подкуп врага</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_PILFER_FUNDS" dependent="0">
+			<STRING>Шпион: украсть ресурсы</STRING>
+			<SHORT_STRING>Украсть ресурсы</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_RALLY" dependent="0">
+			<STRING>Генерал: сплотиться</STRING>
+			<SHORT_STRING>Сплотиться</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_FORCED_MARCH" dependent="0">
+			<STRING>Генерал: марш-бросок</STRING>
+			<SHORT_STRING>Марш-бросок</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_AMBUSH" dependent="0">
+			<STRING>Генерал: засада</STRING>
+			<SHORT_STRING>Засада</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_DECOY" dependent="0">
+			<STRING>Генерал: создать приманку</STRING>
+			<SHORT_STRING>Приманка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_ENTRENCH" dependent="0">
+			<STRING>Генерал: окопаться</STRING>
+			<SHORT_STRING>Окопаться</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_SABOTAGE" dependent="0">
+			<STRING>Спецназ: диверсия</STRING>
+			<SHORT_STRING>Диверсия</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_PARADROP" dependent="0">
+			<STRING>Спецназ: десантирование</STRING>
+			<SHORT_STRING>Десантирование</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_INFORMER" dependent="0">
+			<STRING>Шпион: информатор</STRING>
+			<SHORT_STRING>Информатор</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_COUNTERINTEL" dependent="0">
+			<STRING>Разведчик: контрразведка</STRING>
+			<SHORT_STRING>Разведчик: контрразведка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_SNIPER" dependent="0">
+			<STRING>Спецназ: снайпер</STRING>
+			<SHORT_STRING>Снайпер</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_JAM_RADAR" dependent="0">
+			<STRING>Спецназ: глушить радар</STRING>
+			<SHORT_STRING>Глушить радар</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD" dependent="0">
+			<STRING>Горожанин: построить здание</STRING>
+			<SHORT_STRING>Построить здание</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY" dependent="0">
+			<STRING>Горожанин: построить военное здание</STRING>
+			<SHORT_STRING>Построить военное здание</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER" dependent="0">
+			<STRING>Горожанин: построить чудо</STRING>
+			<SHORT_STRING>Построить чудо</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY2" dependent="0">
+			<STRING>Горожанин: построить военное здание (2)</STRING>
+			<SHORT_STRING>Построить военное здание (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER2" dependent="0">
+			<STRING>Горожанин: построить чудо (2) </STRING>
+			<SHORT_STRING>Построить чудо (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD" dependent="0">
+			<STRING>Горожанин: построить здание</STRING>
+			<SHORT_STRING>Построить здание</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY" dependent="0">
+			<STRING>Горожанин: построить военное здание</STRING>
+			<SHORT_STRING>Построить военное здание</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER" dependent="0">
+			<STRING>Горожанин: построить чудо</STRING>
+			<SHORT_STRING>Построить чудо</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PEASANT_TO_ARMS" dependent="0">
+			<STRING>Горожанин: к оружию!</STRING>
+			<SHORT_STRING>К оружию!</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MILITIA_CIVILIAN" dependent="0">
+			<STRING>Ополченец: гражданский</STRING>
+			<SHORT_STRING>Ополченец — гражданский</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_AIRDEFENSE" dependent="0">
+			<STRING>Построить ПВО</STRING>
+			<SHORT_STRING>ПВО</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_FARM" dependent="0">
+			<STRING>Построить ферму</STRING>
+			<SHORT_STRING>Ферма</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_GRANARY" dependent="0">
+			<STRING>Построить амбар</STRING>
+			<SHORT_STRING>Амбар</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MINE" dependent="0">
+			<STRING>Построить рудник</STRING>
+			<SHORT_STRING>Рудник</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SMELTER" dependent="0">
+			<STRING>Построить плавильню</STRING>
+			<SHORT_STRING>Плавильня</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_UNIVERSITY" dependent="0">
+			<STRING>Построить университет</STRING>
+			<SHORT_STRING>Университет</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WOODCUTTER" dependent="0">
+			<STRING>Построить лагерь лесорубов</STRING>
+			<SHORT_STRING>Лагерь лесорубов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SAWMILL" dependent="0">
+			<STRING>Построить лесопилку</STRING>
+			<SHORT_STRING>Лесопилка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_OILWELL" dependent="0">
+			<STRING>Построить нефтяную вышку</STRING>
+			<SHORT_STRING>Нефтяная вышка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_REFINERY" dependent="0">
+			<STRING>Построить нефтезавод</STRING>
+			<SHORT_STRING>Нефтезавод</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MARKET" dependent="0">
+			<STRING>Построить рынок</STRING>
+			<SHORT_STRING>Рынок</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_BARRACKS" dependent="0">
+			<STRING>Построить казарму</STRING>
+			<SHORT_STRING>Казарма</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_STABLE" dependent="0">
+			<STRING>Построить конюшню</STRING>
+			<SHORT_STRING>Конюшня</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SIEGEFACTORY" dependent="0">
+			<STRING>Построить осадную мастерскую</STRING>
+			<SHORT_STRING>Осадная мастерская</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_VILLAGE" dependent="0">
+			<STRING>Построить город</STRING>
+			<SHORT_STRING>Город</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_VILLAGE2" dependent="0">
+			<STRING>Построить город (2)</STRING>
+			<SHORT_STRING>Построить город (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_TEMPLE" dependent="0">
+			<STRING>Построить храм</STRING>
+			<SHORT_STRING>Храм</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_LIBRARY" dependent="0">
+			<STRING>Построить библиотеку</STRING>
+			<SHORT_STRING>Библиотека</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_FORT" dependent="0">
+			<STRING>Построить форт/замок/крепость/редут</STRING>
+			<SHORT_STRING>Форт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_TOWER" dependent="0">
+			<STRING>Построить башню/донжон/частокол/бункер</STRING>
+			<SHORT_STRING>Башня</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_AIRBASE" dependent="0">
+			<STRING>Построить авиабазу</STRING>
+			<SHORT_STRING>Авиабаза</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_DOCK" dependent="0">
+			<STRING>Построить док</STRING>
+			<SHORT_STRING>Док</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SILO" dependent="0">
+			<STRING>Построить ракетную шахту</STRING>
+			<SHORT_STRING>Ракетная шахта</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_LOOKOUT" dependent="0">
+			<STRING>Построить дозорную вышку</STRING>
+			<SHORT_STRING>Дозорная вышка</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_LINE" dependent="0">
+			<STRING>Юнит: построение линией</STRING>
+			<SHORT_STRING>Линия</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_REFUSED" dependent="0">
+			<STRING>Юнит: строй с загнутыми флангами</STRING>
+			<SHORT_STRING>Загиб флангов</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_ENVELOP" dependent="0">
+			<STRING>Юнит: построение для охвата</STRING>
+			<SHORT_STRING>Охват</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_E_RIGHT" dependent="0">
+			<STRING>Юнит: построение уступом вправо</STRING>
+			<SHORT_STRING>Уступ вправо</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_E_LEFT" dependent="0">
+			<STRING>Юнит: построение уступом влево</STRING>
+			<SHORT_STRING>Уступ влево</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_AGGRESSIVE" dependent="0">
+			<STRING>Юнит: агрессивная стойка</STRING>
+			<SHORT_STRING>Агрессивная стойка</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_RAID" dependent="0">
+			<STRING>Юнит: стойка набега</STRING>
+			<SHORT_STRING>Стойка набега</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_RAZE" dependent="0">
+			<STRING>Юнит: стойка разрушения</STRING>
+			<SHORT_STRING>Стойка разрушения</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_HOLDFIRE" dependent="0">
+			<STRING>Юнит: не открывать огонь</STRING>
+			<SHORT_STRING>Не открывать огонь</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_DEFENSIVE" dependent="0">
+			<STRING>Юнит: оборонительная стойка</STRING>
+			<SHORT_STRING>Оборонительная стойка</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_STANDGROUND" dependent="0">
+			<STRING>Юнит: стоять на месте</STRING>
+			<SHORT_STRING>Стоять</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CANCEL" dependent="0">
+			<STRING>Отменить действие</STRING>
+			<SHORT_STRING>Отмена</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT" dependent="0">
+			<STRING>Чат</STRING>
+			<SHORT_STRING>Чат</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ALL" dependent="0">
+			<STRING>Чат: все</STRING>
+			<SHORT_STRING>Чат: все</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ALLIES" dependent="0">
+			<STRING>Чат союзников</STRING>
+			<SHORT_STRING>Чат союзников</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ENEMIES" dependent="0">
+			<STRING>Чат врагов</STRING>
+			<SHORT_STRING>Чат врагов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DIPLO" dependent="0">
+			<STRING>Дипломатия</STRING>
+			<SHORT_STRING>Дипломатия</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DIRECT_DIPLO" dependent="0">
+			<STRING>Дипломатия: к предложению</STRING>
+			<SHORT_STRING>К предложению</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SLOWER" dependent="0">
+			<STRING>Медленнее</STRING>
+			<SHORT_STRING>Медленнее</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SLOWER2" dependent="0">
+			<STRING>Скорость игры: медленнее (2)</STRING>
+			<SHORT_STRING>Медленнее</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FASTER" dependent="0">
+			<STRING>Быстрее</STRING>
+			<SHORT_STRING>Быстрее</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FASTER2" dependent="0">
+			<STRING>Скорость игры: быстрее (2)</STRING>
+			<SHORT_STRING>Быстрее</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RESIGN" dependent="0">
+			<STRING>Сдаться</STRING>
+			<SHORT_STRING>Сдаться</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_QUIT" dependent="0">
+			<STRING>Выйти</STRING>
+			<SHORT_STRING>Выйти</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GARRISON" dependent="0">
+			<STRING>Юнит: в гарнизон</STRING>
+			<SHORT_STRING>Гарнизон</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE" dependent="0">
+			<STRING>Найти город</STRING>
+			<SHORT_STRING>Найти город</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY" dependent="0">
+			<STRING>Найти библиотеку</STRING>
+			<SHORT_STRING>Найти библиотеку</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET" dependent="0">
+			<STRING>Найти рынок</STRING>
+			<SHORT_STRING>Найти рынок</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS" dependent="0">
+			<STRING>Найти казарму</STRING>
+			<SHORT_STRING>Найти казарму</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE" dependent="0">
+			<STRING>Найти конюшню или автозавод</STRING>
+			<SHORT_STRING>Найти конюшню или автозавод</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY" dependent="0">
+			<STRING>Найти осадную мастерскую</STRING>
+			<SHORT_STRING>Найти осадную мастерскую</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK" dependent="0">
+			<STRING>Найти док/верфь</STRING>
+			<SHORT_STRING>Найти док/верфь</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE" dependent="0">
+			<STRING>Найти авиабазу</STRING>
+			<SHORT_STRING>Найти авиабазу</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO" dependent="0">
+			<STRING>Найти ракетную шахту</STRING>
+			<SHORT_STRING>Найти ракетную шахту</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY" dependent="0">
+			<STRING>Найти университет</STRING>
+			<SHORT_STRING>Найти университет</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE_NOZOOM" dependent="1">
+			<STRING>Выбрать город, без зума</STRING>
+			<SHORT_STRING>Выбрать город, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY_NOZOOM" dependent="1">
+			<STRING>Выбрать библиотеку, без зума</STRING>
+			<SHORT_STRING>Выбрать библиотеку, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET_NOZOOM" dependent="1">
+			<STRING>Выбрать рынок, без зума</STRING>
+			<SHORT_STRING>Выбрать рынок, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS_NOZOOM" dependent="1">
+			<STRING>Выбрать казарму, без зума</STRING>
+			<SHORT_STRING>Выбрать казарму, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE_NOZOOM" dependent="1">
+			<STRING>Выбрать конюшню, без зума</STRING>
+			<SHORT_STRING>Выбрать конюшню, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY_NOZOOM" dependent="1">
+			<STRING>Выбрать осадную мастерскую, без зума</STRING>
+			<SHORT_STRING>Выбрать осадную мастерскую, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK_NOZOOM" dependent="1">
+			<STRING>Выбрать док, без зума</STRING>
+			<SHORT_STRING>Выбрать док, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE_NOZOOM" dependent="1">
+			<STRING>Выбрать авиабазу, без зума</STRING>
+			<SHORT_STRING>Выбрать авиабазу, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO_NOZOOM" dependent="1">
+			<STRING>Выбрать ракетную шахту, без зума</STRING>
+			<SHORT_STRING>Выбрать ракетную шахту, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY_NOZOOM" dependent="1">
+			<STRING>Выбрать университет, без зума</STRING>
+			<SHORT_STRING>Выбрать университет, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE_ALL" dependent="1">
+			<STRING>Выбрать все города</STRING>
+			<SHORT_STRING>Выбрать все города</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY_ALL" dependent="1">
+			<STRING>Выбрать все библиотеки</STRING>
+			<SHORT_STRING>Выбрать все библиотеки</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET_ALL" dependent="1">
+			<STRING>Выбрать все рынки</STRING>
+			<SHORT_STRING>Выбрать все рынки</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS_ALL" dependent="1">
+			<STRING>Выбрать все казармы</STRING>
+			<SHORT_STRING>Выбрать все казармы</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE_ALL" dependent="1">
+			<STRING>Выбрать все конюшни</STRING>
+			<SHORT_STRING>Выбрать все конюшни</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY_ALL" dependent="1">
+			<STRING>Выбрать все осадные мастерские</STRING>
+			<SHORT_STRING>Выбрать все осадные мастерские</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK_ALL" dependent="1">
+			<STRING>Выбрать все доки</STRING>
+			<SHORT_STRING>Выбрать все доки</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE_ALL" dependent="1">
+			<STRING>Выбрать все авиабазы</STRING>
+			<SHORT_STRING>Выбрать все авиабазы</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO_ALL" dependent="1">
+			<STRING>Выбрать все ракетные шахты</STRING>
+			<SHORT_STRING>Выбрать все ракетные шахты</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY_ALL" dependent="1">
+			<STRING>Выбрать все университеты</STRING>
+			<SHORT_STRING>Выбрать все университеты</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GATHER" dependent="0">
+			<STRING>Здание: задать точку сбора</STRING>
+			<SHORT_STRING>Задать точку сбора</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CLEAR_GATHER" dependent="0">
+			<STRING>Здание: убрать точку сбора</STRING>
+			<SHORT_STRING>Сбросить точку сбора</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PAUSE" dependent="0">
+			<STRING>Пауза</STRING>
+			<SHORT_STRING>Пауза</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PAUSE2" dependent="0">
+			<STRING>Пауза</STRING>
+			<SHORT_STRING>Пауза</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DISBAND" dependent="0">
+			<STRING>Юнит/здание: распустить/снести</STRING>
+			<SHORT_STRING>Распустить/снести</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TRANSPORT" dependent="0">
+			<STRING>Юнит: автоперевозка вкл./выкл.</STRING>
+			<SHORT_STRING>Автоперевозка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM" dependent="0">
+			<STRING>Зум</STRING>
+			<SHORT_STRING>Зум</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN" dependent="0">
+			<STRING>Приблизить</STRING>
+			<SHORT_STRING>Приблизить</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT" dependent="0">
+			<STRING>Отдалить</STRING>
+			<SHORT_STRING>Отдалить</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN2" dependent="0">
+			<STRING>Приблизить (2)</STRING>
+			<SHORT_STRING>Приблизить (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT2" dependent="0">
+			<STRING>Отдалить (2)</STRING>
+			<SHORT_STRING>Отдалить (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN3" dependent="0">
+			<STRING>Приблизить (3)</STRING>
+			<SHORT_STRING>Приблизить (3)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT3" dependent="0">
+			<STRING>Отдалить (3)</STRING>
+			<SHORT_STRING>Отдалить (3)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SAVE_ZOOM_IN" dependent="0">
+			<STRING>Запомнить приближение</STRING>
+			<SHORT_STRING>Запомнить приближение</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SAVE_ZOOM_OUT" dependent="0">
+			<STRING>Запомнить отдаление</STRING>
+			<SHORT_STRING>Запомнить отдаление</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MILITARY" dependent="0">
+			<STRING>Найти военный юнит/группу</STRING>
+			<SHORT_STRING>Найти военный юнит/группу</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PEASANT" dependent="0">
+			<STRING>Найти праздного горожанина</STRING>
+			<SHORT_STRING>Найти праздного горожанина</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_GENERAL" dependent="0">
+			<STRING>Найти генерала</STRING>
+			<SHORT_STRING>Найти генерала</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SCOUT" dependent="0">
+			<STRING>Найти разведчика</STRING>
+			<SHORT_STRING>Найти разведчика</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SPY" dependent="0">
+			<STRING>Найти шпиона</STRING>
+			<SHORT_STRING>Найти шпиона</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SUPPLY" dependent="0">
+			<STRING>Найти обоз</STRING>
+			<SHORT_STRING>Найти обоз</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MILITARY_NOZOOM" dependent="1">
+			<STRING>Выбрать военный юнит, без зума</STRING>
+			<SHORT_STRING>Выбрать войска, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PEASANT_NOZOOM" dependent="1">
+			<STRING>Выбрать бездейств. горожанина, без зума</STRING>
+			<SHORT_STRING>Выбрать бездейств. горожанина, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_GENERAL_NOZOOM" dependent="1">
+			<STRING>Выбрать генерала, без зума</STRING>
+			<SHORT_STRING>Выбрать генерала, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SCOUT_NOZOOM" dependent="1">
+			<STRING>Выбрать разведчика, без зума</STRING>
+			<SHORT_STRING>Выбрать разведчика, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SPY_NOZOOM" dependent="1">
+			<STRING>Выбрать шпиона, без зума</STRING>
+			<SHORT_STRING>Выбрать шпиона, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SUPPLY_NOZOOM" dependent="1">
+			<STRING>Выбрать обоз, без зума</STRING>
+			<SHORT_STRING>Выбрать обоз, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_MILITARY" dependent="1">
+			<STRING>Выбрать все военные юниты</STRING>
+			<SHORT_STRING>Выбрать все военные юниты</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_PEASANT" dependent="1">
+			<STRING>Выбрать всех праздных горожан</STRING>
+			<SHORT_STRING>Выбрать всех праздных горожан</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_GENERAL" dependent="1">
+			<STRING>Выбрать всех генералов</STRING>
+			<SHORT_STRING>Выбрать всех генералов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SCOUT" dependent="1">
+			<STRING>Выбрать всех разведчиков</STRING>
+			<SHORT_STRING>Выбрать всех разведчиков</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SPY" dependent="1">
+			<STRING>Выбрать всех шпионов</STRING>
+			<SHORT_STRING>Выбрать всех шпионов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SUPPLY" dependent="1">
+			<STRING>Выбрать все обозы</STRING>
+			<SHORT_STRING>Выбрать все обозы</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STANCE" dependent="0">
+			<STRING>Юнит: следующая стойка</STRING>
+			<SHORT_STRING>Следующая стойка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_NONIDLE_PEASANT" dependent="0">
+			<STRING>Найти любого горожанина</STRING>
+			<SHORT_STRING>Найти любого горожанина</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_NONIDLE_PEASANT" dependent="1">
+			<STRING>Выбрать всех горожан</STRING>
+			<SHORT_STRING>Выбрать всех горожан</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NOZOOM_NONIDLE_PEASANT" dependent="1">
+			<STRING>Выбрать любого горожанина, без зума</STRING>
+			<SHORT_STRING>Выбрать любого горожанина, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AUTO_EXPLORE" dependent="0">
+			<STRING>Юнит: авторазведка</STRING>
+			<SHORT_STRING>Автоисследование</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FOLLOW" dependent="0">
+			<STRING>Юнит: следовать</STRING>
+			<SHORT_STRING>Следом</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GUARD" dependent="0">
+			<STRING>Юнит: охранять</STRING>
+			<SHORT_STRING>Охранять</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ATTACK_TO" dependent="0">
+			<STRING>Юнит: атаковать</STRING>
+			<SHORT_STRING>Атаковать</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_EXPLORE_TO" dependent="0">
+			<STRING>Юнит: разведать</STRING>
+			<SHORT_STRING>Разведать</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FLEE_TO" dependent="0">
+			<STRING>Юнит: отступить к</STRING>
+			<SHORT_STRING>Отступить к</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MOVE_TO" dependent="0">
+			<STRING>Юнит: идти к</STRING>
+			<SHORT_STRING>Идти к</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORWARD" dependent="0">
+			<STRING>Юнит: вперёд</STRING>
+			<SHORT_STRING>Вперёд</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORWARD2" dependent="0">
+			<STRING>Юнит: вперёд (2)</STRING>
+			<SHORT_STRING>Вперёд (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PATROL" dependent="0">
+			<STRING>Юнит: патрулировать</STRING>
+			<SHORT_STRING>Патруль</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_HALT" dependent="0">
+			<STRING>Юнит: стоп</STRING>
+			<SHORT_STRING>Стой</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ATTACK_GROUND" dependent="0">
+			<STRING>Юнит: обстрел</STRING>
+			<SHORT_STRING>Бомбарда</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_EJECT_ALL" dependent="0">
+			<STRING>Юнит/здание: высадить всех</STRING>
+			<SHORT_STRING>Высадить всех</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_MESSAGE" dependent="0">
+			<STRING>След. сообщение</STRING>
+			<SHORT_STRING>След. сообщение</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_MESSAGE2" dependent="0">
+			<STRING>След. сообщение 2</STRING>
+			<SHORT_STRING>След. сообщение 2</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_MESSAGE" dependent="1">
+			<STRING>Пред. сообщение</STRING>
+			<SHORT_STRING>Пред. сообщение</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_MESSAGE2" dependent="1">
+			<STRING>Пред. сообщение 2</STRING>
+			<SHORT_STRING>Пред. сообщение 2</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SCENE_HELP" dependent="0">
+			<STRING>Справка по сцене</STRING>
+			<SHORT_STRING>Справка по сцене</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_HELP" dependent="0">
+			<STRING>Больше подсказок</STRING>
+			<SHORT_STRING>Больше подсказок</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_HELP" dependent="0">
+			<STRING>Меньше подсказок</STRING>
+			<SHORT_STRING>Меньше подсказок</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_THOUGHTS" dependent="0">
+			<STRING>Облачка мыслей вкл./выкл.</STRING>
+			<SHORT_STRING>Облачка мыслей вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_DATA" dependent="0">
+			<STRING>След. данные</STRING>
+			<SHORT_STRING>След. данные</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_DATA" dependent="1">
+			<STRING>Пред. данные</STRING>
+			<SHORT_STRING>Пред. данные</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_DATA" dependent="1">
+			<STRING>Данные вкл./выкл.</STRING>
+			<SHORT_STRING>Данные вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT" dependent="0">
+			<STRING>Перекл. показ данных</STRING>
+			<SHORT_STRING>Перекл. показ данных</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_FF_COLORS" dependent="0">
+			<STRING>Цвета свой/чужой вкл./выкл.</STRING>
+			<SHORT_STRING>Цвета свой/чужой вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_CITY_NAMES" dependent="0">
+			<STRING>Названия городов вкл./выкл.</STRING>
+			<SHORT_STRING>Названия городов вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_STATS" dependent="0">
+			<STRING>Полосы исследований вкл./выкл.</STRING>
+			<SHORT_STRING>Полосы исследований вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_ADVANCED" dependent="0">
+			<STRING>Расширенное меню вкл./выкл.</STRING>
+			<SHORT_STRING>Расш. меню</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STATWIN" dependent="0">
+			<STRING>Стат. окно</STRING>
+			<SHORT_STRING>Стат. окно</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PING" dependent="0">
+			<STRING>Подать сигнал</STRING>
+			<SHORT_STRING>Подать сигнал</SHORT_STRING>
+		</KEY>
+		<KEY enum="CHEAT_HURRY_JOB" dependent="0">
+			<STRING>Чит: ускорить работу</STRING>
+			<SHORT_STRING>Чит: ускорить работу</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_QUEUE" dependent="0">
+			<STRING>Здание: убрать из очереди</STRING>
+			<SHORT_STRING>Убрать из очереди</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_OBJECTIVES" dependent="0">
+			<STRING>Показать задачи</STRING>
+			<SHORT_STRING>Показать задачи</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MENU" dependent="0">
+			<STRING>Меню игры</STRING>
+			<SHORT_STRING>Меню игры</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_OPTIONS" dependent="0">
+			<STRING>Настройки игры</STRING>
+			<SHORT_STRING>Настройки игры</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_TIME" dependent="0">
+			<STRING>Таймер вкл./выкл.</STRING>
+			<SHORT_STRING>Таймер вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LEFT" dependent="0">
+			<STRING>Юнит: повернуть строй влево</STRING>
+			<SHORT_STRING>Повернуть строй влево</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RIGHT" dependent="0">
+			<STRING>Юнит: повернуть строй вправо</STRING>
+			<SHORT_STRING>Повернуть строй вправо</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOWN" dependent="0">
+			<STRING>Юнит: строй на шаг назад</STRING>
+			<SHORT_STRING>Строй на шаг назад</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UP" dependent="0">
+			<STRING>Камера: вверх</STRING>
+			<SHORT_STRING>Камера: вверх</SHORT_STRING>
+		</KEY>
+		<KEY enum="TERRAINDEBUG" dependent="0">
+			<STRING>Отладка ландшафта</STRING>
+			<SHORT_STRING>Отладка ландшафта</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PING2" dependent="0">
+			<STRING>Подать сигнал (2)</STRING>
+			<SHORT_STRING>Подать сигнал (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CANNON_TIME" dependent="0">
+			<STRING>Включить резервное время</STRING>
+			<SHORT_STRING>Резервное время</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_MAIN" dependent="0">
+			<STRING>Главная панель вкл./выкл.</STRING>
+			<SHORT_STRING>Главная панель</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_RESOURCES" dependent="0">
+			<STRING>Панель ресурсов вкл./выкл.</STRING>
+			<SHORT_STRING>Панель ресурсов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_MARKET" dependent="0">
+			<STRING>Панель рынка вкл./выкл.</STRING>
+			<SHORT_STRING>Панель рынка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_INFRA" dependent="0">
+			<STRING>Панель инфраструктуры вкл./выкл.</STRING>
+			<SHORT_STRING>Панель инфраструктуры</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_CURRENT" dependent="0">
+			<STRING>Выбрать все выбранные типы</STRING>
+			<SHORT_STRING>Выбрать всё</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_NORMAL" dependent="0">
+			<STRING>Данные: ПОЛИТИКА</STRING>
+			<SHORT_STRING>Данные: ПОЛИТИКА</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_ECONOMY" dependent="0">
+			<STRING>Данные: ЭКОНОМИКА</STRING>
+			<SHORT_STRING>Данные: ЭКОНОМИКА</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_MARKET" dependent="0">
+			<STRING>Данные: РЫНОК</STRING>
+			<SHORT_STRING>Данные: РЫНОК</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_MILITARY" dependent="0">
+			<STRING>Данные: АРМИЯ</STRING>
+			<SHORT_STRING>Данные: АРМИЯ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_LIBRARY" dependent="0">
+			<STRING>Данные: ГОРОДА</STRING>
+			<SHORT_STRING>Данные: ГОРОДА</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_TECHNOLOGY" dependent="0">
+			<STRING>Данные: УЛУЧШЕНИЯ</STRING>
+			<SHORT_STRING>Данные: УЛУЧШЕНИЯ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_GROUPS" dependent="0">
+			<STRING>Данные: ГРУППЫ</STRING>
+			<SHORT_STRING>Данные: ГРУППЫ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_DIPLOMACY">
+			<STRING>Данные: ДИПЛОМАТИЯ</STRING>
+			<SHORT_STRING>Данные: ДИПЛОМАТИЯ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_WONDERS">
+			<STRING>Данные: ЧУДЕСА</STRING>
+			<SHORT_STRING>Данные: ЧУДЕСА</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_TEXTURES" dependent="0">
+			<STRING>SYSTEM_TOGGLE_TEXTURES</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_TEXTURES</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_MEM_WINDOW" dependent="0">
+			<STRING>SYSTEM_TOGGLE_MEM_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_MEM_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MEM_PRINT" dependent="0">
+			<STRING>SYSTEM_MEM_PRINT</STRING>
+			<SHORT_STRING>SYSTEM_MEM_PRINT</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_LOG" dependent="0">
+			<STRING>SYSTEM_SCRIPT_LOG</STRING>
+			<SHORT_STRING>SYSTEM_SCRIPT_LOG</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TEST_XML_WINDOW" dependent="0">
+			<STRING>SYSTEM_TEST_XML_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_TEST_XML_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_RELOAD_XML_WINDOW" dependent="0">
+			<STRING>SYSTEM_RELOAD_XML_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_RELOAD_XML_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_EDITOR_EDIT_MODE" dependent="0">
+			<STRING>SYSTEM_SCRIPT_EDITOR_EDIT_MODE</STRING>
+			<SHORT_STRING>SYSTEM_SCRIPT_EDITOR_EDIT_MODE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_RESEARCH" dependent="0">
+			<STRING>Найти здание исследований</STRING>
+			<SHORT_STRING>Найти здание исследований</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_COUNTERINTEL" dependent="0">
+			<STRING>Шпион: контрразведка</STRING>
+			<SHORT_STRING>Контрразведка</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_FARM" dependent="0">
+			<STRING>Город: точка сбора на фермах</STRING>
+			<SHORT_STRING>Точка сбора на фермах</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_WOOD" dependent="0">
+			<STRING>Город: точка сбора у лесорубов</STRING>
+			<SHORT_STRING>Точка сбора у лесорубов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_MINE" dependent="0">
+			<STRING>Город: точка сбора на рудниках</STRING>
+			<SHORT_STRING>Точка сбора на рудниках</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_ALL" dependent="0">
+			<STRING>Город: точка сбора у добывающих зданий</STRING>
+			<SHORT_STRING>Точка сбора у добывающих зданий</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_LOW">
+			<STRING>Подсказки: МАЛО</STRING>
+			<SHORT_STRING>Подсказки: МАЛО</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_MEDIUM">
+			<STRING>Подсказки: СРЕДНЕ</STRING>
+			<SHORT_STRING>Подсказки: СРЕДНЕ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_HIGH">
+			<STRING>Подсказки: МНОГО</STRING>
+			<SHORT_STRING>Подсказки: МНОГО</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_OFF">
+			<STRING>Выключить показ данных</STRING>
+			<SHORT_STRING>Выключить показ данных</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_GRANARY2">
+			<STRING>Амбар: улучшить бонус пехоты</STRING>
+			<SHORT_STRING>Улучшить выпуск войск</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_LUMBER2">
+			<STRING>Лесопилка: улучшить бонус зданий</STRING>
+			<SHORT_STRING>Улучшить бонус зданий</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SMELTER2">
+			<STRING>Плавильня: улучшить бонус снабжения</STRING>
+			<SHORT_STRING>Улучшить бонус снабжения</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FORT2">
+			<STRING>Форт: улучшить бонус шпиона/генерала</STRING>
+			<SHORT_STRING>Улучшить бонус шпиона/генерала</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_INFINITE">
+			<STRING>Здание: бесконечная очередь вкл./выкл.</STRING>
+			<SHORT_STRING>Бесконечная очередь</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_SCENE_EVENTS">
+			<STRING>SYSTEM_SHOW_SCENE_EVENTS</STRING>
+			<SHORT_STRING>SYSTEM_SHOW_SCENE_EVENTS</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_FRAMERATE" dependent="0">
+			<STRING>Выгрузить частоту кадров</STRING>
+			<SHORT_STRING>Выгрузить FPS</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRSTRIKE">
+			<STRING>Авиация: авиаудар</STRING>
+			<SHORT_STRING>Авиаудар</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TRANSFER">
+			<STRING>Авиация: перебазировать</STRING>
+			<SHORT_STRING>Перевести</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RETURN">
+			<STRING>Авиация: вернуться на базу</STRING>
+			<SHORT_STRING>Вернуться на базу</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_RECALL">
+			<STRING>Авиабаза: отозвать всю авиацию</STRING>
+			<SHORT_STRING>Отозвать всю авиацию</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_REPEAT">
+			<STRING>Авиабаза: повтор приказов вкл./выкл.</STRING>
+			<SHORT_STRING>Повтор приказов вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTERS">
+			<STRING>Авиабаза: выбрать все истребители</STRING>
+			<SHORT_STRING>Выбрать все истребители</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBERS">
+			<STRING>Авиабаза: выбрать все бомбардировщики</STRING>
+			<SHORT_STRING>Выбрать все бомбардировщики</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELIS">
+			<STRING>Авиабаза: выбрать все вертолёты</STRING>
+			<SHORT_STRING>Выбрать все вертолёты</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_SCRAMBLE">
+			<STRING>Авиабаза: поднять всю авиацию по тревоге</STRING>
+			<SHORT_STRING>Поднять всю авиацию по тревоге</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TEMPLE_2">
+			<STRING>Храм: улучшить налоги</STRING>
+			<SHORT_STRING>Улучшить налоги</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SENATE">
+			<STRING>Сенат: исследовать тоталитарное правление</STRING>
+			<SHORT_STRING>Исследовать тоталитарное правление</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SENATE_2">
+			<STRING>Сенат: исследовать правление согласия</STRING>
+			<SHORT_STRING>Исследовать правление согласия</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_BEHIND">
+			<STRING>SYSTEM_TOGGLE_SCENE_BEHIND</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_SCENE_BEHIND</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_RENAME">
+			<STRING>Город: переименовать</STRING>
+			<SHORT_STRING>Переименовать</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_REPAIR">
+			<STRING>Горожанин: чинить</STRING>
+			<SHORT_STRING>Чинить</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PEASANT_ALARM">
+			<STRING>Горожанин: тревога</STRING>
+			<SHORT_STRING>Тревога</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORM">
+			<STRING>Юнит: сменить построение</STRING>
+			<SHORT_STRING>Построение</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_AIRSTRIKE">
+			<STRING>Авианосец: воздушная миссия</STRING>
+			<SHORT_STRING>Авиаудар</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_ALLAIR">
+			<STRING>Авианосец: выбрать всю авиацию</STRING>
+			<SHORT_STRING>Выбрать всю авиацию</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_RECALL">
+			<STRING>Авианосец: отозвать всю авиацию</STRING>
+			<SHORT_STRING>Отозвать всю авиацию</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_REPEAT">
+			<STRING>Авианосец: повтор приказов вкл./выкл.</STRING>
+			<SHORT_STRING>Повтор приказов вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_BEHIND">
+			<STRING>Юниты за зданиями вкл./выкл.</STRING>
+			<SHORT_STRING>Юниты за зданиями вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_TAUNTS">
+			<STRING>Звуковые насмешки вкл./выкл.</STRING>
+			<SHORT_STRING>Звуковые насмешки вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BACK_TO_WORK">
+			<STRING>Здание: вернуться к работе</STRING>
+			<SHORT_STRING>Вернуться к работе</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DISBAND_ALL">
+			<STRING>Юнит: распустить ВСЕХ</STRING>
+			<SHORT_STRING>Распустить ВСЕХ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MESSAGE_UP">
+			<STRING>Прокрутить сообщения ВВЕРХ</STRING>
+			<SHORT_STRING>Прокрутить сообщения ВВЕРХ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MESSAGE_DOWN">
+			<STRING>Прокрутить сообщения ВНИЗ</STRING>
+			<SHORT_STRING>Прокрутить сообщения ВНИЗ</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SELECT_FILE">
+			<STRING>Редактор скриптов: загруженные скрипты</STRING>
+			<SHORT_STRING>Загруженные скрипты</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_NEW">
+			<STRING>Редактор скриптов: новый (пустой файл)</STRING>
+			<SHORT_STRING>Новый (пустой файл)</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_NEW_TEMP">
+			<STRING>Редактор скриптов: новый скрипт сценария</STRING>
+			<SHORT_STRING>Новый скрипт сценария</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_LOAD">
+			<STRING>Редактор скриптов: открыть</STRING>
+			<SHORT_STRING>Открыто</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SAVE">
+			<STRING>Редактор скриптов: сохранить</STRING>
+			<SHORT_STRING>Сохранить</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SAVE_AS">
+			<STRING>Редактор скриптов: сохранить как...</STRING>
+			<SHORT_STRING>Сохранить как...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_CLOSE">
+			<STRING>Редактор скриптов: закрыть скрипт</STRING>
+			<SHORT_STRING>Закрыть скрипт</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_EXIT">
+			<STRING>Редактор скриптов: выйти из редактора</STRING>
+			<SHORT_STRING>Закрыть редактор</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_UNDO">
+			<STRING>Редактор скриптов: отменить</STRING>
+			<SHORT_STRING>Отменить</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REDO">
+			<STRING>Редактор скриптов: повторить</STRING>
+			<SHORT_STRING>Повторить</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_COPY">
+			<STRING>Редактор скриптов: копировать</STRING>
+			<SHORT_STRING>Копир.</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_CUT">
+			<STRING>Редактор скриптов: вырезать</STRING>
+			<SHORT_STRING>Вырезать</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_PASTE">
+			<STRING>Редактор скриптов: вставить</STRING>
+			<SHORT_STRING>Вставить</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SELECT_ALL">
+			<STRING>Редактор скриптов: выделить всё</STRING>
+			<SHORT_STRING>Выбрать всё</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_LINE">
+			<STRING>Редактор скриптов: перейти к строке...</STRING>
+			<SHORT_STRING>Перейти к строке...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_TRIGGER">
+			<STRING>Редактор скриптов: к триггеру</STRING>
+			<SHORT_STRING>Перейти к триггеру</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_SCRIPT">
+			<STRING>Редактор скриптов: к скрипту</STRING>
+			<SHORT_STRING>Перейти к скрипту</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_TOGGLE_BREAK">
+			<STRING>Редактор скриптов: точка останова вкл./выкл.</STRING>
+			<SHORT_STRING>Точка останова вкл./выкл.</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_FIND">
+			<STRING>Редактор скриптов: найти...</STRING>
+			<SHORT_STRING>Найти...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_FIND_NEXT">
+			<STRING>Редактор скриптов: найти далее</STRING>
+			<SHORT_STRING>Найти далее</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REPLACE">
+			<STRING>Редактор скриптов: заменить...</STRING>
+			<SHORT_STRING>Заменить...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_TOGGLE_OUTPUT">
+			<STRING>Редактор скриптов: журнал вывода</STRING>
+			<SHORT_STRING>Журнал вывода</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SHOW_LOG">
+			<STRING>Редактор скриптов: журнал скрипта игры</STRING>
+			<SHORT_STRING>Журнал скрипта игры</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_INSERT_TRIGGER">
+			<STRING>Редактор скриптов: добавить триггер...</STRING>
+			<SHORT_STRING>Вставить блок триггера...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_INSERT_FUNC">
+			<STRING>Редактор скриптов: добавить функцию...</STRING>
+			<SHORT_STRING>Вставить функцию триггера...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_COMPILE">
+			<STRING>Редактор скриптов: компилировать</STRING>
+			<SHORT_STRING>Компиляция</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_RUN">
+			<STRING>Редактор скриптов: запустить</STRING>
+			<SHORT_STRING>Запустить</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_INTO">
+			<STRING>Редактор скриптов: шаг с заходом</STRING>
+			<SHORT_STRING>Шаг с заходом</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_OVER">
+			<STRING>Редактор скриптов: шаг с обходом</STRING>
+			<SHORT_STRING>Шаг с обходом</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_OUT">
+			<STRING>Редактор скриптов: шаг с выходом</STRING>
+			<SHORT_STRING>Шаг с выходом</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_TO_TRIGGER">
+			<STRING>Редактор скриптов: шаг до триггера</STRING>
+			<SHORT_STRING>Шаг до триггера</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_TO_LINE">
+			<STRING>Редактор скриптов: выполнить до строки</STRING>
+			<SHORT_STRING>Выполнить до строки</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STOP">
+			<STRING>Редактор скриптов: остановить</STRING>
+			<SHORT_STRING>Стоп</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_BREAKPOINTS">
+			<STRING>Редактор скриптов: точки останова</STRING>
+			<SHORT_STRING>Точки останова</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REMOVE_BREAKS">
+			<STRING>Редактор скриптов: убрать все точки останова</STRING>
+			<SHORT_STRING>Убрать все точки останова</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_LOCALS">
+			<STRING>Редактор скриптов: локальные переменные</STRING>
+			<SHORT_STRING>Локальные переменные</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_STATICS">
+			<STRING>Редактор скриптов: статические переменные</STRING>
+			<SHORT_STRING>Статические переменные</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_TRIGGERS">
+			<STRING>Редактор скриптов: наблюдать за триггерами</STRING>
+			<SHORT_STRING>Наблюдать за триггерами</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_CUSTOM">
+			<STRING>Редактор скриптов: своё наблюдение</STRING>
+			<SHORT_STRING>Своё наблюдение</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_RETURNS">
+			<STRING>Редактор скриптов: возвращаемые значения</STRING>
+			<SHORT_STRING>Возвращаемые значения</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_FLAME">
+			<STRING>Казарма: создать огнемёт</STRING>
+			<SHORT_STRING>Создать огнемёт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_AA">
+			<STRING>Завод: создать зенитную пушку</STRING>
+			<SHORT_STRING>Создать зенитную пушку</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_AA_UPGRADE">
+			<STRING>Завод: улучшить зенитную пушку</STRING>
+			<SHORT_STRING>Улучшить зенитную пушку</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SCHOLAR_TO_ARMS">
+			<STRING>Учёный: к оружию!</STRING>
+			<SHORT_STRING>К оружию!</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_GROUND">
+			<STRING>Ракетная шахта: удар по земле</STRING>
+			<SHORT_STRING>Удар по земле</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_RUN_SECTION_PROFILE">
+			<STRING>SYSTEM_RUN_SECTION_PROFILE</STRING>
+			<SHORT_STRING>SYSTEM_RUN_SECTION_PROFILE</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_SECTION_PROFILE">
+			<STRING>SYSTEM_SHOW_SECTION_PROFILE</STRING>
+			<SHORT_STRING>SYSTEM_SHOW_SECTION_PROFILE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT">
+			<STRING>Найти форт</STRING>
+			<SHORT_STRING>Найти форт</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT_NOZOOM">
+			<STRING>Выбрать форт, без зума</STRING>
+			<SHORT_STRING>Выбрать форт, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT_ALL">
+			<STRING>Выбрать все форты</STRING>
+			<SHORT_STRING>Выбрать все форты</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER">
+			<STRING>Найти башню</STRING>
+			<SHORT_STRING>Найти башню</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER_NOZOOM">
+			<STRING>Выбрать башню, без зума</STRING>
+			<SHORT_STRING>Выбрать башню, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER_ALL">
+			<STRING>Выбрать все башни</STRING>
+			<SHORT_STRING>Выбрать все башни</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SENATE">
+			<STRING>Найти сенат</STRING>
+			<SHORT_STRING>Найти сенат</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SENATE_NOZOOM">
+			<STRING>Выбрать сенат, без зума</STRING>
+			<SHORT_STRING>Выбрать сенат, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE">
+			<STRING>Найти храм</STRING>
+			<SHORT_STRING>Найти храм</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE_NOZOOM">
+			<STRING>Выбрать храм, без зума</STRING>
+			<SHORT_STRING>Выбрать храм, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE_ALL">
+			<STRING>Выбрать все храмы</STRING>
+			<SHORT_STRING>Выбрать все храмы</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MERCHANT">
+			<STRING>Найти бездейств. торговца</STRING>
+			<SHORT_STRING>Найти бездейств. торговца</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MERCHANT_NOZOOM">
+			<STRING>Выбрать бездейств. торговца, без зума</STRING>
+			<SHORT_STRING>Выбрать бездейств. торговца, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_MERCHANT">
+			<STRING>Выбрать всех бездейств. торговцев</STRING>
+			<SHORT_STRING>Выбрать всех бездейств. торговцев</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FISHERMAN">
+			<STRING>Найти бездейств. рыбака</STRING>
+			<SHORT_STRING>Найти бездейств. рыбака</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FISHERMAN_NOZOOM">
+			<STRING>Выбрать бездейств. рыбака, без зума</STRING>
+			<SHORT_STRING>Выбрать бездейств. рыбака, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_FISHERMAN">
+			<STRING>Выбрать всех бездейств. рыбаков</STRING>
+			<SHORT_STRING>Выбрать всех бездейств. рыбаков</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PATRIOT">
+			<STRING>Выбрать патриота</STRING>
+			<SHORT_STRING>Выбрать патриота</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PATRIOT_NOZOOM">
+			<STRING>Выбрать патриота, без зума</STRING>
+			<SHORT_STRING>Выбрать патриота, без зума</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELECT_DAMAGED">
+			<STRING>Выбрать все повреждённые юниты</STRING>
+			<SHORT_STRING>Выбрать все повреждённые юниты</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FILTER_DAMAGED">
+			<STRING>Отбор повреждённых юнитов</STRING>
+			<SHORT_STRING>Отбор повреждённых юнитов</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FILTER_ONSCREEN">
+			<STRING>Отбор юнитов на экране</STRING>
+			<SHORT_STRING>Отбор юнитов на экране</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MARWAN_START">
+			<STRING>SYSTEM_MARWAN_START</STRING>
+			<SHORT_STRING>SYSTEM_MARWAN_START</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MARWAN_STOP">
+			<STRING>SYSTEM_MARWAN_STOP</STRING>
+			<SHORT_STRING>SYSTEM_MARWAN_STOP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HILITE_UP">
+			<STRING>SYSTEM_HILITE_UP</STRING>
+			<SHORT_STRING>SYSTEM_HILITE_UP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HILITE_DOWN">
+			<STRING>SYSTEM_HILITE_DOWN</STRING>
+			<SHORT_STRING>SYSTEM_HILITE_DOWN</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SENATE">
+			<STRING>Построить сенат</STRING>
+			<SHORT_STRING>Построить сенат</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_h">
+			<STRING>MENU_h</STRING>
+			<SHORT_STRING>MENU_h</SHORT_STRING>
+		</KEY>
+  </KEYS>
+</ROOT>

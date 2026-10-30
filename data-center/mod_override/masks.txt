@@ -1,0 +1,334 @@
+;
+; Upper left is "North", Upper right is "East"
+;
+
+#1x1 solid
+1, 1
+1
+
+#1x1 open
+1, 1
+0
+
+#2x2 solid
+2, 2
+1, 1
+1, 1
+
+#2x2 gather
+2, 2
+0, 0
+0, 0
+
+#2x2 boats
+2, 2
+0, 0
+0, 0
+
+#3x3 solid
+3, 3
+1, 1, 1
+1, 1, 1
+1, 1, 1
+
+#3x3 gather
+3, 3
+0, 0, 1
+0, 0, 0
+0, 0, 0
+
+#4x4 solid
+4, 4
+1, 1, 1, 1
+1, 1, 1, 1
+1, 1, 1, 1
+1, 1, 1, 1
+
+#4x4 gather
+4, 4
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+0, 0, 0, 0
+0, 1, 1, 0
+0, 1, 1, 0
+0, 0, 0, 0
+
+#4x4 gather E
+4, 4
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+0, 0, 1, 1
+0, 0, 1, 1
+0, 0, 0, 0
+0, 0, 0, 0
+
+#4x4 gather N
+4, 4
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+1, 1, 0, 0
+1, 1, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+#4x4 gather S
+4, 4
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 1, 1
+0, 0, 1, 1
+
+#4x4 gather W
+4, 4
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+0, 0, 0, 0
+0, 0, 0, 0
+1, 1, 0, 0
+1, 1, 0, 0
+
+#4x4 gather NW
+4, 4
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+0, 0, 0, 0
+
+1, 0, 0, 0
+1, 0, 0, 0
+1, 0, 0, 0
+1, 0, 0, 0
+
+#4x4 oil
+4,4
+1, 0, 0, 1
+0, 1, 1, 0
+0, 1, 1, 0
+1, 0, 0, 1
+
+#5x5 solid
+5, 5
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+
+
+#3x6 solid
+3, 6
+1, 1, 1
+1, 1, 1
+1, 1, 1
+1, 1, 1
+1, 1, 1
+1, 1, 1
+
+#4x7 extra space
+4, 7
+1, 1, 1, 0
+1, 1, 1, 0
+1, 1, 1, 0
+1, 1, 1, 0
+1, 1, 1, 0
+1, 1, 1, 0
+0, 0, 0, 0
+
+#6x6 solid
+6, 6
+1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1
+
+#5x9 solid
+5, 9
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+1, 1, 1, 1, 1
+
+#7x7 solid
+7, 7
+1, 1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1, 1
+1, 1, 1, 1, 1, 1, 1
+
+
+#7x7 extra space
+7, 7
+1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 0
+0, 0, 0, 0, 0, 0, 0
+
+#8x8 extra space
+8, 8
+1, 1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 1, 1, 0
+0, 0, 0, 0, 0, 0, 0, 0
+
+#6x6 extra space
+6, 6
+1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 0
+1, 1, 1, 1, 1, 0
+0, 0, 0, 0, 0, 0
+
+
+#5x5 extra space
+5, 5
+1, 1, 1, 1, 0
+1, 1, 1, 1, 0
+1, 1, 1, 1, 0
+1, 1, 1, 1, 0
+0, 0, 0, 0, 0
+
+
+#4x4 extra space
+4, 4
+1, 1, 1, 0
+1, 1, 1, 0
+1, 1, 1, 0
+0, 0, 0, 0
+
+
+#3x3 extra space
+3, 3
+1, 1, 0
+1, 1, 0
+0, 0, 0
+
+
+
+#2x2 doobers
+2, 2
+up,         right
+left,       down
+
+
+
+#3x3 doobers
+3, 3
+up,     random,  right
+random, random, random
+left,   random,   down
+
+
+#4x4 doobers
+4, 4
+    up, random,  right, 0
+random,     up,   down, 0
+  left,   down, random, 0
+     0,      0,      0, 0
+
+#4x7 doobers
+4, 7
+up,     random, random,  right
+random, random, random, random
+random, random, random, random
+random, random, random, random
+random, random, random, random
+random, random, random, random
+left,   random, random,   down
+
+#5x5 doobers
+5, 5
+    up, random, random,  right, 0
+random,     up, random,   down, 0
+random, random, random,      0, 0
+  left,   down,      0,      0, 0
+     0,      0,      0,      0, 0
+
+#5x5 doobersfort
+5, 5
+    up,  right, random,  random,   right
+  left,   down,      0,       0,  random
+random, random, random,       0,  random
+random,      0,      0,       0,  random
+  left, random, random,  random,    down
+
+#6x6 doobers
+6, 6
+up,     random, random, random, random,  right
+random, random, random, random, random, random
+random, random, random, random, random, random
+random, random, random, random, random, random
+random, random, random, random, random, random
+left,   random, random, random, random,   down
+
+
+#7x7 doobers
+7, 7
+up,     random, random, random, random, random,  right
+random, random, random, random, random, random, random
+random, random, random, random, random, random, random
+random, random, random, random, random, random, random
+random, random, random, random, random, random, random
+random, random, random, random, random, random, random
+left,   random, random, random, random, random,   down
+
+#8x8 doobers
+8, 8
+up,     random, random, random, random, random, random,  right
+random, random, random, random, random, random, random, random
+random, random, random, random, random, random, random, random
+random, random, random, random, random, random, random, random
+random, random, random, random, random, random, random, random
+random, random, random, random, random, random, random, random
+random, random, random, random, random, random, random, random
+left,   random, random, random, random, random, random,   down
+
+#5x9 doobers
+5, 9
+up,     random, random, random,  right
+random, random, random, random, random
+random, random, random, random, random
+random, random, random, random, random
+random, random, random, random, random
+random, random, random, random, random
+random, random, random, random, random
+random, random, random, random, random
+left,   random, random, random,   down
+
+#1x1 doobers
+1, 1
+up

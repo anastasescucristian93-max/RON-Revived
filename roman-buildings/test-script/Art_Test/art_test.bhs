@@ -1,0 +1,82 @@
+// Art test: builds one of every building next to player 1's start and switches ages with
+// the keyboard, to check nation art without playing a game.
+//   0 = next age, 9 = previous age, 8 = build everything again (after an age change some
+//   buildings, like Large City, may only become possible later)
+
+scenario {
+  static int built = 0;
+  static int up_armed = 1;
+  static int down_armed = 1;
+  static int again_armed = 1;
+
+  run_once {
+    print_game_msg("*Art Test loaded*  0 = next age, 9 = previous age, 8 = build all again");
+    built = 0;
+  }
+
+  trigger build_all( built == 0 ) {
+    int sx = get_starting_loc_x(1);
+    int sy = get_starting_loc_y(1);
+    set_explored(1, sx, sy, 45);
+
+    // a loose grid around the capital; create_building_near finds free ground
+    create_building_near(1, sx - 14, sy - 14, "Small City", 6);
+    create_building_near(1, sx + 14, sy - 14, "Large City", 6);
+    create_building_near(1, sx - 8, sy + 8, "Barracks", 6);
+    create_building_near(1, sx, sy + 10, "Tower", 6);
+    create_building_near(1, sx + 4, sy + 10, "Tower", 6);
+    create_building_near(1, sx + 10, sy + 10, "Fort", 8);
+    create_building_near(1, sx + 10, sy, "Market", 6);
+    create_building_near(1, sx + 10, sy - 6, "Temple", 6);
+    create_building_near(1, sx - 10, sy, "Library", 6);
+    create_building_near(1, sx - 10, sy - 6, "Senate", 6);
+    create_building_near(1, sx - 16, sy + 4, "Granary", 6);
+    create_building_near(1, sx - 16, sy + 10, "Lumber Mill", 6);
+    create_building_near(1, sx + 16, sy + 4, "Smelter", 6);
+    create_building_near(1, sx + 16, sy + 10, "Stable", 6);
+    create_building_near(1, sx - 4, sy + 16, "Siege Factory", 6);
+    create_building_near(1, sx + 4, sy + 16, "University", 6);
+    create_building_near(1, sx - 4, sy - 16, "Woodcutter's Camp", 8);
+    create_building_near(1, sx + 4, sy - 16, "Mine", 10);
+    create_building_near(1, sx, sy - 20, "Dock", 20);
+    create_building_near(1, sx - 12, sy + 16, "Lookout", 6);
+    create_building_near(1, sx + 12, sy + 16, "Airbase", 6);
+    built = 1;
+  }
+
+  trigger age_up( key_down("0") && up_armed ) {
+    up_armed = 0;
+    gain_next_age(1);
+    print_game_msg("Age: " + get_current_age(1));
+    enable_trigger("age_up");
+  }
+
+  trigger age_up_rearm( !key_down("0") && !up_armed ) {
+    up_armed = 1;
+    enable_trigger("age_up_rearm");
+  }
+
+  trigger age_down( key_down("9") && down_armed ) {
+    down_armed = 0;
+    lose_current_age(1);
+    print_game_msg("Age: " + get_current_age(1));
+    enable_trigger("age_down");
+  }
+
+  trigger age_down_rearm( !key_down("9") && !down_armed ) {
+    down_armed = 1;
+    enable_trigger("age_down_rearm");
+  }
+
+  trigger build_again( key_down("8") && again_armed ) {
+    again_armed = 0;
+    built = 0;
+    enable_trigger("build_all");
+    enable_trigger("build_again");
+  }
+
+  trigger build_again_rearm( !key_down("8") && !again_armed ) {
+    again_armed = 1;
+    enable_trigger("build_again_rearm");
+  }
+}

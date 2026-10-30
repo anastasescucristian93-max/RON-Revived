@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Andy Clark (Big Huge Games) --><ROOT>
+	<CAT hash="3630095">
+		<STRING hash="144179091" hash_i="144254483" needed="1">Caravanas para nações aliadas e em paz permitidas.</STRING>
+		<STRING hash="109448645" hash_i="110123043" needed="1">É possível comprar e vender recursos no Mercado.</STRING>
+		<STRING hash="65524626" hash_i="65503050" needed="1">Unidades podem ser transportadas por mar.</STRING>
+		<STRING hash="47841210" hash_i="47916602" needed="1">É possível colonizar novos continentes.</STRING>
+		<STRING hash="49944385" hash_i="50071323" needed="1">Linha de visão dos aliados visível.</STRING>
+		<STRING hash="27256813" hash_i="27332205" needed="1">Fronteiras inimigas visíveis.</STRING>
+		<STRING hash="46656408" hash_i="46642270" needed="1">O mapa inteiro fica explorado.</STRING>
+		<STRING hash="182550996" hash_i="182618702" needed="1">Todas as unidades e construções no seu território são reveladas.</STRING>
+		<STRING hash="185444026" hash_i="185429888" needed="1">Mapa inteiro revelado, incluindo todas as unidades e construções.</STRING>
+		<STRING hash="175867710" hash_i="175853572" needed="1">Mísseis inimigos não explodirão no seu território.</STRING>
+		<STRING hash="72570973" hash_i="72638679" needed="1">Relógio do Armagedom atrasado em 2.</STRING>
+		<STRING hash="199735905" hash_i="214961141" needed="1">Todos os recursos produzidos à taxa máxima (#ICON21 Limite de Comércio).</STRING>
+		<STRING hash="52830534" hash_i="52808958" needed="1">Unidades são produzidas instantaneamente.</STRING>
+		<STRING hash="79201232" hash_i="79276624" needed="1">Caravanas podem revidar contra inimigos.</STRING>
+		<STRING hash="166030653" hash_i="179746329" needed="1">Celeiros aumentam a produção de #ICON1 comida em $NUMBER0%.</STRING>
+		<STRING hash="171157332" hash_i="186045100" needed="1">Celeiros aumentam a produção de #ICOIN1 comida em $NUMBER0%.</STRING>
+		<STRING hash="96894344" hash_i="106362008" needed="1">Pescadores coletam +$NUMBER0% de #ICON1 Comida.</STRING>
+		<STRING hash="184973869" hash_i="194518543" needed="1">Serrarias aumentam a produção de #ICON2 madeira em $NUMBER0%.</STRING>
+		<STRING hash="166078205" hash_i="179566467" needed="1">Fundições aumentam a produção de #ICON5 metal em $NUMBER0%.</STRING>
+		<STRING hash="210491964" hash_i="214318958" needed="1">Templos aumentam o efeito da cidade nas Fronteiras Nacionais em +$NUMBER0.</STRING>
+		<STRING hash="133469093" hash_i="141754311" needed="1">Templos aumentam os pontos de vida da cidade em $NUMBER0%.</STRING>
+		<STRING hash="154669543" hash_i="164056307" needed="1">Templos aumentam o alcance de combate da cidade em +$NUMBER0.</STRING>
+		<STRING hash="190473138" hash_i="193632166" needed="1">Aumenta o efeito dos Fortes nas Fronteiras Nacionais para +$NUMBER0.</STRING>
+		<STRING hash="84938592" hash_i="86115138" needed="1">+$NUMBER0 de alcance para Fortes e Torres.</STRING>
+		<STRING hash="168630552" hash_i="172591096" needed="1">+$NUMBER0 de capacidade de guarnição para Fortes e Torres.</STRING>
+		<STRING hash="74625840" hash_i="75830758" needed="1">+$NUMBER0 de visão para Fortes e Torres.</STRING>
+		<STRING hash="186982138" hash_i="188510740" needed="1">Dano por desgaste aos inimigos no seu território (Nível 1).</STRING>
+		<STRING hash="205466638" hash_i="204395244" needed="1">Dano por desgaste maior aos inimigos no seu território (Nível 2).</STRING>
+		<STRING hash="205522715" hash_i="204451321" needed="1">Dano por desgaste maior aos inimigos no seu território (Nível 3).</STRING>
+		<STRING hash="205585320" hash_i="204513926" needed="1">Dano por desgaste maior aos inimigos no seu território (Nível 4).</STRING>
+		<STRING hash="156760467" hash_i="164871007" needed="1">Cada Erudito produz +$NUMBER0 de #ICON4 conhecimento.</STRING>
+		<STRING hash="246423940" hash_i="254534480" needed="1">Cada Erudito produz +$NUMBER0 de #ICON4 conhecimento e a velocidade de pesquisa dobra.</STRING>
+		<STRING hash="157914388" hash_i="158821980" needed="1">Tropas a pé e montadas criadas mais rápido (Nível 1).</STRING>
+		<STRING hash="153810355" hash_i="154717947" needed="1">Tropas a pé e montadas criadas mais rápido (Nível 2).</STRING>
+		<STRING hash="153915924" hash_i="154823516" needed="1">Tropas a pé e montadas criadas mais rápido (Nível 3).</STRING>
+		<STRING hash="185866805" hash_i="188445935" needed="1">Linha de visão das tropas a pé e montadas aumentada (Nível 1).</STRING>
+		<STRING hash="180894172" hash_i="183473302" needed="1">Linha de visão das tropas a pé e montadas aumentada (Nível 2).</STRING>
+		<STRING hash="180937235" hash_i="183516365" needed="1">Linha de visão das tropas a pé e montadas aumentada (Nível 3).</STRING>
+		<STRING hash="55040700" hash_i="55328758" needed="1">Navios criados mais rápido (Nível 1).</STRING>
+		<STRING hash="52495733" hash_i="52783791" needed="1">Navios criados mais rápido (Nível 2).</STRING>
+		<STRING hash="52548180" hash_i="52836238" needed="1">Navios criados mais rápido (Nível 3).</STRING>
+		<STRING hash="184971908" hash_i="186725420" needed="1">Unidades se curam mais rápido quando guarnecidas em construções (Nível 1).</STRING>
+		<STRING hash="179999275" hash_i="181752787" needed="1">Unidades se curam mais rápido quando guarnecidas em construções (Nível 2).</STRING>
+		<STRING hash="180042338" hash_i="181795850" needed="1">Unidades se curam mais rápido quando guarnecidas em construções (Nível 3).</STRING>
+		<STRING hash="93088932" hash_i="93650566" needed="1">Construções erguidas mais rápido (Nível 1).</STRING>
+		<STRING hash="89845381" hash_i="90407015" needed="1">Construções erguidas mais rápido (Nível 2).</STRING>
+		<STRING hash="89915772" hash_i="90477406" needed="1">Construções erguidas mais rápido (Nível 3).</STRING>
+		<STRING hash="176155474" hash_i="184620142" needed="1">Pontos de vida das construções aumentados em $NUMBER0%  (Nível 1).</STRING>
+		<STRING hash="171534421" hash_i="179999089" needed="1">Pontos de vida das construções aumentados em $NUMBER0%  (Nível 2).</STRING>
+		<STRING hash="171570800" hash_i="180035468" needed="1">Pontos de vida das construções aumentados em $NUMBER0%  (Nível 3).</STRING>
+		<STRING hash="92567560" hash_i="93033962" needed="1">Veículos criados mais rápido (Nível 1).</STRING>
+		<STRING hash="89324009" hash_i="89790411" needed="1">Veículos criados mais rápido (Nível 2).</STRING>
+		<STRING hash="89394400" hash_i="89860802" needed="1">Veículos criados mais rápido (Nível 3).</STRING>
+		<STRING hash="175566999" hash_i="177286423" needed="1">Carroças de Suprimentos ganham mais raio/velocidade (Nível 1).</STRING>
+		<STRING hash="171211908" hash_i="172931332" needed="1">Carroças de Suprimentos ganham mais raio/velocidade (Nível 2).</STRING>
+		<STRING hash="171335117" hash_i="173054541" needed="1">Carroças de Suprimentos ganham mais raio/velocidade (Nível 3).</STRING>
+		<STRING hash="401034947" hash_i="410005983" needed="1">Suas unidades em território inimigo sofrem $NUMBER0% menos dano por desgaste (e nenhum quando não estão se movendo nem lutando).</STRING>
+		<STRING hash="210477311" hash_i="219448347" needed="1">Suas unidades em território inimigo sofrem $NUMBER0% menos dano por desgaste.</STRING>
+		<STRING hash="193269180" hash_i="193284552" needed="1">Generais e Espiões recuperam sua destreza duas vezes mais rápido.</STRING>
+		<STRING hash="165019048" hash_i="165034420" needed="1">Generais e Espiões são criados duas vezes mais rápido.</STRING>
+		<STRING hash="105098061" hash_i="109803183" needed="1">Generais e Espiões custam $NUMBER0% menos.</STRING>
+		<STRING hash="217309281" hash_i="217287459" needed="1">Espiões podem subornar unidades inimigas e plantar informantes duas vezes mais rápido.</STRING>
+		<STRING hash="185014150" hash_i="190000068" needed="1">Generais têm mais raio/PV/velocidade/visão (Nível 1).</STRING>
+		<STRING hash="180393097" hash_i="185379015" needed="1">Generais têm mais raio/PV/velocidade/visão (Nível 2).</STRING>
+		<STRING hash="180429476" hash_i="185415394" needed="1">Generais têm mais raio/PV/velocidade/visão (Nível 3).</STRING>
+		<STRING hash="161882116" hash_i="165755826" needed="1">Espiões têm mais alcance/PV/velocidade/visão (Nível 1).</STRING>
+		<STRING hash="157693629" hash_i="161567339" needed="1">Espiões têm mais alcance/PV/velocidade/visão (Nível 2).</STRING>
+		<STRING hash="157804310" hash_i="161678020" needed="1">Espiões têm mais alcance/PV/velocidade/visão (Nível 3).</STRING>
+		<STRING hash="451732932" hash_i="455597840" needed="1">Permite tributação baseada na porcentagem do território mundial controlado. A taxa de tributação passa a $NUMBER0% (Nível 1).</STRING>
+		<STRING hash="456958583" hash_i="463758193" needed="1">Aumenta a tributação baseada na porcentagem do território mundial controlado. A taxa de tributação sobe para $NUMBER0% (Nível 2).</STRING>
+		<STRING hash="457044780" hash_i="463844390" needed="1">Aumenta a tributação baseada na porcentagem do território mundial controlado. A taxa de tributação sobe para $NUMBER0% (Nível 3).</STRING>
+		<STRING hash="457142299" hash_i="463941909" needed="1">Aumenta a tributação baseada na porcentagem do território mundial controlado. A taxa de tributação sobe para $NUMBER0% (Nível 4).</STRING>
+		<STRING hash="399782665" hash_i="403310851" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e de todos os Pescadores) para $NUMBER0% (Nível 1).</STRING>
+		<STRING hash="391150078" hash_i="394678264" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e de todos os Pescadores) para $NUMBER0% (Nível 2).</STRING>
+		<STRING hash="391294959" hash_i="394823145" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e de todos os Pescadores) para $NUMBER0% (Nível 3).</STRING>
+		<STRING hash="391449836" hash_i="394978022" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e de todos os Pescadores) para $NUMBER0% (Nível 4).</STRING>
+		<STRING hash="47264117" hash_i="47336991" needed="1">Construções criadas 25% mais rápido.</STRING>
+		<STRING hash="52106040" hash_i="52084598" needed="1">Pesquisas feitas 25% mais rápido.</STRING>
+		<STRING hash="37539725" hash_i="37517219" needed="1">Tropas criadas 25% mais rápido.</STRING>
+		<STRING hash="556997398" hash_i="576018538" needed="1">Eleva seu #ICON21 Limite de Comércio e seu #ICON20 Limite de População ao máximo permitido e aumenta a produção de recursos em $NUMBER0%.</STRING>
+		<STRING hash="316363280" hash_i="319669830" needed="1">Generais têm mais raio/PV/velocidade/visão e efeito maior na armadura das unidades (Nível 1).</STRING>
+		<STRING hash="308675629" hash_i="311982179" needed="1">Generais têm mais raio/PV/velocidade/visão e efeito maior na armadura das unidades (Nível 2).</STRING>
+		<STRING hash="308780220" hash_i="312086770" needed="1">Generais têm mais raio/PV/velocidade/visão e efeito maior na armadura das unidades (Nível 3).</STRING>
+		<STRING hash="186051172" hash_i="189828334" needed="1">Carroças de Suprimentos ganham mais raio/velocidade/PV (Nível 1).</STRING>
+		<STRING hash="181342023" hash_i="185119185" needed="1">Carroças de Suprimentos ganham mais raio/velocidade/PV (Nível 2).</STRING>
+		<STRING hash="181379872" hash_i="185157034" needed="1">Carroças de Suprimentos ganham mais raio/velocidade/PV (Nível 3).</STRING>
+		<STRING hash="314431875" hash_i="314499581" needed="1">Todas as vitórias por tempo, assimilações de cidades e eliminações de capitais inimigas são instantâneas.</STRING>
+		<STRING hash="504703001" hash_i="498267521" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e dos recursos não alimentares de todos os Pescadores) para $NUMBER0% (Nível 1).</STRING>
+		<STRING hash="494144704" hash_i="487709224" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e dos recursos não alimentares de todos os Pescadores) para $NUMBER0% (Nível 2).</STRING>
+		<STRING hash="494244761" hash_i="487809281" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e dos recursos não alimentares de todos os Pescadores) para $NUMBER0% (Nível 3).</STRING>
+		<STRING hash="494356956" hash_i="487921476" needed="1">Aumenta a taxa de coleta dos Mercadores em território amigo (e dos recursos não alimentares de todos os Pescadores) para $NUMBER0% (Nível 4).</STRING>
+		<STRING hash="165179027" hash_i="168565817" needed="1">Bombardeiros Furtivos e Caças Avançados disponíveis.</STRING>
+		<STRING hash="125998989" hash_i="134055157" needed="1">Alcance de Torres e Fortes aumentado em +$NUMBER0%.</STRING>
+		<STRING hash="38372373" hash_i="39218445" needed="1">+$NUMBER0 de alcance para Fortes.</STRING>
+		<STRING hash="31578535" hash_i="32510431" needed="1">+$NUMBER0 de visão para Fortes.</STRING>
+		<STRING hash="68179272" hash_i="69387892" needed="1">+$NUMBER0 de linha de visão para Fortes.</STRING>
+		<STRING hash="188690342" hash_i="190311236" needed="1">Tanques, unidades de cerco e veículos criados mais rápido (Nível 1).</STRING>
+		<STRING hash="183804581" hash_i="185425475" needed="1">Tanques, unidades de cerco e veículos criados mais rápido (Nível 2).</STRING>
+		<STRING hash="183844950" hash_i="185465844" needed="1">Tanques, unidades de cerco e veículos criados mais rápido (Nível 3).</STRING>
+		<STRING hash="436154350" hash_i="451499334" needed="1">Eleva seu #ICON21 Limite de Comércio ao máximo permitido e aumenta a produção de recursos em $NUMBER0%.</STRING>
+		<STRING hash="80801910" hash_i="84336400" needed="1">Pesquisa militar $NUMBER0% mais barata.</STRING>
+		<STRING hash="68026764" hash_i="73305166" needed="1">Limite de cidades aumentado em $NUMBER0.</STRING>
+		<STRING hash="177106406" hash_i="189575374" needed="1">Dano por desgaste às suas tropas reduzido em $NUMBER0%.</STRING>
+		<STRING hash="188634076" hash_i="194636398" needed="1">Dano por desgaste às tropas inimigas aumentado em $NUMBER0%.</STRING>
+		<STRING hash="96725612" hash_i="101090380" needed="1">Quartéis e Estábulos $NUMBER0% mais baratos.</STRING>
+		<STRING hash="39354009" hash_i="40977851" needed="1">Maravilhas $NUMBER0% mais baratas.</STRING>
+		<STRING hash="87067772" hash_i="93409494" needed="1">Limite de Comércio aumentado em $NUMBER0.</STRING>
+		<STRING hash="86570639" hash_i="92484737" needed="1">Taxa de tributação aumentada em $NUMBER0%.</STRING>
+		<STRING hash="166339785" hash_i="175475777" needed="1">Navios, Mercadores e Caravanas $NUMBER0% mais baratos.</STRING>
+		<STRING hash="174213996" hash_i="186637426" needed="1">Linha de visão de Batedores e Navios aumentada em $NUMBER0.</STRING>
+		<STRING hash="39526173" hash_i="44052943" needed="1">Fronteiras nacionais +$NUMBER0.</STRING>
+		<STRING hash="57630818" hash_i="60026862" needed="1">Unid. do Estábulo $NUMBER0% mais baratas.</STRING>
+		<STRING hash="165669720" hash_i="175750940" needed="1">Produção de Comida e Metal aumentada em $NUMBER0%.</STRING>
+		<STRING hash="99888501" hash_i="104651125" needed="1">Unidades do Quartel criadas $NUMBER0% mais rápido.</STRING>
+		<STRING hash="70471621" hash_i="73545943" needed="1">Maravilhas produzidas $NUMBER0% mais baratas.</STRING>
+		<STRING hash="61752133" hash_i="64355935" needed="1">Navios criados $NUMBER0% mais baratos.</STRING>
+		<STRING hash="99925864" hash_i="104366528" needed="1">Unidades terrestres produzidas $NUMBER0% mais baratas.</STRING>
+		<STRING hash="182269798" hash_i="186914674" needed="1">Construções produzidas $NUMBER0% mais baratas (exceto Maravilhas).</STRING>
+		<STRING hash="78239340" hash_i="82111690" needed="1">Cidades assimiladas $NUMBER0% mais rápido.</STRING>
+		<STRING hash="82916004" hash_i="88880290" needed="1">Taxa de tributação aumentada em $NUMBER0.</STRING>
+		<STRING hash="130238244" hash_i="137181824" needed="1">Navios e aeronaves produzidos $NUMBER0% mais rápido.</STRING>
+		<STRING hash="74635324" hash_i="77925340" needed="1">Maravilhas produzidas $NUMBER0% mais baratas.</STRING>
+		<STRING hash="108802954" hash_i="114968362" needed="1">Mercadores e Caravanas $NUMBER0% mais baratos.</STRING>
+		<STRING hash="183364647" hash_i="191993035" needed="1">Pesquisa militar e unidades do Quartel $NUMBER0% mais baratas.</STRING>
+		<STRING hash="82630455" hash_i="88733059" needed="1">Limite de Comércio aumentado em $NUMBER0.</STRING>
+		<STRING hash="86110317" hash_i="92452039" needed="1">Limite de Comércio aumentado em $NUMBER0.</STRING>
+		<STRING hash="173990083" hash_i="182739779" needed="1">Velocidade de produção do Quartel e do Estábulo $NUMBER0% maior.</STRING>
+		<STRING hash="118640689" hash_i="123801921" needed="1">Tecnologias fora da Biblioteca $NUMBER0% mais baratas.</STRING>
+		<STRING hash="54383524" hash_i="54451230" needed="1">Unidades aéreas não encarecem.</STRING>
+		<STRING hash="33603725" hash_i="36682749" needed="1">Produção de Petróleo +$NUMBER0%</STRING>
+		<STRING hash="708826280" hash_i="715468868" needed="1">Pesquisa militar e unidades do Quartel $NUMBER0% mais baratas; receba o Patriota O Déspota (um General que também dá bônus de suprimento, linha de visão e saque).</STRING>
+		<STRING hash="626259554" hash_i="632146718" needed="1">Limite de Comércio aumentado em $NUMBER0; receba o Patriota O Senador (um General que também dá bônus de cura, suborno e defesa de construções).</STRING>
+		<STRING hash="710159880" hash_i="716665448" needed="1">Velocidade de produção do Quartel e do Estábulo $NUMBER0% maior; receba o Patriota O Rei (um General que também dá vantagens de suprimento, cerco e combate montado).</STRING>
+		<STRING hash="717018516" hash_i="719579750" needed="1">Tecnologias fora da Biblioteca $NUMBER0% mais baratas; receba o Patriota O Presidente (um General que também dá vantagens de produção, construção e milícia).</STRING>
+		<STRING hash="553348181" hash_i="559015871" needed="1">Unidades aéreas não ficam mais caras a cada nova unidade; receba o Patriota O Camarada (um General que também dá vantagens de suprimento, combate e assimilação).</STRING>
+		<STRING hash="433710421" hash_i="443440011" needed="1">Produção de Petróleo +$NUMBER0%; receba o Patriota O CEO (um General que também dá vantagens de recursos e defesa).</STRING>
+		<STRING hash="624034876" hash_i="629922040" needed="1">Limite de Comércio aumentado em $NUMBER0; receba o Patriota O Senador (um General que também dá bônus de cura, suborno e defesa de construções).</STRING>
+		<STRING hash="722623155" hash_i="723683573" needed="1">Unidades do Estábulo $NUMBER0% mais baratas e mais rápidas de construir; receba o Patriota O Rei (um General que também dá vantagens de suprimento, cerco e combate montado).</STRING>
+		<STRING hash="180889739" hash_i="184182287" needed="1">Unidades do Estábulo $NUMBER0% mais baratas e mais rápidas de construir.</STRING>
+		<STRING hash="661314266" hash_i="663875500" needed="1">Tecnologias fora da Biblioteca $NUMBER0% mais baratas; receba o Patriota O Presidente (um General que também dá vantagens de produção, construção e cura).</STRING>
+		<STRING hash="783216897" hash_i="788610393" needed="1">Unidades da Fábrica, da Base Aérea e do Porto 20% mais baratas e mais rápidas de construir; receba o Patriota O Camarada (um General que também dá vantagens de suprimento, combate e assimilação).</STRING>
+		<STRING hash="500231088" hash_i="505352868" needed="1">Receba +100 de renda de Petróleo e 500 de Petróleo; receba o Patriota O CEO (um General que também dá vantagens de defesa, alcance e cura).</STRING>
+	</CAT>
+	<CAT hash="3573018">
+		<STRING hash="693695" hash_i="676295" needed="1">Terra</STRING>
+		<STRING hash="1147980" hash_i="1126158" needed="1">Arenoso</STRING>
+		<STRING hash="1338397" hash_i="1318745" needed="1">Oceano</STRING>
+		<STRING hash="1224015" hash_i="1299407" needed="1">Costa</STRING>
+		<STRING hash="1613382" hash_i="1597954" needed="1">Floresta</STRING>
+		<STRING hash="4404155" hash_i="4386949" needed="1">Montanhas</STRING>
+		<STRING hash="1224793" hash_i="1203351" needed="1">Rochas</STRING>
+		<STRING hash="336002" hash_i="316350" needed="1">Petróleo</STRING>
+		<STRING hash="1456634" hash_i="1532026" needed="1">Penhascos</STRING>
+	</CAT>
+	<CAT hash="9546836">
+		<STRING hash="558870" hash_i="541470" needed="1">Linha</STRING>
+		<STRING hash="2046690" hash_i="2025248" needed="1">Recusada</STRING>
+		<STRING hash="2227817" hash_i="2213679" needed="1">Envolver</STRING>
+		<STRING hash="8580257" hash_i="8596309" needed="1">Escalão à direita</STRING>
+		<STRING hash="7141685" hash_i="7194115" needed="1">Escalão à esquerda</STRING>
+		<STRING hash="1720737" hash_i="1698915" needed="1">Dispersa</STRING>
+		<STRING hash="1789870" hash_i="1768048" needed="1">Quadrado</STRING>
+		<STRING hash="811815" hash_i="787461" needed="1">Cunha</STRING>
+		<STRING hash="1587059" hash_i="1662451" needed="1">Coluna</STRING>
+		<STRING hash="561290" hash_i="544084" needed="1">Turba</STRING>
+	</CAT>
+	<CAT hash="7959911">
+		<STRING hash="595528" hash_i="541470" needed="1">LINHA</STRING>
+		<STRING hash="2050142" hash_i="2025248" needed="1">RECUSADA</STRING>
+		<STRING hash="2286171" hash_i="2213679" needed="1">ENVOLVER</STRING>
+		<STRING hash="8129235" hash_i="8596309" needed="1">ESCALÃO À DIREITA</STRING>
+		<STRING hash="6719729" hash_i="7194115" needed="1">ESCALÃO À ESQUERDA</STRING>
+		<STRING hash="1534789" hash_i="1698915" needed="1">DISPERSA</STRING>
+		<STRING hash="1513880" hash_i="1768048" needed="1">QUADRADO</STRING>
+		<STRING hash="841295" hash_i="787461" needed="1">CUNHA</STRING>
+		<STRING hash="1656317" hash_i="1662451" needed="1">COLUNA</STRING>
+		<STRING hash="325236" hash_i="544084" needed="1">TURBA</STRING>
+	</CAT>
+</ROOT>

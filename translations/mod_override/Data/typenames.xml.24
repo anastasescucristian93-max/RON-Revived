@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 2 (Big Huge Games) --><!--LOCALIZATION --><!--LOCALIZATION --><!--LOCALIZATION: All STRING elements.--><!--LOCALIZATION --><!--LOCALIZATION --><ROOT>
+  <AGES>
+    <STRING hash="8843171" needed="1">Epoca clasică</STRING>
+    <STRING hash="6818848" needed="1">Epoca medievală</STRING>
+    <STRING hash="7683271" needed="1">Epoca prafului de pușcă</STRING>
+    <STRING hash="13782908" needed="1">Epoca Luminilor</STRING>
+    <STRING hash="9696711" needed="1">Epoca industrială</STRING>
+    <STRING hash="4270575" needed="1">Epoca modernă</STRING>
+    <STRING hash="11109641" needed="1">Epoca informației</STRING>
+  </AGES>
+  <TECHS>
+    <STRING hash="7422563" needed="1">Scrisul</STRING>
+    <STRING hash="7558886" needed="1">Matematică</STRING>
+    <STRING hash="4209181" needed="1">Chimie</STRING>
+    <STRING hash="10931720" needed="1">Legile naturii</STRING>
+    <STRING hash="7436541" needed="1">Electricitate</STRING>
+    <STRING hash="7373131" needed="1">Electronică</STRING>
+    <STRING hash="12979145" needed="1">Informatizare</STRING>
+    <STRING hash="1692249" needed="1">Troc</STRING>
+    <STRING hash="2317946" needed="1">Baterea monedei</STRING>
+    <STRING hash="1055307" needed="1">Comerț</STRING>
+    <STRING hash="8189112" needed="1">Mercantilism</STRING>
+    <STRING hash="2772098" needed="1">Finanțe</STRING>
+    <STRING hash="8662151" needed="1">Linia de asamblare</STRING>
+    <STRING hash="10212836" needed="1">Globalizare</STRING>
+    <STRING hash="5616641" needed="1">Oraș-stat</STRING>
+    <STRING hash="1455381" needed="1">Imperiu</STRING>
+    <STRING hash="4168087" needed="1">Feudalism</STRING>
+    <STRING hash="7124203" needed="1">Dreptul divin</STRING>
+    <STRING hash="7851435" needed="1">Constituție</STRING>
+    <STRING hash="6478898" needed="1">Mare putere</STRING>
+    <STRING hash="17211729" needed="1">Drept internațional</STRING>
+    <STRING hash="10578054" needed="1">Arta războiului</STRING>
+    <STRING hash="6849444" needed="1">Mercenari</STRING>
+    <STRING hash="8563678" needed="1">Armată permanentă</STRING>
+    <STRING hash="8048945" needed="1">Conscripție</STRING>
+    <STRING hash="10185392" needed="1">Mobilizare în masă</STRING>
+    <STRING hash="10290156" needed="1">Națiunea înarmată</STRING>
+    <STRING hash="16302664" needed="1">Recrutare selectivă</STRING>
+  </TECHS>
+  <MISC>
+    <STRING hash="9426192" needed="1">Scut antirachetă</STRING>
+    <STRING hash="30604825" needed="1">Inteligență artificială</STRING>
+    <STRING hash="16526569" needed="1">Prosperitate globală</STRING>
+    <STRING hash="13424671" needed="1">Guvern mondial</STRING>
+    <STRING hash="3073683" needed="1">Tactică</STRING>
+    <STRING hash="5502441" needed="1">Operații</STRING>
+    <STRING hash="3277741" needed="1">Strategie</STRING>
+    <STRING hash="2820121" needed="1">Religie</STRING>
+    <STRING hash="4969036" needed="1">Monoteism</STRING>
+    <STRING hash="10952500" needed="1">Existențialism</STRING>
+    <STRING hash="3410006" needed="1">Impozitare</STRING>
+    <STRING hash="4575496" needed="1">Vasalitate</STRING>
+    <STRING hash="14255071" needed="1">Contract social</STRING>
+    <STRING hash="5809773" needed="1">Impozit pe venit</STRING>
+    <STRING hash="9957886" needed="1">Fortificație</STRING>
+    <STRING hash="6780593" needed="1">Bombardament</STRING>
+    <STRING hash="17966690" needed="1">Rezerve strategice</STRING>
+    <STRING hash="5757926" needed="1">Loialitate</STRING>
+    <STRING hash="10825577" needed="1">Jurământ de credință</STRING>
+    <STRING hash="5321711" needed="1">Patriotism</STRING>
+    <STRING hash="6842975" needed="1">Naționalism</STRING>
+    <STRING hash="8429887" needed="1">Construcție</STRING>
+    <STRING hash="8406841" needed="1">Arhitectură</STRING>
+    <STRING hash="5867465" needed="1">Inginerie</STRING>
+    <STRING hash="6504674" needed="1">Plante medicinale</STRING>
+    <STRING hash="3060060" needed="1">Medicină</STRING>
+    <STRING hash="14777164" needed="1">Farmaceutică</STRING>
+    <STRING hash="1660645" needed="1">Furajare</STRING>
+    <STRING hash="1722154" needed="1">Aprovizionare</STRING>
+    <STRING hash="4572512" needed="1">Logistică</STRING>
+    <STRING hash="4346421" needed="1">Dulgherie</STRING>
+    <STRING hash="13894977" needed="1">Industria lemnului</STRING>
+    <STRING hash="3938041" needed="1">Moara de hârtie</STRING>
+    <STRING hash="6797357" needed="1">Agricultură</STRING>
+    <STRING hash="9608007" needed="1">Rotația culturilor</STRING>
+    <STRING hash="9355065" needed="1">Industria alimentară</STRING>
+    <STRING hash="3959017" needed="1">Alfabetizare</STRING>
+    <STRING hash="10082689" needed="1">Tiparul</STRING>
+    <STRING hash="15111817" needed="1">Metoda științifică</STRING>
+    <STRING hash="29708143" needed="1">Cercetare instituțională</STRING>
+    <STRING hash="11227186" needed="1">Supercomputere</STRING>
+    <STRING hash="7771103" needed="1">Aliaje metalice</STRING>
+    <STRING hash="7639625" needed="1">Turnare la rece</STRING>
+    <STRING hash="895218" needed="1">Oțel</STRING>
+    <STRING hash="4006343" needed="1">Despotism</STRING>
+    <STRING hash="3833320" needed="1">Republică</STRING>
+    <STRING hash="3752145" needed="1">Monarhie</STRING>
+    <STRING hash="5495194" needed="1">Democrație</STRING>
+    <STRING hash="4431157" needed="1">Socialism</STRING>
+    <STRING hash="5553684" needed="1">Capitalism</STRING>
+  </MISC>
+  <GOODS>
+    <STRING hash="564640" needed="1">Hrană</STRING>
+    <STRING hash="1799276" needed="1">Lemn</STRING>
+    <STRING hash="1700464" needed="1">Avere</STRING>
+    <STRING hash="3520419" needed="1">Cunoaștere</STRING>
+    <STRING hash="1211192" needed="1">Metal</STRING>
+    <STRING hash="336002" needed="1">Petrol</STRING>
+    <STRING hash="583548" needed="1">Pește</STRING>
+    <STRING hash="1922011" needed="1">Relicve</STRING>
+    <STRING hash="578117" needed="1">Vin</STRING>
+    <STRING hash="2616402" needed="1">Papirus</STRING>
+    <STRING hash="333260" needed="1">Coloranți</STRING>
+    <STRING hash="593963" needed="1">Mătase</STRING>
+    <STRING hash="1194455" needed="1">Mirodenii</STRING>
+    <STRING hash="790674" needed="1">Sare</STRING>
+    <STRING hash="1583615" needed="1">Cai</STRING>
+    <STRING hash="2037823" needed="1">Cauciuc</STRING>
+    <STRING hash="2346145" needed="1">Sulf</STRING>
+    <STRING hash="1137060" needed="1">Chihlimbar</STRING>
+    <STRING hash="1571768" needed="1">Argint</STRING>
+    <STRING hash="3502615" needed="1">Tutun</STRING>
+    <STRING hash="1865394" needed="1">Marmură</STRING>
+    <STRING hash="683830" needed="1">Blănuri</STRING>
+    <STRING hash="1622088" needed="1">Bumbac</STRING>
+    <STRING hash="978052" needed="1">Bizoni</STRING>
+    <STRING hash="1536898" needed="1">Cupru</STRING>
+    <STRING hash="3880631" needed="1">Păuni</STRING>
+    <STRING hash="1690721" needed="1">Citrice</STRING>
+    <STRING hash="1249341" needed="1">Zahăr</STRING>
+    <STRING hash="3076733" needed="1">Diamante</STRING>
+    <STRING hash="619184" needed="1">Pietre prețioase</STRING>
+    <STRING hash="3029794" needed="1">Aluminiu</STRING>
+    <STRING hash="1713625" needed="1">Balene</STRING>
+    <STRING hash="3383353" needed="1">Obsidian</STRING>
+    <STRING hash="642149" needed="1">Lână</STRING>
+    <STRING hash="788789" needed="1">Cărbune</STRING>
+    <STRING hash="2481507" needed="1">Uraniu</STRING>
+    <STRING hash="3274537" needed="1">Titan</STRING>
+    <STRING hash="1623896" needed="1">Vite</STRING>
+    <STRING hash="611601" needed="1">Câini</STRING>
+    <STRING hash="2338619" needed="1">Tămâie</STRING>
+    <STRING hash="3613460" needed="1">Ulei de măsline</STRING>
+    <STRING hash="1673538" needed="1">Ghips</STRING>
+    <STRING hash="7644907" needed="1">Blănuri de castor</STRING>
+    <STRING hash="553030" needed="1">Aur</STRING>
+    <STRING hash="382076" needed="1">Rom</STRING>
+    <STRING hash="1296381" needed="1">Cafea</STRING>
+    <STRING hash="3000278" needed="1">Banane</STRING>
+    <STRING hash="1696293" needed="1">Somon</STRING>
+    <STRING hash="2833684" needed="1">Minereu de fier</STRING>
+    <STRING hash="1099045" needed="1">Porumb</STRING>
+    <STRING hash="2175628" needed="1">Câini husky</STRING>
+  </GOODS>
+  <BUILDS>
+    <STRING hash="5143517" needed="1">Oraș mic</STRING>
+    <STRING hash="5001885" needed="1">Oraș mare</STRING>
+    <STRING hash="5116697" needed="1">Metropolă</STRING>
+    <STRING hash="756488" needed="1">Fermă</STRING>
+    <STRING hash="15948114" needed="1">Tabără forestieră</STRING>
+    <STRING hash="560225" needed="1">Mină</STRING>
+    <STRING hash="5428677" needed="1">Universitate</STRING>
+    <STRING hash="2882524" needed="1">Sondă petrolieră</STRING>
+    <STRING hash="8028649" needed="1">Platformă petrolieră</STRING>
+    <STRING hash="2914764" needed="1">Grânar</STRING>
+    <STRING hash="6179481" needed="1">Gater</STRING>
+    <STRING hash="2188528" needed="1">Topitorie</STRING>
+    <STRING hash="3001744" needed="1">Rafinărie</STRING>
+    <STRING hash="3868075" needed="1">Cazarmă</STRING>
+    <STRING hash="1932724" needed="1">Grajd</STRING>
+    <STRING hash="5642409" needed="1">Uzină auto</STRING>
+    <STRING hash="10083382" needed="1">Atelier de asediu</STRING>
+    <STRING hash="2802178" needed="1">Fabrică</STRING>
+    <STRING hash="815783" needed="1">Doc</STRING>
+    <STRING hash="4309085" needed="1">Radă</STRING>
+    <STRING hash="3296260" needed="1">Șantier naval</STRING>
+    <STRING hash="2939733" needed="1">Bibliotecă</STRING>
+    <STRING hash="1674717" needed="1">Piață</STRING>
+    <STRING hash="1445184" needed="1">Templu</STRING>
+    <STRING hash="1009206" needed="1">Turn</STRING>
+    <STRING hash="568153" needed="1">Donjon</STRING>
+    <STRING hash="3366022" needed="1">Palisadă</STRING>
+    <STRING hash="1515894" needed="1">Buncăr</STRING>
+    <STRING hash="672063" needed="1">Fort</STRING>
+    <STRING hash="1618681" needed="1">Castel</STRING>
+    <STRING hash="3070364" needed="1">Fortăreață</STRING>
+    <STRING hash="2703085" needed="1">Redută</STRING>
+    <STRING hash="2736903" needed="1">Bază aeriană</STRING>
+    <STRING hash="7207851" needed="1">Siloz de rachete</STRING>
+    <STRING hash="2382931" needed="1">Post de veghe</STRING>
+    <STRING hash="14303594" needed="1">Post de observație</STRING>
+    <STRING hash="10963680" needed="1">Tun de apărare antiaeriană</STRING>
+    <STRING hash="14036329" needed="1">Radar antiaerian</STRING>
+    <STRING hash="15017895" needed="1">Instalație SAM</STRING>
+    <STRING hash="3155697" needed="1">Piramidele</STRING>
+    <STRING hash="3202471" needed="1">Colosul</STRING>
+    <STRING hash="14090616" needed="1">Armata de teracotă</STRING>
+    <STRING hash="4006251" needed="1">Colosseumul</STRING>
+    <STRING hash="11789295" needed="1">Templul din Tikal</STRING>
+    <STRING hash="12394052" needed="1">Turnul de porțelan</STRING>
+    <STRING hash="5629591" needed="1">Angkor Wat</STRING>
+    <STRING hash="5275053" needed="1">Versailles</STRING>
+    <STRING hash="4734371" needed="1">Taj Mahal</STRING>
+    <STRING hash="2136242" needed="1">Kremlinul</STRING>
+    <STRING hash="16071921" needed="1">Statuia Libertății</STRING>
+    <STRING hash="7396078" needed="1">Turnul Eiffel</STRING>
+    <STRING hash="8960296" needed="1">Accelerator de particule</STRING>
+    <STRING hash="9900249" needed="1">Program spațial</STRING>
+    <STRING hash="1740233" needed="1">Senatul</STRING>
+    <STRING hash="11924638" needed="1">Grădinile suspendate</STRING>
+    <STRING hash="9898085" needed="1">Orașul Interzis</STRING>
+    <STRING hash="2942926" needed="1">Fortul Roșu</STRING>
+    <STRING hash="2929874" needed="1">Bastilia</STRING>
+    <STRING hash="4174297" needed="1">Cartier rezidențial</STRING>
+    <STRING hash="11137768" needed="1">Turnul Londrei</STRING>
+    <STRING hash="969271" needed="1">Casă</STRING>
+    <STRING hash="18671484" needed="1">Cartier comercial</STRING>
+    <STRING hash="5004373" needed="1">Cartier industrial</STRING>
+    <STRING hash="5412046" needed="1">Apartamente</STRING>
+    <STRING hash="11265150" needed="1">Clădire de birouri</STRING>
+    <STRING hash="19695529" needed="1">Monumentul Washington</STRING>
+    <STRING hash="8104532" needed="1">Fortificație de câmp</STRING>
+  </BUILDS>
+  <UNITS>
+    <STRING hash="2221484" needed="1">Cetățean</STRING>
+    <STRING hash="2751620" needed="1">Savant</STRING>
+    <STRING hash="2501488" needed="1">General</STRING>
+    <STRING hash="423174" needed="1">Spion</STRING>
+    <STRING hash="3026652" needed="1">Caravană</STRING>
+    <STRING hash="3634926" needed="1">Negustor</STRING>
+    <STRING hash="8123947" needed="1">Car de provizii</STRING>
+    <STRING hash="2580139" needed="1">Miliție</STRING>
+    <STRING hash="4398051" needed="1">Miliție de elită</STRING>
+    <STRING hash="3574192" needed="1">Partizan</STRING>
+    <STRING hash="1234467" needed="1">Cercetaș</STRING>
+    <STRING hash="2971245" needed="1">Explorator</STRING>
+    <STRING hash="3152264" needed="1">Comando</STRING>
+    <STRING hash="11414320" needed="1">Forțe speciale</STRING>
+    <STRING hash="23496102" needed="1">Forțe speciale de elită</STRING>
+    <STRING hash="2912095" needed="1">Praștiași</STRING>
+    <STRING hash="6271876" needed="1">Sulițași</STRING>
+    <STRING hash="15379376" needed="1">Sulițași de elită</STRING>
+    <STRING hash="3046598" needed="1">Atl-Atl</STRING>
+    <STRING hash="10143002" needed="1">Atl-Atl regali</STRING>
+    <STRING hash="12984243" needed="1">Atl-Atl xopilli</STRING>
+    <STRING hash="14124675" needed="1">Praștiași Balamob</STRING>
+    <STRING hash="28279121" needed="1">Praștiași Balamob regali</STRING>
+    <STRING hash="27980832" needed="1">Praștiași Balamob Vultur</STRING>
+    <STRING hash="7858530" needed="1">Bâtași Inti</STRING>
+    <STRING hash="8149328" needed="1">Buzduganari Inti</STRING>
+    <STRING hash="3556822" needed="1">Umpakati</STRING>
+    <STRING hash="17413041" needed="1">Umpakati Yangombi</STRING>
+    <STRING hash="597681" needed="1">Impi</STRING>
+    <STRING hash="7117550" needed="1">Lănci de foc</STRING>
+    <STRING hash="16497142" needed="1">Lănci de foc grele</STRING>
+    <STRING hash="8091119" needed="1">Archebuzieri</STRING>
+    <STRING hash="5030159" needed="1">Muschetari</STRING>
+    <STRING hash="2732698" needed="1">Pușcași</STRING>
+    <STRING hash="3448211" needed="1">Infanterie</STRING>
+    <STRING hash="14910540" needed="1">Infanterie de asalt</STRING>
+    <STRING hash="21046206" needed="1">Infanterie Garda Roșie</STRING>
+    <STRING hash="11409132" needed="1">Infanterie de șoc</STRING>
+    <STRING hash="12198643" needed="1">Volksgrenadiers</STRING>
+    <STRING hash="13274171" needed="1">Infanterie Jaguar</STRING>
+    <STRING hash="32427586" needed="1">Infanterie de asalt Jaguar</STRING>
+    <STRING hash="6809974" needed="1">Ieniceri</STRING>
+    <STRING hash="16843832" needed="1">Ieniceri regali</STRING>
+    <STRING hash="6459227" needed="1">Highlanderi</STRING>
+    <STRING hash="7818082" needed="1">Black Watch</STRING>
+    <STRING hash="15712841" needed="1">Muschetari manciurieni</STRING>
+    <STRING hash="11637510" needed="1">Pușcași manciurieni</STRING>
+    <STRING hash="13245267" needed="1">Infanterie manciuriană</STRING>
+    <STRING hash="6205127" needed="1">Mitralieră</STRING>
+    <STRING hash="15720375" needed="1">Mitralieră grea</STRING>
+    <STRING hash="22252131" needed="1">Mitralieră avansată</STRING>
+    <STRING hash="337164" needed="1">MG42</STRING>
+    <STRING hash="7851322" needed="1">Aruncător de flăcări</STRING>
+    <STRING hash="2939856" needed="1">Hopliți</STRING>
+    <STRING hash="2839030" needed="1">Falangă</STRING>
+    <STRING hash="2060855" needed="1">Pichieri</STRING>
+    <STRING hash="8221659" needed="1">Pichieri de elită</STRING>
+    <STRING hash="3904621" needed="1">Fusilieri</STRING>
+    <STRING hash="11535451" needed="1">Pușcă antitanc</STRING>
+    <STRING hash="2792777" needed="1">Bazooka</STRING>
+    <STRING hash="15231344" needed="1">Rachetă antitanc</STRING>
+    <STRING hash="10089468" needed="1">Tun fără recul</STRING>
+    <STRING hash="14498849" needed="1">Rachetă AT Dragon</STRING>
+    <STRING hash="2215527" needed="1">Legiuni</STRING>
+    <STRING hash="13400324" needed="1">Legiunile lui Cezar</STRING>
+    <STRING hash="16529548" needed="1">Garda pretoriană</STRING>
+    <STRING hash="2749055" needed="1">Scutari</STRING>
+    <STRING hash="10541371" needed="1">Scutari regali</STRING>
+    <STRING hash="2565159" needed="1">Tercios</STRING>
+    <STRING hash="9826501" needed="1">Tercios regali</STRING>
+    <STRING hash="2218110" needed="1">Solduri</STRING>
+    <STRING hash="6341588" needed="1">Barbari</STRING>
+    <STRING hash="2664093" needed="1">Vandali</STRING>
+    <STRING hash="8305918" needed="1">Landsknechți</STRING>
+    <STRING hash="16097864" needed="1">Lăncieri ashigaru</STRING>
+    <STRING hash="925380" needed="1">Bushi</STRING>
+    <STRING hash="5811238" needed="1">Bushi de elită</STRING>
+    <STRING hash="2729576" needed="1">Samurai</STRING>
+    <STRING hash="7334482" needed="1">Samurai cu pușcă</STRING>
+    <STRING hash="1519671" needed="1">Arcași</STRING>
+    <STRING hash="2437686" needed="1">Arcași de elită</STRING>
+    <STRING hash="6749852" needed="1">Arbaletrieri</STRING>
+    <STRING hash="9426064" needed="1">Arcași grei</STRING>
+    <STRING hash="12128397" needed="1">Arcași kușiți</STRING>
+    <STRING hash="24712871" needed="1">Arcași kușiți regali</STRING>
+    <STRING hash="13971934" needed="1">Arcași Apedemak</STRING>
+    <STRING hash="5363679" needed="1">Arcași cu arc lung</STRING>
+    <STRING hash="16003280" needed="1">Arcașii regelui</STRING>
+    <STRING hash="13018015" needed="1">Yeomanry regală</STRING>
+    <STRING hash="2678272" needed="1">Hwarang</STRING>
+    <STRING hash="9766582" needed="1">Hwarang de elită</STRING>
+    <STRING hash="10138104" needed="1">Hwarang regali</STRING>
+    <STRING hash="21703388" needed="1">Hwarang regali de elită</STRING>
+    <STRING hash="7633946" needed="1">Arcaș călare</STRING>
+    <STRING hash="17605544" needed="1">Arcaș călare greu</STRING>
+    <STRING hash="2394210" needed="1">Dragon</STRING>
+    <STRING hash="5553487" needed="1">Carabinier</STRING>
+    <STRING hash="7702055" needed="1">Arcaș pe cămilă</STRING>
+    <STRING hash="17790409" needed="1">Arcaș greu pe cămilă</STRING>
+    <STRING hash="7609557" needed="1">Hărțuitor pe cămilă</STRING>
+    <STRING hash="6206627" needed="1">Corpul cămilelor</STRING>
+    <STRING hash="2454520" needed="1">Car de luptă</STRING>
+    <STRING hash="9451088" needed="1">Car de luptă greu</STRING>
+    <STRING hash="2937285" needed="1">Mameluc</STRING>
+    <STRING hash="10638089" needed="1">Mameluc regal</STRING>
+    <STRING hash="1150372" needed="1">Nomad</STRING>
+    <STRING hash="7707478" needed="1">Nomad din stepă</STRING>
+    <STRING hash="862803" needed="1">Hoardă</STRING>
+    <STRING hash="6839153" needed="1">Hoarda de Aur</STRING>
+    <STRING hash="5968353" needed="1">Călăreț ușor</STRING>
+    <STRING hash="10061941" needed="1">Cavalerie ușoară</STRING>
+    <STRING hash="21080609" needed="1">Cavalerie ușoară de elită</STRING>
+    <STRING hash="1970399" needed="1">Husar</STRING>
+    <STRING hash="6153218" needed="1">Cămilar ușor</STRING>
+    <STRING hash="9578409" needed="1">Cămilar războinic</STRING>
+    <STRING hash="20573215" needed="1">Cămilar de elită</STRING>
+    <STRING hash="6265708" needed="1">Automobil blindat</STRING>
+    <STRING hash="16327071" needed="1">Blindat de cercetare</STRING>
+    <STRING hash="13171980" needed="1">Cavalerie blindată</STRING>
+    <STRING hash="10673820" needed="1">Vânător de tancuri</STRING>
+    <STRING hash="6111439" needed="1">Ucigaș de tancuri</STRING>
+    <STRING hash="10023222" needed="1">Lăncier ruten</STRING>
+    <STRING hash="2960039" needed="1">Cazac</STRING>
+    <STRING hash="7454192" needed="1">Cazac de Don</STRING>
+    <STRING hash="6673410" needed="1">Catafract</STRING>
+    <STRING hash="1501480" needed="1">Cavaler</STRING>
+    <STRING hash="7437672" needed="1">Cavaler greu</STRING>
+    <STRING hash="5367551" needed="1">Cuirasier</STRING>
+    <STRING hash="4210523" needed="1">Însoțitor</STRING>
+    <STRING hash="12568111" needed="1">Însoțitor regal</STRING>
+    <STRING hash="5879341" needed="1">Stratiot</STRING>
+    <STRING hash="15547751" needed="1">Stratiot regal</STRING>
+    <STRING hash="4090116" needed="1">Paladin</STRING>
+    <STRING hash="12238222" needed="1">Paladin greu</STRING>
+    <STRING hash="11767956" needed="1">Grenadier călare</STRING>
+    <STRING hash="24262978" needed="1">Grenadier călare din gardă</STRING>
+    <STRING hash="5341897" needed="1">Tanc ușor</STRING>
+    <STRING hash="745334" needed="1">Tanc</STRING>
+    <STRING hash="14352003" needed="1">Tanc principal de luptă</STRING>
+    <STRING hash="5324692" needed="1">Tanc Tiger</STRING>
+    <STRING hash="8175683" needed="1">Tanc Leopard</STRING>
+    <STRING hash="3395554" needed="1">Tanc T80</STRING>
+    <STRING hash="3504308" needed="1">Catapultă</STRING>
+    <STRING hash="4578313" needed="1">Trebuchet</STRING>
+    <STRING hash="2715057" needed="1">Bombardă</STRING>
+    <STRING hash="1686578" needed="1">Tun</STRING>
+    <STRING hash="4044681" needed="1">Artilerie</STRING>
+    <STRING hash="3111150" needed="1">Obuzier</STRING>
+    <STRING hash="13748366" needed="1">Artilerie reactivă</STRING>
+    <STRING hash="1960398" needed="1">Mortier</STRING>
+    <STRING hash="8133644" needed="1">Mortier de asediu</STRING>
+    <STRING hash="15499797" needed="1">Bombarda Basilica</STRING>
+    <STRING hash="13031479" needed="1">Tunul Basilica</STRING>
+    <STRING hash="13144786" needed="1">Rachetă Katiușa</STRING>
+    <STRING hash="8864040" needed="1">Săgeată de foc</STRING>
+    <STRING hash="19698416" needed="1">Săgeată de foc grea</STRING>
+    <STRING hash="16156158" needed="1">Tun antiaerian</STRING>
+    <STRING hash="26524171" needed="1">Baterie antiaeriană</STRING>
+    <STRING hash="24835168" needed="1">Rachetă antiaeriană</STRING>
+    <STRING hash="2398355" needed="1">Biplan</STRING>
+    <STRING hash="2132227" needed="1">Vânător</STRING>
+    <STRING hash="5994736" needed="1">Vânător cu reacție</STRING>
+    <STRING hash="13153657" needed="1">Vânător avansat</STRING>
+    <STRING hash="7313136" needed="1">Vânător Hawk</STRING>
+    <STRING hash="8335340" needed="1">Vânător Eagle</STRING>
+    <STRING hash="1787274" needed="1">Bombardier</STRING>
+    <STRING hash="14414589" needed="1">Bombardier strategic</STRING>
+    <STRING hash="10788607" needed="1">Bombardier invizibil</STRING>
+    <STRING hash="14502340" needed="1">Bombardier Lancaster</STRING>
+    <STRING hash="10487415" needed="1">Vânător-bombardier</STRING>
+    <STRING hash="17403956" needed="1">Vânător-bombardier cu reacție</STRING>
+    <STRING hash="5425090" needed="1">Elicopter</STRING>
+    <STRING hash="22818152" needed="1">Elicopter de transport</STRING>
+    <STRING hash="4278905" needed="1">Racheta V2</STRING>
+    <STRING hash="9875698" needed="1">Rachetă de croazieră</STRING>
+    <STRING hash="12012826" needed="1">Rachetă nucleară</STRING>
+    <STRING hash="6979733" needed="1">ICBM nuclear</STRING>
+    <STRING hash="3749364" needed="1">Pescari</STRING>
+    <STRING hash="10196653" needed="1">Flotă comercială</STRING>
+    <STRING hash="24371934" needed="1">Flotă comercială modernă</STRING>
+    <STRING hash="11981198" needed="1">Barjă de transport</STRING>
+    <STRING hash="15736732" needed="1">Galion de transport</STRING>
+    <STRING hash="19043523" needed="1">Cargou de transport</STRING>
+    <STRING hash="1570178" needed="1">Dromon</STRING>
+    <STRING hash="2557314" needed="1">Caravelă</STRING>
+    <STRING hash="1007218" needed="1">Șalupă</STRING>
+    <STRING hash="4093348" needed="1">Distrugător</STRING>
+    <STRING hash="2223053" needed="1">Crucișător</STRING>
+    <STRING hash="11534641" needed="1">Crucișător cu rachete</STRING>
+    <STRING hash="4250328" needed="1">Plută incendiară</STRING>
+    <STRING hash="12110344" needed="1">Plută incendiară grea</STRING>
+    <STRING hash="2833092" needed="1">Brulot</STRING>
+    <STRING hash="10129818" needed="1">Brulot greu</STRING>
+    <STRING hash="4315997" needed="1">Submarin</STRING>
+    <STRING hash="15367664" needed="1">Submarin de atac</STRING>
+    <STRING hash="2070876" needed="1">Triremă</STRING>
+    <STRING hash="1714725" needed="1">Galeră</STRING>
+    <STRING hash="3072219" needed="1">Caracă</STRING>
+    <STRING hash="2423170" needed="1">Fregată</STRING>
+    <STRING hash="5606523" needed="1">Navă de război</STRING>
+    <STRING hash="6438890" needed="1">Navă bombardieră</STRING>
+    <STRING hash="5692558" needed="1">Ketch bombardier</STRING>
+    <STRING hash="6451385" needed="1">Dreadnought</STRING>
+    <STRING hash="5072733" needed="1">Cuirasat</STRING>
+    <STRING hash="20101660" needed="1">Cuirasat avansat</STRING>
+    <STRING hash="14244592" needed="1">Portavion</STRING>
+    <STRING hash="3462612" needed="1">Pasăre sălbatică</STRING>
+    <STRING hash="4754137" needed="1">Pasăre în stol</STRING>
+    <STRING hash="3519784" needed="1">Pescăruș</STRING>
+    <STRING hash="2879048" needed="1">Porc de fermă</STRING>
+    <STRING hash="7757665" needed="1">Găină de fermă</STRING>
+    <STRING hash="4834015" needed="1">Herghelie de cai</STRING>
+    <STRING hash="4679109" needed="1">Turmă de oi</STRING>
+    <STRING hash="4802943" needed="1">Cireadă de bizoni</STRING>
+    <STRING hash="4049688" needed="1">Grup de urși</STRING>
+    <STRING hash="3575160" needed="1">Banc de pești</STRING>
+    <STRING hash="6586501" needed="1">Grup de balene</STRING>
+    <STRING hash="9185103" needed="1">Stol de păuni</STRING>
+    <STRING hash="16545078" needed="1">Elicopter de atac</STRING>
+    <STRING hash="731698" needed="1">Barcă</STRING>
+    <STRING hash="2968518" needed="1">Corvetă</STRING>
+    <STRING hash="3819158" needed="1">Boadicea</STRING>
+    <STRING hash="4884264" needed="1">Călăuză</STRING>
+    <STRING hash="2115754" needed="1">Pionier</STRING>
+    <STRING hash="1621540" needed="1">Ranger</STRING>
+    <STRING hash="2313787" needed="1">Pușcași marini</STRING>
+    <STRING hash="11205266" needed="1">Trăgători marini</STRING>
+    <STRING hash="12813023" needed="1">Infanterie marină</STRING>
+    <STRING hash="12567134" needed="1">Pușcași marini de asalt</STRING>
+    <STRING hash="4499025" needed="1">Nemuritori</STRING>
+    <STRING hash="2775650" needed="1">Anusiya</STRING>
+    <STRING hash="4513220" needed="1">Athanatoi</STRING>
+    <STRING hash="11798069" needed="1">Arcași nemuritori</STRING>
+    <STRING hash="12756454" needed="1">Arcași Anusiya</STRING>
+    <STRING hash="16185980" needed="1">Arcași Athanatoi</STRING>
+    <STRING hash="7561726" needed="1">Sunka Wakan</STRING>
+    <STRING hash="19075282" needed="1">Călăreț Pană de Vultur</STRING>
+    <STRING hash="7303434" needed="1">Călăreț cu muschetă</STRING>
+    <STRING hash="22928087" needed="1">Călăreț cu pușcă cu repetiție</STRING>
+    <STRING hash="8152989" needed="1">Elefant de război</STRING>
+    <STRING hash="1783401" needed="1">Mahout</STRING>
+    <STRING hash="5595655" needed="1">Mahout cu pușcă</STRING>
+    <STRING hash="12418082" needed="1">Mahout cu culevrină</STRING>
+    <STRING hash="4076737" needed="1">Alexandru</STRING>
+    <STRING hash="3017560" needed="1">Napoleon</STRING>
+    <STRING hash="3000023" needed="1">Parmenion</STRING>
+    <STRING hash="4299955" needed="1">Antipatros</STRING>
+    <STRING hash="2324064" needed="1">Ptolemeu</STRING>
+    <STRING hash="1768727" needed="1">Darius</STRING>
+    <STRING hash="1546345" needed="1">Memnon</STRING>
+    <STRING hash="5253546" needed="1">Spitamenes</STRING>
+    <STRING hash="23457065" needed="1">Chandragupta Maurya</STRING>
+    <STRING hash="1086684" needed="1">Porus</STRING>
+    <STRING hash="10420802" needed="1">Caravană înarmată</STRING>
+    <STRING hash="11429998" needed="1">Negustor înarmat</STRING>
+    <STRING hash="18319383" needed="1">Car de provizii înarmat</STRING>
+    <STRING hash="552662" needed="1">Bric</STRING>
+    <STRING hash="1115697" needed="1">Fluyt</STRING>
+    <STRING hash="2167087" needed="1">Clipper</STRING>
+    <STRING hash="5046858" needed="1">Wellington</STRING>
+    <STRING hash="20545258" needed="1">Pușcași marini continentali</STRING>
+    <STRING hash="16731118" needed="1">Nemuritor cu archebuză</STRING>
+    <STRING hash="3718008" needed="1">Navă de asediu</STRING>
+    <STRING hash="13572651" needed="1">Arhiducele Carol</STRING>
+    <STRING hash="2760720" needed="1">Djezzar</STRING>
+    <STRING hash="10697315" needed="1">Consilierul Fouché</STRING>
+    <STRING hash="32873769" needed="1">Comandantul Schwarzenberg</STRING>
+    <STRING hash="12471697" needed="1">Generalul Blücher</STRING>
+    <STRING hash="12663209" needed="1">Generalul Kutuzov</STRING>
+    <STRING hash="12225527" needed="1">Comandantul Paoli</STRING>
+    <STRING hash="8207598" needed="1">Conchistador</STRING>
+    <STRING hash="18428844" needed="1">Conchistador de elită</STRING>
+    <STRING hash="6980785" needed="1">Nemuritor cu archebuză</STRING>
+    <STRING hash="3101971" needed="1">Lăncieri</STRING>
+    <STRING hash="12494856" needed="1">Lăncieri mohawk</STRING>
+    <STRING hash="25571948" needed="1">Lăncieri mohawk grei</STRING>
+    <STRING hash="25200830" needed="1">Lăncieri mohawk de elită</STRING>
+    <STRING hash="12157126" needed="1">Vas de linie</STRING>
+    <STRING hash="2264008" needed="1">Falcari</STRING>
+    <STRING hash="5909556" needed="1">Viteji</STRING>
+    <STRING hash="15132084" needed="1">Parașutiști</STRING>
+    <STRING hash="4222311" needed="1">Mi-24 Hind</STRING>
+    <STRING hash="4337422" needed="1">Lăncieri roxolani</STRING>
+    <STRING hash="384593" needed="1">Interceptor</STRING>
+    <STRING hash="5987504" needed="1">Elicopter de transport</STRING>
+    <STRING hash="6756338" needed="1">Automitralieră</STRING>
+    <STRING hash="1460525" needed="1">Vânători de munte</STRING>
+    <STRING hash="6781286" needed="1">Garda regală</STRING>
+    <STRING hash="16323899" needed="1">Mercenari greci</STRING>
+    <STRING hash="2279228" needed="1">Voinici</STRING>
+    <STRING hash="3596236" needed="1">Darabani</STRING>
+    <STRING hash="20863828" needed="1">R-2</STRING>
+    <STRING hash="8984905" needed="1">Renault FT</STRING>
+    <STRING hash="6802343" needed="1">Vânător de blănuri</STRING>
+    <STRING hash="8110594" needed="1">Bandeirantes</STRING>
+    <STRING hash="18223964" needed="1">Comați</STRING>
+    <STRING hash="5044549" needed="1">Despotul</STRING>
+    <STRING hash="6886735" needed="1">Senatorul</STRING>
+    <STRING hash="7345279" needed="1">Monarhul</STRING>
+    <STRING hash="8611244" needed="1">Președintele</STRING>
+    <STRING hash="6173159" needed="1">Cetățeanul</STRING>
+    <STRING hash="1922260" needed="1">Directorul</STRING>
+    <STRING hash="14761279" needed="1">Arcaș barbar</STRING>
+    <STRING hash="25490673" needed="1">IAR-80</STRING>
+    <STRING hash="18086489" needed="1">Falangă barbară</STRING>
+    <STRING hash="12870995" needed="1">Consilierul Fouché</STRING>
+    <STRING hash="16775293" needed="1">Constructor de cartiere</STRING>
+    <STRING hash="10825523" needed="1">Dorobanți</STRING>
+    <STRING hash="10853451" needed="0">Carul lui Darius</STRING>
+    <STRING hash="6809782" needed="1">Car de război</STRING>
+    <STRING hash="1687475" needed="1">Takohs</STRING>
+    <STRING hash="1543137" needed="1">Akweks</STRING>
+    <STRING hash="1816090" needed="1">Okwari</STRING>
+    <STRING hash="6337910" needed="1">Tovarășul</STRING>
+  </UNITS>
+  <ITEMS>
+    <STRING hash="3776560" needed="1">Cutie cu surprize</STRING>
+  </ITEMS>
+  <SPELLS>
+    <STRING hash="1152079" needed="1">Mituire</STRING>
+    <STRING hash="14621965" needed="1">Furt de resurse</STRING>
+    <STRING hash="20104467" needed="1">Contraspionaj</STRING>
+    <STRING hash="5394599" needed="1">Asimilare</STRING>
+    <STRING hash="1583434" needed="1">Vindecare</STRING>
+    <STRING hash="9664256" needed="1">Creează momeli</STRING>
+    <STRING hash="1757765" needed="1">Ambuscadă</STRING>
+    <STRING hash="8696396" needed="1">Marș forțat</STRING>
+    <STRING hash="3342997" needed="1">Retranșare</STRING>
+    <STRING hash="13981346" needed="1">Reaprovizionare</STRING>
+    <STRING hash="2895784" needed="1">Informator</STRING>
+    <STRING hash="3490332" needed="1">Sabotaj</STRING>
+    <STRING hash="1529192" needed="1">Lunetist</STRING>
+    <STRING hash="5373519" needed="1">Distruge șenile</STRING>
+    <STRING hash="4842857" needed="1">Bruiaj radar</STRING>
+    <STRING hash="3362543" needed="1">Desant aerian</STRING>
+    <STRING hash="15084354" needed="1">Proiect de cercetare</STRING>
+    <STRING hash="772144" needed="1">Demolează</STRING>
+    <STRING hash="15272294" needed="1">Părăsește fortificația</STRING>
+    <STRING hash="4301527" needed="1">Încuie poarta</STRING>
+    <STRING hash="6744513" needed="1">Descuie poarta</STRING>
+    <STRING hash="4376064" needed="1">Transport</STRING>
+    <STRING hash="957551" needed="1">Strânge</STRING>
+    <STRING hash="1652836" needed="1">Desfășoară</STRING>
+    <STRING hash="3291885" needed="1">Civil</STRING>
+    <STRING hash="2217284" needed="1">La arme</STRING>
+    <STRING hash="11354781" needed="1">Construiește avion</STRING>
+    <STRING hash="956773" needed="1">Transformare</STRING>
+    <STRING hash="2330416" needed="1">Îmbunătățire</STRING>
+    <STRING hash="2688591" needed="1">Desființare</STRING>
+    <STRING hash="7293826" needed="1">Declară război</STRING>
+    <STRING hash="13168313" needed="1">Anulează alianța</STRING>
+    <STRING hash="3885310" needed="1">Atac la distanță</STRING>
+    <STRING hash="2613214" needed="1">Atac corp la corp</STRING>
+  </SPELLS>
+</ROOT>

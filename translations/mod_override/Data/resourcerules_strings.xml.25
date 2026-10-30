@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+	<CAT hash="587613">
+		<STRING hash="11685233" hash_i="11756429" needed="1">Основной ресурс</STRING>
+		<STRING hash="20489380" hash_i="20551444" needed="1">Редкий ресурс пищи.</STRING>
+		<STRING hash="147467286" hash_i="156441532" needed="1">Сокращает время исследований и улучшений на $NUMBER0%.</STRING>
+		<STRING hash="113202238" hash_i="120574496" needed="1">Стоимость улучшения юнитов снижена на $NUMBER0%.</STRING>
+		<STRING hash="180822180" hash_i="192662692" needed="1">Стоимость #ICON27 научных исследований снижена на $NUMBER0%.</STRING>
+		<STRING hash="172749797" hash_i="187362279" needed="1">Стоимость #ICON25 гражданских исследований снижена на $NUMBER0%.</STRING>
+		<STRING hash="182561711" hash_i="193954395" needed="1">Стоимость #ICON26 торговых исследований снижена на $NUMBER0%.</STRING>
+		<STRING hash="87506613" hash_i="93518609" needed="1">Доход караванов увеличен на $NUMBER0%.</STRING>
+		<STRING hash="127701008" hash_i="136619784" needed="1">Стоимость войск казармы снижена на $NUMBER0%.</STRING>
+		<STRING hash="108052760" hash_i="115154366" needed="1">Стоимость юнитов конюшни снижена на $NUMBER0%.</STRING>
+		<STRING hash="132453351" hash_i="141713909" needed="1">Стоимость юнитов автозавода снижена на $NUMBER0%.</STRING>
+		<STRING hash="166713158" hash_i="178869008" needed="1">Стоимость осадных/артиллерийских юнитов снижена на $NUMBER0%.</STRING>
+		<STRING hash="178361967" hash_i="190646447" needed="1">Цены продажи на рынке +$NUMBER0, цены покупки -$NUMBER1.</STRING>
+		<STRING hash="165161095" hash_i="176196279" needed="1">Стоимость #ICON23 перехода в новую эпоху снижена на $NUMBER0%.</STRING>
+		<STRING hash="179338198" hash_i="190089704" needed="1">Горожане строят здания и чудеса на $NUMBER0% быстрее.</STRING>
+		<STRING hash="112820383" hash_i="120189315" needed="1">Стоимость строительства чудес снижена на $NUMBER0%.</STRING>
+		<STRING hash="183793237" hash_i="193611755" needed="1">Стоимость #ICON24 военных исследований снижена на $NUMBER0%.</STRING>
+		<STRING hash="223947293" hash_i="223468201" needed="1">Время производства в казармах, конюшнях и доках сокращено на $NUMBER0%.</STRING>
+		<STRING hash="122452978" hash_i="130056882" needed="1">Стоимость исследований амбара снижена на $NUMBER0%.</STRING>
+		<STRING hash="171072432" hash_i="178172594" needed="1">Юниты завода и дока получают +$NUMBER0% к здоровью.</STRING>
+		<STRING hash="94163552" hash_i="96831316" needed="1">+$NUMBER0% к #ICON20 лимиту населения.</STRING>
+		<STRING hash="69993360" hash_i="69971538" needed="1">Корабли в море лечатся автоматически.</STRING>
+		<STRING hash="76521631" hash_i="82031785" needed="1">Снижает все расходы пищи на $NUMBER0%.</STRING>
+		<STRING hash="117828710" hash_i="126659822" needed="1">Поднимает #ICON21 лимит торговли на +$NUMBER0%.</STRING>
+		<STRING hash="42031216" hash_i="46557986" needed="1">Национальные границы +$NUMBER0%.</STRING>
+		<STRING hash="219551962" hash_i="224074346" needed="1">Стоимость авиации снижена на $NUMBER0%, скорость увеличена на $NUMBER1%.</STRING>
+		<STRING hash="104712415" hash_i="111694881" needed="1">Увеличивает скорость парусников на $NUMBER0%.</STRING>
+		<STRING hash="177991301" hash_i="192101669" needed="1">Лучники, башни, форты и города получают +$NUMBER1 к атаке.</STRING>
+		<STRING hash="172156159" hash_i="185192517" needed="1">Горожане создаются на $NUMBER0% быстрее и на $NUMBER1% дешевле.</STRING>
+		<STRING hash="126026323" hash_i="135826793" needed="1">Снижает все расходы #ICON2 древесины на $NUMBER0%.</STRING>
+		<STRING hash="172570610" hash_i="184862394" needed="1">Ядерные ракеты на $NUMBER0% быстрее и на $NUMBER1% дешевле.</STRING>
+		<STRING hash="162975423" hash_i="173047229" needed="1">Истощение на вражеской территории снижено на $NUMBER0%.</STRING>
+		<STRING hash="39526173" hash_i="44052943" needed="1">Границы нации +$NUMBER0.</STRING><STRING hash="78654592" hash_i="84318460" needed="1">Увеличивает броню горожан на $NUMBER0.</STRING><STRING hash="73318768" hash_i="78724850" needed="1">Обзор разведчиков увеличен на $NUMBER0.</STRING><STRING hash="126670614" hash_i="134730970" needed="1">Стоимость исследований храма снижена на $NUMBER0%.</STRING><STRING hash="59762226" hash_i="59829932" needed="1">Разрешает одну дополнительную ферму на город.</STRING><STRING hash="55669031" hash_i="59908255" needed="1">Снижает все расходы на $NUMBER0%.</STRING><STRING hash="39398892" hash_i="39512062" needed="1">Бесплатные разведчики и торговцы</STRING><STRING hash="87780619" hash_i="93683435" needed="1">Снижает все расходы богатства на $NUMBER0%.</STRING><STRING hash="106222893" hash_i="113200515" needed="1">Дальность боя кораблей увеличена на $NUMBER0.</STRING><STRING hash="76101706" hash_i="81508168" needed="1">Доход ресурсов увеличен на $NUMBER0%.</STRING><STRING hash="112475487" hash_i="119755375" needed="1">Увеличивает здоровье всех юнитов на $NUMBER0%.</STRING><STRING hash="103602204" hash_i="110387614" needed="1">Снижает стоимость флота на $NUMBER0%.</STRING><STRING hash="82594421" hash_i="88334403" needed="1">Снижает все расходы металла на $NUMBER0%.</STRING><STRING hash="95816745" hash_i="102215257" needed="1">Рост стоимости юнитов снижен на $NUMBER0%.</STRING><STRING hash="78424887" hash_i="84181125" needed="1">Броня горожан увеличена на $NUMBER0.</STRING><STRING hash="56674842" hash_i="59829932" needed="1">Разрешает одну дополнительную ферму на город.</STRING><STRING hash="113861114" hash_i="121458652" needed="1">Здоровье всех юнитов увеличено на $NUMBER0%.</STRING><STRING hash="102440803" hash_i="109209577" needed="1">Стоимость флота снижена на $NUMBER0%.</STRING><STRING hash="81422450" hash_i="87171002" needed="1">Все расходы металла снижены на $NUMBER0%.</STRING><STRING hash="113325601" hash_i="120697859" needed="1">Рост стоимости юнитов снижен на $NUMBER0%.</STRING><STRING hash="189871371" hash_i="195578207" needed="1">Стоимость юнитов конюшни и автозавода снижена на $NUMBER0%.</STRING><STRING hash="114094080" hash_i="121458652" needed="1">Здоровье всех юнитов увеличено на $NUMBER0%.</STRING><STRING hash="213607465" hash_i="212585585" needed="1">Стоимость юнитов осадной мастерской и завода снижена на $NUMBER0%.</STRING><STRING hash="186561244" hash_i="198552306" needed="1">Юниты казармы, конюшни и дока создаются на $NUMBER0% быстрее.</STRING><STRING hash="194832482" hash_i="208942850" needed="1">Лучники, башни, форты и города получают +$NUMBER1 к силе атаки.</STRING></CAT>
+	<CAT hash="5799388">
+		<STRING hash="0" hash_i="0" needed="1"/>
+		<STRING hash="18235975" hash_i="18298039" needed="1">Редкий ресурс пищи</STRING>
+		<STRING hash="48316772" hash_i="48424200" needed="1">Быстрые исследования и улучшения</STRING>
+		<STRING hash="20180700" hash_i="20289892" needed="1">Дешёвые улучшения юнитов</STRING>
+		<STRING hash="28254149" hash_i="30066889" needed="1">Бонус научных исследований</STRING>
+		<STRING hash="23093140" hash_i="24722438" needed="1">Бонус гражданских исследований</STRING>
+		<STRING hash="30961383" hash_i="32991505" needed="1">Бонус торговых исследований</STRING>
+		<STRING hash="9549012" hash_i="10503438" needed="1">Бонус караванов</STRING>
+		<STRING hash="30587098" hash_i="32405312" needed="1">Войска казармы дешевле</STRING>
+		<STRING hash="22163518" hash_i="23519296" needed="1">Юниты конюшни дешевле</STRING>
+		<STRING hash="32968667" hash_i="34925325" needed="1">Юниты автозавода дешевле</STRING>
+		<STRING hash="49316992" hash_i="52418960" needed="1">Осада/артиллерия дешевле</STRING>
+		<STRING hash="17709399" hash_i="19040397" needed="1">Бонус рыночных цен</STRING>
+		<STRING hash="20242399" hash_i="22000635" needed="1">Новая эпоха дешевле</STRING>
+		<STRING hash="24055863" hash_i="25267355" needed="1">Горожане строят быстрее</STRING>
+		<STRING hash="11828830" hash_i="12706172" needed="1">Чудеса дешевле</STRING>
+		<STRING hash="31187895" hash_i="33125419" needed="1">Бонус военных исследований</STRING>
+		<STRING hash="55849638" hash_i="56475694" needed="1">Пехота/конница/парусники быстрее</STRING>
+		<STRING hash="34474051" hash_i="36338081" needed="1">Исследования амбара дешевле</STRING>
+		<STRING hash="35489584" hash_i="36208990" needed="1">Здоровье кораблей/артиллерии</STRING>
+		<STRING hash="26362468" hash_i="28232524" needed="1">Бонус лимита населения</STRING>
+		<STRING hash="15177844" hash_i="16318806" needed="1">Корабли лечатся в море</STRING>
+		<STRING hash="17531243" hash_i="18134095" needed="1">Расходы пищи снижены</STRING>
+		<STRING hash="10397967" hash_i="11466707" needed="1">Бонус торговли</STRING>
+		<STRING hash="36183080" hash_i="40709850" needed="1">Национальные границы +$NUMBER0</STRING>
+		<STRING hash="43631754" hash_i="44994796" needed="1">Авиация дешевле и быстрее</STRING>
+		<STRING hash="22178329" hash_i="22313841" needed="1">Парусники быстрее</STRING>
+		<STRING hash="9048116" hash_i="9994856" needed="1">Бонус лучников</STRING>
+		<STRING hash="85845041" hash_i="89559069" needed="1">Мирные юниты быстрее и дешевле</STRING>
+		<STRING hash="19809197" hash_i="20628375" needed="1">Расходы древесины вдвое меньше</STRING>
+		<STRING hash="24772106" hash_i="26275680" needed="1">Ядерное оружие дешевле</STRING>
+		<STRING hash="15485697" hash_i="16296777" needed="1">Меньше истощения</STRING>
+		<STRING hash="22234203" hash_i="23009365" needed="1">Расходы древесины снижены</STRING>
+		<STRING hash="19049350" hash_i="21412358" needed="1">Бонус брони горожан</STRING><STRING hash="28014279" hash_i="28085333" needed="1">Больше обзор разведчиков</STRING><STRING hash="30709710" hash_i="32379444" needed="1">Исследования храма дешевле</STRING><STRING hash="19124534" hash_i="20783736" needed="1">Больше ферм на город</STRING><STRING hash="15517638" hash_i="16078122" needed="1">Все расходы снижены</STRING><STRING hash="39398892" hash_i="39512062" needed="1">Бесплатные разведчики и торговцы</STRING><STRING hash="22135391" hash_i="22908705" needed="1">Расходы богатства снижены</STRING><STRING hash="25961734" hash_i="26087388" needed="1">Больше дальность флота</STRING><STRING hash="6536794" hash_i="6545624" needed="1">Больше дохода</STRING><STRING hash="35348627" hash_i="35585433" needed="1">Больше здоровья юнитов</STRING><STRING hash="19934643" hash_i="21198105" needed="1">Флот дешевле</STRING><STRING hash="19953961" hash_i="20638425" needed="1">Расходы металла снижены</STRING><STRING hash="22543340" hash_i="23223708" needed="1">Юниты дешевле</STRING><STRING hash="19169734" hash_i="20783736" needed="1">Больше ферм на город</STRING><STRING hash="75763479" hash_i="80245133" needed="1">Юниты конюшни и автозавода дешевле</STRING><STRING hash="99622589" hash_i="103715263" needed="1">Юниты осадной мастерской и завода дешевле</STRING><STRING hash="59042865" hash_i="59668629" needed="1">Пехота/конница/корабли быстрее</STRING></CAT>
+</ROOT>

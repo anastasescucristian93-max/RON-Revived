@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reviews and feedback
+    url: https://github.com/anastasescucristian93-max/RON-Revived/discussions/1
+    about: Tell us what you think of the mod pack.
+  - name: Questions
+    url: https://github.com/anastasescucristian93-max/RON-Revived/discussions/categories/q-a
+    about: Ask about installing, settings or how something works.

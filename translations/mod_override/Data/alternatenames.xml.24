@@ -1,0 +1,688 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+  <!-- LOCALIZATION: All STRING elements under ALTERNATENAMES/EPOCHTYPE and ALTERNATENAMES2/EPOCHTYPE-->
+  <ALTERNATENAMES>
+    <EPOCHTYPE name="Written Word">
+      <STRING>Scrisul</STRING>
+      <STRING>Educație</STRING>
+      <STRING>Raționament deductiv</STRING>
+      <STRING>Biologie</STRING>
+      <STRING>Anatomie</STRING>
+      <STRING>Termodinamică</STRING>
+      <STRING>Statistică</STRING>
+      <STRING>Fizică nucleară</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mathematics">
+      <STRING>Irigații</STRING>
+      <STRING>Matematică</STRING>
+      <STRING>Măsurarea timpului</STRING>
+      <STRING>Empirism</STRING>
+      <STRING>Energie mecanică</STRING>
+      <STRING>Electromagnetism</STRING>
+      <STRING>Acustică</STRING>
+      <STRING>Genetică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Chemistry">
+      <STRING>Observarea cerului</STRING>
+      <STRING>Energie hidraulică</STRING>
+      <STRING>Chimie</STRING>
+      <STRING>Metoda științifică</STRING>
+      <STRING>Calcul diferențial</STRING>
+      <STRING>Farmacologie</STRING>
+      <STRING>Relativitate</STRING>
+      <STRING>Mecanică cuantică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Laws of Nature">
+      <STRING>Pârghia</STRING>
+      <STRING>Temperatură</STRING>
+      <STRING>Horticultură</STRING>
+      <STRING>Legile naturii</STRING>
+      <STRING>Geologie</STRING>
+      <STRING>Imunizare</STRING>
+      <STRING>Microbiologie</STRING>
+      <STRING>Cipuri</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electricity">
+      <STRING>Calendar</STRING>
+      <STRING>Energie eoliană</STRING>
+      <STRING>Astronomie</STRING>
+      <STRING>Limba vernaculară</STRING>
+      <STRING>Electricitate</STRING>
+      <STRING>Aeronautică</STRING>
+      <STRING>Antibiotice</STRING>
+      <STRING>Astrofizică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electronics">
+      <STRING>Greutăți, măsuri</STRING>
+      <STRING>Astrologie</STRING>
+      <STRING>Mașinării</STRING>
+      <STRING>Literatură științifică</STRING>
+      <STRING>Botanică</STRING>
+      <STRING>Electronică</STRING>
+      <STRING>Meteorologie</STRING>
+      <STRING>Tehnologie laser</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Computerization">
+      <STRING>Transfer termic</STRING>
+      <STRING>Vindecare fizică</STRING>
+      <STRING>Optică</STRING>
+      <STRING>Fizică</STRING>
+      <STRING>Evoluție</STRING>
+      <STRING>Hidroenergie</STRING>
+      <STRING>Informatizare</STRING>
+      <STRING>Fibră optică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Barter">
+      <STRING>Troc</STRING>
+      <STRING>Drumuri</STRING>
+      <STRING>Cartografie</STRING>
+      <STRING>Busolă</STRING>
+      <STRING>Longitudine</STRING>
+      <STRING>Etalonul bogăției</STRING>
+      <STRING>Sector privat</STRING>
+      <STRING>Autostrăzi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Coinage">
+      <STRING>Animale de povară</STRING>
+      <STRING>Baterea monedei</STRING>
+      <STRING>Navigație stelară</STRING>
+      <STRING>Latitudine</STRING>
+      <STRING>Bancă centrală</STRING>
+      <STRING>Telegraf și telefon</STRING>
+      <STRING>Mass-media</STRING>
+      <STRING>Reglementare fiscală</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Trade">
+      <STRING>Meșteșug</STRING>
+      <STRING>Explorare</STRING>
+      <STRING>Comerț</STRING>
+      <STRING>Geografie</STRING>
+      <STRING>Căi ferate</STRING>
+      <STRING>Bursa de valori</STRING>
+      <STRING>Rezerve monetare</STRING>
+      <STRING>Comunicații prin satelit</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercantilism">
+      <STRING>Containere</STRING>
+      <STRING>Ustensile de scris</STRING>
+      <STRING>Bani de hârtie</STRING>
+      <STRING>Mercantilism</STRING>
+      <STRING>Serviciu poștal</STRING>
+      <STRING>Legislație antitrust</STRING>
+      <STRING>Reclamă</STRING>
+      <STRING>Reciclare</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Finance">
+      <STRING>Țesut</STRING>
+      <STRING>Poduri cu grinzi</STRING>
+      <STRING>Măsurarea distanțelor</STRING>
+      <STRING>Topografie</STRING>
+      <STRING>Finanțe</STRING>
+      <STRING>Radio</STRING>
+      <STRING>Meșteșug de precizie</STRING>
+      <STRING>Comerț liber</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Assembly Line">
+      <STRING>Transport cu roți</STRING>
+      <STRING>Abac</STRING>
+      <STRING>Lingvistică</STRING>
+      <STRING>Canale</STRING>
+      <STRING>Contabilitate</STRING>
+      <STRING>Linia de asamblare</STRING>
+      <STRING>Televiziune</STRING>
+      <STRING>Internet</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Globalization">
+      <STRING>Orientare</STRING>
+      <STRING>Hârtie și pergament</STRING>
+      <STRING>Tribut</STRING>
+      <STRING>Schimb valutar</STRING>
+      <STRING>Tarife protecționiste</STRING>
+      <STRING>Fotografie și film</STRING>
+      <STRING>Globalizare</STRING>
+      <STRING>Tehnologie wireless</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="City State">
+      <STRING>Oraș-stat</STRING>
+      <STRING>Guvernare</STRING>
+      <STRING>Suveranitate</STRING>
+      <STRING>Politică</STRING>
+      <STRING>Drepturile omului</STRING>
+      <STRING>Monarhie constituțională</STRING>
+      <STRING>Populism</STRING>
+      <STRING>Drepturi civile</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Empire">
+      <STRING>Tradiție și ritual</STRING>
+      <STRING>Imperiu</STRING>
+      <STRING>Tezaur</STRING>
+      <STRING>Colonialism</STRING>
+      <STRING>Federalism</STRING>
+      <STRING>Pacte și alianțe</STRING>
+      <STRING>Venituri fiscale</STRING>
+      <STRING>Renovare urbană</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Feudalism">
+      <STRING>Acte și decrete</STRING>
+      <STRING>Senatul</STRING>
+      <STRING>Feudalism</STRING>
+      <STRING>Jandarmerie</STRING>
+      <STRING>Echilibrul puterilor</STRING>
+      <STRING>Statul de drept</STRING>
+      <STRING>Gestiune bugetară</STRING>
+      <STRING>Etică guvernamentală</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Divine Right">
+      <STRING>Cultul strămoșilor</STRING>
+      <STRING>Magistrați</STRING>
+      <STRING>Funcție publică</STRING>
+      <STRING>Dreptul divin</STRING>
+      <STRING>Declarația drepturilor</STRING>
+      <STRING>Realpolitik</STRING>
+      <STRING>Vot universal</STRING>
+      <STRING>Opinia publică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Constitution">
+      <STRING>Adunări de guvernare</STRING>
+      <STRING>Jurisprudență</STRING>
+      <STRING>Arta guvernării</STRING>
+      <STRING>Birocrație</STRING>
+      <STRING>Constituție</STRING>
+      <STRING>Liga Națiunilor</STRING>
+      <STRING>New Deal</STRING>
+      <STRING>Bipartidism</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Great Power">
+      <STRING>Drept civil</STRING>
+      <STRING>Legislație</STRING>
+      <STRING>Jurisdicție</STRING>
+      <STRING>Puterile statului</STRING>
+      <STRING>Drept de vot</STRING>
+      <STRING>Mare putere</STRING>
+      <STRING>Națiunile Unite</STRING>
+      <STRING>Conservare</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="International Law">
+      <STRING>Stare civilă</STRING>
+      <STRING>Moralitate</STRING>
+      <STRING>Despotism</STRING>
+      <STRING>Revoluție</STRING>
+      <STRING>Politică de partid</STRING>
+      <STRING>Regionalism</STRING>
+      <STRING>Drept internațional</STRING>
+      <STRING>Noua ordine mondială</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="The Art of War">
+      <STRING>Arta războiului</STRING>
+      <STRING>Corpul ofițerilor</STRING>
+      <STRING>Oaste feudală</STRING>
+      <STRING>Putere de foc</STRING>
+      <STRING>Academie militară</STRING>
+      <STRING>Stat-major</STRING>
+      <STRING>Informații militare</STRING>
+      <STRING>Complex militar-industrial</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercenaries">
+      <STRING>Soldățime</STRING>
+      <STRING>Mercenari</STRING>
+      <STRING>Oșteni</STRING>
+      <STRING>Armurieri</STRING>
+      <STRING>Garda națională</STRING>
+      <STRING>Tactica armelor combinate</STRING>
+      <STRING>Război psihologic</STRING>
+      <STRING>Război antiinsurgență</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Standing Army">
+      <STRING>Armate</STRING>
+      <STRING>Arta comenzii</STRING>
+      <STRING>Armată permanentă</STRING>
+      <STRING>Balistică</STRING>
+      <STRING>Intendența</STRING>
+      <STRING>Viclenie</STRING>
+      <STRING>Radar și sonar</STRING>
+      <STRING>Serviciu militar universal</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Conscription">
+      <STRING>Instrucție</STRING>
+      <STRING>Recrutare militară</STRING>
+      <STRING>Cavalerism și heraldică</STRING>
+      <STRING>Conscripție</STRING>
+      <STRING>Război neregulat</STRING>
+      <STRING>Război de tranșee</STRING>
+      <STRING>Muniție ghidată</STRING>
+      <STRING>Forțe armate unificate</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Levee en Masse">
+      <STRING>Disciplină</STRING>
+      <STRING>Marea strategie</STRING>
+      <STRING>Armură de plăci</STRING>
+      <STRING>Sistemul regimentar</STRING>
+      <STRING>Mobilizare în masă</STRING>
+      <STRING>Tactici de infiltrare</STRING>
+      <STRING>Război de partizani</STRING>
+      <STRING>Arme de precizie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nation-in-Arms">
+      <STRING>Formație</STRING>
+      <STRING>Depozite militare</STRING>
+      <STRING>Legile războiului</STRING>
+      <STRING>Moral și coeziune</STRING>
+      <STRING>Transmisiuni</STRING>
+      <STRING>Națiunea înarmată</STRING>
+      <STRING>Operații combinate</STRING>
+      <STRING>Război electronic</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Selective Service">
+      <STRING>Instrucție militară</STRING>
+      <STRING>Incendiare</STRING>
+      <STRING>Angajament militar</STRING>
+      <STRING>Secretul</STRING>
+      <STRING>Război total</STRING>
+      <STRING>Blitzkrieg</STRING>
+      <STRING>Recrutare selectivă</STRING>
+      <STRING>Securitate internă</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES>
+  <ALTERNATENAMES2>
+    <EPOCHTYPE name="Tactics">
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+      <STRING>Tactică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Operations">
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+      <STRING>Operații</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategy">
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+      <STRING>Strategie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Religion">
+      <STRING>Religie</STRING>
+      <STRING>Religie</STRING>
+      <STRING>Religie</STRING>
+      <STRING>Reforma</STRING>
+      <STRING>Reforma</STRING>
+      <STRING>Teocrație</STRING>
+      <STRING>Teocrație</STRING>
+      <STRING>Teocrație</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Monotheism">
+      <STRING>Texte sacre</STRING>
+      <STRING>Texte sacre</STRING>
+      <STRING>Monoteism</STRING>
+      <STRING>Monoteism</STRING>
+      <STRING>Misionari</STRING>
+      <STRING>Misionari</STRING>
+      <STRING>Laicitate</STRING>
+      <STRING>Laicitate</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Existentialism">
+      <STRING>Cler</STRING>
+      <STRING>Cler</STRING>
+      <STRING>Secte religioase</STRING>
+      <STRING>Secte religioase</STRING>
+      <STRING>Existențialism</STRING>
+      <STRING>Existențialism</STRING>
+      <STRING>Existențialism</STRING>
+      <STRING>Existențialism</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Taxation">
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+      <STRING>Impozitare</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Vassalage">
+      <STRING>Vasalitate</STRING>
+      <STRING>Vasalitate</STRING>
+      <STRING>Vasalitate</STRING>
+      <STRING>Vasalitate</STRING>
+      <STRING>Tribut</STRING>
+      <STRING>Tribut</STRING>
+      <STRING>Tribut</STRING>
+      <STRING>Tribut</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Social Contract">
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+      <STRING>Contract social</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Income Tax">
+      <STRING>Hegemonie</STRING>
+      <STRING>Hegemonie</STRING>
+      <STRING>Hegemonie</STRING>
+      <STRING>Impozit pe venit</STRING>
+      <STRING>Impozit pe venit</STRING>
+      <STRING>Impozit pe venit</STRING>
+      <STRING>Impozit pe venit</STRING>
+      <STRING>Impozit pe venit</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Fortification">
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+      <STRING>Fortificație</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Bombardment">
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+      <STRING>Bombardament</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategic Reserves">
+      <STRING>Geniu militar</STRING>
+      <STRING>Geniu militar</STRING>
+      <STRING>Geniu militar</STRING>
+      <STRING>Geniu militar</STRING>
+      <STRING>Rezerve strategice</STRING>
+      <STRING>Rezerve strategice</STRING>
+      <STRING>Rezerve strategice</STRING>
+      <STRING>Rezerve strategice</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Allegiance">
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+      <STRING>Loialitate</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Oath of Fealty">
+      <STRING>Jurământ de credință</STRING>
+      <STRING>Jurământ de credință</STRING>
+      <STRING>Jurământ de credință</STRING>
+      <STRING>Jurământ de credință</STRING>
+      <STRING>Cetățenie</STRING>
+      <STRING>Cetățenie</STRING>
+      <STRING>Cetățenie</STRING>
+      <STRING>Cetățenie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Patriotism">
+      <STRING>Patria</STRING>
+      <STRING>Patria</STRING>
+      <STRING>Patria</STRING>
+      <STRING>Patriotism</STRING>
+      <STRING>Patriotism</STRING>
+      <STRING>Patriotism</STRING>
+      <STRING>Patriotism</STRING>
+      <STRING>Patriotism</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nationalism">
+      <STRING>Națiune</STRING>
+      <STRING>Națiune</STRING>
+      <STRING>Națiune</STRING>
+      <STRING>Națiune</STRING>
+      <STRING>Naționalism</STRING>
+      <STRING>Naționalism</STRING>
+      <STRING>Naționalism</STRING>
+      <STRING>Naționalism</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Construction">
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+      <STRING>Construcție</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Architecture">
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+      <STRING>Arhitectură</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Engineering">
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+      <STRING>Inginerie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Herbal Lore">
+      <STRING>Plante medicinale</STRING>
+      <STRING>Plante medicinale</STRING>
+      <STRING>Plante medicinale</STRING>
+      <STRING>Plante medicinale</STRING>
+      <STRING>Homeopatie</STRING>
+      <STRING>Homeopatie</STRING>
+      <STRING>Homeopatie</STRING>
+      <STRING>Homeopatie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Medicine">
+      <STRING>Medicină</STRING>
+      <STRING>Medicină</STRING>
+      <STRING>Medicină</STRING>
+      <STRING>Medicină</STRING>
+      <STRING>Medicină</STRING>
+      <STRING>Medicină preventivă</STRING>
+      <STRING>Medicină preventivă</STRING>
+      <STRING>Medicină preventivă</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Pharmaceuticals">
+      <STRING>Spițerii</STRING>
+      <STRING>Spițerii</STRING>
+      <STRING>Spițerii</STRING>
+      <STRING>Farmaceutică</STRING>
+      <STRING>Farmaceutică</STRING>
+      <STRING>Farmaceutică</STRING>
+      <STRING>Farmaceutică</STRING>
+      <STRING>Farmaceutică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Forage">
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+      <STRING>Furajare</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supply">
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+      <STRING>Aprovizionare</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logistics">
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+      <STRING>Logistică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Carpentry">
+      <STRING>Dulgherie</STRING>
+      <STRING>Dulgherie</STRING>
+      <STRING>Dulgherie</STRING>
+      <STRING>Dulgherie</STRING>
+      <STRING>Dulgherie</STRING>
+      <STRING>Silvicultură</STRING>
+      <STRING>Silvicultură</STRING>
+      <STRING>Silvicultură</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logging Industry">
+      <STRING>Dulgherie avansată</STRING>
+      <STRING>Dulgherie avansată</STRING>
+      <STRING>Strung</STRING>
+      <STRING>Industria lemnului</STRING>
+      <STRING>Industria lemnului</STRING>
+      <STRING>Industria lemnului</STRING>
+      <STRING>Industria lemnului</STRING>
+      <STRING>Reîmpădurire</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Papermill">
+      <STRING>Moara de hârtie</STRING>
+      <STRING>Moara de hârtie</STRING>
+      <STRING>Moara de hârtie</STRING>
+      <STRING>Moara de hârtie</STRING>
+      <STRING>Moara de hârtie</STRING>
+      <STRING>Industria hârtiei</STRING>
+      <STRING>Industria hârtiei</STRING>
+      <STRING>Industria hârtiei</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Agriculture">
+      <STRING>Agricultură</STRING>
+      <STRING>Agricultură</STRING>
+      <STRING>Agricultură</STRING>
+      <STRING>Agricultură</STRING>
+      <STRING>Agricultură</STRING>
+      <STRING>Agronomie</STRING>
+      <STRING>Agronomie</STRING>
+      <STRING>Agronomie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Crop Rotation">
+      <STRING>Morărit</STRING>
+      <STRING>Morărit</STRING>
+      <STRING>Morărit</STRING>
+      <STRING>Rotația culturilor</STRING>
+      <STRING>Rotația culturilor</STRING>
+      <STRING>Conservarea solului</STRING>
+      <STRING>Conservarea solului</STRING>
+      <STRING>Conservarea solului</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Food Industry">
+      <STRING>Conservarea hranei</STRING>
+      <STRING>Conservarea hranei</STRING>
+      <STRING>Conservarea hranei</STRING>
+      <STRING>Industria alimentară</STRING>
+      <STRING>Industria alimentară</STRING>
+      <STRING>Industria alimentară</STRING>
+      <STRING>Refrigerare</STRING>
+      <STRING>Refrigerare</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Literacy">
+      <STRING>Alfabetizare</STRING>
+      <STRING>Alfabetizare</STRING>
+      <STRING>Alfabetizare</STRING>
+      <STRING>Alfabetizare</STRING>
+      <STRING>Raționalism</STRING>
+      <STRING>Raționalism</STRING>
+      <STRING>Raționalism</STRING>
+      <STRING>Raționalism</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Printing Press">
+      <STRING>Scribi</STRING>
+      <STRING>Scribi</STRING>
+      <STRING>Tiparul</STRING>
+      <STRING>Tiparul</STRING>
+      <STRING>Texte savante</STRING>
+      <STRING>Texte savante</STRING>
+      <STRING>Texte savante</STRING>
+      <STRING>Texte savante</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Scientific Method">
+      <STRING>Metoda socratică</STRING>
+      <STRING>Metoda socratică</STRING>
+      <STRING>Metoda socratică</STRING>
+      <STRING>Metoda științifică</STRING>
+      <STRING>Metoda științifică</STRING>
+      <STRING>Metoda științifică</STRING>
+      <STRING>Metoda științifică</STRING>
+      <STRING>Metoda științifică</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Institutional Research">
+      <STRING>Erudiție</STRING>
+      <STRING>Erudiție</STRING>
+      <STRING>Erudiție</STRING>
+      <STRING>Erudiție</STRING>
+      <STRING>Erudiție</STRING>
+      <STRING>Erudiție</STRING>
+      <STRING>Cercetare instituțională</STRING>
+      <STRING>Cercetare instituțională</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supercomputers">
+      <STRING>Mediul academic</STRING>
+      <STRING>Mediul academic</STRING>
+      <STRING>Mediul academic</STRING>
+      <STRING>Mediul academic</STRING>
+      <STRING>Mediul academic</STRING>
+      <STRING>Mediul academic</STRING>
+      <STRING>Supercomputere</STRING>
+      <STRING>Supercomputere</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Metal Alloys">
+      <STRING>Aliaje metalice</STRING>
+      <STRING>Aliaje metalice</STRING>
+      <STRING>Aliaje metalice</STRING>
+      <STRING>Metalurgie</STRING>
+      <STRING>Metalurgie</STRING>
+      <STRING>Metalurgie</STRING>
+      <STRING>Metalurgie</STRING>
+      <STRING>Metalurgie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Cold Casting">
+      <STRING>Cuptoare</STRING>
+      <STRING>Cuptoare</STRING>
+      <STRING>Turnare la rece</STRING>
+      <STRING>Turnare la rece</STRING>
+      <STRING>Furnal</STRING>
+      <STRING>Furnal</STRING>
+      <STRING>Sudură</STRING>
+      <STRING>Sudură</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Steel">
+      <STRING>Extracția minereului</STRING>
+      <STRING>Extracția minereului</STRING>
+      <STRING>Alamă</STRING>
+      <STRING>Alamă</STRING>
+      <STRING>Oțel</STRING>
+      <STRING>Oțel</STRING>
+      <STRING>Oțel</STRING>
+      <STRING>Oțel</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES2>
+</ROOT>

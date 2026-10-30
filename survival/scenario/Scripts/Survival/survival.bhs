@@ -1,0 +1,359 @@
+// Survival: hold out for 30 minutes against waves of enemies.
+//
+// Set up a game with yourself and ONE computer player as your enemy, then pick "Survival" under
+// Script. The computer player's buildings and units are removed at the start: the whole map is
+// yours. From 2:00 a wave comes every 80 seconds (45 seconds at the end), bigger every time. It
+// appears in the fog just outside your territory and attacks your capital. Its army is one or
+// two ages behind yours. Every 5 minutes a boss wave: heavy cavalry or tanks, siege and a General.
+//
+// A strip of the map (a tenth, on the side away from your start) is a no-build zone, kept free
+// for the waves; flags mark its edge.
+//
+// The mod's winmm.dll reads the timers named surv_* (see camera-smooth/src/survival.c): it draws
+// the clocks at the top right and keeps everyone from building in the zone. Without it the
+// script still runs, without clocks and without the zone.
+//
+// The computer player's difficulty sets the waves: Easiest to Moderate = 2 ages behind, Hard and
+// up = 1 age behind; the waves grow with the difficulty too.
+
+scenario {
+  static int SURVIVE_SECONDS = 1800;
+  static int FIRST_WAVE = 120;
+  static int MAX_ALIVE = 200;
+  static int debug_lines = 1;      // 1 = a line per wave in the chat (where, which age, how many)
+  static int FOG = 16;             // tiles from any defender object: out of their sight
+
+  // the generic unit of each line, by age (0 Ancient .. 7 Information)
+  static String li[] = ["Slingers", "Javelineers", "Elite Javelineers", "Arquebusiers", "Musketeers",
+                        "Riflemen", "Infantry", "Assault Infantry"];
+  static String hi[] = ["Hoplites", "Phalanx", "Pikemen", "Elite Pikemen", "Fusiliers",
+                        "Anti-tank Rifle", "Bazooka", "Anti-Tank Missile"];
+  static String rg[] = ["Bowmen", "Archers", "Crossbowmen", "Dragoon", "Carabineer",
+                        "Machine Gun", "Heavy Machine Gun", "Advanced Machine Gun"];
+  static String lc[] = ["Hoplites", "Light Horse", "Light Cavalry", "Elite Light Cavalry", "Hussar",
+                        "Armored Car", "Armored Scout Car", "Armored Cavalry"];
+  static String hc[] = ["Hoplites", "Cataphract", "Knight", "Heavy Knight", "Cuirassier",
+                        "Light Tank", "Tank", "Main Battle Tank"];
+  static String sg[] = ["", "Catapult", "Trebuchet", "Bombard", "Cannon",
+                        "Artillery", "Howitzer", "Rocket Artillery"];
+  static String age_names[] = ["Ancient", "Classical", "Medieval", "Gunpowder", "Enlightenment",
+                               "Industrial", "Modern", "Information"];
+
+  static int W = 0;          // the wave player
+  static int diff = 0;
+  static int lag = 1;        // ages behind the defenders
+  static int mult = 100;     // wave size, percent
+  static int single = 1;     // one human: is_on_screen is safe (it differs between machines)
+  static int wave = 0;
+  static int minute = 0;
+  static int over = 0;
+  static int T = 0;          // the player the current wave goes for
+  static int tx = 0;
+  static int ty = 0;
+  static int ms = 0;          // map size in tiles
+  static int zx0 = 0;         // the no-build zone, tiles: zx0 <= x < zx1, zy0 <= y < zy1
+  static int zy0 = 0;
+  static int zx1 = 0;
+  static int zy1 = 0;
+  static String zone_timer;
+
+  int p;
+  int n;
+  int u;
+  int b;
+  int x;
+  int y;
+  int c;
+  int e;
+  int side;
+  int ok;
+  int found;
+  int tries;
+  int r;
+  int hit;
+  int sx;
+  int sy;
+  int d;
+  float ang;
+  float fx;
+  float fy;
+  int count;
+  int pick;
+  int top_age;
+  int boss;
+  int nli;
+  int nhi;
+  int nrg;
+  int ncav;
+  int nsg;
+  String cap;
+
+  run_once {
+    for (p = num_players(); p >= 1; p--) {
+      if (W == 0 && !is_human(p)) W = p;
+    }
+    if (W == 0) {
+      print_game_msg("Survival: add one computer player as your enemy; the script does nothing without one.");
+      over = 1;
+    } else {
+      diff = get_leader_difficulty(W);
+      if (diff <= 2) lag = 2;
+      else lag = 1;
+      mult = 60 + 20 * diff;
+      if (num_human_players() == 1) single = 1;
+      else single = 0;
+
+      disable_city_defeat(W);
+      disable_production_ai(W);
+      disable_city_ai(W);
+      disable_combat_ai(W);
+      disable_take_attrition(W);
+      set_population_cap(W, 1000);
+
+      // the no-build zone: a tenth of the map on the side away from the defenders' starts
+      ms = get_map_size();
+      sx = 0;
+      sy = 0;
+      for (p = 1; p <= num_players(); p++) {
+        if (p != W && have_war(W, p)) {
+          sx = sx + get_starting_loc_x(p) - ms / 2;
+          sy = sy + get_starting_loc_y(p) - ms / 2;
+        }
+      }
+      d = ms / 10;
+      if (d < 6) d = 6;
+      zx0 = 0;
+      zy0 = 0;
+      zx1 = ms;
+      zy1 = ms;
+      fx = (float)sx;
+      fy = (float)sy;
+      if (fx < 0.0) fx = 0.0 - fx;
+      if (fy < 0.0) fy = 0.0 - fy;
+      if (fx >= fy) {
+        if (sx > 0) zx1 = d;
+        else zx0 = ms - d;
+      } else {
+        if (sy > 0) zy1 = d;
+        else zy0 = ms - d;
+      }
+      zone_timer = "surv_zone " + zx0 + " " + zy0 + " " + zx1 + " " + zy1;
+      set_timer(zone_timer, 99999);
+      // flags along its inner edge (single player only: the game ignores them in multiplayer)
+      for (n = 2; n < ms - 2; n = n + 5) {
+        if (zx0 > 0) add_flag(zx0, n);
+        else if (zx1 < ms) add_flag(zx1 - 1, n);
+        else if (zy0 > 0) add_flag(n, zy0);
+        else add_flag(n, zy1 - 1);
+      }
+
+      set_timer("clear", 10);
+      set_timer("surv_end", SURVIVE_SECONDS);
+      set_timer("minute", 60);
+      set_timer("surv_wave", FIRST_WAVE);
+      set_timer("regroup", 15);
+      set_timer("surv_boss", 99999);  // started for real a minute before every fifth minute
+
+      print_game_msg("*SURVIVAL*  Hold out for 30 minutes. The first wave comes at 2:00.");
+      print_game_msg("Waves come out of the fog at the edge of your territory, " + lag + " age(s) behind you. Boss waves every 5 minutes.");
+      print_game_msg("Nobody can build in the strip of the map behind the flags: the waves gather there.");
+      if (debug_lines == 1) print_game_msg("[survival] wave player " + W + ", difficulty " + diff + ", lag " + lag + ", size " + mult + "%");
+    }
+  }
+
+  // the wave player's start (capital, citizens, scout) goes away: the whole map is yours
+  if (over == 0 && !timer_expired("clear")) {
+    kill_unit_type(W, "Citizen");
+    kill_unit_type(W, "Scout");
+    destroy_building_type(W, "Small City");
+    destroy_building_type(W, "Large City");
+    destroy_building_type(W, "Major City");
+    for (n = num_units(W) + 2; n > 0; n--) {
+      u = find_all_unit(W, "");
+      if (u > 0) kill_unit(W, u);
+    }
+    for (n = num_buildings(W) + 2; n > 0; n--) {
+      b = find_build(W, "");
+      if (b > 0) destroy_building(W, b);
+    }
+  }
+
+  if (over == 0 && timer_expired("surv_end")) {
+    over = 1;
+    for (p = 1; p <= num_players(); p++) {
+      if (p != W && !is_defeated(p)) victory(p);
+    }
+  }
+
+  if (over == 0 && timer_expired("minute")) {
+    set_timer("minute", 60);
+    minute++;
+    if (minute < 30) {
+      // set again every minute: the DLL learns timers only when they are set, so after a saved
+      // game is loaded the clocks and the zone come back within a minute
+      set_timer("surv_end", SURVIVE_SECONDS - minute * 60);
+      set_timer(zone_timer, 99999);
+      if (30 - minute <= 5 || minute % 5 == 0) {
+        print_game_msg("Survival: " + (30 - minute) + " minutes left.");
+      }
+      // a boss wave on every fifth minute, its clock started a minute before
+      if (minute % 5 == 4 && minute < 29) set_timer("surv_boss", 60);
+    }
+  }
+
+  // a wave: pick a defender to attack, a spawn point at the edge, the army of its age
+  if (over == 0 && (timer_expired("surv_wave") || timer_expired("surv_boss"))) {
+    boss = 0;
+    if (timer_expired("surv_boss")) boss = 1;
+    if (boss == 1) set_timer("surv_boss", 99999);
+    else {
+      n = 80 - minute;
+      if (n < 45) n = 45;
+      set_timer("surv_wave", n);
+      wave++;
+    }
+
+    // the defenders: everyone at war with the wave player
+    count = 0;
+    top_age = 0;
+    for (p = 1; p <= num_players(); p++) {
+      if (p != W && !is_defeated(p) && have_war(W, p)) {
+        count++;
+        if (age(p) > top_age) top_age = age(p);
+      }
+    }
+    if (count > 0) {
+      pick = rand_int(1, count);
+      for (p = 1; p <= num_players(); p++) {
+        if (p != W && !is_defeated(p) && have_war(W, p)) {
+          pick--;
+          if (pick == 0) T = p;
+        }
+      }
+
+      cap = find_capital(T);
+      b = 0;
+      if (cap != "") b = find_city_id(cap);
+      if (b <= 0) b = find_build(T, "");
+      tx = object_position_x(T, b);
+      ty = object_position_y(T, b);
+
+      e = top_age - lag;
+      if (e < 0) e = 0;
+      if (e > 7) e = 7;
+
+      // a point just outside the defenders' territory and sight: from the capital outwards along
+      // a random direction, the first land tile no defender owns or sees
+      found = 0;
+      for (tries = 0; tries < 24; tries++) {
+        if (found == 0) {
+          ang = (float)rand_int(0, 359);
+          hit = 0;
+          for (r = 6; r < ms; r = r + 3) {
+            if (found == 0 && hit == 0) {
+              fx = (float)tx + (float)r * cos(ang);
+              fy = (float)ty + (float)r * sin(ang);
+              x = (int)fx;
+              y = (int)fy;
+              if (x < 2 || y < 2 || x > ms - 3 || y > ms - 3) hit = 1;
+              else {
+                ok = 0;
+                if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
+                for (p = 1; p <= num_players(); p++) {
+                  if (ok == 1 && p != W && have_war(W, p) && territory_owner(x, y) == p) ok = 0;
+                }
+                for (p = 1; p <= num_players(); p++) {
+                  if (ok == 1 && p != W && have_war(W, p) && any_object_near(p, 1, x, y, FOG)) ok = 0;
+                }
+                if (ok == 1 && single == 1 && is_on_screen(x, y)) ok = 0;
+                if (ok == 1) found = 1;
+              }
+            }
+          }
+        }
+      }
+      // none (the defenders own or see everything around): somewhere in the no-build zone
+      for (tries = 0; tries < 40; tries++) {
+        if (found == 0) {
+          x = rand_int(zx0 + 1, zx1 - 2);
+          y = rand_int(zy0 + 1, zy1 - 2);
+          ok = 0;
+          if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
+          if (ok == 1 && single == 1 && is_on_screen(x, y)) ok = 0;
+          if (ok == 1) found = 2;
+        }
+      }
+      // and last, the edge of the map
+      for (tries = 0; tries < 60; tries++) {
+        if (found == 0) {
+          side = rand_int(0, 3);
+          if (side == 0) { x = 3; y = rand_int(3, ms - 4); }
+          else if (side == 1) { x = ms - 4; y = rand_int(3, ms - 4); }
+          else if (side == 2) { x = rand_int(3, ms - 4); y = 3; }
+          else { x = rand_int(3, ms - 4); y = ms - 4; }
+          ok = 0;
+          if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
+          if (ok == 1 && single == 1 && is_on_screen(x, y)) ok = 0;
+          if (ok == 1 && tries < 40 && territory_owner(x, y) == T) ok = 0;
+          if (ok == 1) found = 3;
+        }
+      }
+
+      clear_group(W);
+      if (boss == 1) {
+        c = 4 + 2 * (minute / 5);
+        create_unit_in_group(W, x, y, "General", 1);
+        create_unit_in_group(W, x, y, hc[e], c * mult / 100 + 1);
+        if (e >= 1) create_unit_in_group(W, x, y, sg[e], 2 + minute / 10);
+        create_unit_in_group(W, x, y, hi[e], c * mult / 200 + 1);
+        show_notice("BOSS WAVE: a " + age_names[e] + " Age army with a General!", "city_under_attack_notice", 1);
+        print_game_msg("Boss wave, " + age_names[e] + " Age.");
+      } else {
+        c = (4 + wave * 3 / 2) * mult / 100;
+        if (c < 3) c = 3;
+        if (c > 60) c = 60;
+        n = num_military_units(W);
+        if (n + c > MAX_ALIVE) c = MAX_ALIVE - n;
+        if (c > 0) {
+          nli = c * 40 / 100;
+          nhi = c * 25 / 100;
+          nrg = c * 15 / 100;
+          ncav = c - nli - nhi - nrg;
+          if (e == 0) { nhi = nhi + ncav; ncav = 0; }
+          nsg = 0;
+          if (e >= 1 && wave >= 6) nsg = 1 + wave / 8;
+
+          if (nli > 0) create_unit_in_group(W, x, y, li[e], nli);
+          if (nhi > 0) create_unit_in_group(W, x, y, hi[e], nhi);
+          if (nrg > 0) create_unit_in_group(W, x, y, rg[e], nrg);
+          if (ncav / 2 > 0) create_unit_in_group(W, x, y, lc[e], ncav / 2);
+          if (ncav - ncav / 2 > 0) create_unit_in_group(W, x, y, hc[e], ncav - ncav / 2);
+          if (nsg > 0) create_unit_in_group(W, x, y, sg[e], nsg);
+          show_notice("Wave " + wave + " is coming: " + c + " " + age_names[e] + " Age soldiers!", "city_under_attack_notice", 1);
+        }
+      }
+      group_attack_to_order(W, tx, ty);
+      // found: 1 at the edge of the territory, 2 in the zone, 3 at the map's edge, 0 anywhere
+      if (debug_lines == 1) print_game_msg("[survival] wave " + wave + " boss " + boss + " at " + x + "," + y + " (found " + found + ") age " + e + " for player " + T + " at " + tx + "," + ty);
+    }
+  }
+
+  // units that stand idle (their target fell, or the fight is over) go for the defender again
+  if (over == 0 && timer_expired("regroup")) {
+    set_timer("regroup", 15);
+    if (T > 0 && !is_defeated(T)) {
+      cap = find_capital(T);
+      b = 0;
+      if (cap != "") b = find_city_id(cap);
+      if (b <= 0) b = find_build(T, "");
+      if (b > 0) {
+        tx = object_position_x(T, b);
+        ty = object_position_y(T, b);
+      }
+    }
+    for (n = num_military_units(W); n > 0; n--) {
+      u = find_idle_military(W);
+      if (u > 0) unit_attack_to_order(W, u, tx + rand_int(-4, 4), ty + rand_int(-4, 4));
+    }
+  }
+}

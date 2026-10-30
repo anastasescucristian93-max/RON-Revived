@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+	<CAT hash="587613">
+		<STRING hash="11685233" hash_i="11756429" needed="1">Zasób podstawowy</STRING>
+		<STRING hash="20489380" hash_i="20551444" needed="1">Rzadki zasób żywności.</STRING>
+		<STRING hash="147467286" hash_i="156441532" needed="1">Skraca czas badań i ulepszeń o $NUMBER0%.</STRING>
+		<STRING hash="113202238" hash_i="120574496" needed="1">Koszt ulepszeń jednostek zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="180822180" hash_i="192662692" needed="1">Koszt badań naukowych #ICON27 zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="172749797" hash_i="187362279" needed="1">Koszt badań cywilnych #ICON25 zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="182561711" hash_i="193954395" needed="1">Koszt badań handlowych #ICON26 zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="87506613" hash_i="93518609" needed="1">Dochód z karawan zwiększony o $NUMBER0%.</STRING>
+		<STRING hash="127701008" hash_i="136619784" needed="1">Koszt wojsk z koszar zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="108052760" hash_i="115154366" needed="1">Koszt jednostek ze stajni zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="132453351" hash_i="141713909" needed="1">Koszt jednostek z fabryki pojazdów zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="166713158" hash_i="178869008" needed="1">Koszt jednostek oblężniczych/artylerii zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="178361967" hash_i="190646447" needed="1">Ceny sprzedaży na targu +$NUMBER0, ceny zakupu -$NUMBER1.</STRING>
+		<STRING hash="165161095" hash_i="176196279" needed="1">Koszt przejścia do następnej epoki #ICON23 zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="179338198" hash_i="190089704" needed="1">Obywatele wznoszą budynki i cuda o $NUMBER0% szybciej.</STRING>
+		<STRING hash="112820383" hash_i="120189315" needed="1">Koszt budowy cudów zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="183793237" hash_i="193611755" needed="1">Koszt badań wojskowych #ICON24 zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="223947293" hash_i="223468201" needed="1">Czas produkcji w koszarach, stajniach i przystaniach skrócony o $NUMBER0%.</STRING>
+		<STRING hash="122452978" hash_i="130056882" needed="1">Koszt badań w spichlerzu zmniejszony o $NUMBER0%.</STRING>
+		<STRING hash="171072432" hash_i="178172594" needed="1">Jednostki z fabryki i przystani otrzymują +$NUMBER0% punktów życia.</STRING>
+		<STRING hash="94163552" hash_i="96831316" needed="1">+$NUMBER0% do limitu populacji #ICON20.</STRING>
+		<STRING hash="69993360" hash_i="69971538" needed="1">Okręty na morzu same się naprawiają.</STRING>
+		<STRING hash="76521631" hash_i="82031785" needed="1">Zmniejsza wszystkie koszty żywności o $NUMBER0%.</STRING>
+		<STRING hash="117828710" hash_i="126659822" needed="1">Podnosi limit handlu #ICON21 o +$NUMBER0%.</STRING>
+		<STRING hash="42031216" hash_i="46557986" needed="1">Granice narodowe +$NUMBER0%.</STRING>
+		<STRING hash="219551962" hash_i="224074346" needed="1">Koszt samolotów zmniejszony o $NUMBER0%, prędkość zwiększona o $NUMBER1%.</STRING>
+		<STRING hash="104712415" hash_i="111694881" needed="1">Zwiększa prędkość żaglowców o $NUMBER0%.</STRING>
+		<STRING hash="177991301" hash_i="192101669" needed="1">Łucznicy, wieże, forty i miasta zyskują +$NUMBER1 do ataku.</STRING>
+		<STRING hash="172156159" hash_i="185192517" needed="1">Obywatele tworzeni o $NUMBER0% szybciej i o $NUMBER1% taniej.</STRING>
+		<STRING hash="126026323" hash_i="135826793" needed="1">Zmniejsza wszystkie koszty drewna #ICON2 o $NUMBER0%.</STRING>
+		<STRING hash="172570610" hash_i="184862394" needed="1">Pociski nuklearne o $NUMBER0% szybsze i o $NUMBER1% tańsze.</STRING>
+		<STRING hash="162975423" hash_i="173047229" needed="1">Wyniszczenie na terytorium wroga zmniejszone o $NUMBER0%.</STRING>
+		<STRING hash="39526173" hash_i="44052943" needed="1">Granice państwa +$NUMBER0.</STRING><STRING hash="78654592" hash_i="84318460" needed="1">Zwiększa pancerz obywateli o $NUMBER0.</STRING><STRING hash="73318768" hash_i="78724850" needed="1">Pole widzenia zwiadowców zwiększone o $NUMBER0.</STRING><STRING hash="126670614" hash_i="134730970" needed="1">Koszt badań w świątyni zmniejszony o $NUMBER0%.</STRING><STRING hash="59762226" hash_i="59829932" needed="1">Pozwala na jedną dodatkową farmę na miasto.</STRING><STRING hash="55669031" hash_i="59908255" needed="1">Zmniejsza wszystkie koszty o $NUMBER0%.</STRING><STRING hash="39398892" hash_i="39512062" needed="1">Darmowi zwiadowcy i kupcy</STRING><STRING hash="87780619" hash_i="93683435" needed="1">Zmniejsza wszystkie koszty bogactwa o $NUMBER0%.</STRING><STRING hash="106222893" hash_i="113200515" needed="1">Zasięg bojowy okrętów zwiększony o $NUMBER0.</STRING><STRING hash="76101706" hash_i="81508168" needed="1">Dochód z zasobów zwiększony o $NUMBER0%.</STRING><STRING hash="112475487" hash_i="119755375" needed="1">Zwiększa punkty życia wszystkich jednostek o $NUMBER0%.</STRING><STRING hash="103602204" hash_i="110387614" needed="1">Zmniejsza koszt jednostek morskich o $NUMBER0%.</STRING><STRING hash="82594421" hash_i="88334403" needed="1">Zmniejsza wszystkie koszty metalu o $NUMBER0%.</STRING><STRING hash="95816745" hash_i="102215257" needed="1">Wzrost kosztu kolejnych jednostek mniejszy o $NUMBER0%.</STRING><STRING hash="78424887" hash_i="84181125" needed="1">Pancerz obywateli zwiększony o $NUMBER0.</STRING><STRING hash="56674842" hash_i="59829932" needed="1">Pozwala na jedną dodatkową farmę na miasto.</STRING><STRING hash="113861114" hash_i="121458652" needed="1">Punkty życia wszystkich jednostek zwiększone o $NUMBER0%.</STRING><STRING hash="102440803" hash_i="109209577" needed="1">Koszt jednostek morskich zmniejszony o $NUMBER0%.</STRING><STRING hash="81422450" hash_i="87171002" needed="1">Wszystkie koszty metalu zmniejszone o $NUMBER0%.</STRING><STRING hash="113325601" hash_i="120697859" needed="1">Wzrost kosztu kolejnych jednostek mniejszy o $NUMBER0%.</STRING><STRING hash="189871371" hash_i="195578207" needed="1">Koszt jednostek ze stajni i fabryki pojazdów zmniejszony o $NUMBER0%.</STRING><STRING hash="114094080" hash_i="121458652" needed="1">Punkty życia wszystkich jednostek zwiększone o $NUMBER0%.</STRING><STRING hash="213607465" hash_i="212585585" needed="1">Koszt jednostek z warsztatu oblężniczego i fabryki zmniejszony o $NUMBER0%.</STRING><STRING hash="186561244" hash_i="198552306" needed="1">Jednostki z koszar, stajni i przystani tworzone o $NUMBER0% szybciej.</STRING><STRING hash="194832482" hash_i="208942850" needed="1">Łucznicy, wieże, forty i miasta zyskują +$NUMBER1 do siły ataku.</STRING></CAT>
+	<CAT hash="5799388">
+		<STRING hash="0" hash_i="0" needed="1"/>
+		<STRING hash="18235975" hash_i="18298039" needed="1">Rzadki zasób żywności</STRING>
+		<STRING hash="48316772" hash_i="48424200" needed="1">Szybsze badania i ulepszenia</STRING>
+		<STRING hash="20180700" hash_i="20289892" needed="1">Tanie ulepszenia jednostek</STRING>
+		<STRING hash="28254149" hash_i="30066889" needed="1">Premia do badań naukowych</STRING>
+		<STRING hash="23093140" hash_i="24722438" needed="1">Premia do badań cywilnych</STRING>
+		<STRING hash="30961383" hash_i="32991505" needed="1">Premia do badań handlowych</STRING>
+		<STRING hash="9549012" hash_i="10503438" needed="1">Premia karawan</STRING>
+		<STRING hash="30587098" hash_i="32405312" needed="1">Tańsze wojska z koszar</STRING>
+		<STRING hash="22163518" hash_i="23519296" needed="1">Tańsze jednostki ze stajni</STRING>
+		<STRING hash="32968667" hash_i="34925325" needed="1">Tańsze jednostki z fabryki pojazdów</STRING>
+		<STRING hash="49316992" hash_i="52418960" needed="1">Tańsze jednostki oblężnicze/artyleria</STRING>
+		<STRING hash="17709399" hash_i="19040397" needed="1">Premia do cen na targu</STRING>
+		<STRING hash="20242399" hash_i="22000635" needed="1">Tańsza następna epoka</STRING>
+		<STRING hash="24055863" hash_i="25267355" needed="1">Obywatele budują szybciej</STRING>
+		<STRING hash="11828830" hash_i="12706172" needed="1">Tańsze cuda</STRING>
+		<STRING hash="31187895" hash_i="33125419" needed="1">Premia do badań wojskowych</STRING>
+		<STRING hash="55849638" hash_i="56475694" needed="1">Szybsza piechota/jazda/żaglowce</STRING>
+		<STRING hash="34474051" hash_i="36338081" needed="1">Tańsze badania w spichlerzu</STRING>
+		<STRING hash="35489584" hash_i="36208990" needed="1">PŻ okrętów/artylerii</STRING>
+		<STRING hash="26362468" hash_i="28232524" needed="1">Premia do limitu populacji</STRING>
+		<STRING hash="15177844" hash_i="16318806" needed="1">Okręty naprawiają się na morzu</STRING>
+		<STRING hash="17531243" hash_i="18134095" needed="1">Mniejsze koszty żywności</STRING>
+		<STRING hash="10397967" hash_i="11466707" needed="1">Premia handlowa</STRING>
+		<STRING hash="36183080" hash_i="40709850" needed="1">Granice narodowe +$NUMBER0</STRING>
+		<STRING hash="43631754" hash_i="44994796" needed="1">Tańsze i szybsze samoloty</STRING>
+		<STRING hash="22178329" hash_i="22313841" needed="1">Szybsze żaglowce</STRING>
+		<STRING hash="9048116" hash_i="9994856" needed="1">Premia łucznicza</STRING>
+		<STRING hash="85845041" hash_i="89559069" needed="1">Szybsze i tańsze tworzenie cywilów</STRING>
+		<STRING hash="19809197" hash_i="20628375" needed="1">Koszty drewna o połowę niższe</STRING>
+		<STRING hash="24772106" hash_i="26275680" needed="1">Tańsze jednostki nuklearne</STRING>
+		<STRING hash="15485697" hash_i="16296777" needed="1">Mniejsze wyniszczenie</STRING>
+		<STRING hash="22234203" hash_i="23009365" needed="1">Mniejsze koszty drewna</STRING>
+		<STRING hash="19049350" hash_i="21412358" needed="1">Premia do pancerza obywateli</STRING><STRING hash="28014279" hash_i="28085333" needed="1">Większe pole widzenia zwiadowców</STRING><STRING hash="30709710" hash_i="32379444" needed="1">Tańsze badania w świątyni</STRING><STRING hash="19124534" hash_i="20783736" needed="1">Więcej farm na miasto</STRING><STRING hash="15517638" hash_i="16078122" needed="1">Wszystkie koszty mniejsze</STRING><STRING hash="39398892" hash_i="39512062" needed="1">Darmowi zwiadowcy i kupcy</STRING><STRING hash="22135391" hash_i="22908705" needed="1">Mniejsze koszty bogactwa</STRING><STRING hash="25961734" hash_i="26087388" needed="1">Większy zasięg okrętów</STRING><STRING hash="6536794" hash_i="6545624" needed="1">Większy dochód</STRING><STRING hash="35348627" hash_i="35585433" needed="1">Więcej PŻ jednostek</STRING><STRING hash="19934643" hash_i="21198105" needed="1">Tańsze jednostki morskie</STRING><STRING hash="19953961" hash_i="20638425" needed="1">Mniejsze koszty metalu</STRING><STRING hash="22543340" hash_i="23223708" needed="1">Niższe koszty jednostek</STRING><STRING hash="19169734" hash_i="20783736" needed="1">Więcej farm na miasto</STRING><STRING hash="75763479" hash_i="80245133" needed="1">Tańsze jednostki ze stajni i fabryki pojazdów</STRING><STRING hash="99622589" hash_i="103715263" needed="1">Tańsze jednostki z warsztatu oblężniczego i fabryki</STRING><STRING hash="59042865" hash_i="59668629" needed="1">Szybsza piechota/jazda/okręty</STRING></CAT>
+</ROOT>

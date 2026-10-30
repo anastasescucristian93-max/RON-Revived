@@ -1,0 +1,1656 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Brian Reynolds (Big Huge Games) --><OPTIONS xml:space="preserve">
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION: NAME and DESC elements-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="0" clip="0">
+    <ENGLISH_NAME>Buildings</ENGLISH_NAME>
+    <NAME>Clădiri</NAME>
+    <DESC>Clic pentru a construi o clădire nouă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="0" clip="0">
+    <ENGLISH_NAME>Military Buildings</ENGLISH_NAME>
+    <NAME>Clădiri militare</NAME>
+    <DESC>Clic pentru a construi o clădire militară nouă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="0" clip="0">
+    <ENGLISH_NAME>Wonders</ENGLISH_NAME>
+    <NAME>Minuni</NAME>
+    <DESC>Clic pentru a construi o minune nouă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="0" clip="0">
+    <ENGLISH_NAME>Repair/Build</ENGLISH_NAME>
+    <NAME>Repară/Clădește</NAME>
+    <DESC>Clic pentru a repara o clădire sau a adăuga muncitori la construcția unei clădiri.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Craft</ENGLISH_NAME>
+    <NAME>Măiestrie</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Move Mode</ENGLISH_NAME>
+    <NAME>Mod deplasare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Guard</ENGLISH_NAME>
+    <NAME>Păzește</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Follow</ENGLISH_NAME>
+    <NAME>Urmează</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="4" clip="0">
+    <ENGLISH_NAME>Patrol</ENGLISH_NAME>
+    <NAME>Patrulează</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="6" clip="0">
+    <ENGLISH_NAME>Move</ENGLISH_NAME>
+    <NAME>Mută</NAME>
+    <DESC>Clic pentru a te deplasa.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Attack</ENGLISH_NAME>
+    <NAME>Atacă</NAME>
+    <DESC>Clic pentru a ataca.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="3" clip="0">
+    <ENGLISH_NAME>Explore Move</ENGLISH_NAME>
+    <NAME>Deplasare explorare</NAME>
+    <DESC>Clic pentru a te deplasa explorând ruine.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="6" clip="0">
+    <ENGLISH_NAME>Flee</ENGLISH_NAME>
+    <NAME>Fugi</NAME>
+    <DESC>Clic pentru a fugi de inamici.</DESC>
+  </OPTION>
+  <OPTION tex_col="1" tex_row="2" clip="0">
+    <ENGLISH_NAME>Transport To</ENGLISH_NAME>
+    <NAME>Transportă la</NAME>
+    <DESC>Clic pentru a te deplasa și a fi transportat peste apă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="2" clip="0">
+    <ENGLISH_NAME>Auto Transport</ENGLISH_NAME>
+    <NAME>Transport automat</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="0" clip="0">
+    <ENGLISH_NAME>Disband</ENGLISH_NAME>
+    <NAME>Desființare</NAME>
+    <DESC>Clic pentru a desființa unitatea/unitățile selectate.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disband All</ENGLISH_NAME>
+    <NAME>Desființ. tot</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Stance</ENGLISH_NAME>
+    <NAME>Poziție</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Stance Back</ENGLISH_NAME>
+    <NAME>Atitudine înapoi</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_x="0" tex_y="0" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Formation</ENGLISH_NAME>
+    <NAME>Formație</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Formation Back</ENGLISH_NAME>
+    <NAME>Formație înapoi</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="5" tex_row="11" clip="0">
+    <ENGLISH_NAME>Face Left</ENGLISH_NAME>
+    <NAME>Spre stânga</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="11" clip="0">
+    <ENGLISH_NAME>Face Right</ENGLISH_NAME>
+    <NAME>Spre dreapta</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>About Face</ENGLISH_NAME>
+    <NAME>Stânga-mprejur</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="6" clip="0">
+    <ENGLISH_NAME>Forward</ENGLISH_NAME>
+    <NAME>Înainte</NAME>
+    <DESC>Clic pentru a înainta.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="1" clip="0">
+    <ENGLISH_NAME>Halt</ENGLISH_NAME>
+    <NAME>Stai</NAME>
+    <DESC>Clic pentru a opri acțiunea curentă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="1" clip="0">
+    <ENGLISH_NAME>Garrison/Heal</ENGLISH_NAME>
+    <NAME>Garnizoană/Vindecare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="2" clip="0">
+    <ENGLISH_NAME>Alarm Peasant</ENGLISH_NAME>
+    <NAME>Alarmă țărani</NAME>
+    <DESC>Clic pentru a trimite acest muncitor la adăpost.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="2" clip="0">
+    <ENGLISH_NAME>Alarm</ENGLISH_NAME>
+    <NAME>Alarmă</NAME>
+    <DESC>Clic pentru a da alarma.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="2" clip="0">
+    <ENGLISH_NAME>All Clear</ENGLISH_NAME>
+    <NAME>Încetare alarmă</NAME>
+    <DESC>Clic pentru a anunța încetarea alarmei.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="7" clip="0">
+    <ENGLISH_NAME>Back To Work</ENGLISH_NAME>
+    <NAME>Înapoi la muncă</NAME>
+    <DESC>Clic pentru a trimite înapoi la muncă cetățenii din garnizoană.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="5" tex_row="1" clip="0">
+    <ENGLISH_NAME>Eject All</ENGLISH_NAME>
+    <NAME>Scoate tot</NAME>
+    <DESC>Clic pentru a scoate încărcătura/garnizoana.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="2" clip="0">
+    <ENGLISH_NAME>Disembark</ENGLISH_NAME>
+    <NAME>Debarcă</NAME>
+    <DESC>Clic pentru a debarca unitățile într-un anumit loc.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="3" clip="0">
+    <ENGLISH_NAME>Auto Explore</ENGLISH_NAME>
+    <NAME>Explorare automată</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="2" clip="0">
+    <ENGLISH_NAME>Bombard Ground</ENGLISH_NAME>
+    <NAME>Bombardează solul</NAME>
+    <DESC>Clic pentru a bombarda un loc de pe hartă în loc să ataci o anumită țintă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="4" clip="0">
+    <ENGLISH_NAME>Transfer</ENGLISH_NAME>
+    <NAME>Transferă</NAME>
+    <DESC>Clic pentru a transfera unitățile în altă clădire.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Air Mission</ENGLISH_NAME>
+    <NAME>Misiune aeriană</NAME>
+    <DESC>Clic pentru a ordona un atac aerian sau o patrulă aeriană.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Air Patrol</ENGLISH_NAME>
+    <NAME>Patrulă aeriană</NAME>
+    <DESC>Clic pentru a trimite o patrulă aeriană într-un anumit loc.</DESC>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="0" clip="0">
+    <ENGLISH_NAME>Flight Orders</ENGLISH_NAME>
+    <NAME>Ordine de zbor</NAME>
+    <DESC>Clic pentru a da ordine avioanelor selectate.</DESC>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Fighters</ENGLISH_NAME>
+    <NAME>Sel. vânători</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Bombers</ENGLISH_NAME>
+    <NAME>Selectează bombardiere</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Helicopters</ENGLISH_NAME>
+    <NAME>Selectează elicoptere</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select All Aircraft</ENGLISH_NAME>
+    <NAME>Selectează toate avioanele</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="7" clip="0">
+    <ENGLISH_NAME>Scramble</ENGLISH_NAME>
+    <NAME>Decolare rapidă</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="11" clip="0">
+    <ENGLISH_NAME>Repeat Orders</ENGLISH_NAME>
+    <NAME>Repetă ordinele</NAME>
+    <DESC>Clic pentru a permite (sau nu) avioanelor să repete ordinele primite după aterizare și realimentare.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="1" clip="0">
+    <ENGLISH_NAME>Return To Base</ENGLISH_NAME>
+    <NAME>Înapoi la bază</NAME>
+    <DESC>Clic pentru a trimite acest avion înapoi la bază.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="10" clip="0">
+    <ENGLISH_NAME>Recall</ENGLISH_NAME>
+    <NAME>Recheamă</NAME>
+    <DESC>Clic pentru a rechema toate avioanele care au decolat de aici și a anula toate zborurile.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Create</ENGLISH_NAME>
+    <NAME>Creează</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Research</ENGLISH_NAME>
+    <NAME>Cercetare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Research Category</ENGLISH_NAME>
+    <NAME>Categorie cercetare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Upgrade</ENGLISH_NAME>
+    <NAME>Îmbunătățire</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="4" clip="0">
+    <ENGLISH_NAME>Rally Point</ENGLISH_NAME>
+    <NAME>Punct de adunare</NAME>
+    <DESC>Clic pentru a seta punctul de adunare al clădirii.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="3" tex_row="4" clip="0">
+    <ENGLISH_NAME>Clear Rally Point</ENGLISH_NAME>
+    <NAME>Șterge punctul de adunare</NAME>
+    <DESC>Clic pentru a elimina punctul de adunare al clădirii.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Farms</ENGLISH_NAME>
+    <NAME>Adunare la Ferme</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="1" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Woodcutter's Camps</ENGLISH_NAME>
+    <NAME>Adunare la Tabere forestiere</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="2" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Mines</ENGLISH_NAME>
+    <NAME>Adunare la Mine</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="3" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Resource Buildings</ENGLISH_NAME>
+    <NAME>Adunare la clădiri de resurse</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy</ENGLISH_NAME>
+    <NAME>Cump.</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy 500</ENGLISH_NAME>
+    <NAME>Cumpără 500</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy All</ENGLISH_NAME>
+    <NAME>Cumpără tot</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell</ENGLISH_NAME>
+    <NAME>Vinde</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell 500</ENGLISH_NAME>
+    <NAME>Vinde 500</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell All</ENGLISH_NAME>
+    <NAME>Vinde tot</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="5" clip="0">
+    <ENGLISH_NAME>Building Stance</ENGLISH_NAME>
+    <NAME>Atitudine clădire</NAME>
+    <DESC>Clic pentru a seta atitudinea inițială a unităților produse aici.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Infinite Queue</ENGLISH_NAME>
+    <NAME>Coadă infinită</NAME>
+    <DESC>Clic pentru a seta producție infinită la această clădire.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="1" clip="0">
+    <ENGLISH_NAME>Next</ENGLISH_NAME>
+    <NAME>Înainte</NAME>
+    <DESC>Clic pentru a arăta opțiuni suplimentare.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="0" clip="0">
+    <ENGLISH_NAME>Back</ENGLISH_NAME>
+    <NAME>Înapoi</NAME>
+    <DESC>Clic pentru a reveni la opțiunile de diplomație.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="2" clip="0">
+    <ENGLISH_NAME>Cancel</ENGLISH_NAME>
+    <NAME>Anulează</NAME>
+    <DESC>Clic pentru a anula.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Treaty</ENGLISH_NAME>
+    <NAME>Tratat</NAME>
+    <DESC>Clic pentru a oferi.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Declare</ENGLISH_NAME>
+    <NAME>Declară</NAME>
+    <DESC>Clic pentru a declara.</DESC>
+  </OPTION>
+  <OPTION tex_col="3" tex_row="1" clip="0">
+    <ENGLISH_NAME>Tribute</ENGLISH_NAME>
+    <NAME>Tribut</NAME>
+    <DESC>Clic pentru a oferi tribut.</DESC>
+  </OPTION>
+  <OPTION tex_col="4" tex_row="1" clip="0">
+    <ENGLISH_NAME>Clear Tributes</ENGLISH_NAME>
+    <NAME>Șterge tributuri</NAME>
+    <DESC>Clic pentru a șterge tributurile.</DESC>
+  </OPTION>
+  <OPTION tex_col="5" tex_row="1" clip="0">
+    <ENGLISH_NAME>Clear All</ENGLISH_NAME>
+    <NAME>Șterge tot</NAME>
+    <DESC>Șterge toate propunerile.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Demand Tribute</ENGLISH_NAME>
+    <NAME>Cere tribut</NAME>
+    <DESC>Clic pentru a cere tribut.</DESC>
+  </OPTION>
+  <OPTION tex_col="2" tex_row="1" clip="0">
+    <ENGLISH_NAME>Propose Attack</ENGLISH_NAME>
+    <NAME>Propune atac</NAME>
+    <DESC>Clic pentru a propune un atac.</DESC>
+  </OPTION>
+  <OPTION tex_col="6" tex_row="1" clip="0">
+    <ENGLISH_NAME>Propose"</ENGLISH_NAME>
+    <NAME>Propune"</NAME>
+    <DESC>Clic pentru a propune oferta curentă.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Accept"</ENGLISH_NAME>
+    <NAME>Acceptă"</NAME>
+    <DESC>Clic pentru a accepta oferta curentă.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Reject"</ENGLISH_NAME>
+    <NAME>Respinge"</NAME>
+    <DESC>Clic pentru a respinge oferta curentă.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Current Resources</ENGLISH_NAME>
+    <NAME>Resurse actuale</NAME>
+    <DESC>Arată resursele tale actuale.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Close Diplomacy</ENGLISH_NAME>
+    <NAME>Închide diplomația</NAME>
+    <DESC>Clic pentru a închide diplomația.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Back to Main Diplomacy</ENGLISH_NAME>
+    <NAME>Înapoi la diplomație</NAME>
+    <DESC>Clic pentru a reveni la meniul principal de diplomație.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy Status</ENGLISH_NAME>
+    <NAME>Stare diplomatică</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat</ENGLISH_NAME>
+    <NAME>Chat</NAME>
+    <DESC>Clic pentru a vorbi cu alți jucători.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat All</ENGLISH_NAME>
+    <NAME>Chat toți</NAME>
+    <DESC>Clic pentru a vorbi cu toți jucătorii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat Allies</ENGLISH_NAME>
+    <NAME>Chat aliați</NAME>
+    <DESC>Clic pentru a vorbi cu toți aliații.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat Enemies</ENGLISH_NAME>
+    <NAME>Chat inamici</NAME>
+    <DESC>Clic pentru a vorbi cu toți inamicii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Signal Other Players</ENGLISH_NAME>
+    <NAME>Semnal către jucători</NAME>
+    <DESC>Clic pentru a semnala în acest loc.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Resign</ENGLISH_NAME>
+    <NAME>Abandon</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Quit</ENGLISH_NAME>
+    <NAME>Ieșire</NAME>
+    <DESC>Clic pentru a ieși din joc.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Menu</ENGLISH_NAME>
+    <NAME>Meniul jocului</NAME>
+    <DESC>Clic pentru a deschide meniul jocului.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Options Screen</ENGLISH_NAME>
+    <NAME>Ecran opțiuni</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Speed Slower</ENGLISH_NAME>
+    <NAME>Joc mai lent</NAME>
+    <DESC>Clic pentru a încetini jocul.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Speed Faster</ENGLISH_NAME>
+    <NAME>Joc mai rapid</NAME>
+    <DESC>Clic pentru a accelera jocul.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Objectives</ENGLISH_NAME>
+    <NAME>Obiective</NAME>
+    <DESC>Clic pentru a afișa obiectivele și condițiile de victorie.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle</ENGLISH_NAME>
+    <NAME>Parcurge</NAME>
+    <DESC>Clic pentru a găsi unitatea următoare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Idle Citizen</ENGLISH_NAME>
+    <NAME>Cetățean inactiv</NAME>
+    <DESC>Clic pentru a găsi următorul cetățean inactiv.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Idle Scout</ENGLISH_NAME>
+    <NAME>Cercetaș inactiv</NAME>
+    <DESC>Clic pentru a găsi următorul cercetaș sau unitate de forțe speciale.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Military</ENGLISH_NAME>
+    <NAME>Militar următor</NAME>
+    <DESC>Clic pentru a găsi următoarea unitate militară.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next General</ENGLISH_NAME>
+    <NAME>General următor</NAME>
+    <DESC>Clic pentru a găsi următorul General.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Spy</ENGLISH_NAME>
+    <NAME>Spion următor</NAME>
+    <DESC>Clic pentru a găsi următorul Spion.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Supply</ENGLISH_NAME>
+    <NAME>Aprovizionare următoare</NAME>
+    <DESC>Clic pentru a găsi următoarea unitate de aprovizionare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next City</ENGLISH_NAME>
+    <NAME>Oraș următor</NAME>
+    <DESC>Clic pentru a găsi următorul Oraș.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Research</ENGLISH_NAME>
+    <NAME>Cercetare următoare</NAME>
+    <DESC>Clic pentru a găsi următoarea clădire cu cercetări disponibile.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Citizens</ENGLISH_NAME>
+    <NAME>Toți cetățenii</NAME>
+    <DESC>Clic pentru a selecta TOȚI cetățenii inactivi.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Scout</ENGLISH_NAME>
+    <NAME>Toți cercetașii</NAME>
+    <DESC>Clic pentru a selecta TOȚI cercetașii și forțele speciale.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Military</ENGLISH_NAME>
+    <NAME>Toți militarii</NAME>
+    <DESC>Clic pentru a selecta TOATE unitățile militare (până la selecția maximă).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Generals</ENGLISH_NAME>
+    <NAME>Toți generalii</NAME>
+    <DESC>Clic pentru a selecta TOȚI generalii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Spies</ENGLISH_NAME>
+    <NAME>Toți spionii</NAME>
+    <DESC>Clic pentru a selecta TOȚI spionii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Supply</ENGLISH_NAME>
+    <NAME>Toată aprovizionarea</NAME>
+    <DESC>Clic pentru a selecta TOATE unitățile de aprovizionare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Building</ENGLISH_NAME>
+    <NAME>Toate clădirile</NAME>
+    <DESC>Clic pentru a selecta TOATE clădirile de acest tip.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Citizen</ENGLISH_NAME>
+    <NAME>Selectează cetățean</NAME>
+    <DESC>Clic pentru a selecta următorul cetățean inactiv.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Scout</ENGLISH_NAME>
+    <NAME>Selectează cercetaș</NAME>
+    <DESC>Clic pentru a selecta următorul cercetaș.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Military</ENGLISH_NAME>
+    <NAME>Selectează militar</NAME>
+    <DESC>Clic pentru a selecta următoarea unitate militară.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select General</ENGLISH_NAME>
+    <NAME>Selectează general</NAME>
+    <DESC>Clic pentru a selecta următorul general.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Spy</ENGLISH_NAME>
+    <NAME>Selectează spion</NAME>
+    <DESC>Clic pentru a selecta următorul spion.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Supply</ENGLISH_NAME>
+    <NAME>Selectează aprovizionare</NAME>
+    <DESC>Clic pentru a selecta următoarea unitate de aprovizionare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Building</ENGLISH_NAME>
+    <NAME>Selectează clădire</NAME>
+    <DESC>Clic pentru a selecta următoarea clădire de acest tip.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Parcurge cetățenii activi</NAME>
+    <DESC>Clic pentru a găsi următorul cetățean (chiar dacă nu e inactiv).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Toți cetățenii activi</NAME>
+    <DESC>Clic pentru a selecta toți cetățenii (chiar și cei activi).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Selectează cetățean activ</NAME>
+    <DESC>Clic pentru a selecta următorul cetățean (chiar dacă nu e inactiv).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select all of Currently Selected Types</ENGLISH_NAME>
+    <NAME>Toate tipurile selectate acum au fost selectate</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Clock Display</ENGLISH_NAME>
+    <NAME>Comută afișarea ceasului</NAME>
+    <DESC>Clic pentru a comuta ceasul jocului.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Game Data</ENGLISH_NAME>
+    <NAME>Comută datele jocului</NAME>
+    <DESC>Clic pentru a comuta afișarea datelor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Data Display</ENGLISH_NAME>
+    <NAME>Afișare date</NAME>
+    <DESC>Clic pentru a parcurge datele afișate.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Prev Data Display</ENGLISH_NAME>
+    <NAME>Datele afișate anterioare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Research Display</ENGLISH_NAME>
+    <NAME>Comută afișarea cercetărilor</NAME>
+    <DESC>Clic pentru a comuta afișarea cercetării.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Help Text Detail</ENGLISH_NAME>
+    <NAME>Detaliu text ajutor</NAME>
+    <DESC>Clic pentru a schimba detaliul textului de ajutor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Prev Help Detail</ENGLISH_NAME>
+    <NAME>Detaliu ajutor anterior</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Advanced Options</ENGLISH_NAME>
+    <NAME>Opțiuni avansate</NAME>
+    <DESC>Clic pentru a comuta meniurile avansate.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Clock</ENGLISH_NAME>
+    <NAME>Comută ceasul</NAME>
+    <DESC>Clic pentru a comuta afișarea ceasului jocului.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Friend/Foe Colors</ENGLISH_NAME>
+    <NAME>Comută culori aliat/inamic</NAME>
+    <DESC>Clic pentru a comuta culorile aliat/inamic.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle City Names</ENGLISH_NAME>
+    <NAME>Comută numele orașelor</NAME>
+    <DESC>Clic pentru a comuta numele orașelor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Units Behind</ENGLISH_NAME>
+    <NAME>Comută unități ascunse</NAME>
+    <DESC>Clic pentru a comuta afișarea unităților din spatele clădirilor și copacilor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Audio Taunts</ENGLISH_NAME>
+    <NAME>Comută replicile audio</NAME>
+    <DESC>Clic pentru a comuta replicile audio.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Goods Display</ENGLISH_NAME>
+    <NAME>Ciclează afișare bunuri</NAME>
+    <DESC>Clic pentru a cicla afișarea bunurilor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Political Data</ENGLISH_NAME>
+    <NAME>Date politice</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe POLITIC.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Economic Data</ENGLISH_NAME>
+    <NAME>Date economice</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe ECONOMIE.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Market Data</ENGLISH_NAME>
+    <NAME>Date piață</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe PIAȚĂ.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Military Data</ENGLISH_NAME>
+    <NAME>Date militare</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe MILITAR.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cities Data</ENGLISH_NAME>
+    <NAME>Date orașe</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe ORAȘE.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Upgrade Data</ENGLISH_NAME>
+    <NAME>Date îmbunătățiri</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe ÎMBUNĂTĂȚIRI.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Control Groups</ENGLISH_NAME>
+    <NAME>Grupuri de control</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe GRUPURI.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomație</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe DIPLOMAȚIE.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Wonders</ENGLISH_NAME>
+    <NAME>Minuni</NAME>
+    <DESC>Clic pentru a seta afișarea datelor pe MINUNI.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Data Off</ENGLISH_NAME>
+    <NAME>Date oprite</NAME>
+    <DESC>Clic pentru a opri afișarea datelor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Stats Display</ENGLISH_NAME>
+    <NAME>Ciclează statistici</NAME>
+    <DESC>Clic pentru a cicla afișarea statisticilor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Options</ENGLISH_NAME>
+    <NAME>Comută opțiunile</NAME>
+    <DESC>Clic pentru a comuta această opțiune.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Strategic Map</ENGLISH_NAME>
+    <NAME>Hartă strategică</NAME>
+    <DESC>Clic pentru a comuta vederea hărții strategice.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Zoom In</ENGLISH_NAME>
+    <NAME>Mărește</NAME>
+    <DESC>Clic pentru a mări.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Zoom Out</ENGLISH_NAME>
+    <NAME>Micșorează</NAME>
+    <DESC>Clic pentru a micșora.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save Zoom In</ENGLISH_NAME>
+    <NAME>Salvează mărire</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save Zoom Out</ENGLISH_NAME>
+    <NAME>Salvează micșorare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Center</ENGLISH_NAME>
+    <NAME>Centrează</NAME>
+    <DESC>Clic pentru a centra pe obiectul selectat.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Pause</ENGLISH_NAME>
+    <NAME>Pauză</NAME>
+    <DESC>Clic pentru a pune jocul pe pauză.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cannon Time</ENGLISH_NAME>
+    <NAME>Timp tampon</NAME>
+    <DESC>Clic pentru a comuta „Timp tampon”.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Timer</ENGLISH_NAME>
+    <NAME>Cronometru</NAME>
+    <DESC>Arată timpul de „joc” scurs și viteza curentă.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Victory Timer</ENGLISH_NAME>
+    <NAME>Cronometru victorie</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Minimap</ENGLISH_NAME>
+    <NAME>Minihartă</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Capital Star</ENGLISH_NAME>
+    <NAME>Steaua capitalei</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Flag</ENGLISH_NAME>
+    <NAME>Steagul națiunii</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Govern</ENGLISH_NAME>
+    <NAME>Guvern</NAME>
+    <DESC>Clic pentru a schimba guvernul.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomație</NAME>
+    <DESC>Clic pentru a face diplomație.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomație</NAME>
+    <DESC>Clic pentru a face diplomație.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Good"</ENGLISH_NAME>
+    <NAME>Bun"</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Queue</ENGLISH_NAME>
+    <NAME>Coadă</NAME>
+    <DESC>Clic pentru a scoate acest obiect din coadă.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Object</ENGLISH_NAME>
+    <NAME>Obiect</NAME>
+    <DESC>Clic pentru a selecta acest obiect, CTRL-clic pentru a-l scoate, SHIFT-clic pentru a selecta doar obiectele de acest tip.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Drag</ENGLISH_NAME>
+    <NAME>Trage</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Mouseover Object</ENGLISH_NAME>
+    <NAME>Obiect sub cursor</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="6" clip="0">
+    <ENGLISH_NAME>Eject</ENGLISH_NAME>
+    <NAME>Ejectează</NAME>
+    <DESC>Clic pentru a scoate această unitate.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Eject Air Fueling</ENGLISH_NAME>
+    <NAME>Ejectare aer: alimentare</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Eject Air Ready</ENGLISH_NAME>
+    <NAME>Ejectare aer: gata</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Click to select this object</ENGLISH_NAME>
+    <NAME>Clic pentru a selecta acest obiect</NAME>
+    <DESC>Clic pentru a selecta acest obiect.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Double clicking selects all objects of this type</ENGLISH_NAME>
+    <NAME>Dublu clic selectează toate obiectele de acest tip</NAME>
+    <DESC>Dublu clic selectează toate obiectele de acest tip.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Category of research</ENGLISH_NAME>
+    <NAME>Categoria cercetării</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Show limits</ENGLISH_NAME>
+    <NAME>Arată limitele</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Airbase icons</ENGLISH_NAME>
+    <NAME>Iconițe bază aeriană</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Heads</ENGLISH_NAME>
+    <NAME>Capete</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Border</ENGLISH_NAME>
+    <NAME>Graniță</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Current Nation</ENGLISH_NAME>
+    <NAME>Națiunea ta</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation</ENGLISH_NAME>
+    <NAME>Națiune</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Current Age</ENGLISH_NAME>
+    <NAME>Epoca curentă</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Age</ENGLISH_NAME>
+    <NAME>Epocă</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Group</ENGLISH_NAME>
+    <NAME>Grup</NAME>
+    <DESC>Clic dreapta pentru a crea. Clic stânga pentru a selecta. (Taste: CTRL+# creează; # selectează; SHIFT+# șterge).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Creating Fighter Bomber</ENGLISH_NAME>
+    <NAME>Se creează Vânător-bombardier</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="11" clip="0">
+    <ENGLISH_NAME>Must Assimilate City</ENGLISH_NAME>
+    <NAME>Trebuie asimilat orașul</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Neutralized</ENGLISH_NAME>
+    <NAME>Neutralizat</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Enemy Territory</ENGLISH_NAME>
+    <NAME>Teritoriu inamic</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>No Nearby City</ENGLISH_NAME>
+    <NAME>Niciun oraș aproape</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Building</ENGLISH_NAME>
+    <NAME>Anulează clădirea</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Action</ENGLISH_NAME>
+    <NAME>Anulare acțiune</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Action</ENGLISH_NAME>
+    <NAME>Anulare acțiune</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="11" clip="0">
+    <ENGLISH_NAME>Assimilating</ENGLISH_NAME>
+    <NAME>Se asimilează</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Land</ENGLISH_NAME>
+    <NAME>Uscat</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Researching</ENGLISH_NAME>
+    <NAME>Se cercetează</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Wonder</ENGLISH_NAME>
+    <NAME>Minune</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disbanding</ENGLISH_NAME>
+    <NAME>Se desființează</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select</ENGLISH_NAME>
+    <NAME>Selectează</NAME>
+    <DESC>Clic pentru modul selecție, în care poți selecta și edita unitățile și clădirile plasate pe hartă.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Scenario Options</ENGLISH_NAME>
+    <NAME>Opțiuni scenariu</NAME>
+    <DESC>Clic pentru a edita regulile și setările de joc ale acestui scenariu.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Options</ENGLISH_NAME>
+    <NAME>Opțiuni națiuni</NAME>
+    <DESC>Clic pentru a edita națiunile din joc, inclusiv numele, naționalitatea, resursele de start și setările IA.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Map Generator</ENGLISH_NAME>
+    <NAME>Generator de hărți</NAME>
+    <DESC>Clic pentru a folosi generatorul de hărți ca să creezi o hartă aleatorie nouă sau să imporți o hartă dintr-o imagine.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Terrain</ENGLISH_NAME>
+    <NAME>Teren</NAME>
+    <DESC>Clic pentru a edita terenul, inclusiv uscat/mare, munți și păduri.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Rare Resources</ENGLISH_NAME>
+    <NAME>Resurse rare</NAME>
+    <DESC>Clic pentru a adăuga și elimina resurse rare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Units</ENGLISH_NAME>
+    <NAME>Unități</NAME>
+    <DESC>Clic pentru a adăuga și elimina unități.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buildings</ENGLISH_NAME>
+    <NAME>Clădiri</NAME>
+    <DESC>Clic pentru a adăuga și elimina clădiri.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomație</NAME>
+    <DESC>Clic pentru a edita statutul diplomatic.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomație</NAME>
+    <DESC>Clic pentru a edita statutul diplomatic.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Edit Script</ENGLISH_NAME>
+    <NAME>Editare script</NAME>
+    <DESC>Clic pentru a crea, edita sau depana scriptul acestui scenariu.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Resources</ENGLISH_NAME>
+    <NAME>Resurse de start</NAME>
+    <DESC>Clic pentru a edita resursele de start.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Tech</ENGLISH_NAME>
+    <NAME>Tehnologii de start</NAME>
+    <DESC>Clic pentru a edita tehnologiile de start din afara bibliotecii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Library Tech</ENGLISH_NAME>
+    <NAME>Tehnologii bibliotecă de start</NAME>
+    <DESC>Clic pentru a edita tehnologiile bibliotecii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>AI settings</ENGLISH_NAME>
+    <NAME>Setări IA</NAME>
+    <DESC>Clic pentru a edita setările IA ale jucătorilor controlați de calculator.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Leader Name</ENGLISH_NAME>
+    <NAME>Schimbă numele liderului</NAME>
+    <DESC>Clic pentru a schimba numele liderului.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Ignore Pop Cap</ENGLISH_NAME>
+    <NAME>Ignoră limita populației</NAME>
+    <DESC>Clic pentru a ignora restricțiile de populație.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Delete</ENGLISH_NAME>
+    <NAME>Șterge</NAME>
+    <DESC>Clic pentru a șterge această națiune.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Options</ENGLISH_NAME>
+    <NAME>Opțiuni</NAME>
+    <DESC>Clic pentru a deschide meniul de opțiuni din editorul de scenarii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Quit</ENGLISH_NAME>
+    <NAME>Ieșire</NAME>
+    <DESC>Clic pentru a ieși din editorul de scenarii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save</ENGLISH_NAME>
+    <NAME>Salvează</NAME>
+    <DESC>Clic pentru a salva acest scenariu.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Load</ENGLISH_NAME>
+    <NAME>Încarcă</NAME>
+    <DESC>Clic pentru a încărca un fișier de scenariu.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Test Scenario</ENGLISH_NAME>
+    <NAME>Test scenariu</NAME>
+    <DESC>Clic pentru a testa acest scenariu.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Full Editor</ENGLISH_NAME>
+    <NAME>Editor complet</NAME>
+    <DESC>Diverse</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Resume Game</ENGLISH_NAME>
+    <NAME>Reia jocul</NAME>
+    <DESC>Diverse</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Brush</ENGLISH_NAME>
+    <NAME>Alege pensula</NAME>
+    <DESC>Diverse</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Place Object</ENGLISH_NAME>
+    <NAME>Plasează obiect</NAME>
+    <DESC>Clic pentru a alege acest obiect pentru plasare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Place Item</ENGLISH_NAME>
+    <NAME>Plasează element</NAME>
+    <DESC>Clic pentru a alege acest element pentru plasare.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Set Status</ENGLISH_NAME>
+    <NAME>Setează statutul</NAME>
+    <DESC>Clic pentru a seta statutul diplomatic.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="11" clip="0">
+    <ENGLISH_NAME>Increase Hit Points</ENGLISH_NAME>
+    <NAME>Crește punctele de viață</NAME>
+    <DESC>Clic pentru a crește punctele de viață ale obiectelor selectate. SHIFT + clic pentru creștere mai rapidă, ALT + clic pentru creștere foarte rapidă, CTRL + clic pentru creștere foarte lentă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="11" clip="0">
+    <ENGLISH_NAME>Decrease Hit Points</ENGLISH_NAME>
+    <NAME>Scade punctele de viață</NAME>
+    <DESC>Clic pentru a scădea punctele de viață ale obiectelor selectate. SHIFT + clic pentru scădere mai rapidă, ALT + clic pentru scădere foarte rapidă, CTRL + clic pentru scădere foarte lentă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="8" clip="0">
+    <ENGLISH_NAME>Increase Craft</ENGLISH_NAME>
+    <NAME>Crește măiestria</NAME>
+    <DESC>Clic pentru a crește măiestria obiectelor selectate. SHIFT + clic pentru creștere mai rapidă, ALT + clic pentru creștere foarte rapidă, CTRL + clic pentru creștere foarte lentă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="9" clip="0">
+    <ENGLISH_NAME>Decrease Craft</ENGLISH_NAME>
+    <NAME>Scade măiestria</NAME>
+    <DESC>Clic pentru a scădea măiestria obiectelor selectate. SHIFT + clic pentru scădere mai rapidă, ALT + clic pentru scădere foarte rapidă, CTRL + clic pentru scădere foarte lentă.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="10" clip="0">
+    <ENGLISH_NAME>Activate Building</ENGLISH_NAME>
+    <NAME>Activează clădirea</NAME>
+    <DESC>Clic pentru a „activa” această clădire și a o transforma într-o clădire construită complet.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="11" clip="0">
+    <ENGLISH_NAME>Deactivate Building</ENGLISH_NAME>
+    <NAME>Dezactivează clădirea</NAME>
+    <DESC>Clic pentru a „dezactiva” această clădire și a o transforma într-o fundație proaspăt plasată. </DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Delete</ENGLISH_NAME>
+    <NAME>Șterge</NAME>
+    <DESC>Ce face asta?</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Generate Map</ENGLISH_NAME>
+    <NAME>Creează harta</NAME>
+    <DESC>Clic pentru a genera o hartă nouă.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Import Map Image</ENGLISH_NAME>
+    <NAME>Importă imagine hartă</NAME>
+    <DESC>Clic pentru a importa o hartă dintr-o imagine.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Map Seed</ENGLISH_NAME>
+    <NAME>Schimbă sămânța hărții</NAME>
+    <DESC>Clic pentru a schimba sămânța hărții.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Fog of War</ENGLISH_NAME>
+    <NAME>Comută ceața războiului</NAME>
+    <DESC>Clic pentru a comuta afișarea ceții războiului.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="11" clip="0">
+    <ENGLISH_NAME>Make Capital</ENGLISH_NAME>
+    <NAME>Fă capitală</NAME>
+    <DESC>Clic pentru a face din acest oraș capitala națiunii sale.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Always Transport</ENGLISH_NAME>
+    <NAME>Transportă mereu</NAME>
+    <DESC>Diverse</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Never Transport</ENGLISH_NAME>
+    <NAME>Fără transport</NAME>
+    <DESC>Diverse</DESC>
+  </OPTION>
+  <OPTION tex_col="1" tex_row="1" clip="0">
+    <ENGLISH_NAME>Select Nation</ENGLISH_NAME>
+    <NAME>Alege națiunea</NAME>
+    <DESC>Clic pentru a selecta această națiune.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Flip</ENGLISH_NAME>
+    <NAME>Schimbă națiune</NAME>
+    <DESC>Clic pentru a arăta alte națiuni.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Nation</ENGLISH_NAME>
+    <NAME>Adaugă națiune</NAME>
+    <DESC>Clic pentru a adăuga o națiune nouă.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Terrain</ENGLISH_NAME>
+    <NAME>Teren</NAME>
+    <DESC>Clic pentru a modifica terenul.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile</ENGLISH_NAME>
+    <NAME>Fertil</NAME>
+    <DESC>Clic pentru a plasa teren fertil.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile 1</ENGLISH_NAME>
+    <NAME>Fertil 1</NAME>
+    <DESC>Clic pentru a plasa tranziția fertilă 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile 2</ENGLISH_NAME>
+    <NAME>Fertil 2</NAME>
+    <DESC>Clic pentru a plasa tranziția fertilă 2.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Arid</ENGLISH_NAME>
+    <NAME>Arid</NAME>
+    <DESC>Clic pentru a plasa teren arid.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Ocean</ENGLISH_NAME>
+    <NAME>Ocean</NAME>
+    <DESC>Clic pentru a plasa ocean</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Forest</ENGLISH_NAME>
+    <NAME>Pădure</NAME>
+    <DESC>Alege acest buton și dă clic pe hartă pentru a plasa pădure</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Mountains</ENGLISH_NAME>
+    <NAME>Munți</NAME>
+    <DESC>Clic pentru a plasa munți</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cliffs</ENGLISH_NAME>
+    <NAME>Stânci</NAME>
+    <DESC>Clic pentru a plasa faleze</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Rocks</ENGLISH_NAME>
+    <NAME>Roci</NAME>
+    <DESC>Alege acest buton și dă clic pe hartă pentru a plasa stânci/petrol. Clic pe stânci sau pe un zăcământ de petrol pentru a comuta între stânci și petrol.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Oil</ENGLISH_NAME>
+    <NAME>Petrol</NAME>
+    <DESC>Clic pentru a plasa petrol (doar pe stânci)</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>River</ENGLISH_NAME>
+    <NAME>Râu</NAME>
+    <DESC>Clic pentru a plasa râuri</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Feature</ENGLISH_NAME>
+    <NAME>Adaugă element</NAME>
+    <DESC>Clic pentru a adăuga tufișuri/stânci unul câte unul</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x1 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 1x1</NAME>
+    <DESC>Clic pentru a alege pensula 1x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>3x3 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 3x3</NAME>
+    <DESC>Clic pentru a alege pensula 3x3</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 5x5</NAME>
+    <DESC>Clic pentru a alege pensula 5x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x5 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 1x5</NAME>
+    <DESC>Clic pentru a alege pensula 1x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x1 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 5x1</NAME>
+    <DESC>Clic pentru a alege pensula 5x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 X Brush</ENGLISH_NAME>
+    <NAME>Pensulă X 5x5</NAME>
+    <DESC>Clic pentru a alege pensula X de 5 pătrățele</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Terrain</ENGLISH_NAME>
+    <NAME>Elimină teren</NAME>
+    <DESC>Clic pentru a elimina un element de teren (Munți/Pădure/Stânci)</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Rare Resource</ENGLISH_NAME>
+    <NAME>Elimină resursa rară</NAME>
+    <DESC>Clic pentru a elimina o resursă rară</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove All Rare Resources</ENGLISH_NAME>
+    <NAME>Elimină toate resursele rare</NAME>
+    <DESC>Clic pentru a șterge toate resursele rare</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Resource</ENGLISH_NAME>
+    <NAME>Dă resursă</NAME>
+    <DESC>Clic pentru a da $NUMBER0 din această resursă. CTRL + clic pentru 100, SHIFT + clic pentru 500, ALT + clic pentru 10000, CTRL + SHIFT + clic pentru 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Resource</ENGLISH_NAME>
+    <NAME>Ia resursă</NAME>
+    <DESC>Clic pentru a lua $NUMBER0 din această resursă. CTRL + clic pentru 100, SHIFT + clic pentru 500, ALT + clic pentru 10000, CTRL + SHIFT + clic pentru 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Resource</ENGLISH_NAME>
+    <NAME>Dă resursă</NAME>
+    <DESC>Clic pentru a da 100 din această resursă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Resource</ENGLISH_NAME>
+    <NAME>Ia resursă</NAME>
+    <DESC>Clic pentru a lua 100 din această resursă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Default Resources</ENGLISH_NAME>
+    <NAME>Resurse implicite</NAME>
+    <DESC>Clic pentru a readuce resursele la valorile implicite</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Each Resource</ENGLISH_NAME>
+    <NAME>Dă din fiecare resursă</NAME>
+    <DESC>Clic pentru a da $NUMBER0 din fiecare resursă. CTRL + clic pentru 100, SHIFT + clic pentru 500, ALT + clic pentru 10000, CTRL + SHIFT + clic pentru 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Each Resource</ENGLISH_NAME>
+    <NAME>Dă din fiecare resursă</NAME>
+    <DESC>Clic pentru a da 100 din fiecare resursă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Each Resource</ENGLISH_NAME>
+    <NAME>Ia din fiecare resursă</NAME>
+    <DESC>Clic pentru a lua $NUMBER0 din fiecare resursă. CTRL + clic pentru 100, SHIFT + clic pentru 500, ALT + clic pentru 10000, CTRL + SHIFT + clic pentru 1.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Each Resource</ENGLISH_NAME>
+    <NAME>Ia din fiecare resursă</NAME>
+    <DESC>Clic pentru a lua 100 din fiecare resursă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Scen. Name</ENGLISH_NAME>
+    <NAME>Schimbă nume scen.</NAME>
+    <DESC>Clic pentru a schimba numele scenariului</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Use Scenario Script</ENGLISH_NAME>
+    <NAME>Folosește scriptul scenariului</NAME>
+    <DESC>Clic pentru a comuta încărcarea scriptului de scenariu când se joacă această hartă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Set Camera Location</ENGLISH_NAME>
+    <NAME>Setează poziția camerei</NAME>
+    <DESC>Clic pentru a seta poziția inițială a camerei în scenariu. Poziția și zoomul curent al camerei vor deveni vederea inițială a jucătorului la începutul scenariului.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Get Camera Location</ENGLISH_NAME>
+    <NAME>Mergi la poziția camerei</NAME>
+    <DESC>Clic pentru a sări la vederea inițială a camerei din scenariu. Îți arată ce va vedea jucătorul la începutul scenariului.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="6" clip="0">
+    <ENGLISH_NAME>Rename</ENGLISH_NAME>
+    <NAME>Redenumește</NAME>
+    <DESC>Clic pentru a redenumi acest oraș.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Re-Init Terrain</ENGLISH_NAME>
+    <NAME>Reinițializează terenul</NAME>
+    <DESC>Clic pentru a reinițializa terenul</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fill Land Types</ENGLISH_NAME>
+    <NAME>Umple tipuri de teren</NAME>
+    <DESC>Clic pentru a umple aleatoriu zonele de uscat cu tipuri de teren</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear Land Types</ENGLISH_NAME>
+    <NAME>Șterge tipuri de teren</NAME>
+    <DESC>Clic pentru a șterge tipurile de teren din zonele de uscat</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Random Terrain</ENGLISH_NAME>
+    <NAME>Adaugă teren aleatoriu</NAME>
+    <DESC>Clic pentru a plasa aleatoriu păduri/munți/stânci/petrol</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear All Terrain</ENGLISH_NAME>
+    <NAME>Șterge tot terenul</NAME>
+    <DESC>Clic pentru a elimina toate pădurile/munții/stâncile/petrolul</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Random Features</ENGLISH_NAME>
+    <NAME>Adaugă elemente aleatorii</NAME>
+    <DESC>Clic pentru a adăuga aleatoriu tufișuri/stânci</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove One Feature</ENGLISH_NAME>
+    <NAME>Elimină un element</NAME>
+    <DESC>Clic pentru a șterge un tufiș/o stâncă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear All Features</ENGLISH_NAME>
+    <NAME>Șterge toate elementele</NAME>
+    <DESC>Clic pentru a șterge toate tufișurile/stâncile</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Research Mode</ENGLISH_NAME>
+    <NAME>Comută modul cercetare</NAME>
+    <DESC>Clic pentru a comuta modul cercetare</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Edit Terrain</ENGLISH_NAME>
+    <NAME>Editează terenul</NAME>
+    <DESC>Clic pentru a edita uscat/mare/munți/râuri pe harta abstractă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Adjust Height</ENGLISH_NAME>
+    <NAME>Ajustează înălțimea</NAME>
+    <DESC>Alege acest buton și trage cu clic stânga pentru a ridica terenul. Alege acest buton și trage cu clic dreapta pentru a coborî terenul.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Height Increase</ENGLISH_NAME>
+    <NAME>Ridică terenul</NAME>
+    <DESC>Clic pentru a ridica nivelul terenului</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Height Decrease</ENGLISH_NAME>
+    <NAME>Coboară terenul</NAME>
+    <DESC>Clic pentru a coborî nivelul terenului</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Apply Changes</ENGLISH_NAME>
+    <NAME>Aplică modificările</NAME>
+    <DESC>Clic pentru a aplica modificările făcute acestei hărți</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel</ENGLISH_NAME>
+    <NAME>Anulează</NAME>
+    <DESC>Clic pentru a anula modificările</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Feature</ENGLISH_NAME>
+    <NAME>Elimină element</NAME>
+    <DESC>Clic pentru a elimina ultimul munte plasat</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x1 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 1x1</NAME>
+    <DESC>Clic pentru a alege pensula 1x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>3x3 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 3x3</NAME>
+    <DESC>Clic pentru a alege pensula 3x3</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 5x5</NAME>
+    <DESC>Clic pentru a alege pensula 5x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x5 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 1x5</NAME>
+    <DESC>Clic pentru a alege pensula 1x5</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x1 Brush</ENGLISH_NAME>
+    <NAME>Pensulă 5x1</NAME>
+    <DESC>Clic pentru a alege pensula 5x1</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 X Brush</ENGLISH_NAME>
+    <NAME>Pensulă X 5x5</NAME>
+    <DESC>Clic pentru a alege pensula X de 5 pătrățele</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME/>
+    <NAME/>
+    <DESC>Clic pentru faleze mai mari</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME/>
+    <NAME/>
+    <DESC>Clic pentru faleze mai mici</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>lt"</ENGLISH_NAME>
+    <NAME>lt"</NAME>
+    <DESC>Clic pentru tipul anterior de faleză</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>gt"</ENGLISH_NAME>
+    <NAME>gt"</NAME>
+    <DESC>Clic pentru tipul următor de faleză</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add point</ENGLISH_NAME>
+    <NAME>Adaugă punct</NAME>
+    <DESC>Adaugă punct de râu</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear all</ENGLISH_NAME>
+    <NAME>Șterge tot</NAME>
+    <DESC>Elimină de pe hartă toate punctele de râu curente</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear prev</ENGLISH_NAME>
+    <NAME>Șterge anter.</NAME>
+    <DESC>Elimină ultimul punct de râu adăugat</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add river</ENGLISH_NAME>
+    <NAME>Adaugă râu</NAME>
+    <DESC>Adaugă un râu pe hartă</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Production AI</ENGLISH_NAME>
+    <NAME>Dezactivează IA producție</NAME>
+    <DESC>Clic pentru a comuta IA de producție.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Unit AI</ENGLISH_NAME>
+    <NAME>Dezactivează IA unități</NAME>
+    <DESC>Clic pentru a comuta IA pentru toate unitățile.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Combat AI</ENGLISH_NAME>
+    <NAME>Dezactivează IA luptă</NAME>
+    <DESC>Clic pentru a comuta IA de luptă.  Unitățile militare răspund la atac după postura lor.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="9" clip="0">
+    <ENGLISH_NAME>Disable AI</ENGLISH_NAME>
+    <NAME>Dezactivează IA</NAME>
+    <DESC>Clic pentru a comuta IA acestei unități.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Resource Interface</ENGLISH_NAME>
+    <NAME>Comută interfața resurse</NAME>
+    <DESC>Clic pentru a comuta interfața resurselor.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Market Interface</ENGLISH_NAME>
+    <NAME>Comută interfața piață</NAME>
+    <DESC>Clic pentru a comuta interfața pieței.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Infrastructure Interface</ENGLISH_NAME>
+    <NAME>Comută interfața infrastructură</NAME>
+    <DESC>Clic pentru a comuta interfața infrastructurii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Main Interface</ENGLISH_NAME>
+    <NAME>Comută interfața principală</NAME>
+    <DESC>Clic pentru a comuta interfața principală.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Mini-Library Interface</ENGLISH_NAME>
+    <NAME>Comută interfața minibibliotecă</NAME>
+    <DESC>Clic pentru a comuta interfața minibibliotecii.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Merchant</ENGLISH_NAME>
+    <NAME>Negustorul următor</NAME>
+    <DESC>Clic pentru a găsi următorul Negustor inactiv.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Fisherman</ENGLISH_NAME>
+    <NAME>Pescarul următor</NAME>
+    <DESC>Clic pentru a găsi următorul Pescar inactiv.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Merchants</ENGLISH_NAME>
+    <NAME>Toți negustorii</NAME>
+    <DESC>Clic pentru a selecta TOȚI Negustorii inactivi.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Fishermen</ENGLISH_NAME>
+    <NAME>Toți pescarii</NAME>
+    <DESC>Clic pentru a selecta TOȚI Pescarii inactivi.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Merchant</ENGLISH_NAME>
+    <NAME>Selectează negustor</NAME>
+    <DESC>Clic pentru a selecta următorul Negustor inactiv.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Fisherman</ENGLISH_NAME>
+    <NAME>Selectează pescar</NAME>
+    <DESC>Clic pentru a selecta următorul Pescar inactiv.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Patriot</ENGLISH_NAME>
+    <NAME>Selectează Patriotul</NAME>
+    <DESC>Clic pentru a selecta Patriotul.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Patriot, no zoom</ENGLISH_NAME>
+    <NAME>Selectează Patriotul, fără zoom</NAME>
+    <DESC>Clic pentru a selecta Patriotul fără a centra camera pe el.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Damaged Units</ENGLISH_NAME>
+    <NAME>Selectează unități avariate</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Filter Selection for Damaged Units</ENGLISH_NAME>
+    <NAME>Filtrează selecția pentru unități avariate</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Filter Selection for Units on Screen</ENGLISH_NAME>
+    <NAME>Filtrează selecția pentru unitățile de pe ecran</NAME>
+    <DESC/>
+  </OPTION>
+</OPTIONS>

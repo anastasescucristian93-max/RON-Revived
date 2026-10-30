@@ -1,0 +1,1656 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Brian Reynolds (Big Huge Games) --><OPTIONS xml:space="preserve">
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION: NAME and DESC elements-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <!--LOCALIZATION-->
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="0" clip="0">
+    <ENGLISH_NAME>Buildings</ENGLISH_NAME>
+    <NAME>Binalar</NAME>
+    <DESC>Yeni bir bina inşa etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="0" clip="0">
+    <ENGLISH_NAME>Military Buildings</ENGLISH_NAME>
+    <NAME>Askerî Binalar</NAME>
+    <DESC>Yeni bir askerî bina inşa etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="0" clip="0">
+    <ENGLISH_NAME>Wonders</ENGLISH_NAME>
+    <NAME>Harikalar</NAME>
+    <DESC>Yeni bir harika inşa etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="0" clip="0">
+    <ENGLISH_NAME>Repair/Build</ENGLISH_NAME>
+    <NAME>Onar/İnşa Et</NAME>
+    <DESC>Bir binayı onarmak veya bir binanın inşaatına işçi eklemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Craft</ENGLISH_NAME>
+    <NAME>Yetenek</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Move Mode</ENGLISH_NAME>
+    <NAME>Hareket Modu</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="3" clip="0">
+    <ENGLISH_NAME>Guard</ENGLISH_NAME>
+    <NAME>Koru</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Follow</ENGLISH_NAME>
+    <NAME>Takip</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="4" clip="0">
+    <ENGLISH_NAME>Patrol</ENGLISH_NAME>
+    <NAME>Devriye</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="6" clip="0">
+    <ENGLISH_NAME>Move</ENGLISH_NAME>
+    <NAME>Hareket</NAME>
+    <DESC>Hareket etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Attack</ENGLISH_NAME>
+    <NAME>Saldır</NAME>
+    <DESC>Saldırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="3" clip="0">
+    <ENGLISH_NAME>Explore Move</ENGLISH_NAME>
+    <NAME>Keşif Hareketi</NAME>
+    <DESC>Harabeleri keşfederken hareket etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="6" clip="0">
+    <ENGLISH_NAME>Flee</ENGLISH_NAME>
+    <NAME>Kaç</NAME>
+    <DESC>Düşmanlardan kaçmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="1" tex_row="2" clip="0">
+    <ENGLISH_NAME>Transport To</ENGLISH_NAME>
+    <NAME>Nakliye Hedefi</NAME>
+    <DESC>Hareket edip suyun karşısına taşınmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="2" clip="0">
+    <ENGLISH_NAME>Auto Transport</ENGLISH_NAME>
+    <NAME>Otomatik Nakliye</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="0" clip="0">
+    <ENGLISH_NAME>Disband</ENGLISH_NAME>
+    <NAME>Dağıt</NAME>
+    <DESC>Seçili birim(ler)i dağıtmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disband All</ENGLISH_NAME>
+    <NAME>Tümünü Dağıt</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Stance</ENGLISH_NAME>
+    <NAME>Tutum</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Stance Back</ENGLISH_NAME>
+    <NAME>Önceki Tutum</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_x="0" tex_y="0" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Formation</ENGLISH_NAME>
+    <NAME>Düzen</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Formation Back</ENGLISH_NAME>
+    <NAME>Önceki Düzen</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="5" tex_row="11" clip="0">
+    <ENGLISH_NAME>Face Left</ENGLISH_NAME>
+    <NAME>Sola Dön</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="11" clip="0">
+    <ENGLISH_NAME>Face Right</ENGLISH_NAME>
+    <NAME>Sağa Dön</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>About Face</ENGLISH_NAME>
+    <NAME>Geriye Dön</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="6" clip="0">
+    <ENGLISH_NAME>Forward</ENGLISH_NAME>
+    <NAME>İleri</NAME>
+    <DESC>İleri gitmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="1" clip="0">
+    <ENGLISH_NAME>Halt</ENGLISH_NAME>
+    <NAME>Dur</NAME>
+    <DESC>Geçerli eylemi durdurmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="1" clip="0">
+    <ENGLISH_NAME>Garrison/Heal</ENGLISH_NAME>
+    <NAME>Garnizon/İyileştir</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="2" clip="0">
+    <ENGLISH_NAME>Alarm Peasant</ENGLISH_NAME>
+    <NAME>Köylüyü Uyar</NAME>
+    <DESC>Bu işçiyi güvenli bir yere göndermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="2" clip="0">
+    <ENGLISH_NAME>Alarm</ENGLISH_NAME>
+    <NAME>Alarm</NAME>
+    <DESC>Alarm vermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="2" clip="0">
+    <ENGLISH_NAME>All Clear</ENGLISH_NAME>
+    <NAME>Tehlike Geçti</NAME>
+    <DESC>Tehlikenin geçtiğini bildirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="7" clip="0">
+    <ENGLISH_NAME>Back To Work</ENGLISH_NAME>
+    <NAME>İşe Dön</NAME>
+    <DESC>Garnizondaki vatandaşları işe geri göndermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="5" tex_row="1" clip="0">
+    <ENGLISH_NAME>Eject All</ENGLISH_NAME>
+    <NAME>Tümünü Çıkar</NAME>
+    <DESC>Yükü/garnizonu çıkarmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="2" clip="0">
+    <ENGLISH_NAME>Disembark</ENGLISH_NAME>
+    <NAME>Karaya Çık</NAME>
+    <DESC>Birimleri belirli bir yerde karaya çıkarmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="6" tex_row="3" clip="0">
+    <ENGLISH_NAME>Auto Explore</ENGLISH_NAME>
+    <NAME>Otomatik Keşif</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="2" clip="0">
+    <ENGLISH_NAME>Bombard Ground</ENGLISH_NAME>
+    <NAME>Yeri Bombala</NAME>
+    <DESC>Belirli bir hedefe saldırmak yerine haritadaki bir konumu bombalamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="4" clip="0">
+    <ENGLISH_NAME>Transfer</ENGLISH_NAME>
+    <NAME>Aktar</NAME>
+    <DESC>Birimleri başka bir binaya aktarmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Air Mission</ENGLISH_NAME>
+    <NAME>Hava Görevi</NAME>
+    <DESC>Hava saldırısı veya hava devriyesi emretmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Air Patrol</ENGLISH_NAME>
+    <NAME>Hava Devriyesi</NAME>
+    <DESC>Belirli bir konuma hava devriyesi göndermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="0" clip="0">
+    <ENGLISH_NAME>Flight Orders</ENGLISH_NAME>
+    <NAME>Uçuş Emirleri</NAME>
+    <DESC>Seçili uçaklara emir vermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Fighters</ENGLISH_NAME>
+    <NAME>Avcıları Seç</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Bombers</ENGLISH_NAME>
+    <NAME>Bombacıları Seç</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select Helicopters</ENGLISH_NAME>
+    <NAME>Helikopterleri Seç</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="8" tex_row="4" clip="0">
+    <ENGLISH_NAME>Select All Aircraft</ENGLISH_NAME>
+    <NAME>Tüm Uçakları Seç</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="7" clip="0">
+    <ENGLISH_NAME>Scramble</ENGLISH_NAME>
+    <NAME>Acil Kalkış</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="11" clip="0">
+    <ENGLISH_NAME>Repeat Orders</ENGLISH_NAME>
+    <NAME>Emirleri Tekrarla</NAME>
+    <DESC>Uçakların iniş yapıp yakıt aldıktan sonra verilen emirleri tekrarlamasına izin vermek (veya vermemek) için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="1" clip="0">
+    <ENGLISH_NAME>Return To Base</ENGLISH_NAME>
+    <NAME>Üsse Dön</NAME>
+    <DESC>Bu uçağı üsse geri göndermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="0" tex_row="10" clip="0">
+    <ENGLISH_NAME>Recall</ENGLISH_NAME>
+    <NAME>Geri Çağır</NAME>
+    <DESC>Buradan kalkan tüm uçakları geri çağırmak ve tüm uçuşları iptal etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Create</ENGLISH_NAME>
+    <NAME>Oluştur</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Research</ENGLISH_NAME>
+    <NAME>Araştırma</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Research Category</ENGLISH_NAME>
+    <NAME>Araştırma Kategorisi</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Upgrade</ENGLISH_NAME>
+    <NAME>Yükselt</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="4" clip="0">
+    <ENGLISH_NAME>Rally Point</ENGLISH_NAME>
+    <NAME>Toplanma Noktası</NAME>
+    <DESC>Binanın toplanma noktasını belirlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="3" tex_row="4" clip="0">
+    <ENGLISH_NAME>Clear Rally Point</ENGLISH_NAME>
+    <NAME>Toplanma Noktasını Kaldır</NAME>
+    <DESC>Binanın toplanma noktasını kaldırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="0" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Farms</ENGLISH_NAME>
+    <NAME>Çiftliklerde Toplan</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="1" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Woodcutter's Camps</ENGLISH_NAME>
+    <NAME>Oduncu Kamplarında Toplan</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="2" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Mines</ENGLISH_NAME>
+    <NAME>Madenlerde Toplan</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_1" tex_col="3" tex_row="5" clip="0">
+    <ENGLISH_NAME>Rally on Resource Buildings</ENGLISH_NAME>
+    <NAME>Kaynak Binalarında Toplan</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy</ENGLISH_NAME>
+    <NAME>Al</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy 500</ENGLISH_NAME>
+    <NAME>500 Al</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buy All</ENGLISH_NAME>
+    <NAME>Tümünü Al</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell</ENGLISH_NAME>
+    <NAME>Sat</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell 500</ENGLISH_NAME>
+    <NAME>500 Sat</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Sell All</ENGLISH_NAME>
+    <NAME>Tümünü Sat</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="5" clip="0">
+    <ENGLISH_NAME>Building Stance</ENGLISH_NAME>
+    <NAME>Bina Tutumu</NAME>
+    <DESC>Burada üretilen birimlerin başlangıç tutumunu belirlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Infinite Queue</ENGLISH_NAME>
+    <NAME>Sonsuz Kuyruk</NAME>
+    <DESC>Bu binada sonsuz üretimi ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="1" clip="0">
+    <ENGLISH_NAME>Next</ENGLISH_NAME>
+    <NAME>Sonraki</NAME>
+    <DESC>Ek seçenekleri göstermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="0" clip="0">
+    <ENGLISH_NAME>Back</ENGLISH_NAME>
+    <NAME>Geri</NAME>
+    <DESC>Diplomasi seçeneklerine dönmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_BUILDINGS_0" tex_col="0" tex_row="2" clip="0">
+    <ENGLISH_NAME>Cancel</ENGLISH_NAME>
+    <NAME>İptal</NAME>
+    <DESC>İptal etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Treaty</ENGLISH_NAME>
+    <NAME>Antlaşma</NAME>
+    <DESC>Teklif etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Declare</ENGLISH_NAME>
+    <NAME>İlan Et</NAME>
+    <DESC>İlan etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="3" tex_row="1" clip="0">
+    <ENGLISH_NAME>Tribute</ENGLISH_NAME>
+    <NAME>Haraç</NAME>
+    <DESC>Haraç teklif etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="4" tex_row="1" clip="0">
+    <ENGLISH_NAME>Clear Tributes</ENGLISH_NAME>
+    <NAME>Haraçları Sil</NAME>
+    <DESC>Haraçları temizlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="5" tex_row="1" clip="0">
+    <ENGLISH_NAME>Clear All</ENGLISH_NAME>
+    <NAME>Tümünü Sil</NAME>
+    <DESC>Tüm önerileri temizle.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Demand Tribute</ENGLISH_NAME>
+    <NAME>Haraç İste</NAME>
+    <DESC>Haraç istemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="2" tex_row="1" clip="0">
+    <ENGLISH_NAME>Propose Attack</ENGLISH_NAME>
+    <NAME>Saldırı Öner</NAME>
+    <DESC>Saldırı önermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="6" tex_row="1" clip="0">
+    <ENGLISH_NAME>Propose"</ENGLISH_NAME>
+    <NAME>Öner"</NAME>
+    <DESC>Geçerli teklifi önermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Accept"</ENGLISH_NAME>
+    <NAME>Kabul Et"</NAME>
+    <DESC>Geçerli teklifi kabul etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Reject"</ENGLISH_NAME>
+    <NAME>Reddet"</NAME>
+    <DESC>Geçerli teklifi reddetmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Current Resources</ENGLISH_NAME>
+    <NAME>Mevcut Kaynaklar</NAME>
+    <DESC>Mevcut kaynaklarınızı gösterir.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Close Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomasiyi Kapat</NAME>
+    <DESC>Diplomasiyi kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="1" clip="0">
+    <ENGLISH_NAME>Back to Main Diplomacy</ENGLISH_NAME>
+    <NAME>Ana Diplomasiye Dön</NAME>
+    <DESC>Ana diplomasi menüsüne dönmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy Status</ENGLISH_NAME>
+    <NAME>Diplomatik Durum</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat</ENGLISH_NAME>
+    <NAME>Sohbet</NAME>
+    <DESC>Diğer oyuncularla sohbet etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat All</ENGLISH_NAME>
+    <NAME>Herkese Sohbet</NAME>
+    <DESC>Tüm oyuncularla sohbet etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat Allies</ENGLISH_NAME>
+    <NAME>Müttefiklerle Sohbet</NAME>
+    <DESC>Tüm müttefiklerle sohbet etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Chat Enemies</ENGLISH_NAME>
+    <NAME>Düşmanlarla Sohbet</NAME>
+    <DESC>Tüm düşmanlarla sohbet etmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Signal Other Players</ENGLISH_NAME>
+    <NAME>Diğer Oyunculara İşaret Ver</NAME>
+    <DESC>Bu konuma işaret vermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Resign</ENGLISH_NAME>
+    <NAME>Pes Et</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Quit</ENGLISH_NAME>
+    <NAME>Çık</NAME>
+    <DESC>Oyundan çıkmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Menu</ENGLISH_NAME>
+    <NAME>Oyun Menüsü</NAME>
+    <DESC>Oyun menüsünü açmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Options Screen</ENGLISH_NAME>
+    <NAME>Seçenekler Ekranı</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Speed Slower</ENGLISH_NAME>
+    <NAME>Oyunu Yavaşlat</NAME>
+    <DESC>Oyunu yavaşlatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Game Speed Faster</ENGLISH_NAME>
+    <NAME>Oyunu Hızlandır</NAME>
+    <DESC>Oyunu hızlandırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Objectives</ENGLISH_NAME>
+    <NAME>Hedefler</NAME>
+    <DESC>Hedefleri ve zafer koşullarını göstermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle</ENGLISH_NAME>
+    <NAME>Gez</NAME>
+    <DESC>Sonraki birimi bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Idle Citizen</ENGLISH_NAME>
+    <NAME>Boştaki Vatandaş</NAME>
+    <DESC>Sonraki boştaki vatandaşı bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Idle Scout</ENGLISH_NAME>
+    <NAME>Boştaki İzci</NAME>
+    <DESC>Sonraki izciyi veya özel kuvvetler birimini bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Military</ENGLISH_NAME>
+    <NAME>Sonraki Asker</NAME>
+    <DESC>Sonraki askerî birimi bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next General</ENGLISH_NAME>
+    <NAME>Sonraki General</NAME>
+    <DESC>Sonraki General birimini bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Spy</ENGLISH_NAME>
+    <NAME>Sonraki Casus</NAME>
+    <DESC>Sonraki Casusu bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Supply</ENGLISH_NAME>
+    <NAME>Sonraki İkmal</NAME>
+    <DESC>Sonraki İkmal birimini bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next City</ENGLISH_NAME>
+    <NAME>Sonraki Şehir</NAME>
+    <DESC>Sonraki Şehri bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Research</ENGLISH_NAME>
+    <NAME>Sonraki Araştırma</NAME>
+    <DESC>Araştırma yapılabilen sonraki binayı bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Citizens</ENGLISH_NAME>
+    <NAME>Tüm Vatandaşlar</NAME>
+    <DESC>Boştaki TÜM vatandaşları seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Scout</ENGLISH_NAME>
+    <NAME>Tüm İzciler</NAME>
+    <DESC>TÜM izcileri ve özel kuvvetleri seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Military</ENGLISH_NAME>
+    <NAME>Tüm Askerler</NAME>
+    <DESC>TÜM askerî birimleri seçmek için tıklayın (azami seçim sınırına kadar).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Generals</ENGLISH_NAME>
+    <NAME>Tüm Generaller</NAME>
+    <DESC>TÜM generalleri seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Spies</ENGLISH_NAME>
+    <NAME>Tüm Casuslar</NAME>
+    <DESC>TÜM casusları seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Supply</ENGLISH_NAME>
+    <NAME>Tüm İkmal</NAME>
+    <DESC>TÜM ikmal birimlerini seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Building</ENGLISH_NAME>
+    <NAME>Tüm Binalar</NAME>
+    <DESC>Bu türdeki binaların TÜMÜNÜ seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Citizen</ENGLISH_NAME>
+    <NAME>Vatandaş Seç</NAME>
+    <DESC>Sonraki boştaki vatandaşı seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Scout</ENGLISH_NAME>
+    <NAME>İzci Seç</NAME>
+    <DESC>Sonraki izciyi seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Military</ENGLISH_NAME>
+    <NAME>Asker Seç</NAME>
+    <DESC>Sonraki askerî birimi seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select General</ENGLISH_NAME>
+    <NAME>General Seç</NAME>
+    <DESC>Sonraki generali seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Spy</ENGLISH_NAME>
+    <NAME>Casus Seç</NAME>
+    <DESC>Sonraki casusu seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Supply</ENGLISH_NAME>
+    <NAME>İkmal Seç</NAME>
+    <DESC>Sonraki ikmal birimini seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Building</ENGLISH_NAME>
+    <NAME>Bina Seç</NAME>
+    <DESC>Bu türdeki sonraki binayı seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Çalışan Vatandaşları Gez</NAME>
+    <DESC>Sonraki vatandaşı bulmak için tıklayın (boşta olmasa bile).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Tüm Çalışan Vatandaşlar</NAME>
+    <DESC>Tüm vatandaşları seçmek için tıklayın (boşta olmasalar bile).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Non-Idle Citizen</ENGLISH_NAME>
+    <NAME>Çalışan Vatandaş Seç</NAME>
+    <DESC>Sonraki vatandaşı seçmek için tıklayın (boşta olmasa bile).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select all of Currently Selected Types</ENGLISH_NAME>
+    <NAME>Seçili Türlerin Tümü Seçildi</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Clock Display</ENGLISH_NAME>
+    <NAME>Saat Göstergesini Aç/Kapat</NAME>
+    <DESC>Oyun saatini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Game Data</ENGLISH_NAME>
+    <NAME>Oyun Verilerini Aç/Kapat</NAME>
+    <DESC>Veri göstergesini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Data Display</ENGLISH_NAME>
+    <NAME>Veri Göstergesi</NAME>
+    <DESC>Veri göstergeleri arasında geçiş yapmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Prev Data Display</ENGLISH_NAME>
+    <NAME>Önceki Veri Göstergesi</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Research Display</ENGLISH_NAME>
+    <NAME>Araştırma Göstergesini Aç/Kapat</NAME>
+    <DESC>Araştırma göstergesini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Help Text Detail</ENGLISH_NAME>
+    <NAME>Yardım Ayrıntısı</NAME>
+    <DESC>Yardım metni ayrıntısını değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Prev Help Detail</ENGLISH_NAME>
+    <NAME>Önceki Yardım Ayrıntısı</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Advanced Options</ENGLISH_NAME>
+    <NAME>Gelişmiş Seçenekler</NAME>
+    <DESC>Gelişmiş menüleri açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Clock</ENGLISH_NAME>
+    <NAME>Saat Aç/Kapa</NAME>
+    <DESC>Oyun saati göstergesini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Friend/Foe Colors</ENGLISH_NAME>
+    <NAME>Dost/Düşman Renkleri</NAME>
+    <DESC>Dost/düşman renklerini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle City Names</ENGLISH_NAME>
+    <NAME>Şehir Adları Aç/Kapa</NAME>
+    <DESC>Şehir adlarını açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Units Behind</ENGLISH_NAME>
+    <NAME>Arkadaki Birimler</NAME>
+    <DESC>Binaların ve ağaçların arkasındaki birimlerin gösterimini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Audio Taunts</ENGLISH_NAME>
+    <NAME>Sesli Alaylar Aç/Kapa</NAME>
+    <DESC>Sesli alayları açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Goods Display</ENGLISH_NAME>
+    <NAME>Mal Göstergesi Değiştir</NAME>
+    <DESC>Mal göstergesini değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Political Data</ENGLISH_NAME>
+    <NAME>Siyasi Veriler</NAME>
+    <DESC>Veri göstergesini SİYASİ olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Economic Data</ENGLISH_NAME>
+    <NAME>Ekonomik Veriler</NAME>
+    <DESC>Veri göstergesini EKONOMİ olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Market Data</ENGLISH_NAME>
+    <NAME>Pazar Verileri</NAME>
+    <DESC>Veri göstergesini PAZAR olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Military Data</ENGLISH_NAME>
+    <NAME>Askeri Veriler</NAME>
+    <DESC>Veri göstergesini ASKERİ olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cities Data</ENGLISH_NAME>
+    <NAME>Şehir Verileri</NAME>
+    <DESC>Veri göstergesini ŞEHİRLER olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Upgrade Data</ENGLISH_NAME>
+    <NAME>Yükseltme Verileri</NAME>
+    <DESC>Veri göstergesini YÜKSELTMELER olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Control Groups</ENGLISH_NAME>
+    <NAME>Kontrol Grupları</NAME>
+    <DESC>Veri göstergesini GRUPLAR olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomasi</NAME>
+    <DESC>Veri göstergesini DİPLOMASİ olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Wonders</ENGLISH_NAME>
+    <NAME>Harikalar</NAME>
+    <DESC>Veri göstergesini HARİKALAR olarak ayarlamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Data Off</ENGLISH_NAME>
+    <NAME>Veriler Kapalı</NAME>
+    <DESC>Veri göstergesini kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cycle Stats Display</ENGLISH_NAME>
+    <NAME>İstatistik Göstergesi</NAME>
+    <DESC>İstatistik göstergesini değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Options</ENGLISH_NAME>
+    <NAME>Seçenekler Aç/Kapa</NAME>
+    <DESC>Bu seçeneği açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Strategic Map</ENGLISH_NAME>
+    <NAME>Stratejik Harita</NAME>
+    <DESC>Stratejik harita görünümünü açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Zoom In</ENGLISH_NAME>
+    <NAME>Yakınlaştır</NAME>
+    <DESC>Yakınlaştırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Zoom Out</ENGLISH_NAME>
+    <NAME>Uzaklaştır</NAME>
+    <DESC>Uzaklaştırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save Zoom In</ENGLISH_NAME>
+    <NAME>Yakın Görüşü Kaydet</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save Zoom Out</ENGLISH_NAME>
+    <NAME>Uzak Görüşü Kaydet</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Center</ENGLISH_NAME>
+    <NAME>Ortala</NAME>
+    <DESC>Seçili nesneyi ortalamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Pause</ENGLISH_NAME>
+    <NAME>Durdur</NAME>
+    <DESC>Oyunu duraklatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cannon Time</ENGLISH_NAME>
+    <NAME>Yedek Süre</NAME>
+    <DESC>"Yedek Süre"yi açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Timer</ENGLISH_NAME>
+    <NAME>Süre</NAME>
+    <DESC>Geçen "oyun" süresini ve geçerli hızı gösterir.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Victory Timer</ENGLISH_NAME>
+    <NAME>Zafer Sayacı</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Minimap</ENGLISH_NAME>
+    <NAME>MiniHarita</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Capital Star</ENGLISH_NAME>
+    <NAME>Başkent Yıldızı</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Flag</ENGLISH_NAME>
+    <NAME>Ulus Bayrağı</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Govern</ENGLISH_NAME>
+    <NAME>Yönetim</NAME>
+    <DESC>Yönetim biçimini değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomasi</NAME>
+    <DESC>Diplomasi yürütmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomasi</NAME>
+    <DESC>Diplomasi yürütmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Good"</ENGLISH_NAME>
+    <NAME>Mal"</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Queue</ENGLISH_NAME>
+    <NAME>Sıra</NAME>
+    <DESC>Bu nesneyi sıradan çıkarmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Object</ENGLISH_NAME>
+    <NAME>Nesne</NAME>
+    <DESC>Bu nesneyi seçmek için tıklayın; çıkarmak için CTRL+Tıklama, yalnızca bu türdeki nesneleri seçmek için SHIFT+Tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Drag</ENGLISH_NAME>
+    <NAME>Sürükle</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Mouseover Object</ENGLISH_NAME>
+    <NAME>Fare Altındaki Nesne</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="7" tex_row="6" clip="0">
+    <ENGLISH_NAME>Eject</ENGLISH_NAME>
+    <NAME>Çıkar</NAME>
+    <DESC>Bu birimi çıkarmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Eject Air Fueling</ENGLISH_NAME>
+    <NAME>Çıkar: Yakıt Alıyor</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Eject Air Ready</ENGLISH_NAME>
+    <NAME>Çıkar: Hazır</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Click to select this object</ENGLISH_NAME>
+    <NAME>Bu nesneyi seçmek için tıklayın</NAME>
+    <DESC>Bu nesneyi seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Double clicking selects all objects of this type</ENGLISH_NAME>
+    <NAME>Çift tıklama bu türdeki tüm nesneleri seçer</NAME>
+    <DESC>Çift tıklama bu türdeki tüm nesneleri seçer.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Category of research</ENGLISH_NAME>
+    <NAME>Araştırma kategorisi</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Show limits</ENGLISH_NAME>
+    <NAME>Sınırları göster</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Airbase icons</ENGLISH_NAME>
+    <NAME>Hava üssü simgeleri</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Heads</ENGLISH_NAME>
+    <NAME>Başlar</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Border</ENGLISH_NAME>
+    <NAME>Kenarlık</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Current Nation</ENGLISH_NAME>
+    <NAME>Geçerli Ulus</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation</ENGLISH_NAME>
+    <NAME>Ulus</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Current Age</ENGLISH_NAME>
+    <NAME>Geçerli Çağ</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Age</ENGLISH_NAME>
+    <NAME>Çağ</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Group</ENGLISH_NAME>
+    <NAME>Grup</NAME>
+    <DESC>Oluşturmak için sağ tıklayın. Seçmek için sol tıklayın. (Kısayollar: oluşturmak için CTRL+#; seçmek için #; silmek için SHIFT+#).</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Creating Fighter Bomber</ENGLISH_NAME>
+    <NAME>Avcı Bombacı Üretiliyor</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="11" clip="0">
+    <ENGLISH_NAME>Must Assimilate City</ENGLISH_NAME>
+    <NAME>Şehir Asimile Edilmeli</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Neutralized</ENGLISH_NAME>
+    <NAME>Etkisiz</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Enemy Territory</ENGLISH_NAME>
+    <NAME>Düşman Toprağı</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>No Nearby City</ENGLISH_NAME>
+    <NAME>Yakında Şehir Yok</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Building</ENGLISH_NAME>
+    <NAME>İnşaatı İptal Et</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Action</ENGLISH_NAME>
+    <NAME>Eylemi İptal Et</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel Action</ENGLISH_NAME>
+    <NAME>Eylemi İptal Et</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="11" clip="0">
+    <ENGLISH_NAME>Assimilating</ENGLISH_NAME>
+    <NAME>Asimile Ediliyor</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Land</ENGLISH_NAME>
+    <NAME>Kara</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Researching</ENGLISH_NAME>
+    <NAME>Araştırılıyor</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Wonder</ENGLISH_NAME>
+    <NAME>Harika</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disbanding</ENGLISH_NAME>
+    <NAME>Dağıtılıyor</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select</ENGLISH_NAME>
+    <NAME>Seç</NAME>
+    <DESC>Seçim moduna geçmek için tıklayın; bu modda haritaya yerleştirdiğiniz birimleri ve binaları seçip düzenleyebilirsiniz.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Scenario Options</ENGLISH_NAME>
+    <NAME>Senaryo Seçenekleri</NAME>
+    <DESC>Bu senaryonun kurallarını ve oyun ayarlarını düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Options</ENGLISH_NAME>
+    <NAME>Ulus Seçenekleri</NAME>
+    <DESC>Oyundaki ulusları (ad, milliyet, başlangıç kaynakları ve yapay zekâ ayarları dahil) düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Map Generator</ENGLISH_NAME>
+    <NAME>Harita Oluşturucu</NAME>
+    <DESC>Harita oluşturucuyla yeni bir rastgele harita oluşturmak ya da bir görüntü dosyasından harita almak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Terrain</ENGLISH_NAME>
+    <NAME>Arazi</NAME>
+    <DESC>Kara/deniz, dağlar ve ormanlar dahil araziyi düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Rare Resources</ENGLISH_NAME>
+    <NAME>Nadir Kaynaklar</NAME>
+    <DESC>Nadir kaynak eklemek ve kaldırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Units</ENGLISH_NAME>
+    <NAME>Birlikler</NAME>
+    <DESC>Birim eklemek ve kaldırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Buildings</ENGLISH_NAME>
+    <NAME>Binalar</NAME>
+    <DESC>Bina eklemek ve kaldırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomasi</NAME>
+    <DESC>Diplomatik durumu düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Diplomacy</ENGLISH_NAME>
+    <NAME>Diplomasi</NAME>
+    <DESC>Diplomatik durumu düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Edit Script</ENGLISH_NAME>
+    <NAME>Betiği Düzenle</NAME>
+    <DESC>Bu senaryonun betiğini oluşturmak, düzenlemek ya da hatalarını ayıklamak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Resources</ENGLISH_NAME>
+    <NAME>Başlangıç Kaynakları</NAME>
+    <DESC>Başlangıç kaynaklarını düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Tech</ENGLISH_NAME>
+    <NAME>Başlangıç Tekn.</NAME>
+    <DESC>Kütüphane dışı başlangıç teknolojilerini düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Starting Library Tech</ENGLISH_NAME>
+    <NAME>Başlangıç Kütüphane Tekn.</NAME>
+    <DESC>Kütüphane teknolojilerini düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>AI settings</ENGLISH_NAME>
+    <NAME>YZ ayarları</NAME>
+    <DESC>Bilgisayar oyuncularının yapay zekâ ayarlarını düzenlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Leader Name</ENGLISH_NAME>
+    <NAME>Lider Adını Değiştir</NAME>
+    <DESC>Lider adını değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Ignore Pop Cap</ENGLISH_NAME>
+    <NAME>Nüfus Sınırını Yoksay</NAME>
+    <DESC>Nüfus kısıtlamalarını yoksaymak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Delete</ENGLISH_NAME>
+    <NAME>Sil</NAME>
+    <DESC>Bu ulusu silmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Options</ENGLISH_NAME>
+    <NAME>Ayarlar</NAME>
+    <DESC>Senaryo düzenleyicisinden seçenekler menüsünü açmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Quit</ENGLISH_NAME>
+    <NAME>Çık</NAME>
+    <DESC>Senaryo düzenleyicisinden çıkmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Save</ENGLISH_NAME>
+    <NAME>Kaydet</NAME>
+    <DESC>Bu senaryoyu kaydetmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Load</ENGLISH_NAME>
+    <NAME>Yükle</NAME>
+    <DESC>Bir senaryo dosyası yüklemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Test Scenario</ENGLISH_NAME>
+    <NAME>Senaryoyu Dene</NAME>
+    <DESC>Bu senaryoyu denemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Full Editor</ENGLISH_NAME>
+    <NAME>Tam Düzenleyici</NAME>
+    <DESC>Öğeler</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Resume Game</ENGLISH_NAME>
+    <NAME>Oyuna Dön</NAME>
+    <DESC>Öğeler</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Brush</ENGLISH_NAME>
+    <NAME>Fırça Seç</NAME>
+    <DESC>Öğeler</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Place Object</ENGLISH_NAME>
+    <NAME>Nesne Yerleştir</NAME>
+    <DESC>Bu nesneyi yerleştirmek üzere seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Place Item</ENGLISH_NAME>
+    <NAME>Öğe Yerleştir</NAME>
+    <DESC>Bu öğeyi yerleştirmek üzere seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Set Status</ENGLISH_NAME>
+    <NAME>Durum Belirle</NAME>
+    <DESC>Diplomatik durumu belirlemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="3" tex_row="11" clip="0">
+    <ENGLISH_NAME>Increase Hit Points</ENGLISH_NAME>
+    <NAME>Can Puanını Artır</NAME>
+    <DESC>Seçili nesne(ler)in can puanını artırmak için tıklayın. Daha hızlı artış için SHIFT + tıklama, çok hızlı artış için ALT + tıklama, çok yavaş artış için CTRL + tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="4" tex_row="11" clip="0">
+    <ENGLISH_NAME>Decrease Hit Points</ENGLISH_NAME>
+    <NAME>Can Puanını Azalt</NAME>
+    <DESC>Seçili nesne(ler)in can puanını azaltmak için tıklayın. Daha hızlı azalış için SHIFT + tıklama, çok hızlı azalış için ALT + tıklama, çok yavaş azalış için CTRL + tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="8" clip="0">
+    <ENGLISH_NAME>Increase Craft</ENGLISH_NAME>
+    <NAME>Yeteneği Artır</NAME>
+    <DESC>Seçili nesne(ler)in yetenek puanını artırmak için tıklayın. Daha hızlı artış için SHIFT + tıklama, çok hızlı artış için ALT + tıklama, çok yavaş artış için CTRL + tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="1" tex_row="9" clip="0">
+    <ENGLISH_NAME>Decrease Craft</ENGLISH_NAME>
+    <NAME>Yeteneği Azalt</NAME>
+    <DESC>Seçili nesne(ler)in yetenek puanını azaltmak için tıklayın. Daha hızlı azalış için SHIFT + tıklama, çok hızlı azalış için ALT + tıklama, çok yavaş azalış için CTRL + tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="10" clip="0">
+    <ENGLISH_NAME>Activate Building</ENGLISH_NAME>
+    <NAME>Binayı Etkinleştir</NAME>
+    <DESC>Bu binayı "etkinleştirip" tamamen inşa edilmiş bir binaya dönüştürmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="11" clip="0">
+    <ENGLISH_NAME>Deactivate Building</ENGLISH_NAME>
+    <NAME>Binayı Devre Dışı Bırak</NAME>
+    <DESC>Bu binayı "devre dışı bırakıp" yeni yerleştirilmiş bir temele dönüştürmek için tıklayın. </DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Delete</ENGLISH_NAME>
+    <NAME>Sil</NAME>
+    <DESC>Bu ne işe yarar?</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Generate Map</ENGLISH_NAME>
+    <NAME>Harita Oluştur</NAME>
+    <DESC>Yeni harita oluşturmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Import Map Image</ENGLISH_NAME>
+    <NAME>Harita Görüntüsü Al</NAME>
+    <DESC>Bir görüntüden harita almak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Map Seed</ENGLISH_NAME>
+    <NAME>Harita Tohumunu Değiştir</NAME>
+    <DESC>Harita tohumunu değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Fog of War</ENGLISH_NAME>
+    <NAME>Savaş Sisi Aç/Kapa</NAME>
+    <DESC>Savaş Sisi göstergesini açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="2" tex_row="11" clip="0">
+    <ENGLISH_NAME>Make Capital</ENGLISH_NAME>
+    <NAME>Başkent Yap</NAME>
+    <DESC>Bu şehri ulusunun başkenti yapmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Always Transport</ENGLISH_NAME>
+    <NAME>Hep Taşı</NAME>
+    <DESC>Öğeler</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Never Transport</ENGLISH_NAME>
+    <NAME>Hiç Taşıma</NAME>
+    <DESC>Öğeler</DESC>
+  </OPTION>
+  <OPTION tex_col="1" tex_row="1" clip="0">
+    <ENGLISH_NAME>Select Nation</ENGLISH_NAME>
+    <NAME>Ulus Seç</NAME>
+    <DESC>Bu ulusu seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Nation Flip</ENGLISH_NAME>
+    <NAME>Ulus Değiştir</NAME>
+    <DESC>Diğer ulusları göstermek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Nation</ENGLISH_NAME>
+    <NAME>Ulus Ekle</NAME>
+    <DESC>Yeni ulus eklemek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Terrain</ENGLISH_NAME>
+    <NAME>Arazi</NAME>
+    <DESC>Araziyi değiştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile</ENGLISH_NAME>
+    <NAME>Verimli</NAME>
+    <DESC>Verimli arazi yerleştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile 1</ENGLISH_NAME>
+    <NAME>Verimli 1</NAME>
+    <DESC>Verimli geçiş 1 yerleştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fertile 2</ENGLISH_NAME>
+    <NAME>Verimli 2</NAME>
+    <DESC>Verimli geçiş 2 yerleştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Arid</ENGLISH_NAME>
+    <NAME>Kurak</NAME>
+    <DESC>Kurak arazi yerleştirmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Ocean</ENGLISH_NAME>
+    <NAME>Okyanus</NAME>
+    <DESC>Okyanus yerleştirmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Forest</ENGLISH_NAME>
+    <NAME>Orman</NAME>
+    <DESC>Orman yerleştirmek için bu düğmeyi seçip haritaya tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Mountains</ENGLISH_NAME>
+    <NAME>Dağlar</NAME>
+    <DESC>Dağ yerleştirmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cliffs</ENGLISH_NAME>
+    <NAME>Uçurumlar</NAME>
+    <DESC>Uçurum yerleştirmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Rocks</ENGLISH_NAME>
+    <NAME>Kayalar</NAME>
+    <DESC>Kaya/petrol yerleştirmek için bu düğmeyi seçip haritaya tıklayın. Kaya ile petrol arasında geçiş yapmak için bir kayaya veya petrol yatağına tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Oil</ENGLISH_NAME>
+    <NAME>Petrol</NAME>
+    <DESC>Petrol yerleştirmek için tıklayın (kayaların üstüne konmalı)</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>River</ENGLISH_NAME>
+    <NAME>Nehir</NAME>
+    <DESC>Nehir yerleştirmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Feature</ENGLISH_NAME>
+    <NAME>Öğe Ekle</NAME>
+    <DESC>Çalı/kayaları tek tek eklemek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x1 Brush</ENGLISH_NAME>
+    <NAME>1x1 Fırça</NAME>
+    <DESC>1x1 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>3x3 Brush</ENGLISH_NAME>
+    <NAME>3x3 Fırça</NAME>
+    <DESC>3x3 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 Brush</ENGLISH_NAME>
+    <NAME>5x5 Fırça</NAME>
+    <DESC>5x5 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x5 Brush</ENGLISH_NAME>
+    <NAME>1x5 Fırça</NAME>
+    <DESC>1x5 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x1 Brush</ENGLISH_NAME>
+    <NAME>5x1 Fırça</NAME>
+    <DESC>5x1 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 X Brush</ENGLISH_NAME>
+    <NAME>5x5 X Fırça</NAME>
+    <DESC>5 kareli X fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Terrain</ENGLISH_NAME>
+    <NAME>Araziyi Kaldır</NAME>
+    <DESC>Bir arazi öğesini (Dağ/Orman/Kaya) kaldırmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Rare Resource</ENGLISH_NAME>
+    <NAME>Nadir Kaynağı Kaldır</NAME>
+    <DESC>Bir nadir kaynağı kaldırmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove All Rare Resources</ENGLISH_NAME>
+    <NAME>Tüm Nadir Kaynakları Kaldır</NAME>
+    <DESC>Tüm nadir kaynakları silmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Resource</ENGLISH_NAME>
+    <NAME>Kaynak Ver</NAME>
+    <DESC>Bu kaynaktan $NUMBER0 vermek için tıklayın. 100 için CTRL + Tıklama, 500 için SHIFT + Tıklama, 10000 için ALT + Tıklama, 1 için CTRL + SHIFT + Tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Resource</ENGLISH_NAME>
+    <NAME>Kaynak Al</NAME>
+    <DESC>Bu kaynaktan $NUMBER0 almak için tıklayın. 100 için CTRL + Tıklama, 500 için SHIFT + Tıklama, 10000 için ALT + Tıklama, 1 için CTRL + SHIFT + Tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Resource</ENGLISH_NAME>
+    <NAME>Kaynak Ver</NAME>
+    <DESC>Bu kaynaktan 100 vermek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Resource</ENGLISH_NAME>
+    <NAME>Kaynak Al</NAME>
+    <DESC>Bu kaynaktan 100 almak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Default Resources</ENGLISH_NAME>
+    <NAME>Varsayılan Kaynaklar</NAME>
+    <DESC>Kaynakları varsayılana ayarlamak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Each Resource</ENGLISH_NAME>
+    <NAME>Her Kaynaktan Ver</NAME>
+    <DESC>Her kaynaktan $NUMBER0 vermek için tıklayın. 100 için CTRL + Tıklama, 500 için SHIFT + Tıklama, 10000 için ALT + Tıklama, 1 için CTRL + SHIFT + Tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Give Each Resource</ENGLISH_NAME>
+    <NAME>Her Kaynaktan Ver</NAME>
+    <DESC>Her kaynaktan 100 vermek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Each Resource</ENGLISH_NAME>
+    <NAME>Her Kaynaktan Al</NAME>
+    <DESC>Her kaynaktan $NUMBER0 almak için tıklayın. 100 için CTRL + Tıklama, 500 için SHIFT + Tıklama, 10000 için ALT + Tıklama, 1 için CTRL + SHIFT + Tıklama.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Take Each Resource</ENGLISH_NAME>
+    <NAME>Her Kaynaktan Al</NAME>
+    <DESC>Her kaynaktan 100 almak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Change Scen. Name</ENGLISH_NAME>
+    <NAME>Senaryo Adı Değiştir</NAME>
+    <DESC>Senaryo adını değiştirmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Use Scenario Script</ENGLISH_NAME>
+    <NAME>Senaryo Betiğini Kullan</NAME>
+    <DESC>Bu harita oynanırken senaryo betiğinin yüklenmesini açıp kapatmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Set Camera Location</ENGLISH_NAME>
+    <NAME>Kamera Konumunu Ayarla</NAME>
+    <DESC>Senaryonun başlangıç kamera konumunu ayarlamak için tıklayın. Geçerli kamera konumu ve yakınlaştırma düzeyi, senaryo başladığında oyuncunun ilk görünümü olur.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Get Camera Location</ENGLISH_NAME>
+    <NAME>Kamera Konumuna Git</NAME>
+    <DESC>Senaryonun başlangıç kamera görünümüne gitmek için tıklayın. Senaryo başladığında oyuncunun göreceği görünümü gösterir.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="6" clip="0">
+    <ENGLISH_NAME>Rename</ENGLISH_NAME>
+    <NAME>Yeniden Adlandır</NAME>
+    <DESC>Bu şehri yeniden adlandırmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Re-Init Terrain</ENGLISH_NAME>
+    <NAME>Araziyi Sıfırla</NAME>
+    <DESC>Araziyi sıfırlamak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Fill Land Types</ENGLISH_NAME>
+    <NAME>Arazi Türlerini Doldur</NAME>
+    <DESC>Kara alanlarını rastgele arazi türleriyle doldurmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear Land Types</ENGLISH_NAME>
+    <NAME>Arazi Türlerini Temizle</NAME>
+    <DESC>Kara alanlarındaki arazi türlerini temizlemek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Random Terrain</ENGLISH_NAME>
+    <NAME>Rastgele Arazi Ekle</NAME>
+    <DESC>Rastgele orman/dağ/kaya/petrol yerleştirmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear All Terrain</ENGLISH_NAME>
+    <NAME>Tüm Araziyi Temizle</NAME>
+    <DESC>Tüm orman/dağ/kaya/petrolü kaldırmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add Random Features</ENGLISH_NAME>
+    <NAME>Rastgele Öğe Ekle</NAME>
+    <DESC>Rastgele çalı/kaya eklemek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove One Feature</ENGLISH_NAME>
+    <NAME>Bir Öğeyi Kaldır</NAME>
+    <DESC>Tek bir çalı/kayayı temizlemek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear All Features</ENGLISH_NAME>
+    <NAME>Tüm Öğeleri Temizle</NAME>
+    <DESC>Tüm çalı/kayaları temizlemek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Research Mode</ENGLISH_NAME>
+    <NAME>Araştırma Modu Aç/Kapa</NAME>
+    <DESC>Araştırma modunu açıp kapatmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Edit Terrain</ENGLISH_NAME>
+    <NAME>Araziyi Düzenle</NAME>
+    <DESC>Soyut haritada kara/deniz/dağ/nehirleri düzenlemek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Adjust Height</ENGLISH_NAME>
+    <NAME>Yüksekliği Ayarla</NAME>
+    <DESC>Arazi yüksekliğini artırmak için bu düğmeyi seçip sol tuşla sürükleyin. Arazi yüksekliğini azaltmak için bu düğmeyi seçip sağ tuşla sürükleyin.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Height Increase</ENGLISH_NAME>
+    <NAME>Yükseklik Artışı</NAME>
+    <DESC>Arazi yüksekliğini artırmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Height Decrease</ENGLISH_NAME>
+    <NAME>Yükseklik Azalışı</NAME>
+    <DESC>Arazi yüksekliğini azaltmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Apply Changes</ENGLISH_NAME>
+    <NAME>Değişiklikleri Uygula</NAME>
+    <DESC>Bu haritada yaptığınız değişiklikleri uygulamak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Cancel</ENGLISH_NAME>
+    <NAME>İptal</NAME>
+    <DESC>Değişiklikleri iptal etmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Remove Feature</ENGLISH_NAME>
+    <NAME>Öğeyi Kaldır</NAME>
+    <DESC>Son yerleştirilen dağı kaldırmak için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x1 Brush</ENGLISH_NAME>
+    <NAME>1x1 Fırça</NAME>
+    <DESC>1x1 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>3x3 Brush</ENGLISH_NAME>
+    <NAME>3x3 Fırça</NAME>
+    <DESC>3x3 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 Brush</ENGLISH_NAME>
+    <NAME>5x5 Fırça</NAME>
+    <DESC>5x5 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>1x5 Brush</ENGLISH_NAME>
+    <NAME>1x5 Fırça</NAME>
+    <DESC>1x5 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x1 Brush</ENGLISH_NAME>
+    <NAME>5x1 Fırça</NAME>
+    <DESC>5x1 fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>5x5 X Brush</ENGLISH_NAME>
+    <NAME>5x5 X Fırça</NAME>
+    <DESC>5 kareli X fırçayı seçmek için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME/>
+    <NAME/>
+    <DESC>Daha büyük uçurumlar için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME/>
+    <NAME/>
+    <DESC>Daha küçük uçurumlar için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>lt"</ENGLISH_NAME>
+    <NAME>lt"</NAME>
+    <DESC>Önceki uçurum türü için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>gt"</ENGLISH_NAME>
+    <NAME>gt"</NAME>
+    <DESC>Sonraki uçurum türü için tıklayın</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add point</ENGLISH_NAME>
+    <NAME>Nokta ekle</NAME>
+    <DESC>Nehir noktası ekle</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear all</ENGLISH_NAME>
+    <NAME>Tümünü sil</NAME>
+    <DESC>Haritadaki tüm nehir noktalarını kaldır</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Clear prev</ENGLISH_NAME>
+    <NAME>Öncekini sil</NAME>
+    <DESC>Son eklenen nehir noktasını kaldır</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Add river</ENGLISH_NAME>
+    <NAME>Nehir ekle</NAME>
+    <DESC>Haritaya nehir ekle</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Production AI</ENGLISH_NAME>
+    <NAME>Üretim YZ Kapalı</NAME>
+    <DESC>Üretim yapay zekâsını açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Unit AI</ENGLISH_NAME>
+    <NAME>Birim YZ Kapalı</NAME>
+    <DESC>Tüm birimlerin yapay zekâsını açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Disable Combat AI</ENGLISH_NAME>
+    <NAME>Savaş YZ Kapalı</NAME>
+    <DESC>Savaş yapay zekâsını açıp kapatmak için tıklayın. Askeri birimler saldırıya duruşlarına göre karşılık verir.</DESC>
+  </OPTION>
+  <OPTION tex_id="TEX_ORDERS_0" tex_col="7" tex_row="9" clip="0">
+    <ENGLISH_NAME>Disable AI</ENGLISH_NAME>
+    <NAME>YZ Kapalı</NAME>
+    <DESC>Bu birimin yapay zekâsını açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Resource Interface</ENGLISH_NAME>
+    <NAME>Kaynak Arayüzü Aç/Kapa</NAME>
+    <DESC>Kaynak arayüzünü açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Market Interface</ENGLISH_NAME>
+    <NAME>Pazar Arayüzü Aç/Kapa</NAME>
+    <DESC>Pazar arayüzünü açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Infrastructure Interface</ENGLISH_NAME>
+    <NAME>Altyapı Arayüzü Aç/Kapa</NAME>
+    <DESC>Altyapı arayüzünü açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Main Interface</ENGLISH_NAME>
+    <NAME>Ana Arayüz Aç/Kapa</NAME>
+    <DESC>Ana arayüzü açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Toggle Mini-Library Interface</ENGLISH_NAME>
+    <NAME>Mini Kütüphane Arayüzü Aç/Kapa</NAME>
+    <DESC>Mini kütüphane arayüzünü açıp kapatmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Merchant</ENGLISH_NAME>
+    <NAME>Sonraki Tüccar</NAME>
+    <DESC>Sonraki boştaki Tüccarı bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Next Fisherman</ENGLISH_NAME>
+    <NAME>Sonraki Balıkçı</NAME>
+    <DESC>Sonraki boştaki Balıkçıyı bulmak için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Merchants</ENGLISH_NAME>
+    <NAME>Tüm Tüccarlar</NAME>
+    <DESC>Boştaki TÜM Tüccarları seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>All Fishermen</ENGLISH_NAME>
+    <NAME>Tüm Balıkçılar</NAME>
+    <DESC>Boştaki TÜM Balıkçıları seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Merchant</ENGLISH_NAME>
+    <NAME>Tüccar Seç</NAME>
+    <DESC>Sonraki boştaki Tüccarı seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Fisherman</ENGLISH_NAME>
+    <NAME>Balıkçı Seç</NAME>
+    <DESC>Sonraki boştaki Balıkçıyı seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Patriot</ENGLISH_NAME>
+    <NAME>Vatansever Seç</NAME>
+    <DESC>Vatanseveri seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Patriot, no zoom</ENGLISH_NAME>
+    <NAME>Vatansever Seç, zoomsuz</NAME>
+    <DESC>Vatanseveri, ona yakınlaşmadan seçmek için tıklayın.</DESC>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Select Damaged Units</ENGLISH_NAME>
+    <NAME>Hasarlı Birimleri Seç</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Filter Selection for Damaged Units</ENGLISH_NAME>
+    <NAME>Seçimi Hasarlı Birimlere Göre Süz</NAME>
+    <DESC/>
+  </OPTION>
+  <OPTION tex_col="-1" tex_row="-1" clip="0">
+    <ENGLISH_NAME>Filter Selection for Units on Screen</ENGLISH_NAME>
+    <NAME>Seçimi Ekrandaki Birimlere Göre Süz</NAME>
+    <DESC/>
+  </OPTION>
+</OPTIONS>

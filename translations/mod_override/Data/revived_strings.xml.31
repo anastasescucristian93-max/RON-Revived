@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- the DLL's own texts (translations\dll_strings.txt), made by translations\tools\build_data.py -->
+<ROOT>
+	<STRING en="AI ASSISTANT">YZ ASİSTANI</STRING>
+	<STRING en="NO CONTROL">KONTROL YOK</STRING>
+	<STRING en="CUSTOM">ÖZEL</STRING>
+	<STRING en="FULL CONTROL">TAM KONTROL</STRING>
+	<STRING en="Only in single player games">Yalnızca tek oyunculu oyunlarda</STRING>
+	<STRING en="The computer plays your nation">Ulusunuzu bilgisayar oynar</STRING>
+	<STRING en="The computer plays, only what is ticked">Bilgisayar yalnızca işaretli olanları oynar</STRING>
+	<STRING en="You play your nation">Ulusunuzu siz oynarsınız</STRING>
+	<STRING en="THE COMPUTER MAY BUY">BİLGİSAYAR ŞUNLARI ALABİLİR</STRING>
+	<STRING en="Keep at least %d of each resource">Her kaynaktan en az %d bırak</STRING>
+	<STRING en="Economy">Ekonomi</STRING>
+	<STRING en="Military">Askerî</STRING>
+	<STRING en="Research">Araştırma</STRING>
+	<STRING en="New cities">Yeni şehirler</STRING>
+	<STRING en="Wonders and Data Center">Harikalar ve Veri Merkezi</STRING>
+	<STRING en="Private">Er</STRING>
+	<STRING en="Private First Class">Kıdemli Er</STRING>
+	<STRING en="Corporal">Onbaşı</STRING>
+	<STRING en="Sergeant">Çavuş</STRING>
+	<STRING en="Staff Sergeant">Üstçavuş</STRING>
+	<STRING en="Master Sergeant">Başçavuş</STRING>
+	<STRING en="Lieutenant">Teğmen</STRING>
+	<STRING en="Captain">Yüzbaşı</STRING>
+	<STRING en="Major">Binbaşı</STRING>
+	<STRING en="Colonel">Albay</STRING>
+	<STRING en="Brigadier General">Tuğgeneral</STRING>
+	<STRING en="Rank: {%s} (level %d of %d)">Rütbe: {%s} (seviye %d / %d)</STRING>
+	<STRING en="Experience: %d%% of the way to %s">Deneyim: %d%% tamamlandı, sonraki: %s</STRING>
+	<STRING en="Experience: highest rank">Deneyim: en yüksek rütbe</STRING>
+	<STRING en="Earns experience from the damage it deals.">Verdiği hasardan deneyim kazanır.</STRING>
+	<STRING en="Earns experience from its abilities.">Yeteneklerinden deneyim kazanır.</STRING>
+	<STRING en="Bonuses:">Bonuslar:</STRING>
+	<STRING en=" +%d%% attack,"> +%d%% saldırı,</STRING>
+	<STRING en=" +%d%% hit points"> +%d%% can puanı</STRING>
+	<STRING en=", +1 sight">, +1 görüş</STRING>
+	<STRING en="+%d%% attack rate,">+%d%% saldırı hızı,</STRING>
+	<STRING en="-%d%% damage taken,">-%d%% alınan hasar,</STRING>
+	<STRING en="+1 range,">+1 menzil,</STRING>
+	<STRING en="heals out of combat,">savaş dışında iyileşir,</STRING>
+	<STRING en="Military buildings: select all your Barracks, Stables, Siege Factories and Airbases (Auto Plants and Factories in later ages), and train from all of them.">Askerî binalar: tüm Kışla, Ahır, Kuşatma Atölyesi ve Hava Üslerinizi (sonraki çağlarda Araç Fabrikaları ve Fabrikalar) seçin ve hepsinden birim eğitin.</STRING>
+	<STRING en="Army: select all your military units.">Ordu: tüm askerî birimlerinizi seçin.</STRING>
+	<STRING en="Airbases: select all your Airbases, and build aircraft from all of them.">Hava Üsleri: tüm Hava Üslerinizi seçin ve hepsinden uçak üretin.</STRING>
+	<STRING en="Docks: select all your Docks (Anchorages and Shipyards in later ages), and build ships from all of them.">Limanlar: tüm Limanlarınızı (sonraki çağlarda Demirleme Yerleri ve Tersaneler) seçin ve hepsinden gemi üretin.</STRING>
+	<STRING en="AI assistant: let the computer play your nation (Full control) or take it back (No control) with one click, choose what it may buy (economy, military, research, new cities, wonders) and how much of each resource it must leave you.">YZ asistanı: tek tıkla ulusunuzu bilgisayara oynatın (Tam kontrol) ya da geri alın (Kontrol yok), neler alabileceğini (ekonomi, askerî, araştırma, yeni şehirler, harikalar) ve her kaynaktan size ne kadar bırakması gerektiğini seçin.</STRING>
+	<STRING en="PLAY">OYNA</STRING>
+	<STRING en="Survive">Hayatta kal</STRING>
+	<STRING en="Next wave in">Sonraki dalga</STRING>
+	<STRING en="Boss wave in">Boss dalgası</STRING>
+	<STRING en="Survived!">Hayatta kaldın!</STRING>
+	<STRING en="No Nukes">Nükleer Silah Yok</STRING>
+</ROOT>

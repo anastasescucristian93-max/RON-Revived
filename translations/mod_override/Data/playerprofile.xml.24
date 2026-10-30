@@ -1,0 +1,2001 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Pranas Pauliukonis (Big Huge Games) --><!-- LOCALIZATION: STRING and SHORT_STRING--><ROOT>
+	<KEYS>
+		<KEY enum="SYSTEM_TOGGLE_MP_STAT_WIN" dependent="0">
+			<STRING>Comută fereastra stat. MP</STRING>
+			<SHORT_STRING>Comută stat.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_BUILDING_ALPHABLEND" dependent="0">
+			<STRING>Comută transparența clădirilor</STRING>
+			<SHORT_STRING>Transparență clădiri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_FRAME_STATS" dependent="0">
+			<STRING>Arată stat. cadre</STRING>
+			<SHORT_STRING>Stat. cadre</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_FPS_STATS" dependent="0">
+			<STRING>Comută stat. FPS</STRING>
+			<SHORT_STRING>Stat. FPS</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCREENSHOT" dependent="0">
+			<STRING>Fă o captură de ecran</STRING>
+			<SHORT_STRING>Captură ecran</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_NEW_LAND" dependent="0">
+			<STRING>Comută teren nou</STRING>
+			<SHORT_STRING>Teren nou</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_NEW_LAND_OVERLAYS" dependent="0">
+			<STRING>Comută suprapuneri teren nou</STRING>
+			<SHORT_STRING>Suprapuneri teren nou</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_WIREFRAME" dependent="0">
+			<STRING>Comută modul wireframe</STRING>
+			<SHORT_STRING>Wireframe</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_TERRAIN_DETAIL" dependent="0">
+			<STRING>Crește detaliile terenului</STRING>
+			<SHORT_STRING>Crește detaliile terenului</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_TERRAIN_DETAIL" dependent="0">
+			<STRING>Scade detaliile terenului</STRING>
+			<SHORT_STRING>Scade detaliile terenului</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SAVE_GAME" dependent="0">
+			<STRING>Salvează jocul</STRING>
+			<SHORT_STRING>Salvează jocul</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_LOAD_GAME" dependent="0">
+			<STRING>Încarcă joc</STRING>
+			<SHORT_STRING>Încarcă joc</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_MP_LOG" dependent="0">
+			<STRING>Comută jurnal MP</STRING>
+			<SHORT_STRING>Jurnal MP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PATH_SHOW_DEBUG" dependent="0">
+			<STRING>Comută afișare traseu</STRING>
+			<SHORT_STRING>Arată traseul</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_STEP_FRAME" dependent="0">
+			<STRING>Cadru cu cadru</STRING>
+			<SHORT_STRING>Cadru cu cadru</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_MESSAGES" dependent="0">
+			<STRING>Comută mesaje depanare</STRING>
+			<SHORT_STRING>Mesaje depanare</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_PATH" dependent="0">
+			<STRING>Comută traseu scenă</STRING>
+			<SHORT_STRING>Traseu scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DEBUG_JUMP_TO_ACTION" dependent="0">
+			<STRING>Depanare: salt la acțiune</STRING>
+			<SHORT_STRING>Depanare: salt la acțiune</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DEBUG_JUMP_TO_WAYPOINT" dependent="0">
+			<STRING>Depanare: salt la punct de traseu</STRING>
+			<SHORT_STRING>Depanare: salt la punct de traseu</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DISPLAY_PROFILE" dependent="0">
+			<STRING>Afișează profilul</STRING>
+			<SHORT_STRING>Afișează profilul</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PROFILE_RUNNING" dependent="0">
+			<STRING>Comută rulare profil</STRING>
+			<SHORT_STRING>Rulare profil</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_PARAM_CONSOLE" dependent="0">
+			<STRING>Comută consola param.</STRING>
+			<SHORT_STRING>Consolă param.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_GRAPHIC_CONSOLE" dependent="0">
+			<STRING>Comută consola grafică</STRING>
+			<SHORT_STRING>Consolă grafică</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_GAME_CONSOLE" dependent="0">
+			<STRING>Comută consola de joc</STRING>
+			<SHORT_STRING>Consolă de joc</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENARIO_EDITOR" dependent="0">
+			<STRING>Comută editorul de scenarii</STRING>
+			<SHORT_STRING>Editor de scenarii</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_ACHIEVEMENTS" dependent="0">
+			<STRING>Comută ecranul realizărilor</STRING>
+			<SHORT_STRING>Realizări</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_DEBUG" dependent="0">
+			<STRING>Comută depanare scenă</STRING>
+			<SHORT_STRING>Depanare scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SEE_ALL" dependent="0">
+			<STRING>Comută Vezi tot</STRING>
+			<SHORT_STRING>Vezi tot</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_RIVERS" dependent="0">
+			<STRING>Comută râuri scenă</STRING>
+			<SHORT_STRING>Râuri scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_HOT" dependent="0">
+			<STRING>Comută zone fierbinți scenă</STRING>
+			<SHORT_STRING>Zone fierbinți scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_BLOCKED" dependent="0">
+			<STRING>Comută blocaje scenă</STRING>
+			<SHORT_STRING>Blocaje scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ROADS" dependent="0">
+			<STRING>Comută drumuri scenă</STRING>
+			<SHORT_STRING>Drumuri scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_WET" dependent="0">
+			<STRING>Comută umed scenă</STRING>
+			<SHORT_STRING>Umed scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_FRACTAL" dependent="0">
+			<STRING>Comută fractal scenă</STRING>
+			<SHORT_STRING>Fractal scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ALL" dependent="0">
+			<STRING>Comută tot scenă</STRING>
+			<SHORT_STRING>Tot scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_START_NUKE_FLASH" dependent="0">
+			<STRING>Pornește fulger nuclear</STRING>
+			<SHORT_STRING>Fulger nuclear</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_SITES" dependent="0">
+			<STRING>Comută situri scenă</STRING>
+			<SHORT_STRING>Situri scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_ARMIES" dependent="0">
+			<STRING>Comută armate scenă</STRING>
+			<SHORT_STRING>Armate scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_Z_VALUES" dependent="0">
+			<STRING>Comută valori Z</STRING>
+			<SHORT_STRING>Valori Z</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CHEAT_ZERO_TECHS" dependent="0">
+			<STRING>Trișare: zero teh.</STRING>
+			<SHORT_STRING>Trișare: zero teh.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CHEAT_GIVE_TECHS" dependent="0">
+			<STRING>Trișare: dă teh.</STRING>
+			<SHORT_STRING>Dă tehnologii</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_REDRAW_WORLDMAP_BACKGROUND" dependent="0">
+			<STRING>Redesenează harta lumii</STRING>
+			<SHORT_STRING>Redesenează harta lumii</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_NET_RATIO" dependent="0">
+			<STRING>Crește raport rețea</STRING>
+			<SHORT_STRING>Crește raport rețea</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_AI_SPEED" dependent="0">
+			<STRING>Crește viteza IA</STRING>
+			<SHORT_STRING>Crește viteza IA</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_NET_RATIO" dependent="0">
+			<STRING>Scade raport rețea</STRING>
+			<SHORT_STRING>Scade raport rețea</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_AI_SPEED" dependent="0">
+			<STRING>Scade viteza IA</STRING>
+			<SHORT_STRING>Scade viteza IA</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_AI" dependent="0">
+			<STRING>Comută IA</STRING>
+			<SHORT_STRING>IA</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_WATCH_AI" dependent="0">
+			<STRING>Vezi priorități construcție IA</STRING>
+			<SHORT_STRING>Construcții IA</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_CLEAR_PROFILE" dependent="0">
+			<STRING>Golește profilul</STRING>
+			<SHORT_STRING>Golește profilul</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_PROFILE" dependent="0">
+			<STRING>Descarcă profil</STRING>
+			<SHORT_STRING>Descarcă profil</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_MEM_PROFILE" dependent="0">
+			<STRING>Descarcă profil mem.</STRING>
+			<SHORT_STRING>Descarcă profil mem.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_QUIT" dependent="0">
+			<STRING>Ieșire</STRING>
+			<SHORT_STRING>Ieșire</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_BUILD_NEW_WORLD" dependent="0">
+			<STRING>Construiește lume nouă</STRING>
+			<SHORT_STRING>Construiește lume nouă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_REGIONS" dependent="0">
+			<STRING>Comută regiuni scenă</STRING>
+			<SHORT_STRING>Regiuni scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_ZERO_RESOURCES" dependent="0">
+			<STRING>Zero resurse</STRING>
+			<SHORT_STRING>Zero resurse</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_RESOURCES" dependent="0">
+			<STRING>Crește resursele</STRING>
+			<SHORT_STRING>Crește resursele</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SWITCH_POINT_OF_VIEW" dependent="0">
+			<STRING>Schimbă punctul de vedere</STRING>
+			<SHORT_STRING>Perspectivă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_INCREASE_POP" dependent="0">
+			<STRING>Crește pop.</STRING>
+			<SHORT_STRING>Crește pop.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DECREASE_POP" dependent="0">
+			<STRING>Scade pop.</STRING>
+			<SHORT_STRING>Scade pop.</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PLACE_NEW_BUILD" dependent="0">
+			<STRING>Plasează clădire nouă</STRING>
+			<SHORT_STRING>Clădire nouă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PLACE_NEW_UNIT" dependent="0">
+			<STRING>Plasează unitate nouă</STRING>
+			<SHORT_STRING>Unitate nouă</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HURRY_ACTION" dependent="0">
+			<STRING>Grăbește acțiunea</STRING>
+			<SHORT_STRING>Grăbește acțiunea</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DAMAGE_OBJECT" dependent="0">
+			<STRING>Avariază obiect</STRING>
+			<SHORT_STRING>Avariază obiect</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DAMAGE_OBJECT_REALLY" dependent="0">
+			<STRING>Avariază grav obiect</STRING>
+			<SHORT_STRING>Avariază grav obiect</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_THOUGHT_BUBBLES" dependent="0">
+			<STRING>Comută baloane gânduri</STRING>
+			<SHORT_STRING>Gânduri</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_KEYMAP_WINDOW" dependent="0">
+			<STRING>Comută fereastra tastelor</STRING>
+			<SHORT_STRING>Fereastra tastelor</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCORE_DETAIL" dependent="0">
+			<STRING>Comută detalii scor</STRING>
+			<SHORT_STRING>Detalii scor</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEPTH_COMPLEXITY" dependent="0">
+			<STRING>Comută complexitate adâncime</STRING>
+			<SHORT_STRING>Complexitate adâncime</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_END_SCENARIO_TEST" dependent="0">
+			<STRING>Încheie testul scenariului</STRING>
+			<SHORT_STRING>Încheie testul scenariului</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_EDITOR" dependent="0">
+			<STRING>Editor de scripturi</STRING>
+			<SHORT_STRING>Editor de scripturi</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE" dependent="0">
+			<STRING>Comută consola depanare</STRING>
+			<SHORT_STRING>Consolă depanare</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE_2" dependent="0">
+			<STRING>Comută consola depanare</STRING>
+			<SHORT_STRING>Consolă depanare</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_DEBUG_CONSOLE_3" dependent="0">
+			<STRING>Comută consola depanare</STRING>
+			<SHORT_STRING>Consolă depanare</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_STORMS" dependent="0">
+			<STRING>Comută furtuni ploaie/zăpadă</STRING>
+			<SHORT_STRING>Comută furtunile</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_NEXT_PRIM" dependent="0">
+			<STRING>SYSTEM_NEXT_PRIM</STRING>
+			<SHORT_STRING>SYSTEM_NEXT_PRIM</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_PREV_PRIM" dependent="0">
+			<STRING>SYSTEM_PREV_PRIM</STRING>
+			<SHORT_STRING>SYSTEM_PREV_PRIM</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_NORM_RENDER" dependent="0">
+			<STRING>SYSTEM_NORM_RENDER</STRING>
+			<SHORT_STRING>SYSTEM_NORM_RENDER</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT" dependent="0">
+			<STRING>Ecranul clădiri următor</STRING>
+			<SHORT_STRING>Ecranul clădiri următor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BACK" dependent="0">
+			<STRING>Ecranul clădiri anterior</STRING>
+			<SHORT_STRING>Ecranul clădiri anterior</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_PEASANT" dependent="0">
+			<STRING>Oraș: creează Cetățean</STRING>
+			<SHORT_STRING>Cetățean oraș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_PEASANT_UPGRADE" dependent="1">
+			<STRING>Oraș: îmbunătățește Cetățean</STRING>
+			<SHORT_STRING>Îmbunătățește Cetățean</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_RAZE" dependent="0">
+			<STRING>Oraș: demolează</STRING>
+			<SHORT_STRING>Demolează</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_ALL_CLEAR" dependent="0">
+			<STRING>Oraș: alarmă încheiată</STRING>
+			<SHORT_STRING>Încetare alarmă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_ALARM" dependent="0">
+			<STRING>Oraș: alarmă</STRING>
+			<SHORT_STRING>Alarmă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_KNOWLEDGE" dependent="0">
+			<STRING>Universitate: îmbunăt. producția de cunoaștere</STRING>
+			<SHORT_STRING>Îmbunătățește prod. cunoaștere</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UNIVERSITY_SCHOLAR" dependent="0">
+			<STRING>Universitate: creează Savant</STRING>
+			<SHORT_STRING>Savant</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_LIGHT" dependent="0">
+			<STRING>Cazarmă: creează infanterie ușoară</STRING>
+			<SHORT_STRING>Infanterie ușoară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_LIGHT_UPGRADE" dependent="1">
+			<STRING>Cazarmă: îmbunătățește infanterie ușoară</STRING>
+			<SHORT_STRING>Îmbunăt. inf. ușoară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_HEAVY" dependent="0">
+			<STRING>Cazarmă: creează infanterie grea</STRING>
+			<SHORT_STRING>Infanterie grea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_HEAVY_UPGRADE" dependent="1">
+			<STRING>Cazarmă: îmbunătățește infanterie grea</STRING>
+			<SHORT_STRING>Îmbunăt. inf. grea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_ARCHER" dependent="0">
+			<STRING>Cazarmă: creează arcaș</STRING>
+			<SHORT_STRING>Arcaș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_ARCHER_UPGRADE" dependent="1">
+			<STRING>Cazarmă: îmbunătățește arcaș</STRING>
+			<SHORT_STRING>Îmbunătățește arcaș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_SPECIAL" dependent="0">
+			<STRING>Cazarmă: creează Cercetaș</STRING>
+			<SHORT_STRING>Cercetaș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_SPECIAL_UPGRADE" dependent="1">
+			<STRING>Cazarmă: îmbunătățește Cercetaș</STRING>
+			<SHORT_STRING>Îmbunătățește Cercetaș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_LIGHT" dependent="0">
+			<STRING>Grajd: creează cavalerie ușoară</STRING>
+			<SHORT_STRING>Cavalerie ușoară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_LIGHT_UPGRADE" dependent="1">
+			<STRING>Grajd: îmbunătățește cavalerie ușoară</STRING>
+			<SHORT_STRING>Îmbunăt. cav. ușoară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_HEAVY" dependent="0">
+			<STRING>Grajd: creează cavalerie grea</STRING>
+			<SHORT_STRING>Cavalerie grea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_HEAVY_UPGRADE" dependent="1">
+			<STRING>Grajd: îmbunătățește cavalerie grea</STRING>
+			<SHORT_STRING>Îmbunăt. cav. grea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ARCHER" dependent="0">
+			<STRING>Grajd: creează Arcaș călare</STRING>
+			<SHORT_STRING>Arcaș călare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ARCHER_UPGRADE" dependent="1">
+			<STRING>Grajd: îmbunătățește Arcaș călare</STRING>
+			<SHORT_STRING>Îmbunăt. arcaș călare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ELEPHANT" dependent="0">
+			<STRING>Grajd: creează Elefant de război</STRING>
+			<SHORT_STRING>Elefant de război</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STABLE_ELEPHANT_UPGRADE" dependent="1">
+			<STRING>Grajd: îmbunăt. Elefant de război</STRING>
+			<SHORT_STRING>Îmbunăt. elefant război</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_SIEGE" dependent="0">
+			<STRING>Atelier de asediu: creează asediu/tun</STRING>
+			<SHORT_STRING>Asediu/tun</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_SIEGE_UPGRADE" dependent="1">
+			<STRING>Atelier de asediu: îmbunăt. asediu/tun</STRING>
+			<SHORT_STRING>Îmbunătățește asediu/tun</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_GATLING" dependent="0">
+			<STRING>Cazarmă: creează Mitralieră</STRING>
+			<SHORT_STRING>Mitralieră</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_GATLING_UPGRADE" dependent="1">
+			<STRING>Cazarmă: îmbunătățește Mitralieră</STRING>
+			<SHORT_STRING>Îmbunătățește Mitralieră</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_WAGON" dependent="0">
+			<STRING>Atelier asediu: creează Car de provizii</STRING>
+			<SHORT_STRING>Car de provizii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SIEGE" dependent="0">
+			<STRING>Doc: creează navă de bombardament</STRING>
+			<SHORT_STRING>Bombardament de asediu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SIEGE_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunăt. navă de bombardament</STRING>
+			<SHORT_STRING>Îmbunăt. navă bombardament</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_STANDARD" dependent="0">
+			<STRING>Doc: creează navă grea</STRING>
+			<SHORT_STRING>Navă grea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_STANDARD_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunătățește navă grea</STRING>
+			<SHORT_STRING>Îmbunătățește navă grea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FIRESHIP" dependent="0">
+			<STRING>Doc: creează brulot/submarin</STRING>
+			<SHORT_STRING>Brulot/submarin</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FIRESHIP_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunăt. brulot/submarin</STRING>
+			<SHORT_STRING>Îmbunăt. brulot/submarin</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SCOUT" dependent="0">
+			<STRING>Doc: creează navă ușoară</STRING>
+			<SHORT_STRING>Navă ușoară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_SCOUT_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunătățește navă ușoară</STRING>
+			<SHORT_STRING>Îmbunătățește navă ușoară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CARRIER" dependent="0">
+			<STRING>Doc: creează portavion</STRING>
+			<SHORT_STRING>Portavion</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CARRIER_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunătățește portavion</STRING>
+			<SHORT_STRING>Îmbunăt. portavion</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FISHERMEN" dependent="0">
+			<STRING>Doc: creează Pescari</STRING>
+			<SHORT_STRING>Pescari</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_FISHERMEN_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunătățește Pescari</STRING>
+			<SHORT_STRING>Îmbunătățește Pescari</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CRUISER" dependent="0">
+			<STRING>Doc: creează Crucișător</STRING>
+			<SHORT_STRING>Crucișător</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOCK_CRUISER_UPGRADE" dependent="1">
+			<STRING>Doc: îmbunăt. Crucișător</STRING>
+			<SHORT_STRING>Îmbunăt. Crucișător</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTER" dependent="0">
+			<STRING>Bază aeriană: creează vânător</STRING>
+			<SHORT_STRING>Vânător</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTER_UPGRADE" dependent="1">
+			<STRING>Bază aeriană: îmbunăt. vânător</STRING>
+			<SHORT_STRING>Îmbunăt. vânător</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBER" dependent="0">
+			<STRING>Bază aeriană: creează bombardier</STRING>
+			<SHORT_STRING>Bombardier</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBER_UPGRADE" dependent="1">
+			<STRING>Bază aeriană: îmbunăt. bombardier</STRING>
+			<SHORT_STRING>Îmbunăt. bombardier</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELICOPTER" dependent="0">
+			<STRING>Bază aeriană: creează elicopter</STRING>
+			<SHORT_STRING>Elicopter</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELICOPTER_UPGRADE" dependent="1">
+			<STRING>Bază aeriană: îmbunăt. elicopter</STRING>
+			<SHORT_STRING>Îmbunăt. elicopter</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_NUKE" dependent="0">
+			<STRING>Siloz: creează rachetă nucleară</STRING>
+			<SHORT_STRING>Rachetă nucleară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_NUKE_UPGRADE" dependent="1">
+			<STRING>Siloz: îmbunăt. rachetă nucleară</STRING>
+			<SHORT_STRING>Îmbunăt. rachetă nucleară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_ROCKET" dependent="0">
+			<STRING>Siloz: creează rachetă/croazieră</STRING>
+			<SHORT_STRING>Rachetă/croazieră</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_ROCKET_UPGRADE" dependent="1">
+			<STRING>Siloz: îmbunăt. rachetă/croazieră</STRING>
+			<SHORT_STRING>Îmbunăt. rachetă/croaz.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FOOD" dependent="0">
+			<STRING>Grânar: îmbunătățește producția de hrană</STRING>
+			<SHORT_STRING>Îmbunătățește producția de hrană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TIMBER" dependent="0">
+			<STRING>Gater: îmbunătățește producția de lemn</STRING>
+			<SHORT_STRING>Îmbunătățește producția de lemn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_METAL" dependent="0">
+			<STRING>Topitorie: îmbunătățește producția de metal</STRING>
+			<SHORT_STRING>Îmbunătățește prod. de metal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FORT" dependent="0">
+			<STRING>Fort: îmbunătățește</STRING>
+			<SHORT_STRING>Îmbunătățește fortul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GORADAR" dependent="0">
+			<STRING>Post de observație: îmbunăt. la apărare AA</STRING>
+			<SHORT_STRING>Îmbunăt. la apărare AA</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TEMPLE" dependent="0">
+			<STRING>Templu: îmbunătățește religia</STRING>
+			<SHORT_STRING>Îmbunătățește religia</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_GENERAL" dependent="0">
+			<STRING>Fort: creează General</STRING>
+			<SHORT_STRING>Creează General</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_GENERAL_UPGRADE" dependent="1">
+			<STRING>Fort: îmbunătățește General</STRING>
+			<SHORT_STRING>Îmbunătățește General</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_SPY" dependent="0">
+			<STRING>Fort: creează Spion</STRING>
+			<SHORT_STRING>Creează Spion</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORT_SPY_UPGRADE" dependent="1">
+			<STRING>Fort: îmbunătățește Spion</STRING>
+			<SHORT_STRING>Îmbunătățește Spion</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOWER_MILITIA_UPGRADE" dependent="0">
+			<STRING>Turn: îmbunătățește Miliția</STRING>
+			<SHORT_STRING>Îmbunăt. Miliție</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOWER_ALLEGIANCE" dependent="0">
+			<STRING>Turn: îmbunătățește Loialitate</STRING>
+			<SHORT_STRING>Loialitate</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_CARAVAN" dependent="0">
+			<STRING>Piață: creează Caravană</STRING>
+			<SHORT_STRING>Caravană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_UPGRADE_CARAVAN" dependent="1">
+			<STRING>Piață: îmbunătățește Caravană</STRING>
+			<SHORT_STRING>Îmbunătățește Caravană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_MERCHANT" dependent="0">
+			<STRING>Piață: creează Negustor</STRING>
+			<SHORT_STRING>Negustor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MARKET_UPGRADE_MERCHANT" dependent="1">
+			<STRING>Piață: îmbunătățește Negustor</STRING>
+			<SHORT_STRING>Îmbunătățește Negustor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD" dependent="0">
+			<STRING>Piață: cumpără 100 hrană</STRING>
+			<SHORT_STRING>Cumpără hrană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER" dependent="0">
+			<STRING>Piață: cumpără 100 lemn</STRING>
+			<SHORT_STRING>Cumpără lemn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL" dependent="0">
+			<STRING>Piață: cumpără 100 metal</STRING>
+			<SHORT_STRING>Cumpără metal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL" dependent="0">
+			<STRING>Piață: cumpără 100 petrol</STRING>
+			<SHORT_STRING>Cumpără petrol</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD_500" dependent="0">
+			<STRING>Piață: cumpără 500 hrană</STRING>
+			<SHORT_STRING>Cumpără 500 hrană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER_500" dependent="0">
+			<STRING>Piață: cumpără 500 lemn</STRING>
+			<SHORT_STRING>Cumpără 500 lemn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL_500" dependent="0">
+			<STRING>Piață: cumpără 500 metal</STRING>
+			<SHORT_STRING>Cumpără 500 metal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL_500" dependent="0">
+			<STRING>Piață: cumpără 500 petrol</STRING>
+			<SHORT_STRING>Cumpără 500 petrol</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_FOOD_ALL" dependent="0">
+			<STRING>Piață: cumpără max. hrană</STRING>
+			<SHORT_STRING>Cumpără max. hrană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_TIMBER_ALL" dependent="0">
+			<STRING>Piață: cumpără max. lemn</STRING>
+			<SHORT_STRING>Cumpără max. lemn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_METAL_ALL" dependent="0">
+			<STRING>Piață: cumpără max. metal</STRING>
+			<SHORT_STRING>Cumpără max. metal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUY_OIL_ALL" dependent="0">
+			<STRING>Piață: cumpără max. petrol</STRING>
+			<SHORT_STRING>Cumpără max. petrol</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD" dependent="1">
+			<STRING>Piață: vinde 100 hrană</STRING>
+			<SHORT_STRING>Vinde 100 hrană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER" dependent="1">
+			<STRING>Piață: vinde 100 lemn</STRING>
+			<SHORT_STRING>Vinde 100 lemn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL" dependent="1">
+			<STRING>Piață: vinde 100 metal</STRING>
+			<SHORT_STRING>Vinde 100 metal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL" dependent="1">
+			<STRING>Piață: vinde 100 petrol</STRING>
+			<SHORT_STRING>Vinde 100 petrol</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD_500" dependent="0">
+			<STRING>Piață: vinde 500 hrană</STRING>
+			<SHORT_STRING>Vinde 500 hrană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER_500" dependent="0">
+			<STRING>Piață: vinde 500 lemn</STRING>
+			<SHORT_STRING>Vinde 500 lemn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL_500" dependent="0">
+			<STRING>Piață: vinde 500 metal</STRING>
+			<SHORT_STRING>Vinde 500 metal</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL_500" dependent="0">
+			<STRING>Piață: vinde 500 petrol</STRING>
+			<SHORT_STRING>Vinde 500 petrol</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_FOOD_ALL" dependent="0">
+			<STRING>Piață: vinde toată hrana</STRING>
+			<SHORT_STRING>Vinde toată hrana</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_TIMBER_ALL" dependent="0">
+			<STRING>Piață: vinde tot lemnul</STRING>
+			<SHORT_STRING>Vinde tot lemnul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_METAL_ALL" dependent="0">
+			<STRING>Piață: vinde tot metalul</STRING>
+			<SHORT_STRING>Vinde tot metalul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELL_OIL_ALL" dependent="0">
+			<STRING>Piață: vinde tot petrolul</STRING>
+			<SHORT_STRING>Vinde tot petrolul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_AGE" dependent="0">
+			<STRING>Bibliotecă: cercetează avansarea în epocă</STRING>
+			<SHORT_STRING>Avansare epocă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_MILITARY" dependent="0">
+			<STRING>Bibliotecă: cercetare militară</STRING>
+			<SHORT_STRING>Cercetare militară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_SCIENCE" dependent="0">
+			<STRING>Bibliotecă: cercetare științifică</STRING>
+			<SHORT_STRING>Cercetare științifică</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_COMMERCE" dependent="0">
+			<STRING>Bibliotecă: cercetare comerț</STRING>
+			<SHORT_STRING>Cercetare comerț</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LIBRARY_CIVIC" dependent="0">
+			<STRING>Bibliotecă: cercetare civică</STRING>
+			<SHORT_STRING>Cercetare civică</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_BRIBE" dependent="0">
+			<STRING>Spion: mituiește inamicul</STRING>
+			<SHORT_STRING>Mituiește inamic</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_PILFER_FUNDS" dependent="0">
+			<STRING>Spion: Furt de resurse</STRING>
+			<SHORT_STRING>Furt de resurse</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_RALLY" dependent="0">
+			<STRING>General: Adunare</STRING>
+			<SHORT_STRING>Adunare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_FORCED_MARCH" dependent="0">
+			<STRING>General: Marș forțat</STRING>
+			<SHORT_STRING>Marș forțat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_AMBUSH" dependent="0">
+			<STRING>General: Ambuscadă</STRING>
+			<SHORT_STRING>Ambuscadă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_DECOY" dependent="0">
+			<STRING>General: Creează momeli</STRING>
+			<SHORT_STRING>Momeală</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GENERAL_ENTRENCH" dependent="0">
+			<STRING>General: Retranșare</STRING>
+			<SHORT_STRING>Retranșare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_SABOTAGE" dependent="0">
+			<STRING>Forțe speciale: Sabotaj</STRING>
+			<SHORT_STRING>Sabotaj</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_PARADROP" dependent="0">
+			<STRING>Forțe speciale: Parașutare</STRING>
+			<SHORT_STRING>Parașutare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_INFORMER" dependent="0">
+			<STRING>Spion: Informator</STRING>
+			<SHORT_STRING>Informator</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_COUNTERINTEL" dependent="0">
+			<STRING>Cercetaș: Contraspionaj</STRING>
+			<SHORT_STRING>Cercetaș: Contraspionaj</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_SNIPER" dependent="0">
+			<STRING>Forțe speciale: Lunetist</STRING>
+			<SHORT_STRING>Lunetist</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPECIAL_FORCES_JAM_RADAR" dependent="0">
+			<STRING>Forțe speciale: Bruiaj radar</STRING>
+			<SHORT_STRING>Bruiaj radar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD" dependent="0">
+			<STRING>Cetățean: constr. clădire</STRING>
+			<SHORT_STRING>Constr. clădire</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY" dependent="0">
+			<STRING>Cetățean: clădire militară</STRING>
+			<SHORT_STRING>Clădire militară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER" dependent="0">
+			<STRING>Cetățean: constr. minune</STRING>
+			<SHORT_STRING>Constr. minune</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY2" dependent="0">
+			<STRING>Cetățean: clădire militară (2)</STRING>
+			<SHORT_STRING>Clădire militară (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER2" dependent="0">
+			<STRING>Cetățean: constr. minune (2) </STRING>
+			<SHORT_STRING>Constr. minune (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD" dependent="0">
+			<STRING>Cetățean: constr. clădire</STRING>
+			<SHORT_STRING>Constr. clădire</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MILITARY" dependent="0">
+			<STRING>Cetățean: clădire militară</STRING>
+			<SHORT_STRING>Clădire militară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WONDER" dependent="0">
+			<STRING>Cetățean: constr. minune</STRING>
+			<SHORT_STRING>Constr. minune</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PEASANT_TO_ARMS" dependent="0">
+			<STRING>Cetățean: La arme</STRING>
+			<SHORT_STRING>La arme</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MILITIA_CIVILIAN" dependent="0">
+			<STRING>Miliție: Civil</STRING>
+			<SHORT_STRING>Miliție civil</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_AIRDEFENSE" dependent="0">
+			<STRING>Constr. apărare AA</STRING>
+			<SHORT_STRING>Apărare AA</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_FARM" dependent="0">
+			<STRING>Constr. Fermă</STRING>
+			<SHORT_STRING>Fermă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_GRANARY" dependent="0">
+			<STRING>Constr. Grânar</STRING>
+			<SHORT_STRING>Grânar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MINE" dependent="0">
+			<STRING>Constr. Mină</STRING>
+			<SHORT_STRING>Mină</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SMELTER" dependent="0">
+			<STRING>Constr. Topitorie</STRING>
+			<SHORT_STRING>Topitorie</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_UNIVERSITY" dependent="0">
+			<STRING>Constr. Universitate</STRING>
+			<SHORT_STRING>Universitate</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_WOODCUTTER" dependent="0">
+			<STRING>Constr. Tabără forestieră</STRING>
+			<SHORT_STRING>Tabără forestieră</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SAWMILL" dependent="0">
+			<STRING>Constr. Gater</STRING>
+			<SHORT_STRING>Gater</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_OILWELL" dependent="0">
+			<STRING>Constr. Sondă petrolieră</STRING>
+			<SHORT_STRING>Sondă petrolieră</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_REFINERY" dependent="0">
+			<STRING>Constr. Rafinărie</STRING>
+			<SHORT_STRING>Rafinărie</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_MARKET" dependent="0">
+			<STRING>Constr. Piață</STRING>
+			<SHORT_STRING>Piață</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_BARRACKS" dependent="0">
+			<STRING>Constr. Cazarmă</STRING>
+			<SHORT_STRING>Cazarmă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_STABLE" dependent="0">
+			<STRING>Constr. Grajd</STRING>
+			<SHORT_STRING>Grajd</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SIEGEFACTORY" dependent="0">
+			<STRING>Constr. Atelier de asediu</STRING>
+			<SHORT_STRING>Atelier de asediu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_VILLAGE" dependent="0">
+			<STRING>Constr. Oraș</STRING>
+			<SHORT_STRING>Oraș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_VILLAGE2" dependent="0">
+			<STRING>Constr. Oraș (2)</STRING>
+			<SHORT_STRING>Constr. Oraș (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_TEMPLE" dependent="0">
+			<STRING>Constr. Templu</STRING>
+			<SHORT_STRING>Templu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_LIBRARY" dependent="0">
+			<STRING>Constr. Bibliotecă</STRING>
+			<SHORT_STRING>Bibliotecă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_FORT" dependent="0">
+			<STRING>Constr. Fort/Castel/Fortăreață/Redută</STRING>
+			<SHORT_STRING>Fort</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_TOWER" dependent="0">
+			<STRING>Constr. Turn/Donjon/Palisadă/Buncăr</STRING>
+			<SHORT_STRING>Turn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_AIRBASE" dependent="0">
+			<STRING>Constr. Bază aeriană</STRING>
+			<SHORT_STRING>Bază aeriană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_DOCK" dependent="0">
+			<STRING>Constr. Doc</STRING>
+			<SHORT_STRING>Doc</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SILO" dependent="0">
+			<STRING>Constr. Siloz de rachete</STRING>
+			<SHORT_STRING>Siloz de rachete</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_LOOKOUT" dependent="0">
+			<STRING>Constr. Post de veghe</STRING>
+			<SHORT_STRING>Post de veghe</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_LINE" dependent="0">
+			<STRING>Unitate: formație în linie</STRING>
+			<SHORT_STRING>Linie</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_REFUSED" dependent="0">
+			<STRING>Unitate: formație flanc retras</STRING>
+			<SHORT_STRING>Flanc retras</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_ENVELOP" dependent="0">
+			<STRING>Unitate: formație învăluire</STRING>
+			<SHORT_STRING>Învăluire</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_E_RIGHT" dependent="0">
+			<STRING>Unitate: formație eșalon dreapta</STRING>
+			<SHORT_STRING>Eșalon dreapta</SHORT_STRING>
+		</KEY>
+		<KEY enum="FORM_E_LEFT" dependent="0">
+			<STRING>Unitate: formație eșalon stânga</STRING>
+			<SHORT_STRING>Eșalon stânga</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_AGGRESSIVE" dependent="0">
+			<STRING>Unitate: postură agresivă</STRING>
+			<SHORT_STRING>Postură agresivă</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_RAID" dependent="0">
+			<STRING>Unitate: postură de raid</STRING>
+			<SHORT_STRING>Postură de raid</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_RAZE" dependent="0">
+			<STRING>Unitate: postură de distrugere</STRING>
+			<SHORT_STRING>Postură de distrugere</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_HOLDFIRE" dependent="0">
+			<STRING>Unitate: postură fără foc</STRING>
+			<SHORT_STRING>Postură fără foc</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_DEFENSIVE" dependent="0">
+			<STRING>Unitate: postură defensivă</STRING>
+			<SHORT_STRING>Postură defensivă</SHORT_STRING>
+		</KEY>
+		<KEY enum="STANCE_STANDGROUND" dependent="0">
+			<STRING>Unitate: pe poziție</STRING>
+			<SHORT_STRING>Pe poziție</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CANCEL" dependent="0">
+			<STRING>Anulare acțiune</STRING>
+			<SHORT_STRING>Anulează</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT" dependent="0">
+			<STRING>Chat</STRING>
+			<SHORT_STRING>Chat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ALL" dependent="0">
+			<STRING>Chat toți</STRING>
+			<SHORT_STRING>Chat toți</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ALLIES" dependent="0">
+			<STRING>Chat aliați</STRING>
+			<SHORT_STRING>Chat aliați</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CHAT_ENEMIES" dependent="0">
+			<STRING>Chat inamici</STRING>
+			<SHORT_STRING>Chat inamici</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DIPLO" dependent="0">
+			<STRING>Diplomație</STRING>
+			<SHORT_STRING>Diplomație</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DIRECT_DIPLO" dependent="0">
+			<STRING>Diplomație: salt la ofertă</STRING>
+			<SHORT_STRING>Salt la ofertă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SLOWER" dependent="0">
+			<STRING>Joc mai lent</STRING>
+			<SHORT_STRING>Mai lent</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SLOWER2" dependent="0">
+			<STRING>Joc mai lent (2)</STRING>
+			<SHORT_STRING>Mai lent</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FASTER" dependent="0">
+			<STRING>Joc mai rapid</STRING>
+			<SHORT_STRING>Mai rapid</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FASTER2" dependent="0">
+			<STRING>Joc mai rapid (2)</STRING>
+			<SHORT_STRING>Mai rapid</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RESIGN" dependent="0">
+			<STRING>Abandon</STRING>
+			<SHORT_STRING>Abandon</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_QUIT" dependent="0">
+			<STRING>Ieșire</STRING>
+			<SHORT_STRING>Ieșire</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GARRISON" dependent="0">
+			<STRING>Garnizoană unit.</STRING>
+			<SHORT_STRING>Garnizoană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE" dependent="0">
+			<STRING>Găsește oraș</STRING>
+			<SHORT_STRING>Găsește oraș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY" dependent="0">
+			<STRING>Găsește bibliotecă</STRING>
+			<SHORT_STRING>Găsește bibliotecă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET" dependent="0">
+			<STRING>Găsește piață</STRING>
+			<SHORT_STRING>Găsește piață</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS" dependent="0">
+			<STRING>Găsește cazarmă</STRING>
+			<SHORT_STRING>Găsește cazarmă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE" dependent="0">
+			<STRING>Găsește grajd sau uzină auto</STRING>
+			<SHORT_STRING>Găsește grajd sau uzină auto</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY" dependent="0">
+			<STRING>Găsește atelier de asediu</STRING>
+			<SHORT_STRING>Găsește atelier de asediu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK" dependent="0">
+			<STRING>Găsește doc/șantier naval</STRING>
+			<SHORT_STRING>Găsește doc/șantier naval</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE" dependent="0">
+			<STRING>Găsește bază aeriană</STRING>
+			<SHORT_STRING>Găsește bază aeriană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO" dependent="0">
+			<STRING>Găsește siloz de rachete</STRING>
+			<SHORT_STRING>Găsește siloz de rachete</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY" dependent="0">
+			<STRING>Găsește universitate</STRING>
+			<SHORT_STRING>Găsește universitate</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE_NOZOOM" dependent="1">
+			<STRING>Selectează oraș, fără zoom</STRING>
+			<SHORT_STRING>Selectează oraș, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY_NOZOOM" dependent="1">
+			<STRING>Selectează bibliotecă, fără zoom</STRING>
+			<SHORT_STRING>Selectează bibliotecă, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET_NOZOOM" dependent="1">
+			<STRING>Selectează piață, fără zoom</STRING>
+			<SHORT_STRING>Selectează piață, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS_NOZOOM" dependent="1">
+			<STRING>Selectează cazarmă, fără zoom</STRING>
+			<SHORT_STRING>Selectează cazarmă, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE_NOZOOM" dependent="1">
+			<STRING>Selectează grajd, fără zoom</STRING>
+			<SHORT_STRING>Selectează grajd, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY_NOZOOM" dependent="1">
+			<STRING>Selectează atelier asediu, fără zoom</STRING>
+			<SHORT_STRING>Selectează atelier asediu, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK_NOZOOM" dependent="1">
+			<STRING>Selectează doc, fără zoom</STRING>
+			<SHORT_STRING>Selectează doc, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE_NOZOOM" dependent="1">
+			<STRING>Selectează bază aeriană, fără zoom</STRING>
+			<SHORT_STRING>Selectează bază aeriană, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO_NOZOOM" dependent="1">
+			<STRING>Selectează siloz, fără zoom</STRING>
+			<SHORT_STRING>Selectează siloz, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY_NOZOOM" dependent="1">
+			<STRING>Selectează universitate, fără zoom</STRING>
+			<SHORT_STRING>Selectează universitate, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_VILLAGE_ALL" dependent="1">
+			<STRING>Selectează toate orașele</STRING>
+			<SHORT_STRING>Selectează toate orașele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_LIBRARY_ALL" dependent="1">
+			<STRING>Selectează toate bibliotecile</STRING>
+			<SHORT_STRING>Selectează toate bibliotecile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MARKET_ALL" dependent="1">
+			<STRING>Selectează toate piețele</STRING>
+			<SHORT_STRING>Selectează toate piețele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_BARRACKS_ALL" dependent="1">
+			<STRING>Selectează toate cazărmile</STRING>
+			<SHORT_STRING>Selectează toate cazărmile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_STABLE_ALL" dependent="1">
+			<STRING>Selectează toate grajdurile</STRING>
+			<SHORT_STRING>Selectează toate grajdurile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SIEGEFACTORY_ALL" dependent="1">
+			<STRING>Selectează toate atelierele de asediu</STRING>
+			<SHORT_STRING>Selectează toate atelierele de asediu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_DOCK_ALL" dependent="1">
+			<STRING>Selectează toate docurile</STRING>
+			<SHORT_STRING>Selectează toate docurile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_AIRBASE_ALL" dependent="1">
+			<STRING>Selectează toate bazele aeriene</STRING>
+			<SHORT_STRING>Selectează toate bazele aeriene</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SILO_ALL" dependent="1">
+			<STRING>Selectează toate silozurile</STRING>
+			<SHORT_STRING>Selectează toate silozurile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_UNIVERSITY_ALL" dependent="1">
+			<STRING>Selectează toate universitățile</STRING>
+			<SHORT_STRING>Selectează toate universitățile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GATHER" dependent="0">
+			<STRING>Clădire: setează punct de adunare</STRING>
+			<SHORT_STRING>Setează punct de adunare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CLEAR_GATHER" dependent="0">
+			<STRING>Clădire: șterge punct de adunare</STRING>
+			<SHORT_STRING>Șterge punctul de adunare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PAUSE" dependent="0">
+			<STRING>Pauză joc</STRING>
+			<SHORT_STRING>Pauză joc</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PAUSE2" dependent="0">
+			<STRING>Pauză joc</STRING>
+			<SHORT_STRING>Pauză joc</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DISBAND" dependent="0">
+			<STRING>Unitate/clădire: desființare/demolare</STRING>
+			<SHORT_STRING>Desființare/demolare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TRANSPORT" dependent="0">
+			<STRING>Unitate: comută transport auto</STRING>
+			<SHORT_STRING>Transport automat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM" dependent="0">
+			<STRING>Zoom</STRING>
+			<SHORT_STRING>Zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN" dependent="0">
+			<STRING>Mărește</STRING>
+			<SHORT_STRING>Mărește</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT" dependent="0">
+			<STRING>Micșorează</STRING>
+			<SHORT_STRING>Micșorează</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN2" dependent="0">
+			<STRING>Mărește (2)</STRING>
+			<SHORT_STRING>Mărește (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT2" dependent="0">
+			<STRING>Micșorează (2)</STRING>
+			<SHORT_STRING>Micșorează (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_IN3" dependent="0">
+			<STRING>Mărește (3)</STRING>
+			<SHORT_STRING>Mărește (3)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ZOOM_OUT3" dependent="0">
+			<STRING>Micșorează (3)</STRING>
+			<SHORT_STRING>Micșorează (3)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SAVE_ZOOM_IN" dependent="0">
+			<STRING>Salvează mărire</STRING>
+			<SHORT_STRING>Salvează mărire</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SAVE_ZOOM_OUT" dependent="0">
+			<STRING>Salvează micșorare</STRING>
+			<SHORT_STRING>Salvează micșorare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MILITARY" dependent="0">
+			<STRING>Găsește unitate/grup militar</STRING>
+			<SHORT_STRING>Găsește unitate/grup militar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PEASANT" dependent="0">
+			<STRING>Găsește Cetățean inactiv</STRING>
+			<SHORT_STRING>Găsește Cetățean inactiv</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_GENERAL" dependent="0">
+			<STRING>Găsește General</STRING>
+			<SHORT_STRING>Găsește General</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SCOUT" dependent="0">
+			<STRING>Găsește Cercetaș</STRING>
+			<SHORT_STRING>Găsește Cercetaș</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SPY" dependent="0">
+			<STRING>Găsește Spion</STRING>
+			<SHORT_STRING>Găsește Spion</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SUPPLY" dependent="0">
+			<STRING>Găsește Car de provizii</STRING>
+			<SHORT_STRING>Găsește Car de provizii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MILITARY_NOZOOM" dependent="1">
+			<STRING>Selectează unitate militară, fără zoom</STRING>
+			<SHORT_STRING>Selectează militar, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PEASANT_NOZOOM" dependent="1">
+			<STRING>Selectează Cetățean inactiv, fără zoom</STRING>
+			<SHORT_STRING>Selectează Cetățean inactiv, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_GENERAL_NOZOOM" dependent="1">
+			<STRING>Selectează General, fără zoom</STRING>
+			<SHORT_STRING>Selectează General, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SCOUT_NOZOOM" dependent="1">
+			<STRING>Selectează Cercetaș, fără zoom</STRING>
+			<SHORT_STRING>Selectează Cercetaș, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SPY_NOZOOM" dependent="1">
+			<STRING>Selectează Spion, fără zoom</STRING>
+			<SHORT_STRING>Selectează Spion, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SUPPLY_NOZOOM" dependent="1">
+			<STRING>Selectează Car de provizii, fără zoom</STRING>
+			<SHORT_STRING>Selectează Car de provizii, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_MILITARY" dependent="1">
+			<STRING>Selectează toate unitățile militare</STRING>
+			<SHORT_STRING>Selectează toate unitățile militare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_PEASANT" dependent="1">
+			<STRING>Selectează toți Cetățenii inactivi</STRING>
+			<SHORT_STRING>Selectează toți Cetățenii inactivi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_GENERAL" dependent="1">
+			<STRING>Selectează toți Generalii</STRING>
+			<SHORT_STRING>Selectează toți Generalii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SCOUT" dependent="1">
+			<STRING>Selectează toți Cercetașii</STRING>
+			<SHORT_STRING>Selectează toți Cercetașii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SPY" dependent="1">
+			<STRING>Selectează toți Spionii</STRING>
+			<SHORT_STRING>Selectează toți Spionii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_SUPPLY" dependent="1">
+			<STRING>Selectează toate Carele de provizii</STRING>
+			<SHORT_STRING>Selectează toate proviziile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STANCE" dependent="0">
+			<STRING>Unitate: postura următoare</STRING>
+			<SHORT_STRING>Postura următoare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_NONIDLE_PEASANT" dependent="0">
+			<STRING>Găsește orice Cetățean</STRING>
+			<SHORT_STRING>Găsește orice Cetățean</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_NONIDLE_PEASANT" dependent="1">
+			<STRING>Selectează toți Cetățenii</STRING>
+			<SHORT_STRING>Selectează toți Cetățenii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NOZOOM_NONIDLE_PEASANT" dependent="1">
+			<STRING>Selectează orice Cetățean, fără zoom</STRING>
+			<SHORT_STRING>Selectează orice Cetățean, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AUTO_EXPLORE" dependent="0">
+			<STRING>Unitate: explorare automată</STRING>
+			<SHORT_STRING>Explorare automată</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FOLLOW" dependent="0">
+			<STRING>Unit.: urmează</STRING>
+			<SHORT_STRING>Urmează</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_GUARD" dependent="0">
+			<STRING>Unitate: păzește</STRING>
+			<SHORT_STRING>Păzește</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ATTACK_TO" dependent="0">
+			<STRING>Unitate: atacă spre</STRING>
+			<SHORT_STRING>Atacă spre</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_EXPLORE_TO" dependent="0">
+			<STRING>Unit.: explorează</STRING>
+			<SHORT_STRING>Explorează</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FLEE_TO" dependent="0">
+			<STRING>Unitate: fugi spre</STRING>
+			<SHORT_STRING>Fugi spre</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MOVE_TO" dependent="0">
+			<STRING>Unitate: mută la</STRING>
+			<SHORT_STRING>Mută la</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORWARD" dependent="0">
+			<STRING>Unitate: înainte</STRING>
+			<SHORT_STRING>Înainte</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORWARD2" dependent="0">
+			<STRING>Unitate: înainte (2)</STRING>
+			<SHORT_STRING>Înainte (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PATROL" dependent="0">
+			<STRING>Unitate: patrulează</STRING>
+			<SHORT_STRING>Patrulează</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_HALT" dependent="0">
+			<STRING>Unit.: oprește</STRING>
+			<SHORT_STRING>Stai</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ATTACK_GROUND" dependent="0">
+			<STRING>Unit.: bombardează</STRING>
+			<SHORT_STRING>Bombardă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_EJECT_ALL" dependent="0">
+			<STRING>Unitate/clădire: ejectează tot</STRING>
+			<SHORT_STRING>Scoate tot</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_MESSAGE" dependent="0">
+			<STRING>Mesajul următor</STRING>
+			<SHORT_STRING>Mesajul următor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_MESSAGE2" dependent="0">
+			<STRING>Mesajul următor 2</STRING>
+			<SHORT_STRING>Mesajul următor 2</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_MESSAGE" dependent="1">
+			<STRING>Mesajul anterior</STRING>
+			<SHORT_STRING>Mesaj anterior</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_MESSAGE2" dependent="1">
+			<STRING>Mesajul anterior 2</STRING>
+			<SHORT_STRING>Mesaj anterior 2</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SCENE_HELP" dependent="0">
+			<STRING>Ajutor scenă</STRING>
+			<SHORT_STRING>Ajutor scenă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_HELP" dependent="0">
+			<STRING>Mai mult text de ajutor</STRING>
+			<SHORT_STRING>Mai mult text de ajutor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_HELP" dependent="0">
+			<STRING>Mai puțin ajutor</STRING>
+			<SHORT_STRING>Mai puțin ajutor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_THOUGHTS" dependent="0">
+			<STRING>Comută baloane gânduri</STRING>
+			<SHORT_STRING>Comută baloane gânduri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_NEXT_DATA" dependent="0">
+			<STRING>Afișare date următoare</STRING>
+			<SHORT_STRING>Afișare date următoare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PREV_DATA" dependent="1">
+			<STRING>Date anterioare</STRING>
+			<SHORT_STRING>Date anterioare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_DATA" dependent="1">
+			<STRING>Comută datele</STRING>
+			<SHORT_STRING>Comută datele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT" dependent="0">
+			<STRING>Ciclează afișarea datelor</STRING>
+			<SHORT_STRING>Ciclează afișarea datelor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_FF_COLORS" dependent="0">
+			<STRING>Comută culori aliat/inamic</STRING>
+			<SHORT_STRING>Comută culori aliat/inamic</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_CITY_NAMES" dependent="0">
+			<STRING>Comută numele orașelor</STRING>
+			<SHORT_STRING>Comută numele orașelor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_STATS" dependent="0">
+			<STRING>Comută barele de progres ale cercetării</STRING>
+			<SHORT_STRING>Comută barele de progres ale cercetării</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_ADVANCED" dependent="0">
+			<STRING>Comută meniul avansat</STRING>
+			<SHORT_STRING>Meniu avansat</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STATWIN" dependent="0">
+			<STRING>Fereastră stat.</STRING>
+			<SHORT_STRING>Fereastră stat.</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PING" dependent="0">
+			<STRING>Trimite semnal</STRING>
+			<SHORT_STRING>Trimite semnal</SHORT_STRING>
+		</KEY>
+		<KEY enum="CHEAT_HURRY_JOB" dependent="0">
+			<STRING>Trișare: grăbește sarcina</STRING>
+			<SHORT_STRING>Trișare: grăbește sarcina</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_QUEUE" dependent="0">
+			<STRING>Clădire: scoate din coadă</STRING>
+			<SHORT_STRING>Scoate din coadă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_OBJECTIVES" dependent="0">
+			<STRING>Arată obiectivele</STRING>
+			<SHORT_STRING>Arată obiectivele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MENU" dependent="0">
+			<STRING>Meniul jocului</STRING>
+			<SHORT_STRING>Meniul jocului</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_OPTIONS" dependent="0">
+			<STRING>Opțiuni joc</STRING>
+			<SHORT_STRING>Opțiuni joc</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_TIME" dependent="0">
+			<STRING>Comută afișarea cronometrului</STRING>
+			<SHORT_STRING>Comută afișarea cronometrului</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_LEFT" dependent="0">
+			<STRING>Unitate: rotește formația la stânga</STRING>
+			<SHORT_STRING>Rotește formația la stânga</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RIGHT" dependent="0">
+			<STRING>Unitate: rotește formația la dreapta</STRING>
+			<SHORT_STRING>Rotește formația la dreapta</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DOWN" dependent="0">
+			<STRING>Unitate: formația un pas înapoi</STRING>
+			<SHORT_STRING>Formația un pas înapoi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UP" dependent="0">
+			<STRING>Cameră: sus</STRING>
+			<SHORT_STRING>Cameră: sus</SHORT_STRING>
+		</KEY>
+		<KEY enum="TERRAINDEBUG" dependent="0">
+			<STRING>Depanare teren</STRING>
+			<SHORT_STRING>Depanare teren</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PING2" dependent="0">
+			<STRING>Trimite semnal (2)</STRING>
+			<SHORT_STRING>Trimite semnal (2)</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CANNON_TIME" dependent="0">
+			<STRING>Activează Timp tampon</STRING>
+			<SHORT_STRING>Timp tampon</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_MAIN" dependent="0">
+			<STRING>Comută interfața principală</STRING>
+			<SHORT_STRING>Interfața principală</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_RESOURCES" dependent="0">
+			<STRING>Comută interfața resurse</STRING>
+			<SHORT_STRING>Interfața resurse</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_MARKET" dependent="0">
+			<STRING>Comută interfața piață</STRING>
+			<SHORT_STRING>Interfața piață</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_IFACE_INFRA" dependent="0">
+			<STRING>Comută interfața infrastructură</STRING>
+			<SHORT_STRING>Interfața infrastructură</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_CURRENT" dependent="0">
+			<STRING>Selectează tot din tipurile selectate</STRING>
+			<SHORT_STRING>Selectează tot</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_NORMAL" dependent="0">
+			<STRING>Afișare date: POLITIC</STRING>
+			<SHORT_STRING>Afișare date: POLITIC</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_ECONOMY" dependent="0">
+			<STRING>Afișare date: ECONOMIE</STRING>
+			<SHORT_STRING>Afișare date: ECONOMIE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_MARKET" dependent="0">
+			<STRING>Afișare date: PIAȚĂ</STRING>
+			<SHORT_STRING>Afișare date: PIAȚĂ</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_MILITARY" dependent="0">
+			<STRING>Afișare date: MILITAR</STRING>
+			<SHORT_STRING>Afișare date: MILITAR</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_LIBRARY" dependent="0">
+			<STRING>Afișare date: ORAȘE</STRING>
+			<SHORT_STRING>Afișare date: ORAȘE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_TECHNOLOGY" dependent="0">
+			<STRING>Afișare date: ÎMBUNĂTĂȚIRI</STRING>
+			<SHORT_STRING>Afișare date: ÎMBUNĂTĂȚIRI</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_GROUPS" dependent="0">
+			<STRING>Afișare date: GRUPURI</STRING>
+			<SHORT_STRING>Afișare date: GRUPURI</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_DIPLOMACY">
+			<STRING>Afișare date: DIPLOMAȚIE</STRING>
+			<SHORT_STRING>Afișare date: DIPLOMAȚIE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_WONDERS">
+			<STRING>Afișare date: MINUNI</STRING>
+			<SHORT_STRING>Afișare date: MINUNI</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_TEXTURES" dependent="0">
+			<STRING>SYSTEM_TOGGLE_TEXTURES</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_TEXTURES</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_MEM_WINDOW" dependent="0">
+			<STRING>SYSTEM_TOGGLE_MEM_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_MEM_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MEM_PRINT" dependent="0">
+			<STRING>SYSTEM_MEM_PRINT</STRING>
+			<SHORT_STRING>SYSTEM_MEM_PRINT</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_LOG" dependent="0">
+			<STRING>SYSTEM_SCRIPT_LOG</STRING>
+			<SHORT_STRING>SYSTEM_SCRIPT_LOG</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TEST_XML_WINDOW" dependent="0">
+			<STRING>SYSTEM_TEST_XML_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_TEST_XML_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_RELOAD_XML_WINDOW" dependent="0">
+			<STRING>SYSTEM_RELOAD_XML_WINDOW</STRING>
+			<SHORT_STRING>SYSTEM_RELOAD_XML_WINDOW</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SCRIPT_EDITOR_EDIT_MODE" dependent="0">
+			<STRING>SYSTEM_SCRIPT_EDITOR_EDIT_MODE</STRING>
+			<SHORT_STRING>SYSTEM_SCRIPT_EDITOR_EDIT_MODE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_RESEARCH" dependent="0">
+			<STRING>Găsește clădire de cercetare</STRING>
+			<SHORT_STRING>Găsește clădire de cercetare</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SPY_COUNTERINTEL" dependent="0">
+			<STRING>Spion: Contraspionaj</STRING>
+			<SHORT_STRING>Contraspionaj</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_FARM" dependent="0">
+			<STRING>Oraș: punct de adunare la ferme</STRING>
+			<SHORT_STRING>Punct de adunare la ferme</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_WOOD" dependent="0">
+			<STRING>Oraș: punct de adunare la tabere forestiere</STRING>
+			<SHORT_STRING>Adunare la tabere forestiere</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_MINE" dependent="0">
+			<STRING>Oraș: punct de adunare la mine</STRING>
+			<SHORT_STRING>Punct de adunare la mine</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_GATHER_ALL" dependent="0">
+			<STRING>Oraș: adunare la clădiri de resurse</STRING>
+			<SHORT_STRING>Adunare la clădiri de resurse</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_LOW">
+			<STRING>Setează detaliul ajutorului pe SCĂZUT</STRING>
+			<SHORT_STRING>Detaliu ajutor SCĂZUT</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_MEDIUM">
+			<STRING>Setează detaliul ajutorului pe MEDIU</STRING>
+			<SHORT_STRING>Detaliu ajutor MEDIU</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTIONS_HELP_HIGH">
+			<STRING>Setează detaliul ajutorului pe RIDICAT</STRING>
+			<SHORT_STRING>Detaliu ajutor RIDICAT</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_STAT_OFF">
+			<STRING>Oprește afișarea datelor</STRING>
+			<SHORT_STRING>Oprește afișarea datelor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_GRANARY2">
+			<STRING>Grânar: îmbunăt. bonus trupe pedestre</STRING>
+			<SHORT_STRING>Îmbunăt. producția de trupe</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_LUMBER2">
+			<STRING>Gater: îmbunătățește bonus clădiri</STRING>
+			<SHORT_STRING>Îmbunătățește bonus clădiri</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SMELTER2">
+			<STRING>Topitorie: îmbunăt. bonus provizii</STRING>
+			<SHORT_STRING>Îmbunătățește bonus provizii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_FORT2">
+			<STRING>Fort: îmbunăt. bonus Spion/General</STRING>
+			<SHORT_STRING>Îmbunăt. bonus Spion/General</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_INFINITE">
+			<STRING>Clădire: comută coada infinită</STRING>
+			<SHORT_STRING>Coadă infinită</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_SCENE_EVENTS">
+			<STRING>SYSTEM_SHOW_SCENE_EVENTS</STRING>
+			<SHORT_STRING>SYSTEM_SHOW_SCENE_EVENTS</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_DUMP_FRAMERATE" dependent="0">
+			<STRING>Descarcă rata de cadre</STRING>
+			<SHORT_STRING>Descarcă FPS</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRSTRIKE">
+			<STRING>Unitate aeriană: atac aerian</STRING>
+			<SHORT_STRING>Atac aerian</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TRANSFER">
+			<STRING>Unitate aeriană: transfer</STRING>
+			<SHORT_STRING>Transferă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_RETURN">
+			<STRING>Unitate aeriană: întoarcere la bază</STRING>
+			<SHORT_STRING>Întoarcere la bază</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_RECALL">
+			<STRING>Bază aeriană: recheamă toate avioanele</STRING>
+			<SHORT_STRING>Recheamă toate avioanele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_REPEAT">
+			<STRING>Bază aeriană: comută repetare ordine</STRING>
+			<SHORT_STRING>Comută repetare ordine</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_FIGHTERS">
+			<STRING>Bază aeriană: toți vânătorii</STRING>
+			<SHORT_STRING>Selectează toți vânătorii</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_BOMBERS">
+			<STRING>Bază aeriană: toate bombardierele</STRING>
+			<SHORT_STRING>Selectează toate bombardierele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_HELIS">
+			<STRING>Bază aeriană: toate elicopterele</STRING>
+			<SHORT_STRING>Selectează toate elicopterele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_AIRBASE_SCRAMBLE">
+			<STRING>Bază aeriană: decolare urgentă totală</STRING>
+			<SHORT_STRING>Decolare urgentă totală</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_TEMPLE_2">
+			<STRING>Templu: îmbunătățește Impozitarea</STRING>
+			<SHORT_STRING>Îmbunătățește Impozitarea</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SENATE">
+			<STRING>Senat: cercetează guvern totalitar</STRING>
+			<SHORT_STRING>Cercetează guvern totalitar</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_UPGRADE_SENATE_2">
+			<STRING>Senat: cercetează guvern de consens</STRING>
+			<SHORT_STRING>Cercetează guvern de consens</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_TOGGLE_SCENE_BEHIND">
+			<STRING>SYSTEM_TOGGLE_SCENE_BEHIND</STRING>
+			<SHORT_STRING>SYSTEM_TOGGLE_SCENE_BEHIND</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_VILLAGE_RENAME">
+			<STRING>Oraș: redenumește</STRING>
+			<SHORT_STRING>Redenumește</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_REPAIR">
+			<STRING>Cetățean: repară</STRING>
+			<SHORT_STRING>Repară</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_PEASANT_ALARM">
+			<STRING>Cetățean: alarmă</STRING>
+			<SHORT_STRING>Alarmă</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FORM">
+			<STRING>Unitate: schimbă formația</STRING>
+			<SHORT_STRING>Formație</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_AIRSTRIKE">
+			<STRING>Portavion: misiune aeriană</STRING>
+			<SHORT_STRING>Misiune aeriană</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_ALLAIR">
+			<STRING>Portavion: selectează toate avioanele</STRING>
+			<SHORT_STRING>Selectează toate avioanele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_RECALL">
+			<STRING>Portavion: recheamă toate avioanele</STRING>
+			<SHORT_STRING>Recheamă toate avioanele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CARRIER_REPEAT">
+			<STRING>Portavion: comută repetare ordine</STRING>
+			<SHORT_STRING>Comută repetare ordine</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_BEHIND">
+			<STRING>Comută unitățile din spatele clădirilor</STRING>
+			<SHORT_STRING>Comută unitățile din spatele clădirilor</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_TOGGLE_TAUNTS">
+			<STRING>Comută replicile audio</STRING>
+			<SHORT_STRING>Comută replicile audio</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BACK_TO_WORK">
+			<STRING>Clădire: înapoi la lucru</STRING>
+			<SHORT_STRING>Înapoi la lucru</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_DISBAND_ALL">
+			<STRING>Unit.: desființ. TOT</STRING>
+			<SHORT_STRING>Desființ. TOT</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MESSAGE_UP">
+			<STRING>Derulează lista de mesaje SUS</STRING>
+			<SHORT_STRING>Derulează lista de mesaje SUS</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_MESSAGE_DOWN">
+			<STRING>Derulează lista de mesaje JOS</STRING>
+			<SHORT_STRING>Derulează lista de mesaje JOS</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SELECT_FILE">
+			<STRING>Editor script: scripturi încărcate</STRING>
+			<SHORT_STRING>Scripturi încărcate</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_NEW">
+			<STRING>Editor script: nou (fișier gol)</STRING>
+			<SHORT_STRING>Nou (fișier gol)</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_NEW_TEMP">
+			<STRING>Editor script: script de scenariu nou</STRING>
+			<SHORT_STRING>Script de scenariu nou</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_LOAD">
+			<STRING>Editor script: deschide</STRING>
+			<SHORT_STRING>Deschis</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SAVE">
+			<STRING>Editor script: salvează</STRING>
+			<SHORT_STRING>Salvează</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SAVE_AS">
+			<STRING>Editor script: salvează ca...</STRING>
+			<SHORT_STRING>Salvează ca...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_CLOSE">
+			<STRING>Editor script: închide scriptul</STRING>
+			<SHORT_STRING>Închide scriptul</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_EXIT">
+			<STRING>Editor script: ieși din editor</STRING>
+			<SHORT_STRING>Ieși din editor</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_UNDO">
+			<STRING>Editor script: anulează</STRING>
+			<SHORT_STRING>Anulează</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REDO">
+			<STRING>Editor script: refă</STRING>
+			<SHORT_STRING>Refă</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_COPY">
+			<STRING>Editor script: copiază</STRING>
+			<SHORT_STRING>Copiază</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_CUT">
+			<STRING>Editor script: decupează</STRING>
+			<SHORT_STRING>Decupează</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_PASTE">
+			<STRING>Editor script: lipește</STRING>
+			<SHORT_STRING>Lipește</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SELECT_ALL">
+			<STRING>Editor script: selectează tot</STRING>
+			<SHORT_STRING>Selectează tot</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_LINE">
+			<STRING>Editor script: salt la linia...</STRING>
+			<SHORT_STRING>Mergi la linia...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_TRIGGER">
+			<STRING>Editor script: derulează la declanșator</STRING>
+			<SHORT_STRING>Mergi la declanșator</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SCROLL_TO_SCRIPT">
+			<STRING>Editor script: derulează la script</STRING>
+			<SHORT_STRING>Mergi la script</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_TOGGLE_BREAK">
+			<STRING>Editor script: comută punct de oprire</STRING>
+			<SHORT_STRING>Comută punct oprire</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_FIND">
+			<STRING>Editor script: caută...</STRING>
+			<SHORT_STRING>Caută...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_FIND_NEXT">
+			<STRING>Editor script: caută următorul</STRING>
+			<SHORT_STRING>Caută următorul</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REPLACE">
+			<STRING>Editor script: înlocuiește...</STRING>
+			<SHORT_STRING>Înlocuiește...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_TOGGLE_OUTPUT">
+			<STRING>Editor script: jurnal ieșire</STRING>
+			<SHORT_STRING>Jurnal ieșire</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_SHOW_LOG">
+			<STRING>Editor script: jurnal script joc</STRING>
+			<SHORT_STRING>Jurnal script joc</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_INSERT_TRIGGER">
+			<STRING>Editor script: adaugă declanșator...</STRING>
+			<SHORT_STRING>Inserează bloc declanșator...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_INSERT_FUNC">
+			<STRING>Editor script: adaugă funcție...</STRING>
+			<SHORT_STRING>Inserează funcție declanșator...</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_COMPILE">
+			<STRING>Editor script: compilează</STRING>
+			<SHORT_STRING>Compilează</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_RUN">
+			<STRING>Editor script: rulează</STRING>
+			<SHORT_STRING>Rulează</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_INTO">
+			<STRING>Editor script: pas în interior</STRING>
+			<SHORT_STRING>Pas în funcție</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_OVER">
+			<STRING>Editor script: pas peste</STRING>
+			<SHORT_STRING>Pas peste</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_OUT">
+			<STRING>Editor script: pas în afară</STRING>
+			<SHORT_STRING>Pas în afară</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_TO_TRIGGER">
+			<STRING>Editor script: pas până la declanșator</STRING>
+			<SHORT_STRING>Pas până la declanșator</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STEP_TO_LINE">
+			<STRING>Editor script: rulează până la linie</STRING>
+			<SHORT_STRING>Rulează până la linie</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_STOP">
+			<STRING>Editor script: oprește</STRING>
+			<SHORT_STRING>Oprește</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_BREAKPOINTS">
+			<STRING>Editor script: puncte de oprire</STRING>
+			<SHORT_STRING>Puncte de oprire</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_REMOVE_BREAKS">
+			<STRING>Editor script: elimină toate punctele de oprire</STRING>
+			<SHORT_STRING>Elimină toate punctele de oprire</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_LOCALS">
+			<STRING>Editor script: urmărește variabile locale</STRING>
+			<SHORT_STRING>Urmărește variabile locale</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_STATICS">
+			<STRING>Editor script: urmărește variabile statice</STRING>
+			<SHORT_STRING>Urmărește variabile statice</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_TRIGGERS">
+			<STRING>Editor script: urmărește declanșatoarele</STRING>
+			<SHORT_STRING>Urmărește declanșatoarele</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_CUSTOM">
+			<STRING>Editor script: urmărire personalizată</STRING>
+			<SHORT_STRING>Urmărire personalizată</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_WATCH_RETURNS">
+			<STRING>Editor script: urmărește valori returnate</STRING>
+			<SHORT_STRING>Urmărește valori returnate</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ARMORY_FLAME">
+			<STRING>Cazarmă: Aruncător de flăcări</STRING>
+			<SHORT_STRING>Aruncător de flăcări</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_AA">
+			<STRING>Fabrică: creează Tun antiaerian</STRING>
+			<SHORT_STRING>Creează Tun antiaerian</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SIEGEFACTORY_AA_UPGRADE">
+			<STRING>Fabrică: îmbunăt. Tun antiaerian</STRING>
+			<SHORT_STRING>Îmbunătățește Tun antiaerian</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SCHOLAR_TO_ARMS">
+			<STRING>Savant: La arme</STRING>
+			<SHORT_STRING>La arme</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SILO_GROUND">
+			<STRING>Siloz de rachete: atacă solul</STRING>
+			<SHORT_STRING>Atacă solul</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_RUN_SECTION_PROFILE">
+			<STRING>SYSTEM_RUN_SECTION_PROFILE</STRING>
+			<SHORT_STRING>SYSTEM_RUN_SECTION_PROFILE</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_SHOW_SECTION_PROFILE">
+			<STRING>SYSTEM_SHOW_SECTION_PROFILE</STRING>
+			<SHORT_STRING>SYSTEM_SHOW_SECTION_PROFILE</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT">
+			<STRING>Găsește fort</STRING>
+			<SHORT_STRING>Găsește fort</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT_NOZOOM">
+			<STRING>Selectează fort, fără zoom</STRING>
+			<SHORT_STRING>Selectează fort, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FORT_ALL">
+			<STRING>Selectează toate forturile</STRING>
+			<SHORT_STRING>Selectează toate forturile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER">
+			<STRING>Găsește turn</STRING>
+			<SHORT_STRING>Găsește turn</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER_NOZOOM">
+			<STRING>Selectează turn, fără zoom</STRING>
+			<SHORT_STRING>Selectează turn, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TOWER_ALL">
+			<STRING>Selectează toate turnurile</STRING>
+			<SHORT_STRING>Selectează toate turnurile</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SENATE">
+			<STRING>Găsește Senatul</STRING>
+			<SHORT_STRING>Găsește Senatul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_SENATE_NOZOOM">
+			<STRING>Selectează Senatul, fără zoom</STRING>
+			<SHORT_STRING>Selectează Senatul, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE">
+			<STRING>Găsește templu</STRING>
+			<SHORT_STRING>Găsește templu</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE_NOZOOM">
+			<STRING>Selectează templu, fără zoom</STRING>
+			<SHORT_STRING>Selectează templu, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_TEMPLE_ALL">
+			<STRING>Selectează toate templele</STRING>
+			<SHORT_STRING>Selectează toate templele</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MERCHANT">
+			<STRING>Găsește Negustor inactiv</STRING>
+			<SHORT_STRING>Găsește Negustor inactiv</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_MERCHANT_NOZOOM">
+			<STRING>Selectează Negustor inactiv, fără zoom</STRING>
+			<SHORT_STRING>Selectează Negustor inactiv, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_MERCHANT">
+			<STRING>Selectează toți Negustorii inactivi</STRING>
+			<SHORT_STRING>Selectează toți Negustorii inactivi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FISHERMAN">
+			<STRING>Găsește Pescar inactiv</STRING>
+			<SHORT_STRING>Găsește Pescar inactiv</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_FISHERMAN_NOZOOM">
+			<STRING>Selectează Pescar inactiv, fără zoom</STRING>
+			<SHORT_STRING>Selectează Pescar inactiv, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_ALL_FISHERMAN">
+			<STRING>Selectează toți Pescarii inactivi</STRING>
+			<SHORT_STRING>Selectează toți Pescarii inactivi</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PATRIOT">
+			<STRING>Selectează Patriotul</STRING>
+			<SHORT_STRING>Selectează Patriotul</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_CYCLE_PATRIOT_NOZOOM">
+			<STRING>Selectează Patriotul, fără zoom</STRING>
+			<SHORT_STRING>Selectează Patriotul, fără zoom</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_SELECT_DAMAGED">
+			<STRING>Selectează toate unitățile avariate</STRING>
+			<SHORT_STRING>Selectează toate unitățile avariate</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FILTER_DAMAGED">
+			<STRING>Filtrează selecția pentru unități avariate</STRING>
+			<SHORT_STRING>Filtrează selecția pentru unități avariate</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_FILTER_ONSCREEN">
+			<STRING>Filtrează selecția pentru unitățile de pe ecran</STRING>
+			<SHORT_STRING>Filtrează selecția pentru unitățile de pe ecran</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MARWAN_START">
+			<STRING>SYSTEM_MARWAN_START</STRING>
+			<SHORT_STRING>SYSTEM_MARWAN_START</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_MARWAN_STOP">
+			<STRING>SYSTEM_MARWAN_STOP</STRING>
+			<SHORT_STRING>SYSTEM_MARWAN_STOP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HILITE_UP">
+			<STRING>SYSTEM_HILITE_UP</STRING>
+			<SHORT_STRING>SYSTEM_HILITE_UP</SHORT_STRING>
+		</KEY>
+		<KEY enum="SYSTEM_HILITE_DOWN">
+			<STRING>SYSTEM_HILITE_DOWN</STRING>
+			<SHORT_STRING>SYSTEM_HILITE_DOWN</SHORT_STRING>
+		</KEY>
+		<KEY enum="OPTION_BUILD_SENATE">
+			<STRING>Constr. Senatul</STRING>
+			<SHORT_STRING>Constr. Senatul</SHORT_STRING>
+		</KEY>
+		<KEY enum="MENU_h">
+			<STRING>MENU_h</STRING>
+			<SHORT_STRING>MENU_h</SHORT_STRING>
+		</KEY>
+  </KEYS>
+</ROOT>

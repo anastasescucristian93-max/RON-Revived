@@ -1,0 +1,21 @@
+name: Idea
+description: Something you would like RON Revived to add or change.
+labels: ["idea"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What should be added or changed?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What would it make better? A nation, a unit, the interface, a game mode...
+  - type: textarea
+    id: examples
+    attributes:
+      label: Pictures or examples
+      description: Screenshots, sketches or links that show what you mean (optional).

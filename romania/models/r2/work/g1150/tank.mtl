@@ -1,0 +1,3 @@
+newmtl tank
+Kd 1 1 1
+map_Kd tank.png

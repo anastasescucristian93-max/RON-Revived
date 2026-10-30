@@ -1,0 +1,688 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+  <!-- LOCALIZATION: All STRING elements under ALTERNATENAMES/EPOCHTYPE and ALTERNATENAMES2/EPOCHTYPE-->
+  <ALTERNATENAMES>
+    <EPOCHTYPE name="Written Word">
+      <STRING>Yazılı Söz</STRING>
+      <STRING>Eğitim</STRING>
+      <STRING>Tümdengelim</STRING>
+      <STRING>Biyoloji</STRING>
+      <STRING>Anatomi</STRING>
+      <STRING>Termodinamik</STRING>
+      <STRING>İstatistik</STRING>
+      <STRING>Nükleer Fizik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mathematics">
+      <STRING>Sulama</STRING>
+      <STRING>Matematik</STRING>
+      <STRING>Zaman Ölçümü</STRING>
+      <STRING>Deneycilik</STRING>
+      <STRING>Mekanik Enerji</STRING>
+      <STRING>Elektromanyetizma</STRING>
+      <STRING>Akustik</STRING>
+      <STRING>Genetik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Chemistry">
+      <STRING>Gök Gözlemi</STRING>
+      <STRING>Su Enerjisi</STRING>
+      <STRING>Kimya</STRING>
+      <STRING>Bilimsel Yöntem</STRING>
+      <STRING>Kalkülüs</STRING>
+      <STRING>Farmakoloji</STRING>
+      <STRING>Görelilik</STRING>
+      <STRING>Kuantum Mekaniği</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Laws of Nature">
+      <STRING>Kaldıraç</STRING>
+      <STRING>Sıcaklık</STRING>
+      <STRING>Bahçecilik</STRING>
+      <STRING>Doğa Yasaları</STRING>
+      <STRING>Jeoloji</STRING>
+      <STRING>Bağışıklama</STRING>
+      <STRING>Mikrobiyoloji</STRING>
+      <STRING>Mikroçip</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electricity">
+      <STRING>Takvim</STRING>
+      <STRING>Rüzgâr Enerjisi</STRING>
+      <STRING>Astronomi</STRING>
+      <STRING>Yerel Dil</STRING>
+      <STRING>Elektrik</STRING>
+      <STRING>Havacılık</STRING>
+      <STRING>Antibiyotik</STRING>
+      <STRING>Astrofizik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electronics">
+      <STRING>Ölçü ve Tartı</STRING>
+      <STRING>Astroloji</STRING>
+      <STRING>Makine</STRING>
+      <STRING>Bilimsel Yazın</STRING>
+      <STRING>Botanik</STRING>
+      <STRING>Elektronik</STRING>
+      <STRING>Meteoroloji</STRING>
+      <STRING>Lazer Teknolojisi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Computerization">
+      <STRING>Isı Aktarımı</STRING>
+      <STRING>Fiziksel İyileşme</STRING>
+      <STRING>Optik</STRING>
+      <STRING>Fizik</STRING>
+      <STRING>Evrim</STRING>
+      <STRING>Hidroelektrik</STRING>
+      <STRING>Bilgisayarlaşma</STRING>
+      <STRING>Fiber Optik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Barter">
+      <STRING>Takas</STRING>
+      <STRING>Yollar</STRING>
+      <STRING>Haritacılık</STRING>
+      <STRING>Pusula</STRING>
+      <STRING>Boylam</STRING>
+      <STRING>Servet Standardı</STRING>
+      <STRING>Özel Teşebbüs</STRING>
+      <STRING>Otoyollar</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Coinage">
+      <STRING>Yük Hayvanları</STRING>
+      <STRING>Sikke Basımı</STRING>
+      <STRING>Yıldızlarla Seyir</STRING>
+      <STRING>Enlem</STRING>
+      <STRING>Merkez Bankacılığı</STRING>
+      <STRING>Telgraf ve Telefon</STRING>
+      <STRING>Medya</STRING>
+      <STRING>Mali Düzenleme</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Trade">
+      <STRING>Zanaat</STRING>
+      <STRING>Keşif</STRING>
+      <STRING>Ticaret</STRING>
+      <STRING>Coğrafya</STRING>
+      <STRING>Demiryolları</STRING>
+      <STRING>Borsa</STRING>
+      <STRING>Para Rezervleri</STRING>
+      <STRING>Uydu İletişimi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercantilism">
+      <STRING>Konteynerler</STRING>
+      <STRING>Yazı Gereçleri</STRING>
+      <STRING>Kâğıt Para</STRING>
+      <STRING>Merkantilizm</STRING>
+      <STRING>Posta Hizmeti</STRING>
+      <STRING>Antitröst Yasası</STRING>
+      <STRING>Reklam</STRING>
+      <STRING>Geri Dönüşüm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Finance">
+      <STRING>Dokuma</STRING>
+      <STRING>Kiriş Köprüler</STRING>
+      <STRING>Mesafe Ölçümü</STRING>
+      <STRING>Arazi Ölçümü</STRING>
+      <STRING>Finans</STRING>
+      <STRING>Radyo</STRING>
+      <STRING>Hassas Zanaat</STRING>
+      <STRING>Serbest Ticaret</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Assembly Line">
+      <STRING>Tekerlekli Taşıma</STRING>
+      <STRING>Abaküs</STRING>
+      <STRING>Dilbilim</STRING>
+      <STRING>Kanal</STRING>
+      <STRING>Muhasebe</STRING>
+      <STRING>Montaj Hattı</STRING>
+      <STRING>Televizyon</STRING>
+      <STRING>İnternet</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Globalization">
+      <STRING>Yön Bulma</STRING>
+      <STRING>Kâğıt ve Parşömen</STRING>
+      <STRING>Haraç</STRING>
+      <STRING>Para Değişimi</STRING>
+      <STRING>Koruyucu Gümrükler</STRING>
+      <STRING>Fotoğraf ve Film</STRING>
+      <STRING>Küreselleşme</STRING>
+      <STRING>Kablosuz Teknoloji</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="City State">
+      <STRING>Şehir Devleti</STRING>
+      <STRING>Hükümet</STRING>
+      <STRING>Egemenlik</STRING>
+      <STRING>Siyaset</STRING>
+      <STRING>İnsan Hakları</STRING>
+      <STRING>Meşruti Monarşi</STRING>
+      <STRING>Popülizm</STRING>
+      <STRING>Medeni Haklar</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Empire">
+      <STRING>Gelenek ve Ritüel</STRING>
+      <STRING>İmparatorluk</STRING>
+      <STRING>Hazine</STRING>
+      <STRING>Sömürgecilik</STRING>
+      <STRING>Federalizm</STRING>
+      <STRING>Pakt ve İttifaklar</STRING>
+      <STRING>Devlet Gelirleri</STRING>
+      <STRING>Kentsel Dönüşüm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Feudalism">
+      <STRING>Fermanlar ve Kararnameler</STRING>
+      <STRING>Senato</STRING>
+      <STRING>Feodalizm</STRING>
+      <STRING>Zabıta</STRING>
+      <STRING>Güçler Dengesi</STRING>
+      <STRING>Hukukun Üstünlüğü</STRING>
+      <STRING>Bütçe Yönetimi</STRING>
+      <STRING>Yönetim Etiği</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Divine Right">
+      <STRING>Atalara Tapınma</STRING>
+      <STRING>Yargıçlar</STRING>
+      <STRING>Kamu Hizmeti</STRING>
+      <STRING>İlahi Hak</STRING>
+      <STRING>Haklar Bildirgesi</STRING>
+      <STRING>Reelpolitik</STRING>
+      <STRING>Genel Oy Hakkı</STRING>
+      <STRING>Kamuoyu</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Constitution">
+      <STRING>Yönetici Meclisler</STRING>
+      <STRING>İçtihat</STRING>
+      <STRING>Devlet Adamlığı</STRING>
+      <STRING>Bürokrasi</STRING>
+      <STRING>Anayasa</STRING>
+      <STRING>Milletler Cemiyeti</STRING>
+      <STRING>New Deal</STRING>
+      <STRING>İki Partili Uzlaşı</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Great Power">
+      <STRING>Medeni Hukuk</STRING>
+      <STRING>Yasama</STRING>
+      <STRING>Yargı Yetkisi</STRING>
+      <STRING>Erkler Ayrılığı</STRING>
+      <STRING>Oy Hakkı</STRING>
+      <STRING>Büyük Güç</STRING>
+      <STRING>Birleşmiş Milletler</STRING>
+      <STRING>Koruma</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="International Law">
+      <STRING>Nüfus Kayıtları</STRING>
+      <STRING>Ahlak</STRING>
+      <STRING>Despotizm</STRING>
+      <STRING>Devrim</STRING>
+      <STRING>Parti Siyaseti</STRING>
+      <STRING>Bölgecilik</STRING>
+      <STRING>Uluslararası Hukuk</STRING>
+      <STRING>Yeni Dünya Düzeni</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="The Art of War">
+      <STRING>Savaş Sanatı</STRING>
+      <STRING>Subay Kolordusu</STRING>
+      <STRING>Feodal Askerler</STRING>
+      <STRING>Ateş Gücü</STRING>
+      <STRING>Harp Okulu</STRING>
+      <STRING>Genelkurmay</STRING>
+      <STRING>Askeri İstihbarat</STRING>
+      <STRING>Askeri-Sanayi Kompleksi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercenaries">
+      <STRING>Askerlik</STRING>
+      <STRING>Paralı Asker</STRING>
+      <STRING>Silahşorlar</STRING>
+      <STRING>Silah Ustaları</STRING>
+      <STRING>Ulusal Muhafız</STRING>
+      <STRING>Birleşik Silahlar Taktiği</STRING>
+      <STRING>Psikolojik Savaş</STRING>
+      <STRING>Ayaklanma Karşıtı Savaş</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Standing Army">
+      <STRING>Ordular</STRING>
+      <STRING>Komutanlık</STRING>
+      <STRING>Daimi Ordu</STRING>
+      <STRING>Balistik</STRING>
+      <STRING>İkmal Kolordusu</STRING>
+      <STRING>Aldatma</STRING>
+      <STRING>Radar ve Sonar</STRING>
+      <STRING>Genel Askerlik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Conscription">
+      <STRING>Talim</STRING>
+      <STRING>Askere Alım</STRING>
+      <STRING>Şövalyelik ve Arma</STRING>
+      <STRING>Askere Alma</STRING>
+      <STRING>Düzensiz Savaş</STRING>
+      <STRING>Siper Savaşı</STRING>
+      <STRING>Güdümlü Mühimmat</STRING>
+      <STRING>Birleşik Silahlı Kuvvetler</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Levee en Masse">
+      <STRING>Disiplin</STRING>
+      <STRING>Büyük Strateji</STRING>
+      <STRING>Plaka Zırh</STRING>
+      <STRING>Alay Sistemi</STRING>
+      <STRING>Seferberlik</STRING>
+      <STRING>Sızma Taktikleri</STRING>
+      <STRING>Partizan Savaşı</STRING>
+      <STRING>Hassas Silahlar</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nation-in-Arms">
+      <STRING>Düzen</STRING>
+      <STRING>Askeri Depolar</STRING>
+      <STRING>Savaş Hukuku</STRING>
+      <STRING>Moral ve Birlik</STRING>
+      <STRING>Muhabere Birliği</STRING>
+      <STRING>Silahlı Ulus</STRING>
+      <STRING>Birleşik Harekât</STRING>
+      <STRING>Elektronik Harp</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Selective Service">
+      <STRING>Askeri Eğitim</STRING>
+      <STRING>Yakıcı Silah</STRING>
+      <STRING>Askeri Sözleşme</STRING>
+      <STRING>Gizlilik</STRING>
+      <STRING>Topyekûn Harp</STRING>
+      <STRING>Yıldırım Savaşı</STRING>
+      <STRING>Zorunlu Askerlik</STRING>
+      <STRING>İç Güvenlik</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES>
+  <ALTERNATENAMES2>
+    <EPOCHTYPE name="Tactics">
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+      <STRING>Taktik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Operations">
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+      <STRING>Harekât</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategy">
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+      <STRING>Strateji</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Religion">
+      <STRING>Din</STRING>
+      <STRING>Din</STRING>
+      <STRING>Din</STRING>
+      <STRING>Reform</STRING>
+      <STRING>Reform</STRING>
+      <STRING>Teokrasi</STRING>
+      <STRING>Teokrasi</STRING>
+      <STRING>Teokrasi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Monotheism">
+      <STRING>Kutsal Metinler</STRING>
+      <STRING>Kutsal Metinler</STRING>
+      <STRING>Monoteizm</STRING>
+      <STRING>Monoteizm</STRING>
+      <STRING>Misyonerler</STRING>
+      <STRING>Misyonerler</STRING>
+      <STRING>Laiklik</STRING>
+      <STRING>Laiklik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Existentialism">
+      <STRING>Ruhban</STRING>
+      <STRING>Ruhban</STRING>
+      <STRING>Dini Tarikatlar</STRING>
+      <STRING>Dini Tarikatlar</STRING>
+      <STRING>Varoluşçuluk</STRING>
+      <STRING>Varoluşçuluk</STRING>
+      <STRING>Varoluşçuluk</STRING>
+      <STRING>Varoluşçuluk</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Taxation">
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+      <STRING>Vergilendirme</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Vassalage">
+      <STRING>Vasallık</STRING>
+      <STRING>Vasallık</STRING>
+      <STRING>Vasallık</STRING>
+      <STRING>Vasallık</STRING>
+      <STRING>Haraç</STRING>
+      <STRING>Haraç</STRING>
+      <STRING>Haraç</STRING>
+      <STRING>Haraç</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Social Contract">
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+      <STRING>Toplum Sözleşmesi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Income Tax">
+      <STRING>Metbuluk</STRING>
+      <STRING>Metbuluk</STRING>
+      <STRING>Metbuluk</STRING>
+      <STRING>Gelir Vergisi</STRING>
+      <STRING>Gelir Vergisi</STRING>
+      <STRING>Gelir Vergisi</STRING>
+      <STRING>Gelir Vergisi</STRING>
+      <STRING>Gelir Vergisi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Fortification">
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+      <STRING>Tahkimat</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Bombardment">
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+      <STRING>Bombardıman</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategic Reserves">
+      <STRING>Askeri Mühendislik</STRING>
+      <STRING>Askeri Mühendislik</STRING>
+      <STRING>Askeri Mühendislik</STRING>
+      <STRING>Askeri Mühendislik</STRING>
+      <STRING>Stratejik Yedekler</STRING>
+      <STRING>Stratejik Yedekler</STRING>
+      <STRING>Stratejik Yedekler</STRING>
+      <STRING>Stratejik Yedekler</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Allegiance">
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+      <STRING>Bağlılık</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Oath of Fealty">
+      <STRING>Sadakat Yemini</STRING>
+      <STRING>Sadakat Yemini</STRING>
+      <STRING>Sadakat Yemini</STRING>
+      <STRING>Sadakat Yemini</STRING>
+      <STRING>Yurttaşlık</STRING>
+      <STRING>Yurttaşlık</STRING>
+      <STRING>Yurttaşlık</STRING>
+      <STRING>Yurttaşlık</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Patriotism">
+      <STRING>Anavatan</STRING>
+      <STRING>Anavatan</STRING>
+      <STRING>Anavatan</STRING>
+      <STRING>Vatanseverlik</STRING>
+      <STRING>Vatanseverlik</STRING>
+      <STRING>Vatanseverlik</STRING>
+      <STRING>Vatanseverlik</STRING>
+      <STRING>Vatanseverlik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nationalism">
+      <STRING>Uyruk</STRING>
+      <STRING>Uyruk</STRING>
+      <STRING>Uyruk</STRING>
+      <STRING>Uyruk</STRING>
+      <STRING>Milliyetçilik</STRING>
+      <STRING>Milliyetçilik</STRING>
+      <STRING>Milliyetçilik</STRING>
+      <STRING>Milliyetçilik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Construction">
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+      <STRING>İnşaat</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Architecture">
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+      <STRING>Mimari</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Engineering">
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+      <STRING>Mühendislik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Herbal Lore">
+      <STRING>Bitki Bilimi</STRING>
+      <STRING>Bitki Bilgisi</STRING>
+      <STRING>Bitki Bilimi</STRING>
+      <STRING>Bitki Bilgisi</STRING>
+      <STRING>Homeopati</STRING>
+      <STRING>Homeopati</STRING>
+      <STRING>Homeopati</STRING>
+      <STRING>Homeopati</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Medicine">
+      <STRING>Tıp</STRING>
+      <STRING>Tıp</STRING>
+      <STRING>Tıp</STRING>
+      <STRING>Tıp</STRING>
+      <STRING>Tıp</STRING>
+      <STRING>Koruyucu Hekimlik</STRING>
+      <STRING>Koruyucu Hekimlik</STRING>
+      <STRING>Koruyucu Hekimlik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Pharmaceuticals">
+      <STRING>Aktarlar</STRING>
+      <STRING>Aktarlar</STRING>
+      <STRING>Aktarlar</STRING>
+      <STRING>İlaç Sanayii</STRING>
+      <STRING>İlaç Sanayii</STRING>
+      <STRING>İlaç Sanayii</STRING>
+      <STRING>İlaç Sanayii</STRING>
+      <STRING>İlaç Sanayii</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Forage">
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+      <STRING>Otlatma</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supply">
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+      <STRING>İkmal</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logistics">
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+      <STRING>Lojistik</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Carpentry">
+      <STRING>Marangozluk</STRING>
+      <STRING>Marangozluk</STRING>
+      <STRING>Marangozluk</STRING>
+      <STRING>Marangozluk</STRING>
+      <STRING>Marangozluk</STRING>
+      <STRING>Ormancılık</STRING>
+      <STRING>Ormancılık</STRING>
+      <STRING>Ormancılık</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logging Industry">
+      <STRING>İleri Marangozluk</STRING>
+      <STRING>İleri Marangozluk</STRING>
+      <STRING>Torna</STRING>
+      <STRING>Kereste Sanayii</STRING>
+      <STRING>Kereste Sanayii</STRING>
+      <STRING>Kereste Sanayii</STRING>
+      <STRING>Kereste Sanayii</STRING>
+      <STRING>Ağaçlandırma</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Papermill">
+      <STRING>Kâğıt Fabrikası</STRING>
+      <STRING>Kâğıt Fabrikası</STRING>
+      <STRING>Kâğıt Fabrikası</STRING>
+      <STRING>Kâğıt Fabrikası</STRING>
+      <STRING>Kâğıt Fabrikası</STRING>
+      <STRING>Kâğıt Sanayii</STRING>
+      <STRING>Kâğıt Sanayii</STRING>
+      <STRING>Kâğıt Sanayii</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Agriculture">
+      <STRING>Tarım</STRING>
+      <STRING>Tarım</STRING>
+      <STRING>Tarım</STRING>
+      <STRING>Tarım</STRING>
+      <STRING>Tarım</STRING>
+      <STRING>Agronomi</STRING>
+      <STRING>Agronomi</STRING>
+      <STRING>Agronomi</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Crop Rotation">
+      <STRING>Öğütme</STRING>
+      <STRING>Öğütme</STRING>
+      <STRING>Öğütme</STRING>
+      <STRING>Ekim Nöbeti</STRING>
+      <STRING>Ekim Nöbeti</STRING>
+      <STRING>Toprak Koruma</STRING>
+      <STRING>Toprak Koruma</STRING>
+      <STRING>Toprak Koruma</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Food Industry">
+      <STRING>Gıda Koruma</STRING>
+      <STRING>Gıda Koruma</STRING>
+      <STRING>Gıda Koruma</STRING>
+      <STRING>Gıda Sanayii</STRING>
+      <STRING>Gıda Sanayii</STRING>
+      <STRING>Gıda Sanayii</STRING>
+      <STRING>Soğutma</STRING>
+      <STRING>Soğutma</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Literacy">
+      <STRING>Okuryazarlık</STRING>
+      <STRING>Okuryazarlık</STRING>
+      <STRING>Okuryazarlık</STRING>
+      <STRING>Okuryazarlık</STRING>
+      <STRING>Akılcılık</STRING>
+      <STRING>Akılcılık</STRING>
+      <STRING>Akılcılık</STRING>
+      <STRING>Akılcılık</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Printing Press">
+      <STRING>Kâtipler</STRING>
+      <STRING>Kâtipler</STRING>
+      <STRING>Matbaa</STRING>
+      <STRING>Matbaa</STRING>
+      <STRING>Bilimsel Metinler</STRING>
+      <STRING>Bilimsel Metinler</STRING>
+      <STRING>Bilimsel Metinler</STRING>
+      <STRING>Bilimsel Metinler</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Scientific Method">
+      <STRING>Sokratik Yöntem</STRING>
+      <STRING>Sokratik Yöntem</STRING>
+      <STRING>Sokratik Yöntem</STRING>
+      <STRING>Bilimsel Yöntem</STRING>
+      <STRING>Bilimsel Yöntem</STRING>
+      <STRING>Bilimsel Yöntem</STRING>
+      <STRING>Bilimsel Yöntem</STRING>
+      <STRING>Bilimsel Yöntem</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Institutional Research">
+      <STRING>Bilginlik</STRING>
+      <STRING>Bilginlik</STRING>
+      <STRING>Bilginlik</STRING>
+      <STRING>Bilginlik</STRING>
+      <STRING>Bilginlik</STRING>
+      <STRING>Bilginlik</STRING>
+      <STRING>Kurumsal Araştırma</STRING>
+      <STRING>Kurumsal Araştırma</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supercomputers">
+      <STRING>Akademi</STRING>
+      <STRING>Akademi</STRING>
+      <STRING>Akademi</STRING>
+      <STRING>Akademi</STRING>
+      <STRING>Akademi</STRING>
+      <STRING>Akademi</STRING>
+      <STRING>Süper Bilgisayar</STRING>
+      <STRING>Süper Bilgisayar</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Metal Alloys">
+      <STRING>Metal Alaşımları</STRING>
+      <STRING>Metal Alaşımları</STRING>
+      <STRING>Metal Alaşımları</STRING>
+      <STRING>Metalurji</STRING>
+      <STRING>Metalurji</STRING>
+      <STRING>Metalurji</STRING>
+      <STRING>Metalurji</STRING>
+      <STRING>Metalurji</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Cold Casting">
+      <STRING>Fırınlar</STRING>
+      <STRING>Fırınlar</STRING>
+      <STRING>Soğuk Döküm</STRING>
+      <STRING>Soğuk Döküm</STRING>
+      <STRING>Yüksek Fırın</STRING>
+      <STRING>Yüksek Fırın</STRING>
+      <STRING>Kaynakçılık</STRING>
+      <STRING>Kaynakçılık</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Steel">
+      <STRING>Cevher Çıkarma</STRING>
+      <STRING>Cevher Çıkarma</STRING>
+      <STRING>Pirinç</STRING>
+      <STRING>Pirinç</STRING>
+      <STRING>Çelik</STRING>
+      <STRING>Çelik</STRING>
+      <STRING>Çelik</STRING>
+      <STRING>Çelik</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES2>
+</ROOT>

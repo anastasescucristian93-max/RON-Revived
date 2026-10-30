@@ -1,0 +1,80 @@
+NEXUS MODS PAGE TEXT (BBCode: paste into the Description box as it is)
+======================================================================
+
+--- Name ---
+RON Revived
+
+--- Summary / brief overview ---
+Smooth camera and zoom, a cleaner interface, new building art, Romania as a 25th nation, dozens of the game's own bugs fixed and new gameplay: city districts, Airdrop, trenches, missile defence, veteran ranks. One-click install.
+
+--- Description ---
+[size=5][b]RON Revived[/b][/size]
+A mod pack for [b]Rise of Nations: Extended Edition[/b] (Steam). It makes the 20-year-old classic smoother to look at and easier to play, and adds new art, a new nation and new gameplay. The game's own files are never modified: everything goes next to them, and one double-click removes it all again.
+
+[color=#ffcc00][b]Beta:[/b][/color] many of the newest features have not been tested in a full game yet. Please report bugs (with [i]ron_camera.log[/i] from the game folder) in the Bugs tab.
+
+[size=4][b]Camera and graphics[/b][/size]
+[list]
+[*]Smooth scrolling and zoom: the camera glides instead of jumping, zoom keeps the point under the cursor, one more zoom step each way
+[*]No vibrating buildings while you scroll, no black ground after zooming, no stuck camera after Alt+Tab
+[*]Smooth, round fog of war instead of the jagged tile grid
+[*]Smooth unit turning (the game had only 256 directions)
+[*]Interface scaling for high-resolution screens
+[/list]
+
+[size=4][b]Interface[/b][/size]
+[list]
+[*]Hover highlight, hit points as numbers, health bars for every soldier of a squad
+[*]Production bar on buildings, rally lines, range circles for towers and forts
+[*]Build grid: green / red tiles while you place a building
+[*]New buttons: select all military buildings, all Airbases, all Docks, the whole army
+[*]Hotkeys printed on the buttons, padlocks on locked options, the missing amount in red on prices you cannot pay
+[*]Selections grouped by unit type, kill counter, craft points bar
+[*]Nation picker as a grid of flags, flags on the game setup screen
+[*]Computer players named after real leaders of their nation
+[/list]
+
+[size=4][b]New building art[/b][/size]
+New buildings for the Romans, Egyptians, Northern Europeans, Dutch, Americans, Spanish, Persians, Nubians, Mongols, Russians and Romania, drawn from the game's own camera angle so they sit on the map like the originals. More nations are in progress.
+
+[size=4][b]Romania, the 25th nation[/b][/size]
+[list]
+[*]The Power of the Carpathians: stronger attrition against invaders, free attrition research, more Oil
+[*]11 units of its own, quality over quantity: Falxmen, Roxolani Lancers, Viteji, Darabani, Dorobanti, Vanatori de Munte, the IAR-80, the TR-77 and more
+[*]Leaders and cities from Romanian history: Burebista, Decebalus, Stephen the Great, Michael the Brave...
+[/list]
+
+[size=4][b]New gameplay[/b][/size]
+[list]
+[*][b]City districts:[/b] late-game Housing, Commerce and Industrial districts built next to your cities, as many as you can pay for
+[*][b]Airdrop:[/b] an Airbase sends a Chinook that drops two squads of Paratroopers behind enemy lines
+[*][b]Field Fortifications:[/b] ranged infantry dig in: +1 range, faster and stronger attacks, and the fortification takes the hits
+[*][b]Missile defence:[/b] Missile Silos train Interceptors that shoot down enemy nukes; nukes leave radiation and a visible target sign
+[*][b]The General's Heal[/b] replaces Create Decoys
+[*][b]Veteran ranks:[/b] units gain experience and rise through 10 levels
+[*]Units walk through each other and make way, mixed groups move without a slow formation, compact formations
+[*]Aircraft take off together, stronger attrition, the dead stay longer on the battlefield
+[*]No Armageddon defeat: when the clock runs out, nukes are simply gone
+[*]Auto-trade for idle merchants, fishing boats that find a new fish quickly
+[/list]
+Almost everything can be turned off one by one in [i]ron_camera.ini[/i] in the game folder.
+
+[size=4][b]Install[/b][/size]
+[list=1]
+[*]Extract the whole zip (right-click, Extract All). Do not run it from inside the zip.
+[*]Close the game.
+[*]Double-click [b]install.bat[/b]. It finds the game through Steam (or asks for the folder with riseofnations.exe).
+[*]Start the game from Steam as usual.
+[/list]
+[b]Update:[/b] install the new version the same way; your settings are kept.
+[b]Uninstall:[/b] double-click [b]uninstall.bat[/b]. It removes every file and puts back anything it replaced.
+
+[size=4][b]Good to know[/b][/size]
+[list]
+[*]Made for the Steam version built 2024-06-20. After a game update the camera and gameplay part switches itself off safely until a new version is out.
+[*][b]Multiplayer:[/b] every player needs the same version of the pack and the same gameplay settings, or the game goes out of sync.
+[*]Not made to run together with other mods that change the rules: turn those off in the game's Mods menu.
+[*]Some antivirus tools flag the [i]winmm.dll[/i] as a false positive: this is how the mod loads into the game (a DLL placed next to the exe). It does not touch anything outside the game.
+[*]Romania's music (George Enescu's Romanian Rhapsodies) is not included: the recording is free in the EU but not in the US.
+[*]The full list of changes is in CHANGES.md inside the zip.
+[/list]

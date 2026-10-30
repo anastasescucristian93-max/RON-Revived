@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Scott Lewis (Big Huge Games) --><!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 2 (Big Huge Games) --><!--LOCALIZATION --><!--LOCALIZATION --><!--LOCALIZATION: All STRING elements.--><!--LOCALIZATION --><!--LOCALIZATION --><ROOT>
+  <AGES>
+    <STRING hash="8843171" needed="1">Klasik Çağ</STRING>
+    <STRING hash="6818848" needed="1">Orta Çağ</STRING>
+    <STRING hash="7683271" needed="1">Barut Çağı</STRING>
+    <STRING hash="13782908" needed="1">Aydınlanma Çağı</STRING>
+    <STRING hash="9696711" needed="1">Sanayi Çağı</STRING>
+    <STRING hash="4270575" needed="1">Modern Çağ</STRING>
+    <STRING hash="11109641" needed="1">Bilgi Çağı</STRING>
+  </AGES>
+  <TECHS>
+    <STRING hash="7422563" needed="1">Yazılı Söz</STRING>
+    <STRING hash="7558886" needed="1">Matematik</STRING>
+    <STRING hash="4209181" needed="1">Kimya</STRING>
+    <STRING hash="10931720" needed="1">Doğa Yasaları</STRING>
+    <STRING hash="7436541" needed="1">Elektrik</STRING>
+    <STRING hash="7373131" needed="1">Elektronik</STRING>
+    <STRING hash="12979145" needed="1">Bilgisayarlaşma</STRING>
+    <STRING hash="1692249" needed="1">Takas</STRING>
+    <STRING hash="2317946" needed="1">Sikke Basımı</STRING>
+    <STRING hash="1055307" needed="1">Ticaret</STRING>
+    <STRING hash="8189112" needed="1">Merkantilizm</STRING>
+    <STRING hash="2772098" needed="1">Finans</STRING>
+    <STRING hash="8662151" needed="1">Montaj Hattı</STRING>
+    <STRING hash="10212836" needed="1">Küreselleşme</STRING>
+    <STRING hash="5616641" needed="1">Şehir Devleti</STRING>
+    <STRING hash="1455381" needed="1">İmparatorluk</STRING>
+    <STRING hash="4168087" needed="1">Feodalizm</STRING>
+    <STRING hash="7124203" needed="1">İlahi Hak</STRING>
+    <STRING hash="7851435" needed="1">Anayasa</STRING>
+    <STRING hash="6478898" needed="1">Büyük Güç</STRING>
+    <STRING hash="17211729" needed="1">Uluslararası Hukuk</STRING>
+    <STRING hash="10578054" needed="1">Savaş Sanatı</STRING>
+    <STRING hash="6849444" needed="1">Paralı Asker</STRING>
+    <STRING hash="8563678" needed="1">Daimi Ordu</STRING>
+    <STRING hash="8048945" needed="1">Askere Alma</STRING>
+    <STRING hash="10185392" needed="1">Seferberlik</STRING>
+    <STRING hash="10290156" needed="1">Silahlı Ulus</STRING>
+    <STRING hash="16302664" needed="1">Zorunlu Askerlik</STRING>
+  </TECHS>
+  <MISC>
+    <STRING hash="9426192" needed="1">Füze Kalkanı</STRING>
+    <STRING hash="30604825" needed="1">Yapay Zekâ</STRING>
+    <STRING hash="16526569" needed="1">Küresel Refah</STRING>
+    <STRING hash="13424671" needed="1">Dünya Hükümeti</STRING>
+    <STRING hash="3073683" needed="1">Taktik</STRING>
+    <STRING hash="5502441" needed="1">Harekât</STRING>
+    <STRING hash="3277741" needed="1">Strateji</STRING>
+    <STRING hash="2820121" needed="1">Din</STRING>
+    <STRING hash="4969036" needed="1">Monoteizm</STRING>
+    <STRING hash="10952500" needed="1">Varoluşçuluk</STRING>
+    <STRING hash="3410006" needed="1">Vergilendirme</STRING>
+    <STRING hash="4575496" needed="1">Vasallık</STRING>
+    <STRING hash="14255071" needed="1">Toplum Sözleşmesi</STRING>
+    <STRING hash="5809773" needed="1">Gelir Vergisi</STRING>
+    <STRING hash="9957886" needed="1">Tahkimat</STRING>
+    <STRING hash="6780593" needed="1">Bombardıman</STRING>
+    <STRING hash="17966690" needed="1">Stratejik Yedekler</STRING>
+    <STRING hash="5757926" needed="1">Bağlılık</STRING>
+    <STRING hash="10825577" needed="1">Sadakat Yemini</STRING>
+    <STRING hash="5321711" needed="1">Vatanseverlik</STRING>
+    <STRING hash="6842975" needed="1">Milliyetçilik</STRING>
+    <STRING hash="8429887" needed="1">İnşaat</STRING>
+    <STRING hash="8406841" needed="1">Mimari</STRING>
+    <STRING hash="5867465" needed="1">Mühendislik</STRING>
+    <STRING hash="6504674" needed="1">Bitki Bilgisi</STRING>
+    <STRING hash="3060060" needed="1">Tıp</STRING>
+    <STRING hash="14777164" needed="1">İlaç Sanayii</STRING>
+    <STRING hash="1660645" needed="1">Otlatma</STRING>
+    <STRING hash="1722154" needed="1">İkmal</STRING>
+    <STRING hash="4572512" needed="1">Lojistik</STRING>
+    <STRING hash="4346421" needed="1">Marangozluk</STRING>
+    <STRING hash="13894977" needed="1">Kereste Sanayii</STRING>
+    <STRING hash="3938041" needed="1">Kâğıt Fabrikası</STRING>
+    <STRING hash="6797357" needed="1">Tarım</STRING>
+    <STRING hash="9608007" needed="1">Ekim Nöbeti</STRING>
+    <STRING hash="9355065" needed="1">Gıda Sanayii</STRING>
+    <STRING hash="3959017" needed="1">Okuryazarlık</STRING>
+    <STRING hash="10082689" needed="1">Matbaa</STRING>
+    <STRING hash="15111817" needed="1">Bilimsel Yöntem</STRING>
+    <STRING hash="29708143" needed="1">Kurumsal Araştırma</STRING>
+    <STRING hash="11227186" needed="1">Süper Bilgisayar</STRING>
+    <STRING hash="7771103" needed="1">Metal Alaşımları</STRING>
+    <STRING hash="7639625" needed="1">Soğuk Döküm</STRING>
+    <STRING hash="895218" needed="1">Çelik</STRING>
+    <STRING hash="4006343" needed="1">Despotizm</STRING>
+    <STRING hash="3833320" needed="1">Cumhuriyet</STRING>
+    <STRING hash="3752145" needed="1">Monarşi</STRING>
+    <STRING hash="5495194" needed="1">Demokrasi</STRING>
+    <STRING hash="4431157" needed="1">Sosyalizm</STRING>
+    <STRING hash="5553684" needed="1">Kapitalizm</STRING>
+  </MISC>
+  <GOODS>
+    <STRING hash="564640" needed="1">Yiyecek</STRING>
+    <STRING hash="1799276" needed="1">Kereste</STRING>
+    <STRING hash="1700464" needed="1">Servet</STRING>
+    <STRING hash="3520419" needed="1">Bilgi</STRING>
+    <STRING hash="1211192" needed="1">Metal</STRING>
+    <STRING hash="336002" needed="1">Petrol</STRING>
+    <STRING hash="583548" needed="1">Balık</STRING>
+    <STRING hash="1922011" needed="1">Emanetler</STRING>
+    <STRING hash="578117" needed="1">Şarap</STRING>
+    <STRING hash="2616402" needed="1">Papirüs</STRING>
+    <STRING hash="333260" needed="1">Boya</STRING>
+    <STRING hash="593963" needed="1">İpek</STRING>
+    <STRING hash="1194455" needed="1">Baharat</STRING>
+    <STRING hash="790674" needed="1">Tuz</STRING>
+    <STRING hash="1583615" needed="1">Atlar</STRING>
+    <STRING hash="2037823" needed="1">Kauçuk</STRING>
+    <STRING hash="2346145" needed="1">Kükürt</STRING>
+    <STRING hash="1137060" needed="1">Kehribar</STRING>
+    <STRING hash="1571768" needed="1">Gümüş</STRING>
+    <STRING hash="3502615" needed="1">Tütün</STRING>
+    <STRING hash="1865394" needed="1">Mermer</STRING>
+    <STRING hash="683830" needed="1">Kürkler</STRING>
+    <STRING hash="1622088" needed="1">Pamuk</STRING>
+    <STRING hash="978052" needed="1">Bizon</STRING>
+    <STRING hash="1536898" needed="1">Bakır</STRING>
+    <STRING hash="3880631" needed="1">Tavuskuşları</STRING>
+    <STRING hash="1690721" needed="1">Narenciye</STRING>
+    <STRING hash="1249341" needed="1">Şeker</STRING>
+    <STRING hash="3076733" needed="1">Elmaslar</STRING>
+    <STRING hash="619184" needed="1">Değerli Taşlar</STRING>
+    <STRING hash="3029794" needed="1">Alüminyum</STRING>
+    <STRING hash="1713625" needed="1">Balinalar</STRING>
+    <STRING hash="3383353" needed="1">Obsidyen</STRING>
+    <STRING hash="642149" needed="1">Yün</STRING>
+    <STRING hash="788789" needed="1">Kömür</STRING>
+    <STRING hash="2481507" needed="1">Uranyum</STRING>
+    <STRING hash="3274537" needed="1">Titanyum</STRING>
+    <STRING hash="1623896" needed="1">Sığırlar</STRING>
+    <STRING hash="611601" needed="1">Köpekler</STRING>
+    <STRING hash="2338619" needed="1">Tütsü</STRING>
+    <STRING hash="3613460" needed="1">Zeytinyağı</STRING>
+    <STRING hash="1673538" needed="1">Alçı</STRING>
+    <STRING hash="7644907" needed="1">Kunduz Postu</STRING>
+    <STRING hash="553030" needed="1">Altın</STRING>
+    <STRING hash="382076" needed="1">Rom</STRING>
+    <STRING hash="1296381" needed="1">Kahve</STRING>
+    <STRING hash="3000278" needed="1">Muz</STRING>
+    <STRING hash="1696293" needed="1">Somon</STRING>
+    <STRING hash="2833684" needed="1">Demir Cevheri</STRING>
+    <STRING hash="1099045" needed="1">Mısır</STRING>
+    <STRING hash="2175628" needed="1">Husky Köpekleri</STRING>
+  </GOODS>
+  <BUILDS>
+    <STRING hash="5143517" needed="1">Küçük Şehir</STRING>
+    <STRING hash="5001885" needed="1">Büyük Şehir</STRING>
+    <STRING hash="5116697" needed="1">Metropol</STRING>
+    <STRING hash="756488" needed="1">Çiftlik</STRING>
+    <STRING hash="15948114" needed="1">Oduncu Kampı</STRING>
+    <STRING hash="560225" needed="1">Maden</STRING>
+    <STRING hash="5428677" needed="1">Üniversite</STRING>
+    <STRING hash="2882524" needed="1">Petrol Kuyusu</STRING>
+    <STRING hash="8028649" needed="1">Petrol Platformu</STRING>
+    <STRING hash="2914764" needed="1">Tahıl Ambarı</STRING>
+    <STRING hash="6179481" needed="1">Hızarhane</STRING>
+    <STRING hash="2188528" needed="1">Dökümhane</STRING>
+    <STRING hash="3001744" needed="1">Rafineri</STRING>
+    <STRING hash="3868075" needed="1">Kışla</STRING>
+    <STRING hash="1932724" needed="1">Ahır</STRING>
+    <STRING hash="5642409" needed="1">Araç Fabrikası</STRING>
+    <STRING hash="10083382" needed="1">Kuşatma Atölyesi</STRING>
+    <STRING hash="2802178" needed="1">Fabrika</STRING>
+    <STRING hash="815783" needed="1">Liman</STRING>
+    <STRING hash="4309085" needed="1">Demirleme Yeri</STRING>
+    <STRING hash="3296260" needed="1">Tersane</STRING>
+    <STRING hash="2939733" needed="1">Kütüphane</STRING>
+    <STRING hash="1674717" needed="1">Pazar</STRING>
+    <STRING hash="1445184" needed="1">Tapınak</STRING>
+    <STRING hash="1009206" needed="1">Kule</STRING>
+    <STRING hash="568153" needed="1">Burç</STRING>
+    <STRING hash="3366022" needed="1">Palanga</STRING>
+    <STRING hash="1515894" needed="1">Bunker</STRING>
+    <STRING hash="672063" needed="1">Hisar</STRING>
+    <STRING hash="1618681" needed="1">Kale</STRING>
+    <STRING hash="3070364" needed="1">Büyük Kale</STRING>
+    <STRING hash="2703085" needed="1">Tabya</STRING>
+    <STRING hash="2736903" needed="1">Hava Üssü</STRING>
+    <STRING hash="7207851" needed="1">Füze Silosu</STRING>
+    <STRING hash="2382931" needed="1">Gözetleme Kulesi</STRING>
+    <STRING hash="14303594" needed="1">Gözetleme Noktası</STRING>
+    <STRING hash="10963680" needed="1">Hava Savunma Topu</STRING>
+    <STRING hash="14036329" needed="1">Radarlı Hava Savunma</STRING>
+    <STRING hash="15017895" needed="1">SAM Tesisi</STRING>
+    <STRING hash="3155697" needed="1">Piramitler</STRING>
+    <STRING hash="3202471" needed="1">Kolossus</STRING>
+    <STRING hash="14090616" needed="1">Terrakota Ordusu</STRING>
+    <STRING hash="4006251" needed="1">Kolezyum</STRING>
+    <STRING hash="11789295" needed="1">Tikal Tapınağı</STRING>
+    <STRING hash="12394052" needed="1">Porselen Kule</STRING>
+    <STRING hash="5629591" needed="1">Angkor Wat</STRING>
+    <STRING hash="5275053" needed="1">Versay</STRING>
+    <STRING hash="4734371" needed="1">Tac Mahal</STRING>
+    <STRING hash="2136242" needed="1">Kremlin</STRING>
+    <STRING hash="16071921" needed="1">Özgürlük Heykeli</STRING>
+    <STRING hash="7396078" needed="1">Eyfel Kulesi</STRING>
+    <STRING hash="8960296" needed="1">Süper Çarpıştırıcı</STRING>
+    <STRING hash="9900249" needed="1">Uzay Programı</STRING>
+    <STRING hash="1740233" needed="1">Senato</STRING>
+    <STRING hash="11924638" needed="1">Asma Bahçeler</STRING>
+    <STRING hash="9898085" needed="1">Yasak Şehir</STRING>
+    <STRING hash="2942926" needed="1">Kızıl Kale</STRING>
+    <STRING hash="2929874" needed="1">Bastille</STRING>
+    <STRING hash="4174297" needed="1">Konut Bölgesi</STRING>
+    <STRING hash="11137768" needed="1">Londra Kulesi</STRING>
+    <STRING hash="969271" needed="1">Ev</STRING>
+    <STRING hash="18671484" needed="1">Ticaret Bölgesi</STRING>
+    <STRING hash="5004373" needed="1">Sanayi Bölgesi</STRING>
+    <STRING hash="5412046" needed="1">Apartmanlar</STRING>
+    <STRING hash="11265150" needed="1">Ofis Binası</STRING>
+    <STRING hash="19695529" needed="1">Washington Anıtı</STRING>
+    <STRING hash="8104532" needed="1">Sahra Tahkimatı</STRING>
+  </BUILDS>
+  <UNITS>
+    <STRING hash="2221484" needed="1">Vatandaş</STRING>
+    <STRING hash="2751620" needed="1">Âlim</STRING>
+    <STRING hash="2501488" needed="1">General</STRING>
+    <STRING hash="423174" needed="1">Casus</STRING>
+    <STRING hash="3026652" needed="1">Kervan</STRING>
+    <STRING hash="3634926" needed="1">Tüccar</STRING>
+    <STRING hash="8123947" needed="1">İkmal Arabası</STRING>
+    <STRING hash="2580139" needed="1">Milis</STRING>
+    <STRING hash="4398051" needed="1">Minuteman</STRING>
+    <STRING hash="3574192" needed="1">Partizan</STRING>
+    <STRING hash="1234467" needed="1">İzci</STRING>
+    <STRING hash="2971245" needed="1">Kâşif</STRING>
+    <STRING hash="3152264" needed="1">Komando</STRING>
+    <STRING hash="11414320" needed="1">Özel Kuvvetler</STRING>
+    <STRING hash="23496102" needed="1">Seçkin Özel Kuvvetler</STRING>
+    <STRING hash="2912095" needed="1">Sapancılar</STRING>
+    <STRING hash="6271876" needed="1">Ciritçiler</STRING>
+    <STRING hash="15379376" needed="1">Seçkin Ciritçiler</STRING>
+    <STRING hash="3046598" needed="1">Atlatlcılar</STRING>
+    <STRING hash="10143002" needed="1">Kraliyet Atlatlcıları</STRING>
+    <STRING hash="12984243" needed="1">Xopilli Atlatlcıları</STRING>
+    <STRING hash="14124675" needed="1">Balamob Sapancıları</STRING>
+    <STRING hash="28279121" needed="1">Kraliyet Balamob Sapancıları</STRING>
+    <STRING hash="27980832" needed="1">Kartal Balamob Sapancıları</STRING>
+    <STRING hash="7858530" needed="1">Inti Sopacıları</STRING>
+    <STRING hash="8149328" needed="1">Inti Topuzcuları</STRING>
+    <STRING hash="3556822" needed="1">Umpakati</STRING>
+    <STRING hash="17413041" needed="1">Yangombi Umpakati</STRING>
+    <STRING hash="597681" needed="1">Impi</STRING>
+    <STRING hash="7117550" needed="1">Ateş Mızrakları</STRING>
+    <STRING hash="16497142" needed="1">Ağır Ateş Mızrakları</STRING>
+    <STRING hash="8091119" needed="1">Arkebüzcüler</STRING>
+    <STRING hash="5030159" needed="1">Misketçiler</STRING>
+    <STRING hash="2732698" needed="1">Tüfekçiler</STRING>
+    <STRING hash="3448211" needed="1">Piyade</STRING>
+    <STRING hash="14910540" needed="1">Hücum Piyadesi</STRING>
+    <STRING hash="21046206" needed="1">Kızıl Muhafız Piyadesi</STRING>
+    <STRING hash="11409132" needed="1">Şok Piyadesi</STRING>
+    <STRING hash="12198643" needed="1">Volksgrenadier</STRING>
+    <STRING hash="13274171" needed="1">Jaguar Piyadesi</STRING>
+    <STRING hash="32427586" needed="1">Jaguar Hücum Piyadesi</STRING>
+    <STRING hash="6809974" needed="1">Yeniçeriler</STRING>
+    <STRING hash="16843832" needed="1">Kraliyet Yeniçerileri</STRING>
+    <STRING hash="6459227" needed="1">Highlanderlar</STRING>
+    <STRING hash="7818082" needed="1">Black Watch</STRING>
+    <STRING hash="15712841" needed="1">Mançu Misketçileri</STRING>
+    <STRING hash="11637510" needed="1">Mançu Tüfekçileri</STRING>
+    <STRING hash="13245267" needed="1">Mançu Piyadesi</STRING>
+    <STRING hash="6205127" needed="1">Makineli Tüfek</STRING>
+    <STRING hash="15720375" needed="1">Ağır Makineli Tüfek</STRING>
+    <STRING hash="22252131" needed="1">Gelişmiş Makineli Tüfek</STRING>
+    <STRING hash="337164" needed="1">MG42</STRING>
+    <STRING hash="7851322" needed="1">Alev Makinesi</STRING>
+    <STRING hash="2939856" needed="1">Hoplitler</STRING>
+    <STRING hash="2839030" needed="1">Falanks</STRING>
+    <STRING hash="2060855" needed="1">Kargıcılar</STRING>
+    <STRING hash="8221659" needed="1">Seçkin Kargıcılar</STRING>
+    <STRING hash="3904621" needed="1">Füzilyeler</STRING>
+    <STRING hash="11535451" needed="1">Tanksavar Tüfeği</STRING>
+    <STRING hash="2792777" needed="1">Bazuka</STRING>
+    <STRING hash="15231344" needed="1">Tanksavar Füzesi</STRING>
+    <STRING hash="10089468" needed="1">Geri Tepmesiz Top</STRING>
+    <STRING hash="14498849" needed="1">Dragon Tanksavar</STRING>
+    <STRING hash="2215527" needed="1">Lejyonlar</STRING>
+    <STRING hash="13400324" needed="1">Sezar Lejyonları</STRING>
+    <STRING hash="16529548" needed="1">Pretoryen Muhafızlar</STRING>
+    <STRING hash="2749055" needed="1">Scutari</STRING>
+    <STRING hash="10541371" needed="1">Kraliyet Scutari</STRING>
+    <STRING hash="2565159" needed="1">Terciolar</STRING>
+    <STRING hash="9826501" needed="1">Kraliyet Tercioları</STRING>
+    <STRING hash="2218110" needed="1">Solduri</STRING>
+    <STRING hash="6341588" needed="1">Barbarlar</STRING>
+    <STRING hash="2664093" needed="1">Vandallar</STRING>
+    <STRING hash="8305918" needed="1">Landsknechtler</STRING>
+    <STRING hash="16097864" needed="1">Ashigaru Mızrakçı</STRING>
+    <STRING hash="925380" needed="1">Bushi</STRING>
+    <STRING hash="5811238" needed="1">Seçkin Bushi</STRING>
+    <STRING hash="2729576" needed="1">Samuray</STRING>
+    <STRING hash="7334482" needed="1">Tüfekli Samuray</STRING>
+    <STRING hash="1519671" needed="1">Yaycılar</STRING>
+    <STRING hash="2437686" needed="1">Okçular</STRING>
+    <STRING hash="6749852" needed="1">Arbaletçiler</STRING>
+    <STRING hash="9426064" needed="1">Ağır Okçular</STRING>
+    <STRING hash="12128397" needed="1">Kuş Okçuları</STRING>
+    <STRING hash="24712871" needed="1">Kraliyet Kuş Okçusu</STRING>
+    <STRING hash="13971934" needed="1">Apedemak Okçuları</STRING>
+    <STRING hash="5363679" needed="1">Uzun Yaycılar</STRING>
+    <STRING hash="16003280" needed="1">Kralın Uzun Yaycıları</STRING>
+    <STRING hash="13018015" needed="1">Yeomanlar</STRING>
+    <STRING hash="2678272" needed="1">Hwarang</STRING>
+    <STRING hash="9766582" needed="1">Seçkin Hwarang</STRING>
+    <STRING hash="10138104" needed="1">Kraliyet Hwarang</STRING>
+    <STRING hash="21703388" needed="1">Seçkin Kraliyet Hwarang</STRING>
+    <STRING hash="7633946" needed="1">Atlı Okçu</STRING>
+    <STRING hash="17605544" needed="1">Ağır Atlı Okçu</STRING>
+    <STRING hash="2394210" needed="1">Dragon</STRING>
+    <STRING hash="5553487" needed="1">Karabinyer</STRING>
+    <STRING hash="7702055" needed="1">Develi Okçu</STRING>
+    <STRING hash="17790409" needed="1">Ağır Develi Okçu</STRING>
+    <STRING hash="7609557" needed="1">Deve Akıncısı</STRING>
+    <STRING hash="6206627" needed="1">Deve Kolordusu</STRING>
+    <STRING hash="2454520" needed="1">Savaş Arabası</STRING>
+    <STRING hash="9451088" needed="1">Ağır Harp Arabası</STRING>
+    <STRING hash="2937285" needed="1">Memlük</STRING>
+    <STRING hash="10638089" needed="1">Kraliyet Memlükü</STRING>
+    <STRING hash="1150372" needed="1">Göçebe</STRING>
+    <STRING hash="7707478" needed="1">Bozkır Göçebesi</STRING>
+    <STRING hash="862803" needed="1">Orda</STRING>
+    <STRING hash="6839153" needed="1">Altın Orda</STRING>
+    <STRING hash="5968353" needed="1">Hafif Atlı</STRING>
+    <STRING hash="10061941" needed="1">Hafif Süvari</STRING>
+    <STRING hash="21080609" needed="1">Seçkin Hafif Süvari</STRING>
+    <STRING hash="1970399" needed="1">Hüsar</STRING>
+    <STRING hash="6153218" needed="1">Hafif Deveci</STRING>
+    <STRING hash="9578409" needed="1">Deveci Savaşçı</STRING>
+    <STRING hash="20573215" needed="1">Seçkin Deveci Savaşçı</STRING>
+    <STRING hash="6265708" needed="1">Zırhlı Araç</STRING>
+    <STRING hash="16327071" needed="1">Zırhlı Keşif Aracı</STRING>
+    <STRING hash="13171980" needed="1">Zırhlı Süvari</STRING>
+    <STRING hash="10673820" needed="1">Tank Avcısı</STRING>
+    <STRING hash="6111439" needed="1">Tank Katili</STRING>
+    <STRING hash="10023222" needed="1">Rusiny Mızraklı</STRING>
+    <STRING hash="2960039" needed="1">Kazak</STRING>
+    <STRING hash="7454192" needed="1">Don Kazağı</STRING>
+    <STRING hash="6673410" needed="1">Katafrakt</STRING>
+    <STRING hash="1501480" needed="1">Şövalye</STRING>
+    <STRING hash="7437672" needed="1">Ağır Şövalye</STRING>
+    <STRING hash="5367551" needed="1">Kürasiyer</STRING>
+    <STRING hash="4210523" needed="1">Hetairos</STRING>
+    <STRING hash="12568111" needed="1">Kraliyet Hetairosu</STRING>
+    <STRING hash="5879341" needed="1">Stratiotai</STRING>
+    <STRING hash="15547751" needed="1">Kraliyet Stratiotai</STRING>
+    <STRING hash="4090116" needed="1">Chevalier</STRING>
+    <STRING hash="12238222" needed="1">Ağır Chevalier</STRING>
+    <STRING hash="11767956" needed="1">Atlı Humbaracı</STRING>
+    <STRING hash="24262978" needed="1">Atlı Muhafız Humbaracı</STRING>
+    <STRING hash="5341897" needed="1">Hafif Tank</STRING>
+    <STRING hash="745334" needed="1">Tank</STRING>
+    <STRING hash="14352003" needed="1">Ana Muharebe Tankı</STRING>
+    <STRING hash="5324692" needed="1">Tiger Tankı</STRING>
+    <STRING hash="8175683" needed="1">Leopard Tankı</STRING>
+    <STRING hash="3395554" needed="1">T80 Tankı</STRING>
+    <STRING hash="3504308" needed="1">Mancınık</STRING>
+    <STRING hash="4578313" needed="1">Trebuşe</STRING>
+    <STRING hash="2715057" needed="1">Balyemez</STRING>
+    <STRING hash="1686578" needed="1">Top</STRING>
+    <STRING hash="4044681" needed="1">Topçu</STRING>
+    <STRING hash="3111150" needed="1">Obüs</STRING>
+    <STRING hash="13748366" needed="1">Roketatar</STRING>
+    <STRING hash="1960398" needed="1">Havan</STRING>
+    <STRING hash="8133644" needed="1">Kuşatma Havanı</STRING>
+    <STRING hash="15499797" needed="1">Bazilika Balyemez</STRING>
+    <STRING hash="13031479" needed="1">Bazilika Topu</STRING>
+    <STRING hash="13144786" needed="1">Katyuşa Roketi</STRING>
+    <STRING hash="8864040" needed="1">Ateşli Ok</STRING>
+    <STRING hash="19698416" needed="1">Ağır Ateşli Ok</STRING>
+    <STRING hash="16156158" needed="1">Uçaksavar Topu</STRING>
+    <STRING hash="26524171" needed="1">Uçaksavar Bataryası</STRING>
+    <STRING hash="24835168" needed="1">Uçaksavar Füzesi</STRING>
+    <STRING hash="2398355" needed="1">Çift Kanatlı</STRING>
+    <STRING hash="2132227" needed="1">Avcı Uçağı</STRING>
+    <STRING hash="5994736" needed="1">Jet Avcı</STRING>
+    <STRING hash="13153657" needed="1">Gelişmiş Avcı Uçağı</STRING>
+    <STRING hash="7313136" needed="1">Hawk Avcısı</STRING>
+    <STRING hash="8335340" needed="1">Eagle Avcısı</STRING>
+    <STRING hash="1787274" needed="1">Bombacı Uçak</STRING>
+    <STRING hash="14414589" needed="1">Stratejik Bombacı</STRING>
+    <STRING hash="10788607" needed="1">Hayalet Bombacı</STRING>
+    <STRING hash="14502340" needed="1">Lancaster Bombacı</STRING>
+    <STRING hash="10487415" needed="1">Avcı Bombacı</STRING>
+    <STRING hash="17403956" needed="1">Jet Avcı Bombacı</STRING>
+    <STRING hash="5425090" needed="1">Helikopter</STRING>
+    <STRING hash="22818152" needed="1">Nakliye Helikopteri</STRING>
+    <STRING hash="4278905" needed="1">V2 Roketi</STRING>
+    <STRING hash="9875698" needed="1">Seyir Füzesi</STRING>
+    <STRING hash="12012826" needed="1">Nükleer Füze</STRING>
+    <STRING hash="6979733" needed="1">Kıtalararası Füze</STRING>
+    <STRING hash="3749364" needed="1">Balıkçılar</STRING>
+    <STRING hash="10196653" needed="1">Ticaret Filosu</STRING>
+    <STRING hash="24371934" needed="1">Modern Ticaret Filosu</STRING>
+    <STRING hash="11981198" needed="1">Nakliye Mavnası</STRING>
+    <STRING hash="15736732" needed="1">Nakliye Kalyonu</STRING>
+    <STRING hash="19043523" needed="1">Nakliye Şilebi</STRING>
+    <STRING hash="1570178" needed="1">Dromon</STRING>
+    <STRING hash="2557314" needed="1">Karavela</STRING>
+    <STRING hash="1007218" needed="1">Şalopa</STRING>
+    <STRING hash="4093348" needed="1">Muhrip</STRING>
+    <STRING hash="2223053" needed="1">Kruvazör</STRING>
+    <STRING hash="11534641" needed="1">Füzeli Kruvazör</STRING>
+    <STRING hash="4250328" needed="1">Ateş Salı</STRING>
+    <STRING hash="12110344" needed="1">Ağır Ateş Salı</STRING>
+    <STRING hash="2833092" needed="1">Ateş Gemisi</STRING>
+    <STRING hash="10129818" needed="1">Ağır Ateş Gemisi</STRING>
+    <STRING hash="4315997" needed="1">Denizaltı</STRING>
+    <STRING hash="15367664" needed="1">Taarruz Denizaltısı</STRING>
+    <STRING hash="2070876" needed="1">Trireme</STRING>
+    <STRING hash="1714725" needed="1">Kadırga</STRING>
+    <STRING hash="3072219" needed="1">Karaka</STRING>
+    <STRING hash="2423170" needed="1">Fırkateyn</STRING>
+    <STRING hash="5606523" needed="1">Harp Gemisi</STRING>
+    <STRING hash="6438890" needed="1">Bomba Gemisi</STRING>
+    <STRING hash="5692558" needed="1">Humbara Gemisi</STRING>
+    <STRING hash="6451385" needed="1">Dretnot</STRING>
+    <STRING hash="5072733" needed="1">Savaş Gemisi</STRING>
+    <STRING hash="20101660" needed="1">Gelişmiş Savaş Gemisi</STRING>
+    <STRING hash="14244592" needed="1">Uçak Gemisi</STRING>
+    <STRING hash="3462612" needed="1">Yaban Kuşu</STRING>
+    <STRING hash="4754137" needed="1">Sürü Kuşu</STRING>
+    <STRING hash="3519784" needed="1">Martı</STRING>
+    <STRING hash="2879048" needed="1">Çiftlik Domuzu</STRING>
+    <STRING hash="7757665" needed="1">Çiftlik Tavuğu</STRING>
+    <STRING hash="4834015" needed="1">Sürü: At</STRING>
+    <STRING hash="4679109" needed="1">Sürü: Koyun</STRING>
+    <STRING hash="4802943" needed="1">Sürü: Bizon</STRING>
+    <STRING hash="4049688" needed="1">Sürü: Ayı</STRING>
+    <STRING hash="3575160" needed="1">Sürü: Balık</STRING>
+    <STRING hash="6586501" needed="1">Sürü: Balina</STRING>
+    <STRING hash="9185103" needed="1">Sürü: Tavuskuşu</STRING>
+    <STRING hash="16545078" needed="1">Taarruz Helikopteri</STRING>
+    <STRING hash="731698" needed="1">Barka</STRING>
+    <STRING hash="2968518" needed="1">Korvet</STRING>
+    <STRING hash="3819158" needed="1">Boadicea</STRING>
+    <STRING hash="4884264" needed="1">İz Sürücü</STRING>
+    <STRING hash="2115754" needed="1">Öncü</STRING>
+    <STRING hash="1621540" needed="1">Korucu</STRING>
+    <STRING hash="2313787" needed="1">Bahriyeli</STRING>
+    <STRING hash="11205266" needed="1">Bahriyeli Tüfekçi</STRING>
+    <STRING hash="12813023" needed="1">Deniz Piyadesi</STRING>
+    <STRING hash="12567134" needed="1">Hücum Deniz Piyadesi</STRING>
+    <STRING hash="4499025" needed="1">Ölümsüzler</STRING>
+    <STRING hash="2775650" needed="1">Anusiya</STRING>
+    <STRING hash="4513220" needed="1">Athanatoi</STRING>
+    <STRING hash="11798069" needed="1">Ölümsüz Okçular</STRING>
+    <STRING hash="12756454" needed="1">Anusiya Okçuları</STRING>
+    <STRING hash="16185980" needed="1">Athanatoi Okçuları</STRING>
+    <STRING hash="7561726" needed="1">Sunka Wakan</STRING>
+    <STRING hash="19075282" needed="1">Kartal Tüyü Atlısı</STRING>
+    <STRING hash="7303434" needed="1">Misketli Atlı</STRING>
+    <STRING hash="22928087" needed="1">Tekrarlı Tüfekli Atlı</STRING>
+    <STRING hash="8152989" needed="1">Savaş Fili</STRING>
+    <STRING hash="1783401" needed="1">Mahut</STRING>
+    <STRING hash="5595655" needed="1">Tüfekli Mahut</STRING>
+    <STRING hash="12418082" needed="1">Kolombornalı Mahut</STRING>
+    <STRING hash="4076737" needed="1">İskender</STRING>
+    <STRING hash="3017560" needed="1">Napolyon</STRING>
+    <STRING hash="3000023" needed="1">Parmenion</STRING>
+    <STRING hash="4299955" needed="1">Antipatros</STRING>
+    <STRING hash="2324064" needed="1">Batlamyus</STRING>
+    <STRING hash="1768727" needed="1">Dara</STRING>
+    <STRING hash="1546345" needed="1">Memnon</STRING>
+    <STRING hash="5253546" needed="1">Spitamenes</STRING>
+    <STRING hash="23457065" needed="1">Çandragupta Maurya</STRING>
+    <STRING hash="1086684" needed="1">Porus</STRING>
+    <STRING hash="10420802" needed="1">Silahlı Kervan</STRING>
+    <STRING hash="11429998" needed="1">Silahlı Tüccar</STRING>
+    <STRING hash="18319383" needed="1">Silahlı İkmal Arabası</STRING>
+    <STRING hash="552662" needed="1">Brik</STRING>
+    <STRING hash="1115697" needed="1">Fluyt</STRING>
+    <STRING hash="2167087" needed="1">Klipper</STRING>
+    <STRING hash="5046858" needed="1">Wellington</STRING>
+    <STRING hash="20545258" needed="1">Kıta Deniz Piyadesi</STRING>
+    <STRING hash="16731118" needed="1">Arkebüzlü Ölümsüz</STRING>
+    <STRING hash="3718008" needed="1">Kuşatma Gemisi</STRING>
+    <STRING hash="13572651" needed="1">Arşidük Charles</STRING>
+    <STRING hash="2760720" needed="1">Cezzar</STRING>
+    <STRING hash="10697315" needed="1">Danışman Fouché</STRING>
+    <STRING hash="32873769" needed="1">Komutan Schwarzenberg</STRING>
+    <STRING hash="12471697" needed="1">General Blücher</STRING>
+    <STRING hash="12663209" needed="1">General Kutuzov</STRING>
+    <STRING hash="12225527" needed="1">Komutan Paoli</STRING>
+    <STRING hash="8207598" needed="1">Konkistador</STRING>
+    <STRING hash="18428844" needed="1">Seçkin Konkistador</STRING>
+    <STRING hash="6980785" needed="1">Arkebüzlü Ölümsüz</STRING>
+    <STRING hash="3101971" needed="1">Mızrakçılar</STRING>
+    <STRING hash="12494856" needed="1">Mohawk Mızrakçıları</STRING>
+    <STRING hash="25571948" needed="1">Ağır Mohawk Mızrakçıları</STRING>
+    <STRING hash="25200830" needed="1">Seçkin Mohawk Mızrakçı</STRING>
+    <STRING hash="12157126" needed="1">Hat Gemisi</STRING>
+    <STRING hash="2264008" needed="1">Falx Savaşçıları</STRING>
+    <STRING hash="5909556" needed="1">Viteji</STRING>
+    <STRING hash="15132084" needed="1">Paraşütçüler</STRING>
+    <STRING hash="4222311" needed="1">Mi-24 Hind</STRING>
+    <STRING hash="4337422" needed="1">Roksolan Mızraklı</STRING>
+    <STRING hash="384593" needed="1">Interceptor</STRING>
+    <STRING hash="5987504" needed="1">Nakliye Helikopteri</STRING>
+    <STRING hash="6756338" needed="1">Automitraliera</STRING>
+    <STRING hash="1460525" needed="1">Vanatori de Munte</STRING>
+    <STRING hash="6781286" needed="1">Kraliyet Muhafızı</STRING>
+    <STRING hash="16323899" needed="1">Yunan Paralı Askerleri</STRING>
+    <STRING hash="2279228" needed="1">Voinici</STRING>
+    <STRING hash="3596236" needed="1">Darabani</STRING>
+    <STRING hash="20863828" needed="1">R-2</STRING>
+    <STRING hash="8984905" needed="1">Renault FT</STRING>
+    <STRING hash="6802343" needed="1">Kürk Avcısı</STRING>
+    <STRING hash="8110594" needed="1">Bandeirantes</STRING>
+    <STRING hash="18223964" needed="1">Comati</STRING>
+    <STRING hash="5044549" needed="1">Despot</STRING>
+    <STRING hash="6886735" needed="1">Senatör</STRING>
+    <STRING hash="7345279" needed="1">Hükümdar</STRING>
+    <STRING hash="8611244" needed="1">Başkan</STRING>
+    <STRING hash="6173159" needed="1">Yurttaş</STRING>
+    <STRING hash="1922260" needed="1">CEO</STRING>
+    <STRING hash="14761279" needed="1">Barbar Okçu</STRING>
+    <STRING hash="25490673" needed="1">IAR-80</STRING>
+    <STRING hash="18086489" needed="1">Barbar Falanksı</STRING>
+    <STRING hash="12870995" needed="1">Danışman Fouché</STRING>
+    <STRING hash="16775293" needed="1">Bölge İnşaatçısı</STRING>
+    <STRING hash="10825523" needed="1">Dorobanti</STRING>
+    <STRING hash="10853451" needed="0">Dara'nın Arabası</STRING>
+    <STRING hash="6809782" needed="1">Harp Arabası</STRING>
+    <STRING hash="1687475" needed="1">Takohs</STRING>
+    <STRING hash="1543137" needed="1">Akweks</STRING>
+    <STRING hash="1816090" needed="1">Okwari</STRING>
+    <STRING hash="6337910" needed="1">Yoldaş</STRING>
+  </UNITS>
+  <ITEMS>
+    <STRING hash="3776560" needed="1">Hediye Kutusu</STRING>
+  </ITEMS>
+  <SPELLS>
+    <STRING hash="1152079" needed="1">Rüşvet</STRING>
+    <STRING hash="14621965" needed="1">Kaynak Yağmala</STRING>
+    <STRING hash="20104467" needed="1">Karşı İstihbarat</STRING>
+    <STRING hash="5394599" needed="1">Asimile Et</STRING>
+    <STRING hash="1583434" needed="1">İyileştir</STRING>
+    <STRING hash="9664256" needed="1">Sahte Birlikler</STRING>
+    <STRING hash="1757765" needed="1">Pusu</STRING>
+    <STRING hash="8696396" needed="1">Zorlu Yürüyüş</STRING>
+    <STRING hash="3342997" needed="1">Siper Kaz</STRING>
+    <STRING hash="13981346" needed="1">İkmal Yenile</STRING>
+    <STRING hash="2895784" needed="1">Muhbir</STRING>
+    <STRING hash="3490332" needed="1">Sabotaj</STRING>
+    <STRING hash="1529192" needed="1">Keskin Nişancı</STRING>
+    <STRING hash="5373519" needed="1">Palet Patlat</STRING>
+    <STRING hash="4842857" needed="1">Radar Karıştır</STRING>
+    <STRING hash="3362543" needed="1">Havadan İndirme</STRING>
+    <STRING hash="15084354" needed="1">Araştırma Projesi</STRING>
+    <STRING hash="772144" needed="1">Yerle Bir Et</STRING>
+    <STRING hash="15272294" needed="1">Tahkimatı Terk Et</STRING>
+    <STRING hash="4301527" needed="1">Kapıyı Kilitle</STRING>
+    <STRING hash="6744513" needed="1">Kapı Kilidini Aç</STRING>
+    <STRING hash="4376064" needed="1">Nakliye</STRING>
+    <STRING hash="957551" needed="1">Topla</STRING>
+    <STRING hash="1652836" needed="1">Konuşlan</STRING>
+    <STRING hash="3291885" needed="1">Sivil</STRING>
+    <STRING hash="2217284" needed="1">Silah Başına!</STRING>
+    <STRING hash="11354781" needed="1">Uçak Üret</STRING>
+    <STRING hash="956773" needed="1">Dönüştür</STRING>
+    <STRING hash="2330416" needed="1">Yükselt</STRING>
+    <STRING hash="2688591" needed="1">Dağıt</STRING>
+    <STRING hash="7293826" needed="1">Savaş İlan Et</STRING>
+    <STRING hash="13168313" needed="1">İttifakı Boz</STRING>
+    <STRING hash="3885310" needed="1">Menzilli Saldırı</STRING>
+    <STRING hash="2613214" needed="1">Yakın Dövüş</STRING>
+  </SPELLS>
+</ROOT>

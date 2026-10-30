@@ -1,0 +1,688 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ROOT>
+  <!-- LOCALIZATION: All STRING elements under ALTERNATENAMES/EPOCHTYPE and ALTERNATENAMES2/EPOCHTYPE-->
+  <ALTERNATENAMES>
+    <EPOCHTYPE name="Written Word">
+      <STRING>Pismo</STRING>
+      <STRING>Edukacja</STRING>
+      <STRING>Rozumowanie dedukcyjne</STRING>
+      <STRING>Biologia</STRING>
+      <STRING>Anatomia</STRING>
+      <STRING>Termodynamika</STRING>
+      <STRING>Statystyka</STRING>
+      <STRING>Fizyka jądrowa</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mathematics">
+      <STRING>Nawadnianie</STRING>
+      <STRING>Matematyka</STRING>
+      <STRING>Pomiar czasu</STRING>
+      <STRING>Empiryzm</STRING>
+      <STRING>Energia mechaniczna</STRING>
+      <STRING>Elektromagnetyzm</STRING>
+      <STRING>Akustyka</STRING>
+      <STRING>Genetyka</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Chemistry">
+      <STRING>Obserwacja nieba</STRING>
+      <STRING>Energia wodna</STRING>
+      <STRING>Chemia</STRING>
+      <STRING>Metoda naukowa</STRING>
+      <STRING>Rachunek różniczkowy</STRING>
+      <STRING>Farmakologia</STRING>
+      <STRING>Teoria względności</STRING>
+      <STRING>Mechanika kwantowa</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Laws of Nature">
+      <STRING>Dźwignia</STRING>
+      <STRING>Temperatura</STRING>
+      <STRING>Ogrodnictwo</STRING>
+      <STRING>Prawa natury</STRING>
+      <STRING>Geologia</STRING>
+      <STRING>Szczepienia</STRING>
+      <STRING>Mikrobiologia</STRING>
+      <STRING>Mikrochipy</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electricity">
+      <STRING>Kalendarz</STRING>
+      <STRING>Energia wiatrowa</STRING>
+      <STRING>Astronomia</STRING>
+      <STRING>Język narodowy</STRING>
+      <STRING>Elektryczność</STRING>
+      <STRING>Aeronautyka</STRING>
+      <STRING>Antybiotyki</STRING>
+      <STRING>Astrofizyka</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Electronics">
+      <STRING>Miary i wagi</STRING>
+      <STRING>Astrologia</STRING>
+      <STRING>Maszynownia</STRING>
+      <STRING>Literatura naukowa</STRING>
+      <STRING>Botanika</STRING>
+      <STRING>Elektronika</STRING>
+      <STRING>Meteorologia</STRING>
+      <STRING>Technika laserowa</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Computerization">
+      <STRING>Wymiana ciepła</STRING>
+      <STRING>Leczenie ran</STRING>
+      <STRING>Optyka</STRING>
+      <STRING>Fizyka</STRING>
+      <STRING>Ewolucja</STRING>
+      <STRING>Hydroenergetyka</STRING>
+      <STRING>Komputeryzacja</STRING>
+      <STRING>Światłowody</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Barter">
+      <STRING>Handel wymienny</STRING>
+      <STRING>Drogi</STRING>
+      <STRING>Kartografia</STRING>
+      <STRING>Kompas</STRING>
+      <STRING>Długość geogr.</STRING>
+      <STRING>Wzorzec bogactwa</STRING>
+      <STRING>Firmy prywatne</STRING>
+      <STRING>Autostrady</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Coinage">
+      <STRING>Zwierzęta juczne</STRING>
+      <STRING>Mennictwo</STRING>
+      <STRING>Nawigacja astronomiczna</STRING>
+      <STRING>Szerokość geogr.</STRING>
+      <STRING>Bank centralny</STRING>
+      <STRING>Telegraf i telefon</STRING>
+      <STRING>Media</STRING>
+      <STRING>Regulacje fiskalne</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Trade">
+      <STRING>Rzemiosło</STRING>
+      <STRING>Eksploracja</STRING>
+      <STRING>Handel</STRING>
+      <STRING>Geografia</STRING>
+      <STRING>Koleje</STRING>
+      <STRING>Giełda</STRING>
+      <STRING>Rezerwy walutowe</STRING>
+      <STRING>Łączność satelitarna</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercantilism">
+      <STRING>Kontenery</STRING>
+      <STRING>Przybory do pisania</STRING>
+      <STRING>Pieniądz papierowy</STRING>
+      <STRING>Merkantylizm</STRING>
+      <STRING>Poczta</STRING>
+      <STRING>Ustawy antymonopolowe</STRING>
+      <STRING>Reklama</STRING>
+      <STRING>Recykling</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Finance">
+      <STRING>Tkactwo</STRING>
+      <STRING>Mosty belkowe</STRING>
+      <STRING>Pomiar odległości</STRING>
+      <STRING>Miernictwo</STRING>
+      <STRING>Finanse</STRING>
+      <STRING>Radio</STRING>
+      <STRING>Precyzyjne rzemiosło</STRING>
+      <STRING>Wolny handel</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Assembly Line">
+      <STRING>Transport kołowy</STRING>
+      <STRING>Liczydło</STRING>
+      <STRING>Lingwistyka</STRING>
+      <STRING>Kanały</STRING>
+      <STRING>Księgowość</STRING>
+      <STRING>Linia montażowa</STRING>
+      <STRING>Telewizja</STRING>
+      <STRING>Internet</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Globalization">
+      <STRING>Kierunek</STRING>
+      <STRING>Papier i pergamin</STRING>
+      <STRING>Trybut</STRING>
+      <STRING>Wymiana walut</STRING>
+      <STRING>Cła ochronne</STRING>
+      <STRING>Fotografia i film</STRING>
+      <STRING>Globalizacja</STRING>
+      <STRING>Technika bezprzewodowa</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="City State">
+      <STRING>Miasto-państwo</STRING>
+      <STRING>Władza</STRING>
+      <STRING>Suwerenność</STRING>
+      <STRING>Polityka</STRING>
+      <STRING>Prawa człowieka</STRING>
+      <STRING>Monarchia konstytucyjna</STRING>
+      <STRING>Populizm</STRING>
+      <STRING>Prawa obywatelskie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Empire">
+      <STRING>Tradycja i rytuał</STRING>
+      <STRING>Imperium</STRING>
+      <STRING>Skarbiec</STRING>
+      <STRING>Kolonializm</STRING>
+      <STRING>Federalizm</STRING>
+      <STRING>Pakty i sojusze</STRING>
+      <STRING>Dochody skarbowe</STRING>
+      <STRING>Odnowa miast</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Feudalism">
+      <STRING>Nakazy i dekrety</STRING>
+      <STRING>Senat</STRING>
+      <STRING>Feudalizm</STRING>
+      <STRING>Policja</STRING>
+      <STRING>Równowaga władz</STRING>
+      <STRING>Rządy prawa</STRING>
+      <STRING>Zarządzanie budżetem</STRING>
+      <STRING>Etyka rządzenia</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Divine Right">
+      <STRING>Kult przodków</STRING>
+      <STRING>Magistraty</STRING>
+      <STRING>Służba cywilna</STRING>
+      <STRING>Boskie prawo</STRING>
+      <STRING>Karta praw</STRING>
+      <STRING>Realpolitik</STRING>
+      <STRING>Prawo wyborcze</STRING>
+      <STRING>Opinia publiczna</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Constitution">
+      <STRING>Zgromadzenia rządzące</STRING>
+      <STRING>Orzecznictwo</STRING>
+      <STRING>Sztuka rządzenia</STRING>
+      <STRING>Biurokracja</STRING>
+      <STRING>Konstytucja</STRING>
+      <STRING>Liga Narodów</STRING>
+      <STRING>Nowy Ład</STRING>
+      <STRING>Ponadpartyjność</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Great Power">
+      <STRING>Prawo cywilne</STRING>
+      <STRING>Ustawodawstwo</STRING>
+      <STRING>Jurysdykcja</STRING>
+      <STRING>Władze państwa</STRING>
+      <STRING>Prawa wyborcze</STRING>
+      <STRING>Mocarstwo</STRING>
+      <STRING>Narody Zjednoczone</STRING>
+      <STRING>Ochrona przyrody</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="International Law">
+      <STRING>Akta stanu cywilnego</STRING>
+      <STRING>Moralność</STRING>
+      <STRING>Despotyzm</STRING>
+      <STRING>Rewolucja</STRING>
+      <STRING>Polityka partyjna</STRING>
+      <STRING>Regionalizm</STRING>
+      <STRING>Prawo międzynarodowe</STRING>
+      <STRING>Nowy porządek świata</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="The Art of War">
+      <STRING>Sztuka wojny</STRING>
+      <STRING>Korpus oficerski</STRING>
+      <STRING>Pobór lenny</STRING>
+      <STRING>Siła ognia</STRING>
+      <STRING>Akademia wojskowa</STRING>
+      <STRING>Sztab generalny</STRING>
+      <STRING>Wywiad wojskowy</STRING>
+      <STRING>Kompleks militarno-przemysłowy</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Mercenaries">
+      <STRING>Żołnierstwo</STRING>
+      <STRING>Najemnicy</STRING>
+      <STRING>Zbrojni</STRING>
+      <STRING>Rusznikarze</STRING>
+      <STRING>Gwardia Narodowa</STRING>
+      <STRING>Taktyka połączonych broni</STRING>
+      <STRING>Wojna psychologiczna</STRING>
+      <STRING>Walka z rebelią</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Standing Army">
+      <STRING>Armie</STRING>
+      <STRING>Dowodzenie</STRING>
+      <STRING>Stała armia</STRING>
+      <STRING>Balistyka</STRING>
+      <STRING>Kwatermistrzostwo</STRING>
+      <STRING>Podstęp</STRING>
+      <STRING>Radar i sonar</STRING>
+      <STRING>Powszechna służba wojskowa</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Conscription">
+      <STRING>Musztra</STRING>
+      <STRING>Werbunek wojskowy</STRING>
+      <STRING>Rycerstwo i heraldyka</STRING>
+      <STRING>Pobór</STRING>
+      <STRING>Wojna nieregularna</STRING>
+      <STRING>Wojna pozycyjna</STRING>
+      <STRING>Amunicja kierowana</STRING>
+      <STRING>Zjednoczone siły zbrojne</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Levee en Masse">
+      <STRING>Dyscyplina</STRING>
+      <STRING>Wielka strategia</STRING>
+      <STRING>Zbroja płytowa</STRING>
+      <STRING>System pułkowy</STRING>
+      <STRING>Pospolite ruszenie</STRING>
+      <STRING>Taktyka infiltracji</STRING>
+      <STRING>Wojna partyzancka</STRING>
+      <STRING>Broń precyzyjna</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nation-in-Arms">
+      <STRING>Szyk</STRING>
+      <STRING>Składy wojskowe</STRING>
+      <STRING>Prawa wojny</STRING>
+      <STRING>Morale i spójność</STRING>
+      <STRING>Wojska łączności</STRING>
+      <STRING>Naród pod bronią</STRING>
+      <STRING>Operacje połączone</STRING>
+      <STRING>Walka elektroniczna</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Selective Service">
+      <STRING>Szkolenie wojskowe</STRING>
+      <STRING>Broń zapalająca</STRING>
+      <STRING>Kontrakt wojskowy</STRING>
+      <STRING>Tajność</STRING>
+      <STRING>Wojna totalna</STRING>
+      <STRING>Blitzkrieg</STRING>
+      <STRING>Powszechny pobór</STRING>
+      <STRING>Ochrona kraju</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES>
+  <ALTERNATENAMES2>
+    <EPOCHTYPE name="Tactics">
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+      <STRING>Taktyka</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Operations">
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+      <STRING>Operacje</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategy">
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+      <STRING>Strategia</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Religion">
+      <STRING>Religia</STRING>
+      <STRING>Religia</STRING>
+      <STRING>Religia</STRING>
+      <STRING>Reformacja</STRING>
+      <STRING>Reformacja</STRING>
+      <STRING>Teokracja</STRING>
+      <STRING>Teokracja</STRING>
+      <STRING>Teokracja</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Monotheism">
+      <STRING>Święte teksty</STRING>
+      <STRING>Święte teksty</STRING>
+      <STRING>Monoteizm</STRING>
+      <STRING>Monoteizm</STRING>
+      <STRING>Misjonarze</STRING>
+      <STRING>Misjonarze</STRING>
+      <STRING>Sekularyzm</STRING>
+      <STRING>Sekularyzm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Existentialism">
+      <STRING>Kler</STRING>
+      <STRING>Kler</STRING>
+      <STRING>Sekty religijne</STRING>
+      <STRING>Sekty religijne</STRING>
+      <STRING>Egzystencjalizm</STRING>
+      <STRING>Egzystencjalizm</STRING>
+      <STRING>Egzystencjalizm</STRING>
+      <STRING>Egzystencjalizm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Taxation">
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+      <STRING>Opodatkowanie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Vassalage">
+      <STRING>Wasalstwo</STRING>
+      <STRING>Wasalstwo</STRING>
+      <STRING>Wasalstwo</STRING>
+      <STRING>Wasalstwo</STRING>
+      <STRING>Trybut</STRING>
+      <STRING>Trybut</STRING>
+      <STRING>Trybut</STRING>
+      <STRING>Trybut</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Social Contract">
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+      <STRING>Umowa społeczna</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Income Tax">
+      <STRING>Suzerenność</STRING>
+      <STRING>Suzerenność</STRING>
+      <STRING>Suzerenność</STRING>
+      <STRING>Podatek dochodowy</STRING>
+      <STRING>Podatek dochodowy</STRING>
+      <STRING>Podatek dochodowy</STRING>
+      <STRING>Podatek dochodowy</STRING>
+      <STRING>Podatek dochodowy</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Fortification">
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+      <STRING>Fortyfikacja</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Bombardment">
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+      <STRING>Ostrzał</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Strategic Reserves">
+      <STRING>Inżynieria wojskowa</STRING>
+      <STRING>Inżynieria wojskowa</STRING>
+      <STRING>Inżynieria wojskowa</STRING>
+      <STRING>Inżynieria wojskowa</STRING>
+      <STRING>Rezerwy strategiczne</STRING>
+      <STRING>Rezerwy strategiczne</STRING>
+      <STRING>Rezerwy strategiczne</STRING>
+      <STRING>Rezerwy strategiczne</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Allegiance">
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+      <STRING>Lojalność</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Oath of Fealty">
+      <STRING>Przysięga lenna</STRING>
+      <STRING>Przysięga lenna</STRING>
+      <STRING>Przysięga lenna</STRING>
+      <STRING>Przysięga lenna</STRING>
+      <STRING>Obywatelstwo</STRING>
+      <STRING>Obywatelstwo</STRING>
+      <STRING>Obywatelstwo</STRING>
+      <STRING>Obywatelstwo</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Patriotism">
+      <STRING>Ojczyzna</STRING>
+      <STRING>Ojczyzna</STRING>
+      <STRING>Ojczyzna</STRING>
+      <STRING>Patriotyzm</STRING>
+      <STRING>Patriotyzm</STRING>
+      <STRING>Patriotyzm</STRING>
+      <STRING>Patriotyzm</STRING>
+      <STRING>Patriotyzm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Nationalism">
+      <STRING>Narodowość</STRING>
+      <STRING>Narodowość</STRING>
+      <STRING>Narodowość</STRING>
+      <STRING>Narodowość</STRING>
+      <STRING>Nacjonalizm</STRING>
+      <STRING>Nacjonalizm</STRING>
+      <STRING>Nacjonalizm</STRING>
+      <STRING>Nacjonalizm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Construction">
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+      <STRING>Budownictwo</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Architecture">
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+      <STRING>Architektura</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Engineering">
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+      <STRING>Inżynieria</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Herbal Lore">
+      <STRING>Zielarstwo</STRING>
+      <STRING>Zielarstwo</STRING>
+      <STRING>Zielarstwo</STRING>
+      <STRING>Zielarstwo</STRING>
+      <STRING>Homeopatia</STRING>
+      <STRING>Homeopatia</STRING>
+      <STRING>Homeopatia</STRING>
+      <STRING>Homeopatia</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Medicine">
+      <STRING>Medycyna</STRING>
+      <STRING>Medycyna</STRING>
+      <STRING>Medycyna</STRING>
+      <STRING>Medycyna</STRING>
+      <STRING>Medycyna</STRING>
+      <STRING>Profilaktyka</STRING>
+      <STRING>Profilaktyka</STRING>
+      <STRING>Profilaktyka</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Pharmaceuticals">
+      <STRING>Aptekarze</STRING>
+      <STRING>Aptekarze</STRING>
+      <STRING>Aptekarze</STRING>
+      <STRING>Farmaceutyki</STRING>
+      <STRING>Farmaceutyki</STRING>
+      <STRING>Farmaceutyki</STRING>
+      <STRING>Farmaceutyki</STRING>
+      <STRING>Farmaceutyki</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Forage">
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+      <STRING>Furażowanie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supply">
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+      <STRING>Zaopatrzenie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logistics">
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+      <STRING>Logistyka</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Carpentry">
+      <STRING>Ciesielstwo</STRING>
+      <STRING>Ciesielstwo</STRING>
+      <STRING>Ciesielstwo</STRING>
+      <STRING>Ciesielstwo</STRING>
+      <STRING>Ciesielstwo</STRING>
+      <STRING>Leśnictwo</STRING>
+      <STRING>Leśnictwo</STRING>
+      <STRING>Leśnictwo</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Logging Industry">
+      <STRING>Zaawansowane ciesielstwo</STRING>
+      <STRING>Zaawansowane ciesielstwo</STRING>
+      <STRING>Tokarka</STRING>
+      <STRING>Przemysł drzewny</STRING>
+      <STRING>Przemysł drzewny</STRING>
+      <STRING>Przemysł drzewny</STRING>
+      <STRING>Przemysł drzewny</STRING>
+      <STRING>Zalesianie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Papermill">
+      <STRING>Papiernia</STRING>
+      <STRING>Papiernia</STRING>
+      <STRING>Papiernia</STRING>
+      <STRING>Papiernia</STRING>
+      <STRING>Papiernia</STRING>
+      <STRING>Przemysł papierniczy</STRING>
+      <STRING>Przemysł papierniczy</STRING>
+      <STRING>Przemysł papierniczy</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Agriculture">
+      <STRING>Rolnictwo</STRING>
+      <STRING>Rolnictwo</STRING>
+      <STRING>Rolnictwo</STRING>
+      <STRING>Rolnictwo</STRING>
+      <STRING>Rolnictwo</STRING>
+      <STRING>Agronomia</STRING>
+      <STRING>Agronomia</STRING>
+      <STRING>Agronomia</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Crop Rotation">
+      <STRING>Młynarstwo</STRING>
+      <STRING>Młynarstwo</STRING>
+      <STRING>Młynarstwo</STRING>
+      <STRING>Płodozmian</STRING>
+      <STRING>Płodozmian</STRING>
+      <STRING>Ochrona gleby</STRING>
+      <STRING>Ochrona gleby</STRING>
+      <STRING>Ochrona gleby</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Food Industry">
+      <STRING>Konserwacja żywności</STRING>
+      <STRING>Konserwacja żywności</STRING>
+      <STRING>Konserwacja żywności</STRING>
+      <STRING>Przemysł spożywczy</STRING>
+      <STRING>Przemysł spożywczy</STRING>
+      <STRING>Przemysł spożywczy</STRING>
+      <STRING>Chłodnictwo</STRING>
+      <STRING>Chłodnictwo</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Literacy">
+      <STRING>Piśmienność</STRING>
+      <STRING>Piśmienność</STRING>
+      <STRING>Piśmienność</STRING>
+      <STRING>Piśmienność</STRING>
+      <STRING>Racjonalizm</STRING>
+      <STRING>Racjonalizm</STRING>
+      <STRING>Racjonalizm</STRING>
+      <STRING>Racjonalizm</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Printing Press">
+      <STRING>Skrybowie</STRING>
+      <STRING>Skrybowie</STRING>
+      <STRING>Prasa drukarska</STRING>
+      <STRING>Prasa drukarska</STRING>
+      <STRING>Teksty uczonych</STRING>
+      <STRING>Teksty uczonych</STRING>
+      <STRING>Teksty uczonych</STRING>
+      <STRING>Teksty uczonych</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Scientific Method">
+      <STRING>Metoda sokratejska</STRING>
+      <STRING>Metoda sokratejska</STRING>
+      <STRING>Metoda sokratejska</STRING>
+      <STRING>Metoda naukowa</STRING>
+      <STRING>Metoda naukowa</STRING>
+      <STRING>Metoda naukowa</STRING>
+      <STRING>Metoda naukowa</STRING>
+      <STRING>Metoda naukowa</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Institutional Research">
+      <STRING>Erudycja</STRING>
+      <STRING>Erudycja</STRING>
+      <STRING>Erudycja</STRING>
+      <STRING>Erudycja</STRING>
+      <STRING>Erudycja</STRING>
+      <STRING>Erudycja</STRING>
+      <STRING>Badania instytucjonalne</STRING>
+      <STRING>Badania instytucjonalne</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Supercomputers">
+      <STRING>Akademia</STRING>
+      <STRING>Akademia</STRING>
+      <STRING>Akademia</STRING>
+      <STRING>Akademia</STRING>
+      <STRING>Akademia</STRING>
+      <STRING>Akademia</STRING>
+      <STRING>Superkomputery</STRING>
+      <STRING>Superkomputery</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Metal Alloys">
+      <STRING>Stopy metali</STRING>
+      <STRING>Stopy metali</STRING>
+      <STRING>Stopy metali</STRING>
+      <STRING>Metalurgia</STRING>
+      <STRING>Metalurgia</STRING>
+      <STRING>Metalurgia</STRING>
+      <STRING>Metalurgia</STRING>
+      <STRING>Metalurgia</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Cold Casting">
+      <STRING>Wapienniki</STRING>
+      <STRING>Wapienniki</STRING>
+      <STRING>Odlewanie na zimno</STRING>
+      <STRING>Odlewanie na zimno</STRING>
+      <STRING>Wielki piec</STRING>
+      <STRING>Wielki piec</STRING>
+      <STRING>Spawanie</STRING>
+      <STRING>Spawanie</STRING>
+    </EPOCHTYPE>
+    <EPOCHTYPE name="Steel">
+      <STRING>Wydobycie rudy</STRING>
+      <STRING>Wydobycie rudy</STRING>
+      <STRING>Mosiądz</STRING>
+      <STRING>Mosiądz</STRING>
+      <STRING>Stal</STRING>
+      <STRING>Stal</STRING>
+      <STRING>Stal</STRING>
+      <STRING>Stal</STRING>
+    </EPOCHTYPE>
+  </ALTERNATENAMES2>
+</ROOT>

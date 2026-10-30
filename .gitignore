@@ -1,0 +1,19 @@
+build/
+dist/
+*.log
+_for-gemini/
+_for-discord/
+_for-cutout/
+tools/rdis_*.txt
+# intermediate files of the art scripts (regenerated from gemini/ and the tools)
+*/work/
+# Romania's music: the downloaded recordings (free in the EU only) and the WAVs made from them
+romania/music/
+# Nation music: the soundfont is downloaded (see nation-music/README.md), the WAVs are rendered from pieces/
+nation-music/tools/soundfont/*.sf2
+nation-music/mod_override/sounds/tracks/*.wav
+nation-music/share/
+__pycache__/
+*.pyc
+# a file named "nul" left by a stray shell redirect (reserved name on Windows)
+nul

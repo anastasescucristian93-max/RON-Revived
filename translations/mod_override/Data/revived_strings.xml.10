@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- the DLL's own texts (translations\dll_strings.txt), made by translations\tools\build_data.py -->
+<ROOT>
+	<STRING en="AI ASSISTANT">ASISTENTE IA</STRING>
+	<STRING en="NO CONTROL">SIN CONTROL</STRING>
+	<STRING en="CUSTOM">PERSONALIZADO</STRING>
+	<STRING en="FULL CONTROL">CONTROL TOTAL</STRING>
+	<STRING en="Only in single player games">Solo en partidas de un jugador</STRING>
+	<STRING en="The computer plays your nation">El ordenador juega con tu nación</STRING>
+	<STRING en="The computer plays, only what is ticked">El ordenador juega solo lo marcado</STRING>
+	<STRING en="You play your nation">Tú juegas con tu nación</STRING>
+	<STRING en="THE COMPUTER MAY BUY">EL ORDENADOR PUEDE COMPRAR</STRING>
+	<STRING en="Keep at least %d of each resource">Conservar al menos %d de cada recurso</STRING>
+	<STRING en="Economy">Economía</STRING>
+	<STRING en="Military">Ejército</STRING>
+	<STRING en="Research">Investigación</STRING>
+	<STRING en="New cities">Ciudades nuevas</STRING>
+	<STRING en="Wonders and Data Center">Maravillas y centro de datos</STRING>
+	<STRING en="Private">Soldado</STRING>
+	<STRING en="Private First Class">Soldado de primera</STRING>
+	<STRING en="Corporal">Cabo</STRING>
+	<STRING en="Sergeant">Sargento</STRING>
+	<STRING en="Staff Sergeant">Sargento primero</STRING>
+	<STRING en="Master Sergeant">Sargento mayor</STRING>
+	<STRING en="Lieutenant">Teniente</STRING>
+	<STRING en="Captain">Capitán</STRING>
+	<STRING en="Major">Comandante</STRING>
+	<STRING en="Colonel">Coronel</STRING>
+	<STRING en="Brigadier General">General de brigada</STRING>
+	<STRING en="Rank: {%s} (level %d of %d)">Rango: {%s} (nivel %d de %d)</STRING>
+	<STRING en="Experience: %d%% of the way to %s">Experiencia: %d%% hasta %s</STRING>
+	<STRING en="Experience: highest rank">Experiencia: rango máximo</STRING>
+	<STRING en="Earns experience from the damage it deals.">Gana experiencia con el daño que causa.</STRING>
+	<STRING en="Earns experience from its abilities.">Gana experiencia con sus capacidades.</STRING>
+	<STRING en="Bonuses:">Bonificaciones:</STRING>
+	<STRING en=" +%d%% attack,"> +%d%% de ataque,</STRING>
+	<STRING en=" +%d%% hit points"> +%d%% de puntos de vida</STRING>
+	<STRING en=", +1 sight">, +1 de visión</STRING>
+	<STRING en="+%d%% attack rate,">+%d%% de velocidad de ataque,</STRING>
+	<STRING en="-%d%% damage taken,">-%d%% de daño recibido,</STRING>
+	<STRING en="+1 range,">+1 de alcance,</STRING>
+	<STRING en="heals out of combat,">se cura fuera de combate,</STRING>
+	<STRING en="Military buildings: select all your Barracks, Stables, Siege Factories and Airbases (Auto Plants and Factories in later ages), and train from all of them.">Edificios militares: selecciona todos tus cuarteles, establos, fábricas de armas de asedio y bases aéreas (fábricas de vehículos y fábricas en edades posteriores) y entrena en todos ellos.</STRING>
+	<STRING en="Army: select all your military units.">Ejército: selecciona todas tus unidades militares.</STRING>
+	<STRING en="Airbases: select all your Airbases, and build aircraft from all of them.">Bases aéreas: selecciona todas tus bases aéreas y construye aviones en todas ellas.</STRING>
+	<STRING en="Docks: select all your Docks (Anchorages and Shipyards in later ages), and build ships from all of them.">Muelles: selecciona todos tus muelles (fondeaderos y astilleros en edades posteriores) y construye navíos en todos ellos.</STRING>
+	<STRING en="AI assistant: let the computer play your nation (Full control) or take it back (No control) with one click, choose what it may buy (economy, military, research, new cities, wonders) and how much of each resource it must leave you.">Asistente IA: deja que el ordenador juegue con tu nación (Control total) o recupérala (Sin control) con un clic, elige qué puede comprar (economía, ejército, investigación, ciudades nuevas, maravillas) y cuánto de cada recurso debe dejarte.</STRING>
+	<STRING en="PLAY">JUGAR</STRING>
+	<STRING en="Survive">Sobrevive</STRING>
+	<STRING en="Next wave in">Próxima oleada en</STRING>
+	<STRING en="Boss wave in">Oleada jefe en</STRING>
+	<STRING en="Survived!">¡Sobreviviste!</STRING>
+	<STRING en="No Nukes">Sin armas nucleares</STRING>
+</ROOT>
