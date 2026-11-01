@@ -263,8 +263,15 @@ def rules():
         line = line.split(";")[0].strip()
         if "=" in line and not line.startswith("["):
             key, val = (s.strip() for s in line.split("=", 1))
-            out.append((key.split("@")[0].split("~")[0].lower(), val.replace("%d", "0")))
+            val, *off = (s.strip() for s in val.split(","))
+            val = val.replace("%d", "0")
+            if len(off) == 2:  # a bigger canvas, "<file>, dx, dy" (nation_art.c)
+                OFFSETS[val.lower()] = (int(off[0]), int(off[1]))
+            out.append((key.split("@")[0].split("~")[0].lower(), val))
     return out
+
+
+OFFSETS = {}  # game file (lower case) -> (dx, dy): its canvas reaches this much further left / up
 
 
 def repo_file(game_rel):
@@ -289,6 +296,8 @@ def make(texture, game_rel):
     if len({e[1:] for e in entries}) > 1:
         print(f"{name}: warning, {texture} has several origins {entries}, using the first")
     zfile, x0, y0 = entries[0]
+    dx, dy = OFFSETS.get(game_rel.lower(), (0, 0))
+    x0, y0 = x0 + dx, y0 + dy  # the ground origin in a bigger canvas
     old = mesh_vertices(os.path.join(GAME, "art", zfile))
     a = np.array(Image.open(src).convert("RGBA"))[..., 3]
     solid = (a == SOLID) | (a == TEAM)

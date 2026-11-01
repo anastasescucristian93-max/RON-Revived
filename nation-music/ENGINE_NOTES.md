@@ -45,7 +45,7 @@ Busy, low pieces lose less (the Taiko at 22 kHz: 46.7 dB). At 44.1 kHz the sampl
 each other, so the predictor guesses better and the noise is about 10 dB lower; the music also
 keeps everything up to 20 kHz instead of 11 kHz.
 
-## Crash at game start: memory (2026-10-30, suspected, test pending)
+## Crash at game start: memory (2026-10-30, suspected)
 
 - Two games in a row (Big Huge, 8 players) stopped on "art\hammer5.bh3 does not exist for
   Transform Batch Transform" right after the start, although the file is in `art\`. Both logs end

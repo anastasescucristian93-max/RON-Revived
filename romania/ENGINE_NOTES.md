@@ -15,7 +15,7 @@ Addresses are virtual addresses in `riseofnations.exe` (Steam EE, timestamp 6674
 - Left at 24 (Romania is not in them): the scenario editor (`IFaceEditorNations::init`), quick match (`GameSpyQuick::pre_modal`), Conquer the World (`ConquestCountries`, `ConquestMapLoader`, `ScenarioFuncSet::set_nation_name`).
 - Safe without a change: `IStatsAndAchievements::IncrementStatForNation` and `Unit::explore_goody` check `tribe < 24` before indexing `gNationStatSuffix` (Steam stats per nation; Romania counts for none). `JukeBox::shuffle` picks music by nation with `ja default` for > 23. `Tribe::parse` (the help numbers) switches on the power tribe with `ja default`. `Types::finalize_grafting` 0x00669840 builds the barbarian mask with a loop unrolled by 6 over 24 nations: Romania is not barbarian, so bit 24 stays 0 as it should.
 - Many other `0x18` / `0x8E80` immediates are unrelated: struct sizes, combo id ranges (8..15 nations, 16..23 colours), string table offsets (the internal string table is 0x14 bytes per entry, so 0x8E80 is also a string; `tools/istr.py` names them).
-- `Tribes::walk_data` saves the array with its count; a game saved before the mod has 25 slots, so "Random" (slot 25) is missing when it is loaded with the mod. Not tested.
+- `Tribes::walk_data` saves the array with its count; a game saved before the mod has 25 slots, so "Random" (slot 25) is missing when it is loaded with the mod.
 - The patches must be in before the static constructors, so romania.c runs from `DllMain` (install_hooks), like the other modules.
 
 ## Nation masks

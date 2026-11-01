@@ -2,7 +2,7 @@
 
 Three end-game buildings for Rise of Nations: Extended Edition, for every nation, that each add a bonus for as long as they stand. The folder is still called `data-center`: the districts started as the Data Center's Expansions.
 
-Status: built and installed, not yet tested in game. The rules need the mod's `winmm.dll`, and `data_center.ini` must be in the game folder (it turns them on and holds their values).
+The rules need the mod's `winmm.dll`, and `data_center.ini` must be in the game folder (it turns them on and holds their values).
 
 ## The districts
 

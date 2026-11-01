@@ -1,7 +1,10 @@
 """Writes a sprite as a .tga with exactly the original file's header and pixel layout
 (uncompressed 32-bit, same origin), so the game's loader reads it like its own files.
 
-    python write_like.py <sprite.tga> <original.tga> <out.tga>
+    python write_like.py <sprite.tga> <original.tga> <out.tga> [--any-size]
+
+--any-size: the sprite may be bigger than the original (a canvas grown for bigger art; its
+nation_art.ini rule then says how much further left and up it reaches, see nation_art.c).
 """
 import struct
 import sys
@@ -9,7 +12,7 @@ import sys
 from PIL import Image
 
 
-def main(src, original, out):
+def main(src, original, out, any_size=False):
     hdr = open(original, "rb").read(18)
     id_len, cmap_type, img_type = hdr[0], hdr[1], hdr[2]
     w, h, bpp, desc = struct.unpack("<HHBB", hdr[12:18])
@@ -17,7 +20,10 @@ def main(src, original, out):
         sys.exit(f"unexpected original format: type {img_type}, {bpp} bpp")
     im = Image.open(src).convert("RGBA")
     if im.size != (w, h):
-        sys.exit(f"size {im.size} does not match original {(w, h)}")
+        if not any_size:
+            sys.exit(f"size {im.size} does not match original {(w, h)}")
+        w, h = im.size
+        hdr = hdr[:12] + struct.pack("<HHBB", w, h, bpp, desc)
     top_down = bool(desc & 0x20)
     rows = range(h) if top_down else range(h - 1, -1, -1)
     px = im.load()
@@ -49,4 +55,4 @@ def main(src, original, out):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:4], any_size="--any-size" in sys.argv)

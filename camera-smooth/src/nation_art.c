@@ -28,6 +28,14 @@
  * pointer for the duration of draw_build changes only that building's drawing. Replacement
  * sprites are loaded with the game's own ImageIO::load, with the packet's discrete scales.
  *
+ * Bigger art: "<file>, <dx>, <dy>" after the file name says the replacement's canvas reaches
+ * dx pixels further left and dy further up than the original's (a church grown past the top of
+ * the original canvas, 2026-11-01). The building is placed from the original canvas's top-left
+ * corner (the packet's hotspot, set from the original's size), and Sprite::draw adds the
+ * sprite's trim to it (Sprite+0x48 x, +0x4C y: the fully transparent columns and rows
+ * init_32 cut off), so the trims are lowered by dx, dy and the art lands where it belongs.
+ * A canvas grown only to the right and down needs no offset.
+ *
  * Depth: the sprite writes no depth, the building's zbuffer mesh does (building_graphics.xml
  * zbuffer=). A replacement keeps the original's mesh unless a mesh sits next to its file:
  * nation_art\romans\tower_6.tga -> nation_art\romans\tower_6z.bh3 (made by
@@ -88,6 +96,8 @@
 #define SPKT_SCALES     0x18 /* Array<float> discrete scales */
 #define SPRITE_ALLOC    0x94 /* refcount dword + 0x90 object, as SpritePacket::set_sprite does */
 #define SPRITE_TINT     0x04 /* Color (3 dwords) stored by ImageIO::set_tint */
+#define SPRITE_TRIM_X   0x48 /* transparent columns cut off the left by Sprite::init_32 */
+#define SPRITE_TRIM_Y   0x4C /* transparent rows cut off the top */
 
 typedef void(__attribute__((thiscall)) *fn_v)(void *self);
 typedef void(__attribute__((thiscall)) *fn_v_cstr)(void *self, const char *s);
@@ -117,6 +127,7 @@ static struct {
     int frames, period; /* animated: frame count (1 = still), milliseconds of one cycle */
     int loop;          /* animated: 0 = back and forth, 1 = in a loop */
     int age;           /* 1-8, 0 = every age */
+    int dx, dy;        /* bigger art: the canvas reaches this much further left / up */
     int tribe;         /* resolved on first use, -2 = not yet */
 } g_rules[MAX_RULES];
 static int g_rule_n;
@@ -149,6 +160,17 @@ void nation_art_load_config(const char *dir)
             char *v = val;
             while (isspace((unsigned char)*v))
                 v++;
+            int dx = 0, dy = 0;
+            char *comma = strchr(v, ',');
+            if (comma) {
+                if (sscanf(comma + 1, "%d , %d", &dx, &dy) != 2) {
+                    logf_("nation art: bad offset in '%s', ignored", line);
+                    continue;
+                }
+                *comma = 0;
+                for (char *p = comma; p > v && isspace((unsigned char)p[-1]);)
+                    *--p = 0;
+            }
             lower(key);
             char *tilde = strchr(key, '~');
             int frames = 1, period = 0;
@@ -178,6 +200,8 @@ void nation_art_load_config(const char *dir)
                 snprintf(g_rules[g_rule_n].file, sizeof g_rules[0].file, g_rules[g_rule_n].pattern, 0);
             else
                 snprintf(g_rules[g_rule_n].file, sizeof g_rules[0].file, "%s", g_rules[g_rule_n].pattern);
+            g_rules[g_rule_n].dx = dx;
+            g_rules[g_rule_n].dy = dy;
             g_rules[g_rule_n].tribe = -2;
             g_rule_n++;
         }
@@ -259,7 +283,7 @@ typedef struct {
 static Art g_loaded[MAX_RULES * 2];
 static int g_loaded_n;
 
-static Art *loaded_art(void *orig, const char *file, void *scales)
+static Art *loaded_art(void *orig, const char *file, void *scales, int dx, int dy)
 {
     for (int i = 0; i < g_loaded_n; i++)
         if (g_loaded[i].orig == orig && !strcmp(g_loaded[i].file, file))
@@ -267,6 +291,12 @@ static Art *loaded_art(void *orig, const char *file, void *scales)
     void *s = load_sprite(file, scales, orig);
     if (!s || g_loaded_n >= (int)(sizeof g_loaded / sizeof g_loaded[0]))
         return NULL;
+    if (dx || dy) {
+        int *tx = (int *)((char *)s + SPRITE_TRIM_X), *ty = (int *)((char *)s + SPRITE_TRIM_Y);
+        logf_("nation art: %s offset (%d, %d), trim (%d, %d) -> (%d, %d)", file, dx, dy, *tx, *ty, *tx - dx, *ty - dy);
+        *tx -= dx;
+        *ty -= dy;
+    }
     Art *a = &g_loaded[g_loaded_n++];
     a->orig = orig;
     a->file = file;
@@ -408,7 +438,7 @@ static Art *replacement(void *orig, int index, void *scales, int tribe, int age,
         snprintf(base, sizeof base, "%.*s.tga", (int)(len - 9), name);
         best = find_rule(base, tribe, age);
     }
-    Art *repl = best >= 0 ? loaded_art(orig, g_rules[best].file, scales) : NULL;
+    Art *repl = best >= 0 ? loaded_art(orig, g_rules[best].file, scales, g_rules[best].dx, g_rules[best].dy) : NULL;
     /* logged once, when it goes into the cache: with the cache full this ran on every frame */
     if (repl && g_cache_n < MAX_CACHE)
         logf_("nation art: %s -> %s for %s, age %d", name, g_rules[best].file, g_rules[best].nation, age);
@@ -450,7 +480,7 @@ static void *animated_sprite(int rule, Art *first, void *scales, const void *key
             return first->sprite;
         snprintf(names[rule][f], MAX_PATH, g_rules[rule].pattern, f);
     }
-    Art *a = loaded_art(first->orig, names[rule][f], scales);
+    Art *a = loaded_art(first->orig, names[rule][f], scales, g_rules[rule].dx, g_rules[rule].dy);
     failed[rule][f] = !a;
     return a ? a->sprite : first->sprite;
 }

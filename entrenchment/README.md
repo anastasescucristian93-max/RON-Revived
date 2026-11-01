@@ -2,7 +2,7 @@
 
 A defensive building for infantry in Rise of Nations: Extended Edition: the **Sandbag Nest**. Ranged infantry dig into it and fight from it with their own weapons, with bonuses, standing still.
 
-Status: first test 2026-10-25 failed (squads could not get in, Citizens and computer players built it); reworked, then reworked again on 2026-10-26 after the second test (the build button, full cover); installed, not yet tested again.
+Status: first test 2026-10-25 failed (squads could not get in, Citizens and computer players built it); reworked, then reworked again on 2026-10-26 after the second test (the build button, full cover); installed.
 
 ## For players
 
