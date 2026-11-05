@@ -27,7 +27,7 @@
 #include <string.h>
 #include <wchar.h>
 
-#define DEFAULT_INDEX "https://github.com/anastasescucristian93-max/RON-Revived/releases/latest/download/RON_Revived_update.txt"
+#define DEFAULT_INDEX RON_REVIVED_INDEX
 #define RELEASES_PAGE L"https://github.com/anastasescucristian93-max/RON-Revived/releases/latest"
 #define WM_FOUND     (WM_APP + 1)
 #define ANIM_TIMER   1
@@ -79,7 +79,7 @@ static struct {
 /* --- the check ---------------------------------------------------------------------------- */
 
 /* `url` into `out` (NUL-terminated); the bytes read, or -1. */
-static int http_get(const char *url, char *out, int size)
+int launcher_http_get(const char *url, char *out, int size)
 {
     WCHAR wurl[512], host[256], path[1024];
     MultiByteToWideChar(CP_UTF8, 0, url, -1, wurl, 512);
@@ -162,25 +162,43 @@ static DWORD WINAPI check_thread(void *arg)
         return 0;
     }
     static char buf[16384];
-    if (http_get(g_index, buf, sizeof buf) <= 0)
+    if (launcher_http_get(g_index, buf, sizeof buf) <= 0)
         return 0;
 
-    char version[32] = "", parts[MAX_PATH];
+    char version[32] = "", parts[MAX_PATH], extras[256] = ",";
     double bytes = 0;
     int changed = 0, listed = 0;
     snprintf(parts, sizeof parts, "%sRON_Revived_parts.txt", g_dir);
+    /* the optional parts (launcher_extras.c's) count only when they are installed */
+    const char *ex = strstr(buf, "\nextras=");
+    if (ex) {
+        size_t n = strcspn(ex + 8, "\r\n");
+        if (n < sizeof extras - 2) {
+            memcpy(extras + 1, ex + 8, n);
+            strcpy(extras + 1 + n, ",");
+        }
+    }
     for (char *line = strtok(buf, "\r\n"); line; line = strtok(NULL, "\r\n")) {
-        char key[32], content[80], have[80];
+        char key[32], content[80], have[80], tag[40];
         double size;
         if (sscanf(line, "version=%31s", version) == 1)
             continue;
-        /* <part>=<content hash> <zip sha256> <bytes> <zip name> */
+        /* <part>=<content hash>, then per zip <sha256> <bytes> <zip name> */
         if (sscanf(line, "%31[a-z]=%79s %*s %lf", key, content, &size) != 3)
             continue;
-        listed++;
         GetPrivateProfileStringA("parts", key, "", have, sizeof have, parts);
-        if (_stricmp(have, content) != 0)
-            bytes += size, changed++;
+        snprintf(tag, sizeof tag, ",%s,", key);
+        if (strstr(extras, tag) && !have[0])
+            continue;
+        listed++;
+        if (_stricmp(have, content) != 0) {
+            changed++;
+            const char *p = strchr(line, '=') + 1 + strlen(content);
+            char sha[80], zip[160];
+            int at = 0;
+            while (sscanf(p, "%79s %lf %159s%n", sha, &size, zip, &at) == 3)
+                bytes += size, p += at;
+        }
     }
     if (!version[0] || !listed) {
         logf_("update: %s is not an update list", g_index);

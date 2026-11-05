@@ -17,3 +17,5 @@ __pycache__/
 *.pyc
 # a file named "nul" left by a stray shell redirect (reserved name on Windows)
 nul
+# the Discord webhook the crash panel posts to (package/build_package.py puts it in the panel)
+package/crash_webhook.txt

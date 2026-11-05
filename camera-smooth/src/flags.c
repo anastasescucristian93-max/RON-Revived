@@ -14,6 +14,12 @@
  * their item ids are tribe indexes (24 of them, 25 with Romania: g_num_tribes), other
  * items (Random...) get no flag.
  *
+ * The same hook centres the text of the Name, Nation and Difficulty fields (setup_centre;
+ * the flag then sits left of the centred name), and flags_install makes the setup screen's
+ * three fonts larger (setup_font_percent): SetupWin::exec loads them as FontFamily::get(12 / 14
+ * / 16, bold) for every combo, title and check box of the screen; ui-theme's fonts.xml adds the
+ * sizes asked for (Arial 15 bold, Georgia 20 bold; Georgia 18 bold is the game's).
+ *
  * Only the interface is changed, so it is multiplayer-safe.
  */
 #include "ron.h"
@@ -23,6 +29,7 @@
 #define VA_SETUPWIN      0x00CAB3A0u /* SetupWin::current, set while the setup screen runs */
 #define VA_WRITE_L       0x0050F6E0u /* Buffer::write_l(const String &, const Rect *, len) */
 #define VA_WRITE_CENT    0x0050F850u /* Buffer::write_cent_l(const String &, const Rect *, len) */
+#define VA_TEXT_WIDTH    0x0050EF70u /* Buffer::text_width(const String &, len) */
 #define VA_STRING_CTOR   0x00A1D660u
 #define VA_STRING_CLOSE  0x00A1CF40u
 #define VA_WHITE         0x00C8D26Cu
@@ -38,8 +45,19 @@
 #define PD_ITEMS       0x284  /* PullDown items, 64 bytes each, item id at +0x34 */
 #define VT_FIND_TEX    0xA4   /* GraphicWinXML::find_tex(name, id, int *) */
 #define FLAG_GAP       4
+#define WIN_ID         0xC    /* Window id: the combo id for the setup combos */
+#define LEFT_INDENT    4      /* on_combo_redraw moves left-aligned text 4 px right */
+
+/* SetupWin::exec: push 1 / push <size> / FontFamily::get, the size bytes of its three fonts
+   (SetupWin+0x2268 12, +0x226C 14, +0x2270 16, all bold) */
+static const struct {
+    UINT_PTR at;
+    unsigned char size;
+} k_fonts[3] = { { 0x005C72F7u, 12 }, { 0x005C7305u, 14 }, { 0x005C7319u, 16 } };
 
 int g_flags_enabled;
+static int g_centre;       /* centre the Name, Nation and Difficulty fields */
+static int g_font_percent; /* the setup screen's fonts, percent of the game's */
 
 /* the call sites: SetupWin::on_combo_redraw (ebx = ComboBox) and
    SetupWin::on_pulldown_item_redraw (edi = PullDown, ebx = item index * 64) */
@@ -59,6 +77,7 @@ int g_flag_site;
 void *g_flag_c;
 
 typedef int(__attribute__((thiscall)) *write_t)(void *self, const void *str, const short *rect, int len);
+typedef int(__attribute__((thiscall)) *width_t)(void *self, const void *str, int len);
 typedef void(__attribute__((thiscall)) *fn_str_t)(void *self, const char *s);
 typedef void(__attribute__((thiscall)) *fn_close_t)(void *self);
 typedef void *(__attribute__((thiscall)) *find_t)(void *self, const void *name, int id, void *out);
@@ -68,6 +87,10 @@ typedef void(__attribute__((thiscall)) *add_rect_t)(void *self, const void *tex,
 void flags_load_config(const char *ini_path)
 {
     g_flags_enabled = GetPrivateProfileIntA("qol", "nation_flags", 1, ini_path);
+    g_centre = GetPrivateProfileIntA("qol", "setup_centre", 1, ini_path);
+    g_font_percent = GetPrivateProfileIntA("qol", "setup_font_percent", 125, ini_path);
+    if (g_font_percent < 50 || g_font_percent > 200)
+        g_font_percent = 100;
 }
 
 static void *find_tex(char *sw, const char *name)
@@ -134,24 +157,51 @@ int flags_nation_combo(char *combo)
     return sw && is_nation_combo(sw, combo);
 }
 
+/* combo ids (SetupWin::setup_combos): player 0..7, nation 8..15, handicap 0x18..0x1F,
+   diff 0x20..0x27 (handicap and diff share the Difficulty column) */
+static int is_centred_combo(char *combo)
+{
+    int id = *(int *)(combo + WIN_ID);
+    return (id >= 0 && id < 0x10) || (id >= 0x18 && id < 0x28);
+}
+
 __attribute__((used, thiscall)) int c_flag_write(void *buf, const void *str, const short *rect, int len)
 {
     write_t write = (write_t)VA(k_sites[g_flag_site].target);
     char *sw = *(char **)VA(VA_SETUPWIN);
-    if (!g_flags_enabled || !sw || !rect || !is_nation_combo(sw, g_flag_combo) || !find_flag(sw, 0))
+    if (!sw || !rect)
+        return write(buf, str, rect, len);
+    /* only a field's own text (site 0, left aligned) is centred, not the open list's rows */
+    int centre = g_centre && g_flag_site == 0 && is_centred_combo(g_flag_combo);
+    int flag = g_flags_enabled && is_nation_combo(sw, g_flag_combo) && find_flag(sw, 0);
+    if (!flag && !centre)
         return write(buf, str, rect, len);
 
-    int id = g_flag_item < 0 ? *(int *)(g_flag_combo + COMBO_SEL) : g_flag_item;
-    int h = rect[3] - rect[2], size = h < 10 ? 10 : h > 32 ? 32 : h;
-    void *tex = id >= 0 && id < g_num_tribes ? find_flag(sw, id) : NULL;
-    if (tex) {
-        short r[4] = { rect[0], (short)(rect[0] + size), (short)(rect[2] + (h - size) / 2),
-                       (short)(rect[2] + (h - size) / 2 + size) }; /* left, right, top, bottom */
-        flags_draw(tex, r, *(unsigned *)VA(VA_WHITE));
+    short r[4] = { rect[0], rect[1], rect[2], rect[3] }; /* left, right, top, bottom */
+    if (centre)
+        r[0] = (short)(r[0] - LEFT_INDENT); /* the field's rect is then symmetric */
+    int h = r[3] - r[2], size = h < 10 ? 10 : h > 32 ? 32 : h;
+    void *tex = NULL;
+    if (flag) {
+        int id = g_flag_item < 0 ? *(int *)(g_flag_combo + COMBO_SEL) : g_flag_item;
+        tex = id >= 0 && id < g_num_tribes ? find_flag(sw, id) : NULL;
     }
-    /* every row moves, flag or not (Random), so the names stay in one column */
-    short moved[4] = { (short)(rect[0] + size + FLAG_GAP), rect[1], rect[2], rect[3] };
-    return write(buf, str, moved, len);
+    /* in a list every row moves, flag or not (Random), so the names stay in one column;
+       a centred field centres the flag and the name together */
+    int lead = flag && (tex || !centre) ? size + FLAG_GAP : 0;
+    if (centre) {
+        int tw = ((width_t)VA(VA_TEXT_WIDTH))(buf, str, len);
+        int x = r[0] + (r[1] - r[0] - lead - tw) / 2;
+        r[0] = (short)(x > r[0] ? x : r[0]);
+        write = (write_t)VA(VA_WRITE_L);
+    }
+    if (tex) {
+        short fr[4] = { r[0], (short)(r[0] + size), (short)(r[2] + (h - size) / 2),
+                        (short)(r[2] + (h - size) / 2 + size) };
+        flags_draw(tex, fr, *(unsigned *)VA(VA_WHITE));
+    }
+    r[0] = (short)(r[0] + lead);
+    return write(buf, str, r, len);
 }
 
 /* ---- hooks ---------------------------------------------------------------------------- */
@@ -192,17 +242,43 @@ __asm__(".intel_syntax noprefix\n"
         "    jmp dword ptr [_g_flag_c]\n"
         ".att_syntax prefix\n");
 
+/* The setup screen's three fonts at g_font_percent of their size. */
+static void install_fonts(void)
+{
+    if (g_font_percent == 100)
+        return;
+    for (int i = 0; i < 3; i++) {
+        unsigned char *at = (unsigned char *)VA(k_fonts[i].at);
+        if (at[-3] != 0x6A || at[-2] != 0x01 || at[-1] != 0x6A || at[0] != k_fonts[i].size) {
+            logf_("setup fonts: push %d not found, sizes left as they are", k_fonts[i].size);
+            return;
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        unsigned char *at = (unsigned char *)VA(k_fonts[i].at);
+        int size = (k_fonts[i].size * g_font_percent + 50) / 100;
+        DWORD old;
+        VirtualProtect(at, 1, PAGE_EXECUTE_READWRITE, &old);
+        *at = (unsigned char)(size > 60 ? 60 : size);
+        VirtualProtect(at, 1, old, &old);
+    }
+    logf_("setup fonts at %d%%: %d, %d, %d", g_font_percent, *(unsigned char *)VA(k_fonts[0].at),
+          *(unsigned char *)VA(k_fonts[1].at), *(unsigned char *)VA(k_fonts[2].at));
+}
+
 /* Called from install_hooks once the exe is known to be the supported version. */
 void flags_install(void)
 {
-    if (!g_flags_enabled)
+    install_fonts();
+    if (!g_flags_enabled && !g_centre)
         return;
     void *stubs[4] = { hk_flag_combo0, hk_flag_combo1, hk_flag_item2, hk_flag_item3 };
     for (int i = 0; i < 4; i++) {
         unsigned char *at = (unsigned char *)VA(k_sites[i].at);
         if (at[0] != 0xE8 || (UINT_PTR)(at + 5 + *(INT32 *)(at + 1)) != VA(k_sites[i].target)) {
-            logf_("flags: call site %d mismatch, nation flags turned off", i);
+            logf_("flags: call site %d mismatch, nation flags and centred fields turned off", i);
             g_flags_enabled = 0;
+            g_centre = 0;
             return;
         }
     }
@@ -214,5 +290,5 @@ void flags_install(void)
         *(INT32 *)(at + 1) = (INT32)((UINT_PTR)stubs[i] - (UINT_PTR)(at + 5));
         VirtualProtect(at, 5, old, &old);
     }
-    logf_("nation flags installed");
+    logf_("setup combos hooked (nation flags %d, centred fields %d)", g_flags_enabled, g_centre);
 }

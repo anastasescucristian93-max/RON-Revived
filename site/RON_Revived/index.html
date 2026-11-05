@@ -478,7 +478,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     <a href="#assistant">AI assistant</a>
     <a href="#districts">City districts</a>
     <a href="#airdrop">Airdrop</a>
-    <a href="#fortification">Field Fortification</a>
+    <a href="#fortification">Fortification, Tank Traps</a>
     <a href="#survival">Survival mode</a>
     <a href="#romania">Romania</a>
     <a href="#languages">Languages</a>
@@ -500,7 +500,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <div>
     <p class="eyebrow">Mod pack for Rise of Nations: Extended Edition</p>
     <h1>Rise of Nations <span class="rev">REVIVED</span></h1>
-    <p class="lede">A smoother camera, an interface that tells you more, a few rules that fix old annoyances, veteran ranks for units and towers, <a href="#districts">city districts</a> that keep your empire growing in the end game, airdrops by helicopter, field fortifications for infantry, a <a href="#survival">Survival mode</a>, the game in <a href="#languages">ten languages</a>, <a href="#romania">Romania as a 25th nation</a>, and a new look, from the launcher and the nation flags to buildings of their own for the Romans, Egyptians, Russians, Dutch, Persians and more.</p>
+    <p class="lede">A smoother camera, an interface that tells you more, a few rules that fix old annoyances, veteran ranks for units and towers, <a href="#districts">city districts</a> that keep your empire growing in the end game, airdrops by helicopter, field fortifications and tank traps, cities that repair their own buildings, a <a href="#survival">Survival mode</a>, the game in <a href="#languages">ten languages</a>, <a href="#romania">Romania as a 25th nation</a>, and a new look, from the launcher and the nation flags to buildings of their own for the Romans, Egyptians, Russians, Dutch, Persians and more.</p>
     <div class="facts">
       <span class="chip"><b>Steam</b> Extended Edition</span>
       <span class="chip">Game files are <b>never modified</b></span>
@@ -522,6 +522,9 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     <li>Start the game as usual from Steam. The mod loads by itself.</li>
   </ol>
   <p class="prose">To update, install the new version the same way over the old one: your <code>ron_camera.ini</code> is kept, and the new defaults go next to it as <code>ron_camera.default.ini</code>. The installer keeps a copy of any game file it replaces and lists what it installed in <code>RON_Revived_files.txt</code>. It refuses to run while the game is open, or when another mod already uses <code>winmm.dll</code>: only one such mod can be installed at a time.</p>
+  <p class="prose"><b>Updates from the launcher.</b> When a new version is out, the game's launcher shows it over its picture, with how much there is to download and an <b>Update</b> button. It downloads only the parts of the pack that changed, checks that they arrived whole, installs them the same way <code>install.bat</code> does and starts the game again. Without internet, or with no new version, nothing shows (<code>check=0</code> under <code>[update]</code> turns it off).</p>
+  <h3>Extras</h3>
+  <p class="prose">The pack's zip holds only what every player needs (about 35 MB). Optional content, such as the <b>nation music</b> (54 tracks, about 220 MB), comes from the <b>Extras</b> tray on the launcher's left edge: it looks like the front of a CD drive, with a light, how many extras you have of how many there are (for example 1/3) and a red badge with the news. Click it and the tray slides out from behind the launcher. Each extra has one button: <b>Download</b>, <b>Installed</b> (it says <b>Remove</b> under the mouse), <b>Update</b> when a newer version is out, and the download's progress (<b>Cancel</b> under the mouse). Every download is checked before it is installed; installed extras stay through updates of the pack, and the launcher's Update updates only the extras you have (<code>tray=0</code> under <code>[extras]</code> hides the tray).</p>
   <p class="prose">By hand: copy everything inside the zip's <code>game</code> folder into the game folder (in Steam, right-click the game, <b>Manage</b> &rarr; <b>Browse local files</b>) and merge the folders.</p>
   <div class="callout">
     <p><b>How it works.</b> Windows loads <code>winmm.dll</code> from the game folder before its own copy. The mod's version forwards everything to the real one and adds its changes in memory while the game runs. New pictures and data are read from <code>mod_override</code> in place of the game's files. If the game is updated to a version the mod does not know, the mod switches itself off and the game runs normally.</p>
@@ -530,6 +533,8 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="prose">Double-click <code>uninstall.bat</code>. It removes every file the installer put in (the list in <code>RON_Revived_files.txt</code>) and the logs, and puts back the game files it had replaced.</p>
   <h3>If something goes wrong</h3>
   <p class="prose">The mod writes what it did to <code>ron_camera.log</code> in the game folder, including any part it switched off; each game starts a new log, and the one before is kept as <code>ron_camera.old.log</code>. Send it along with a bug report. When the game starts, the mod checks the game version and every place it changes: if a game update changes something, only the affected part turns itself off and the rest keeps working. Some antivirus programs flag game mods that use <code>winmm.dll</code> by mistake; add the game folder to the exceptions if that happens.</p>
+  <p class="prose"><b>Crash reports.</b> If the game crashes, a panel opens: "Rise of Nations closed because of an error". Write what you were doing (optional), and your Discord name if you want to be asked more, then press <b>Send report</b>; the report goes to the RON Revived Discord, where the cause can be found and fixed. It holds where the game failed, the end of the mod's log, your Windows version and memory and a small memory dump of the game (a check box leaves it out); your Windows user name is taken out first, and <b>See the report</b> shows the text before you send it. The reports stay in the game's <code>crash</code> folder (the newest ten). <code>crash_reports=0</code> under <code>[debug]</code> turns it off.</p>
+  <p class="prose"><b>Slow late in big matches on a laptop?</b> If it has two graphics cards, check that Windows runs the game on the fast one (Settings &rarr; System &rarr; Display &rarr; Graphics &rarr; Rise of Nations &rarr; High performance). On the integrated card the game can be several times slower.</p>
 </section>
 
 <section id="features" class="compact">
@@ -543,19 +548,20 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <div class="feat-panel" id="camera" role="tabpanel" aria-labelledby="tab-camera">
   <p class="sub">Only your own screen changes, so these work in any game, with or without the mod on the other side.</p>
   <div class="features">
-    <details class="feature"><summary><h4>Sharper picture, better water <span class="tag test">In testing</span></h4><p>Clearer detail and richer colour on the map, livelier water with sparkles and reflections; the interface stays as it is. Compare it in game with Ctrl+F10.</p></summary><p>See <a href="#graphics">Sharper picture and better water</a>, with before and after pictures.</p></details>
+    <details class="feature"><summary><h4>Sharper picture, better water</h4><p>Clearer detail and richer colour on the map, livelier water with sparkles and reflections; the interface stays as it is. Compare it in game with Ctrl+F10.</p></summary><p>See <a href="#graphics">Sharper picture and better water</a>, with before and after pictures.</p></details>
     <details class="feature"><summary><h4>Smooth scrolling</h4><p>Diagonal scrolling is no longer 1.41 times faster than straight scrolling, and the keyboard plus the screen edge no longer add up to double speed. Acceleration and braking can be turned on.</p></summary></details>
     <details class="feature"><summary><h4>Smooth zoom</h4><p>The camera glides between zoom levels and the tilt follows gradually. The point under the cursor stays in place while you zoom (or you can zoom on the screen centre, or keep the game's behaviour). Turning the wheel several times in a row keeps the zoom flowing.</p></summary></details>
-    <details class="feature"><summary><h4>One more zoom step <span class="tag test">In testing</span></h4><p>You can zoom out one step farther than before (the wider view the game keeps for replays) and in one step closer than the closest level. Up close, buildings are enlarged and look a little soft.</p></summary></details>
+    <details class="feature"><summary><h4>One more zoom step</h4><p>You can zoom out one step farther than before (the wider view the game keeps for replays) and in one step closer than the closest level. Up close, buildings are enlarged and look a little soft.</p></summary></details>
     <details class="feature"><summary><h4>Smooth camera jumps</h4><p>Jumping to an event or a hotkeyed group pans the camera instead of cutting to it.</p></summary></details>
     <details class="feature"><summary><h4>Steady buildings</h4><p>The game placed buildings on whole pixels, so they shook against the terrain while zooming or scrolling. They now sit still, and they use smooth filtering while the camera moves (no shimmering pixels), going back to sharp at rest.</p></summary></details>
     <details class="feature"><summary><h4>No black ground after a zoom</h4><p>Zooming out no longer leaves part of the map, sometimes half the screen, as black ground until you move the camera.</p></summary></details>
+    <details class="feature"><summary><h4>No streaks at the farthest zoom</h4><p>On a map where one ground covers most of the view (a desert, for example), zooming all the way out could fill the screen with long black and sand-coloured streaks and make the game stutter. The game can draw only so many tiles of one ground at once, so the farthest zoom now stops just before that limit; on varied maps it goes all the way, as before.</p></summary></details>
     <details class="feature"><summary><h4>Stuck camera fix</h4><p>The camera no longer keeps scrolling in one direction after Alt+Tab.</p></summary></details>
     <details class="feature"><summary><h4>Smooth fog of war</h4><p>Soft, round edges instead of the jagged tile grid, with a gradual fade at the edge of what your units see.</p></summary></details>
     <details class="feature"><summary><h4>Smooth unit turning</h4><p>Units, ships and their shadows are drawn at their exact facing instead of the game's 256 steps, and aircraft turn smoothly between game ticks instead of snapping from angle to angle (<code>smooth_facing</code>). Confirmed in game.</p></summary></details>
-    <details class="feature"><summary><h4>No teeth at the closest zoom <span class="tag test">In testing</span></h4><p>Close up, the edge of vision showed small dark teeth, one per row of the ground's grid. Every row now gets the same blur and the fade is wider (<code>fog_blur</code>, <code>fog_edge</code>).</p></summary></details>
-    <details class="feature"><summary><h4>Nuclear blasts you can read <span class="tag test">In testing</span></h4><p>The white flash is full only when the blast is near the middle of your screen and fades with distance, instead of blinding you wherever it is. While a nuke flies, everyone sees the radiation sign over its target, and the scorch and the fires stay three times as long.</p></summary></details>
-    <details class="feature"><summary><h4>No sawtooth on the fog edge <span class="tag test">In testing</span></h4><p>The edge of vision no longer shows small dark teeth along the ground's triangles: the fade at the edge is even.</p></summary></details>
+    <details class="feature"><summary><h4>No teeth at the closest zoom</h4><p>Close up, the edge of vision showed small dark teeth, one per row of the ground's grid. Every row now gets the same blur and the fade is wider (<code>fog_blur</code>, <code>fog_edge</code>).</p></summary></details>
+    <details class="feature"><summary><h4>Nuclear blasts you can read</h4><p>The white flash is full only when the blast is near the middle of your screen and fades with distance, instead of blinding you wherever it is. While a nuke flies, everyone sees the radiation sign over its target, and the scorch and the fires stay three times as long.</p></summary></details>
+    <details class="feature"><summary><h4>No sawtooth on the fog edge</h4><p>The edge of vision no longer shows small dark teeth along the ground's triangles: the fade at the edge is even.</p></summary></details>
     <details class="feature"><summary><h4>Clean shadows when scaled</h4><p>With the interface scaled up, shadows could stretch into long dark streaks across the ground. They now keep their normal shape.</p></summary></details>
     <details class="feature"><summary><h4>Interface scaling</h4><p>On 1440p, 4K and high-resolution laptop screens the interface is no longer tiny. It follows the Windows display scale by default and is still drawn at full resolution. It works best in borderless window mode at your screen's native resolution. The mouse cursor keeps its original size.</p></summary></details>
   </div>
@@ -565,7 +571,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="sub">Things the game knows but does not show you, and shortcuts for big armies. They only change the interface, so they are safe in multiplayer.</p>
 
   <h3>New buttons</h3>
-  <p class="prose">A row of icon buttons just above the bottom interface, on the right, in this order. The Airbases and Docks buttons appear once you have built an Airbase or a Dock. With the interface theme they are round gold medallions (a tower, a plane, an anchor, a gear in laurels) that light up under the mouse. Hover any of them for help.</p>
+  <p class="prose">A row of icon buttons just above the bottom interface, at its left end, in this order. The Airbases and Docks buttons appear once you have built an Airbase or a Dock. With the interface theme they are round gold medallions (a tower, a plane, an anchor, a gear in laurels) that light up under the mouse. Hover any of them for help.</p>
   <div class="features">
     <details class="feature"><summary><h4>Military buildings</h4><p>Selects every Barracks, Stable, Siege Factory and Airbase (Auto Plants and Factories in later ages), so you can train from all of them in one go.</p></summary></details>
     <details class="feature"><summary><h4>Army</h4><p>Selects every military unit, dug-in soldiers included. The game allows 128 in one selection: with a bigger army, click again for the next 128.</p></summary></details>
@@ -576,22 +582,26 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 
   <h3>On the map and in the panels</h3>
   <div class="features">
-    <details class="feature"><summary><h4>Resource panel easier to read</h4><p>The panel in the top left (resources, commerce limit, farms and camps) is 25% larger, and the income rates are green instead of grey. The population and city counters moved onto the panel's first row, next to the commerce limit.</p></summary></details>
-    <details class="feature"><summary><h4>Hover highlight <span class="tag test">In testing</span></h4><p>The unit or building under the mouse gets the same mark as a selected one (the circle under a unit, the rectangle around a building): white for yours, yellow for allies, red for everyone else.</p></summary></details>
-    <details class="feature"><summary><h4>Production bar <span class="tag test">In testing</span></h4><p>Hover over one of your buildings (or select it) while it trains a unit or researches, and a thin cyan bar under its health bar shows how far the job is.</p></summary></details>
-    <details class="feature"><summary><h4>Rally line <span class="tag test">In testing</span></h4><p>A selected building of yours shows a dotted line on the ground, in your colour, from the building to its rally flag.</p></summary></details>
-    <details class="feature"><summary><h4>What you are short of <span class="tag test">In testing</span></h4><p>The game writes a price you cannot pay in red in the tooltip. Now it also says how much is missing, for example <code>120 (-45)</code>.</p></summary></details>
-    <details class="feature"><summary><h4>Play button after loading <span class="tag test">In testing</span></h4><p>In single player, when the game has loaded, the loading bar turns into a glowing PLAY button, and the game starts only when you click it (or press Enter or Space). Read the loading screen (players, unique units, rules) for as long as you like.</p></summary></details>
+    <details class="feature"><summary><h4>Resource panel easier to read</h4><p>The panel in the top left is 25% larger, its rows a quarter wider, the income rates green, and the numbers drawn in a clear font instead of the game's tiny pixel one. Under each resource, a thin bar with one segment per place of work (farms, woodcutters, mines, oil wells, merchants, scholars), green for the ones in use, and the count ("7/7") at the end of the row, so you see at a glance where workers are missing.</p></summary><p>The handle under the rows hides or shows the bars. The market opens to the right of the resources, its Buy (green) and Sell (yellow) buttons level with their resource, instead of pushing the whole panel aside. The population and city counters sit one under the other in the market's column. <code>resource_bars=0</code> under <code>[ui]</code> brings back the game's panel.</p></details>
+    <details class="feature"><summary><h4>Minimap in the top right corner</h4><p>With the bottom interface folded (its arrow button), the minimap moves to the top right corner of the screen, out of the way of your units. A round button in the corner switches it between small, medium and large; the size is kept for the next games.</p></summary><p>The game's clocks (Armageddon, wonders, time limit, Survival) and the wonders being built line up under it, whatever its size. Unfolded, the minimap is back in its frame. <code>minimap_top_right=0</code> under <code>[ui]</code> keeps it at the bottom right.</p></details>
+    <details class="feature"><summary><h4>Full selection panel with the interface folded</h4><p>Selecting a unit or a building with the interface folded shows the full panel (name, hit points, attack, armor, range, the production queue) next to the command buttons, instead of the game's one-line strip. Several units or buildings show one picture per kind and how many of it are selected.</p></summary><p><code>folded_selection_panel=0</code> under <code>[ui]</code> brings back the strip.</p></details>
+    <details class="feature"><summary><h4>Rank, experience and kills in the panel</h4><p>With one unit selected, the right half of the selection panel shows the rank's insignia and name, its kills, the level and a large experience bar with how far the unit is to the next rank, and every bonus the rank gives now, one per line.</p></summary></details>
+    <details class="feature"><summary><h4>Larger game setup screen</h4><p>Every row of the game setup screen is a quarter taller, with larger text and nation flags; the drop-down boxes are a lighter grey and the Name, Nation and Difficulty boxes are centred.</p></summary><p>Under <code>[qol]</code>: <code>setup_centre=0</code> puts the text back on the left, <code>setup_font_percent</code> sets the text size (125; 100 = the game's).</p></details>
+    <details class="feature"><summary><h4>Hover highlight</h4><p>The unit or building under the mouse gets the same mark as a selected one (the circle under a unit, the rectangle around a building): white for yours, yellow for allies, red for everyone else.</p></summary></details>
+    <details class="feature"><summary><h4>Production bar</h4><p>Hover over one of your buildings (or select it) while it trains a unit or researches, and a thin cyan bar under its health bar shows how far the job is.</p></summary></details>
+    <details class="feature"><summary><h4>Rally line</h4><p>A selected building of yours shows a dotted line on the ground, in your colour, from the building to its rally flag.</p></summary></details>
+    <details class="feature"><summary><h4>What you are short of</h4><p>The game writes a price you cannot pay in red in the tooltip. Now it also says how much is missing, for example <code>120 (-45)</code>.</p></summary></details>
+    <details class="feature"><summary><h4>Play button after loading</h4><p>In single player, when the game has loaded, the loading bar turns into a glowing PLAY button, and the game starts only when you click it (or press Enter or Space). Read the loading screen (players, unique units, rules) for as long as you like.</p></summary></details>
     <details class="feature"><summary><h4>Build grid</h4><p>While you place a building, the tiles of your territory around the cursor turn green where it fits and red where it is blocked by trees, resources, buildings, water or cliffs. It follows each building's own rules (a Dock needs water) and fades out towards the edge.</p></summary></details>
     <details class="feature"><summary><h4>Range circles</h4><p>Select a Tower, Fort, City or any other building that shoots, and its attack range is drawn on the map as a semi-transparent circle in your colour.</p></summary></details>
     <details class="feature"><summary><h4>Hotkeys on the buttons</h4><p>Every command button with a keyboard shortcut shows its key in the corner, as in Company of Heroes 3. No more hovering to find out. If you change your keys in the options, the letters follow.</p></summary></details>
     <details class="feature"><summary><h4>Clearer buttons</h4><p>Locked options (wrong age, missing research) show a small gold padlock. Options you cannot afford right now are drawn darker but stay clickable, so you can queue ahead.</p></summary></details>
     <details class="feature"><summary><h4>Mixed building selection</h4><p>Select different military buildings together and train from one panel: infantry on the first row, cavalry and tanks on the second, artillery on the third, aircraft on the fourth. A click queues the unit in every selected building that can train it. The original game showed nothing.</p></summary></details>
     <details class="feature"><summary><h4>Hit points as numbers</h4><p>Current and maximum hit points under the health bar of the selected unit or building, for example <code>1250/1500</code>.</p></summary></details>
-    <details class="feature"><summary><h4>A health bar per soldier <span class="tag test">In testing</span></h4><p>A selected or hovered squad shows a small health bar over each soldier, with that soldier's own hit points, so you see who is about to fall. The game showed one bar over the captain only (<code>squad_health_bars</code>).</p></summary></details>
-    <details class="feature"><summary><h4>Craft points bar <span class="tag test">In testing</span></h4><p>Generals, Spies, patriots and every other unit with craft points show a blue bar right under their health bar, so you see at a glance when an ability is ready (<code>mana_bar</code>).</p></summary></details>
-    <details class="feature"><summary><h4>Area strike from the Airbase <span class="tag test">In testing</span></h4><p>With only Airbases selected, hold the right mouse button and drag: a red circle opens on the ground and the enemy targets in it get a red ring. Let go and each ready aircraft flies at one target, nearest to the centre first. Bombers take the buildings first, fighters the units. An empty circle sends every aircraft to patrol it; a plain right-click works as before (<code>airbase_area_strike</code>).</p></summary></details>
-    <details class="feature"><summary><h4>Kill counter</h4><p>A skull stat shows how many enemy units and buildings the selected unit or building has destroyed; the kill goes to whoever lands the final blow. Airbases and Carriers show the total of their aircraft.</p><p>It counts from the moment you start the game, so a loaded save starts at zero.</p></summary></details>
+    <details class="feature"><summary><h4>A health bar per soldier</h4><p>A selected or hovered squad shows a small health bar over each soldier, with that soldier's own hit points, so you see who is about to fall. The game showed one bar over the captain only (<code>squad_health_bars</code>).</p></summary></details>
+    <details class="feature"><summary><h4>Craft points bar</h4><p>Generals, Spies, patriots and every other unit with craft points show a blue bar right under their health bar, so you see at a glance when an ability is ready (<code>mana_bar</code>).</p></summary></details>
+    <details class="feature"><summary><h4>Area strike from the Airbase</h4><p>With only Airbases selected, hold the right mouse button and drag: a red circle opens on the ground and the enemy targets in it get a red ring. Let go and each ready aircraft flies at one target, nearest to the centre first. Bombers take the buildings first, fighters the units. An empty circle sends every aircraft to patrol it; a plain right-click works as before (<code>airbase_area_strike</code>).</p></summary></details>
+    <details class="feature"><summary><h4>Kill counter</h4><p>A painted skull and crossbones shows how many enemy units and buildings the selected unit or building has destroyed; the kill goes to whoever lands the final blow. Airbases and Carriers show the total of their aircraft. With soldiers selected, the top row of the selection panel shows the kills of the whole selection, large.</p><p>It counts from the moment you start the game, so a loaded save starts at zero.</p></summary></details>
     <details class="feature"><summary><h4>Auto-trade</h4><p>Merchants that stand idle for a few seconds go and trade on their own, on the route the game itself would pick, as if you had right-clicked it.</p></summary></details>
     <details class="feature"><summary><h4>Leader names</h4><p>Computer players are named after a leader of their nation (Julius Caesar, Queen Chabi, Napoleon, ...) instead of "Computer". In single player you see every computer's leader and nation from the start, on the loading screen and in the score list.</p></summary></details>
   </div>
@@ -600,28 +610,31 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="sub">These change the game itself. In multiplayer every player needs the mod, with the same settings.</p>
   <div class="features">
     <details class="feature"><summary><h4>No Armageddon defeat <span class="tag rule">Rule</span></h4><p>When the Armageddon clock reaches zero, the game no longer ends with everyone defeated. The game goes on, and from then on nobody can build or launch nuclear weapons.</p></summary></details>
-    <details class="feature"><summary><h4>No Nukes option <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>A new check box in the game setup, next to No Unique Units: ticked, nobody can build Nuclear Missiles, ICBMs or Interceptors in that game, computer players included. Cruise Missiles stay. In multiplayer only the host can tick it.</p></summary></details>
-    <details class="feature"><summary><h4>Stronger attrition <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Units in enemy territory without supply lose hit points 1.5 times as often, so armies deep in enemy land wear down faster and Supply Wagons, and raids on them, matter more. Supply Wagons, the supply technologies and nation bonuses reduce it as before.</p></summary></details>
+    <details class="feature"><summary><h4>Nukes slider <span class="tag rule">Rule</span></h4><p>A slider in the game setup sets how many nuclear weapons may go off: far left None (nobody can build Nuclear Missiles, ICBMs or Interceptors; Cruise Missiles stay), 1 to 250 for the Armageddon clock, with wider steps to the right, or far right Unlimited, with no clock at all. Right-click it for the game's own rule. In multiplayer only the host can move it.</p></summary></details>
+    <details class="feature"><summary><h4>Stronger attrition <span class="tag rule">Rule</span></h4><p>Units in enemy territory without supply lose hit points 1.5 times as often, so armies deep in enemy land wear down faster and Supply Wagons, and raids on them, matter more. Supply Wagons, the supply technologies and nation bonuses reduce it as before.</p></summary></details>
     <details class="feature"><summary><h4>Fishing boats find a new fish <span class="tag rule">Rule</span></h4><p>A fishing boat left without a fish (two boats picked the same one, or ships block its way) looks for another free fish after a few seconds, instead of sitting idle for about a minute with the idle alarm ringing.</p></summary></details>
-    <details class="feature"><summary><h4>No more decoys <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Generals no longer have the Create Decoys ability, for anyone, computer players included. Decoys a scenario places do not count as kills.</p></summary></details>
-    <details class="feature"><summary><h4>Veteran ranks <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Units, Spies, Generals and the buildings that shoot gain experience and rise through 10 ranks, each stronger than the last. It has <a href="#ranks">its own section</a>.</p></summary></details>
-    <details class="feature"><summary><h4>The Senator bribes on right-click <span class="tag rule">Fix</span> <span class="tag test">In testing</span></h4><p>The Senator (patriot) can Bribe like the Spy, but the game gave it only the button. Now, as with the Spy, the cursor over an enemy unit it can bribe is the bribe cursor and a right-click bribes it.</p></summary></details>
-    <details class="feature"><summary><h4>Cooperative AI with any number of teams <span class="tag test">In testing</span></h4><p>With Cooperative AI on, "Teams of 2" (3, 4) no longer needs exactly 4 (6, 8) players. It asks what it asks without Cooperative AI: at least 3 (5, 7) players and no team bigger than 2 (3, 4).</p></summary></details>
-    <details class="feature"><summary><h4>City districts <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Housing, Commerce and Industrial districts built next to your cities in the end game, as many as you can pay for. They have <a href="#districts">their own section</a>.</p></summary></details>
-    <details class="feature"><summary><h4>The General's Heal <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Generals get a fifth ability in place of Create Decoys: for 5 seconds your units in the General's circle get back 25% of their hit points, for a full bar of craft points (key E). The healed units glow: green rings on the ground, a green halo and green crosses rising over their heads.</p></summary></details>
-    <details class="feature"><summary><h4>Missile defence and radiation <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Missile Silos train Interceptors, up to 2 each, and fire one by themselves at an enemy nuke within 40 tiles; a nuke shot down does no damage and does not count for Armageddon. A blast that goes off leaves a minute of radiation under a green haze. An air-raid siren sounds when an enemy launches. A selected silo shows its 40-tile interception ring.</p></summary></details>
-    <details class="feature"><summary><h4>Generals and Supply Wagons in proportion <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Computer players (and the assistant playing for you) no longer make a crowd of Generals and Supply Wagons and no soldiers: one General per 20 army units, at most 3, and one Supply Wagon per 15, at most 4.</p></summary></details>
-    <details class="feature"><summary><h4>Aircraft take off together <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>An Airbase used to launch one aircraft about every second, so strikes arrived one plane at a time and the anti-aircraft guns picked them off. Now they take off almost together (<code>air_launch_frames</code>).</p></summary></details>
-    <details class="feature"><summary><h4>The dead stay longer <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Fallen soldiers, wrecks and the marks under them stay on the ground twice as long before they fade; tank wrecks block the ground for that long too (<code>corpse_time_percent</code>).</p></summary></details>
-    <details class="feature"><summary><h4>Survival mode <span class="tag rule">Rule</span> <span class="tag test">In testing</span></h4><p>Hold out for 30 minutes against waves from the fog. It has <a href="#survival">its own section</a>.</p></summary></details>
+    <details class="feature"><summary><h4>Towers and forts get dearer with every one <span class="tag rule">Fix</span></h4><p>Every Tower, Keep, Stockade or Bunker you own adds 10 Wealth and 25 Metal to the price of the next one, as the game intends. In some games (an Information Age start, for example) the price never rose and the computer players covered the map with towers. Now all four levels count together, and the same for Forts, Castles, Fortresses and Redoubts (<code>defense_ramp_whole_line</code>).</p></summary></details>
+    <details class="feature"><summary><h4>No more decoys <span class="tag rule">Rule</span></h4><p>Generals no longer have the Create Decoys ability, for anyone, computer players included. Decoys a scenario places do not count as kills.</p></summary></details>
+    <details class="feature"><summary><h4>Veteran ranks <span class="tag rule">Rule</span></h4><p>Units, Spies, Generals and the buildings that shoot gain experience and rise through 10 ranks, each stronger than the last. It has <a href="#ranks">its own section</a>.</p></summary></details>
+    <details class="feature"><summary><h4>The Senator bribes on right-click <span class="tag rule">Fix</span></h4><p>The Senator (patriot) can Bribe like the Spy, but the game gave it only the button. Now, as with the Spy, the cursor over an enemy unit it can bribe is the bribe cursor and a right-click bribes it.</p></summary></details>
+    <details class="feature"><summary><h4>Cooperative AI with any number of teams</h4><p>With Cooperative AI on, "Teams of 2" (3, 4) no longer needs exactly 4 (6, 8) players. It asks what it asks without Cooperative AI: at least 3 (5, 7) players and no team bigger than 2 (3, 4).</p></summary></details>
+    <details class="feature"><summary><h4>City districts <span class="tag rule">Rule</span></h4><p>Housing, Commerce and Industrial districts built next to your cities in the end game, as many as you can pay for. They have <a href="#districts">their own section</a>.</p></summary></details>
+    <details class="feature"><summary><h4>Cities repair their buildings <span class="tag rule">Rule</span></h4><p>A Large or Major City repairs the damaged buildings of its own city (and the wonders in its circle) by itself, one at a time, the most damaged first, paying like a Citizen: as fast as one Citizen for a Large City, two for a Major City. A building waits 45 seconds after its last hit. Small pliers with sparks float over the building being repaired. The Repair button on the city panel turns it off and on (<code>city_repair</code>).</p></summary></details>
+    <details class="feature"><summary><h4>The General's Heal <span class="tag rule">Rule</span></h4><p>Generals get a fifth ability in place of Create Decoys: for 5 seconds your units in the General's circle get back 25% of their hit points, for a full bar of craft points (key E). The healed units glow: green rings on the ground, a green halo and green crosses rising over their heads.</p></summary></details>
+    <details class="feature"><summary><h4>Missile defence and radiation <span class="tag rule">Rule</span></h4><p>Missile Silos train Interceptors, up to 2 each, and fire one by themselves at an enemy nuke within 40 tiles: it leaves at once, flies 4 times as fast as the nuke and meets it high in the air with a small fireball, a faint light and its own sounds. A nuke shot down does no damage and does not count for Armageddon. A blast that goes off leaves a minute of radiation under a green haze. An air-raid siren sounds when an enemy launches. A selected silo shows its 40-tile interception ring.</p></summary></details>
+    <details class="feature"><summary><h4>Generals and Supply Wagons in proportion <span class="tag rule">Rule</span></h4><p>Computer players (and the assistant playing for you) no longer make a crowd of Generals and Supply Wagons and no soldiers: one General per 20 army units, at most 3, and one Supply Wagon per 15, at most 4.</p></summary></details>
+    <details class="feature"><summary><h4>Aircraft take off together <span class="tag rule">Rule</span></h4><p>An Airbase used to launch one aircraft about every second, so strikes arrived one plane at a time and the anti-aircraft guns picked them off. Now they take off almost together (<code>air_launch_frames</code>).</p></summary></details>
+    <details class="feature"><summary><h4>The dead stay longer <span class="tag rule">Rule</span></h4><p>Fallen soldiers, wrecks and the marks under them stay on the ground about a minute instead of about 9 seconds, and the map keeps up to 400 dead at once instead of 100, so even an 8-player battle does not wipe its dead early; tank wrecks block the ground for that long too (<code>corpse_time_percent</code>, <code>corpse_limit</code>).</p></summary></details>
+    <details class="feature"><summary><h4>Survival mode <span class="tag rule">Rule</span></h4><p>Hold out for 30 minutes against waves from the fog. It has <a href="#survival">its own section</a>.</p></summary></details>
     <details class="feature"><summary><h4>Airdrop <span class="tag rule">Rule</span></h4><p>A Chinook flies two squads of Paratroopers (6 soldiers) from your Airbase to any spot on the map. It has <a href="#airdrop">its own section</a>.</p></summary></details>
     <details class="feature"><summary><h4>Field Fortification <span class="tag rule">Rule</span></h4><p>Ranged infantry build their own cover and dig into it. It has <a href="#fortification">its own section</a>.</p></summary></details>
+    <details class="feature"><summary><h4>Tank Traps <span class="tag rule">Rule</span></h4><p>Steel obstacles on one tile that nothing gets through, built by Citizens in the Modern and Information Ages. See <a href="#fortification">Tank Traps</a>.</p></summary></details>
   </div>
   </div>
 </section>
 
 <section id="ranks">
-  <h2>Veteran ranks <span class="tag test">In testing</span></h2>
+  <h2>Veteran ranks</h2>
   <p class="sub">Units that fight earn experience and rise through 10 ranks. A veteran is worth keeping alive: a Brigadier General hits 40% harder, lasts 40% longer and takes a fifth less damage than a new recruit, and more besides.</p>
   <div>
     <div class="prose">
@@ -633,8 +646,8 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
       </ul>
       <h3>Where you see it</h3>
       <ul class="plain">
-        <li>Beside the health bar of a selected unit, or one under the mouse (yours or the enemy's): the rank's insignia, larger when you zoom in (<code>insignia_size</code>). <span class="tag test">In testing</span></li>
-        <li>On the selected unit's portrait: a small shield with the rank's chevrons in the corner and an experience bar along the bottom (gold at the highest rank).</li>
+        <li>Beside the health bar of a selected unit, or one under the mouse (yours or the enemy's): the rank's insignia, larger when you zoom in (<code>insignia_size</code>).</li>
+        <li>In the selection panel, with one unit selected: the rank's insignia and name, the level, a large experience bar with how far the unit is to the next rank in per cent, its kills and every bonus the rank gives now. Units in a group keep a small experience bar on their portrait.</li>
         <li>In its tooltip: the rank's name ("Rank: Sergeant, level 3 of 10"), how far it is to the next one and the bonuses it has now.</li>
       </ul>
     </div>
@@ -659,7 +672,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <div class="features">
     <div class="feature"><h4>Spies and Generals</h4><p>They have no weapon, so they learn from their abilities. A successful Bribe counts like destroying the bribed unit; every other ability that costs mana (a General's Ambush, Forced March, Entrench and Heal, a Spy's Counterintelligence and Informer) gives 35% of the unit's own cost per full mana bar. A General reaches level 1 after 2 abilities, level 9 after about 34 and level 10 after about 40. Attack bonuses do not apply to them; hit points, sight, damage taken and healing do.</p></div>
     <div class="feature"><h4>Defensive buildings</h4><p>Every building that shoots ranks up from the damage it deals: Cities, Towers and Forts in all their forms, Lookouts and Observation Posts, the air defence guns, the Red Fort and the Forbidden City. They get the same bonuses as units (no healing: repair them). Their experience is counted against at least 150 resources, so cheap Cities do not shoot up the ranks at once. A captured building starts again from no rank.</p></div>
-    <div class="feature"><h4>Promotion effect <span class="tag test">In testing</span></h4><p>When a unit or a defensive building reaches a new rank, its insignia pops up over its head in a flash of the tier's colour, spins twice, stops facing you and fades, with a few sparks. You see every promotion you can see on the map (<code>promotion_effect</code>). The attack box of the selection panel now shows the rank's bonus too, for example "48+13".</p></div>
+    <div class="feature"><h4>Promotion effect</h4><p>When a unit or a defensive building reaches a new rank, its insignia pops up over its head in a flash of the tier's colour, spins twice, stops facing you and fades, with a few sparks. You see every promotion you can see on the map (<code>promotion_effect</code>). The attack box of the selection panel now shows the rank's bonus too, for example "48+13".</p></div>
     <div class="feature"><h4>Settings</h4><p><code>ranks</code> under <code>[gameplay]</code> in <code>ron_camera.ini</code> turns the ranks off; <code>[ranks]</code> holds the bonus per level, the healing, the experience rate and the experience of abilities and buildings. In multiplayer every player needs the same values.</p></div>
   </div>
 </section>
@@ -687,7 +700,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 </section>
 
 <section id="districts">
-  <h2>City districts <span class="tag test">In testing</span></h2>
+  <h2>City districts</h2>
   <p class="sub">End-game growth for every nation: districts built next to your cities, each adding a bonus for as long as it stands, as many as you can pay for. They replaced the Data Center, which is no longer in the game.</p>
 
   <div class="table-wrap">
@@ -737,7 +750,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 </section>
 
 <section id="airdrop">
-  <h2>Airdrop <span class="tag test">In testing</span></h2>
+  <h2>Airdrop</h2>
   <p class="sub">A new ability for the Airbase, for taking cities faster on large maps: a transport helicopter flies an elite squad to the spot you choose, lands it and flies home.</p>
   <figure class="shot">
     <img src="assets/airdrop_chinook.png" alt="The transport helicopter: a green twin-rotor Chinook with blue cockpit glass and a band in the player colour along its side" width="986" height="310" loading="lazy">
@@ -749,8 +762,8 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
       <ul class="plain">
         <li>From the Modern Age, an Airbase has an <b>Airdrop</b> button. Click it, then click a spot on the map.</li>
         <li>A helicopter takes off from that Airbase and flies there. It comes down, two squads of Paratroopers (6 soldiers) jump out, then it lifts off and flies back. At its Airbase it lands and disappears.</li>
-        <li>While you aim, two rings in your colour on the ground under the cursor show where the squad will land. <span class="tag test">In testing</span></li>
-        <li>With several Airbases selected, the button shows how many drops you can call right now, and the aiming stays on after each drop: click target after target, each click sends the next ready Airbase. Right-click or Esc stops aiming. <span class="tag test">In testing</span></li>
+        <li>While you aim, two rings in your colour on the ground under the cursor show where the squad will land.</li>
+        <li>With several Airbases selected, the button shows how many drops you can call right now, and the aiming stays on after each drop: click target after target, each click sends the next ready Airbase. Right-click or Esc stops aiming.</li>
         <li>You cannot select or command the helicopter. Enemy anti-air can shoot it down: then the drop is lost, with no refund. If its Airbase is lost, it flies to your nearest other Airbase.</li>
         <li>Computer players use it too, but sparingly: only against an enemy city already bombed below half its hit points, with few soldiers around.</li>
       </ul>
@@ -770,14 +783,14 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     </div>
   </div>
   <ul class="plain prose">
-    <li>The helicopter and the two squads take population like any other units (3 in all). A drop is refused when there is no room for them under your population limit, the same way as when you cannot pay. <span class="tag test">In testing</span></li>
+    <li>The helicopter and the two squads take population like any other units (3 in all). A drop is refused when there is no room for them under your population limit, the same way as when you cannot pay.</li>
     <li>The button's tooltip always shows the price, also while the Airbase is not ready; a click then gets the game's usual red refusal.</li>
     <li>The numbers can be changed in <code>airdrop.ini</code>. A helicopter still in the air when you save is gone after loading.</li>
   </ul>
 </section>
 
 <section id="fortification">
-  <h2>Field Fortification <span class="tag test">In testing</span></h2>
+  <h2>Field Fortification and Tank Traps</h2>
   <p class="sub">A defensive position that ranged infantry build themselves and dig into, from earth banks and stakes in the Ancient Age to HESCO barriers in the Information Age.</p>
   <div class="two">
     <div class="prose">
@@ -805,10 +818,34 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     </div>
   </div>
   <p class="prose">The numbers can be changed in <code>entrench.ini</code>. The fortification takes the place of the scenario-only Lenin Statue.</p>
+  <h3>Tank Traps</h3>
+  <div class="two">
+    <div class="prose">
+      <p>Steel anti-tank obstacles on a single tile, for the Modern and Information Ages. Citizens build them from the <b>military</b> build menu, next to the Lookout.</p>
+      <ul class="plain">
+        <li>Nothing gets through them, your own units neither: an enemy has to destroy them to pass. Lay them in a line to close a gap or a bridge, and leave your army a way out.</li>
+        <li>No weapon. Rifles barely scratch them; tanks, artillery and aircraft break them.</li>
+        <li>They stay yours when the city nearby is captured, like Towers. Computer players do not build them.</li>
+        <li>Each trap gets one of four looks, so a line of them does not look like one picture repeated.</li>
+      </ul>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tank Traps</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Size and price</td><td>1&times;1 tile, 20 Metal (+5 for each one you own)</td></tr>
+          <tr><td>Hit points and armor</td><td>1200, armor 8 (as a Redoubt)</td></tr>
+          <tr><td>Built by</td><td>Citizens, about 13 seconds for one</td></tr>
+          <tr><td>Ages</td><td>Modern and Information (7 and 8)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="prose">They take the place of the scenario-only Washington Monument.</p>
 </section>
 
 <section id="survival">
-  <h2>Survival mode <span class="tag test">In testing</span></h2>
+  <h2>Survival mode</h2>
   <p class="sub">A new way to play: hold out for 30 minutes. The whole map is yours; the enemy comes in waves from the fog, one or two ages behind you.</p>
   <div class="two">
     <div class="prose">
@@ -831,7 +868,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 
 <!-- ROMANIA:BEGIN -->
 <section id="romania">
-  <h2>Romania <span class="tag test">In testing</span></h2>
+  <h2>Romania</h2>
   <p class="sub">A 25th nation, with its own flag, leaders, cities, nation power, unit names from Romanian history, its own unit icons and George Enescu's music.</p>
 
   <details class="fold ro-fold">
@@ -1892,7 +1929,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 <!-- ROMANIA:END -->
 
 <section id="languages">
-  <h2>Languages <span class="tag test">In testing</span></h2>
+  <h2>Languages</h2>
   <p class="sub">The game and every mod in ten languages: the game's own English, German, Spanish, French and Italian, and five new ones, Russian, Brazilian Portuguese, Polish, Turkish and Romanian.</p>
   <div class="features">
     <div class="feature"><h4>Pick it in the launcher</h4><p>Click the round flag under Workshop: the other languages open around it like a flower. Pick one and the launcher's buttons change at once and the game starts in that language. Try it on the <a href="#look">launcher below</a>.</p></div>
@@ -1927,8 +1964,8 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <div class="prose">
     <ul class="plain">
       <li><b>Launcher</b>: steel frames, the "Rise of Nations / REVIVED" logo, steel buttons in the style of the main menu, new minimize and close buttons, and a big picture panel: a Roman legionary in Rome, a crusader over Jerusalem, an Ottoman janissary in Constantinople, a samurai in Japan, a British redcoat in London, a guard of Ramesses II in Thebes and an American soldier in Washington, changing through fog every few seconds. A picture comes back only after three others.</li>
-      <li><b>Language button</b> <span class="tag test">In testing</span>: a round flag under Workshop. Click it and the other nine languages swirl out around it like a flower; hover one to see its name, pick it and it flies into the button, the launcher's captions change at once and the game starts in that language. See <a href="#languages">Languages</a>.</li>
-      <li><b>Button sounds</b> <span class="tag test">In testing</span>: a short tick when the mouse comes onto a launcher button and the game's own menu sound when you click it (<code>[launcher]</code> in <code>ron_camera.ini</code>).</li>
+      <li><b>Language button</b>: a round flag under Workshop. Click it and the other nine languages swirl out around it like a flower; hover one to see its name, pick it and it flies into the button, the launcher's captions change at once and the game starts in that language. See <a href="#languages">Languages</a>.</li>
+      <li><b>Button sounds</b>: a short tick when the mouse comes onto a launcher button and the game's own menu sound when you click it (<code>[launcher]</code> in <code>ron_camera.ini</code>).</li>
       <li><b>Main menu</b>: the destroyer scene loops in the background, redrawn (sky, ship, sea, waves and spray); narrower steel buttons with centred captions; and the game's own logo, still lit by the cursor, with REVIVED in place of the "Extended Edition" ribbon.</li>
       <li><b>Game setup, options and Workshop screens</b>: steel frames and section bars, gunmetal buttons, tabs and check boxes, light steel drop-down fields; selected items marked in orange.</li>
       <li><b>Pop-up questions</b> such as "Are you sure you want to quit?": steel frame and steel OK / Cancel buttons.</li>
@@ -2242,7 +2279,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 </section>
 
 <section id="graphics">
-  <h2>Sharper picture and better water <span class="tag test">In testing</span></h2>
+  <h2>Sharper picture and better water</h2>
   <p class="sub">The map, units and buildings look clearer and less washed out, and seas, lakes and rivers come alive. The interface is not touched: the new code runs in the game's own last picture passes, before the interface is drawn. Drag the line over a picture to compare.</p>
   <figure class="shot">
     <div class="cmp">
@@ -2295,7 +2332,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
       <h3>The water</h3>
       <ul class="plain">
         <li><b>Livelier:</b> clearer small waves, sunlight sparkling on them and the sky's light on their sides.</li>
-        <li><b>Reflections</b> <span class="tag test">In testing</span>: buildings and units on the far shore show in the water. The game had reflections, but they looked only half a tile away and almost never showed anything. They need the game's high water quality.</li>
+        <li><b>Reflections</b>: buildings and units on the far shore show in the water. The game had reflections, but they looked only half a tile away and almost never showed anything. They need the game's high water quality.</li>
       </ul>
     </div>
   </div>
@@ -2580,12 +2617,20 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
         <tr><td><code>show_hp</code>, <code>show_kills</code>, <code>show_hotkeys</code></td><td>qol</td><td>Hit point numbers, kill counter, hotkeys on the buttons</td></tr>
         <tr><td><code>hotkey_font_size</code>, <code>hotkey_bold</code></td><td>qol</td><td>Size and weight of the hotkey letters</td></tr>
         <tr><td><code>hud_scale</code>, <code>green_rates</code></td><td>qol</td><td>Size of the numbers on the resource panel, and green income rates</td></tr>
+        <tr><td><code>resource_bars</code>, <code>minimap_top_right</code>, <code>folded_selection_panel</code></td><td>ui</td><td>The worker bars in the resource panel, the minimap in the top right corner and the full selection panel with the interface folded</td></tr>
+        <tr><td><code>setup_centre</code>, <code>setup_font_percent</code></td><td>qol</td><td>Centred text and text size on the larger game setup screen</td></tr>
         <tr><td><code>notices_top</code>, <code>notices_leave_top</code></td><td>ui</td><td>Where the big announcements appear (pixels from the top; 0 = the middle, as in the game) and whether they leave along the top</td></tr>
         <tr><td><code>range_circles</code></td><td>qol</td><td>Attack range circles for selected buildings</td></tr>
         <tr><td><code>ai_leader_names</code></td><td>qol</td><td>Leader names for computer players</td></tr>
         <tr><td><code>reveal_ai_players</code></td><td>qol</td><td>Show computer players' leaders and nations from the start (single player; 0 = "Computer" until met)</td></tr>
         <tr><td><code>nation_flags</code>, <code>nation_grid</code></td><td>qol</td><td>Nation flags on the game setup screen, and the nation picker as flag cards</td></tr>
         <tr><td><code>no_armageddon</code>, <code>no_nukes_option</code>, <code>attrition_percent</code>, <code>fishing_retry</code>, <code>ranks</code></td><td>gameplay</td><td>The game rules above (<code>attrition_percent=100</code> is the game's attrition)</td></tr>
+        <tr><td><code>city_repair</code>, <code>city_repair_wait</code></td><td>gameplay</td><td>Cities repairing their buildings, and how many seconds a building waits after its last hit</td></tr>
+        <tr><td><code>defense_ramp_whole_line</code></td><td>gameplay</td><td>Towers and forts priced by all the levels you own together (0 = the game's count)</td></tr>
+        <tr><td><code>corpse_time_percent</code>, <code>corpse_limit</code></td><td>gameplay</td><td>How long the dead stay (667 = about a minute, 100 = the game's time) and how many the map keeps</td></tr>
+        <tr><td><code>check</code></td><td>update</td><td>The launcher looks for a new version</td></tr>
+        <tr><td><code>tray</code></td><td>extras</td><td>The Extras tray in the launcher</td></tr>
+        <tr><td><code>crash_reports</code></td><td>debug</td><td>The crash report panel</td></tr>
         <tr><td><code>senator_bribe_hotkey</code></td><td>qol</td><td>The Senator's Bribe on the Spy's Bribe key</td></tr>
         <tr><td><code>attack_percent_per_level</code>, <code>hits_percent_per_level</code>, <code>heal_percent_per_second</code>, <code>heal_after_seconds</code></td><td>ranks</td><td>The veteran ranks' bonuses</td></tr>
         <tr><td><code>economy</code>, <code>military</code>, <code>research</code>, <code>expansion</code>, <code>wonders</code>, <code>reserve</code></td><td>assistant</td><td>The AI assistant settings (also changed from its panel)</td></tr>
@@ -2606,9 +2651,8 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 <section id="issues">
   <h2>Known issues</h2>
   <ul class="plain prose">
-    <li>Where a new building is wider or taller than the original, crops, water and units behind it could be drawn on top of it. Every new building now has its own depth shape, and the ones that stood past the edge of their ground were made smaller; this is still being checked in game. Thin parts that hang in the air (palm crowns, spears) are not covered.</li>
-    <li>Some of the newest features are still being tested in real games: leader names, the AI assistant, hotkeys on the buttons, the Airbases and Docks buttons, the Army cycle, range circles, the fishing fix, no-Armageddon, the aircraft kill totals, the nation flags and flag picker, the larger resource panel, the shadow fix, the extra zoom step, the hover highlight, the Play button, the city districts, the Field Fortification, and the new buildings of every nation.</li>
-    <li>The city districts take the places of three scenario-only buildings (El Dorado, the Courtyard Fountain and one of the scenario Houses), and the Field Fortification that of the Lenin Statue, so scenarios that use them can look wrong.</li>
+    <li>Where a new building is wider or taller than the original, crops, water and units behind it could be drawn on top of it. Every new building now has its own depth shape, and the ones that stood past the edge of their ground were made smaller. Thin parts that hang in the air (palm crowns, spears) are not covered.</li>
+    <li>The city districts take the places of three scenario-only buildings (El Dorado, the Courtyard Fountain and one of the scenario Houses), the Field Fortification that of the Lenin Statue and the Tank Traps that of the Washington Monument, so scenarios that use them can look wrong.</li>
     <li>Kill counts start at zero when you load a saved game.</li>
     <li>Airdrop's Paratroopers and helicopter take the place of two campaign-only units, so the Conquest campaigns that use those can look wrong.</li>
   </ul>
@@ -2616,48 +2660,82 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 
 <section id="updates">
   <h2>Update log</h2>
-  <p class="sub">Everything added or changed, newest first. Entries marked <span class="tag test">In testing</span> are built but not yet confirmed in a real game. Click a day to open or close it.</p>
+  <p class="sub">Everything added or changed, newest first. Click a day to open or close it.</p>
 
   <details class="day" open>
+    <summary><time datetime="2026-11-05">5 Nov 2026<small>Day 15</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag new">New</span><span><b><a href="#install">Extras tray in the launcher:</a></b> optional content now comes from a tray that slides out of the launcher's left edge, like a CD drive; the pack's zip is down from 255 MB to about 35 MB. The first extra is the nation music.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#fortification">Tank Traps:</a></b> steel obstacles on one tile that nothing gets through, built by Citizens in the Modern and Information Ages; 20 Metal (+5 for each one), 1200 hit points, four looks.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#rules">Cities repair their buildings:</a></b> a Large or Major City repairs the damaged buildings of its own city by itself, paying like a Citizen, with small pliers and sparks over the building; a Repair button on the city panel turns it off and on.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#install">Crash reports:</a></b> after a crash, a panel sends a report to the RON Revived Discord, if you want, so the cause can be found and fixed.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#interface">Larger game setup screen:</a></b> every row a quarter taller, larger text and flags, lighter grey drop-down boxes, the names centred.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Nukes slider:</b> the No Nukes check box became a slider: None, 1 to 250 nuclear weapons on the Armageddon clock, or Unlimited.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Interceptors:</b> out of the silo at once, 4 times as fast as the nuke, a lighter airburst with a faint light, and new launch and hit sounds.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>The dead stay about a minute</b> instead of about 9 seconds, and the map keeps up to 400 of them.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Wider resource rows:</b> a large amount, its income and the worker count no longer run into each other.</span></li>
+      <li><span class="tag fix">Fix</span><span><b><a href="#rules">Towers and forts get dearer again</a></b> with every one you own; in some games the price never rose and the computer players covered the map with towers.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Big games no longer stop at the start</b> on "logchop5.bh3 does not exist" (or another model): with 6-8 players the game ran out of files it may open at once.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Selecting a single unit or building</b> (a Citizen, a Fort) could close the game; it no longer does.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>The log</b> no longer fills up when two nukes go off together.</span></li>
+    </ul>
+  </details>
+
+  <details class="day">
+    <summary><time datetime="2026-11-02">2 Nov 2026<small>Day 12</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag new">New</span><span><b><a href="#ranks">Rank, experience and kills in the panel:</a></b> with one unit selected, the selection panel shows its insignia, rank, level, a large experience bar, its kills and every bonus the rank gives.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>No more crash with many buildings selected</b> whose rally lines were long.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>The selection panel</b> no longer slips under the screen with the interface folded, after a group was selected.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Tooltips</b> over the bottom interface no longer hide under the row of round buttons.</span></li>
+      <li><span class="tag fix">Fix</span><span><b><a href="#romanian">Romania's Modern Senate</a></b> sits on its foundation, and crops no longer show through the Modern Small City.</span></li>
+    </ul>
+  </details>
+
+  <details class="day">
     <summary><time datetime="2026-11-01">1 Nov 2026<small>Day 11</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b><a href="#buildings">French buildings, part two:</a></b> a half-timbered town hall with a bell tower, a stone and half-timber college, a timber keep, an eight-sided watchtower, a new Library and the Siege Factory, all in ages 1-3. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#buildings">Russian buildings, ages 1-3:</a></b> a wooden terem for the Senate, a carved log University with an onion cupola, a log Stable and a new Small City. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>One tone for the Russians:</b> every Russian building of ages 1-3, the game's own workshops and camps included, now has the same warm brown, without ground shadows; the church is about 40 % bigger and the cities sit better on their ground. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Bigger building art:</b> a nation's buildings can now be drawn bigger than the game's own picture allows and still stand in their place. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b><a href="#buildings">French buildings, part two:</a></b> a half-timbered town hall with a bell tower, a stone and half-timber college, a timber keep, an eight-sided watchtower, a new Library and the Siege Factory, all in ages 1-3.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#buildings">Russian buildings, ages 1-3:</a></b> a wooden terem for the Senate, a carved log University with an onion cupola, a log Stable and a new Small City.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>One tone for the Russians:</b> every Russian building of ages 1-3, the game's own workshops and camps included, now has the same warm brown, without ground shadows; the church is about 40 % bigger and the cities sit better on their ground.</span></li>
+      <li><span class="tag new">New</span><span><b>Bigger building art:</b> a nation's buildings can now be drawn bigger than the game's own picture allows and still stand in their place.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#interface">Minimap in the top right corner:</a></b> with the bottom interface folded, the minimap moves to the top right, in three sizes; the full selection panel shows next to the command buttons, and the round buttons move to the left end.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#interface">Worker bars in the resource panel:</a></b> under each resource, one segment per place of work, green when in use, and the count at the end of the row; the market opens beside the resources and the numbers use a clear font.</span></li>
+      <li><span class="tag new">New</span><span><b>New kills skull</b>, and the kills of a whole selection, large, on the top row of the selection panel.</span></li>
+      <li><span class="tag fix">Fix</span><span><b><a href="#camera">No streaks at the farthest zoom</a></b> on maps where one ground covers most of the view.</span></li>
     </ul>
   </details>
 
   <details class="day">
     <summary><time datetime="2026-10-31">31 Oct 2026<small>Day 10</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b><a href="#buildings">French buildings:</a></b> the French get their own ages 1-3: a Romanesque village church, half-timbered towns without churches, a big market hall, a lighter Library and Barracks; no more hard shadows under them. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>No Nukes option:</b> a new check box in the game setup; ticked, nobody can build Nuclear Missiles, ICBMs or Interceptors in that game. Cruise Missiles stay. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b><a href="#buildings">French buildings:</a></b> the French get their own ages 1-3: a Romanesque village church, half-timbered towns without churches, a big market hall, a lighter Library and Barracks; no more hard shadows under them.</span></li>
+      <li><span class="tag new">New</span><span><b>No Nukes option:</b> a new check box in the game setup; ticked, nobody can build Nuclear Missiles, ICBMs or Interceptors in that game. Cruise Missiles stay.</span></li>
     </ul>
   </details>
 
   <details class="day">
     <summary><time datetime="2026-10-29">29 Oct 2026<small>Day 8</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b><a href="#graphics">Sharper, richer picture:</a></b> clearer detail, deeper blacks, a little more contrast and colour on the map, while the interface stays as it is. Ctrl+F10 compares it with the game's own picture on half the screen. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#graphics">Better water:</a></b> livelier waves with sunlight sparkling on them, the sky's light on their sides, and reflections of buildings and units on the shore. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Anti-aliasing with bloom off:</b> the game's smoothing of jagged edges did nothing then; it works again. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b><a href="#graphics">Sharper, richer picture:</a></b> clearer detail, deeper blacks, a little more contrast and colour on the map, while the interface stays as it is. Ctrl+F10 compares it with the game's own picture on half the screen.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#graphics">Better water:</a></b> livelier waves with sunlight sparkling on them, the sky's light on their sides, and reflections of buildings and units on the shore.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Anti-aliasing with bloom off:</b> the game's smoothing of jagged edges did nothing then; it works again.</span></li>
       <li><span class="tag fix">Fix</span><span><b>Launcher button sounds:</b> the settings file shipped with broken paths for them.</span></li>
-      <li><span class="tag new">New</span><span><b><a href="#languages">Ten languages:</a></b> the game and every mod in English, German, Spanish, French, Italian and, new, Russian, Brazilian Portuguese, Polish, Turkish and Romanian: menus, tooltips, the encyclopedia and the mods' own texts. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#look">Language button in the launcher:</a></b> a round flag under Workshop; click it and the other languages open around it like a flower, pick one and the launcher's captions change at once. Try it on the live launcher in the guide. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Launcher button sounds:</b> a short tick when the mouse comes onto a button and the game's menu sound on a click. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#survival">Survival mode:</a></b> hold out for 30 minutes against waves from the fog, 1 or 2 ages behind you, with boss waves every 5 minutes, clocks at the top right and a no-build zone for the waves. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#districts">City districts</a></b> replace the Data Center: Housing (+10 population), Commerce (+30 rate limit) and Industrial (+3% income) districts built from any city, next to it, as many as you can pay for, each 5% dearer than the last. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>The Data Center is gone:</b> it is no longer in the game at all; its slot is the game's own scenario building again. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#interface">Area strike from the Airbase:</a></b> with Airbases selected, right-drag a circle on the ground; each ready aircraft flies at one enemy target in it, bombers at the buildings first and fighters at the units. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>The General's Heal is easy to see:</b> every healed unit gets a green halo and green crosses rising over its head, besides the green rings on the ground. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Interception ring:</b> a selected Missile Silo shows its 40-tile interception range on the ground. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#romanian">Romanian buildings of the communist era</a></b> for ages 7-8: the Senate, an old Orthodox church, the National Library, the University with a flying-saucer dome, an Alimentara market, barracks, factory, smelter, auto plant, airbase, missile silo and the cities of age 7, all in one grey grade. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#romania">R-2:</a></b> Romania's Modern Age tank, the LT vz. 35 of the 1st Armoured Division, with a model of its own, now painted the same olive green as the game's tanks. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b><a href="#romania">Ox Cart, then DAC Truck:</a></b> Romania's Supply Wagon keeps its ox-cart name and icon until the Enlightenment and becomes the DAC Truck, with the truck icon, from the Industrial Age. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Too many vertices:</b> with several R-2 tanks on screen the game could stop on a vertex error; the model is now as light as the game's own tanks. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Tower tops:</b> trees and crops behind the Tower of ages 7-8 (Roman, Dutch, Romanian) no longer draw over its wide top. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>No teeth at the closest zoom:</b> the fog edge no longer shows small dark teeth close up. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b><a href="#languages">Ten languages:</a></b> the game and every mod in English, German, Spanish, French, Italian and, new, Russian, Brazilian Portuguese, Polish, Turkish and Romanian: menus, tooltips, the encyclopedia and the mods' own texts.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#look">Language button in the launcher:</a></b> a round flag under Workshop; click it and the other languages open around it like a flower, pick one and the launcher's captions change at once. Try it on the live launcher in the guide.</span></li>
+      <li><span class="tag new">New</span><span><b>Launcher button sounds:</b> a short tick when the mouse comes onto a button and the game's menu sound on a click.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#survival">Survival mode:</a></b> hold out for 30 minutes against waves from the fog, 1 or 2 ages behind you, with boss waves every 5 minutes, clocks at the top right and a no-build zone for the waves.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#districts">City districts</a></b> replace the Data Center: Housing (+10 population), Commerce (+30 rate limit) and Industrial (+3% income) districts built from any city, next to it, as many as you can pay for, each 5% dearer than the last.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>The Data Center is gone:</b> it is no longer in the game at all; its slot is the game's own scenario building again.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#interface">Area strike from the Airbase:</a></b> with Airbases selected, right-drag a circle on the ground; each ready aircraft flies at one enemy target in it, bombers at the buildings first and fighters at the units.</span></li>
+      <li><span class="tag new">New</span><span><b>The General's Heal is easy to see:</b> every healed unit gets a green halo and green crosses rising over its head, besides the green rings on the ground.</span></li>
+      <li><span class="tag new">New</span><span><b>Interception ring:</b> a selected Missile Silo shows its 40-tile interception range on the ground.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#romanian">Romanian buildings of the communist era</a></b> for ages 7-8: the Senate, an old Orthodox church, the National Library, the University with a flying-saucer dome, an Alimentara market, barracks, factory, smelter, auto plant, airbase, missile silo and the cities of age 7, all in one grey grade.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#romania">R-2:</a></b> Romania's Modern Age tank, the LT vz. 35 of the 1st Armoured Division, with a model of its own, now painted the same olive green as the game's tanks.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#romania">Ox Cart, then DAC Truck:</a></b> Romania's Supply Wagon keeps its ox-cart name and icon until the Enlightenment and becomes the DAC Truck, with the truck icon, from the Industrial Age.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Too many vertices:</b> with several R-2 tanks on screen the game could stop on a vertex error; the model is now as light as the game's own tanks.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Tower tops:</b> trees and crops behind the Tower of ages 7-8 (Roman, Dutch, Romanian) no longer draw over its wide top.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>No teeth at the closest zoom:</b> the fog edge no longer shows small dark teeth close up.</span></li>
       <li><span class="tag fix">Fix</span><span><b>Confirmed in game:</b> smooth unit turning, and the nations' new buildings stay steady while you zoom.</span></li>
     </ul>
   </details>
@@ -2666,109 +2744,109 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     <summary><time datetime="2026-10-28">28 Oct 2026<small>Day 7</small></time><span class="digest"></span></summary>
     <ul>
       <li><span class="tag new">New</span><span><b><a href="#install">One-click install</a>:</b> the whole pack is one zip with <code>install.bat</code> and <code>uninstall.bat</code>; updates keep your settings.</span></li>
-      <li><span class="tag fix">Fix</span><span><b>Unit categories in combat:</b> Extended Edition read every category modifier of <code>balance.xml</code> (Heavy Infantry, cavalry, elephants, ships, aircraft...) as 100 %. They count again, as in Thrones and Patriots. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>The Senator's Bribe key:</b> the same key as the Spy's Bribe. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Settings:</b> <code>command_panel=0</code> no longer turns off the hotkeys and marks on the buttons; the interface scale resets on a resolution that needs none; the larger resource numbers work with the interface at 100 %; the log starts new each game. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#romania">IAR-80:</a></b> Romania's Fighter is the Romanian-built fighter of the Second World War, with a model of its own, Michael's Cross on wings and fuselage. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#romanian">Romanian cities of ages 6 and 7:</a></b> a Neo-Romanian town around 1900 and a communist town with prefab blocks; the Major City of age 7 is a run-down communist estate. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#aztecs">Aztec Temple</a></b> for ages 1-3: an early Templo Mayor with twin shrines. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#all">Auto Plant of age 8</a></b> for every nation: a military vehicle plant with solar panels and a green roof. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b><a href="#ranks">Rank insignia beside the health bar:</a></b> the selected or hovered unit and building show the rank's shield instead of the small coloured bars. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Steady new buildings:</b> the nations' new building art no longer shakes while you zoom. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag fix">Fix</span><span><b>Unit categories in combat:</b> Extended Edition read every category modifier of <code>balance.xml</code> (Heavy Infantry, cavalry, elephants, ships, aircraft...) as 100 %. They count again, as in Thrones and Patriots.</span></li>
+      <li><span class="tag new">New</span><span><b>The Senator's Bribe key:</b> the same key as the Spy's Bribe.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Settings:</b> <code>command_panel=0</code> no longer turns off the hotkeys and marks on the buttons; the interface scale resets on a resolution that needs none; the larger resource numbers work with the interface at 100 %; the log starts new each game.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#romania">IAR-80:</a></b> Romania's Fighter is the Romanian-built fighter of the Second World War, with a model of its own, Michael's Cross on wings and fuselage.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#romanian">Romanian cities of ages 6 and 7:</a></b> a Neo-Romanian town around 1900 and a communist town with prefab blocks; the Major City of age 7 is a run-down communist estate.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#aztecs">Aztec Temple</a></b> for ages 1-3: an early Templo Mayor with twin shrines.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#all">Auto Plant of age 8</a></b> for every nation: a military vehicle plant with solar panels and a green roof.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#ranks">Rank insignia beside the health bar:</a></b> the selected or hovered unit and building show the rank's shield instead of the small coloured bars.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Steady new buildings:</b> the nations' new building art no longer shakes while you zoom.</span></li>
     </ul>
   </details>
 
   <details class="day">
     <summary><time datetime="2026-10-27">27 Oct 2026<small>Day 6</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b><a href="#romanian">Romanian buildings</a></b> of their own: towers and forts for every age, from a Dacian hill fort to Suceava, Alba Carolina and the concrete line of 1940, and in the first three ages the sanctuary of Sarmizegetusa, an old village and a market town. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Roman Tower</b> of ages 1-3: a rougher frontier watchtower of logs, with a flag in the player's colour waving on the roof. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Stronger attrition:</b> units in enemy territory without supply lose hit points 1.5 times as often. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Announcements at the top:</b> ages, attacks, wonders and captures appear at the top centre of the screen instead of over the middle of the map, and leave to the right along the top. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>No more decoys:</b> Generals lose the Create Decoys ability, for everyone. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#assistant">AI assistant</a> switch:</b> one click on Full control lets the computer play your nation with everything ticked, one click on No control takes it back; the panel has a new steel and gold look. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#rules">The General's Heal:</a></b> a fifth ability in place of Create Decoys: 25% of their hit points back over 5 seconds for your units in the General's circle (key E). <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#rules">Missile defence and radiation:</a></b> Missile Silos train Interceptors that shoot down enemy nukes; a blast leaves a minute of radiation; an air-raid siren warns of a launch; the flash fades with distance and a radiation sign marks the target. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#rules">Generals and Supply Wagons in proportion:</a></b> computer players make one General per 20 army units and one Supply Wagon per 15, instead of crowds of them. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#rules">Aircraft take off together</a></b> instead of one about every second. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#rules">The dead stay longer:</a></b> fallen soldiers, wrecks and their marks stay twice as long. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#interface">A health bar per soldier and a craft points bar:</a></b> squads show every soldier's health, and units with abilities a blue bar of their craft points. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#ranks">Promotion effect and level 10:</a></b> a new rank pops up over the unit's head in a flash of its tier's colour; a tenth rank, Brigadier General, and experience 15% faster. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b><a href="#romanian">Romanian buildings</a></b> of their own: towers and forts for every age, from a Dacian hill fort to Suceava, Alba Carolina and the concrete line of 1940, and in the first three ages the sanctuary of Sarmizegetusa, an old village and a market town.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Roman Tower</b> of ages 1-3: a rougher frontier watchtower of logs, with a flag in the player's colour waving on the roof.</span></li>
+      <li><span class="tag new">New</span><span><b>Stronger attrition:</b> units in enemy territory without supply lose hit points 1.5 times as often.</span></li>
+      <li><span class="tag new">New</span><span><b>Announcements at the top:</b> ages, attacks, wonders and captures appear at the top centre of the screen instead of over the middle of the map, and leave to the right along the top.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>No more decoys:</b> Generals lose the Create Decoys ability, for everyone.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#assistant">AI assistant</a> switch:</b> one click on Full control lets the computer play your nation with everything ticked, one click on No control takes it back; the panel has a new steel and gold look.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#rules">The General's Heal:</a></b> a fifth ability in place of Create Decoys: 25% of their hit points back over 5 seconds for your units in the General's circle (key E).</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#rules">Missile defence and radiation:</a></b> Missile Silos train Interceptors that shoot down enemy nukes; a blast leaves a minute of radiation; an air-raid siren warns of a launch; the flash fades with distance and a radiation sign marks the target.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#rules">Generals and Supply Wagons in proportion:</a></b> computer players make one General per 20 army units and one Supply Wagon per 15, instead of crowds of them.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#rules">Aircraft take off together</a></b> instead of one about every second.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#rules">The dead stay longer:</a></b> fallen soldiers, wrecks and their marks stay twice as long.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#interface">A health bar per soldier and a craft points bar:</a></b> squads show every soldier's health, and units with abilities a blue bar of their craft points.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#ranks">Promotion effect and level 10:</a></b> a new rank pops up over the unit's head in a flash of its tier's colour; a tenth rank, Brigadier General, and experience 15% faster.</span></li>
     </ul>
   </details>
 
   <details class="day">
     <summary><time datetime="2026-10-26">26 Oct 2026<small>Day 5</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b><a href="#look">Launcher pictures</a>:</b> the big panel of the launcher changes every few seconds, through rolling fog and in random order, between seven paintings of soldiers of history's great empires, each in his capital: Rome, Jerusalem, Constantinople, Japan, London, Thebes and Washington. The guide shows the launcher live. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b><a href="#romania">Romania</a></b>, a 25th nation, with its flag, leaders from Burebista to Queen Marie and the Power of the Carpathians: double attrition for invaders, +20% Oil, cheaper and faster Forts and Towers, free Militia and Partisan upgrades. It can also come up as a Random or Random Defensive nation. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Romanian army:</b> every unit carries a name from Romanian history, from the Dacian Falxmen and the voivodes' Viteji to the Dorobanti of 1877, the Vanatori de Munte and the TR-85M1 Bizonul, and 46 of them have their own painted icon. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Quality against quantity:</b> 11 Romanian units are an elite that costs more or levies and older machines that cost less, with the price following the strength. The <a href="#romania">Romania section</a> shows every unit's stats against the average of the 24 original nations. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Enescu for Romania:</b> the Romanian Rhapsodies play among the game's tracks, the slow parts in the early ages and the fast dances from the Gunpowder Age on (the recording is added by hand). <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Dutch buildings</b> of their own: a Golden Age Amsterdam church with a tower like the Westertoren as the Temple for ages 4-8, a 1930s concrete tower and casemate fort for ages 7-8 and a Dutch modernist Data Center with turning fans. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Spanish buildings</b> begin: the Alcázar of Segovia as the Senate of ages 4-8. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Persian buildings</b> begin: a Zoroastrian fire temple as the Temple of ages 1-3 and the Apadana of Persepolis as the Senate of ages 1-2. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>American buildings</b> begin: a Puritan meeting house as the Temple of age 3. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Egyptian Senate</b> for ages 1-3: the pharaoh's palace. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Data Center Expansions</b> replace its 15 upgrades: three small server towers (Population, Commerce, Efficiency) ordered from the Data Center and built by its own technician, as many as you can pay for. The Data Center now also needs one of the four last Library technologies. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Field Fortification</b>: ranged infantry build their own cover and dig into it, from earth banks in the Ancient Age to HESCO barriers in the Information Age. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>One more zoom step</b> each way, a <b>hover highlight</b> on the unit or building under the mouse, and a <b>Play button</b> after loading in single player. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Production bar, rally line and shortfall:</b> a cyan progress bar on your hovered or selected buildings, a dotted line to the rally flag of a selected building, and how much of a price you are missing in the tooltips. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Start and Back</b> on the game setup screen are wide buttons with larger text. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Buildings too big for their ground</b>: nineteen new buildings of seven nations stood past the edge of the ground they occupy; they were made 7-25% smaller, and the northern European Small City was moved onto the middle of its ground. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Crops through buildings</b>: wheat and the territory border cut through the new buildings in vertical strips, because their depth shapes were built inside out. All of them were rebuilt. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Nubian Temple:</b> the front corner of the right pyramid was cut off; it is whole now. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Airdrop</b>: a drop is refused when there is no room for the squad under your population limit, and the button's tooltip always shows the price. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Decoys die from the first hit:</b> a General's decoys still fool the enemy, but the first enemy hit destroys them instead of a whole volley. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Veteran ranks:</b> units gain experience in battle and rise through 10 levels, shown as bronze, silver and gold bars beside the health bar, each level stronger than the last. <span class="tag test">In testing</span></span></li>
-          <li><span class="tag new">New</span><span><b><a href="#ranks">Veteran ranks</a> go further:</b> the selected unit's portrait shows its rank insignia and an experience bar, its tooltip names the rank; Spies and Generals rank up from their abilities, and every building that shoots (Cities, Towers, Forts and more) ranks up from the damage it deals. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Airdrop aiming:</b> rings on the ground show where the squad lands, and with several Airbases selected the button counts the drops you can call and the aiming stays on from target to target. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>No sawtooth on the fog edge:</b> the edge of vision no longer shows small dark teeth along the ground's triangles. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>The Senator bribes on right-click</b>, with the bribe cursor over enemy units, like the Spy. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Cooperative AI with any number of teams:</b> "Teams of 2" (3, 4) no longer needs exactly 4 (6, 8) players. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b><a href="#look">Launcher pictures</a>:</b> the big panel of the launcher changes every few seconds, through rolling fog and in random order, between seven paintings of soldiers of history's great empires, each in his capital: Rome, Jerusalem, Constantinople, Japan, London, Thebes and Washington. The guide shows the launcher live.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#romania">Romania</a></b>, a 25th nation, with its flag, leaders from Burebista to Queen Marie and the Power of the Carpathians: double attrition for invaders, +20% Oil, cheaper and faster Forts and Towers, free Militia and Partisan upgrades. It can also come up as a Random or Random Defensive nation.</span></li>
+      <li><span class="tag new">New</span><span><b>Romanian army:</b> every unit carries a name from Romanian history, from the Dacian Falxmen and the voivodes' Viteji to the Dorobanti of 1877, the Vanatori de Munte and the TR-85M1 Bizonul, and 46 of them have their own painted icon.</span></li>
+      <li><span class="tag new">New</span><span><b>Quality against quantity:</b> 11 Romanian units are an elite that costs more or levies and older machines that cost less, with the price following the strength. The <a href="#romania">Romania section</a> shows every unit's stats against the average of the 24 original nations.</span></li>
+      <li><span class="tag new">New</span><span><b>Enescu for Romania:</b> the Romanian Rhapsodies play among the game's tracks, the slow parts in the early ages and the fast dances from the Gunpowder Age on (the recording is added by hand).</span></li>
+      <li><span class="tag new">New</span><span><b>Dutch buildings</b> of their own: a Golden Age Amsterdam church with a tower like the Westertoren as the Temple for ages 4-8, a 1930s concrete tower and casemate fort for ages 7-8 and a Dutch modernist Data Center with turning fans.</span></li>
+      <li><span class="tag new">New</span><span><b>Spanish buildings</b> begin: the Alcázar of Segovia as the Senate of ages 4-8.</span></li>
+      <li><span class="tag new">New</span><span><b>Persian buildings</b> begin: a Zoroastrian fire temple as the Temple of ages 1-3 and the Apadana of Persepolis as the Senate of ages 1-2.</span></li>
+      <li><span class="tag new">New</span><span><b>American buildings</b> begin: a Puritan meeting house as the Temple of age 3.</span></li>
+      <li><span class="tag new">New</span><span><b>Egyptian Senate</b> for ages 1-3: the pharaoh's palace.</span></li>
+      <li><span class="tag new">New</span><span><b>Data Center Expansions</b> replace its 15 upgrades: three small server towers (Population, Commerce, Efficiency) ordered from the Data Center and built by its own technician, as many as you can pay for. The Data Center now also needs one of the four last Library technologies.</span></li>
+      <li><span class="tag new">New</span><span><b>Field Fortification</b>: ranged infantry build their own cover and dig into it, from earth banks in the Ancient Age to HESCO barriers in the Information Age.</span></li>
+      <li><span class="tag new">New</span><span><b>One more zoom step</b> each way, a <b>hover highlight</b> on the unit or building under the mouse, and a <b>Play button</b> after loading in single player.</span></li>
+      <li><span class="tag new">New</span><span><b>Production bar, rally line and shortfall:</b> a cyan progress bar on your hovered or selected buildings, a dotted line to the rally flag of a selected building, and how much of a price you are missing in the tooltips.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Start and Back</b> on the game setup screen are wide buttons with larger text.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Buildings too big for their ground</b>: nineteen new buildings of seven nations stood past the edge of the ground they occupy; they were made 7-25% smaller, and the northern European Small City was moved onto the middle of its ground.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Crops through buildings</b>: wheat and the territory border cut through the new buildings in vertical strips, because their depth shapes were built inside out. All of them were rebuilt.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Nubian Temple:</b> the front corner of the right pyramid was cut off; it is whole now.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Airdrop</b>: a drop is refused when there is no room for the squad under your population limit, and the button's tooltip always shows the price.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Decoys die from the first hit:</b> a General's decoys still fool the enemy, but the first enemy hit destroys them instead of a whole volley.</span></li>
+      <li><span class="tag new">New</span><span><b>Veteran ranks:</b> units gain experience in battle and rise through 10 levels, shown as bronze, silver and gold bars beside the health bar, each level stronger than the last.</span></li>
+          <li><span class="tag new">New</span><span><b><a href="#ranks">Veteran ranks</a> go further:</b> the selected unit's portrait shows its rank insignia and an experience bar, its tooltip names the rank; Spies and Generals rank up from their abilities, and every building that shoots (Cities, Towers, Forts and more) ranks up from the damage it deals.</span></li>
+      <li><span class="tag new">New</span><span><b>Airdrop aiming:</b> rings on the ground show where the squad lands, and with several Airbases selected the button counts the drops you can call and the aiming stays on from target to target.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>No sawtooth on the fog edge:</b> the edge of vision no longer shows small dark teeth along the ground's triangles.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>The Senator bribes on right-click</b>, with the bribe cursor over enemy units, like the Spy.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Cooperative AI with any number of teams:</b> "Teams of 2" (3, 4) no longer needs exactly 4 (6, 8) players.</span></li>
 </ul>
   </details>
 
   <details class="day">
     <summary><time datetime="2026-10-25">25 Oct 2026<small>Day 4</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b>Airdrop:</b> from the Modern Age an Airbase can send a Chinook transport helicopter that lands 3 elite Paratroopers anywhere on the map and flies home, for 400 Food + 350 Oil. Computer players use it too. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Russian buildings</b>, the Russians' own instead of the Greek and Western European ones: Small City, Large City, Temple, Barracks, Market, Library and Fort for ages 1-3 (ancient Rus, in wood) and for ages 4-5 (white stone, carved logs and onion domes), an Orthodox cathedral as the Temple for ages 4-8, and a stone fortress with tented shingle roofs as the Fort for age 4. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Nubian buildings</b> begin: the Temple of ages 1-3 is the steep pyramids of Meroë. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>British, French, German and Dutch buildings</b> begin: in ages 1-3 their Small City is a half-timbered medieval village and their Large City a market town around a Romanesque church, instead of Greek towns. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Mongol buildings</b> begin: the Small City of ages 1-3 is a camp of felt yurts instead of a Chinese village. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b>Airdrop:</b> from the Modern Age an Airbase can send a Chinook transport helicopter that lands 3 elite Paratroopers anywhere on the map and flies home, for 400 Food + 350 Oil. Computer players use it too.</span></li>
+      <li><span class="tag new">New</span><span><b>Russian buildings</b>, the Russians' own instead of the Greek and Western European ones: Small City, Large City, Temple, Barracks, Market, Library and Fort for ages 1-3 (ancient Rus, in wood) and for ages 4-5 (white stone, carved logs and onion domes), an Orthodox cathedral as the Temple for ages 4-8, and a stone fortress with tented shingle roofs as the Fort for age 4.</span></li>
+      <li><span class="tag new">New</span><span><b>Nubian buildings</b> begin: the Temple of ages 1-3 is the steep pyramids of Meroë.</span></li>
+      <li><span class="tag new">New</span><span><b>British, French, German and Dutch buildings</b> begin: in ages 1-3 their Small City is a half-timbered medieval village and their Large City a market town around a Romanesque church, instead of Greek towns.</span></li>
+      <li><span class="tag new">New</span><span><b>Mongol buildings</b> begin: the Small City of ages 1-3 is a camp of felt yurts instead of a Chinese village.</span></li>
       <li><span class="tag chg">Changed</span><span><b>No ground patches:</b> the Russian Large Cities, the Mongol camp and the northern European cities no longer stand on a yard of earth, mud or paving; they sit on the map's own ground like the game's buildings.</span></li>
-      <li><span class="tag fix">Fix</span><span><b>Depth for the new buildings:</b> crops, water and units behind a new building no longer show through the parts the original building did not have. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag fix">Fix</span><span><b>Depth for the new buildings:</b> crops, water and units behind a new building no longer show through the parts the original building did not have.</span></li>
       <li><span class="tag chg">Changed</span><span><b>Weathered buildings:</b> the new Roman, Egyptian and Russian buildings now carry grime, rain streaks and darker wall bases, so they no longer look brand new next to the game's own art.</span></li>
-      <li><span class="tag new">New</span><span><b>Resource panel easier to read:</b> 25% larger, green income rates, and the population and city counters on its first row. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Gold medallion buttons</b> for the row of new buttons (a tower, a plane, an anchor, a gear in laurels), lit under the mouse; their tooltips work again. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Flag picker:</b> the card under the mouse glows with pulsing gold rings, and the flags are sharper with clean edges. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag chg">Changed</span><span><b>Steel buttons in the in-game menu</b> (Return to Game, Options, Save Game, ...). <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Shadows with interface scaling</b> no longer stretch into long dark streaks. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Data Center:</b> a one-time upgrade can no longer be queued several times, and the commerce limit and tooltip rates show their real values above 999. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b>Resource panel easier to read:</b> 25% larger, green income rates, and the population and city counters on its first row.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Gold medallion buttons</b> for the row of new buttons (a tower, a plane, an anchor, a gear in laurels), lit under the mouse; their tooltips work again.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Flag picker:</b> the card under the mouse glows with pulsing gold rings, and the flags are sharper with clean edges.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>Steel buttons in the in-game menu</b> (Return to Game, Options, Save Game, ...).</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Shadows with interface scaling</b> no longer stretch into long dark streaks.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Data Center:</b> a one-time upgrade can no longer be queued several times, and the commerce limit and tooltip rates show their real values above 999.</span></li>
     </ul>
   </details>
 
   <details class="day">
     <summary><time datetime="2026-10-24">24 Oct 2026<small>Day 3</small></time><span class="digest"></span></summary>
     <ul>
-      <li><span class="tag new">New</span><span><b>Nation picker as flag cards:</b> opening a nation box on the game setup screen shows the 24 nations as a grid of round flags, with Random, Offensive, Defensive, Economic and X-Pack as buttons beside it. Hovering a flag shows the nation's name and powers. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Nation flags</b> on the game setup screen: every nation box and every row of the nation list shows the nation's round flag. All 24 nations have one, with clean round edges. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Egyptian buildings</b>, the Egyptians' own instead of the ones they shared with nine other nations: Small City 1-3, Large City 3, Temple, Barracks, Market and Library for ages 1-3. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b>Nation picker as flag cards:</b> opening a nation box on the game setup screen shows the 24 nations as a grid of round flags, with Random, Offensive, Defensive, Economic and X-Pack as buttons beside it. Hovering a flag shows the nation's name and powers.</span></li>
+      <li><span class="tag new">New</span><span><b>Nation flags</b> on the game setup screen: every nation box and every row of the nation list shows the nation's round flag. All 24 nations have one, with clean round edges.</span></li>
+      <li><span class="tag new">New</span><span><b>Egyptian buildings</b>, the Egyptians' own instead of the ones they shared with nine other nations: Small City 1-3, Large City 3, Temple, Barracks, Market and Library for ages 1-3.</span></li>
       <li><span class="tag chg">Changed</span><span><b>Steel interface everywhere:</b> OK / Cancel and the buttons of the game setup, options and Workshop screens are steel plates; question boxes have the steel frame; wooden frames and section bars are steel, glossy blue buttons, tabs and check boxes are gunmetal.</span></li>
       <li><span class="tag chg">Changed</span><span><b>Main menu:</b> narrower, taller steel buttons with even gaps and a narrower menu panel. The logo is the game's own globe and gear with REVIVED in place of the "Extended Edition" ribbon, lit by the cursor. The launcher has the same logo.</span></li>
-      <li><span class="tag fix">Fix</span><span>In a game, pop-up questions such as "Do you want to resign this game?" showed blank white OK / Cancel buttons. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Range circles:</b> a selected Tower, Fort, City or other attacking building shows its attack range as a circle in your colour. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Hotkeys on the buttons:</b> every command button shows its keyboard shortcut in its top-left corner. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Airbases and Docks buttons</b> (shown once you have built one); the Army button is gone. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Aircraft and missile kills:</b> Airbases and Carriers show the kills of their aircraft, a Missile Silo the kills of its missiles. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>No black ground after a zoom:</b> zooming out no longer leaves part of the map black until the camera moves. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag fix">Fix</span><span><b>Fishing boats retry quickly:</b> a boat left without a fish looks for another after a few seconds instead of about a minute. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag fix">Fix</span><span>In a game, pop-up questions such as "Do you want to resign this game?" showed blank white OK / Cancel buttons.</span></li>
+      <li><span class="tag new">New</span><span><b>Range circles:</b> a selected Tower, Fort, City or other attacking building shows its attack range as a circle in your colour.</span></li>
+      <li><span class="tag new">New</span><span><b>Hotkeys on the buttons:</b> every command button shows its keyboard shortcut in its top-left corner.</span></li>
+      <li><span class="tag new">New</span><span><b>Airbases and Docks buttons</b> (shown once you have built one); the Army button is gone.</span></li>
+      <li><span class="tag new">New</span><span><b>Aircraft and missile kills:</b> Airbases and Carriers show the kills of their aircraft, a Missile Silo the kills of its missiles.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>No black ground after a zoom:</b> zooming out no longer leaves part of the map black until the camera moves.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Fishing boats retry quickly:</b> a boat left without a fish looks for another after a few seconds instead of about a minute.</span></li>
       <li><span class="tag fix">Fix</span><span>The settings <code>fog_blur</code>, <code>fog_edge</code> and <code>auto_trade_delay</code> were ignored; they work now.</span></li>
-      <li><span class="tag new">New</span><span><b>AI assistant:</b> when the computer plays your nation for you, you choose what it may buy and how much of each resource it must leave you, from a new panel (Senate icon). <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>No Armageddon defeat:</b> when the Armageddon clock runs out, nobody can build or launch nuclear weapons any more, instead of everyone losing. <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Leader names:</b> computer players are named after a leader of their nation (Julius Caesar, Queen Chabi, ...) instead of "Computer". <span class="tag test">In testing</span></span></li>
-      <li><span class="tag new">New</span><span><b>Data Center upgrades:</b> three branches (Population, Commerce, Efficiency), each with four one-time upgrades and a fifth that repeats forever, with a painted icon per branch. Only one Data Center at a time, and computer players build it only late in the game. <span class="tag test">In testing</span></span></li>
+      <li><span class="tag new">New</span><span><b>AI assistant:</b> when the computer plays your nation for you, you choose what it may buy and how much of each resource it must leave you, from a new panel (Senate icon).</span></li>
+      <li><span class="tag new">New</span><span><b>No Armageddon defeat:</b> when the Armageddon clock runs out, nobody can build or launch nuclear weapons any more, instead of everyone losing.</span></li>
+      <li><span class="tag new">New</span><span><b>Leader names:</b> computer players are named after a leader of their nation (Julius Caesar, Queen Chabi, ...) instead of "Computer".</span></li>
+      <li><span class="tag new">New</span><span><b>Data Center upgrades:</b> three branches (Population, Commerce, Efficiency), each with four one-time upgrades and a fifth that repeats forever, with a painted icon per branch. Only one Data Center at a time, and computer players build it only late in the game.</span></li>
       <li><span class="tag chg">Changed</span><span><b>Roman buildings:</b> colours balanced to match the game's art (no more pinkish tint), shown on winter maps too, and each player's buildings follow that player's own age.</span></li>
     </ul>
   </details>

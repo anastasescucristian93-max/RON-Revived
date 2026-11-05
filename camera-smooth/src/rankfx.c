@@ -373,6 +373,7 @@ __attribute__((thiscall)) static void rankfx_redraw(void *console)
     }
     prodbar_draw_icons();
     heal_draw_overhead();
+    cityrepair_draw_overhead();
     ranks_draw_insignia_queue();
     (*depth)--;
 }
@@ -383,7 +384,8 @@ void rankfx_install(void)
 {
     if (g_mode && !g_ranks_enabled)
         g_mode = 0;
-    if (!g_mode && !g_prodbar_enabled && !g_ranks_enabled && !g_heal_enabled) /* ranks: the insignia beside health bars; heal: its crosses */
+    if (!g_mode && !g_prodbar_enabled && !g_ranks_enabled && !g_heal_enabled &&
+        !cityrepair_wanted()) /* ranks: the insignia beside health bars; heal: its crosses; city repair: its pliers */
         return;
     static const unsigned char sig[5] = { 0xC3, 0xCC, 0xCC, 0xCC, 0xCC }; /* ret, int3 padding */
     unsigned char *at = (unsigned char *)VA(VA_CON_REDRAW);

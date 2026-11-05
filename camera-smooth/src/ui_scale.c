@@ -622,6 +622,8 @@ static void hook_d3dgl(void)
    (and sizes the screen buffer from the inverse before refreshing it, so both are set). */
 __attribute__((used)) void c_init_display_quick(void)
 {
+    stdio_raise();
+    crash_install();
     postfx_display();
     if (!g_d3dgl_hooked)
         hook_d3dgl();

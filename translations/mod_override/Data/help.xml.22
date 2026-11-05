@@ -422,7 +422,11 @@ disponíveis.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{SEM ARMAS NUCLEARES}: marque esta caixa para jogar sem armas nucleares. Ninguém pode construir mísseis nucleares, ICBMs nem interceptadores; os mísseis de cruzeiro continuam.
+{ARMAS NUCLEARES}: quantas armas nucleares podem explodir nesta partida. Arraste o controle:
+<BULLET/>Na extrema esquerda, Nenhuma: ninguém pode construir mísseis nucleares, ICBMs nem interceptadores; os mísseis de cruzeiro continuam.
+<BULLET/>De 1 a 250: o Relógio do Armagedom começa nesse número. Quando essa quantidade de armas nucleares tiver explodido ou estiver no ar, nenhuma outra pode ser lançada. Os passos ficam maiores para a direita.
+<BULLET/>Na extrema direita, Ilimitadas: sem Relógio do Armagedom.
+Clique com o botão direito para voltar à regra do jogo: 4, mais 1 por nação e 2 por equipe. Em uma partida multijogador, só o anfitrião pode mudar isso.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -2940,6 +2944,10 @@ Aumenta o Alcance de Ataque da Cidade em +$NUMBER2.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Fortificação de campanha baixa para um esquadrão de infantaria de ataque à distância, construída pela própria infantaria (o botão de construção no painel dela), que se entrincheira nela quando fica pronta. Clique com o botão direito nela com infantaria de ataque à distância (ou use o botão de guarnição e seu atalho) para se entrincheirar: primeiro um talude de terra com paliçada, depois gabiões, depois sacos de areia. Entrincheirados, eles mantêm a posição e lutam com suas próprias armas: +1 de alcance, ataques 40% mais rápidos, +20% de dano. A fortificação recebe todos os golpes destinados a eles até ser destruída; ela tem metade dos pontos de vida de uma Torre da sua era. Unidades corpo a corpo não podem se entrincheirar. Entrincheirar-se custa 35% do preço do esquadrão, +10% para cada esquadrão que você já tem entrincheirado (até +150%). O botão Sair da Fortificação a esvazia.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Obstáculos antitanque de aço em um único quadrado, construídos pelos cidadãos na Era Moderna e na Era da Informação. Nada passa por eles, nem as suas próprias unidades: o inimigo precisa destruí-los para passar. Coloque-os em linha para fechar uma passagem e deixe um caminho livre para o seu exército. 1200 pontos de vida e blindagem pesada: fuzis mal os arranham; tanques, artilharia e aviões os destroem.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

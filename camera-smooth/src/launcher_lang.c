@@ -558,6 +558,7 @@ static void pick(int lang)
     if (g_dlg) /* the launcher's captions in the new language */
         RedrawWindow(g_dlg, NULL, NULL, RDW_INVALIDATE | RDW_ERASE | RDW_ALLCHILDREN | RDW_UPDATENOW);
     launcher_update_relabel();
+    launcher_extras_relabel();
 }
 
 static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)

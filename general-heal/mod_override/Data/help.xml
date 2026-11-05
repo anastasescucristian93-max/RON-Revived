@@ -3312,6 +3312,10 @@ your libraries.
 			<STRING>
 				<BULLET/>Low field fortification for one squad of ranged infantry, built by the infantry themselves (the build button on their panel), who dig into it when it is finished. Right-click it with ranged infantry (or use the garrison button and its hotkey) to dig in: an earth bank with a palisade at first, gabions, then sandbags. Dug in, they hold their ground and fight with their own weapons: +1 range, attacks 40% faster, +20% damage. The fortification takes every hit meant for them until it is destroyed; it has half the hit points of a Tower of your age. Melee units cannot dig in. Digging in costs 35% of the squad's price, +10% for every squad you already have dug in (up to +150%). The Leave Fortification button empties it.</STRING>
 		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Steel anti-tank obstacles on one tile, built by Citizens in the Modern and Information Ages. Nothing can pass through them, your own units neither: an enemy has to destroy them to get through. Lay them in a line to close a gap; leave a way open for your own army. 1200 hit points and heavy armor: rifles barely scratch them, tanks, artillery and aircraft break them.</STRING>
+		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>
 				<BULLET/>

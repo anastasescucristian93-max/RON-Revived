@@ -38,7 +38,8 @@ A, C, E = 0.70, 0.31, 0.90  # projection, sprite pixels per world unit
 STEPS = (8.0, 10.0, 12.0, 14.0, 16.0, 20.0, 24.0, 28.0, 32.0, 40.0)  # grid, world units: the finest under MAX_VERTS
 Q = 8.0                     # column heights are rounded down to this
 PAD = 0.15                  # the grid covers the old mesh's ground area and this much around it
-CARDS = {"tower_6"}  # sprites whose overhangs get camera-facing cards (cards()); Romania's modern tower
+CARDS = {"tower_6",         # sprites whose overhangs get camera-facing cards (cards()); Romania's modern tower
+         "village_6_age7"}  # Romania's age 7 Small City: at grid 28 the left walls had no depth, wheat showed through
 CELLS = (1, 2, 3, 4, 5, 6, 8)  # card block sizes, pixels: pixel runs make 300-500 card vertices on ragged edges
 MAX_VERTS = 500            # the game's own depth meshes: at most 1096 vertices, median 129. Every depth mesh
                            # and model on screen shares one Pre-Transform batch of 3 x 16383 vertices

@@ -28,6 +28,10 @@
  * pointer for the duration of draw_build changes only that building's drawing. Replacement
  * sprites are loaded with the game's own ImageIO::load, with the packet's discrete scales.
  *
+ * Variations: "<name>~<n>:pick" gives every building one of n sprites for good (the file name
+ * holds %d, 0 to n - 1), picked from its place on the map, so a row of the same building does
+ * not repeat one picture (the Tank Traps, four variations). Drawing only, like the animations.
+ *
  * Bigger art: "<file>, <dx>, <dy>" after the file name says the replacement's canvas reaches
  * dx pixels further left and dy further up than the original's (a church grown past the top of
  * the original canvas, 2026-11-01). The building is placed from the original canvas's top-left
@@ -126,6 +130,7 @@ static struct {
     char pattern[MAX_PATH]; /* animated: the file name with %d */
     int frames, period; /* animated: frame count (1 = still), milliseconds of one cycle */
     int loop;          /* animated: 0 = back and forth, 1 = in a loop */
+    int pick;          /* variations: one of the frames per building, by its place, no animation */
     int age;           /* 1-8, 0 = every age */
     int dx, dy;        /* bigger art: the canvas reaches this much further left / up */
     int tribe;         /* resolved on first use, -2 = not yet */
@@ -174,7 +179,14 @@ void nation_art_load_config(const char *dir)
             lower(key);
             char *tilde = strchr(key, '~');
             int frames = 1, period = 0;
-            if (tilde) {
+            int pick = tilde && strstr(tilde + 1, ":pick") != NULL;
+            if (pick) {
+                if (sscanf(tilde + 1, "%d", &frames) != 1 || frames < 2 || frames > MAX_FRAMES || !strstr(v, "%d")) {
+                    logf_("nation art: bad variations in '%s', ignored", line);
+                    continue;
+                }
+                *tilde = 0;
+            } else if (tilde) {
                 if (sscanf(tilde + 1, "%d:%d", &frames, &period) != 2 || frames < 2 || frames > MAX_FRAMES ||
                     period < 100 || !strstr(v, "%d")) {
                     logf_("nation art: bad animation in '%s', ignored", line);
@@ -185,6 +197,7 @@ void nation_art_load_config(const char *dir)
             g_rules[g_rule_n].frames = frames;
             g_rules[g_rule_n].period = period;
             g_rules[g_rule_n].loop = tilde && strstr(tilde + 1, ":loop") != NULL;
+            g_rules[g_rule_n].pick = pick;
             char *at = strchr(key, '@');
             g_rules[g_rule_n].age = at ? atoi(at + 1) : 0;
             if (at)
@@ -485,6 +498,33 @@ static void *animated_sprite(int rule, Art *first, void *scales, const void *key
     return a ? a->sprite : first->sprite;
 }
 
+/* The sprite of a variations rule for one building: picked from its place on the map (the
+   chad's world point, GraphicChad + 0x2C, as subpixel.c reads it), so it never changes while the
+   building stands and does not depend on drawing order. */
+#define CHAD_WORLD 0x2C
+static void *picked_sprite(int rule, Art *first, void *scales, const char *chad)
+{
+    static char *names[MAX_RULES][MAX_FRAMES]; /* never freed */
+    static char failed[MAX_RULES][MAX_FRAMES];
+    const float *w = (const float *)(chad + CHAD_WORLD);
+    unsigned x = (unsigned)(int)(w[0] / 16.0f), y = (unsigned)(int)(w[1] / 16.0f);
+    unsigned h = (x * 73856093u) ^ (y * 19349663u);
+    h ^= h >> 13;
+    h *= 2654435761u;
+    int f = (int)((h >> 16) % (unsigned)g_rules[rule].frames);
+    if (f <= 0 || failed[rule][f])
+        return first->sprite;
+    if (!names[rule][f]) {
+        names[rule][f] = HeapAlloc(GetProcessHeap(), 0, MAX_PATH);
+        if (!names[rule][f])
+            return first->sprite;
+        snprintf(names[rule][f], MAX_PATH, g_rules[rule].pattern, f);
+    }
+    Art *a = loaded_art(first->orig, names[rule][f], scales, g_rules[rule].dx, g_rules[rule].dy);
+    failed[rule][f] = !a;
+    return a ? a->sprite : first->sprite;
+}
+
 static int player_tribe(int player)
 {
     if (player < 0 || player > 7)
@@ -538,7 +578,9 @@ static int draw_build_nation_art(void *self, char *chad, char *rdata)
     }
 
     void *saved = *slot;
-    *slot = g_rules[rule].frames > 1 ? animated_sprite(rule, repl, packet + SPKT_SCALES, chad) : repl->sprite;
+    *slot = g_rules[rule].frames < 2 ? repl->sprite
+            : g_rules[rule].pick     ? picked_sprite(rule, repl, packet + SPKT_SCALES, chad)
+                                     : animated_sprite(rule, repl, packet + SPKT_SCALES, chad);
     void **pk = (void **)(rdata + RDATA_PACKETS), *saved_pk[24];
     if (repl->mesh)
         for (int t = 0; t < 24; t++)

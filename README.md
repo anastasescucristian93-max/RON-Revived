@@ -22,6 +22,8 @@ Liked it? Give the repository a star ⭐ and leave a [review](https://github.com
 | `site/` | The player guide page |
 | `tools/` | Reverse-engineering helpers for the game's exe |
 
+How the game itself works (everything found so far, with links to each mod's `ENGINE_NOTES.md`): `GAME_ENGINE.md`.
+
 ## Building
 
 1. `camera-smooth/build.ps1` (the DLL).

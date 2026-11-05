@@ -17,7 +17,9 @@ IFACETEX "rank_<level>" (tex_lines below); ranks.c draws them on the selected un
 Beside them, drawn here (no source picture): "rank_glow", a soft white glow with faint rays, and
 "rank_spark", a small four-pointed star. rankfx.c tints both with the tier's colour for the
 promotion effect. And "heal_plus", a rounded white cross with a dark rim: heal.c tints it green
-and floats it over the units a General's Heal is healing.
+and floats it over the units a General's Heal is healing. And "repair_pliers", steel pliers with red
+grips in a dark rim, drawn in their own colours: cityrepair.c floats them over a building a city
+is repairing.
 """
 import os
 import sys
@@ -36,6 +38,7 @@ GLOW_X, GLOW_Y, GLOW_S = 144, 0, 64  # right of the 3 x 3 insignia
 SPARK_X, SPARK_Y, SPARK_S = 208, 0, 24
 RANK10_X, RANK10_Y = 144, 64  # under the glow
 PLUS_X, PLUS_Y, PLUS_S = 200, 64, 48  # right of rank 10
+PLIERS_X, PLIERS_Y, PLIERS_S = 144, 120, 48  # under rank 10
 
 
 def cells(alpha):
@@ -214,6 +217,59 @@ def plus():
     return cell
 
 
+def pliers():
+    """Steel pliers with red grips, jaws up and to the right, in a dark rim (not tinted)."""
+    from PIL import ImageDraw
+    big = 384
+    def shape(points):
+        m = Image.new("L", (big, big))
+        ImageDraw.Draw(m).polygon([(x * big, y * big) for x, y in points], fill=255)
+        return np.asarray(m, np.float32) / 255
+    def disc(cx, cy, r):
+        m = Image.new("L", (big, big))
+        ImageDraw.Draw(m).ellipse([(cx - r) * big, (cy - r) * big, (cx + r) * big, (cy + r) * big], fill=255)
+        return np.asarray(m, np.float32) / 255
+    # upright: pivot at (0.5, 0.42), jaws closed above it, handles spread below
+    jaw_l = shape([(0.50, 0.47), (0.40, 0.40), (0.43, 0.24), (0.47, 0.10), (0.50, 0.06)])
+    jaw_r = shape([(0.50, 0.47), (0.60, 0.40), (0.57, 0.24), (0.53, 0.10), (0.50, 0.06)])
+    arm_l = shape([(0.43, 0.44), (0.52, 0.48), (0.29, 0.94), (0.19, 0.91)])
+    arm_r = shape([(0.57, 0.44), (0.48, 0.48), (0.71, 0.94), (0.81, 0.91)])
+    grip_l = shape([(0.375, 0.64), (0.445, 0.665), (0.29, 0.955), (0.17, 0.92)])
+    grip_r = shape([(0.625, 0.64), (0.555, 0.665), (0.71, 0.955), (0.83, 0.92)])
+    bolt = disc(0.5, 0.44, 0.055)
+    body = np.clip(jaw_l + jaw_r + arm_l + arm_r + grip_l + grip_r + bolt, 0, 1)
+    rim = ndimage.maximum_filter(body, size=int(big * 0.07))
+    rgb = np.zeros((big, big, 3), np.float32)
+    rgb[:] = (24, 22, 20)  # the rim
+    yy = np.linspace(0, 1, big)[:, None]
+    steel = np.clip(150 + 90 * (1 - yy), 0, 255)  # brighter at the top
+    for m, k in ((jaw_l, 0.80), (jaw_r, 1.0), (arm_l, 0.72), (arm_r, 0.92)):
+        for c in range(3):
+            rgb[..., c] = rgb[..., c] * (1 - m) + steel[:, 0][:, None] * k * m
+    for m, k in ((grip_l, 0.78), (grip_r, 1.0)):
+        for c, v in enumerate((196, 46, 34)):
+            rgb[..., c] = rgb[..., c] * (1 - m) + v * k * m
+    for c, v in enumerate((70, 70, 74)):
+        rgb[..., c] = rgb[..., c] * (1 - bolt) + v * bolt
+    seam = shape([(0.494, 0.40), (0.506, 0.40), (0.503, 0.08), (0.497, 0.08)])  # between the closed jaws
+    for c in range(3):
+        rgb[..., c] = rgb[..., c] * (1 - seam) + 30 * seam
+    shine = disc(0.515, 0.425, 0.018)
+    for c in range(3):
+        rgb[..., c] = rgb[..., c] * (1 - shine) + 230 * shine
+    rgba = np.dstack([rgb, rim * 255]).astype(np.uint8)
+    img = Image.fromarray(rgba, "RGBA").rotate(-25, resample=Image.BICUBIC)
+    img = img.crop(img.getbbox())
+    inner = PLIERS_S - 2 * MARGIN
+    k = inner / max(img.width, img.height)
+    img = img.resize((max(1, round(img.width * k)), max(1, round(img.height * k))), Image.LANCZOS)
+    cell = Image.new("RGBA", (PLIERS_S, PLIERS_S))
+    cell.paste(img, ((PLIERS_S - img.width) // 2, (PLIERS_S - img.height) // 2))
+    a = np.asarray(cell).copy()
+    a[a[..., 3] < MIN_ALPHA] = 0
+    return Image.fromarray(a, "RGBA")
+
+
 def build():
     atlas = Image.new("RGBA", (256, 256))
     for n, rgba in enumerate(icons()):
@@ -221,6 +277,7 @@ def build():
     atlas.paste(glow(), (GLOW_X, GLOW_Y))
     atlas.paste(spark(), (SPARK_X, SPARK_Y))
     atlas.paste(plus(), (PLUS_X, PLUS_Y))
+    atlas.paste(pliers(), (PLIERS_X, PLIERS_Y))
     return atlas
 
 
@@ -236,7 +293,9 @@ def tex_lines():
         f'<IFACETEX name="rank_spark" texture="TEX_REVIVED_RANKS" '
         f'left="{SPARK_X}" top="{SPARK_Y}" width="{SPARK_S}" height="{SPARK_S}"/>',
         f'<IFACETEX name="heal_plus" texture="TEX_REVIVED_RANKS" '
-        f'left="{PLUS_X}" top="{PLUS_Y}" width="{PLUS_S}" height="{PLUS_S}"/>']
+        f'left="{PLUS_X}" top="{PLUS_Y}" width="{PLUS_S}" height="{PLUS_S}"/>',
+        f'<IFACETEX name="repair_pliers" texture="TEX_REVIVED_RANKS" '
+        f'left="{PLIERS_X}" top="{PLIERS_Y}" width="{PLIERS_S}" height="{PLIERS_S}"/>']
 
 
 def main(out):

@@ -15,6 +15,19 @@ Status: first test 2026-10-25 failed (squads could not get in, Citizens and comp
 - Digging in costs 35% of the squad's price, +10% for every squad already dug in, up to +150%.
 - The eject button on the Nest empties it.
 
+## Tank Traps
+
+A second building in this mod (2026-11-05): steel anti-tank obstacles on one tile, in the slot of the scenario-only Washington Monument (type 0x1C1). Citizens build them from the military build menu (cell 4, 1) from the Modern Age (ages 7 and 8); computer players do not plan them (`entrench.c`, `LeaderData::type_avail`). Being a building, they block every unit until destroyed. Numbers: `TRAPS_RULES` in `tools/build_data.py`.
+
+Art: one Gemini picture with four variations on white (`gemini/tank_traps.jpg`), cut and sized by `tools/make_traps.py`:
+
+```
+C:\AI\ComfyUI-Easy-Install\ComfyUI-Easy-Install\python_embeded\python.exe ..\roman-buildings\tools\rmbg_matte.py gemini/tank_traps.jpg work/traps_matte.png
+python tools/make_traps.py gemini/tank_traps.jpg work/traps_matte.png [--grid 2x2] [--order 0,1,2,3]
+```
+
+It writes `work/art/tank_traps_0..3.tga` (one canvas and origin for all four), the depth mesh `tank_traps_0z.bh3`, the offsets, the build menu icon and `work/preview_tank_traps.png`. `build_data.py` adds the Tank Traps only once that art is there. The game draws `tank_traps_0.tga`; the `[all]` rule `tank_traps_0.tga~4:pick` in `roman-buildings/nation_art.ini` gives every trap one of the four for good, from its place on the map (`nation_art.c`).
+
 ## Files
 
 | File | What it is |

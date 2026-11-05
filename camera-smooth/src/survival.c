@@ -171,7 +171,7 @@ __attribute__((used)) void c_surv_draw(void)
     int saved = *(int *)(gs + 0x164);
     *(int *)(gs + 0x164) = *(int *)VA(VA_LAYER_UI);
     int x = *(int *)(gs + 0x360) - 10;
-    int y = g_hud_y > 0 ? g_hud_y : 45 + 2 * h + 6;
+    int y = g_hud_y > 0 ? g_hud_y : g_minimap_timer_top + 2 * h + 6; /* under the game's lines */
 
     char line[96];
     int left = g_end - now;

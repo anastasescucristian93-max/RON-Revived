@@ -6,7 +6,107 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 ## Installing
 
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
-- **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update asks first, closes the launcher, downloads only the parts of the pack that changed (the music, about 220 MB, only when it changed), checks that they arrived whole, installs them the same way `install.bat` does and starts the game again. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
+- **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update asks first, closes the launcher, downloads only the parts of the pack that changed (and of the extras only the ones you installed), checks that they arrived whole, installs them the same way `install.bat` does and starts the game again. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
+
+## Fix: the log no longer fills up when two nukes go off together (`camera-smooth`), new 2026-11-05
+
+- With two nuclear blasts lit at the same time, `ron_camera.log` wrote the "nuke flash" line for both on every frame (hundreds of lines a second). Each blast is now named once.
+- Tip for laptops with two graphics cards: if the game gets slow late in big matches, check that Windows runs it on the fast card (Settings > System > Display > Graphics > Rise of Nations > High performance). On the integrated card the game can be several times slower.
+
+## Extras tray in the launcher (`camera-smooth`, `package`), new 2026-11-05
+
+- The pack's zip now holds only what every player needs (about 35 MB instead of 255 MB). Optional content comes from the launcher's new **Extras** tray, so you download only what you want. The first extra is the **nation music** (54 tracks, about 220 MB); more will follow (bigger ones like upscaled videos).
+- On the launcher's left edge, beside the buttons, sits the front of a tray, like a CD drive's: EXTRAS up its face, a light, how many extras you have of how many there are (for example 1/3) and a red badge with the number of news (extras you have not seen yet, and installed ones with a newer version out). Click it: the tray unlatches and slides out from behind the launcher. Click it again to slide it back in. If there is no room on the screen at the left, the launcher moves right first.
+- Each extra has a button that shows its state: **Download** (dim, not installed), **Installed** (lit, green light; it says **Remove** when the mouse is on it), **Update** (amber, a newer version is out: click to update), the download's progress in percent (**Cancel** when the mouse is on it), **Installing...**, and **Retry** with "It did not work" when something failed. A new extra has a NEW tag the first time you see it.
+- The download is checked (SHA-256) before anything is installed, and the files go in the same way as the pack's: a game file they replace is kept and put back on Remove or uninstall.
+- Installed extras stay when you install a new version of the pack by hand, and the launcher's Update also updates the extras you have (only those).
+- If you already had the music from an earlier version, it is still there; the tray offers it once as an Update (its list of tracks moved into the extra).
+- `tray=0` under `[extras]` in `ron_camera.ini` hides the tray.
+
+## Larger game setup screen (`ui-theme`, `camera-smooth`), new 2026-11-05
+
+- Every row of the game setup screen is a quarter taller: the players' rows (Name, Nation, Color, Difficulty, Team, and "Other Nations"), the game rules on the right (Teams & Allies, Map Style... and Start With, Resources...), the check boxes and the Nukes slider. The text and the nation flags grow with them. The rules panel grows downwards to make room; in multiplayer the chat starts a little lower.
+- The drop-down boxes are a lighter grey, so the screen is less dark.
+- The text of the Name, Nation and Difficulty boxes is centred, the flag next to the nation's name.
+- In `ron_camera.ini` under `[qol]`: `setup_centre=0` puts the text back on the left, `setup_font_percent` sets the text size (125; 100 = the game's).
+
+## Fix: towers and forts get dearer again with every one you own (`camera-smooth`), new 2026-11-05
+
+- Every Tower, Keep, Stockade or Bunker you own adds 10 Wealth and 25 Metal to the price of the next one, as the game intends. In some games (an Information Age start, for example) the price never rose: the game counted the towers under one level of the line and priced the next level, so every tower cost the base 30 Wealth and 50 Metal, and the computer players covered the map with them.
+- Now all four levels count together, and the same for Forts, Castles, Fortresses and Redoubts. Nation bonuses on these prices (Korean, Roman, Indian) work as before.
+- `defense_ramp_whole_line=0` under `[gameplay]` in `ron_camera.ini` gives back the game's count. It changes the price you pay, so in multiplayer every player needs the same setting.
+
+## Crash reports (`camera-smooth`), new 2026-11-05
+
+- When the game crashes, a panel opens: "Rise of Nations closed because of an error". Write what you were doing (optional), and your Discord name if you want to be asked more, then press **Send report**. The report goes to the RON Revived Discord, where the cause can be found and fixed.
+- What it sends: where the game failed, the end of the mod's log, your Windows version and memory, and a small memory dump of the game (a checkbox leaves it out). Your Windows user name is taken out first. **See the report** shows the text before you send it.
+- The reports stay in the game's `crash` folder (the newest ten).
+- The panel speaks the game's language (all ten).
+- `crash_reports=0` under `[debug]` in `ron_camera.ini` turns it off. `crash_test=1` crashes the game on purpose when PLAY is pressed, to try the panel.
+
+## Tank Traps (`entrenchment`, `camera-smooth`), new 2026-11-05
+
+- A new building: **Tank Traps**, steel anti-tank obstacles on a single tile. Citizens build them from the **military** build menu (next to the Lookout), in the Modern and Information Ages (ages 7 and 8).
+- Nothing gets through them, your own units neither: an enemy has to destroy them to pass. Lay them in a line to close a gap or a bridge, and leave your army a way out.
+- 20 Metal (+5 for every one you own), 1200 hit points, armor 8 (as a Redoubt: rifles barely scratch them, tanks, artillery and aircraft break them), no weapon, built in about 13 seconds by one Citizen. They stay yours when the city nearby is captured, like Towers.
+- Four looks: each trap gets one of them, so a line of traps does not look like one picture repeated.
+- Computer players do not build them (they would close in their own armies).
+- They take the place of the scenario-only Washington Monument, so scenarios that use the monument show Tank Traps instead. In multiplayer every player needs the same mod files.
+
+## Cities repair their own buildings (`camera-smooth`, `ui-theme`, `translations`), new 2026-11-05
+
+- A **Large City** or **Major City** repairs the damaged buildings of its own city by itself, one at a time, the most damaged first. The buildings of a city are the ones it got when they were placed (inside its circle, nearest city). Wonders within the city's circle are repaired too. Other cities are not: they heal by themselves, as before.
+- It pays the way a Citizen does: every hit point back costs its share of the building's price. Without the resources it waits.
+- Speed: a Large City repairs as fast as one Citizen, a Major City as two (the game's rule for a second Citizen: half as much again). Koreans repair faster, as with Citizens.
+- A building is repaired only after 45 seconds without being hit (`city_repair_wait` under `[gameplay]` in `ron_camera.ini`).
+- While a city repairs, small pliers float over the building, squeezing and throwing sparks, for every player who can see it.
+- The city's panel has a **Repair** button that turns it off and on for the selected cities. On by default, computer players included. The button is darker while it is off; its tooltip says what the city is doing. The setting is kept in saved games.
+- Safe in multiplayer (the switch is the game's own command), as long as every player has this version. `city_repair=0` under `[gameplay]` turns it off for good.
+
+## Nukes slider in the game setup (`camera-smooth`, `ui-theme`, `nuke-fx`), new 2026-11-05
+
+The No Nukes check box is now a slider, **Nukes**, that sets how many nuclear weapons may go off in the game:
+- **Far left, None:** the old No Nukes. Nobody can build Nuclear Missiles, ICBMs or Interceptors, computer players included; Cruise Missiles stay.
+- **1 to 250:** the Armageddon clock starts at that number, whatever the number of nations, teams or the game style. Once that many nuclear weapons (Nuclear Missiles and ICBMs) have gone off or are in the air, nobody can launch another one, computer players included. A nuke that would still go over the number (several launched with one order) does not leave: it stays in its silo, not lost. The steps get wider to the right: one by one up to 10, then by 2 up to 30, by 5 up to 60, by 10 up to 100, by 20 up to 200, then 225 and 250.
+- **Far right, Unlimited:** no Armageddon clock. It never shows on the screen and never runs out.
+- Untouched, or after a **right-click** on it, the game's own rule stays: 4, plus 1 per nation and 2 per team.
+- Drag the knob or click anywhere on the track. The label shows the value ("Nukes: 25"); the tooltip explains it all. Translated into all ten languages.
+- Multiplayer: only the host can move it; the other players see the host's choice, greyed. Safe in multiplayer, as long as every player has this version of the mod. `no_nukes_option=0` under `[gameplay]` in `ron_camera.ini` removes it.
+- The choice is kept in saved games.
+
+## Interceptors: faster, a lighter airburst, their own sounds (`camera-smooth`, `nuke-fx`), new 2026-11-05
+
+- The Interceptor leaves its silo almost at once (a quarter of a second instead of a second) and flies 4 times as fast as the nuke (was 2.5), so it meets the nuke sooner and higher up.
+- Where they meet: a smaller fireball in the air and a short, faint light over the screen, as if the hit happened far up; a little of it shows even when it happens off your screen (`interception_burst_size` and `interception_flash_percent` under `[nuke]` in `ron_camera.ini`).
+- Two new sounds, for the two players concerned (the silo's owner and the nuke's): the Interceptor's fast launch, and the hit in the air (it replaces the game's Missile Shield sound).
+- `interceptor_speed_percent=250`, the old default that earlier installs keep in their `ron_camera.ini`, now counts as 400, so everyone in a multiplayer game has the same speed.
+
+## Selected unit: rank, experience and kills in the panel (`camera-smooth`), new 2026-11-02
+
+With one unit selected, the right half of the selection panel, empty until now, shows:
+- the rank's insignia and name, and the unit's kills (the skull) on the right;
+- the level (Lv 3) and a large experience bar with how far the unit is to the next rank, in per cent;
+- every bonus the rank gives now, one per line (attack, hit points, sight and range, attack rate, damage taken, healing).
+
+The small yellow bar on the unit's portrait is gone; units in a group still have theirs.
+
+**Fix (2026-11-05):** selecting a single unit or building (a Citizen, a Fort) could close the game at once. That no longer happens.
+
+## Fix: the selection panel no longer slips under the screen (`camera-smooth`), new 2026-11-02
+
+With the bottom interface folded, after selecting a group, the panel of a single unit or building stayed as low as the group's and its last rows of stats went under the screen's edge (worst for forts). It now goes back up every time.
+
+## Fix: Romania's Modern Senate sits on its foundation (`romanian-buildings`), new 2026-11-02
+
+It stood too far back and to the left, and its back wall reached past its paved foundation. It is now moved right and down, its back wall along the foundation's edge.
+
+## Fix: tooltips no longer hide under the round buttons (`camera-smooth`), new 2026-11-02
+
+The help box over the bottom interface used to open where the row of round buttons (Military, Army, AI assistant...) stands, and the buttons covered its text. It now opens just above them.
+
+## Fix: crops no longer show through Romania's Modern Small City (`romanian-buildings`), new 2026-11-02
+
+The wheat of a farm next to Romania's Small City in the Modern Age showed through the left walls of its blocks. Its depth outline now covers those walls.
 
 ## Russians: more of their own buildings in ages 1-3 (`russian-buildings`), new 2026-11-01
 
@@ -36,6 +136,24 @@ The French buildings of the Ancient, Classical and Medieval Ages are being redon
 - The church is a little bigger than at first, and the Library too.
 - **Shadows:** none has a ground shadow any more. The old ones were hard grey slabs (the church tower's was the worst).
 
+## Fix: no more crash with many buildings selected (`camera-smooth`), new 2026-11-02
+
+Selecting many buildings at once whose rally lines were long crashed the game: all those dots went to the graphics card as one batch, more than it takes in one go. The dots now go in several batches when there are that many. The heal rings and the drop zone of the paratroopers are drawn the same way.
+
+## Minimap in the top right corner, in three sizes (`camera-smooth`, `ui-theme`), new 2026-11-01
+
+With the bottom interface folded (its arrow button), the minimap moves from the bottom right to the top right corner of the screen, where it is out of the way of your units. A round button fixed in the very corner of the screen, in the empty triangle beside the map, switches it between small (as before), medium (20 % larger) and large (another 20 %); the size you pick is kept for the next games. The game's clocks in the top right (the Armageddon count, wonders, time limit, Survival) and the pictures of the wonders being built line up a little under the minimap, whatever its size. Unfolded, the minimap is back in its frame as in the game. `minimap_top_right=0` under `[ui]` in `ron_camera.ini` keeps it at the bottom right.
+
+- **No empty boxes in the top right corner:** with the interface folded, the game hides its help and menu buttons but still drew their frame, two empty boxes. They are gone (the buttons come back with the unfolded interface).
+- **The row of round buttons** (military buildings, army, airbases, docks, assistant) moves to the left end, at the same height.
+- **Selection panel with the interface folded:** selecting a unit or a building shows the full panel of the unfolded interface next to the command buttons (name, hit points, attack, armor, range, the production queue) instead of the game's one-line strip. Several units or buildings show a panel six cells wide with one picture per kind and how many of it are selected, on the same empty cells as the command buttons, over the interface's own stone background, a little apart from them, in the selection panel's frame with the command panel's stone frieze on top and its upright stone on the right; its cells end on the bottom edge of the screen like the command buttons, so the panel stands a little lower than them. `folded_selection_panel=0` under `[ui]` brings back the strip.
+- **New kills skull:** a clean painted skull and crossbones replaces the game's tiny pixel one everywhere the kills show (a single unit's stats, a group, the army's kills row).
+- **Kills of an army, large:** with soldiers selected, the top row of the selection panel, a little lower than the rows of units, is kept for a new, larger skull and the kills of the whole selection, as large as the row takes them, for every multiple selection (before, a small skull showed only for named groups); the units start on the row under it.
+
+## Fix: no more streaks across the ground at the farthest zoom (`camera-smooth`), new 2026-11-01
+
+On a map where one ground covers most of the view (a desert, for example), zooming all the way out could fill the screen with long black and sand-coloured streaks, also past the map's edge, and the game stuttered while they were there; they could stay after zooming back in. The game can only draw so many tiles of one ground at once. The farthest zoom now stops just before that limit where it would be passed (on varied maps it goes all the way, as before), and streaks left from before are cleared.
+
 ## Fix: the game no longer freezes mid-match over a unit's animation (`camera-smooth`), new 2026-10-31
 
 A match could freeze for good, with the picture and sound stopped, when a unit got a walking animation that lasts no time at all. It was seen with a computer player's Artillery in the Industrial Age. The game kept starting that animation over and over and never got to the next frame. This is a bug in the game itself.
@@ -44,6 +162,8 @@ A match could freeze for good, with the picture and sound stopped, when a unit g
 - It is always on and changes nothing in a game that would not have frozen anyway, so it is safe in multiplayer.
 
 ## No Nukes option in the game setup (`camera-smooth`, `ui-theme`, `nuke-fx`), new 2026-10-31
+
+Since 2026-11-05 the check box is the far left of the Nukes slider (above).
 
 A new check box in the game setup, **No Nukes**, next to Turbo Resources, No Unique Units and the others. Ticked, nobody can build Nuclear Missiles or ICBMs in that game, computer players included. The Interceptors of the Missile Silo go too, since there is nothing left for them to shoot down. Cruise Missiles stay.
 - Single player: the box is at the top of the left column. Multiplayer: it is the last box of the right column, and only the host can tick it; the other players see the host's choice.
@@ -77,6 +197,7 @@ Every one of the 25 nations has music of its own, chosen for its history and cul
 - **By age:** for example, Romania has a doina in the first ages, a lautari hora from the Gunpowder Age and a belle-epoque waltz from the Industrial Age. Japan has gagaku court music at the start, *Sakura* in the middle ages and taiko drums in battle.
 - Each of your nation's pieces is listed three times among the game's tracks, so in peace about one track in seven is your nation's (more where an age has two), and in battle about one in three; the game's own music plays the rest.
 - With Romania's Enescu recordings added by hand, Romania hears both.
+- **Fix (2026-11-05):** big games (about 6-8 players) stopped at the start on "art\logchop5.bh3 does not exist for Transform Batch Transform" (or another model, such as `hammer5.bh3` or `workbench5_weld.bh3`), although the file is there. The game opens every music track of every player's nation at the start, and with the new music that went past the 512 files the game may have open at once, so the next model could not be opened. The limit is now 8192.
 
 ## Languages (`translations`), new 2026-10-29
 
@@ -139,7 +260,7 @@ These change the game itself: in multiplayer every player needs the same setting
 - **Escorts and followers keep up** (fix, new 2026-10-30): units told to guard (escort) a unit that moves walked to where it had been and changed their way only every 4 seconds, so they ran, stopped and ran again behind it. The game does the same with the rest of an army when it attacks with artillery or siege: the other units guard the guns, so such armies moved in fits and starts. Units told to follow a unit changed their way only once it was 12 tiles off. Now both change their way within about a second once the unit walks off (`escort_follow` in `ron_camera.ini`; 0 = the game's behaviour). Nothing changes while the unit stands still. Every player of a multiplayer game needs the same setting.
 - **Missile defence and radiation** (new 2026-10-27, needs the nuke-fx files): Missile Silos train Interceptors, up to 2 each; a silo fires one by itself at an enemy nuke within 40 tiles that it can still catch, and a nuke shot down does no damage and does not count for Armageddon. A blast that goes off leaves a minute of radiation under a green haze: every unit inside loses hit points over time. A new air-raid siren when an enemy launches a nuke. The Interceptor is seen flying from the silo and blows up in the air with the nuke; computer players build Interceptors too; Interceptors and radiation are kept in saved games. Since 2026-10-29 a selected Missile Silo of yours shows its interception range (40 tiles) as a ring in your colour on the ground of the map; the minimap keeps the attack range.
 - **Computer players keep Generals and Supply Wagons in proportion to their army** (new 2026-10-27): instead of a crowd of Generals and Supply Wagons and no soldiers, a computer player (and the assistant playing for you) gets one General per 20 land army units (infantry, cavalry, tanks, guns; a squad counts once), at most 3, and one Supply Wagon per 15, at most 4, and at most one new one of each kind a minute (`ai_army_per_general`, `ai_max_generals`, `ai_army_per_supply_wagon`, `ai_max_supply_wagons`, `ai_support_seconds` in `ron_camera.ini`; max -1 = the game's rule). Every player of a multiplayer game needs the same values.
-- **The dead stay longer** (new 2026-10-27): fallen soldiers, tank and vehicle wrecks and the burn or blood marks under them stay on the ground twice as long before they fade (`corpse_time_percent` in `ron_camera.ini`, 200 = twice, 100 = the game's time). The death animations play at their usual speed. Tank wrecks block the ground for that long too, as they do in the game for their shorter time.
+- **The dead stay longer** (new 2026-10-27, a minute since 2026-11-05): fallen soldiers, tank and vehicle wrecks and the burn or blood marks under them stay on the ground about a minute after they fall instead of about 9 seconds (`corpse_time_percent` in `ron_camera.ini`, 667 = about a minute, 100 = the game's time, 1000 at most). The map now keeps up to 400 dead at once instead of the game's 100 (`corpse_limit`), so even an 8-player battle does not wipe its dead early; past that the oldest go first, so memory never fills up. The death animations play at their usual speed. Tank wrecks block the ground for that long too, as they do in the game for their shorter time.
 - **No Armageddon defeat:** when the Armageddon clock runs out, the game no longer ends with everyone defeated. Instead, from then on nobody can build or launch nuclear weapons (`no_armageddon` in `ron_camera.ini`).
 - **Fishing boats retry quickly:** a fishing boat left without a fish (two boats picked the same one, or its way is blocked by ships) looks for another free fish after a few seconds instead of about a minute, so the idle alert stops ringing (`fishing_retry` in `ron_camera.ini`).
 - **No more decoys** (new 2026-10-27, needs the general-heal files): Generals no longer have the Create Decoys ability, for anyone, computer players included. It replaces the earlier rule that decoys died from the first hit (`fragile_decoys`, removed). Decoys a scenario places still work and do not count on the kill counter.
@@ -173,7 +294,7 @@ These change only your interface, apart from auto-trade, training from a mixed s
 - **Rally line** (new 2026-10-26): a selected building of yours shows a dotted line on the ground, in your colour, from the building to each of its rally flags (`rally_line` in `ron_camera.ini`).
 - **What you are short of** (new 2026-10-26): in the cost tooltips the game already writes a price you cannot pay in red; now it also shows how much is missing, for example "120 (-45)" (`missing_resources` in `ron_camera.ini`).
 - **Build grid:** while you place a building, the tiles of your territory around the cursor show green (the building fits) or red (blocked by trees, resources, buildings, water or cliffs).
-- **Row of new buttons:** just above the bottom interface on the right, so it no longer covers the selection panel. The Airbases and Docks buttons show only once you have built an Airbase or a Dock. They are round gold medallions (a tower, a plane, an anchor, a gear in laurels) that light up under the mouse and darken when pressed; they need the interface theme, without it they keep the game's square icons. Fix: their tooltips were empty, they now show what each button does.
+- **Row of new buttons:** just above the bottom interface at its left end (moved from the right 2026-11-01, where the folded minimap and the score list are), so it no longer covers the selection panel. The Airbases and Docks buttons show only once you have built an Airbase or a Dock. They are round gold medallions (a tower, a plane, an anchor, a gear in laurels) that light up under the mouse and darken when pressed; they need the interface theme, without it they keep the game's square icons. Fix: their tooltips were empty, they now show what each button does.
 - **Military buildings button:** selects every Barracks, Stable/Auto Plant, Siege Factory/Factory and Airbase.
 - **Army button** (Hoplites icon), back next to it: selects all your military units, like the game's "All Military" key. It had been removed by mistake (2026-10-24) when the round buttons came in; for now it keeps the game's square look, until it has a round medallion of its own.
 - **Airbases button:** selects every Airbase. You can then build aircraft from all of them, or use the air commands at the bottom of the command panel to send all their aircraft at once.
@@ -183,6 +304,8 @@ These change only your interface, apart from auto-trade, training from a mixed s
 - **Mixed building selection:** selecting different military buildings together, for example Barracks + Stable, shows the units of all of them, one row per kind: infantry, cavalry and tanks, artillery, aircraft (the rally point moves to the bottom-right corner). Clicking a unit queues one in every selected building that can train it. In the original game this showed nothing.
 - **Clearer buttons:** locked options (wrong age, missing research) show a padlock. Options you cannot afford right now are drawn darker but stay clickable, so you can queue ahead.
 - **Resource panel easier to read:** the panel in the top left (resources, commerce limit, farms and camps) is 25% larger, numbers included, and the income rates ("/+40") are green instead of grey. The population and city counters moved from the top right onto the panel's first row, right of the commerce limit, also 25% larger; the help and objectives buttons stay in the corner. `hud_scale` and `green_rates` in `ron_camera.ini` (the larger panel itself comes with the interface theme). The numbers are enlarged by the nearest amount that keeps their pixels whole (with the interface at 150%: a third larger), so their outlines stay clean; at 25% they had holes.
+- **Worker bars in the resource panel** (new 2026-11-01): the panel no longer has a column for farms, woodcutters, mines and the rest. Under each resource there is a thin bar with one segment per place of work (farms, woodcutter places, mines, oil wells, merchants, scholars), green for the ones in use, and the count ("7/7") at the end of the row, so you see at a glance where workers are missing. The handle under the rows hides or shows the bars; without them the rows are shorter. The market opens to the right of the resources, its Buy (green) and Sell (yellow) buttons level with their resource, instead of pushing the whole panel aside. The population and city counters sit one under the other in the market's column, on a plain dark background: at the top, over a flat bar that opens the market, or under the prices while it is open (side by side on the first row when the whole panel is folded). The market's Buy and Sell cells fill their whole row, without the extra strip under them, and their prices are as large as the other numbers. The numbers in the panel, the market and the counters are drawn with a real font (Palatino bold, white with a black outline) instead of the game's tiny pixel font, which came out blocky when enlarged, with a yellowish fringe and white dashes over some digits; the "/" between a number and its income or limit is a thin straight line. `resource_bars=0` under `[ui]` in `ron_camera.ini` brings back the game's panel.
+- **Wider resource rows** (2026-11-05): the resource rows are about a quarter wider, so a large amount, a large income and the worker count (for example 29125, +1059 and 31/51) no longer run into each other.
 - **Hotkeys on the buttons:** every command button with a keyboard shortcut shows its key in the top-left corner, as in Company of Heroes 3, so there is no need to hover for the tooltip (`show_hotkeys` in `ron_camera.ini`). The letters are larger and bold (`hotkey_font_size`, `hotkey_bold`). Unit upgrade buttons show no key (2026-10-27): their "CTRL + key" did not fit and covered the picture.
 - **Craft points bar** (new 2026-10-27): Generals, Spies, patriots and every other unit with craft points show a blue bar of the points left right under their health bar, as wide, so you see at a glance when an ability is ready (`mana_bar` in `ron_camera.ini`; drawn with the veteran rank bars, so it needs `ranks=1`). Decoys show none.
 - **Abilities you cannot use now are dimmed** (new 2026-10-27): a General's, Spy's or patriot's ability button is drawn darker, like a unit you cannot afford, while none of the selected units that have it can cast it (not enough craft points, ...).
@@ -214,7 +337,7 @@ These change only your interface, apart from auto-trade, training from a mixed s
 - The in-game menu (Return to Game, Options, Save Game, ...) has the steel buttons instead of the blue ones.
 - The end of game window (Victory / Defeat: Examine Map, Game Stats, View Playback, Quit), ranked games included, has the steel buttons instead of the blue ones (2026-10-27).
 - Fix: in a game, the pop-up questions (such as "Do you want to resign this game?") showed blank white OK / Cancel buttons. They now have the steel buttons too.
-- Game setup, options and other screens built from the shared interface pieces: wooden frames and section bars are steel, glossy blue buttons, tabs, check boxes and drop-down arrows are gunmetal, white drop-down fields are light steel (dark text stays readable), and selected items are marked in the theme's orange. Pictures and status icons keep their colours.
+- Game setup, options and other screens built from the shared interface pieces: wooden frames and section bars are steel, glossy blue buttons, tabs, check boxes and drop-down arrows are gunmetal, drop-down fields are grey with a fine grain instead of white (2026-11-05; the greyed-out ones darker, dark text stays readable), and selected items are marked in the theme's orange. Pictures and status icons keep their colours.
 - Main menu logo: the game's own Rise of Nations logo (gold globe and gear, whole and still lit by the cursor), with REVIVED in place of the "Extended Edition" ribbon. REVIVED gets lit by the cursor too.
 - Launcher logo: "Rise of Nations / REVIVED", with REVIVED drawn in front of the gear. The small logo fits inside its frame.
 

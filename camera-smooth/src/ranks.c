@@ -1,6 +1,8 @@
 /*
  * Veteran ranks: military units earn experience from the damage they deal and rise through 10
- * levels in 3 tiers (bronze, silver, gold; level 10 is gold with a star). Each level gives +4 %
+ * levels in 3 tiers (bronze, silver, gold; level 10 is gold with a star). One selected unit shows
+ * its rank, a large experience bar, its kills and its bonuses in the selection panel's right half
+ * (ranks_draw_panel). Each level gives +4 %
  * attack and +4 % hit points; level 3 +1 line of sight, 5 +10 % attack rate, 6 -10 % damage taken,
  * 7 +1 range (ranged units), 8 +20 % attack rate, 9 slow healing out of combat, 10 -20 % damage
  * taken. [ranks] xp_gain_percent scales every gain (115 = 15 % faster). The rank stays when the unit's line is
@@ -125,6 +127,7 @@ static const UINT_PTR g_shown_attack_at[4] = { 0x008217F9u, 0x0082185Bu, 0x00821
 
 typedef int(__attribute__((thiscall)) *fn0_t)(void *self);
 typedef int(__attribute__((thiscall)) *fn1_t)(void *self, int a);
+typedef int(__attribute__((thiscall)) *fn2_t)(void *self, int a, int b);
 
 int g_ranks_enabled;
 static int g_mana_bar = 1;
@@ -471,6 +474,9 @@ static void solid(const short *r, unsigned color)
     ((add_rect_t)VA(VA_RM_ADD_RECT))((void *)VA(VA_IFACE_RM), NULL, r, color, RENDER_SOLID);
 }
 
+static char *g_panel_unit;      /* the unit ranks_draw_panel last drew, */
+static unsigned g_panel_tick;   /* and when: its portrait then goes without the experience bar */
+
 /* After IFaceButton::on_redraw (panel.c), with the render manager's origin at the button: a unit
    portrait (kind 3, a building's kind 4) gets its insignia in the top-right corner and its
    experience bar along the bottom. */
@@ -513,6 +519,8 @@ void ranks_draw_button(char *btn)
             solid(in, g_tier_rgba[tier]);
         }
     }
+    if (u == g_panel_unit && GetTickCount() - g_panel_tick < 250)
+        return; /* the selection panel's right half shows its experience bar (ranks_draw_panel) */
     int bh = h / 12 < 3 ? 3 : h / 12, x0 = 2, x1 = w - 2, y1 = h - 2, y0 = y1 - bh;
     short back[4] = { (short)x0, (short)x1, (short)y0, (short)y1 };
     solid(back, 0xC0101010);
@@ -521,6 +529,150 @@ void ranks_draw_button(char *btn)
         short bar[4] = { (short)(x0 + 1), (short)(x0 + 1 + fill), (short)(y0 + 1), (short)(y1 - 1) };
         solid(bar, l >= LEVELS ? g_tier_rgba[2] : 0xFF20E6FF); /* yellow, gold when complete */
     }
+}
+
+/* One unit selected (the user, 2026-11-02): the right half of the selection panel, empty for a
+   unit but for the game's "Strong vs." text at its bottom, shows the rank's insignia and name with
+   the kills on the right (kills.c), the level and a large experience bar with the way to the next
+   rank in per cent, and the bonuses the rank gives now, one per line. Called after on_redraw drew
+   the stats, with the render manager's origin at the panel; panel units (interface.xml
+   IFACESELECTED: the right box spans x 133..292, the game's "text" rect starts at y 125; an
+   enemy's player name is at y 23..45 and its nation at 98..115). Returns 0 when the right half is
+   taken (a production queue, a transport's cargo): the kills then stay among the stats. */
+#define VA_FONTS     0x00ED8160u /* FontFamily fonts */
+#define VA_FONT_GET   0x00522810u /* FontFamily::get(int size, int style): 1 bold, -1 the default */
+#define VA_WRITE_L    0x0050F6E0u /* Buffer::write_l(const String &, const Rect *, int len) */
+#define VA_WRITE_R    0x0050FA40u /* Buffer::write_right_l(const String &, const Rect *, int len) */
+#define SEL_PROGRESS  0x4DC       /* IFaceSelected: short l, r of the production bar (empty: none) */
+#define SEL_BUFFER    0x154       /* the Buffer it writes with; +0x7C its fonts (normal, bold, italic) */
+#define BUF_FONTS     0x7C
+#define VT_OBJ_IS     0xB8        /* ObjectData::is(int type, int): the object is that type or in its line */
+#define TYPE_CARRIER  0x15F       /* ...asked by on_redraw (0x00826A46) before it writes the cargo from y 26 */
+#define U_CARGO       0xA0        /* word: units aboard */
+#define PX0 139
+#define PX1 287
+#define PTEXT 124
+
+typedef void *(__attribute__((thiscall)) *font_get_t)(void *ff, int size, int style);
+typedef int(__attribute__((thiscall)) *write_rect_t)(void *buf, const void *str, const short *rect, int len);
+
+static void panel_text(char *panel, const char *utf8, int size, int bold, int right, int l, int t, int r, int b)
+{
+    char *buf = panel + SEL_BUFFER;
+    void *font = ((font_get_t)VA(VA_FONT_GET))((void *)VA(VA_FONTS), size, bold ? 1 : -1);
+    if (!font || !*(void **)font)
+        return;
+    void *saved[3], *set[3] = { font, NULL, NULL };
+    memcpy(saved, buf + BUF_FONTS, sizeof saved);
+    memcpy(buf + BUF_FONTS, set, sizeof set);
+    unsigned char str[64] = { 0 };
+    lang_string(str, utf8);
+    int len = *(unsigned short *)(str + 8);
+    short rect[4] = { (short)l, (short)r, (short)t, (short)b };
+    if (len)
+        ((write_rect_t)VA(right ? VA_WRITE_R : VA_WRITE_L))(buf, str, rect, len);
+    ((str_close_t)VA(VA_STRING_CLOSE))(str);
+    memcpy(buf + BUF_FONTS, saved, sizeof saved);
+}
+
+/* A tooltip piece (" +%d%% attack,") as a line of its own: without the spaces and commas round it. */
+static void bonus_line(char *out, int size, const char *en, int v)
+{
+    char t[160];
+    snprintf(t, sizeof t, lang_text(en), v);
+    char *s = t;
+    while (*s == ' ' || *s == ',')
+        s++;
+    size_t n = strlen(s);
+    while (n && (s[n - 1] == ' ' || s[n - 1] == ','))
+        s[--n] = 0;
+    snprintf(out, size, "%s", s);
+}
+
+int ranks_draw_panel(char *panel, char *u, int kills, int show_kills)
+{
+    char *t = type(u), *console = *(char **)VA(VA_CONSOLE);
+    short *prog = (short *)(panel + SEL_PROGRESS);
+    if (!t || prog[1] > prog[0])
+        return 0;
+    /* Two arguments, thiscall (ret 8): called without them, the stack came back 8 bytes off and the
+       next SSE store faulted (one object selected, 2026-11-05). */
+    if (((fn2_t)(*(void ***)u)[VT_OBJ_IS / 4])(u, TYPE_CARRIER, 0) && *(short *)(u + U_CARGO) > 0)
+        return 0;
+    int ranked = shows_rank(u);
+    if (!ranked && !show_kills)
+        return 1;
+    int own = console && owner(u) == *(int *)(console + 0x298);
+    int top = own ? 22 : 47, bottom = own ? PTEXT : 96;
+    if (show_kills)
+        kills_draw_count(panel, kills, PX1, top + 1, 17);
+    if (!ranked)
+        return 1;
+    g_panel_unit = u;
+    g_panel_tick = GetTickCount();
+
+    /* the insignia and the rank's name */
+    int xp = xp_of(u), l = level_of_xp(xp), x = PX0;
+    char text[160];
+    if (l) {
+        snprintf(text, sizeof text, "rank_%d", l);
+        void *tex = qol_iface_tex(text);
+        if (tex) {
+            short r[4] = { (short)PX0, (short)(PX0 + 17), (short)top, (short)(top + 20) };
+            ((add_rect_t)VA(VA_RM_ADD_RECT))((void *)VA(VA_IFACE_RM), tex, r, *(unsigned *)VA(VA_WHITE), 1);
+            x = PX0 + 21;
+        }
+    }
+    const char *name = lang_text(g_name[l]);
+    panel_text(panel, name, strlen(name) <= 12 ? 12 : 10, 1, 0, x, top, PX1 - (show_kills ? 46 : 0), top + 20);
+
+    /* the level, the experience bar and the way to the next rank */
+    int y = top + 23;
+    snprintf(text, sizeof text, lang_text("Lv %d"), l);
+    panel_text(panel, text, 10, 1, 0, PX0, y, PX0 + 34, y + 12);
+    int b0 = PX0 + 35, b1 = PX1 - 31;
+    short out[4] = { (short)b0, (short)b1, (short)y, (short)(y + 12) };
+    short in[4] = { (short)(b0 + 1), (short)(b1 - 1), (short)(y + 1), (short)(y + 11) };
+    solid(out, 0xFF080808);
+    solid(in, 0xFF34302C);
+    int fill = (b1 - b0 - 2) * progress_permille(xp) / 1000;
+    if (fill > 0) {
+        short bar[4] = { (short)(b0 + 1), (short)(b0 + 1 + fill), (short)(y + 1), (short)(y + 11) };
+        solid(bar, l >= LEVELS ? g_tier_rgba[2] : 0xFF20E6FF); /* yellow, gold at the last rank */
+        short shine[4] = { bar[0], bar[1], bar[2], (short)(y + 4) };
+        solid(shine, 0x50FFFFFF);
+    }
+    snprintf(text, sizeof text, "%d%%", progress_permille(xp) / 10);
+    panel_text(panel, text, 10, 1, 1, PX1 - 30, y, PX1, y + 12);
+
+    /* the bonuses, one per line, the tooltip's pieces */
+    if (!l)
+        return 1;
+    int armed = *(int *)(t + T_ATTACK) != 0, n = 0;
+    char lines[6][160];
+    if (armed)
+        bonus_line(lines[n++], sizeof lines[0], " +%d%% attack,", g_attack_step * l);
+    bonus_line(lines[n++], sizeof lines[0], " +%d%% hit points", g_hits_step * l);
+    if (l >= 3) {
+        bonus_line(lines[n], sizeof lines[0], ", +1 sight", 0);
+        if (armed && l >= 7 && ((fn0_t)VA(VA_MAX_RANGE))(u) > 0) {
+            char r[160];
+            bonus_line(r, sizeof r, "+1 range,", 0);
+            size_t k = strlen(lines[n]);
+            snprintf(lines[n] + k, sizeof lines[0] - k, ", %s", r);
+        }
+        n++;
+    }
+    if (armed && l >= 5)
+        bonus_line(lines[n++], sizeof lines[0], "+%d%% attack rate,", l >= 8 ? 20 : 10);
+    if (l >= 6)
+        bonus_line(lines[n++], sizeof lines[0], "-%d%% damage taken,", l >= 10 ? 20 : 10);
+    if (l >= HEAL_LEVEL)
+        bonus_line(lines[n++], sizeof lines[0], "heals out of combat,", 0);
+    y = top + 39;
+    for (int i = 0; i < n && y + 10 <= bottom; i++, y += 10)
+        panel_text(panel, lines[i], 10, 0, 0, PX0, y, PX1, y + 10);
+    return 1;
 }
 
 static void tip_line(const char *text)
@@ -562,6 +714,8 @@ __attribute__((used)) int c_rk_describe(void *self, int *a)
 {
     ((describe_t)g_orig_describe)(self, (void *)a[0], a[1], a[2], a[3]);
     const int *opt = (const int *)a[0];
+    if (cityrepair_describe(opt)) /* cityrepair.c shares this hook: its switch's own text */
+        return 0;
     char *u = opt && g_ranks_enabled ? described_unit(opt) : NULL;
     if (!shows_rank(u))
         return 0;

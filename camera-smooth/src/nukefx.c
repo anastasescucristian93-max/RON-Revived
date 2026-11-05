@@ -10,9 +10,13 @@
  *    intercepted; nukes flying past to someone else are not. A nuke in
  *    flight is an Ammo record following a spline to its target; an enemy silo with an
  *    Interceptor fires when the nuke is within interceptor_reach_tiles and the Interceptor (after
- *    a second's lift-off, interceptor_speed_percent of the nuke's ground speed) can still meet it
- *    before it lands. At the meeting frame the Ammo is closed (Ammo::close, what the game's
- *    Missile Shield does): no blast, no damage, no crater, no Armageddon count.
+ *    a quarter second's lift-off, interceptor_speed_percent of the nuke's ground speed, 4 times
+ *    by default) can still meet it before it lands. At the meeting frame the Ammo is closed
+ *    (Ammo::close, what the game's Missile Shield does): no blast, no damage, no crater, no
+ *    Armageddon count. A small fireball (interception_burst_size) where they meet, a faint light
+ *    over the screen (interception_flash_percent of a nuke's flash, some of it even off the
+ *    screen), and nuke-fx's sounds interceptorlaunch / interceptorhit (soundfiles.xml) for the
+ *    two players concerned.
  *  - Radiation: every blast that goes off (the call of Nuke::add_nuke in Ammo::do_damage) leaves a
  *    zone of the blast's radius for radiation_seconds. Once a second every unit inside (any
  *    player; not aircraft, not decoys, not buildings) loses a share of its max hit points through
@@ -148,8 +152,13 @@
 #define SILO        0x208
 #define INTERCEPTOR 0x183    /* unit 337 */
 #define SILO_MAX    2
-#define LIFTOFF     15       /* frames before an Interceptor leaves the silo */
-#define SND_SHIELD  0x9A     /* the Missile Shield's "stopped" sound */
+#define LIFTOFF     4        /* frames before an Interceptor leaves the silo (about a quarter second) */
+#define SND_SHIELD  0x9A     /* the game's sound when nuke-fx's own interception sound is missing */
+#define VA_SND_FIND 0x0097E9F0u /* SoundFileLookup::find_index(const String &tag): soundfiles.xml order */
+#define VA_SND_PLAY 0x0097EAC0u /* SoundFileLookup::play(int index), ret 4 (both use globals only) */
+#define VA_CSTR     0x00A1D660u /* String::String(const char *) */
+#define VA_STR_CLOSE 0x00A1CF40u
+#define MAX_BURSTS  8
 #define SPAN_GAME   0x140    /* the game's scorch span after the 110 effect frames */
 #define MAX_SILOS   256
 #define MAX_SHOTS   64
@@ -168,7 +177,8 @@ typedef char *(__attribute__((thiscall)) *get_tone_t)(void *graphsys);
 static int g_flash = 1;
 static float g_full_tiles = 12.0f, g_zero_tiles = 40.0f, g_far = 0.0f, g_strength = 1.0f;
 int g_nuke_sim_enabled;
-static int g_interceptors = 1, g_reach_tiles = 40, g_speed_pct = 250, g_protect_allies = 0;
+static int g_interceptors = 1, g_reach_tiles = 40, g_speed_pct = 400, g_protect_allies = 0;
+static float g_burst_scale = 2.0f, g_burst_flash = 0.08f; /* the airburst: fireball size, light (of a nuke's) */
 static int g_radiation = 1, g_rad_pct = 2, g_rad_secs = 60;
 static int g_marker = 1, g_scorch_pct = 300;
 static int g_ai = 1, g_ai_knowledge = 500, g_ai_oil = 550;
@@ -180,7 +190,7 @@ static struct shot { int ammo, who, o, ex, ey, at, sp, sid; } g_shot[MAX_SHOTS];
 static struct zone { int x, y, r, start; } g_zone[MAX_ZONES];
 static int g_next_zone, g_last_frame = -1;
 
-static int g_last_logged = -1;
+static int g_logged[8] = { -1, -1, -1, -1, -1, -1, -1, -1 }, g_next_logged; /* blast starts the log has named */
 
 void nukefx_load_config(const char *ini_path)
 {
@@ -195,7 +205,12 @@ void nukefx_load_config(const char *ini_path)
     g_strength = g_strength < 0.0f ? 0.0f : g_strength > 1.0f ? 1.0f : g_strength;
     g_interceptors = GetPrivateProfileIntA("nuke", "interceptors", 1, ini_path);
     g_reach_tiles = GetPrivateProfileIntA("nuke", "interceptor_reach_tiles", 40, ini_path);
-    g_speed_pct = GetPrivateProfileIntA("nuke", "interceptor_speed_percent", 250, ini_path);
+    g_speed_pct = GetPrivateProfileIntA("nuke", "interceptor_speed_percent", 400, ini_path);
+    if (g_speed_pct == 250) /* the old default, kept in the ini of every earlier install (2026-11-05) */
+        g_speed_pct = 400;
+    g_burst_scale = ini_float(ini_path, "nuke", "interception_burst_size", 2.0f);
+    g_burst_flash = ini_float(ini_path, "nuke", "interception_flash_percent", 8.0f) / 100.0f;
+    g_burst_flash = g_burst_flash < 0.0f ? 0.0f : g_burst_flash > 1.0f ? 1.0f : g_burst_flash;
     g_protect_allies = GetPrivateProfileIntA("nuke", "interceptor_protect_allies", 0, ini_path);
     g_radiation = GetPrivateProfileIntA("nuke", "radiation", 1, ini_path);
     g_rad_pct = GetPrivateProfileIntA("nuke", "radiation_percent_per_second", 2, ini_path);
@@ -264,6 +279,17 @@ static int nuke_type(char *a)
         return 0;
     int t = type_of(sh);
     return t == NUKE || t == ICBM ? t : 0;
+}
+
+/* For nonukes.c: Nuclear Missiles and ICBMs in the air now (an Interceptor's kill leaves the list). */
+int nukefx_nukes_in_flight(void)
+{
+    char *objs = *(char **)VA(VA_OBJECTS);
+    int n = objs ? *(int *)(objs + OBJS_AMMO_N) : 0, k = 0;
+    char **am = objs ? *(char ***)(objs + OBJS_AMMO) : NULL;
+    for (int i = 0; i < n && am; i++)
+        k += nuke_type(am[i]) != 0;
+    return k;
 }
 
 static int nuke_radius(char *a)
@@ -382,12 +408,39 @@ static int is_targeted(char *a)
     return 0;
 }
 
-static void local_sound(int p1, int p2)
+/* nuke-fx's sounds, soundfiles.xml tags (the index is the entry's place in that file) */
+static int sound_index(const char *tag, int *cache)
+{
+    if (*cache == -1) {
+        unsigned char str[64] = { 0 };
+        ((void(__attribute__((thiscall)) *)(void *, const char *))VA(VA_CSTR))(str, tag);
+        *cache = ((fn1_t)VA(VA_SND_FIND))(NULL, (int)(INT_PTR)str);
+        ((fn0_t)VA(VA_STR_CLOSE))(str);
+        logf_("nuke: sound %s %s", tag, *cache >= 0 ? "found" : "missing from soundfiles.xml (nuke-fx data not installed?)");
+        if (*cache < 0)
+            *cache = -2;
+    }
+    return *cache;
+}
+
+static int g_snd_launch = -1, g_snd_hit = -1;
+
+/* Heard by the two players it concerns: the silo's owner and the nuke's. */
+static void local_sound(int p1, int p2, int hit)
 {
     int me = local_player();
-    if (me == p1 || me == p2)
+    if (me != p1 && me != p2)
+        return;
+    int i = hit ? sound_index("interceptorhit", &g_snd_hit) : sound_index("interceptorlaunch", &g_snd_launch);
+    if (i >= 0)
+        ((fn1_t)VA(VA_SND_PLAY))(NULL, i);
+    else if (hit)
         ((fn1_t)VA(VA_SOUND_PLAY))(NULL, SND_SHIELD);
 }
+
+/* Where and when Interceptors met their nukes, for the soft light (drawing only). */
+static struct burst { float x, y; int start; } g_burst[MAX_BURSTS];
+static int g_next_burst;
 
 /* Frames from now until an Interceptor from (bx, by) meets the nuke, or 0 when it cannot before
    the nuke lands. Integer maths only. */
@@ -499,7 +552,7 @@ static void airburst(float x, float y, float z)
     if (!gp)
         return;
     void *fx = (void *)VA(VA_ADD_EXPLOSION), *fp = (void *)VA(VA_ADD_PULSEWAVE);
-    float scale = 4.0f;
+    float scale = g_burst_scale;
     int sbits;
     memcpy(&sbits, &scale, 4);
     __asm__ volatile("movss %0, %%xmm1\n\t"
@@ -592,6 +645,7 @@ static void fire_interceptors(void)
                       g_silo[best].id, g_silo[best].p, who, i, *(int *)(a + AM_CUR), *(int *)(a + AM_TOTAL), bk,
                       g_silo[best].n);
                 launch_visual(object(g_silo[best].p, g_silo[best].id), g_silo[best].p, a, bk);
+                local_sound(who, g_silo[best].p, 0);
                 break;
             }
     }
@@ -610,8 +664,10 @@ static void meet_interceptors(void)
             spline_point(a, *(int *)(a + AM_CUR), m);
             ((fn0_t)VA(VA_AMMO_CLOSE))(a);
             airburst(m[0], m[1], m[2]);
+            g_burst[g_next_burst] = (struct burst){ m[0], m[1], t };
+            g_next_burst = (g_next_burst + 1) % MAX_BURSTS;
             logf_("nuke: the nuke of player %d shot down by silo %d of player %d", s->who, s->sid, s->sp);
-            local_sound(s->who, s->sp);
+            local_sound(s->who, s->sp, 1);
         }
         s->at = 0;
     }
@@ -763,7 +819,8 @@ static void clear_state(void)
     memset(g_silo, 0, sizeof g_silo);
     memset(g_shot, 0, sizeof g_shot);
     memset(g_zone, 0, sizeof g_zone);
-    g_n_silos = g_next_zone = 0;
+    memset(g_burst, 0, sizeof g_burst);
+    g_n_silos = g_next_zone = g_next_burst = 0;
 }
 
 static void encode(void)
@@ -903,41 +960,71 @@ static float distance_factor(float bx, float by)
      b = t < 0.05 ? (t / 0.05)^2 :     min(1, (t - 0.05) / 0.65)^2
      tone +0x0C = 32 a^2 (the flash), +0x1C = b (saturation), tint alpha = (0.4 (1 - b))^2 * 255.
    At rest 0, 1 and 0. This writes the strongest of the blasts scaled by their distance factor. */
+static int g_tone_ours; /* this wrote the tone mapper last frame (an airburst's light) */
+
 static void soften_flash(void)
 {
     void *gs = *(void **)VA(VA_GRAPHSYS);
     int n = *(int *)VA(VA_NUKE_COUNT), frames = *(int *)VA(VA_NUKE_FRAMES);
-    if (!g_flash || !gs || n <= 0 || frames <= 0)
+    if (!gs)
         return;
     char *tone = ((get_tone_t)(*(void ***)gs)[0xBC / 4])(gs);
     if (!tone)
         return;
-    const float(*pos)[2] = *(const float(**)[2])VA(VA_NUKE_POS);
-    const int *start = *(const int **)VA(VA_NUKE_START);
-    int t0 = now(), active = 0;
+    int t0 = now(), active = 0, blasts = 0;
     float flash = 0.0f, sat = 1.0f;
-    for (int i = 0; i < n; i++) {
-        float t = (float)(t0 - start[i]) / (float)frames;
-        if (t < 0.0f || t > 1.0f)
-            continue;
-        float a, b, f = distance_factor(pos[i][0], pos[i][1]) * g_strength;
-        if (t < 0.05f) {
-            a = b = (t / 0.05f) * (t / 0.05f);
-        } else {
-            float ua = fminf(1.0f, (t - 0.05f) / 0.45f), ub = fminf(1.0f, (t - 0.05f) / 0.65f);
-            a = 1.0f - ua * ua;
-            b = ub * ub;
-        }
-        flash = fmaxf(flash, f * 32.0f * a * a);
-        sat = fminf(sat, 1.0f - f * (1.0f - b));
-        active = 1;
-        if (start[i] != g_last_logged) {
-            g_last_logged = start[i];
-            logf_("nuke flash: blast at (%.0f, %.0f), flash %.0f%%", pos[i][0] / TILE, pos[i][1] / TILE, f * 100.0f);
+    if (g_flash && n > 0 && frames > 0) {
+        const float(*pos)[2] = *(const float(**)[2])VA(VA_NUKE_POS);
+        const int *start = *(const int **)VA(VA_NUKE_START);
+        for (int i = 0; i < n; i++) {
+            float t = (float)(t0 - start[i]) / (float)frames;
+            if (t < 0.0f || t > 1.0f)
+                continue;
+            float a, b, f = distance_factor(pos[i][0], pos[i][1]) * g_strength;
+            if (t < 0.05f) {
+                a = b = (t / 0.05f) * (t / 0.05f);
+            } else {
+                float ua = fminf(1.0f, (t - 0.05f) / 0.45f), ub = fminf(1.0f, (t - 0.05f) / 0.65f);
+                a = 1.0f - ua * ua;
+                b = ub * ub;
+            }
+            flash = fmaxf(flash, f * 32.0f * a * a);
+            sat = fminf(sat, 1.0f - f * (1.0f - b));
+            active = blasts = 1;
+            int seen = 0; /* once per blast, also while several are lit at once */
+            for (int k = 0; k < 8; k++)
+                seen |= g_logged[k] == start[i];
+            if (!seen) {
+                g_logged[g_next_logged++ & 7] = start[i];
+                logf_("nuke flash: blast at (%.0f, %.0f), flash %.0f%%", pos[i][0] / TILE, pos[i][1] / TILE, f * 100.0f);
+            }
         }
     }
-    if (!active)
+    /* An Interceptor's kill: a short, faint light, as from high in the air and far off; a little
+       of it even when the kill is off the screen. */
+    float now_f = (float)t0 + *(float *)(game() + GAME_FRAC);
+    for (int i = 0; i < MAX_BURSTS && g_burst_flash > 0.0f; i++) {
+        float age = (now_f - (float)g_burst[i].start) / 15.0f, dur = 0.9f;
+        if (!g_burst[i].start || age < 0.0f || age > dur)
+            continue;
+        float e = age < 0.06f ? age / 0.06f : 1.0f - (age - 0.06f) / (dur - 0.06f);
+        e = e * e;
+        float f = fmaxf(0.4f, distance_factor(g_burst[i].x, g_burst[i].y));
+        flash = fmaxf(flash, 32.0f * g_burst_flash * e * f);
+        sat = fminf(sat, 1.0f - 0.1f * e * f);
+        active = 1;
+    }
+    if (!active) {
+        if (g_tone_ours) { /* back to the resting values the game leaves */
+            *(float *)(tone + TONE_FLASH) = 0.0f;
+            *(float *)(tone + TONE_SAT) = 1.0f;
+            *(unsigned char *)(tone + TONE_ALPHA) = 0;
+            *(unsigned char *)(tone + TONE_DIRTY) = 1;
+            g_tone_ours = 0;
+        }
         return;
+    }
+    g_tone_ours = !blasts;
     float w = 0.4f * (1.0f - sat);
     *(float *)(tone + TONE_FLASH) = flash;
     *(float *)(tone + TONE_SAT) = sat;
@@ -1105,7 +1192,7 @@ static int patch_call(UINT_PTR at_va, UINT_PTR target_va, void *to, const char *
    part runs from airdrop.c's Objects::process_all hook (installed when g_nuke_sim_enabled). */
 void nukefx_install(void)
 {
-    if ((g_flash || g_marker || g_radiation) &&
+    if ((g_flash || g_marker || g_radiation || g_interceptors) &&
         patch_call(VA_CALL_NUKE_DRAW, VA_NUKE_DRAW, (void *)c_nuke_draw, "Scene::render (Nuke::draw)"))
         logf_("nuke flash: full within %.0f tiles of the screen centre, %.0f%% from %.0f tiles", g_full_tiles,
               g_far * 100.0f, g_zero_tiles);
@@ -1136,8 +1223,8 @@ void nukefx_install(void)
         if (patch_call(VA_CALL_SCEN_WALK, VA_SCEN_WALK, (void *)c_scen_walk, "WalkDataGame::walk_data (saved games)"))
             logf_("nuke: Interceptors and radiation zones go into saved games");
     }
-    logf_("nuke: interceptors %s (reach %d tiles, %d%% of the nuke's speed), radiation %s (%d%% a second for %d s), "
-          "target sign %s",
-          g_interceptors ? "on" : "off", g_reach_tiles, g_speed_pct, g_radiation ? "on" : "off", g_rad_pct, g_rad_secs,
-          g_marker ? "on" : "off");
+    logf_("nuke: interceptors %s (reach %d tiles, %d%% of the nuke's speed, airburst size %.1f, light %.0f%% of a "
+          "nuke's), radiation %s (%d%% a second for %d s), target sign %s",
+          g_interceptors ? "on" : "off", g_reach_tiles, g_speed_pct, g_burst_scale, g_burst_flash * 100.0f,
+          g_radiation ? "on" : "off", g_rad_pct, g_rad_secs, g_marker ? "on" : "off");
 }

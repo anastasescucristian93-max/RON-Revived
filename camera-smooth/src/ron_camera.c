@@ -166,16 +166,21 @@ static void load_config(void)
     make_way_load_config(path);
     formation_load_config(path);
     hud_load_config(path);
+    respanel_load_config(path);
     flags_load_config(path);
     ngrid_load_config(path);
     override_load_config(path);
+    crash_load_config(path);
     ai_names_load_config(path);
     armageddon_load_config(path);
     corpses_load_config(path);
     nukefx_load_config(path);
     nonukes_load_config(path);
     attrition_load_config(path);
+    defenseramp_load_config(path);
     notices_load_config(path);
+    minimap_load_config(path);
+    selpanel_load_config(path);
     survival_load_config(path);
     assistant_load_config(path);
     assist_orders_load_config(path);
@@ -190,6 +195,7 @@ static void load_config(void)
     facing_load_config(path);
     play_load_config(path);
     airstrike_load_config(path);
+    cityrepair_load_config(path);
     lang_load_config(path);
     postfx_load_config(path);
     g_fish_retry = GetPrivateProfileIntA("gameplay", "fishing_retry", 1, path);
@@ -371,6 +377,7 @@ __attribute__((used)) void c_check_scroll(void *self)
     frame_begin();
     if (g_qol_enabled)
         qol_tick(now_s());
+    minimap_tick();
     if (g_airdrop_enabled)
         airdrop_ui_tick();
     if (cfg.fix_stuck_keys)
@@ -677,6 +684,76 @@ static void settle_ground(void *cam, double t)
         CAM_I(cam, OFF_OUTDATED) = 1;
 }
 
+/* The ground's vertex streams (TerrainVis, one per ground texture) hold 25 vertices per tile
+   and are drawn with 16-bit indices, so a stream past 65536 / 25 = 2621 tiles wraps: tiles
+   index vertices of others far away and the screen fills with long parallel streaks (heavy to
+   draw, so the game also stutters). One texture covering more than that many tiles on screen
+   happens only farther out than the game's own levels (a desert map at the extra zoom out).
+   So: the zoom-out distance is capped where the fullest stream would pass 80 % of the limit
+   (tiles in view grow with the distance squared), and a stream already wrapped is cleared. */
+#define VA_TERRAIN_REF  0x00C06218u /* TerrainOut * (MiscAccess::terrain) */
+#define VA_TV_SET_ZOOM  0x008B3190u /* TerrainVis::set_zoom(int), ret 4; 5 = clear everything */
+#define TERRAIN_VIS     0x533C      /* TerrainVis inside TerrainOut */
+#define TV_STREAMS      0xC         /* number of streams */
+#define TV_STAMPS       0xF4        /* per stream, 0x1C each: SimpleArray<DWORD> +4 count, +0x10 data */
+#define TV_STAMP        0xFC        /* stamp of the last rebuild: blocks with it are in view */
+#define GROUND_BLOCKS   (65536 / 25)
+static float g_ground_cap; /* 0 = no cap */
+
+static void ground_guard(void *cam, double t)
+{
+    static double cleared = -10.0;
+    static int logged;
+    char *terrain = *(char **)VA(VA_TERRAIN_REF);
+    if (!terrain)
+        return;
+    char *tv = terrain + TERRAIN_VIS;
+    int n = *(int *)(tv + TV_STREAMS);
+    char *streams = *(char **)(tv + TV_STAMPS);
+    if (n <= 0 || n > 256 || !streams)
+        return;
+    unsigned stamp = *(unsigned *)(tv + TV_STAMP);
+    int used_max = 0, top_max = 0;
+    for (int s = 0; s < n; s++) {
+        int count = *(int *)(streams + s * 0x1C + 4);
+        unsigned *stamps = *(unsigned **)(streams + s * 0x1C + 0x10);
+        if (count <= 0 || !stamps)
+            continue;
+        int used = 0, top = 0;
+        for (int i = 0; i < count; i++)
+            if (stamps[i] == stamp) {
+                used++;
+                top = i + 1;
+            }
+        if (used > used_max)
+            used_max = used;
+        if (top > top_max)
+            top_max = top;
+    }
+
+    float r = (float)used_max / GROUND_BLOCKS, d = CAM_F(cam, OFF_DIST);
+    if (r > 0.3f && d > 0.0f) {
+        float cap = d * sqrtf(0.8f / r);
+        /* Lower at once; higher only well under the limit (scrolled to a mixed area), so
+           the cap does not go up and down by a few percent while scrolling. */
+        if (g_ground_cap <= 0.0f || cap < g_ground_cap || r < 0.65f)
+            g_ground_cap = cap;
+    } else {
+        g_ground_cap = 0.0f;
+    }
+
+    if (top_max > GROUND_BLOCKS && used_max <= GROUND_BLOCKS * 8 / 10 && t - cleared > 1.0) {
+        cleared = t;
+        if (cfg.log && logged < 5) {
+            logged++;
+            logf_("ground: a stream used block %d of %d (%d in view), clearing the ground", top_max,
+                  GROUND_BLOCKS, used_max);
+        }
+        ((void(__attribute__((thiscall)) *)(void *, int))VA(VA_TV_SET_ZOOM))(tv, 5);
+        CAM_I(cam, OFF_OUTDATED) = 1;
+    }
+}
+
 /* Inlocuieste Camera::check_zoom (apelat la fiecare cadru din Scene::render). */
 __attribute__((used)) void c_check_zoom(void *self)
 {
@@ -723,6 +800,9 @@ __attribute__((used)) void c_check_zoom(void *self)
         if (g_extra_in)
             target = extra;
     }
+    ground_guard(cam, t);
+    if (g_ground_cap > 0.0f && target > g_ground_cap)
+        target = g_ground_cap > lo ? g_ground_cap : lo;
 
     if (snap || !(zm.dist > 0.0f) || target <= 0.0f || lo <= 0.0f) {
         zm.dist = CAM_F(cam, OFF_DIST);
@@ -1272,9 +1352,56 @@ void *hook_trampoline(unsigned char *at, int n, unsigned char *mem)
 }
 
 /* Address space in use, once a minute of running simulation (from airdrop.c's
-   Objects::process_all). Without the large-address-aware flag the game has 2 GB, and a long
+   Objects::process_all), with the match's minute and its peak so far. Without the
+   large-address-aware flag the game has 2 GB, and a long
    8-player game ran out at 46 minutes: "Could not create texture: The GPU device instance has
    been suspended", then exception C00001AD (2026-10-30). */
+void mem_log(const char *why)
+{
+    MEMORYSTATUSEX m = { sizeof m };
+    if (!GlobalMemoryStatusEx(&m))
+        return;
+    /* Largest free block: a big allocation fails on it, not on the total. */
+    SIZE_T big = 0;
+    MEMORY_BASIC_INFORMATION mi;
+    for (unsigned char *p = (unsigned char *)0x10000; VirtualQuery(p, &mi, sizeof mi) == sizeof mi;) {
+        if (mi.State == MEM_FREE && mi.RegionSize > big)
+            big = mi.RegionSize;
+        unsigned char *next = (unsigned char *)mi.BaseAddress + mi.RegionSize;
+        if (next <= p)
+            break;
+        p = next;
+    }
+    unsigned used = (unsigned)((m.ullTotalVirtual - m.ullAvailVirtual) >> 20);
+
+    /* The match's minute (game time, 900 frames a minute) and the peak of this match, so the
+       last line of a long game says how high it went. A game time lower than the last one is
+       a new match: the previous one's peak goes in the log first. */
+    static unsigned peak, peak_min, last_frames;
+    static int have_game;
+    char *game = *(char **)VA(0x00C061ECu);
+    unsigned frames = game ? (unsigned)*(int *)(game + 0x550) : 0;
+    if (have_game && frames < last_frames) {
+        logf_("memory: the last match peaked at %u MB, in its minute %u", peak, peak_min);
+        peak = 0;
+        have_game = 0;
+    }
+    if (game && frames) {
+        last_frames = frames;
+        have_game = 1;
+        if (used > peak) {
+            peak = used;
+            peak_min = frames / 900;
+        }
+        logf_("memory%s%s (match minute %u): %u of %u MB address space in use, peak %u MB (minute %u), "
+              "largest free block %u MB", why ? " " : "", why ? why : "", frames / 900, used,
+              (unsigned)(m.ullTotalVirtual >> 20), peak, peak_min, (unsigned)(big >> 20));
+        return;
+    }
+    logf_("memory%s%s: %u of %u MB address space in use, largest free block %u MB", why ? " " : "", why ? why : "",
+          used, (unsigned)(m.ullTotalVirtual >> 20), (unsigned)(big >> 20));
+}
+
 void mem_frame(void)
 {
     static DWORD last;
@@ -1282,10 +1409,44 @@ void mem_frame(void)
     if (last && now - last < 60000)
         return;
     last = now;
-    MEMORYSTATUSEX m = { sizeof m };
-    if (GlobalMemoryStatusEx(&m))
-        logf_("memory: %u of %u MB address space in use", (unsigned)((m.ullTotalVirtual - m.ullAvailVirtual) >> 20),
-              (unsigned)(m.ullTotalVirtual >> 20));
+    mem_log(NULL);
+}
+
+/* The game's "BHG RTS run time ERROR" box is a MessageBox: its text and the memory go in the log,
+   so a "does not exist" for a file that is there can be told apart from address space running out
+   (2026-11-05: "art\logchop5.bh3 does not exist for Transform Batch Transform" at an 8-player start). */
+typedef int(WINAPI *msgbox_a_t)(HWND, LPCSTR, LPCSTR, UINT);
+typedef int(WINAPI *msgbox_w_t)(HWND, LPCWSTR, LPCWSTR, UINT);
+static msgbox_a_t r_msgbox_a;
+static msgbox_w_t r_msgbox_w;
+
+static int WINAPI h_msgbox_a(HWND w, LPCSTR text, LPCSTR cap, UINT type)
+{
+    logf_("message box \"%.80s\": %.300s", cap ? cap : "", text ? text : "");
+    mem_log("at the message box");
+    return r_msgbox_a(w, text, cap, type);
+}
+
+static int WINAPI h_msgbox_w(HWND w, LPCWSTR text, LPCWSTR cap, UINT type)
+{
+    char t[320] = "", c[96] = "";
+    if (text)
+        WideCharToMultiByte(CP_ACP, 0, text, -1, t, sizeof t - 1, NULL, NULL);
+    if (cap)
+        WideCharToMultiByte(CP_ACP, 0, cap, -1, c, sizeof c - 1, NULL, NULL);
+    logf_("message box \"%s\": %s", c, t);
+    mem_log("at the message box");
+    return r_msgbox_w(w, text, cap, type);
+}
+
+static void msgbox_install(void)
+{
+    HMODULE u = GetModuleHandleA("user32.dll");
+    if (!u)
+        return;
+    r_msgbox_a = hook_export(u, "MessageBoxA", (void *)h_msgbox_a);
+    r_msgbox_w = hook_export(u, "MessageBoxW", (void *)h_msgbox_w);
+    FlushInstructionCache(GetCurrentProcess(), NULL, 0);
 }
 
 static void install_hooks(void)
@@ -1356,10 +1517,13 @@ static void install_hooks(void)
     romania_install(); /* before the exe's static constructors build the Tribes array */
     kills_install();
     hud_install();
+    respanel_install();
     flags_install();
     ngrid_install();
     qol_install();
     override_install();
+    msgbox_install();
+    crash_install();
     ai_names_install();
     armageddon_install();
     corpses_install();
@@ -1367,7 +1531,10 @@ static void install_hooks(void)
     nukefx_install();
     nonukes_install();
     attrition_install();
+    defenseramp_install();
     notices_install();
+    minimap_install();
+    selpanel_install();
     survival_install();
     assistant_install();
     assist_orders_install();
@@ -1378,6 +1545,7 @@ static void install_hooks(void)
     ranks_install();
     rankfx_install();
     heal_install();
+    cityrepair_install(); /* after ranks_install: Options::describe */
     make_way_install();
     formation_install();
     hover_install();

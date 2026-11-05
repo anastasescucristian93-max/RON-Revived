@@ -21,15 +21,17 @@ In multiplayer every player needs the mod with the same `[nuke]` settings (inter
 | Path | What |
 |---|---|
 | `mod_override\` | Goes into the game's `mod_override\`. Made by the tools below. |
-| `tools\build_data.py` | `Data\unitrules.xml`, `typenames.xml`, `help.xml`, `unit_graphics.xml` (the Interceptor in unit slot 337 "SAS"), `Data\effects_graphics.xml` (the target sign, its glow, the haze and the longer smoke), `art\nuke_haze.tga`. Builds on the other data mods (General's Heal, Entrenchment, Airdrop, Data Center); Romania builds on this one, so rebuild Romania afterwards and install it last. |
+| `tools\build_data.py` | `Data\unitrules.xml`, `typenames.xml`, `help.xml`, `unit_graphics.xml` (the Interceptor in unit slot 337 "SAS"), `Data\effects_graphics.xml` (the target sign, its glow, the haze and the longer smoke), `art\nuke_haze.tga`, `Data\soundfiles.xml` (the game's, with the Interceptor's two sounds at the end; run `make_interceptor_sounds.py use ...` first). Builds on the other data mods (General's Heal, Entrenchment, Airdrop, Data Center); Romania builds on this one, so rebuild Romania afterwards and install it last. |
 | `tools\make_target_decal.py` | `art\nuke_target.tga` and `art\nuke_target_glow.tga` from `source\target_sign_gemini.jpg`: the magenta un-mixed from the picture, a dark disc under it, the bright parts blurred into a glow. |
 | `tools\gen_sfx.py`, `tools\prompts.json` | Sound generation with ElevenLabs (key in `ELEVENLABS_API_KEY`); results in `source\elevenlabs\` (mp3) and `work\` (wav). |
+| `tools\make_interceptor_sounds.py` | The Interceptor's launch and hit sounds, made from noise and tones (numpy, scipy). With no arguments: the candidates into `sound_choices\` to listen to (L1-L5 launches, I1-I5 hits). `use L<n> I<n>`: the chosen ones into `mod_override\sounds\interceptor_launch.wav` and `interceptor_hit.wav`. |
 | `tools\make_alarm.py` | `mod_override\sounds\nukelaunch.wav` from the chosen siren (`work\siren_3a.wav`): fade-out, the original's level. |
 
 ## Build
 
 ```
 python tools/make_target_decal.py
+python tools/make_interceptor_sounds.py use L5 I2
 python tools/build_data.py
 python tools/make_alarm.py
 python ../romania/tools/build_data.py "<game folder>" ../romania/mod_override

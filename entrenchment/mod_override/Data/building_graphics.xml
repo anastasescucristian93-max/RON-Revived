@@ -326,9 +326,9 @@
         <BOX x="-94" y="-37" z="86" x_width="114" y_width="230" z_width="171"/>
       </BOUNDINGVOLUMES>
     </BUILD>
-    <BUILD name="WASHINGTONMONUMENT-DEFAULT-AGE0" texture=".\art\washington_monument.tga" zbuffer=".\art\washington_monumentz.bh3" anim="" constructsize="0" spritexoff="152" spriteyoff="379" halfoffset="0" mask="2x2 solid" doobermask="2x2 doobers">
+    <BUILD name="WASHINGTONMONUMENT-DEFAULT-AGE0" texture=".\art\tank_traps_0.tga" zbuffer=".\art\tank_traps_0z.bh3" anim="" constructsize="0" spritexoff="44" spriteyoff="72" halfoffset="0" mask="1x1 solid" doobermask="1x1 doobers">
       <BOUNDINGVOLUMES>
-        <BOX x="0" y="0" z="213" x_width="37" y_width="41" z_width="427"/>
+        <BOX x="0" y="0" z="12" x_width="58" y_width="58" z_width="24"/>
       </BOUNDINGVOLUMES>
     </BUILD>
     <BUILD name="LENINSTATUE-DEFAULT-AGE0" texture=".\art\nest_0.tga" zbuffer=".\art\nest_0z.bh3" anim="" constructsize="0" spritexoff="75" spriteyoff="57" halfoffset="0" mask="2x2 solid" doobermask="2x2 doobers">

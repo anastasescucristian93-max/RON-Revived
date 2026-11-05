@@ -214,7 +214,7 @@ def main(game):
 
 SECTION = """<!-- ROMANIA:BEGIN -->
 <section id="romania">
-  <h2>Romania <span class="tag test">In testing</span></h2>
+  <h2>Romania</h2>
   <p class="sub">A 25th nation, with its own flag, leaders, cities, nation power, unit names from Romanian history, its own unit icons and George Enescu's music.</p>
 
   <details class="fold ro-fold">

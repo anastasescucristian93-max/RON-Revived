@@ -103,14 +103,28 @@ void launcher_text(const char *key, const WCHAR *def, WCHAR *out, int size); /* 
 void launcher_update_install(const char *res_dir, int scale_percent, const WCHAR *font);
 void launcher_update_attach(HWND dlg);
 void launcher_update_relabel(void); /* the language changed */
+int launcher_http_get(const char *url, char *out, int size); /* `url` into `out`; the bytes read, or -1 */
+/* the list of the latest release, for the updater and the extras (package/build_package.py) */
+#define RON_REVIVED_INDEX "https://github.com/anastasescucristian93-max/RON-Revived/releases/latest/download/RON_Revived_update.txt"
+/* launcher_extras.c (the Extras tray: optional downloads) */
+void launcher_extras_install(const char *res_dir, int scale_percent, const WCHAR *font);
+void launcher_extras_attach(HWND dlg);
+void launcher_extras_relabel(void);
 
 /* kills.c */
 extern int g_kills_enabled;
 void kills_load_config(const char *ini_path);
 void kills_install(void);
+extern int g_sel_kills_row; /* selpanel.c keeps the group grid's top row for the kills */
+void kills_draw_count(char *panel, int kills, int right, int y, int h); /* skull + number, ending at right */
 /* hud.c */
 void hud_load_config(const char *ini_path);
 void hud_install(void);
+float hud_text_scale(void); /* the numbers' enlargement, inside the panel's and counters' drawing */
+int hud_number(int value, int x, int y, int h, unsigned color, int draw); /* real-font digits; width, 0 = none */
+/* respanel.c (the resource panel's worker bars, market on the right) */
+void respanel_load_config(const char *ini_path);
+void respanel_install(void);
 /* flags.c */
 extern int g_flags_enabled;
 void flags_load_config(const char *ini_path);
@@ -159,11 +173,14 @@ void corpses_install(void);
 void animfix_install(void);
 extern int g_zoom_trace, g_debug_viewports; /* [debug] in ron_camera.ini */
 int arm_type_blocked(int type);
-/* nonukes.c (the No Nukes check box of the game setup) */
+/* nonukes.c (the Nukes slider of the game setup: None, a count, Unlimited) */
 extern int g_nonukes_enabled;
 void nonukes_load_config(const char *ini_path);
 void nonukes_install(void);
 int nonukes_type_blocked(int type); /* datacenter.c's type_eligible hook: 0 = not offered */
+int nonukes_launch_full(void);       /* armageddon.c's can_nuke: the chosen count is used up */
+void nonukes_frame(void);            /* airdrop.c's Objects::process_all: the Armageddon constants */
+int nukefx_nukes_in_flight(void);    /* nukefx.c: Nuclear Missiles and ICBMs in the air now */
 /* nukefx.c (a nuclear blast's white flash fades with its distance from the screen centre) */
 void nukefx_load_config(const char *ini_path);
 void nukefx_install(void);
@@ -177,9 +194,23 @@ int nukefx_drops_offer(int type);
 /* notices.c */
 void notices_load_config(const char *ini_path);
 void notices_install(void);
+/* minimap.c (the minimap at the top right while the interface is folded, in three sizes) */
+#define MINIMAP_BUTTON 30 /* the size button, interface units */
+extern int g_minimap_timer_top; /* the game's clocks start at this y (45, or under the minimap) */
+void minimap_load_config(const char *ini_path);
+void minimap_install(void);
+void minimap_tick(void);
+int minimap_button_pos(int *x, int *y); /* screen, interface units; 0 = no button now */
+void minimap_cycle_size(void);
+/* selpanel.c (the full selection panel while the interface is folded, grouped by kind) */
+void selpanel_load_config(const char *ini_path);
+void selpanel_install(void);
 /* survival.c */
 void survival_load_config(const char *ini_path);
 void survival_install(void);
+/* defenseramp.c */
+void defenseramp_load_config(const char *ini_path);
+void defenseramp_install(void);
 /* attrition.c */
 void attrition_load_config(const char *ini_path);
 void attrition_install(void);
@@ -191,6 +222,10 @@ void dc_install(void);
 #define DC_EXP_POPULATION 0x1C0 /* El Dorado's slot, building 34 */
 #define DC_EXP_COMMERCE   0x207 /* Courtyard Fountain's slot, building 105 */
 #define DC_EXP_EFFICIENCY 0x1E6 /* the last scenario House (HOUSE35), building 72 */
+/* the Tank Traps (entrenchment mod, 2026-11-05): a 1x1 building Citizens build from the military
+   menu, in the Washington Monument's slot (the Data Center's until 2026-10-29). Computer players
+   never plan it (entrench.c, LeaderData::type_avail). */
+#define TANK_TRAPS        0x1C1 /* building 35 of buildingrules.xml */
 /* the Expansions' technician, through entrench.c's and airdrop.c's hooks */
 int dc_is_expansion(int type);
 int dc_is_technician(int type);
@@ -248,6 +283,7 @@ int ranks_range(char *u, int r);
 void ranks_before_hit(char *victim, int *whole, int *part, int attacker_id);
 void ranks_after_hit(char *victim, int before, int vmax, int was_decoy, int attacker_id, int attacker_p);
 void ranks_draw_button(char *btn); /* from panel.c's IFaceButton::on_redraw hook: the portrait */
+int ranks_draw_panel(char *panel, char *u, int kills, int show_kills); /* kills.c: one unit's right half */
 void ranks_draw_insignia(char *o, short *rect); /* from prodbar.c: beside a building's health bar */
 
 /* rankfx.c (the promotion effect over the map; drawing only) */
@@ -337,8 +373,22 @@ extern int g_num_tribes; /* nations in the game: 24, or 25 with Romania */
 void romania_load_config(const char *dir);
 void romania_install(void);
 void romania_frame(void); /* from airdrop.c's Objects::process_all: unit names by age */
+void crash_load_config(const char *ini_path); /* crash.c: [debug] crash_reports */
+void crash_install(void);
+void crash_test_now(void);    /* crash.c: [debug] crash_test=1 crashes at PLAY */      /* crash.c: the crash report filter; called again to re-arm it */
+void stdio_raise(void);        /* override.c: ucrtbase's open FILE limit 512 -> 8192 */
+void mem_log(const char *why); /* ron_camera.c: address space in use and largest free block, now */
 void mem_frame(void);     /* ron_camera.c, the same hook: address space in the log once a minute */
 
+/* cityrepair.c (Large and Major Cities repair their own buildings; a switch on the city panel) */
+void cityrepair_load_config(const char *ini_path);
+void cityrepair_install(void);          /* after ranks_install (Options::describe) */
+int cityrepair_wanted(void);
+void cityrepair_frame(void);            /* airdrop.c's Objects::process_all */
+void cityrepair_make_options(char *self); /* airdrop.c's BuildOut::make_options */
+int cityrepair_describe(const int *opt);  /* ranks.c's Options::describe: 1 = the text is ours */
+int cityrepair_button_off(char *btn);     /* panel.c: the switch of cities that are off */
+void cityrepair_draw_overhead(void);      /* rankfx.c's map window redraw: the pliers */
 /* play_button.c */
 extern int g_play_enabled;
 void play_load_config(const char *ini_path);

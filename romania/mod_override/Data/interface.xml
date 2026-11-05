@@ -3465,6 +3465,11 @@
     <IFACETEX name="qol_3_n" texture="TEX_REVIVED_QOL" left="288" top="0" width="96" height="96"/>
     <IFACETEX name="qol_3_h" texture="TEX_REVIVED_QOL" left="288" top="96" width="96" height="96"/>
     <IFACETEX name="qol_3_p" texture="TEX_REVIVED_QOL" left="288" top="192" width="96" height="96"/>
+    <IFACETEX name="minimap_size_n" texture="TEX_REVIVED_QOL" left="0" top="288" width="96" height="96"/>
+    <IFACETEX name="minimap_size_h" texture="TEX_REVIVED_QOL" left="96" top="288" width="96" height="96"/>
+    <IFACETEX name="minimap_size_p" texture="TEX_REVIVED_QOL" left="192" top="288" width="96" height="96"/>
+    <IFACETEX name="kills_skull" texture="TEX_REVIVED_QOL" left="288" top="288" width="96" height="96"/>
+    <IFACETEX name="kills_skull_small" texture="TEX_REVIVED_QOL" left="384" top="288" width="24" height="24"/>
     <IFACETEXLOAD id="TEX_REVIVED_RANKS" file=".\art\revived\rank_icons.tga" pixformat="PF_32"/>
     <IFACETEX name="rank_1" texture="TEX_REVIVED_RANKS" left="0" top="0" width="48" height="56"/>
     <IFACETEX name="rank_2" texture="TEX_REVIVED_RANKS" left="48" top="0" width="48" height="56"/>
@@ -3479,6 +3484,7 @@
     <IFACETEX name="rank_glow" texture="TEX_REVIVED_RANKS" left="144" top="0" width="64" height="64"/>
     <IFACETEX name="rank_spark" texture="TEX_REVIVED_RANKS" left="208" top="0" width="24" height="24"/>
     <IFACETEX name="heal_plus" texture="TEX_REVIVED_RANKS" left="200" top="64" width="48" height="48"/>
+    <IFACETEX name="repair_pliers" texture="TEX_REVIVED_RANKS" left="144" top="120" width="48" height="48"/>
     <IFACETEXLOAD id="TEX_REVIVED_ASSIST" file=".\art\revived\assist_panel.tga" pixformat="PF_32"/>
     <IFACETEX name="assist_back" texture="TEX_REVIVED_ASSIST" left="0" top="0" width="320" height="352"/>
     <IFACETEX name="assist_track" texture="TEX_REVIVED_ASSIST" left="0" top="370" width="288" height="40"/>
@@ -3495,6 +3501,22 @@
     <IFACETEX name="assist_fill" texture="TEX_REVIVED_ASSIST" left="324" top="142" width="16" height="8"/>
     <IFACETEX name="assist_line" texture="TEX_REVIVED_ASSIST" left="344" top="142" width="32" height="4"/>
     <IFACETEX name="assist_glow" texture="TEX_REVIVED_ASSIST" left="380" top="142" width="32" height="16"/>
+    <IFACETEXLOAD id="TEX_REVIVED_DIGITS" file=".\art\revived\hud_digits.tga" pixformat="PF_32"/>
+    <IFACETEX name="hud_char_0" texture="TEX_REVIVED_DIGITS" left="0" top="0" width="33" height="51"/>
+    <IFACETEX name="hud_char_1" texture="TEX_REVIVED_DIGITS" left="33" top="0" width="31" height="51"/>
+    <IFACETEX name="hud_char_2" texture="TEX_REVIVED_DIGITS" left="64" top="0" width="33" height="51"/>
+    <IFACETEX name="hud_char_3" texture="TEX_REVIVED_DIGITS" left="97" top="0" width="32" height="51"/>
+    <IFACETEX name="hud_char_4" texture="TEX_REVIVED_DIGITS" left="129" top="0" width="34" height="51"/>
+    <IFACETEX name="hud_char_5" texture="TEX_REVIVED_DIGITS" left="163" top="0" width="32" height="51"/>
+    <IFACETEX name="hud_char_6" texture="TEX_REVIVED_DIGITS" left="195" top="0" width="32" height="51"/>
+    <IFACETEX name="hud_char_7" texture="TEX_REVIVED_DIGITS" left="227" top="0" width="33" height="51"/>
+    <IFACETEX name="hud_char_8" texture="TEX_REVIVED_DIGITS" left="260" top="0" width="32" height="51"/>
+    <IFACETEX name="hud_char_9" texture="TEX_REVIVED_DIGITS" left="292" top="0" width="32" height="51"/>
+    <IFACETEX name="hud_char_10" texture="TEX_REVIVED_DIGITS" left="324" top="0" width="35" height="51"/>
+    <IFACETEX name="hud_char_11" texture="TEX_REVIVED_DIGITS" left="359" top="0" width="24" height="51"/>
+    <IFACETEX name="hud_char_12" texture="TEX_REVIVED_DIGITS" left="383" top="0" width="25" height="51"/>
+    <IFACETEX name="hud_block" texture="TEX_REVIVED_DIGITS" left="500" top="4" width="8" height="8"/>
+    <IFACETEX name="sel_blank" texture="TEX_CIV" left="211" top="20" width="60" height="38"/>
     <IFACERECT name="left_tile" left="0" bottom_inverse="0" right="3" height="-164"/>
     <IFACERECT name="left_tile_only" left="2" bottom_inverse="0" right="313" height="-3"/>
     <IFACERECT name="right_tile" left="2" bottom_inverse="0" right_inverse="2" height="-3"/>
@@ -3634,9 +3656,9 @@
     <IFACERECT name="right_window" left="655" right_inverse="14" top="34" height="161"/>
     <IFACERECT name="bar_window" left="0" top="0" width="1024" height="26"/>
     <!--<IFACERECT name="display_button" left="1010" top="27" width="11" height="162"/>-->
-    <IFACERECT name="cap_area" left="167" top="0" width="217" height="26"/>
-    <IFACERECT name="pop_cap" left="172" top="2" width="121" height="21"/>
-    <IFACERECT name="city_cap" left="295" top="2" width="84" height="21"/>
+    <IFACERECT name="cap_area" left="200" top="0" width="217" height="26"/>
+    <IFACERECT name="pop_cap" left="205" top="2" width="121" height="21"/>
+    <IFACERECT name="city_cap" left="328" top="2" width="84" height="21"/>
     <IFACERECT name="help_button" right_inverse="26" top="4" width="-21" height="17"/>
     <IFACERECT name="menu_button" right_inverse="4" top="4" width="-22" height="17"/>
     <IFACERECT name="button_row_area" left="0" top="0" width="105" height="25"/>
@@ -6609,7 +6631,7 @@
     </BUTTON>
     <IFACERECT name="back" left="10" top="10" right_inverse="10" bottom_inverse="10"/>
   </SYNCDISPLAY>
-  <IFACERESOURCES left="0" top="0" width="395" height="158">
+  <IFACERESOURCES left="0" top="0" width="348" height="158">
     <IFACEPOINT name="item_offsets" x="4" y="4"/>
     <IFACETEX name="resource_button_tex" texture="TEX_CIV" left="188" top="1" width="39" height="17"/>
     <IFACETEX name="resource_item_tex0" texture="TEX_COMMON" left="364" top="85" width="7" height="19"/>
@@ -6657,7 +6679,7 @@
     <IFACETEX name="first_good_cap_tex" texture="TEX_COMMON" left="96" top="149" width="19" height="19"/>
     <IFACETEX name="first_good_tex" texture="TEX_COMMON" left="106" top="169" width="21" height="19"/>
     <STYLE CHILD="1" NO_SET_RENDERTARGET="1" CLIENTDRAG="1"/>
-    <IFACERECT name="main_rect" left="0" top="0" width="395" height="158"/>
+    <IFACERECT name="main_rect" left="0" top="0" width="348" height="158"/>
     <IFACERECT name="market_rect0" left="0" top="0" width="21" height="158"/>
     <IFACERECT name="market_rect1" left="0" top="0" width="150" height="158"/>
     <IFACERECT name="market_button_rect0" left="4" top="4" width="14" height="152"/>
@@ -6665,16 +6687,16 @@
     <IFACERECT name="market_title_rect" left="21" top="5" width="124" height="21"/>
     <IFACERECT name="market_buy_rect" left="21" top="31" width="60" height="21"/>
     <IFACERECT name="market_sell_rect" left="85" top="31" width="60" height="21"/>
-    <IFACERECT name="resource_rect0" left="0" top="0" width="144" height="31"/>
-    <IFACERECT name="resource_rect1" left="0" top="0" width="144" height="158"/>
+    <IFACERECT name="resource_rect0" left="0" top="0" width="198" height="31"/>
+    <IFACERECT name="resource_rect1" left="0" top="0" width="198" height="158"/>
     <IFACERECT name="resource_button_rect0" left="5" top="5" width="49" height="21"/>
     <IFACERECT name="resource_button_rect1" left="5" top="5" width="49" height="21"/>
-    <IFACERECT name="resource_cap_rect" left="59" top="5" width="80" height="21"/>
-    <IFACERECT name="resource_item_rect" left="5" top="31" width="134" height="21"/>
+    <IFACERECT name="resource_cap_rect" left="59" top="5" width="134" height="21"/>
+    <IFACERECT name="resource_item_rect" left="5" top="31" width="188" height="21"/>
     <IFACERECT name="infra_rect0" left="0" top="26" width="21" height="131"/>
     <IFACERECT name="infra_rect1" left="0" top="26" width="104" height="131"/>
     <IFACERECT name="infra_button_rect0" left="4" top="4" width="14" height="124"/>
-    <IFACERECT name="infra_button_rect1" left="86" top="4" width="14" height="124"/>
+    <IFACERECT name="infra_button_rect1" left="86" top="4" width="55" height="10"/>
     <IFACERECT name="infra_item_rect" left="5" top="5" width="78" height="21"/>
   </IFACERESOURCES>
   <TRIAL_EXIT name="topmenu" left="0" top="0" right_inverse="0" bottom_inverse="0">

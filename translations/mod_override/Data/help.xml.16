@@ -422,7 +422,11 @@ creare le unità e le costruzioni più potenti.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{SENZA ARMI NUCLEARI}: seleziona questa casella per giocare senza armi nucleari. Nessuno può costruire missili nucleari, missili balistici o intercettori; i missili Cruise restano.
+{ARMI NUCLEARI}: quante armi nucleari possono esplodere in questa partita. Trascina il cursore:
+<BULLET/>Tutto a sinistra, Nessuna: nessuno può costruire missili nucleari, missili balistici o intercettori; i missili Cruise restano.
+<BULLET/>Da 1 a 250: il timer Armageddon parte da quel numero. Quando tante armi nucleari sono esplose o in volo, non se ne possono lanciare altre. I passi diventano più grandi verso destra.
+<BULLET/>Tutto a destra, Illimitate: nessun timer Armageddon.
+Clic destro per tornare alla regola del gioco: 4, più 1 per nazione e 2 per squadra. In una partita multigiocatore solo l'host può cambiarlo.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -3281,6 +3285,10 @@ biblioteca.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Fortificazione campale bassa per una squadra di fanteria a distanza, costruita dalla fanteria stessa (pulsante di costruzione nel suo pannello), che vi si trincera una volta completata. Fai clic destro su di essa con la fanteria a distanza (o usa il pulsante della guarnigione e il relativo tasto di scelta rapida) per farla trincerare: prima un terrapieno con palizzata, poi gabbioni, infine sacchi di sabbia. Trincerate, le truppe mantengono la posizione e combattono con le proprie armi: gittata +1, attacchi più veloci del 40%, danni +20%. La fortificazione assorbe ogni colpo diretto a loro finché non viene distrutta; ha la metà dei punti salute di una torre della tua età. Le unità da mischia non possono trincerarsi. Trincerarsi costa il 35% del prezzo della squadra, +10% per ogni squadra già trincerata (fino a +150%). Il pulsante Lascia fortificazione la svuota.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Ostacoli anticarro d'acciaio su una casella, costruiti dai cittadini nell'Età moderna e nell'Età dell'informazione. Niente può attraversarli, nemmeno le tue unità: il nemico deve distruggerli per passare. Disponili in fila per chiudere un varco e lascia una via libera al tuo esercito. 1200 punti ferita e corazza pesante: i fucili li scalfiscono appena, carri armati, artiglieria e aerei li distruggono.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

@@ -51,7 +51,7 @@ foreach ($rel in Get-Content $manifest) {
     Remove-Item -ErrorAction SilentlyContinue (Join-Path $GameDir $rel)
     $n++
 }
-foreach ($f in "ron_camera.log", "ron_camera.old.log", "ron_zoom_trace.csv") {
+foreach ($f in "ron_camera.log", "ron_camera.old.log", "ron_zoom_trace.csv", "RON_Revived_extras.ini") {
     Remove-Item -ErrorAction SilentlyContinue (Join-Path $GameDir $f)
 }
 

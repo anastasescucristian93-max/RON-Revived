@@ -30,23 +30,40 @@
 #define VA_GET_UNIT     0x008C2DB0u /* TeamColor::get_unit(Color *out) const, ret 4 */
 #define VA_LEADERS_PTR  0x00C061E0u /* LeaderData[8], 0x6EEC each; +0x6928 colour index */
 #define VA_TEAM_COLORS  0x00E39CE0u /* TeamColor[], 0x64 each */
+#define VA_PIECES       0x00C06214u /* GraphicPieces *: batch t's vertex count at +0xDC + t * 0x1C */
+#define VA_FLUSH_BATCH  0x00905F50u /* GraphicPieces::flush_batch(type, int), ret 8; draws and empties it */
 
 #define KEY        0x63637
 #define TILE       192
 #define RALLY_STEP 80 /* world units between dots */
 #define RALLY_DOT  14 /* dot radius, world units */
 #define MAX_DOTS   400
+#define CIRCLE_BATCH 5     /* draw_circle's quads go to RenderBatchType 5, flushed at the end of
+                              ObjectsOut::draw_underlays */
+#define BATCH_ROOM   8000  /* d3dgl asserts ("vertex batch too large", int3: a crash) past its
+                              stream of 16383 vertices; 4 per circle */
 
 typedef int(__attribute__((thiscall)) *under_t)(void *self);
 typedef int(__attribute__((thiscall)) *member_t)(void *group, int id, int player, int alive);
 typedef int *(__attribute__((thiscall)) *find_z_t)(void *terrain, int *out, int x, int y, int flag);
 typedef void *(__attribute__((thiscall)) *color_t)(void *team, void *out);
+typedef int(__attribute__((thiscall)) *flush_t)(void *pieces, int type, int unused);
 
 int g_rally_enabled;
 
 void rally_load_config(const char *ini_path)
 {
     g_rally_enabled = GetPrivateProfileIntA("qol", "rally_line", 1, ini_path);
+}
+
+/* Draws the circle batch early when it fills up: many selected buildings with long rally
+   lines (400 dots each) overflowed it and crashed the game (2026-11-02). The asm wrappers
+   below (and airdrop.c's) call it before each circle. */
+__attribute__((used)) void circle_batch_room(void)
+{
+    char *pieces = *(char **)VA(VA_PIECES);
+    if (pieces && *(int *)(pieces + 0xDC + CIRCLE_BATCH * 0x1C) > BATCH_ROOM)
+        ((flush_t)VA(VA_FLUSH_BATCH))(pieces, CIRCLE_BATCH, 0);
 }
 
 /* draw_circle takes the radius in ecx and the circle type in edx; the rest on the stack
@@ -60,6 +77,7 @@ __asm__(".intel_syntax noprefix\n"
         "    mov ebp, esp\n"
         "    push esi\n"
         "    push edi\n"
+        "    call _circle_batch_room\n"
         "    sub esp, 8\n"
         "    mov dword ptr [esp+4], 0\n" /* float 0.0 */
         "    mov dword ptr [esp], 0\n"

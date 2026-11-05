@@ -15,6 +15,7 @@
  *  - the caption font is replaced ([launcher] font, size_percent in ron_camera.ini);
  *  - a round language button under Workshop (launcher_lang.c);
  *  - a plate over the picture when a new version of the pack is out (launcher_update.c);
+ *  - the Extras tray on the launcher's left edge: optional downloads (launcher_extras.c);
  *  - a sound when the mouse comes onto a button and when it is pressed.
  * Nothing is changed when mod_override\launcher_res\ does not exist.
  */
@@ -310,6 +311,7 @@ static HWND WINAPI h_create_dlg_a(HINSTANCE inst, LPCDLGTEMPLATEA t, HWND parent
     layout_dialog(dlg);
     launcher_lang_attach(dlg);
     launcher_update_attach(dlg);
+    launcher_extras_attach(dlg);
     attach_sounds(dlg);
     return dlg;
 }
@@ -320,6 +322,7 @@ static HWND WINAPI h_create_dlg_w(HINSTANCE inst, LPCDLGTEMPLATEW t, HWND parent
     layout_dialog(dlg);
     launcher_lang_attach(dlg);
     launcher_update_attach(dlg);
+    launcher_extras_attach(dlg);
     attach_sounds(dlg);
     return dlg;
 }
@@ -671,6 +674,7 @@ void launcher_install(void)
         r_update_layered = launcher_patch_import(exe, "UpdateLayeredWindow", (void *)h_update_layered);
     launcher_lang_install(g_res_dir, g_scale, g_font);
     launcher_update_install(g_res_dir, g_scale, g_font);
+    launcher_extras_install(g_res_dir, g_scale, g_font);
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
     logf_("launcher: theme from %s (LoadBitmapA %d, LoadBitmapW %d, CreateDialog %d/%d, font %d, font size %d, "
           "slides %d/%d), font \"%s\" at %.0f%%",

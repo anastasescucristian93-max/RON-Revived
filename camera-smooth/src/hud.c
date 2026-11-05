@@ -22,6 +22,7 @@
 #include "ron.h"
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
 
 #define VA_ADD_SMOOTH   0x0051B700u /* IFaceRenderManager::add_smooth, ret 0x14 */
 #define VA_WRITE        0x0051F660u /* IFaceRenderManager::write(String &, x, y, Color, style), returns x after, ret 0x1C */
@@ -70,10 +71,142 @@ static float pixel_exact(void)
     return best == 1.0f && g_scale > 1.0f ? g_scale : best;
 }
 
+/* the numbers' enlargement while drawing the panel or the counters (respanel.c sizes its lines by it) */
+float hud_text_scale(void)
+{
+    return g_hud_zone && g_scale != 1.0f ? pixel_exact() : 1.0f;
+}
+
+/* The game's number font is pixel art of about 7x13 texels: enlarged it came out in steps, with a
+   yellowish fringe (colour hidden in its transparent texels, spread by the filtering). Inside the
+   zones the text is drawn instead with ui-theme's digits from a real font (build_hud_digits.py:
+   IFACETEX "hud_char_<n>" in the IFACEMAINBASE block, HUD_PX_PER_UNIT texels per interface unit,
+   white with a black outline, tinted with the text's colour), as tall as the enlarged glyphs.
+   Text with any other character, or without the theme, keeps the game's font. */
+#define HUD_CHARS       "0123456789+-/" /* build_hud_digits.py CHARS */
+#define HUD_PX_PER_UNIT 3
+#define HUD_OVERLAP     2 /* texels of neighbouring glyphs' outlines that overlap (build_hud_digits.py STROKE) */
+#define HUD_SIZE        0.92f /* of the game's enlarged glyph height */
+#define VA_STRING_AS_CHAR 0x0042D710u /* String::str_as_char() const */
+#define VA_RM_ADD_RECT  0x0051F3D0u /* IFaceRenderManager::add(IFaceTex *, const short rect[4], 0xAABBGGRR, type) */
+#define VA_IFACE_RM     0x00EBD1C0u /* IFaceRenderManager iface_render_manager */
+#define VA_FONT_TOP     0x00EBDEACu /* short top, bottom of the game's number glyphs (style 0) */
+#define HUD_STYLE_SIZE  0xD0        /* the next style's glyphs: 13 IFaceTex of 16 bytes on */
+
+typedef const char *(__attribute__((thiscall)) *as_char_t)(const void *self);
+typedef void(__attribute__((thiscall)) *add_rect_t)(void *rm, const void *tex, const short *rect, unsigned color,
+                                                     int type);
+
+static const unsigned short *g_chars[sizeof HUD_CHARS - 1]; /* IFaceTex: +4 short left, right, top, bottom */
+
+/* the glyphs, looked up each time by the first one: a new game's interface brings its own */
+static int chars_ready(void)
+{
+    const unsigned short *first = qol_iface_tex("hud_char_0");
+    if (!first)
+        return 0;
+    if (first != g_chars[0])
+        for (int i = 0; i < (int)(sizeof g_chars / sizeof g_chars[0]); i++) {
+            char name[16];
+            wsprintfA(name, "hud_char_%d", i);
+            g_chars[i] = qol_iface_tex(name);
+            if (!g_chars[i]) {
+                g_chars[0] = NULL;
+                return 0;
+            }
+        }
+    return 1;
+}
+
+/* the String's text when every character has one of ours (copied into buf), else NULL */
+static const char *own_text(const void *str, char *buf, int size)
+{
+    const char *s = str ? ((as_char_t)VA(VA_STRING_AS_CHAR))(str) : NULL;
+    if (!s || !*s)
+        return NULL;
+    lstrcpynA(buf, s, size);
+    for (const char *p = buf; *p; p++)
+        if (!strchr(HUD_CHARS, *p))
+            return NULL;
+    return chars_ready() ? buf : NULL;
+}
+
+/* the game's glyph height, enlarged, in interface units */
+static float own_box(void)
+{
+    int fh = *(short *)VA(VA_FONT_TOP + 2) - *(short *)VA(VA_FONT_TOP);
+    return fh * (g_scale != 1.0f ? pixel_exact() : 1.0f);
+}
+
+/* interface units per atlas texel: a little smaller than the game's glyphs (the user, 2026-11-01:
+   at their full height the second counter's tops looked cut) */
+static float own_scale(void)
+{
+    const unsigned short *t = g_chars[0];
+    return own_box() * HUD_SIZE / (t[5] - t[4]);
+}
+
+static float own_width(const char *text, float k)
+{
+    float w = 0;
+    for (const char *p = text; *p; p++) {
+        const unsigned short *t = g_chars[strchr(HUD_CHARS, *p) - HUD_CHARS];
+        w += (t[3] - t[2] - (p[1] ? HUD_OVERLAP : 0)) * k;
+    }
+    return w;
+}
+
+static int own_write(void *rm, const char *text, int x, int y, unsigned color, int style)
+{
+    float k = own_scale(), fx = (float)x;
+    if (style == 0) /* the panel's numbers: centred where the game's enlarged glyphs were */
+        y += (int)(own_box() * (1 - HUD_SIZE) / 2 + 0.5f);
+    else { /* another style (the market's prices, style 1): centred on the middle of its glyphs,
+              where the game centres the text in its button */
+        const short *f = (const short *)VA(VA_FONT_TOP + style * HUD_STYLE_SIZE);
+        y += (int)((f[1] - f[0]) / 2.0f - own_box() * HUD_SIZE / 2 + 0.5f);
+    }
+    for (const char *p = text; *p; p++) {
+        const unsigned short *t = g_chars[strchr(HUD_CHARS, *p) - HUD_CHARS];
+        short r[4] = { (short)(fx + 0.5f), (short)(fx + (t[3] - t[2]) * k + 0.5f), (short)y,
+                       (short)(y + (t[5] - t[4]) * k + 0.5f) };
+        ((add_rect_t)VA(VA_RM_ADD_RECT))(rm, t, r, color, 1);
+        fx += (t[3] - t[2] - HUD_OVERLAP) * k;
+    }
+    return (int)(fx + HUD_OVERLAP * k + 0.5f);
+}
+
+/* A number in these digits, `h` interface units tall, its left edge at x, in the current window's
+   coordinates (kills.c: the selection's kills). Returns its width, 0 without the theme's digits;
+   with draw = 0 it only measures. */
+int hud_number(int value, int x, int y, int h, unsigned color, int draw)
+{
+    char text[16];
+    wsprintfA(text, "%d", value);
+    if (!chars_ready())
+        return 0;
+    const unsigned short *t0 = g_chars[0];
+    float k = (float)h / (t0[5] - t0[4]);
+    int w = (int)(own_width(text, k) + HUD_OVERLAP * k + 0.5f);
+    if (!draw)
+        return w;
+    float fx = (float)x;
+    for (const char *p = text; *p; p++) {
+        const unsigned short *t = g_chars[strchr(HUD_CHARS, *p) - HUD_CHARS];
+        short r[4] = { (short)(fx + 0.5f), (short)(fx + (t[3] - t[2]) * k + 0.5f), (short)y, (short)(y + h) };
+        ((add_rect_t)VA(VA_RM_ADD_RECT))((void *)VA(VA_IFACE_RM), t, r, color, 1);
+        fx += (t[3] - t[2] - HUD_OVERLAP) * k;
+    }
+    return w;
+}
+
 __attribute__((used)) int c_hud_write(void *self, int *a)
 {
     if (!g_hud_zone)
         return ((write_t)g_orig_write)(self, a[0], a[1], a[2], a[3], a[4], a[5], a[6]);
+    char text[64];
+    if (own_text((const void *)a[0], text, sizeof text))
+        return own_write(self, text, a[1], a[2], (unsigned)a[3], a[6]);
     g_hud_s = pixel_exact();
     if (g_hud_s == 1.0f)
         return ((write_t)g_orig_write)(self, a[0], a[1], a[2], a[3], a[4], a[5], a[6]);
@@ -87,6 +220,9 @@ __attribute__((used)) int c_hud_write(void *self, int *a)
 
 __attribute__((used)) int c_hud_write_width(void *self, int s, int style)
 {
+    char text[64];
+    if (g_hud_zone && own_text((const void *)s, text, sizeof text))
+        return (int)(own_width(text, own_scale()) + 0.5f);
     int w = ((write_width_t)g_orig_write_width)(self, s, style);
     return g_hud_zone ? (int)(w * pixel_exact() + 0.5f) : w;
 }

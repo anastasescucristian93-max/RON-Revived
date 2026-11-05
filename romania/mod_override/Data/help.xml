@@ -427,7 +427,11 @@ available.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{NO NUKES}: Check this box to play without nuclear weapons. Nobody can build Nuclear Missiles, ICBMs or Interceptors; Cruise Missiles stay.
+{NUKES}: How many nuclear weapons may go off in this game. Drag the slider:
+<BULLET/>Far left, None: nobody can build Nuclear Missiles, ICBMs or Interceptors; Cruise Missiles stay.
+<BULLET/>1 to 250: the Armageddon clock starts at that number. Once that many nuclear weapons have gone off or are in the air, no more can be launched. The steps get bigger towards the right.
+<BULLET/>Far right, Unlimited: no Armageddon clock at all.
+Right-click it to go back to the game's rule: 4, plus 1 per nation and 2 per team. In a multiplayer game only the host can change it.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -3324,6 +3328,10 @@ your libraries.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Low field fortification for one squad of ranged infantry, built by the infantry themselves (the build button on their panel), who dig into it when it is finished. Right-click it with ranged infantry (or use the garrison button and its hotkey) to dig in: an earth bank with a palisade at first, gabions, then sandbags. Dug in, they hold their ground and fight with their own weapons: +1 range, attacks 40% faster, +20% damage. The fortification takes every hit meant for them until it is destroyed; it has half the hit points of a Tower of your age. Melee units cannot dig in. Digging in costs 35% of the squad's price, +10% for every squad you already have dug in (up to +150%). The Leave Fortification button empties it.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Steel anti-tank obstacles on one tile, built by Citizens in the Modern and Information Ages. Nothing can pass through them, your own units neither: an enemy has to destroy them to get through. Lay them in a line to close a gap; leave a way open for your own army. 1200 hit points and heavy armor: rifles barely scratch them, tanks, artillery and aircraft break them.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

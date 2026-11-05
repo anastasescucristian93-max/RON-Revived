@@ -58,3 +58,27 @@ keeps everything up to 20 kHz instead of 11 kHz.
   address space runs out and the next model load fails.
 - Test: the installed `mod_override\Data\sound.xml` renamed to `sound.xml.music-test-off` (the
   game's own music); if the same game then starts, the music is the cause.
+- 2026-11-05, with the 4 GB flag on: the same error with `art\logchop5.bh3` (Big Huge, 8 players,
+  Age 7 start, all technologies). The log again ends while the nation tracks are opened (11 of
+  them logged at the same second, then nothing). The installed tracks are ADPCM 44.1 kHz (the
+  game's own are PCM 22 kHz, 13 MB, read as they are); decoded, one is about 4x its file. For
+  this match's 8 nations: 346 MB if each file is decoded once, 1195 MB if every `<SOUND>` entry
+  of `sound.xml` (each track is listed 3..9 times) is decoded on its own.
+- Since 2026-11-05 the DLL logs `memory at the start` (play button) and `message box "...": text`
+  with `memory at the message box` (MessageBoxA/W hook in ron_camera.c), each with the largest
+  free block. The hooks installed, but the "BHG RTS run time ERROR" box did not pass through them
+  (nothing logged), so that box is not user32's MessageBoxA/W.
+- **Not memory (2026-11-05).** The next stop ("art\workbench5_weld.bh3 does not exist", Iroquois,
+  Japanese, British, Romans, Aztecs, Mongols, Indians, Bantu) logged `memory at the start: 1278 of
+  4095 MB address space in use, largest free block 2032 MB`, right before the tracks.
+- **Cause: open file streams.** The exe, d3dgl and `xasl.dll` all use the shared `ucrtbase.dll`
+  (`_wfsopen`, `fopen_s`, `_wfindfirst64i32` from api-ms-win-crt-*), whose stdio allows 512 open
+  FILE streams by default. Every `<SOUND>` of every player's `<TRIBE>` in `sound.xml` is opened
+  at the start: the game's own file has only the `default` tribe (24 entries) plus 43 outside the
+  tribes, 192 for 8 players; ours has 72..213 per tribe, 750 and 927 for the two failed matches.
+  Past 512 the next open fails and the model loader reports the file as missing. Two-player games
+  stay under the limit, which is why they worked.
+- Fix: `stdio_raise()` (override.c) calls ucrtbase's `_setmaxstdio(8192)`, logged as
+  `open files: limit 512 -> 8192`. It runs from the GraphSys::init_display_quick pre-hook and
+  from the play button stub, not from DllMain: winmm.dll is the exe's first import, so its DllMain
+  may run before ucrtbase's.

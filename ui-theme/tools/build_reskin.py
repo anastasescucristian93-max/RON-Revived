@@ -6,7 +6,10 @@ XML. Written to <out>\art\ under the same names; the game's files are only read.
 
   wrapper_pieces_01.tga        frames (IFACEBORDER pieces), section bars, the frame around
                                the Start / Back buttons: wood becomes steel
-  wrapper_pieces_02.tga        buttons, tabs, check boxes, drop-down fields and arrows: glossy
+  wrapper_pieces_02.tga        buttons, tabs, check boxes, drop-down fields and arrows: glossy;
+                               the drop-down fields grey with a grain (grain_fields)
+  revived\setup_combo.tga      the same drop-down pieces 26 px high for the game setup screen
+                               (setupwin.xml points combo_* there; tall_combo_atlas)
   Wrapper_pieces_gamespy.tga   blue becomes gunmetal, white fields become light steel
 
 The frame pieces are drawn new (a riveted steel bar, see ELEMENTS); everything else is
@@ -178,19 +181,105 @@ def build_wrapper_01(game):
     return out
 
 
+# ---- grainy grey drop-down fields in wrapper_pieces_02 ---------------------------------------
+
+# combo_left / combo_mid / combo_right (interface.xml): x 193..196, 198..327, 329..331; the
+# normal row at top 1, the disabled (_d) one at top 24, 21 px high. Inside each: a light rim,
+# a dark line, the field (rows top+2 .. top+height-3), the dark line, the rim.
+COMBO_H = 21
+FIELD_GREY, FIELD_GREY_D = 182, 125   # field grey 0..255: normal, disabled (was 150 / 108)
+COMBO_02 = dict(rows=[(1, FIELD_GREY), (24, FIELD_GREY_D)], height=COMBO_H,
+                cols=[(195, 197), (198, 328), (329, 331)], mid=(198, 130),
+                rims=[(193, 197), (198, 328), (329, 333)], sides=[193, 332])
+GRAIN_SEED = 93
+
+# The setup screen's taller pieces (revived\setup_combo.tga, 256x64): left 1..4, mid 6..135,
+# right 137..140, arrow 142..169 (28 wide); normal row at top 1, disabled at top 29.
+TALL_H = 26
+TALL_ARROW_W = 28
+TALL_X = {"left": 1, "mid": 6, "right": 137, "arrow": 142}
+TALL_ROWS = (1, 29)
+COMBO_TALL = dict(rows=[(1, FIELD_GREY), (29, FIELD_GREY_D)], height=TALL_H,
+                  cols=[(3, 5), (6, 136), (137, 139)], mid=(6, 130),
+                  rims=[(1, 5), (6, 136), (137, 141)], sides=[1, 140])
+
+
+def grain(width, height, rng):
+    """Film grain, seamless across `width` (the field's middle is tiled): fine per-pixel
+    noise plus a softer, coarser layer. Mean 0, about +-0.05."""
+    fine = rng.normal(0, 0.032, (height, width))
+    coarse = rng.normal(0, 1, (height, width))
+    coarse = (coarse + np.roll(coarse, 1, 1) + np.roll(coarse, -1, 1)
+              + np.roll(coarse, 1, 0) + np.roll(coarse, -1, 0)) / 5 * 0.035
+    return fine + coarse
+
+
+def grain_fields(img, rows, height, cols, mid, rims, sides):
+    """The white drop-down fields become a grey with a grain texture; the frame lines stay."""
+    a = np.asarray(img).astype(float) / 255
+    rng = np.random.default_rng(GRAIN_SEED)
+    mid_x, mid_w = mid
+    for top, grey in rows:
+        y0, y1 = top + 2, top + height - 2
+        noise = grain(mid_w, y1 - y0, rng)
+        tint = grey / 255 * np.array([0.98, 0.99, 1.01])   # plain grey, barely cool
+        for x0, x1 in cols:
+            for x in range(x0, x1):
+                n = noise[:, (x - mid_x) % mid_w]
+                col = a[y0:y1, x]
+                lum = col[:, :3] @ [0.30, 0.59, 0.11]
+                inside = lum > 0.45                    # leave the dark frame lines
+                depth = np.ones(y1 - y0)
+                depth[:2] = (0.88, 0.95)               # a slight inner shadow under the top line
+                new = np.clip(tint[None, :] * depth[:, None] + n[:, None], 0, 1)
+                col[inside, :3] = new[inside]
+        # The outer light rim (first and last row) is dimmed so the field does not read as
+        # a white outline around a grey box.
+        for y in (top, top + height - 1):
+            for x0, x1 in rims:
+                a[y, x0:x1, :3] *= 0.80
+        a[top + 1:top + height - 1, sides, :3] *= 0.80
+    return Image.fromarray((a * 255 + 0.5).astype(np.uint8), "RGBA")
+
+
+def stretch_piece(piece, height):
+    """A 21 px drop-down piece made `height` px high: the two frame rows at the top and at the
+    bottom stay as they are, only the field between them is stretched."""
+    w = piece.width
+    out = Image.new("RGBA", (w, height))
+    out.paste(piece.crop((0, 0, w, 2)), (0, 0))
+    out.paste(piece.crop((0, 2, w, COMBO_H - 2)).resize((w, height - 4), Image.BILINEAR), (0, 2))
+    out.paste(piece.crop((0, COMBO_H - 2, w, COMBO_H)), (0, height - 2))
+    return out
+
+
+def tall_combo_atlas(w2):
+    r"""revived\setup_combo.tga from the recoloured (not yet grained) wrapper_pieces_02."""
+    atlas = Image.new("RGBA", (256, 64))
+    for top, src_top in zip(TALL_ROWS, (1, 24)):
+        for name, x0, w in (("left", 193, 4), ("mid", 198, 130), ("right", 329, 4)):
+            atlas.paste(stretch_piece(w2.crop((x0, src_top, x0 + w, src_top + COMBO_H)), TALL_H),
+                        (TALL_X[name], top))
+        arrow = w2.crop((123, src_top, 146, src_top + COMBO_H)).resize((TALL_ARROW_W, TALL_H), Image.LANCZOS)
+        atlas.paste(arrow, (TALL_X["arrow"], top))
+    return grain_fields(atlas, **COMBO_TALL)
+
+
 def main(game, out):
     os.makedirs(PREVIEW, exist_ok=True)
     w1 = build_wrapper_01(game)
     w2 = recolor(read_tga(os.path.join(game, "art", "wrapper_pieces_02.tga")), protect=PROTECT_02,
                  accent_boxes=ACCENT_02)
+    tall = tall_combo_atlas(w2)
+    w2 = grain_fields(w2, **COMBO_02)
     gs = recolor(read_tga(os.path.join(game, "art", "Wrapper_pieces_gamespy.tga")), GAMESPY_CHROME,
                  PROTECT_GAMESPY)
     for name, img in (("wrapper_pieces_01.tga", w1), ("wrapper_pieces_02.tga", w2),
-                      ("Wrapper_pieces_gamespy.tga", gs)):
+                      ("Wrapper_pieces_gamespy.tga", gs), (os.path.join("revived", "setup_combo.tga"), tall)):
         write_tga(img, os.path.join(out, "art", name))
         shown = Image.new("RGBA", img.size, (255, 0, 255, 255))
         shown.alpha_composite(img)
-        shown.convert("RGB").save(os.path.join(PREVIEW, name.lower().replace(".tga", ".png")))
+        shown.convert("RGB").save(os.path.join(PREVIEW, os.path.basename(name).lower().replace(".tga", ".png")))
 
 
 if __name__ == "__main__":

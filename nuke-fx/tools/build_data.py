@@ -18,8 +18,12 @@ r"""Build the nuke-fx data files into nuke-fx\mod_override\.
   silo (at most 2), which it fires at enemy nukes. Data\unitrules.xml, typenames.xml, help.xml
   and unit_graphics.xml are built on the other mods' newest versions (MOD_ORDER); Romania builds
   on these, so build it again afterwards and install it last.
-- Data\help.xml also gets SETUPCHECK14, the tooltip of the No Nukes check box in the game setup
-  (camera-smooth\src\nonukes.c).
+- Data\soundfiles.xml: the game's, with two sounds of the Interceptor at the end (the DLL finds them
+  by tag): interceptorlaunch (sounds\interceptor_launch.wav, as it leaves the silo) and
+  interceptorhit (sounds\interceptor_hit.wav, the nuke shot down). make_interceptor_sounds.py
+  makes the candidates and copies the chosen ones into mod_override\sounds\ (run it first).
+- Data\help.xml also gets SETUPCHECK14, the tooltip of the Nukes slider in the game setup
+  (camera-smooth\src\nonukes.c, drawn over check box 14).
 """
 import math
 import os
@@ -76,8 +80,11 @@ HELP = {
                        "by itself at every enemy Nuclear Missile or ICBM that flies within reach, if it can "
                        "still catch it. A nuke shot down does no damage and does not count for Armageddon.",
 }
-NO_NUKES_HELP = ("{NO NUKES}: Check this box to play without nuclear weapons. Nobody can build Nuclear "
-                 "Missiles, ICBMs or Interceptors; Cruise Missiles stay.")
+NO_NUKES_HELP = ("{NUKES}: How many nuclear weapons may go off in this game. Drag the slider:\n"
+                 "<BULLET/>Far left, None: nobody can build Nuclear Missiles, ICBMs or Interceptors; Cruise Missiles stay.\n"
+                 "<BULLET/>1 to 250: the Armageddon clock starts at that number. Once that many nuclear weapons have gone off or are in the air, no more can be launched. The steps get bigger towards the right.\n"
+                 "<BULLET/>Far right, Unlimited: no Armageddon clock at all.\n"
+                 "Right-click it to go back to the game's rule: 4, plus 1 per nation and 2 per team. In a multiplayer game only the host can change it.")
 
 UNDERLAYS = (
     '    <UNDERLAY name="NukeTarget" tu="0" tv="0" twidth="512" renderstate="Interface Blend" growth="1" tex0="{t}" tex1="-1" passnum="0"/>\r\n'
@@ -149,7 +156,7 @@ def help_text(text):
 
 
 def setup_help(text):
-    """The tooltip of the No Nukes check box of the game setup (camera-smooth\\src\\nonukes.c, box
+    """The tooltip of the Nukes slider of the game setup (camera-smooth\\src\\nonukes.c, box
     id 14: the game looks up SETUPCHECK<id>), after the game's last one."""
     m = re.search(r'(\s*)<ENTRY name="SETUPCHECK13">(\r?\n).*?</ENTRY>', text, re.S)
     if not m or 'name="SETUPCHECK14"' in text:
@@ -158,6 +165,25 @@ def setup_help(text):
     entry = (f"{nl}{ind}<ENTRY name=\"SETUPCHECK14\">{nl}{ind}\t<STRING>{nl}{NO_NUKES_HELP}{nl}"
              f"{ind}\t</STRING>{nl}{ind}</ENTRY>")
     return text[:m.end()] + entry + text[m.end():]
+
+
+SOUNDS = [("interceptorlaunch", "interceptor_launch.wav"), ("interceptorhit", "interceptor_hit.wav")]
+
+
+def sound_files(text):
+    """The Interceptor's two sounds after the game's last SOUNDFILE (their place does not matter:
+    the DLL and the game look sounds up by tag)."""
+    for tag, wav in SOUNDS:
+        if not os.path.exists(os.path.join(OUT, "sounds", wav)):
+            raise SystemExit(f"mod_override\\sounds\\{wav} is missing: run tools\\make_interceptor_sounds.py use L<n> I<n>")
+        if f'tag="{tag}"' in text:
+            raise SystemExit(f"soundfiles.xml: {tag} is already there")
+    end = "\t</SOUNDFILES>"
+    if text.count(end) != 1:
+        raise SystemExit("soundfiles.xml: </SOUNDFILES> not found once")
+    nl = "\r\n" if "\r\n" in text else "\n"
+    lines = "".join(f'\t\t<SOUNDFILE priority="100" tag="{tag}" file=".\\sounds\\{wav}"/>{nl}' for tag, wav in SOUNDS)
+    return text.replace(end, lines + end)
 
 
 def unit_graphics(text):
@@ -224,6 +250,7 @@ def main():
     write(os.path.join(data, "typenames.xml"), type_names(read(base("typenames.xml"))))
     write(os.path.join(data, "help.xml"), setup_help(help_text(read(base("help.xml")))))
     write(os.path.join(data, "unit_graphics.xml"), unit_graphics(read(base("unit_graphics.xml"))))
+    write(os.path.join(data, "soundfiles.xml"), sound_files(read(base("soundfiles.xml"))))
     effects()
     haze()
     for name in ("nuke_target.tga", "nuke_target_glow.tga"):

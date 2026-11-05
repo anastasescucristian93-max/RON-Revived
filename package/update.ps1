@@ -85,14 +85,22 @@ $have = @{}
 $partsFile = Join-Path $game "RON_Revived_parts.txt"
 if (Test-Path $partsFile) { $have = Read-Pairs (Get-Content -Raw $partsFile) }
 
+# the extras (optional parts, from the launcher's Extras tray): only the ones installed here
+$extras = @()
+if ($list["extras"]) { $extras = @($list["extras"] -split ',' | ForEach-Object { $_.Trim().ToLower() } | Where-Object { $_ }) }
+
 $parts = @()
 $all = [ordered]@{}
-foreach ($name in "core", "art", "music") {
+foreach ($name in @("core", "art", "music") + $extras | Select-Object -Unique) {
     if (-not $list.Contains($name)) { continue }
+    if ($extras -contains $name -and -not $have.Contains($name)) { continue }
+    # <content hash>, then per zip <sha256> <bytes> <zip name>
     $f = $list[$name] -split '\s+'
-    if ($f.Count -lt 4) { Stop-Update "The update list's line for $name is not complete." }
+    if ($f.Count -lt 4 -or ($f.Count - 1) % 3) { Stop-Update "The update list's line for $name is not complete." }
     $all[$name] = $f[0]
-    if ($have[$name] -ne $f[0]) { $parts += , @($name, $f[1], [double]$f[2], $f[3]) }
+    if ($have[$name] -ne $f[0]) {
+        for ($i = 1; $i -lt $f.Count; $i += 3) { $parts += , @($name, $f[$i], [double]$f[$i + 1], $f[$i + 2]) }
+    }
 }
 Write-Host "Updating to $version."
 
@@ -117,7 +125,7 @@ Set-Content -Encoding ASCII (Join-Path $pack "game\RON_Revived_parts.txt") (@("[
 # the new installer when the core part came with one, else the one installed
 $installer = Join-Path $pack "game\RON_Revived_install.ps1"
 if (-not (Test-Path $installer)) { $installer = Join-Path $game "RON_Revived_install.ps1" }
-$names = ($parts | ForEach-Object { $_[0] }) -join ","
+$names = ($parts | ForEach-Object { $_[0] } | Select-Object -Unique) -join ","
 if (-not $names) { $names = "none" }
 Write-Host "Installing..."
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $installer -GameDir $game -Payload (Join-Path $pack "game") -Parts $names

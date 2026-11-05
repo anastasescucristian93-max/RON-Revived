@@ -22,11 +22,14 @@ Outputs (paths relative to the game folder, under <out>):
                                declared in interface.xml (IFACEMAINBASE); the in-game menu
                                (MAINMENU) and the end of game window (ENDGAMEWIN) get the
                                steel dialog buttons too
-                               and the resource panel is 25% larger, with the population
-                               and city counters on its first row (hud_layout)
+                               and the resource panel is 25% larger, in the worker-bars
+                               layout, with the population and city counters on its first
+                               row (hud_layout)
   art\revived\rank_icons.tga   veteran rank insignia (build_rank_icons.py), declared next to
                                the qol buttons
   art\revived\assist_panel.tga the AI assistant panel (build_assist_panel.py), declared there too
+  art\revived\hud_digits.tga   the resource panel's digits from a real font (build_hud_digits.py),
+                               declared there too
 """
 import os
 import re
@@ -38,6 +41,7 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 import build_assist_panel
 import build_flags
+import build_hud_digits
 import build_qol_buttons
 import build_rank_icons
 
@@ -719,14 +723,43 @@ SETUP_COLUMNS = [
 # does not jump across the screen. The DLL draws their numbers larger by the same factor
 # (camera-smooth\src\hud.c, hud_scale in ron_camera.ini).
 HUD_SCALE = 1.25
-RES_RIGHT = 17 + 115  # market column + resource column: the end of the cap row
+# The worker-bars layout (camera-smooth\src\respanel.c): the workers column is gone, each
+# resource row has a bar of its places of work and "used/places" at its end, so the resource
+# column is wider (200 instead of 115; 158 until 2026-11-05 let a 5-digit amount, a 4-digit rate and "31|51" overlap); infra_button_rect1 is the size of the handle under the
+# rows that shows / hides the bars; the market column opens right of the resources, so nothing
+# is left of them any more. Sizes before HUD_SCALE.
+RES_WIDTH = 200
+PANEL_RECTS = {
+    "main_rect": {"width": RES_WIDTH + 120},
+    "resource_rect0": {"width": RES_WIDTH},
+    "resource_rect1": {"width": RES_WIDTH},
+    "resource_cap_rect": {"width": RES_WIDTH - 51},
+    "resource_item_rect": {"width": RES_WIDTH - 8},
+    "infra_button_rect1": {"width": 44, "height": 8},
+}
+RES_RIGHT = RES_WIDTH  # the end of the cap row; the DLL moves the counters with the panel's edge
+
+
+def panel_rects(block):
+    for name, attrs in PANEL_RECTS.items():
+        def repl(m, name=name, attrs=attrs):
+            tag = m.group(0)
+            for key, value in attrs.items():
+                tag, n = re.subn(r'\b%s="\s*-?\d+\s*"' % key, '%s="%d"' % (key, value), tag)
+                assert n == 1, (name, key)
+            return tag
+        block, n = re.subn(r'<IFACERECT name="%s" [^>]*>' % name, repl, block)
+        assert n == 1, name
+    block, n = re.subn(r'(<IFACERESOURCES [^>]*\bwidth=")\d+', r"\g<1>%d" % (RES_WIDTH + 120), block, count=1)
+    assert n == 1
+    return block
 
 
 def hud_layout(src):
     s = HUD_SCALE
     start = src.index("<IFACERESOURCES ")
     end = src.index("</IFACERESOURCES>", start)
-    block = src[start:end]
+    block = panel_rects(src[start:end])
 
     def scaled(m):
         return '%s="%d"' % (m.group(1), round(int(m.group(2)) * s))
@@ -762,25 +795,41 @@ def qol_buttons(src):
     lines += build_qol_buttons.tex_lines()
     lines += build_rank_icons.tex_lines()  # the rank insignia (ranks.c), looked up the same way
     lines += build_assist_panel.tex_lines()  # the AI assistant panel (assist_panel.c)
+    lines += [build_hud_digits.load_line()] + build_hud_digits.tex_lines()  # the panel's digits (hud.c)
+    # the command panel's empty cell, for the folded selection panel's background (selpanel.c)
+    lines += ['<IFACETEX name="sel_blank" texture="TEX_CIV" left="211" top="20" width="60" height="38"/>']
     return src.replace(anchor, anchor + "\n    " + "\n    ".join(lines))
 
 
-# The No Nukes check box (camera-smooth\src\nonukes.c), one per layout: single player shows
-# only the right column (Save to Profile ... Cooperative AI), so it goes at the top of the empty
-# left column; multiplayer has no Cooperative AI, so it takes that free last row of the right
-# column. The DLL shows the one that fits.
+# The Nukes slider (camera-smooth\src\nonukes.c, drawn by the DLL over a check box), one per
+# layout: single player shows only the right column (Save to Profile ... Cooperative AI), so it
+# goes at the top of the empty left column, about half the panel wide; multiplayer has no
+# Cooperative AI, so it takes that free last row of the right column. The DLL shows the one
+# that fits. Its art is the game's own slider: the horizontal track (interface.xml's
+# slider_horz) and the caret of the options screen's sliders, both in TEX_WRAPPER_1.
 NO_NUKES_ANCHOR = '        <CHECK name="check10" show="0" percent_width="400" height="21"/>\n      </POSITIONING>\n'
 NO_NUKES = ('      <POSITIONING x="20" y="584">\n'
-            '        <CHECK name="nonukes_solo" show="0" percent_width="400" height="21"/>\n'
+            '        <CHECK name="nonukes_solo" show="0" percent_width="520" height="21"/>\n'
             '      </POSITIONING>\n'
             '      <POSITIONING y="688">\n'
             '        <CHECK name="nonukes_mp" show="0" right_inverse="14" percent_width="-400" height="21"/>\n'
             '      </POSITIONING>\n')
 
 
+NUKES_TEX_ANCHOR = '<IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="1" top="70" width="25" height="22"/>'
+NUKES_TEX = [
+    '<IFACETEX name="nukes_track_l" texture="TEX_WRAPPER_1" left="113" top="380" width="5" height="16"/>',
+    '<IFACETEX name="nukes_track_m" texture="TEX_WRAPPER_1" left="119" top="380" width="173" height="16"/>',
+    '<IFACETEX name="nukes_track_r" texture="TEX_WRAPPER_1" left="293" top="380" width="5" height="16"/>',
+    '<IFACETEX name="nukes_caret" texture="TEX_WRAPPER_1" left="382" top="0" width="17" height="28"/>',
+]
+
+
 def setup_no_nukes(src):
     assert src.count(NO_NUKES_ANCHOR) == 1
-    return src.replace(NO_NUKES_ANCHOR, NO_NUKES_ANCHOR + NO_NUKES)
+    src = src.replace(NO_NUKES_ANCHOR, NO_NUKES_ANCHOR + NO_NUKES)
+    assert src.count(NUKES_TEX_ANCHOR) == 1
+    return src.replace(NUKES_TEX_ANCHOR, NUKES_TEX_ANCHOR + "\n    " + "\n    ".join(NUKES_TEX))
 
 
 def setup_flags(src, flags):
@@ -831,6 +880,7 @@ def main(game, out):
     build_qol_buttons.main(out)
     build_rank_icons.main(out)
     build_assist_panel.main(out)
+    build_hud_digits.main(out)
     for name in POP_FILES:
         path = os.path.join(out, "Data", name)
         open(path, "w", encoding="utf-8").write(build_popup_xml(game, name, rects, flags))

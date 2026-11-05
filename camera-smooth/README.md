@@ -48,6 +48,7 @@ The game's `adjust_tilt` has a bug (it uses `dist - tilt[i]` instead of `dist - 
 | `Unit::detect_unit_collision`, at its move group test 0x00617676 | hooked (`shove.c`, `pass_through`): a land unit of the mover's own player or of an ally (`pass_allies`) is walked through (the game's own pass-through branch) when it moves, or when it stands and the mover is more than `pass_clear` tiles from the end of its path |
 | `Group::action_move_near`, the formation pick 0x007050FA and the units' formation store 0x0070577A | patched (`formation.c`): a human player's group of more than one unit type (Generals and Supply Wagons not counted) gets formation 9, the game's "Mob": separate move orders, own speeds, ring placement; the units' remembered formation is left alone |
 | `Form::compute_rows_and_columns` | wrapper (`formation.c`, `compact`): after the game's sizing, the front of the row formations (kinds 0-5) is narrowed to a block `width_ratio` times as wide as deep |
+| `TypeData::get_cost`, the count of buildings owned 0x00665966 | replaced (`defenseramp.c`, `defense_ramp_whole_line`): for a type of the Tower line (0x1B7-0x1BA) or the Fort line (0x1BB-0x1BE) the price increase counts the four types together |
 
 ## Build
 

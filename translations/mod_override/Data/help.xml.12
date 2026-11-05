@@ -421,7 +421,11 @@ disponibles.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{SANS NUCLÉAIRE} : cochez cette case pour jouer sans armes nucléaires. Personne ne peut construire de missiles nucléaires, de MBI ni d'intercepteurs ; les missiles de croisière restent.
+{NUCLÉAIRE} : nombre d'armes nucléaires qui peuvent exploser dans cette partie. Faites glisser le curseur :
+<BULLET/>Tout à gauche, Aucune : personne ne peut construire de missiles nucléaires, de MBI ni d'intercepteurs ; les missiles de croisière restent.
+<BULLET/>De 1 à 250 : l'horloge d'Armageddon commence à ce nombre. Dès que ce nombre d'armes nucléaires ont explosé ou sont en vol, plus aucune ne peut être lancée. Les crans sont plus grands vers la droite.
+<BULLET/>Tout à droite, Illimité : pas d'horloge d'Armageddon.
+Clic droit : retour à la règle du jeu, 4, plus 1 par nation et 2 par équipe. En multijoueur, seul l'hôte peut le modifier.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -3275,6 +3279,10 @@ vos bibliothèques.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Fortification de campagne basse pour une escouade d'infanterie à distance, construite par l'infanterie elle-même (bouton de construction de son panneau), qui s'y retranche une fois l'ouvrage terminé. Cliquez dessus avec le bouton droit avec de l'infanterie à distance (ou utilisez le bouton de garnison et son raccourci) pour qu'elle s'y retranche : d'abord un talus avec une palissade, puis des gabions, puis des sacs de sable. Retranchées, les troupes tiennent leur position et combattent avec leurs propres armes : +1 de portée, attaques 40% plus rapides, +20% de dégâts. La fortification encaisse chaque coup qui leur est destiné jusqu'à sa destruction ; elle a la moitié des points de vie d'une tour de votre âge. Les unités de mêlée ne peuvent pas s'y retrancher. Se retrancher coûte 35% du prix de l'escouade, +10% pour chaque escouade déjà retranchée (jusqu'à +150%). Le bouton Quitter la fortification la vide.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Obstacles antichars en acier sur une case, construits par les citoyens à l'âge moderne et à l'âge de l'information. Rien ne peut les traverser, pas même vos propres unités : l'ennemi doit les détruire pour passer. Alignez-les pour fermer un passage et laissez un chemin libre à votre armée. 1200 points de vie et un blindage lourd : les fusils les égratignent à peine, les chars, l'artillerie et les avions les détruisent.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

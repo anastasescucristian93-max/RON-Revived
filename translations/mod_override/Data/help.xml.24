@@ -423,7 +423,11 @@ disponibile.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{FĂRĂ ARME NUCLEARE}: Bifează această casetă ca să joci fără arme nucleare. Nimeni nu poate construi rachete nucleare, ICBM-uri sau interceptoare; rachetele de croazieră rămân.
+{ARME NUCLEARE}: Câte arme nucleare pot exploda în acest joc. Trage glisorul:
+<BULLET/>Complet la stânga, Niciuna: nimeni nu poate construi rachete nucleare, ICBM-uri sau interceptoare; rachetele de croazieră rămân.
+<BULLET/>De la 1 la 250: Ceasul Armaghedonului pornește de la acest număr. Când atâtea arme nucleare au explodat sau sunt în aer, nu se mai poate lansa niciuna. Pașii cresc spre dreapta.
+<BULLET/>Complet la dreapta, Nelimitat: fără Ceasul Armaghedonului.
+Clic dreapta ca să revii la regula jocului: 4, plus 1 pentru fiecare națiune și 2 pentru fiecare echipă. Într-un joc multiplayer, doar gazda îl poate schimba.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -2927,6 +2931,10 @@ Crește raza atacului orașului cu +$NUMBER2.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Fortificație joasă de câmp pentru o grupă de infanterie cu atac la distanță, construită chiar de infanteriști (butonul de construcție din panoul lor), care se retranșează în ea când este gata. Click dreapta pe ea cu infanterie cu atac la distanță (sau folosește butonul de garnizoană și tasta lui) ca să te retranșezi: întâi un val de pământ cu palisadă, apoi gabioane, apoi saci de nisip. Retranșați, infanteriștii își țin poziția și luptă cu propriile arme: +1 rază, atacă cu 40% mai repede, +20% daune. Fortificația primește toate loviturile destinate lor până când este distrusă; are jumătate din punctele de viață ale unui turn din epoca ta. Unitățile de corp la corp nu se pot retranșa. Retranșarea costă 35% din prețul grupei, +10% pentru fiecare grupă pe care o ai deja retranșată (până la +150%). Butonul Părăsește fortificația o golește.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Obstacole antitanc din oțel pe o singură celulă, construite de cetățeni în Epoca modernă și în Epoca informației. Nimic nu trece prin ele, nici unitățile tale: inamicul trebuie să le distrugă ca să treacă. Pune-le în linie ca să închizi o trecătoare și lasă-i armatei tale o cale liberă. 1200 de puncte de viață și blindaj greu: puștile abia le zgârie, tancurile, artileria și avioanele le distrug.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

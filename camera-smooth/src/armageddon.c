@@ -5,7 +5,8 @@
  *
  *  - GameDaemon::process_victory calls Game::defeat_all when game+0x6E0 (nukes so far)
  *    reaches Game::get_armageddon(); its `jl` over that call becomes a `jmp`.
- *  - LeaderData::can_nuke (the launch command's check) says no once the clock is out.
+ *  - LeaderData::can_nuke (the launch command's check) says no once the clock is out, and
+ *    with a count chosen in the setup (nonukes.c) once the nukes in the air would use it up.
  *  - Nuclear Missile / Nuclear ICBM are offered disabled (datacenter.c's type_eligible hook
  *    asks arm_type_blocked).
  * The rule runs in the simulation on every machine: every player needs the same setting.
@@ -45,7 +46,8 @@ int arm_type_blocked(int type)
 
 __attribute__((used)) int c_can_nuke(void *self)
 {
-    return clock_out() ? 0 : ((fn0_t)g_orig_can_nuke)(self);
+    /* nonukes.c: a count chosen in the setup counts the nukes in the air too */
+    return clock_out() || nonukes_launch_full() ? 0 : ((fn0_t)g_orig_can_nuke)(self);
 }
 
 void hk_can_nuke(void);

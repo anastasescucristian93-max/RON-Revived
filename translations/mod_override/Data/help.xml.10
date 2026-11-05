@@ -422,7 +422,11 @@ en tus manos.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{SIN ARMAS NUCLEARES}: Marca esta casilla para jugar sin armas nucleares. Nadie puede construir misiles nucleares, ICBM ni interceptores; los misiles de crucero se mantienen.
+{ARMAS NUCLEARES}: Cuántas armas nucleares pueden estallar en esta partida. Arrastra el control:
+<BULLET/>A la izquierda del todo, Ninguna: nadie puede construir misiles nucleares, ICBM ni interceptores; los misiles de crucero se mantienen.
+<BULLET/>De 1 a 250: el reloj del Armagedón empieza en ese número. Cuando hayan estallado o estén en el aire tantas armas nucleares, no se podrá lanzar ninguna más. Los pasos son mayores hacia la derecha.
+<BULLET/>A la derecha del todo, Ilimitadas: sin reloj del Armagedón.
+Haz clic derecho para volver a la regla del juego: 4, más 1 por nación y 2 por equipo. En una partida multijugador solo el anfitrión puede cambiarlo.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -3282,6 +3286,10 @@ misma biblioteca.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Fortificación de campaña baja para un pelotón de infantería a distancia, construida por la propia infantería (botón de construir de su panel), que se atrinchera en ella al terminarla. Haz clic derecho sobre ella con infantería a distancia (o usa el botón de guarnición y su tecla de acceso rápido) para que se atrincheren: primero un terraplén con empalizada, luego gaviones y después sacos terreros. Atrincheradas, las tropas mantienen su posición y luchan con sus propias armas: +1 de alcance, ataques un 40% más rápidos, +20% de daño. La fortificación recibe todos los golpes dirigidos a ellas hasta que es destruida; tiene la mitad de puntos de vida que una torre de tu edad. Las unidades cuerpo a cuerpo no pueden atrincherarse. Atrincherarse cuesta el 35% del precio del pelotón, +10% por cada pelotón que ya tengas atrincherado (hasta +150%). El botón Abandonar fortificación la vacía.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Obstáculos antitanque de acero en una casilla, construidos por los ciudadanos en la Edad Moderna y el Siglo de la Información. Nada puede atravesarlos, ni siquiera tus propias unidades: el enemigo tiene que destruirlos para pasar. Colócalos en línea para cerrar un paso y deja un camino libre a tu propio ejército. 1200 puntos de vida y blindaje pesado: los fusiles apenas los arañan; los tanques, la artillería y los aviones los destruyen.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

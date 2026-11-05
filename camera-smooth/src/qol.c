@@ -8,8 +8,10 @@
  *   Docks                        select every Dock (Anchorage, Shipyard in later ages; shown
  *                                only once one is built)
  *   AI assistant (Senate icon)   open the assistant panel (assist_panel.c)
+ *   Minimap size                 small, medium, large (only while the interface is folded: in the
+ *                                screen's top right corner, beside the minimap; minimap.c places it)
  *
- * The row sits just above the bottom interface, as children of the Console window.
+ * The row sits just above the bottom interface, on the left, as children of the Console window.
  *
  * Auto-trade (always on unless auto_trade=0): merchants idle for `auto_trade_delay`
  * seconds go trade on their own.
@@ -309,14 +311,15 @@ typedef int(__attribute__((thiscall)) *fn_resize)(void *self, int w, int h, int 
 
 /* The index is also the round button's texture, "qol_<index>_<state>" (ui-theme's sheet):
    new buttons go at the end; g_btn_order is the order on screen. */
-enum { B_MILITARY, B_AIRBASE, B_DOCK, B_ASSIST, B_ARMY, B_COUNT };
+enum { B_MILITARY, B_AIRBASE, B_DOCK, B_ASSIST, B_ARMY, B_MINIMAP, B_COUNT };
 static const struct {
     const char *icon; /* type whose icon the button shows */
     int is_unit;
 } g_btn_def[B_COUNT] = {
-    { "Barracks", 0 }, { "Airbase", 0 }, { "Dock", 0 }, { "Senate", 0 }, { "Hoplites", 1 },
+    { "Barracks", 0 }, { "Airbase", 0 }, { "Dock", 0 }, { "Senate", 0 }, { "Hoplites", 1 }, { "Scout", 1 },
 };
-static const int g_btn_order[B_COUNT] = { B_MILITARY, B_ARMY, B_AIRBASE, B_DOCK, B_ASSIST };
+/* B_MINIMAP is not in the row: minimap.c says where it goes */
+static const int g_btn_order[B_COUNT - 1] = { B_MILITARY, B_ARMY, B_AIRBASE, B_DOCK, B_ASSIST };
 static _Alignas(16) unsigned char g_btn[B_COUNT][0x400];
 static int g_btn_made;
 static void *g_btn_parent; /* the bottom interface (IFaceMain) the row is placed against */
@@ -456,7 +459,10 @@ void qol_create_buttons(void *iface)
         *(unsigned short *)(b + IFB_FLAGS) |= 1;
         b[IFB_SHOWNUM] = 0;
         void **vt = *(void ***)b;
-        ((fn_resize)vt[8])(b, g_btn_w, g_btn_h, 0, 0); /* GraphicWin::resize */
+        if (i == B_MINIMAP)
+            ((fn_resize)vt[8])(b, MINIMAP_BUTTON, MINIMAP_BUTTON, 0, 0);
+        else
+            ((fn_resize)vt[8])(b, g_btn_w, g_btn_h, 0, 0); /* GraphicWin::resize */
         logf_("button %d: icon %s = type %d", i, g_btn_def[i].icon, type);
     }
     g_btn_parent = iface;
@@ -511,8 +517,11 @@ int qol_button_redraw(void *button)
         return 0;
     char *b = button;
     char state = (*(unsigned *)(b + BTN_STATE) & 1) ? 'p' : *(int *)(b + BTN_INSIDE) == 1 ? 'h' : 'n';
-    char name[16];
-    snprintf(name, sizeof name, "qol_%d_%c", i, state);
+    char name[20];
+    if (i == B_MINIMAP)
+        snprintf(name, sizeof name, "minimap_size_%c", state);
+    else
+        snprintf(name, sizeof name, "qol_%d_%c", i, state);
     void *tex = find_tex(g_btn_parent, name);
     static int logged;
     if (!logged) {
@@ -557,6 +566,7 @@ int qol_button_clicked(void *button)
         break;
     }
     case B_ASSIST:   assist_panel_toggle(console()); break;
+    case B_MINIMAP:  minimap_cycle_size(); break;
     }
     return 1;
 }
@@ -606,6 +616,9 @@ static void button_help(int i, char *text, int size)
         snprintf(text, size, "%s", lang_text("AI assistant: let the computer play your nation (Full control) or take it back "
                                              "(No control) with one click, choose what it may buy (economy, military, "
                                              "research, new cities, wonders) and how much of each resource it must leave you."));
+        break;
+    case B_MINIMAP:
+        snprintf(text, size, "%s", lang_text("Minimap size: click for the next one (small, medium, large)."));
         break;
     default:
         text[0] = 0;
@@ -657,12 +670,48 @@ __asm__(".intel_syntax noprefix\n"
         "    ret 4\n"
         ".att_syntax prefix\n");
 
+/* The help box sits on the bottom interface's top edge, where the row is: the row (Console
+   children) drew over it (the user, 2026-11-02). Scene::render_mouseover_text puts the box's
+   bottom at the screen height - 4 - the interface's height, asked of [IFaceMain+0x184] by
+   `call [eax+0xD8]` at 0x008BDE70; that call goes through tip_iface_h, which adds the row's
+   height while the row stands above the interface, so the box opens above the buttons. */
+#define AT_TIP_IFACE_H 0x008BDE70u
+
+int g_tip_lift; /* pixels; place_buttons() sets it */
+void hk_tip_iface_h(void);
+__asm__(".intel_syntax noprefix\n"
+        ".globl _hk_tip_iface_h\n"
+        "_hk_tip_iface_h:\n"
+        "    mov eax, [ecx]\n"
+        "    call dword ptr [eax+0xd8]\n"
+        "    add eax, dword ptr [_g_tip_lift]\n"
+        "    ret\n"
+        ".att_syntax prefix\n");
+
+static void patch_tip_lift(void)
+{
+    static const unsigned char sig[6] = { 0xFF, 0x90, 0xD8, 0x00, 0x00, 0x00 };
+    unsigned char *at = (unsigned char *)VA(AT_TIP_IFACE_H);
+    if (memcmp(at, sig, sizeof sig) != 0) {
+        logf_("signature mismatch at render_mouseover_text, the help box stays under the buttons");
+        return;
+    }
+    DWORD old;
+    VirtualProtect(at, 6, PAGE_EXECUTE_READWRITE, &old);
+    at[0] = 0xE8;
+    *(INT32 *)(at + 1) = (INT32)((UINT_PTR)hk_tip_iface_h - (UINT_PTR)(at + 5));
+    at[5] = 0x90;
+    VirtualProtect(at, 6, old, &old);
+    logf_("help box lifted over the button row");
+}
+
 /* Called from install_hooks once the exe is known to be the supported version. */
 void qol_install(void)
 {
     panel_install();
     if (!g_buttons_on)
         return;
+    patch_tip_lift();
     /* on_button_move: push ebp / mov ebp,esp / mov eax,[ebp+8] (stolen) | mov ecx,[eax+0xc] */
     static const unsigned char sig[9] = { 0x55, 0x8B, 0xEC, 0x8B, 0x45, 0x08, 0x8B, 0x48, 0x0C };
     unsigned char *at = (unsigned char *)VA(VA_ON_BUTTON_MOVE);
@@ -713,9 +762,29 @@ static void bring_buttons_to_front(void)
         CALL(fn_v, VA_WINDOW_BRING_TO_TOP)(g_btn[i]);
 }
 
-/* Just above the bottom interface, on the right, ending where the game's own buttons on
-   the top of the interface begin. Buttons the player has no use for yet are hidden and
-   the others close up. */
+/* The minimap size button, where minimap.c wants it (screen coordinates), or hidden. */
+static void place_minimap_button(void)
+{
+    static int last_x = -10000, last_y = -10000;
+    unsigned char *b = g_btn[B_MINIMAP];
+    int x, y;
+    if (g_btn_host != console() || !minimap_button_pos(&x, &y)) {
+        if (last_x != -10000)
+            CALL(fn_v, VA_WINDOW_HIDE)(b);
+        last_x = -10000;
+        return;
+    }
+    if (x == last_x && y == last_y)
+        return;
+    short *hr = (short *)(g_btn_host + WIN_RECT);
+    CALL(fn_move, VA_WINDOW_MOVE)(b, x - hr[0], y - hr[2]);
+    CALL(fn_i_i, VA_WINDOW_SHOW)(b, 1);
+    last_x = x, last_y = y;
+}
+
+/* Just above the bottom interface, at its left end (the user, 2026-11-01: the minimap may
+   take the right side). Buttons the player has no use for yet are hidden and the others
+   close up. */
 static void place_buttons(int p)
 {
     char *iface = g_btn_parent;
@@ -723,54 +792,21 @@ static void place_buttons(int p)
     int w = ir[1] - ir[0], h = ir[3] - ir[2];
     if (w <= 0 || h <= 0)
         return;
+    place_minimap_button();
     unsigned shown = 0;
-    int n = 0;
-    for (int i = 0; i < B_COUNT; i++)
-        if (button_wanted(i, p))
-            shown |= 1u << i, n++;
-    int total = n * (g_btn_w + 2) - 2;
+    for (int j = 0; j < B_COUNT - 1; j++)
+        if (button_wanted(g_btn_order[j], p))
+            shown |= 1u << g_btn_order[j];
     /* y relative to the top of the interface; -1 = automatic, just above it (or at the
        top of the interface when the buttons could not be made Console children) */
     int y = g_btn_y != -1 ? g_btn_y : g_btn_host != iface ? -g_btn_h - 6 : 4;
-    int strip_y = 4; /* the game's buttons on the top of the interface */
-    int x = g_btn_x;
-    if (x < 0) {
-        /* The game's in-game buttons (diplomacy, menu, ...) are children of the Console
-           window (IFaceButtonPool parents them there), not of IFaceMain. Rects are in
-           screen coordinates; our strip is the top rows of the bottom interface. */
-        static int logged;
-        int left_edge = w; /* leftmost game element in the right half of our strip */
-        char *con = console();
-        int count = con ? *(int *)(con + WIN_ZCHILDREN_COUNT) : 0;
-        char **kids = con ? *(char ***)(con + WIN_ZCHILDREN_DATA) : NULL;
-        int strip_t = ir[2] + strip_y, strip_b = ir[2] + strip_y + g_btn_h;
-        for (int k = 0; kids && k < count; k++) {
-            char *c = kids[k];
-            if (!c || is_our_button(c) >= 0 || c == iface)
-                continue;
-            short *r = (short *)(c + WIN_RECT);
-            int l = r[0], rr = r[1], t = r[2], b = r[3];
-            int visible = *(unsigned *)(c + WIN_FLAGS) & 1;
-            int in_strip = b > strip_t && t < strip_b && t >= ir[2] - 4;
-            if (!logged && in_strip)
-                logf_("bar element %p (vtable %08lX): x %d-%d, y %d-%d (bar top %d) visible %d", c,
-                      (unsigned long)(*(UINT_PTR *)c - g_delta), l, rr, t, b, ir[2], visible);
-            if (!visible || rr <= l || b <= t || rr - l >= w - 50 || !in_strip)
-                continue;
-            int lrel = l - ir[0];
-            if (lrel > w / 2 && lrel < left_edge)
-                left_edge = lrel;
-        }
-        logged = 1;
-        x = left_edge - total - 12;
-        if (left_edge == w) /* nothing found: stay clear of the right-hand cluster anyway */
-            x = w - total - 320;
-    }
+    int x = g_btn_x >= 0 ? g_btn_x : 6;
+    g_tip_lift = shown && y < 0 ? -y : 0; /* the help box opens above the row */
     if (x == g_btn_pos_x && y == g_btn_pos_y && shown == g_btn_shown)
         return;
     /* Window::move takes coordinates inside the parent; ours are relative to the interface */
     int ox = ir[0] - hr[0], oy = ir[2] - hr[2];
-    for (int j = 0, k = 0; j < B_COUNT; j++) {
+    for (int j = 0, k = 0; j < B_COUNT - 1; j++) {
         int i = g_btn_order[j];
         if (!(shown & 1u << i)) {
             CALL(fn_v, VA_WINDOW_HIDE)(g_btn[i]);
@@ -793,8 +829,10 @@ void qol_tick(double now)
         next_scan = now + 0.5;
         scan_merchants(now, 0);
     }
-    if (!g_buttons_on || !g_btn_made || !g_btn_parent || g_btn_parent != *(void **)VA(VA_IFACE_PTR))
+    if (!g_buttons_on || !g_btn_made || !g_btn_parent || g_btn_parent != *(void **)VA(VA_IFACE_PTR)) {
+        g_tip_lift = 0;
         return;
+    }
     int p = local_player();
     place_buttons(p);
     /* The game re-creates or re-parents its own interface windows now and then, which puts

@@ -265,6 +265,10 @@ def layout_ini(n_slides, inner):
     lines = ["; written by ui-theme\\tools\\build_launcher.py, read by winmm.dll",
              "[window]", f"scale_percent={SCALE_PERCENT}", "[buttons]"]
     lines += [f"dy{i}={centre_y(i) - (y + BUTTON_SIZE[1] // 2)}" for i, (_, y) in enumerate(BUTTONS)]
+    # the button panel's span: the Extras tray comes out beside it (camera-smooth\src\launcher_extras.c)
+    x, y, cw = (s(v) for v in COLUMN)
+    lower_h = round(cw * (1485 - 510) / 545)  # as build_background() fits the panel
+    lines += ["[extras]", f"top={y + s(LOGO_BOX_H)}", f"bottom={y + s(LOGO_BOX_H) + lower_h}"]
     if n_slides > 1:
         l, t, r, b = inner
         lines += ["[slides]", f"count={n_slides}", f"x={l}", f"y={t}", f"w={r - l}", f"h={b - t}",

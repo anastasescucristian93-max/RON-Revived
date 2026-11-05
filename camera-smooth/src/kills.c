@@ -11,7 +11,8 @@
  * Counts live in memory: they start at zero for a loaded saved game.
  *
  * The stat is drawn like the game's own (IFaceSelected::draw_stat): right after the
- * stats loop of IFaceSelected::on_redraw, in the first free "stat_short" slot.
+ * stats loop of IFaceSelected::on_redraw, in the first free "stat_short" slot. A single unit's
+ * goes to the right half of the panel instead, beside its rank (ranks_draw_panel).
  *
  * Decoys (unit +0x68 bit 0, set by SpellType::cast_create_decoy) do not count as kills. The
  * General's Create Decoys ability is switched off in the data (general-heal mod, since
@@ -34,6 +35,7 @@
 #define VA_WHITE        0x00C8D26Cu /* Color WHITE */
 #define VA_IFACE_RM     0x00EBD1C0u /* IFaceRenderManager iface_render_manager */
 #define VA_RM_ADD       0x0051F440u /* IFaceRenderManager::add(IFaceTex *, x, y, color, type) */
+#define VA_RM_ADD_RECT  0x0051F3D0u /* IFaceRenderManager::add(IFaceTex *, const short rect[4], color, type) */
 #define VA_WRITE_CENT   0x0050F850u /* Buffer::write_cent_l(const String &, const Rect *, len) */
 #define VA_HOME_BASE    0x00609DC0u /* UnitData::home_base(int *): the unit's Airbase / Carrier id, or -1 */
 
@@ -48,6 +50,7 @@
 #define SEL_PLAYER 0x480 /* IFaceSelected: selected object */
 #define SEL_ID     0x47C
 #define SEL_BUFFER 0x154 /* Buffer the panel writes text with */
+#define SEL_CELL   0x48C /* short l r t b: the group grid's first cell (update_selected) */
 #define VT_IS_UNIT     0x18  /* Object vtable */
 #define VT_MAX_HITS    0x11C /* ObjectData::max hits(0) */
 #define VT_FIND_TEX    0xA4  /* GraphicWinXML::find_tex(name, id, int *) */
@@ -80,6 +83,8 @@ typedef void(__attribute__((thiscall)) *fn_close_t)(void *self);
 typedef void(__attribute__((thiscall)) *fn_seti_t)(void *self, int v);
 typedef void *(__attribute__((thiscall)) *find_t)(void *self, const void *name, int id, void *out);
 typedef void(__attribute__((thiscall)) *rm_add_t)(void *self, const void *tex, int x, int y, unsigned color, int type);
+typedef void(__attribute__((thiscall)) *rm_add_rect_t)(void *self, const void *tex, const short *rect, unsigned color,
+                                                        int type);
 typedef int(__attribute__((thiscall)) *write_t)(void *self, const void *str, const short *rect, int len);
 
 void kills_load_config(const char *ini_path)
@@ -173,6 +178,26 @@ __attribute__((used)) int c_take_damage(char *self, int a1, int a2, int a3, int 
     return r;
 }
 
+/* The skull, size x size at x, y: ui-theme's (qol_buttons.tga, the user's Gemini picture,
+   2026-11-01: "kills_skull" 96 px for large spots, "kills_skull_small" 24 px for the 14-16 unit
+   ones, so the GPU does not shrink it fourfold), else the game's 14 px one on the attack icon's
+   texture (TEX_COMMON). */
+static void draw_skull(const unsigned char *attack, int x, int y, int size, int large)
+{
+    const void *tex = qol_iface_tex(large ? "kills_skull" : "kills_skull_small");
+    static _Alignas(16) unsigned char game[16];
+    if (!tex) {
+        memcpy(game, attack, 16);
+        *(short *)(game + 4) = SKULL_L;
+        *(short *)(game + 6) = SKULL_L + SKULL_W;
+        *(short *)(game + 8) = SKULL_T;
+        *(short *)(game + 10) = SKULL_T + SKULL_W;
+        tex = game;
+    }
+    short r[4] = { (short)x, (short)(x + size), (short)y, (short)(y + size) };
+    ((rm_add_rect_t)VA(VA_RM_ADD_RECT))((void *)VA(VA_IFACE_RM), tex, r, *(unsigned *)VA(VA_WHITE), 1);
+}
+
 static int can_attack(char *obj)
 {
     char *type = *(char **)(obj + OBJ_TYPE);
@@ -191,15 +216,40 @@ static void *find_named(char *self, int vt_off, const char *name, int id, void *
     return r;
 }
 
+/* The skull h x h and the kills after it, the number ending at `right` (panel units). */
+void kills_draw_count(char *panel, int kills, int right, int y, int h)
+{
+    unsigned char *attack = find_named(panel, VT_FIND_TEX, "stat_attack", -1, NULL);
+    int nh = h * 8 / 10, nw = hud_number(kills, 0, 0, nh, 0, 0);
+    if (nw > 0) {
+        if (attack)
+            draw_skull(attack, right - nw - 3 - h, y, h, 1);
+        hud_number(kills, right - nw, y + (h - nh) / 2, nh, 0xFFFFFFFF, 1);
+        return;
+    }
+    if (attack)
+        draw_skull(attack, right - 32 - h, y, h, 1);
+    void *msg = (void *)VA(VA_MSG);
+    ((fn_seti_t)VA(VA_STRING_SETI))(msg, kills);
+    int len = *(unsigned short *)((char *)msg + 8);
+    short r[4] = { (short)(right - 30), (short)right, (short)y, (short)(y + h) };
+    if (len)
+        ((write_t)VA(VA_WRITE_CENT))(panel + SEL_BUFFER, msg, r, len);
+}
+
 /* Called right after on_redraw drew the stats: `self` is the IFaceSelected panel. */
 __attribute__((used)) void c_kills_stat(char *self, char *frame)
 {
-    if (!g_kills_enabled)
-        return;
     int p = *(int *)(self + SEL_PLAYER), id = *(int *)(self + SEL_ID);
     char *obj = object(p, id);
+    if (!obj || !(obj[OBJ_FLAGS] & 1))
+        return;
     /* attackers, and launchers whose aircraft or missiles have kills (Airbase, Carrier, Silo) */
-    if (!obj || !(obj[OBJ_FLAGS] & 1) || (!can_attack(obj) && !kills_of(p, id, obj)))
+    int show = g_kills_enabled && (can_attack(obj) || kills_of(p, id, obj));
+    /* a unit: the kills go to the right half with its rank (ranks.c, the user, 2026-11-02) */
+    if (((fn_int_t)(*(void ***)obj)[VT_IS_UNIT / 4])(obj) && ranks_draw_panel(self, obj, kills_of(p, id, obj), show))
+        return;
+    if (!show)
         return;
 
     int *used = (int *)(frame + FR_USED), col = -1, row = -1;
@@ -234,15 +284,8 @@ __attribute__((used)) void c_kills_stat(char *self, char *frame)
             rect[0] = rect[1] - bw;
     }
     if (attack) {
-        /* The skull, as an IFaceTex on the same texture as the attack icon (20x20 cell). */
-        static _Alignas(16) unsigned char skull[16];
-        memcpy(skull, attack, 16);
-        *(short *)(skull + 4) = SKULL_L;
-        *(short *)(skull + 6) = SKULL_L + SKULL_W;
-        *(short *)(skull + 8) = SKULL_T;
-        *(short *)(skull + 10) = SKULL_T + SKULL_W;
         int cell_x = col ? slot[1] - 20 : slot[0];
-        ((rm_add_t)VA(VA_RM_ADD))(rm, skull, cell_x + 3, slot[2] + 1, white, 1);
+        draw_skull(attack, cell_x + 3, slot[2] + 1, SKULL_W, 0);
     }
 
     void *msg = (void *)VA(VA_MSG);
@@ -279,18 +322,31 @@ __attribute__((used, thiscall)) void c_kills_group_name(char *self, const short 
         total += k;
         fighters |= k > 0 || can_attack(obj);
     }
-    if (!fighters)
-        return;
     unsigned char *attack = find_named(self, VT_FIND_TEX, "stat_attack", -1, NULL);
-    if (attack) {
-        static _Alignas(16) unsigned char skull[16];
-        memcpy(skull, attack, 16);
-        *(short *)(skull + 4) = SKULL_L;
-        *(short *)(skull + 6) = SKULL_L + SKULL_W;
-        *(short *)(skull + 8) = SKULL_T;
-        *(short *)(skull + 10) = SKULL_T + SKULL_W;
-        ((rm_add_t)VA(VA_RM_ADD))((void *)VA(VA_IFACE_RM), skull, rect[0] + 4, rect[2], *(unsigned *)VA(VA_WHITE), 1);
+    /* A group without a name (selpanel.c keeps the top row for the kills of every multiple
+       selection): the skull and the number as large as the row's first cell takes them (the user,
+       2026-11-01). A named group shows them only when it fights. */
+    int unnamed = *(int *)(group + 0x9D8) == -1 && g_sel_kills_row;
+    if (!fighters && !unnamed)
+        return;
+    if (unnamed && attack) {
+        short *cell = (short *)(self + SEL_CELL);
+        int ch = rect[3] - rect[2], cw = cell[1] - cell[0];
+        if (cw <= 0 || cw > rect[1] - rect[0])
+            cw = rect[1] - rect[0];
+        int s = ch - 4 < cw / 2 ? ch - 4 : cw / 2, nh = ch * 6 / 10;
+        int x = rect[0] + 2, room = cw - s - 7;
+        int nw = hud_number(total, 0, 0, nh, 0, 0);
+        while (nw > room && nh > 8)
+            nw = hud_number(total, 0, 0, --nh, 0, 0);
+        if (nw > 0) {
+            draw_skull(attack, x, rect[2] + (ch - s) / 2, s, 1);
+            hud_number(total, x + s + 3 + (room - nw) / 2, rect[2] + (ch - nh) / 2, nh, 0xFFFFFFFF, 1);
+            return;
+        }
     }
+    if (attack)
+        draw_skull(attack, rect[0] + 4, rect[2], SKULL_W, 0);
     void *msg = (void *)VA(VA_MSG);
     ((fn_seti_t)VA(VA_STRING_SETI))(msg, total);
     int len = *(unsigned short *)((char *)msg + 8);
@@ -357,9 +413,11 @@ void kills_install(void)
         return;
     g_orig_take_damage = hook_trampoline(td, 9, mem);
     hook_jmp5(td, hk_take_damage);
-    if (g_kills_enabled) {
+    if (sd_ok) { /* the kills stat, and a unit's rank panel (ranks.c) */
         g_orig_stats_done = hook_trampoline(sd, 5, mem + 32);
         hook_jmp5(sd, hk_kills_stat);
+    }
+    if (g_kills_enabled) {
         unsigned char *gn = (unsigned char *)VA(VA_GROUP_NAME_CALL);
         if (gn[0] == 0xE8 && (UINT_PTR)(gn + 5 + *(INT32 *)(gn + 1)) == VA(VA_GROUP_NAME)) {
             DWORD old;

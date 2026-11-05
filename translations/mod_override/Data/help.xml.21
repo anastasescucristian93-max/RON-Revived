@@ -423,7 +423,11 @@ dostępne.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{BEZ BRONI NUKLEARNEJ}: Zaznacz to pole, aby grać bez broni nuklearnej. Nikt nie może budować pocisków nuklearnych, ICBM ani pocisków przechwytujących; pociski manewrujące zostają.
+{BROŃ NUKLEARNA}: ile broni nuklearnej może wybuchnąć w tej grze. Przeciągnij suwak:
+<BULLET/>Skrajnie w lewo, Brak: nikt nie może budować pocisków nuklearnych, ICBM ani pocisków przechwytujących; pociski manewrujące zostają.
+<BULLET/>Od 1 do 250: zegar Armagedonu zaczyna od tej liczby. Gdy tyle broni nuklearnej wybuchnie lub będzie w powietrzu, nie da się wystrzelić kolejnej. Im dalej w prawo, tym większe skoki.
+<BULLET/>Skrajnie w prawo, Bez limitu: bez zegara Armagedonu.
+Kliknij prawym przyciskiem, aby wrócić do zasady gry: 4, plus 1 na naród i 2 na drużynę. W grze wieloosobowej zmienić to może tylko host.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -3320,6 +3324,10 @@ bibliotece.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Niskie umocnienie polowe dla jednego oddziału piechoty strzeleckiej, budowane przez samą piechotę (przycisk budowy w jej panelu), która okopuje się w nim po ukończeniu. Kliknij je prawym przyciskiem, mając zaznaczoną piechotę strzelecką (albo użyj przycisku garnizonu i jego skrótu), aby się okopać: najpierw wał ziemny z palisadą, potem gabiony, a na końcu worki z piaskiem. Okopani żołnierze trzymają pozycję i walczą własną bronią: +1 do zasięgu, ataki o 40% szybsze, +20% obrażeń. Umocnienie przyjmuje każde trafienie wymierzone w nich, dopóki nie zostanie zniszczone; ma połowę punktów życia wieży z twojej epoki. Jednostki walczące wręcz nie mogą się okopać. Okopanie kosztuje 35% ceny oddziału, +10% za każdy oddział już okopany (do +150%). Przycisk Opuść umocnienie opróżnia je.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Stalowe zapory przeciwpancerne na jednym polu, budowane przez obywateli w epoce nowoczesnej i epoce informacji. Nic przez nie nie przejdzie, nawet twoje własne jednostki: wróg musi je zniszczyć, żeby przejść. Ustaw je w linii, by zamknąć przejście, i zostaw drogę dla własnej armii. 1200 punktów wytrzymałości i ciężki pancerz: karabiny ledwo je rysują, czołgi, artyleria i lotnictwo je niszczą.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

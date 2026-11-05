@@ -4,18 +4,27 @@
 # The game folder keeps a copy as RON_Revived_install.ps1 for the launcher's updater
 # (RON_Revived_update.ps1), which passes -Payload, its downloaded files, and -Parts, the parts
 # of the pack they are: the files of the other parts stay as they are.
-param([string]$GameDir, [string]$Payload, [string]$Parts)
+# The extras (optional parts, such as the nation music) are not in the whole zip: the launcher's
+# Extras tray installs them through RON_Revived_extras.ps1, which passes -Parts <extra>, and
+# removes them with -Remove <extra>. A whole install keeps the extras already installed.
+param([string]$GameDir, [string]$Payload, [string]$Parts, [string]$Remove)
 
 $ErrorActionPreference = "Stop"
 $here = $PSScriptRoot
 if (-not $payload) { $payload = Join-Path $here "game" }
-$only = if ($Parts) { @($Parts -split "," | ForEach-Object { $_.Trim().ToLower() }) + "meta" } else { $null }
+# the optional parts (package\build_package.py EXTRAS)
+$extras = @("music")
+# the parts in the payload: the files of the others stay. The version and parts files ("meta") come
+# with the whole pack and the updater's payloads, not with an extra's.
+$only = if ($Parts) { @($Parts -split "," | ForEach-Object { $_.Trim().ToLower() }) } else { @("core", "art", "meta") }
+if ($Parts -and (Test-Path (Join-Path $payload "RON_Revived_parts.txt"))) { $only += "meta" }
 
 # the part of the pack a game file belongs to (package\build_package.py has the same rule)
 function Get-Part([string]$rel) {
     $r = $rel.ToLower()
     if ($r -eq "ron_revived_version.txt" -or $r -eq "ron_revived_parts.txt") { return "meta" }
-    if ($r.StartsWith("mod_override\sounds\tracks\")) { return "music" }
+    # the tracks and their list, sound.xml and its copies per language (sound.xml.21, ...)
+    if ($r.StartsWith("mod_override\sounds\tracks\") -or $r.StartsWith("mod_override\data\sound.xml")) { return "music" }
     if ($r.StartsWith("nation_art\") -or $r.StartsWith("mod_override\art\")) { return "art" }
     return "core"
 }
@@ -43,7 +52,7 @@ function Find-GameDir {
     return $null
 }
 
-if (-not (Test-Path $payload)) {
+if (-not $Remove -and -not (Test-Path $payload)) {
     Write-Host "The game\ folder is missing next to install.bat."
     Write-Host "Extract the whole zip first (right-click, Extract All), then run install.bat from there."
     exit 1
@@ -70,6 +79,39 @@ $backup = Join-Path $GameDir $backupName
 $old = @{}
 if (Test-Path $manifest) {
     foreach ($l in Get-Content $manifest) { if ($l.Trim()) { $old[$l.Trim().ToLower()] = $l.Trim() } }
+}
+$partsFile = Join-Path $GameDir "RON_Revived_parts.txt"
+$oldParts = @{}
+if (Test-Path $partsFile) {
+    foreach ($l in Get-Content $partsFile) { if ($l -match '^\s*([A-Za-z0-9]+)\s*=\s*(\S+)') { $oldParts[$Matches[1].ToLower()] = $Matches[2] } }
+}
+
+# -Remove <extra>: its files go, the game files they had replaced come back
+if ($Remove) {
+    $part = $Remove.Trim().ToLower()
+    if ($extras -notcontains $part) { Write-Host "$part is not an extra."; exit 1 }
+    $keep = New-Object System.Collections.Generic.List[string]
+    $dirs = @{}
+    $n = 0
+    foreach ($key in $old.Keys) {
+        $rel = $old[$key]
+        if ((Get-Part $rel) -ne $part) { $keep.Add($rel); continue }
+        $dst = Join-Path $GameDir $rel
+        Remove-Item -ErrorAction SilentlyContinue $dst
+        $bak = Join-Path $backup $rel
+        if (Test-Path $bak) { Move-Item -Force $bak $dst }
+        $dirs[(Split-Path $dst)] = 1
+        $n++
+    }
+    Set-Content -Encoding ASCII $manifest $keep
+    if (Test-Path $partsFile) {
+        Set-Content -Encoding ASCII $partsFile @(Get-Content $partsFile | Where-Object { $_ -notmatch "^\s*$part\s*=" })
+    }
+    foreach ($d in $dirs.Keys) {
+        if ((Test-Path $d) -and -not (Get-ChildItem -Force $d)) { Remove-Item $d }
+    }
+    Write-Host "RON Revived: $part removed ($n files)."
+    exit 0
 }
 
 # a winmm.dll that is neither ours nor from the older Smooth Camera: another mod
@@ -142,6 +184,18 @@ if (-not ($bytes[$pe + 22] -band 0x20)) {
     [System.IO.File]::WriteAllBytes($exe, $bytes)
     Set-Content -Encoding ASCII (Join-Path $GameDir "RON_Revived_laa.txt") "riseofnations.exe: 4 GB flag set by RON Revived"
     $laa = $true
+}
+
+# the extras installed before stay installed (their files were kept above; the whole zip and an
+# update of other parts bring a parts file without them)
+if (Test-Path $partsFile) {
+    $lines = @(Get-Content $partsFile)
+    foreach ($x in $extras) {
+        if ($oldParts.ContainsKey($x) -and $only -notcontains $x -and -not ($lines -match "^\s*$x\s*=")) {
+            $lines += "$x=$($oldParts[$x])"
+        }
+    }
+    Set-Content -Encoding ASCII $partsFile $lines
 }
 
 # ron_camera.ini is ours even when it was kept

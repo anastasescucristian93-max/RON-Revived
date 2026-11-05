@@ -953,13 +953,14 @@ __attribute__((used)) int c_en_group_count(char *group, int *a)
     return n;
 }
 
-/* The computer players' planner never builds a Nest. */
+/* The computer players' planner never builds a Nest, nor Tank Traps (it would scatter them
+   around its cities and block its own armies). */
 __attribute__((used)) int c_en_type_avail(char *ld, int *a)
 {
     unsigned ra = (unsigned)a[-1];
-    if (((g_entrench_enabled && a[0] == NEST) || dc_is_expansion(a[0])) && ra >= VA(VA_CREATE_BUILDINGS) &&
-        ra < VA(VA_CREATE_UNITS))
-        return 0; /* nor a Data Center Expansion (only the Data Center orders them) */
+    if (((g_entrench_enabled && a[0] == NEST) || a[0] == TANK_TRAPS || dc_is_expansion(a[0])) &&
+        ra >= VA(VA_CREATE_BUILDINGS) && ra < VA(VA_CREATE_UNITS))
+        return 0; /* nor a city district (only a city orders them) */
     return ((fn2_t)g_orig_type_avail)(ld, a[0], a[1]);
 }
 

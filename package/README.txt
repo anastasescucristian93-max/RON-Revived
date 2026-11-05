@@ -23,6 +23,10 @@ under [update] in ron_camera.ini.) You can also install a new version by hand, t
 over the old one. Either way your ron_camera.ini (your settings) is kept; the new defaults are
 written next to it as ron_camera.default.ini.
 
+EXTRAS: optional content (the nation music, and more later) is not in this zip. Click the tray
+on the left edge of the game's launcher (EXTRAS) to slide it out, and download only what you
+want; Remove takes an extra out again. Extras you installed stay when you update the pack.
+
 Manual install: copy everything inside the game\ folder into the game folder
 (...\steamapps\common\Rise of Nations), next to riseofnations.exe, and say yes to merging the
 mod_override and nation_art folders.

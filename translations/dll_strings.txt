@@ -45,12 +45,15 @@ Bonuses:
 -%d%% damage taken,
 +1 range,
 heals out of combat,
+# ranks.c, the selection panel's right half: the level before the experience bar
+Lv %d
 # qol.c, the buttons' help
 Military buildings: select all your Barracks, Stables, Siege Factories and Airbases (Auto Plants and Factories in later ages), and train from all of them.
 Army: select all your military units.
 Airbases: select all your Airbases, and build aircraft from all of them.
 Docks: select all your Docks (Anchorages and Shipyards in later ages), and build ships from all of them.
 AI assistant: let the computer play your nation (Full control) or take it back (No control) with one click, choose what it may buy (economy, military, research, new cities, wonders) and how much of each resource it must leave you.
+Minimap size: click for the next one (small, medium, large).
 # play_button.c
 PLAY
 # survival.c, the Survival mode's clocks (followed by two spaces and m:ss)
@@ -58,5 +61,19 @@ Survive
 Next wave in
 Boss wave in
 Survived!
-# nonukes.c, the check box of the game setup
-No Nukes
+# nonukes.c, the Nukes slider of the game setup ("Nukes: 25")
+Nukes
+game rule
+none
+unlimited
+# cityrepair.c, the city's repair switch (tooltip)
+City Repair: On
+City Repair: Off
+The city repairs its damaged buildings by itself, one at a time, the most damaged first, and pays for it as a Citizen does.
+Large City: as fast as 1 Citizen. Major City: as fast as 2 Citizens.
+A building waits %d seconds after its last hit. Wonders within the city's radius are repaired too.
+Waiting: not enough resources to repair.
+Repairing a building: %d%% of its hit points.
+Nothing to repair right now.
+Click to turn it off.
+Click to turn it on.

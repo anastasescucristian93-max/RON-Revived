@@ -64,7 +64,6 @@
 #define INCOME_KEY     0x872
 #define RES_WEALTH     2      /* resource order: food, timber, wealth, knowledge, metal, oil */
 #define RES_KNOWLEDGE  3
-#define DATA_CENTER    0x1C1  /* building type: Washington Monument, building 35 of buildingrules.xml */
 #define LD_BUILT       0x5222 /* word per type: buildings owned */
 #define LD_BUILDING    0x5A22 /* word per type: being built or queued (Leader::track_queued) */
 #define NUM_RES        6
@@ -173,8 +172,7 @@ __attribute__((used)) int c_type_eligible(char *self, int type, int a)
         return ((fn2_t)g_orig_type_eligible)(self, type, a) ? 1 : 0;
     if (!g_dc_enabled)
         return ((fn2_t)g_orig_type_eligible)(self, type, a);
-    if (type == DATA_CENTER)
-        return 0; /* replaced by the districts */
+    /* the Data Center's slot (the Washington Monument) is the Tank Traps' since 2026-11-05 */
     int r = ((fn2_t)g_orig_type_eligible)(self, type, a);
     if (r && is_expansion(type) && !districts_unlocked(self, a))
         return 1; /* shown, disabled (padlock) until the Library is done */

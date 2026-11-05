@@ -207,10 +207,10 @@ static int is_economy_unit(int t)
 
 static int building_kind(int t)
 {
-    if ((t >= 0x20E && t < 0x21F) || t == 0x1C1 || t == DC_EXP_POPULATION || t == DC_EXP_COMMERCE ||
-        t == DC_EXP_EFFICIENCY) /* wonders, Data Center and its Expansions */
+    if ((t >= 0x20E && t < 0x21F) || t == DC_EXP_POPULATION || t == DC_EXP_COMMERCE ||
+        t == DC_EXP_EFFICIENCY) /* wonders and the city districts */
         return K_WONDERS;
-    if ((t >= 0x1AB && t <= 0x1AF) || (t >= 0x1B7 && t <= 0x1BF) || (t >= 0x208 && t <= 0x20D))
+    if ((t >= 0x1AB && t <= 0x1AF) || (t >= 0x1B7 && t <= 0x1BF) || (t >= 0x208 && t <= 0x20D) || t == TANK_TRAPS)
         return K_MILITARY;
     return K_ECONOMY;
 }

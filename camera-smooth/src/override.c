@@ -180,6 +180,30 @@ void *hook_export(HMODULE mod, const char *name, void *repl)
     return tramp;
 }
 
+/* The game, d3dgl and xasl.dll share ucrtbase.dll, whose stdio allows 512 open FILE streams by
+   default. Every <SOUND> of every player's tribe in sound.xml is opened at the start of a game
+   (the game's own: 192 for 8 players; with the nation music 750-930), so the streams ran out and
+   the next model open failed: "art\logchop5.bh3 does not exist for Transform Batch Transform"
+   (2026-11-05). ucrtbase's limit is raised to its maximum. Called from the startup display hook,
+   when ucrtbase is surely initialised (not from DllMain: winmm.dll is the exe's first import). */
+void stdio_raise(void)
+{
+    static int done;
+    if (done)
+        return;
+    done = 1;
+    HMODULE u = GetModuleHandleA("ucrtbase.dll");
+    int (*get)(void) = u ? (int (*)(void))GetProcAddress(u, "_getmaxstdio") : NULL;
+    int (*set)(int) = u ? (int (*)(int))GetProcAddress(u, "_setmaxstdio") : NULL;
+    if (!get || !set) {
+        logf_("open files: ucrtbase.dll not found, limit unchanged");
+        return;
+    }
+    int before = get();
+    int r = set(8192);
+    logf_("open files: limit %d -> %d", before, r == -1 ? before : get());
+}
+
 int g_override_enabled;
 
 void override_load_config(const char *ini_path)

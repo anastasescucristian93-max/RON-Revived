@@ -15,11 +15,17 @@ the files exactly as they go into the game folder:
   - nation_art\: every <mod>\nation_art\ folder (the buildings per nation).
 Romania's Enescu recordings (romania\music\) stay out: they are not free in the US.
 
-For the launcher's updater it also makes dist\RON_Revived-<version>-update\: the pack in three
-parts, each a zip of its own (core; art: nation_art\ and mod_override\art\; music:
-mod_override\sounds\tracks\), and RON_Revived_update.txt, the list the launcher reads: the
-version, where the zips are, and per part a hash of its contents, the zip's SHA-256 and size.
-A part whose files did not change keeps its hash, so players do not download it again.
+For the launcher's updater it also makes dist\RON_Revived-<version>-update\: the pack in
+parts, each a zip of its own (core; art: nation_art\ and mod_override\art\), and
+RON_Revived_update.txt, the list the launcher reads: the version, where the zips are, and per
+part a hash of its contents, the zip's SHA-256 and size. A part whose files did not change keeps
+its hash, so players do not download it again.
+
+The extras (EXTRAS below, e.g. the nation music) are parts too, but optional: they are not in the
+whole zip; the launcher's Extras tray offers them (camera-smooth\src\launcher_extras.c) and the
+updater updates only the ones a player installed. The list names them ("extras=music"), with an
+English name and description for launchers older than their translations. An extra larger than
+GitHub takes in one file comes in several zips, all on its line.
 publish_release.py puts it all on GitHub.
 """
 import datetime
@@ -49,23 +55,45 @@ ROOT_FILES = {
     "entrench.ini": r"entrenchment\entrench.ini",
     "romania.ini": r"romania\romania.ini",
     "romania_units.ini": r"romania\romania_units.ini",
-    # the launcher's updater (camera-smooth\src\launcher_update.c starts it)
+    # the launcher's updater (camera-smooth\src\launcher_update.c starts it) and Extras tray
+    # (launcher_extras.c)
     "RON_Revived_update.ps1": r"package\update.ps1",
     "RON_Revived_install.ps1": r"package\install.ps1",
+    "RON_Revived_extras.ps1": r"package\extras.ps1",
 }
+
+# the crash panel (camera-smooth\src\crash.c starts it); made by crash_panel() with the Discord
+# webhook from package\crash_webhook.txt, which stays out of the repository
+CRASH_PANEL = "RON_Revived_crash.ps1"
+CRASH_MARKER = "__RON_REVIVED_CRASH_WEBHOOK__"
 
 # the parts the updater downloads one by one; everything else is core (install.ps1 has the same
 # rule). The version and parts files are written by the updater itself.
-PARTS = ["core", "art", "music"]
+PARTS = ["core", "art"]
 META = {"ron_revived_version.txt", "ron_revived_parts.txt"}
+
+# optional parts, downloaded from the launcher's Extras tray: id -> the game files that are it
+# (path starts, lower case), its English name and description (translations\launcher.json has
+# ron_extra_<id> and ron_extra_<id>_desc for the launcher in every language). install.ps1 and
+# update.ps1 know the same ids. sound.xml and its copies per language (sound.xml.21, ..., made by
+# translations\) go with the music: without the tracks the game keeps its own list.
+EXTRAS = {
+    "music": {
+        "files": ["mod_override\\sounds\\tracks\\", "mod_override\\data\\sound.xml"],
+        "name": "Nation music",
+        "desc": "54 tracks: each of the 25 nations with music of its own",
+    },
+}
+CHUNK = 1900 * 2**20  # GitHub takes files under 2 GB: a bigger extra comes in several zips
 
 
 def part_of(rel):
     r = rel.lower()
     if r in META:
         return "meta"
-    if r.startswith("mod_override\\sounds\\tracks\\"):
-        return "music"
+    for extra, e in EXTRAS.items():
+        if any(r.startswith(f) for f in e["files"]):
+            return extra
     if r.startswith("nation_art\\") or r.startswith("mod_override\\art\\"):
         return "art"
     return "core"
@@ -103,9 +131,29 @@ def fail(msg):
     sys.exit("package: " + msg)
 
 
+def crash_panel():
+    r"""package\crash.ps1 with the webhook in place, saved as UTF-8 with a BOM (Windows PowerShell 5.1
+    reads a file without one as ANSI, and the panel speaks ten languages)"""
+    src = os.path.join(ROOT, "package", "crash.ps1")
+    hook_file = os.path.join(ROOT, "package", "crash_webhook.txt")
+    text = open(src, encoding="utf-8-sig").read()
+    if os.path.isfile(hook_file):
+        hook = open(hook_file, encoding="utf-8").read().strip()
+        if not hook.startswith("https://") or "/api/webhooks/" not in hook:
+            fail(r"package\crash_webhook.txt does not hold a Discord webhook address")
+        text = text.replace(CRASH_MARKER, hook)
+    else:
+        print(r"package: no package\crash_webhook.txt, the crash panel cannot send reports")
+    out = os.path.join(ROOT, "package", "build", CRASH_PANEL)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8-sig", newline="\r\n") as f:
+        f.write(text)
+    return out
+
+
 def gather():
     """game-relative path -> repo file"""
-    files = {}
+    files = {CRASH_PANEL: crash_panel()}
     for name, src in ROOT_FILES.items():
         p = os.path.join(ROOT, src)
         if not os.path.isfile(p):
@@ -196,21 +244,40 @@ def build_parts(version, files):
     out = os.path.join(DIST, f"RON_Revived-{version}-update")
     shutil.rmtree(out, ignore_errors=True)
     os.makedirs(out)
-    lines = [f"version={version}", f"base=https://github.com/{REPO}/releases/download/v{version}/"]
+    lines = [f"version={version}", f"base=https://github.com/{REPO}/releases/download/v{version}/",
+             "extras=" + ",".join(EXTRAS)]
+    for extra, e in EXTRAS.items():
+        lines += [f"name.{extra}={e['name']}", f"desc.{extra}={e['desc']}"]
     content = {}
-    for part in PARTS:
+    for part in PARTS + list(EXTRAS):
         rels = sorted((r for r in files if part_of(r) == part), key=str.lower)
+        if not rels:
+            fail(f"the {part} part has no files")
         h = hashlib.sha256()
         for r in rels:
             h.update(f"{r.lower()}\0{sha256(files[r])}\n".encode("utf-8"))
         content[part] = h.hexdigest()[:32]
-        name = f"RON_Revived-{version}-{part}.zip"
-        zpath = os.path.join(out, name)
-        with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
-            for r in rels:
-                z.write(files[r], os.path.join("game", r))
-        lines.append(f"{part}={content[part]} {sha256(zpath)} {os.path.getsize(zpath)} {name}")
-        print(f"    {part}: {len(rels)} files, {os.path.getsize(zpath) / 2**20:.1f} MB zipped")
+        # in zips of at most CHUNK (before packing)
+        groups, size = [[]], 0
+        for r in rels:
+            n = os.path.getsize(files[r])
+            if groups[-1] and size + n > CHUNK:
+                groups.append([])
+                size = 0
+            groups[-1].append(r)
+            size += n
+        zips = []
+        for i, group in enumerate(groups):
+            name = f"RON_Revived-{version}-{part}" + (f"-{i + 1}" if i else "") + ".zip"
+            zpath = os.path.join(out, name)
+            with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+                for r in group:
+                    z.write(files[r], os.path.join("game", r))
+            zips.append(f"{sha256(zpath)} {os.path.getsize(zpath)} {name}")
+        total = sum(int(z.split()[1]) for z in zips)
+        lines.append(f"{part}={content[part]} " + " ".join(zips))
+        print(f"    {part}{' (extra)' if part in EXTRAS else ''}: {len(rels)} files, {total / 2**20:.1f} MB zipped"
+              + (f" in {len(zips)} zips" if len(zips) > 1 else ""))
     with open(os.path.join(out, "RON_Revived_update.txt"), "w", encoding="ascii", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
     print(f"OK: {out}")
@@ -226,6 +293,8 @@ def main():
     stage = os.path.join(DIST, name)
     shutil.rmtree(stage, ignore_errors=True)
     for rel, src in files.items():
+        if part_of(rel) in EXTRAS:  # downloaded from the launcher's Extras tray
+            continue
         dst = os.path.join(stage, "game", rel)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         shutil.copy2(src, dst)
@@ -246,7 +315,9 @@ def main():
             z.write(p, os.path.join(name, rel))
     size = sum(os.path.getsize(p) for p in walk(stage).values())
     print(f"OK: {zpath}")
-    print(f"    {len(files)} game files, {size / 2**20:.0f} MB unpacked, {os.path.getsize(zpath) / 2**20:.0f} MB zipped")
+    whole = sum(1 for r in files if part_of(r) not in EXTRAS)
+    print(f"    {whole} game files, {size / 2**20:.0f} MB unpacked, {os.path.getsize(zpath) / 2**20:.0f} MB zipped"
+          f" (extras left out: {', '.join(EXTRAS)})")
 
 
 if __name__ == "__main__":

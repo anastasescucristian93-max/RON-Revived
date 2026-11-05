@@ -420,7 +420,11 @@ kullanılabilir hale gelir.
 			</ENTRY>
 			<ENTRY name="SETUPCHECK14">
 				<STRING>
-{NÜKLEER SİLAH YOK}: Nükleer silahlar olmadan oynamak için bu kutuyu işaretleyin. Kimse nükleer füze, kıtalararası füze veya önleyici füze inşa edemez; seyir füzeleri kalır.
+{NÜKLEER SİLAHLAR}: Bu oyunda kaç nükleer silahın patlayabileceği. Kaydırıcıyı sürükleyin:
+<BULLET/>En solda, Yok: kimse nükleer füze, kıtalararası füze veya önleyici füze inşa edemez; seyir füzeleri kalır.
+<BULLET/>1 ile 250 arası: Kıyamet Saati bu sayıdan başlar. Bu kadar nükleer silah patladığında veya havada olduğunda yenisi fırlatılamaz. Sağa doğru adımlar büyür.
+<BULLET/>En sağda, Sınırsız: Kıyamet Saati yok.
+Oyunun kuralına dönmek için sağ tıklayın: 4, artı her ulus için 1 ve her takım için 2. Çok oyunculu oyunda bunu yalnızca kurucu değiştirebilir.
 				</STRING>
 			</ENTRY>
 		</SETUPCHECKS>
@@ -2796,6 +2800,10 @@ bu otomatik olarak gerçekleşir.
 		<ENTRY name="LENINSTATUE">
 			<STRING>
 				<BULLET/>Menzilli piyadelerden oluşan tek bir manga için alçak sahra tahkimatı; piyadelerin kendileri inşa eder (panellerindeki inşa düğmesi) ve tamamlanınca içine siper kazarlar. Siper kazmak için menzilli piyadeyle üzerine sağ tıklayın (ya da garnizon düğmesini ve kısayol tuşunu kullanın): önce çitli bir toprak set, sonra gabyonlar, sonra kum torbaları. Siperdeyken mevzilerini korur ve kendi silahlarıyla savaşırlar: +1 menzil, %40 daha hızlı saldırı, +%20 hasar. Tahkimat yıkılana dek onlara yönelik her darbeyi üstlenir; can puanı, çağınızdaki bir Kulenin yarısı kadardır. Yakın dövüş birimleri siper kazamaz. Siper kazmak manganın fiyatının %35'ine mal olur; zaten siperde olan her manga için +%10 (en fazla +%150). Tahkimatı Terk Et düğmesi onu boşaltır.</STRING>
+		</ENTRY>
+		<ENTRY name="WASHINGTONMONUMENT">
+			<STRING>
+				<BULLET/>Tek kareye kurulan çelik tanksavar engelleri; Modern Çağ ve Bilgi Çağı'nda vatandaşlar tarafından inşa edilir. İçlerinden hiçbir şey geçemez, kendi birlikleriniz bile: düşman geçmek için onları yok etmek zorundadır. Bir geçidi kapatmak için onları sıra hâlinde dizin ve kendi ordunuza bir yol bırakın. 1200 can puanı ve ağır zırh: tüfekler onları zar zor çizer, tanklar, topçu ve uçaklar onları yıkar.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

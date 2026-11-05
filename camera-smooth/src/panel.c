@@ -461,6 +461,8 @@ __attribute__((used)) void c_btn_redraw(char *btn)
     if (qol_button_redraw(btn)) /* the round buttons of the qol row */
         return;
     int look = g_panel_enabled ? button_look(btn) : LOOK_NORMAL; /* padlock, darker: command_panel */
+    if (cityrepair_button_off(btn)) /* a city's repair switch while it is off */
+        look = LOOK_POOR;
     unsigned char saved[12];
     if (look == LOOK_POOR) { /* darker, the way the game dims disabled buttons (colour scale) */
         memcpy(saved, btn + BTN_COLOR, 12);

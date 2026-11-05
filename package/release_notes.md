@@ -13,7 +13,9 @@ In multiplayer, every player needs the same version.
 
 Once this version is installed, the game's launcher tells you when a new version is out: press **Update** on it, and it downloads only the parts that changed, installs them and starts the game again. No need to come back here.
 
-The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for that updater; you do not need to download them.
+The nation music and other optional content are downloaded from the launcher's **Extras** tray (on its left edge), only if you want them.
+
+The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the updater and the Extras tray; you do not need to download them.
 
 ## What's in it
 

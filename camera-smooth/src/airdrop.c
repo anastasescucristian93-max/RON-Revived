@@ -610,7 +610,9 @@ __attribute__((used)) int c_ad_objects(void *self)
     ranks_frame();                 /* and ranks.c (healing) */
     heal_frame();                  /* and heal.c (the General's Heal) */
     nukefx_frame();                /* and nukefx.c (interceptors, radiation) */
+    nonukes_frame();               /* and nonukes.c (the chosen Armageddon count) */
     romania_frame();               /* and romania.c (unit names by age) */
+    cityrepair_frame();            /* and cityrepair.c (Large and Major Cities repair) */
     mem_frame();                   /* and ron_camera.c (memory in the log) */
     if (!g_airdrop_enabled)
         return 0;
@@ -684,6 +686,7 @@ __attribute__((used)) int c_ad_make_options(char *self)
     entrench_make_options(self); /* entrench.c shares this hook */
     dc_make_options(self);       /* and datacenter.c (the Data Center's Expansion buttons) */
     nukefx_make_options(self);   /* and nukefx.c (the silo's Interceptor button) */
+    cityrepair_make_options(self); /* and cityrepair.c (the city's repair switch) */
     int p = (unsigned char)self[OBJ_OWNER];
     if (!g_airdrop_enabled || p > 7 || p != local_player() || !is_airbase(self) || !has_info_age(p)) {
         airstrike_make_options(self); /* and airstrike.c (the Airbase's strike button) */
@@ -830,6 +833,7 @@ __asm__(".intel_syntax noprefix\n"
         "    push esi\n"
         "    push edi\n"
         "    push ebx\n"
+        "    call _circle_batch_room\n" /* rally.c */
         "    push 0\n"  /* float 0 */
         "    push 0\n"
         "    push 1\n"
@@ -935,7 +939,7 @@ void airdrop_load_config(const char *dir)
 void airdrop_install(void)
 {
     if (!g_airdrop_enabled && !g_entrench_enabled && !g_dc_enabled && !g_ranks_enabled && !g_heal_enabled &&
-        !g_nuke_sim_enabled && !airstrike_wanted() && !g_romania_enabled)
+        !g_nuke_sim_enabled && !airstrike_wanted() && !g_romania_enabled && !cityrepair_wanted())
         return;
     static const struct {
         const char *name;

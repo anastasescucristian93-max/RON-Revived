@@ -343,6 +343,8 @@ static int over_button(char *win)
 /* Called by the stub that replaces Game::run's call to CommandManager::start. */
 __attribute__((used)) void c_play_wait(void)
 {
+    stdio_raise(); /* before the tracks are opened, if the display hook is off */
+    crash_install();
     char *game = *(char **)VA(VA_GAME_PTR);
     char *win = *(char **)VA(VA_LOADING_PTR);
     if (!g_play_enabled || !game || !win || (game[GAME_FLAGS0] & 4) || (game[GAME_FLAGS2] & 8) ||
@@ -391,6 +393,8 @@ __attribute__((used)) void c_play_wait(void)
     /* only the frame counter: the game's own clock starts in CommandManager::start */
     *(DWORD *)(game + GAME_FPS_TIME) = (*(DWORD(WINAPI **)(void))VA(VA_TIMEGETTIME))();
     logf_("play button: starting after %.1f s", now_s() - g_wait_since);
+    crash_test_now();
+    mem_log("at the start");
 }
 
 void hk_play_start(void);
