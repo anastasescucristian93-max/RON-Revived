@@ -26,7 +26,7 @@ C:\AI\ComfyUI-Easy-Install\ComfyUI-Easy-Install\python_embeded\python.exe ..\rom
 python tools/make_traps.py gemini/tank_traps.jpg work/traps_matte.png [--grid 2x2] [--order 0,1,2,3]
 ```
 
-It writes `work/art/tank_traps_0..3.tga` (one canvas and origin for all four), the depth mesh `tank_traps_0z.bh3`, the offsets, the build menu icon and `work/preview_tank_traps.png`. `build_data.py` adds the Tank Traps only once that art is there. The game draws `tank_traps_0.tga`; the `[all]` rule `tank_traps_0.tga~4:pick` in `roman-buildings/nation_art.ini` gives every trap one of the four for good, from its place on the map (`nation_art.c`).
+It writes `work/art/tank_traps_0..3.tga` (one canvas and origin for all four), the depth mesh `tank_traps_0z.bh3`, the offsets, the build menu icon and `work/preview_tank_traps.png`. `build_data.py` adds the Tank Traps only once that art is there. The game draws `tank_traps_0.tga`; the `[all]` rule `tank_traps_0.tga~4:pick` in `roman-buildings/nation_art.ini` gives every trap one of the four for good, from its place on the map (`nation_art.c`). Installed now: one hedgehog only (`gemini/tank_traps.jpg`, `--grid 1x1 --order 0,0,0,0 --wire 8`), so all four files are the same picture until three more looks are made.
 
 ## Files
 

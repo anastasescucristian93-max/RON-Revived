@@ -49,7 +49,7 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - A new building: **Tank Traps**, steel anti-tank obstacles on a single tile. Citizens build them from the **military** build menu (next to the Lookout), in the Modern and Information Ages (ages 7 and 8).
 - Nothing gets through them, your own units neither: an enemy has to destroy them to pass. Lay them in a line to close a gap or a bridge, and leave your army a way out.
 - 20 Metal (+5 for every one you own), 1200 hit points, armor 8 (as a Redoubt: rifles barely scratch them, tanks, artillery and aircraft break them), no weapon, built in about 13 seconds by one Citizen. They stay yours when the city nearby is captured, like Towers.
-- Four looks: each trap gets one of them, so a line of traps does not look like one picture repeated.
+- The look: a steel hedgehog wrapped in barbed wire.
 - Computer players do not build them (they would close in their own armies).
 - They take the place of the scenario-only Washington Monument, so scenarios that use the monument show Tank Traps instead. In multiplayer every player needs the same mod files.
 
