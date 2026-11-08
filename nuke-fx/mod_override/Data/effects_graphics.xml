@@ -1347,6 +1347,8 @@
     <UNDERLAY name="NukeTarget" tu="0" tv="0" twidth="512" renderstate="Interface Blend" growth="1" tex0="14" tex1="-1" passnum="0"/>
     <UNDERLAY name="NukeHaze" tu="0" tv="0" twidth="256" renderstate="Interface Blend" growth="1" tex0="15" tex1="-1" passnum="0"/>
     <UNDERLAY name="NukeTargetGlow" tu="0" tv="0" twidth="512" renderstate="Shockwave Blend" growth="1" tex0="16" tex1="-1" passnum="0"/>
+    <UNDERLAY name="NukeCore" tu="0" tv="0" twidth="512" renderstate="Interface Blend" growth="1" tex0="17" tex1="-1" passnum="0"/>
+    <UNDERLAY name="NukeCoreGlow" tu="0" tv="0" twidth="512" renderstate="Shockwave Blend" growth="1" tex0="18" tex1="-1" passnum="0"/>
     <TEXTURE file="./art/UnitUnderlays.tga"/>
     <TEXTURE file="./terrain art/rivers/bigturb.tga"/>
     <TEXTURE file="./terrain art/rivers/bloodturb.tga"/>
@@ -1364,6 +1366,8 @@
     <TEXTURE file="./art/nuke_target.tga"/>
     <TEXTURE file="./art/nuke_haze.tga"/>
     <TEXTURE file="./art/nuke_target_glow.tga"/>
+    <TEXTURE file="./art/nuke_core.tga"/>
+    <TEXTURE file="./art/nuke_core_glow.tga"/>
   </UNDERLAYS>
   <GOODS>
     <GOOD name="Food" icon_row="0" icon_col="7" model="" texture="">

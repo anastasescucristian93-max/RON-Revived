@@ -3485,6 +3485,10 @@
     <IFACETEX name="rank_spark" texture="TEX_REVIVED_RANKS" left="208" top="0" width="24" height="24"/>
     <IFACETEX name="heal_plus" texture="TEX_REVIVED_RANKS" left="200" top="64" width="48" height="48"/>
     <IFACETEX name="repair_pliers" texture="TEX_REVIVED_RANKS" left="144" top="120" width="48" height="48"/>
+    <IFACETEXLOAD id="TEX_REVIVED_MMFRAME" file=".\art\revived\minimap_frame.tga" pixformat="PF_32"/>
+    <IFACETEX name="mm_frame_down" texture="TEX_REVIVED_MMFRAME" left="4" top="0" width="140" height="110"/>
+    <IFACETEX name="mm_frame_up" texture="TEX_REVIVED_MMFRAME" left="4" top="112" width="140" height="110"/>
+    <IFACETEX name="mm_frame_plate" texture="TEX_REVIVED_MMFRAME" left="150" top="0" width="40" height="40"/>
     <IFACETEXLOAD id="TEX_REVIVED_ASSIST" file=".\art\revived\assist_panel.tga" pixformat="PF_32"/>
     <IFACETEX name="assist_back" texture="TEX_REVIVED_ASSIST" left="0" top="0" width="320" height="352"/>
     <IFACETEX name="assist_track" texture="TEX_REVIVED_ASSIST" left="0" top="370" width="288" height="40"/>
@@ -3656,9 +3660,9 @@
     <IFACERECT name="right_window" left="655" right_inverse="14" top="34" height="161"/>
     <IFACERECT name="bar_window" left="0" top="0" width="1024" height="26"/>
     <!--<IFACERECT name="display_button" left="1010" top="27" width="11" height="162"/>-->
-    <IFACERECT name="cap_area" left="200" top="0" width="217" height="26"/>
-    <IFACERECT name="pop_cap" left="205" top="2" width="121" height="21"/>
-    <IFACERECT name="city_cap" left="328" top="2" width="84" height="21"/>
+    <IFACERECT name="cap_area" left="252" top="0" width="217" height="26"/>
+    <IFACERECT name="pop_cap" left="257" top="2" width="121" height="21"/>
+    <IFACERECT name="city_cap" left="380" top="2" width="84" height="21"/>
     <IFACERECT name="help_button" right_inverse="26" top="4" width="-21" height="17"/>
     <IFACERECT name="menu_button" right_inverse="4" top="4" width="-22" height="17"/>
     <IFACERECT name="button_row_area" left="0" top="0" width="105" height="25"/>
@@ -6631,7 +6635,7 @@
     </BUTTON>
     <IFACERECT name="back" left="10" top="10" right_inverse="10" bottom_inverse="10"/>
   </SYNCDISPLAY>
-  <IFACERESOURCES left="0" top="0" width="348" height="158">
+  <IFACERESOURCES left="0" top="0" width="400" height="158">
     <IFACEPOINT name="item_offsets" x="4" y="4"/>
     <IFACETEX name="resource_button_tex" texture="TEX_CIV" left="188" top="1" width="39" height="17"/>
     <IFACETEX name="resource_item_tex0" texture="TEX_COMMON" left="364" top="85" width="7" height="19"/>
@@ -6679,7 +6683,7 @@
     <IFACETEX name="first_good_cap_tex" texture="TEX_COMMON" left="96" top="149" width="19" height="19"/>
     <IFACETEX name="first_good_tex" texture="TEX_COMMON" left="106" top="169" width="21" height="19"/>
     <STYLE CHILD="1" NO_SET_RENDERTARGET="1" CLIENTDRAG="1"/>
-    <IFACERECT name="main_rect" left="0" top="0" width="348" height="158"/>
+    <IFACERECT name="main_rect" left="0" top="0" width="400" height="158"/>
     <IFACERECT name="market_rect0" left="0" top="0" width="21" height="158"/>
     <IFACERECT name="market_rect1" left="0" top="0" width="150" height="158"/>
     <IFACERECT name="market_button_rect0" left="4" top="4" width="14" height="152"/>
@@ -6687,12 +6691,12 @@
     <IFACERECT name="market_title_rect" left="21" top="5" width="124" height="21"/>
     <IFACERECT name="market_buy_rect" left="21" top="31" width="60" height="21"/>
     <IFACERECT name="market_sell_rect" left="85" top="31" width="60" height="21"/>
-    <IFACERECT name="resource_rect0" left="0" top="0" width="198" height="31"/>
-    <IFACERECT name="resource_rect1" left="0" top="0" width="198" height="158"/>
+    <IFACERECT name="resource_rect0" left="0" top="0" width="250" height="31"/>
+    <IFACERECT name="resource_rect1" left="0" top="0" width="250" height="158"/>
     <IFACERECT name="resource_button_rect0" left="5" top="5" width="49" height="21"/>
     <IFACERECT name="resource_button_rect1" left="5" top="5" width="49" height="21"/>
-    <IFACERECT name="resource_cap_rect" left="59" top="5" width="134" height="21"/>
-    <IFACERECT name="resource_item_rect" left="5" top="31" width="188" height="21"/>
+    <IFACERECT name="resource_cap_rect" left="59" top="5" width="186" height="21"/>
+    <IFACERECT name="resource_item_rect" left="5" top="31" width="240" height="21"/>
     <IFACERECT name="infra_rect0" left="0" top="26" width="21" height="131"/>
     <IFACERECT name="infra_rect1" left="0" top="26" width="104" height="131"/>
     <IFACERECT name="infra_button_rect0" left="4" top="4" width="14" height="124"/>

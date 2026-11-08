@@ -202,6 +202,8 @@ void minimap_install(void);
 void minimap_tick(void);
 int minimap_button_pos(int *x, int *y); /* screen, interface units; 0 = no button now */
 void minimap_cycle_size(void);
+int minimap_frame_wanted(void); /* the steel frame round the folded minimap is on */
+void minimap_draw_frame(void);  /* from rankfx.c's Console::on_redraw, under the minimap */
 /* selpanel.c (the full selection panel while the interface is folded, grouped by kind) */
 void selpanel_load_config(const char *ini_path);
 void selpanel_install(void);

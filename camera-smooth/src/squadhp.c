@@ -18,9 +18,18 @@
  * squad_hovered() is also used by hover.c, so that every soldier of the hovered squad gets the
  * hover circle.
  *
+ * Larger health bars (the user, 2026-11-08: "sunt cam minuscule", +75 %): every health bar takes
+ * its size from two small tables per zoom level, width 30 / 20 / 10 and height 3 / 2 / 1 (zoom 6,
+ * 5, the rest), in UnitOut::draw_health_bar(int, int) (units, also their mana, decoy and craft
+ * bars, stacked from the same size) and WallOut::draw_health_bar(int, int) (buildings, walls).
+ * Their immediates are scaled by [qol] health_bar_percent; the squad soldiers' bars here use the
+ * same. The rank insignia (ranks.c) and the production bar (prodbar.c) are placed from the bar's
+ * rect, so they follow.
+ *
  * Only the drawing is changed, so it is multiplayer-safe.
  */
 #include "ron.h"
+#include <string.h>
 
 #define VA_HB           0x00613810u /* UnitOut::draw_health_bar() const, virtual +0x6C */
 #define VA_GP_BAR       0x00908650u /* GraphicPieces::draw_health_bar(rect *, float (xmm2), Color &, Color &), ret 0xC */
@@ -57,6 +66,7 @@ typedef int(__attribute__((thiscall)) *fn2_t)(void *self, int a, int b);
 
 int g_squad_hp_enabled;
 static int g_width_pct = 70;
+static int g_bar_pct = 175; /* [qol] health_bar_percent: every health bar */
 UINT_PTR g_sq_gp_bar, g_sq_w2c;
 void *g_sq_orig;
 
@@ -66,6 +76,16 @@ void squad_hp_load_config(const char *ini_path)
     g_width_pct = GetPrivateProfileIntA("qol", "squad_bar_width_percent", 70, ini_path);
     if (g_width_pct < 20 || g_width_pct > 100)
         g_width_pct = 70;
+    g_bar_pct = GetPrivateProfileIntA("qol", "health_bar_percent", 175, ini_path);
+    if (g_bar_pct < 50 || g_bar_pct > 400)
+        g_bar_pct = 175;
+}
+
+static int bar_w(int w) { return (w * g_bar_pct + 50) / 100; }
+static int bar_h(int h)
+{
+    int v = (h * g_bar_pct + 50) / 100;
+    return v < 1 ? 1 : v;
 }
 
 /* GraphicPieces::draw_health_bar(gp, rect, frac, fill, back) from C */
@@ -210,7 +230,7 @@ __attribute__((used)) int c_sq_hb(char *u)
 
     int level = *(int *)(*(char **)VA(VA_CAMERA) + 0x294);
     int w = level == 6 ? 30 : level == 5 ? 20 : 10, h = level >= 5 ? level - 3 : 1;
-    w = w * g_width_pct / 100;
+    w = bar_w(w) * g_width_pct / 100, h = bar_h(h);
     if (w < 6)
         w = 6;
     short r[4] = { (short)(sx - w / 2), (short)(sx - w / 2 + w), (short)(sy - h / 2), (short)(sy - h / 2 + h) };
@@ -242,8 +262,74 @@ __asm__(".intel_syntax noprefix\n"
 void hk_sq_hb(void);
 
 /* Called from install_hooks once the exe is known to be the supported version. */
+/* ---- every health bar larger ------------------------------------------------------------- */
+
+static int same(UINT32 va, const unsigned char *sig, int n) { return !memcmp((void *)VA(va), sig, n); }
+
+static void put(UINT32 va, const unsigned char *b, int n)
+{
+    DWORD old;
+    unsigned char *at = (unsigned char *)VA(va);
+    VirtualProtect(at, n, PAGE_EXECUTE_READWRITE, &old);
+    memcpy(at, b, n);
+    VirtualProtect(at, n, old, &old);
+}
+
+/* mov dword ptr [ebp+d8], imm32 (C7 45 d8 imm32): the imm32 scaled */
+static int mov_site(UINT32 va, unsigned char d8, int was, int now, int dry)
+{
+    unsigned char sig[7] = { 0xC7, 0x45, d8, (unsigned char)was, 0, 0, 0 };
+    if (dry)
+        return same(va, sig, 7);
+    memcpy(sig + 3, &now, 4);
+    put(va, sig, 7);
+    return 1;
+}
+
+static void health_bars_install(void)
+{
+    if (g_bar_pct == 100)
+        return;
+    static const unsigned char lea_m3[3] = { 0x8D, 0x70, 0xFD }; /* lea esi, [eax-3] (eax = the zoom level) */
+    static const unsigned char mov1[5] = { 0xBE, 0x01, 0x00, 0x00, 0x00 };
+    int ok = 1;
+    for (int dry = 1; dry >= 0 && ok; dry--) {
+        /* UnitOut::draw_health_bar(int, int): width [ebp-4], height esi */
+        ok &= mov_site(0x00613BABu, 0xFC, 30, bar_w(30), dry);
+        ok &= mov_site(0x00613BBCu, 0xFC, 20, bar_w(20), dry);
+        ok &= mov_site(0x00613BC8u, 0xFC, 10, bar_w(10), dry);
+        /* WallOut::draw_health_bar(int, int): width [ebp-8], height [ebp+0xC] */
+        ok &= mov_site(0x00640F84u, 0xF8, 30, bar_w(30), dry);
+        ok &= mov_site(0x00640F99u, 0xF8, 20, bar_w(20), dry);
+        ok &= mov_site(0x00640FA9u, 0xF8, 10, bar_w(10), dry);
+        ok &= mov_site(0x00640F8Bu, 0x0C, 3, bar_h(3), dry);
+        ok &= mov_site(0x00640FA0u, 0x0C, 2, bar_h(2), dry);
+        ok &= mov_site(0x00640FB0u, 0x0C, 1, bar_h(1), dry);
+        if (dry) {
+            ok &= same(0x00613BB2u, lea_m3, 3) && same(0x00613BC3u, lea_m3, 3) && same(0x00613BCFu, mov1, 5);
+        } else { /* lea esi, [eax + (h - zoom)] at zoom 6 and 5, mov esi, h below */
+            unsigned char l6[3] = { 0x8D, 0x70, (unsigned char)(signed char)(bar_h(3) - 6) };
+            unsigned char l5[3] = { 0x8D, 0x70, (unsigned char)(signed char)(bar_h(2) - 5) };
+            unsigned char m[5] = { 0xBE };
+            int h1 = bar_h(1);
+            memcpy(m + 1, &h1, 4);
+            put(0x00613BB2u, l6, 3);
+            put(0x00613BC3u, l5, 3);
+            put(0x00613BCFu, m, 5);
+        }
+    }
+    if (!ok) {
+        logf_("health bars: signature mismatch, they keep the game's size");
+        return;
+    }
+    FlushInstructionCache(GetCurrentProcess(), NULL, 0);
+    logf_("health bars: %d%%, %dx%d / %dx%d / %dx%d", g_bar_pct, bar_w(30), bar_h(3), bar_w(20), bar_h(2), bar_w(10),
+          bar_h(1));
+}
+
 void squad_hp_install(void)
 {
+    health_bars_install();
     if (!g_squad_hp_enabled)
         return;
     /* push ebp / mov ebp,esp / sub esp,0xC */

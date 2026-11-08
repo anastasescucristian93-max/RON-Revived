@@ -13,6 +13,9 @@ Outputs (paths relative to the game folder, under <out>):
   art\anim\anim_bg_0_layer_N.tga  destroyer scene layers redrawn at 2560x1440, one per
                                source\ship_scene\hd\layer_N_*.jpg|png present ("magenta" in the
                                name: drawn on magenta and keyed out like cut_sprites.py)
+  art\anim\anim_bg_3_layer_N.tga  jeep scene layers redrawn (background, explosion, jeep), from
+                               source\jeep_scene\hd (make_jeep_layers.py); the menu then plays
+                               the destroyer and the jeep scenes in turn
   Data\topmenu.xml             TOPMENUSELECTION pointed at menu_parts.tga
   Data\interface.xml, optionswin.xml, setupwin.xml, workshopwin.xml
                                dialog buttons (OK / Cancel...) pointed at menu_parts.tga
@@ -27,6 +30,8 @@ Outputs (paths relative to the game folder, under <out>):
                                row (hud_layout)
   art\revived\rank_icons.tga   veteran rank insignia (build_rank_icons.py), declared next to
                                the qol buttons
+  art\revived\minimap_frame.tga the steel frame round the folded minimap (build_minimap_frame.py),
+                               declared there too
   art\revived\assist_panel.tga the AI assistant panel (build_assist_panel.py), declared there too
   art\revived\hud_digits.tga   the resource panel's digits from a real font (build_hud_digits.py),
                                declared there too
@@ -44,10 +49,12 @@ import build_flags
 import build_hud_digits
 import build_qol_buttons
 import build_rank_icons
+import build_minimap_frame
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ELEMENTS = os.path.join(HERE, "..", "elements", "sheet_01")
 SHIP_HD = os.path.join(HERE, "..", "source", "ship_scene", "hd")
+JEEP_HD = os.path.join(HERE, "..", "source", "jeep_scene", "hd")
 # The menu draws an animation layer at a size proportional to its IFACETEX rect (made for
 # 1280x720), so a larger texture shows magnified, not sharper: keep the game's size.
 SCENE_SIZE = (1280, 720)
@@ -490,6 +497,26 @@ def build_ship_scene(game, out):
     return sizes
 
 
+def build_jeep_scene(out):
+    """The jeep scene (anim_bg_3), from the layers make_jeep_layers.py cut out of the redrawn
+    picture (background, explosion, jeep). Returns True when it was built."""
+    if not os.path.isdir(JEEP_HD):
+        return False
+    names = sorted(n for n in os.listdir(JEEP_HD) if re.match(r"layer_\d_.*\.png$", n))
+    assert [int(n[6]) for n in names] == [0, 1, 2], names
+    for name in names:
+        img = Image.open(os.path.join(JEEP_HD, name)).convert("RGBA")
+        # Centre crop to 16:9 (the pictures are 1024x572), then scale to the scene size.
+        w, h = img.size
+        cw, ch = min(w, round(h * 16 / 9)), min(h, round(w * 9 / 16))
+        img = img.crop(((w - cw) // 2, (h - ch) // 2, (w - cw) // 2 + cw, (h - ch) // 2 + ch))
+        img = img.resize(SCENE_SIZE, Image.LANCZOS)
+        n = int(name[6])
+        write_tga(img, os.path.join(out, "art", "anim", f"anim_bg_3_layer_{n}.tga"))
+        img.save(os.path.join(HERE, "..", f"preview_jeep_layer_{n}.png"))
+    return True
+
+
 # ---- topmenu.xml ---------------------------------------------------------------------------
 
 def tex(name, rect):
@@ -497,7 +524,7 @@ def tex(name, rect):
     return f'<IFACETEX name="{name}" texture="TEX_REVIVED_MENU" left="{x}" top="{y}" width="{w}" height="{h}"/>'
 
 
-def build_xml(game, rects, scene_sizes):
+def build_xml(game, rects, scene_sizes, jeep=False):
     src = open(os.path.join(game, "Data", "topmenu.xml"), encoding="utf-8").read()
     start = src.index("<TOPMENUSELECTION")
     end = src.index("</TOPMENUSELECTION>", start)
@@ -518,9 +545,9 @@ def build_xml(game, rects, scene_sizes):
     head = block[: block.index(">") + 1]
     new_block = head + "\n      " + "\n      ".join(lines) + "\n    "
     xml = src[:start] + new_block + src[end:]
-    # Background: only the destroyer scene, looping (the ambush, horse and jeep scenes are
-    # dropped; their textures stay declared, unused).
-    for scene in ("Ambush", "Horse", "Jeep"):
+    # Background: the redrawn scenes only, in turn (destroyer, then jeep once it is built); the
+    # old ambush and horse scenes are dropped, their textures stay declared, unused.
+    for scene in ("Ambush", "Horse") + (() if jeep else ("Jeep",)):
         xml, n = re.subn(r"[ \t]*<!-- %s animation -->\s*<ANIM\b.*?</ANIM>[ \t]*\r?\n" % scene, "", xml, flags=re.S)
         assert n == 1, scene
     # Menu buttons narrower and a little taller, and the menu windows (whose width the frame
@@ -794,6 +821,7 @@ def qol_buttons(src):
     lines = ['<IFACETEXLOAD id="TEX_REVIVED_QOL" file=".\\%s" pixformat="PF_32"/>' % build_qol_buttons.ATLAS]
     lines += build_qol_buttons.tex_lines()
     lines += build_rank_icons.tex_lines()  # the rank insignia (ranks.c), looked up the same way
+    lines += build_minimap_frame.tex_lines()  # the folded minimap's steel frame (minimap.c)
     lines += build_assist_panel.tex_lines()  # the AI assistant panel (assist_panel.c)
     lines += [build_hud_digits.load_line()] + build_hud_digits.tex_lines()  # the panel's digits (hud.c)
     # the command panel's empty cell, for the folded selection panel's background (selpanel.c)
@@ -871,7 +899,8 @@ def main(game, out):
     ov.save(os.path.join(HERE, "..", "preview_overlay.png"))
 
     scene_sizes = build_ship_scene(game, out)
-    xml = build_xml(game, rects, scene_sizes)
+    jeep = build_jeep_scene(out)
+    xml = build_xml(game, rects, scene_sizes, jeep)
     path = os.path.join(out, "Data", "topmenu.xml")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w", encoding="utf-8").write(xml)
@@ -879,6 +908,7 @@ def main(game, out):
     flags = build_flags.main(out)
     build_qol_buttons.main(out)
     build_rank_icons.main(out)
+    build_minimap_frame.main(out)
     build_assist_panel.main(out)
     build_hud_digits.main(out)
     for name in POP_FILES:

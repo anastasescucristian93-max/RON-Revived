@@ -17,6 +17,19 @@
  * Redoubt 0x1BE). The rest of get_cost (the Forts' steeper curve, the Indians' half ramp, the
  * Korean and Roman discounts) is the game's own. It runs in the simulation (the price is
  * charged with it): in multiplayer every player needs the same setting.
+ *
+ * Computer players laying old levels (seen 2026-11-08, Koreans, Information Age start with All
+ * Technologies). Leader::init gives an "All Technologies" player the levels of a line by setting
+ * their bits at leader +0x6C18 (0x006E446A), but never marks the lower levels obsolete in the
+ * BitMask at +0x6CF4 (bits at +0x6D00), which Leader::gain_tech does when a level is gained in a
+ * match (0x006DDEE2 / 0x006DDF56). type_eligible 0x006DBD10 only rejects a building through
+ * that mask (0x006DC169), so the plain Tower stayed buildable: the build menu showed the Bunker
+ * (UnitOut::make_options asks current_upgrade), the computer players and the Cooperative AI laid
+ * Towers (Leader::produce_building 0x006E1400 takes the type as is).
+ * The hook at the entry of produce_building: for a type of the Tower or Fort line it asks
+ * LeaderData::current_upgrade (the level the menu shows), lays that one instead and marks the
+ * levels below it obsolete, as gain_tech would have, so the planner asks for the right level
+ * afterwards. Also part of the simulation: every player in multiplayer needs the same setting.
  */
 #include "ron.h"
 #include <string.h>
@@ -29,14 +42,24 @@
 #define FORT_FIRST    0x1BB
 #define LINE_LEN      4
 
+#define VA_PRODUCE_BUILDING 0x006E1400u /* Leader::produce_building(type, unit, x): 9-byte prologue */
+#define VA_CURRENT_UPGRADE  0x006E3140u /* LeaderData::current_upgrade(type) */
+#define VA_BITMASK_SET      0x00450360u /* BitMask::set(index, on) */
+#define VA_LEADERS          0x00E3A390u /* Leaders leaders: LeaderData[8], 0x6EEC each */
+#define LD_OBSOLETE         0x6CF4      /* BitMask: building types replaced by a higher level */
+
 int g_ramp_line = 1;
+int g_build_current_level = 1;
 UINT_PTR g_ramp_back;
+UINT_PTR g_upbuild_back;
+static int g_upbuild_logs;
 static int g_ramp_logs;
 static unsigned short g_ramp_last[8][LINE_LEN * 2];
 
 void defenseramp_load_config(const char *ini_path)
 {
     g_ramp_line = GetPrivateProfileIntA("gameplay", "defense_ramp_whole_line", 1, ini_path);
+    g_build_current_level = GetPrivateProfileIntA("gameplay", "defense_build_current_level", 1, ini_path);
 }
 
 static int line_first(int type)
@@ -100,8 +123,77 @@ __asm__(".intel_syntax noprefix\n"
         "    jmp dword ptr [_g_ramp_back]\n"
         ".att_syntax prefix\n");
 
+typedef int(__attribute__((thiscall)) *current_upgrade_t)(void *leader, int type);
+typedef void(__attribute__((thiscall)) *bitmask_set_t)(void *mask, int index, int on);
+
+/* The type produce_building lays for (leader, type): the current level of a Tower or Fort line. */
+__attribute__((used)) int c_upbuild_type(char *leader, int type)
+{
+    int first = line_first(type);
+    if (first < 0 || !leader)
+        return type;
+    int p = *(int *)(leader + 8);
+    if (p < 0 || p >= 8)
+        return type;
+    char *ld = (char *)VA(VA_LEADERS) + p * LD_SIZE;
+    int up = ((current_upgrade_t)VA(VA_CURRENT_UPGRADE))(ld, type);
+    if (up <= type || up >= first + LINE_LEN)
+        return type;
+    /* the levels below the current one are obsolete, as Leader::gain_tech marks them */
+    for (int t = first; t < up; t++)
+        ((bitmask_set_t)VA(VA_BITMASK_SET))(ld + LD_OBSOLETE, t, 1);
+    if (g_upbuild_logs < 40) {
+        g_upbuild_logs++;
+        logf_("defense level: player %d asked for type 0x%X, lays 0x%X (lower levels now obsolete)", p, type,
+              up);
+    }
+    return up;
+}
+
+void hk_upbuild(void);
+
+__asm__(".intel_syntax noprefix\n"
+        /* entry of Leader::produce_building: ecx = Leader, [esp+4] = type */
+        ".globl _hk_upbuild\n"
+        "_hk_upbuild:\n"
+        "    push ecx\n"
+        "    push edx\n"
+        "    push dword ptr [esp+12]\n"
+        "    push ecx\n"
+        "    call _c_upbuild_type\n"
+        "    add esp, 8\n"
+        "    pop edx\n"
+        "    pop ecx\n"
+        "    mov [esp+4], eax\n"
+        "    push ebp\n"
+        "    mov ebp, esp\n"
+        "    sub esp, 0xa98\n"
+        "    jmp dword ptr [_g_upbuild_back]\n"
+        ".att_syntax prefix\n");
+
+static void upbuild_install(void)
+{
+    if (!g_build_current_level)
+        return;
+    static const unsigned char sig[9] = { 0x55, 0x8B, 0xEC, 0x81, 0xEC, 0x98, 0x0A, 0x00, 0x00 };
+    unsigned char *at = (unsigned char *)VA(VA_PRODUCE_BUILDING);
+    if (memcmp(at, sig, sizeof sig) != 0) {
+        logf_("defense level: signature mismatch, computer players lay the levels the game gives");
+        return;
+    }
+    g_upbuild_back = (UINT_PTR)(at + sizeof sig);
+    hook_jmp5(at, hk_upbuild);
+    DWORD old;
+    VirtualProtect(at + 5, sizeof sig - 5, PAGE_EXECUTE_READWRITE, &old);
+    memset(at + 5, 0x90, sizeof sig - 5);
+    VirtualProtect(at + 5, sizeof sig - 5, old, &old);
+    FlushInstructionCache(GetCurrentProcess(), NULL, 0);
+    logf_("defense level: computer players lay the current level of Towers and Forts");
+}
+
 void defenseramp_install(void)
 {
+    upbuild_install();
     if (!g_ramp_line)
         return;
     static const unsigned char sig[21] = { 0x0F, 0xB7, 0x94, 0x47, 0x22, 0x5A, 0x00, 0x00,

@@ -341,8 +341,11 @@ static int over_button(char *win)
 }
 
 /* Called by the stub that replaces Game::run's call to CommandManager::start. */
+int g_match_starting; /* set at every match start, minimap.c folds the interface on it */
+
 __attribute__((used)) void c_play_wait(void)
 {
+    g_match_starting = 1;
     stdio_raise(); /* before the tracks are opened, if the display hook is off */
     crash_install();
     char *game = *(char **)VA(VA_GAME_PTR);

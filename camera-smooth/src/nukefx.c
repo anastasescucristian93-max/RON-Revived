@@ -1033,7 +1033,7 @@ static void soften_flash(void)
 }
 
 /* The nuke-fx underlay types, found by their textures (appended after the game's 20). */
-static int g_ul_target = -1, g_ul_haze = -1, g_ul_glow = -1;
+static int g_ul_target = -1, g_ul_haze = -1, g_ul_glow = -1, g_ul_core = -1, g_ul_core_glow = -1;
 
 static void find_underlays(void)
 {
@@ -1050,7 +1050,11 @@ static void find_underlays(void)
         else if ((unsigned char)ty[0xE] == 15)
             g_ul_haze = i;
         else if ((unsigned char)ty[0xE] == 16)
-            g_ul_glow = i; /* the sign's glow, Shockwave Blend (adds light); older data has none */
+            g_ul_glow = i; /* the blade's glow, Shockwave Blend (adds light); older data has none */
+        else if ((unsigned char)ty[0xE] == 17)
+            g_ul_core = i; /* the disc in the middle (2026-11-08); older data has none */
+        else if ((unsigned char)ty[0xE] == 18)
+            g_ul_core_glow = i;
     }
     if (g_ul_target < 0 || g_ul_haze < 0) {
         logf_("nuke: the NukeTarget / NukeHaze underlays are not loaded (nuke-fx effects_graphics.xml missing?), "
@@ -1058,7 +1062,8 @@ static void find_underlays(void)
         g_ul_target = -1;
         g_ul_haze = -2;
     } else
-        logf_("nuke: underlays NukeTarget %d, NukeHaze %d, NukeTargetGlow %d", g_ul_target, g_ul_haze, g_ul_glow);
+        logf_("nuke: underlays NukeTarget %d, NukeHaze %d, NukeTargetGlow %d, NukeCore %d, NukeCoreGlow %d",
+              g_ul_target, g_ul_haze, g_ul_glow, g_ul_core, g_ul_core_glow);
 }
 
 struct underlay { float x, y, z; unsigned angle; int remaining, total; unsigned width; short a, b; };
@@ -1098,6 +1103,8 @@ static void draw_markers(void)
     clear_underlays(g_ul_target);
     clear_underlays(g_ul_haze);
     clear_underlays(g_ul_glow);
+    clear_underlays(g_ul_core);
+    clear_underlays(g_ul_core_glow);
     float secs = (now() + *(float *)(game() + GAME_FRAC)) / 15.0f;
     if (g_marker) {
         char *objs = *(char **)VA(VA_OBJECTS);
@@ -1111,10 +1118,25 @@ static void draw_markers(void)
             float f = tot > 0 ? fminf(1.0f, (float)*(int *)(a + AM_CUR) / tot) : 1.0f;
             float r = (float)nuke_radius(a);
             float pulse = 0.65f + 0.35f * sinf(secs * 5.0f);
-            float x = (float)*(int *)(a + AM_EX), y = (float)*(int *)(a + AM_EY), w = 2.0f * r * (1.5f - 1.1f * f);
-            underlay(g_ul_target, x, y, secs * 25.0f, w, 0.95f);
-            if (g_ul_glow >= 0) /* the glow pulses, so the sign seems to throb on any ground */
-                underlay(g_ul_glow, x, y, secs * 25.0f, w, pulse);
+            float x = (float)*(int *)(a + AM_EX), y = (float)*(int *)(a + AM_EY);
+            /* The sign in parts (the user, 2026-11-08): a disc in the middle that stays, and three
+               blades pushed out from it, closing in as the nuke flies and meeting it as it lands.
+               Every part is drawn at the sign's width w (each texture has the sign's centre in its
+               middle); the closed sign reaches 0.45 w = 0.6 r. A blade lies along the texture's +u,
+               which Underlays::draw lays along (sin a, -cos a) for the angle a, so a blade pointing
+               at phi in the world takes a = phi + 90. */
+            float w = 1.34f * r, out = 0.75f * r * (1.0f - f);
+            for (int k = 0; k < 3; k++) {
+                float phi = 90.0f + 120.0f * (float)k, rad = phi * 3.14159265f / 180.0f;
+                float bx = x + out * cosf(rad), by = y + out * sinf(rad);
+                underlay(g_ul_target, bx, by, phi + 90.0f, w, 0.95f);
+                if (g_ul_glow >= 0) /* the glow pulses, so the sign seems to throb on any ground */
+                    underlay(g_ul_glow, bx, by, phi + 90.0f, w, pulse);
+            }
+            if (g_ul_core >= 0)
+                underlay(g_ul_core, x, y, 0.0f, w, 0.95f);
+            if (g_ul_core_glow >= 0)
+                underlay(g_ul_core_glow, x, y, 0.0f, w, pulse);
         }
     }
     if (g_radiation) {

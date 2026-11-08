@@ -322,12 +322,16 @@ typedef struct {
     int atlas, col, row;                      /* atlas -1: no icon */
     int late_age;                             /* 0: none; else the first age of late_name */
     unsigned char late_name[32];
+    int icon_age;                             /* 0: none; else the game's icon from this age on */
+    struct { char tex, half, col, row, clip, saved; short x, y; } game[8][3]; /* the game's, per player and slot */
 } unit_t;
 
 static unit_t g_units[MAX_UNITS];
 static int g_unit_n = -1; /* -1: not matched to the types yet */
 static int g_names_ro;    /* the shown names are Romanian now */
 static int g_names_age;   /* the age the shown names were set for */
+static int g_icon_age[8]; /* the age each player's icons were set for ([game_icon]) */
+static int g_any_icon_age;
 static char g_units_ini[MAX_PATH];
 void *g_orig_update_icons, *g_orig_say_name;
 
@@ -361,10 +365,12 @@ static unit_t *unit_of(int t)
 /* Matches romania_units.ini to the unit types by internal name, once the types are loaded. */
 static void match_units(void)
 {
-    static char names[32768], icons[16384], late[4096];
+    static char names[32768], icons[16384], late[4096], game_icon[4096];
     GetPrivateProfileSectionA("names", names, sizeof names, g_units_ini);
     GetPrivateProfileSectionA("icons", icons, sizeof icons, g_units_ini);
     GetPrivateProfileSectionA("late", late, sizeof late, g_units_ini);
+    GetPrivateProfileSectionA("game_icon", game_icon, sizeof game_icon, g_units_ini);
+    g_any_icon_age = 0;
     g_unit_n = 0;
     for (int t = FIRST_UNIT; t < END_UNIT && g_unit_n < MAX_UNITS; t++) {
         char *type = type_of(t);
@@ -400,6 +406,16 @@ static void match_units(void)
             u->late_age = age;
             ((fn_v_p_t)VA(VA_STR_CTOR))(u->late_name, p + len + 1 + at);
         }
+        u->icon_age = 0;
+        memset(u->game, 0, sizeof u->game);
+        for (char *p = game_icon; *p; p += strlen(p) + 1) {
+            int age;
+            if (_strnicmp(p, internal, len) || p[len] != '=' || sscanf(p + len + 1, "%d", &age) != 1 || age < 2 ||
+                age > 8 || u->atlas < 0)
+                continue;
+            u->icon_age = age;
+            g_any_icon_age = 1;
+        }
     }
     logf_("romania: %d unit types with a Romanian name or icon", g_unit_n);
 }
@@ -421,11 +437,20 @@ static void set_names(int ro)
     g_names_age = age;
 }
 
+static void set_icons(int p);
+
 /* Every frame (airdrop.c's Objects::process_all): the shown names follow the age of the player
-   here once it changes. */
+   here once it changes, and each Romanian player's [game_icon] icons their own age. */
 void romania_frame(void)
 {
-    if (!g_romania_enabled || g_unit_n <= 0 || !g_names_ro)
+    if (!g_romania_enabled || g_unit_n <= 0)
+        return;
+    if (g_any_icon_age && g_orig_update_icons) /* [game_icon]: each Romanian player's icons follow their age */
+        for (int p = 0; p < 8; p++)
+            if ((*(unsigned *)(VA(VA_LEADERS) + p * 0x6EEC) & 1) && tribe_of(p) == ROMANIA &&
+                player_age(p) != g_icon_age[p])
+                set_icons(p);
+    if (!g_names_ro)
         return;
     if (player_age(local_player()) != g_names_age)
         set_names(1);
@@ -456,10 +481,33 @@ static void set_icons(int p)
         if (u->atlas < 0 || u->atlas > 1 || tex[u->atlas][0] < 0 || tex[u->atlas][1] < 0)
             continue;
         char *type = type_of(u->type);
+        int age = player_age(p);
         for (int s = 0; s < 3; s++) {
             if (u->late_age && slot_age(s) >= u->late_age)
                 continue; /* the game's icon of that tier (the truck) */
             int k = 3 * p + s;
+            if (u->icon_age && p < 8) {
+                /* [game_icon]: the game's icon is kept the first time (the slot does not hold ours
+                   yet), and put back once the player reaches the age, in the slot that covers it */
+                if (!u->game[p][s].saved || type[ICON_TEX + k] != (char)tex[u->atlas][0] ||
+                    type[ICON_COL + k] != (char)u->col || type[ICON_ROW + k] != (char)u->row) {
+                    u->game[p][s].tex = type[ICON_TEX + k], u->game[p][s].half = type[ICON_HALF + k];
+                    u->game[p][s].col = type[ICON_COL + k], u->game[p][s].row = type[ICON_ROW + k];
+                    u->game[p][s].clip = type[ICON_CLIP + k];
+                    u->game[p][s].x = *(short *)(type + ICON_X + 2 * k);
+                    u->game[p][s].y = *(short *)(type + ICON_Y + 2 * k);
+                    u->game[p][s].saved = 1;
+                }
+                int slot_end = s == 0 ? 3 : s == 1 ? 5 : 8;
+                if (age >= u->icon_age && slot_end >= u->icon_age) {
+                    type[ICON_TEX + k] = u->game[p][s].tex, type[ICON_HALF + k] = u->game[p][s].half;
+                    type[ICON_COL + k] = u->game[p][s].col, type[ICON_ROW + k] = u->game[p][s].row;
+                    type[ICON_CLIP + k] = u->game[p][s].clip;
+                    *(short *)(type + ICON_X + 2 * k) = u->game[p][s].x;
+                    *(short *)(type + ICON_Y + 2 * k) = u->game[p][s].y;
+                    continue;
+                }
+            }
             type[ICON_TEX + k] = (char)tex[u->atlas][0];
             type[ICON_HALF + k] = (char)tex[u->atlas][1];
             type[ICON_COL + k] = (char)u->col;
@@ -470,7 +518,9 @@ static void set_icons(int p)
         }
         n++;
     }
-    logf_("romania: player %d, %d Romanian icons", p, n);
+    if (p >= 0 && p < 8)
+        g_icon_age[p] = player_age(p);
+    logf_("romania: player %d, %d Romanian icons (age %d)", p, n, player_age(p));
 }
 
 /* After the game has given every player the icons of their unit style (start of a game, a

@@ -26,6 +26,12 @@
  *    group has one (SelectGroup + 0x9D8 != -1, cmp at 0x00823AAE, je at 0x00823AB6); the je goes,
  *    so every multiple selection keeps it, for the kills. The grid then moves down a cell and a
  *    spacing (0x00823B05, 15 bytes): a call moves it 0.7 of a cell instead and ends the row there.
+ *  - Folded, update_visibility hides the command panel and right_window whenever
+ *    GroupData::show_interface says no (call at 0x00812027): for anything not the local player's
+ *    (an oil patch, a neutral resource, an animal, another player's unit or building), so such a
+ *    selection showed nothing at all (the user, 2026-11-08). The call goes to sel_show_iface: the
+ *    game's answer, or yes when anything is selected, so the panel shows for every selection, as
+ *    unfolded (the command panel beside it then has no buttons, as unfolded).
  * Interface only, nothing reaches the simulation. Engine notes: ENGINE_NOTES.md, "Selection
  * panel while folded".
  */
@@ -53,6 +59,11 @@
 #define IFACE_BOTTOM_GAP  3           /* right_window ends 3 units over the interface's (the screen's) bottom */
 #define VA_KILLS_ROW_H    0x00823B05u /* update_selected: mov ax, [edx+6] / sub ax, [edx+4] / cwde / add eax, [edi+0x4D8] */
 #define KILLS_ROW(ch)     (((ch) * 179) >> 8) /* the kills row: 0.7 of a cell (the user, 2026-11-01), as hk_sel_kills_h */
+#define VA_SHOW_IFACE_CALL 0x00812027u /* update_visibility, folded: call GroupData::show_interface */
+#define VA_SHOW_IFACE     0x0070CE70u /* GroupData::show_interface() const, thiscall */
+#define GROUP_COUNT       0xC
+#define GROUP_SPOT_A      0x9DC       /* a selected map spot (resource deposit, ruins): -1 when none */
+#define GROUP_SPOT_B      0x9E0
 #define IFB_UNFOLDED      0x470
 #define IFM_SELECTED      0x8D1C      /* IFaceMain: the IFaceSelected */
 #define SEL_MULTI         0x470       /* IFaceSelected: dword, several objects selected */
@@ -396,6 +407,34 @@ static int patch_gap(void)
     return 1;
 }
 
+/* ---- every selection shows its panel while folded ----------------------------------------- */
+
+typedef int(__attribute__((thiscall)) *show_iface_t)(void *group);
+
+static int __attribute__((thiscall)) sel_show_iface(char *group)
+{
+    if (((show_iface_t)VA(VA_SHOW_IFACE))(group))
+        return 1;
+    /* objects, or a spot of the map: an oil patch, a mine, ruins... are no objects; the group
+       keeps them in +0x9DC / +0x9E0 (-1 when none), as IFaceMain::update_visibility reads */
+    return group && (*(int *)(group + GROUP_COUNT) > 0 || *(int *)(group + GROUP_SPOT_A) >= 0 ||
+                     *(int *)(group + GROUP_SPOT_B) >= 0);
+}
+
+static int patch_show_iface(void)
+{
+    unsigned char *at = (unsigned char *)VA(VA_SHOW_IFACE_CALL);
+    if (at[0] != 0xE8 || (UINT_PTR)(at + 5 + *(INT32 *)(at + 1)) != VA(VA_SHOW_IFACE)) {
+        logf_("selpanel: signature mismatch at update_visibility's show_interface, other players' selections show nothing folded");
+        return 0;
+    }
+    unsigned char b[5] = { 0xE8 };
+    INT32 rel = (INT32)((UINT_PTR)sel_show_iface - (UINT_PTR)(at + 5));
+    memcpy(b + 1, &rel, 4);
+    write_code(at, b, 5);
+    return 1;
+}
+
 /* ---- the background and the frame ----------------------------------------------------------- */
 
 /* `tex` repeated over rect at one texel per interface unit, the last row and column cut short
@@ -500,6 +539,7 @@ void selpanel_install(void)
         patch_group_layout();
     patch_single_move();
     int gap = patch_gap();
+    int all = patch_show_iface();
     unsigned char *at = (unsigned char *)VA(VA_SEL_REDRAW);
     static const unsigned char sig[6] = { 0x55, 0x8B, 0xEC, 0x83, 0xE4, 0xF8 };
     unsigned char *mem = VirtualAlloc(NULL, 32, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
@@ -510,6 +550,6 @@ void selpanel_install(void)
         logf_("selpanel: signature mismatch at IFaceSelected::on_redraw, no background for the folded grid");
     }
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
-    logf_("selpanel: the full selection panel while the interface is folded%s%s", row ? ", a kills row for every group" : "",
-          gap ? ", 6 cells wide for a group" : "");
+    logf_("selpanel: the full selection panel while the interface is folded%s%s%s", row ? ", a kills row for every group" : "",
+          gap ? ", 6 cells wide for a group" : "", all ? ", for every selection (resources, other players)" : "");
 }

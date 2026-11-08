@@ -3483,6 +3483,10 @@
     <IFACETEX name="rank_spark" texture="TEX_REVIVED_RANKS" left="208" top="0" width="24" height="24"/>
     <IFACETEX name="heal_plus" texture="TEX_REVIVED_RANKS" left="200" top="64" width="48" height="48"/>
     <IFACETEX name="repair_pliers" texture="TEX_REVIVED_RANKS" left="144" top="120" width="48" height="48"/>
+    <IFACETEXLOAD id="TEX_REVIVED_MMFRAME" file=".\art\revived\minimap_frame.tga" pixformat="PF_32"/>
+    <IFACETEX name="mm_frame_down" texture="TEX_REVIVED_MMFRAME" left="4" top="0" width="140" height="110"/>
+    <IFACETEX name="mm_frame_up" texture="TEX_REVIVED_MMFRAME" left="4" top="112" width="140" height="110"/>
+    <IFACETEX name="mm_frame_plate" texture="TEX_REVIVED_MMFRAME" left="150" top="0" width="40" height="40"/>
     <IFACETEXLOAD id="TEX_REVIVED_ASSIST" file=".\art\revived\assist_panel.tga" pixformat="PF_32"/>
     <IFACETEX name="assist_back" texture="TEX_REVIVED_ASSIST" left="0" top="0" width="320" height="352"/>
     <IFACETEX name="assist_track" texture="TEX_REVIVED_ASSIST" left="0" top="370" width="288" height="40"/>

@@ -69,6 +69,13 @@
 	  
 	  
 	  
+	  <!-- Jeep animation -->
+	  <ANIM duration="30"> 
+		<ANIMLAYER texture="anim_overlay" move_x="0.0" move_y="0.0" />
+		<ANIMLAYER texture="anim_bg3_tex2" move_x="0.002" move_y="-0.001" />
+		<ANIMLAYER texture="anim_bg3_tex1" move_x="-0.002" move_y="0.0" />
+		<ANIMLAYER texture="anim_bg3_tex0" move_x="0.0" move_y="0.0" />
+	  </ANIM>
 	  
       <IFACETEXLOAD id="TEX_TOPMENU_0" file=".\art\iface_wrapper1.tga" sort="0" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_WRAPPER_LOGO" file=".\art\wrapper_main_logo_01.tga" sort="0" pixformat="PF_32"/>

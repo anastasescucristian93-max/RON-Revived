@@ -39,7 +39,7 @@ ATLAS_COLS, ATLAS_ROWS = 8, 12  # the game's icon pages: 61 x 39 cells, 62 x 40 
 ROMANIA = 24
 TEMPLATE = 13  # the Russians
 # mods whose mod_override\Data files are built on each other, newest first
-MOD_ORDER = ["nuke-fx", "general-heal", "entrenchment", "paradrop", "data-center"]
+MOD_ORDER = ["citizen-icons", "nuke-fx", "general-heal", "entrenchment", "paradrop", "data-center"]
 RULE_FILES = {"unitrules.xml": "UNIT", "buildingrules.xml": "BUILDING", "techrules.xml": "TECH",
               "craftrules.xml": "CRAFT"}
 
@@ -348,6 +348,13 @@ def read_units():
 # user, 2026-10-29); DAC, the Brasov truck works, built the Romanian army's lorries.
 LATE_UNITS = [("Supply Wagon", 6, "DAC Truck")]
 
+# The game's own icon from an age on, the name staying Romanian: (internal NAME, first age),
+# [game_icon] in romania_units.ini. romania.c puts the game's icon back once the player reaches
+# that age, and Romania's while below it (the icon slots are per graphics tier, 6-8 together, so
+# age 7 is followed by the player's age, not by a slot). The Citizen (the user, 2026-11-08): the
+# game's modern Citizen in ages 7-8, the Razes before.
+GAME_ICON_UNITS = [("Citizen", 7)]
+
 
 def write_tga(img, path):
     """Uncompressed 32-bit, bottom-up, like the game's interface textures."""
@@ -398,6 +405,7 @@ def build_units(game, out, unit_text):
             if generic == name:
                 lines.append("%s=%d,%d,%d" % (slot_name, a, col, row))
     lines += ["", "[late]"] + ["%s=%d,%s" % late for late in LATE_UNITS if late[0] in names]
+    lines += ["", "[game_icon]"] + ["%s=%d" % g for g in GAME_ICON_UNITS if g[0] in names]
     tex = []
     for a, (full, half) in enumerate(atlases):
         write_tga(full, os.path.join(out, "art", "romania_units_%d.tga" % a))

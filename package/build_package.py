@@ -42,7 +42,7 @@ HERE = os.path.join(ROOT, "package")
 DIST = os.path.join(ROOT, "dist")
 
 # the data mods' build order; a later mod's copy of a file replaces an earlier one's
-MOD_ORDER = ["data-center", "paradrop", "entrenchment", "general-heal", "nuke-fx", "ui-theme", "romania",
+MOD_ORDER = ["data-center", "paradrop", "entrenchment", "general-heal", "nuke-fx", "citizen-icons", "ui-theme", "romania",
              "translations", "nation-music"]
 
 # next to riseofnations.exe: game file name -> repo file

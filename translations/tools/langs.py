@@ -26,7 +26,7 @@ OUT = os.path.join(MOD, "mod_override", "Data")
 DLL_STRINGS = os.path.join(MOD, "dll_strings.txt")
 
 # the data mods in their build order (package\build_package.py's MOD_ORDER without us)
-MOD_ORDER = ["data-center", "paradrop", "entrenchment", "general-heal", "nuke-fx", "ui-theme", "romania"]
+MOD_ORDER = ["data-center", "paradrop", "entrenchment", "general-heal", "nuke-fx", "citizen-icons", "ui-theme", "romania"]
 
 
 def game_file(name, suffix=""):

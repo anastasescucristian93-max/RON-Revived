@@ -13,7 +13,7 @@ Liked it? Give the repository a star ⭐ and leave a [review](https://github.com
 | Folder | What it is |
 |---|---|
 | `camera-smooth/` | `winmm.dll`, the code of the mod (camera, interface, most of the gameplay), settings in `ron_camera.ini` |
-| `data-center/`, `paradrop/`, `entrenchment/`, `general-heal/`, `nuke-fx/`, `romania/` | Data mods: the game's XML files (units, buildings, techs, tooltips) and their art, in `mod_override/` |
+| `data-center/`, `paradrop/`, `entrenchment/`, `general-heal/`, `nuke-fx/`, `citizen-icons/`, `romania/` | Data mods: the game's XML files (units, buildings, techs, tooltips) and their art, in `mod_override/` |
 | `translations/` | Ten languages: the game's five plus Russian, Brazilian Portuguese, Polish, Turkish and Romanian, and the mods' own texts in all of them |
 | `survival/` | Survival game mode: a game script (`scenario/Scripts/Survival/`), picked under Script in the game setup |
 | `ui-theme/` | The interface look (menus, buttons, flags, the launcher) |
@@ -27,5 +27,5 @@ How the game itself works (everything found so far, with links to each mod's `EN
 ## Building
 
 1. `camera-smooth/build.ps1` (the DLL).
-2. The data mods, in this order, since several write the same files and each builds on the one before: data-center, paradrop, entrenchment, general-heal, nuke-fx (each `tools/build_data.py "<game folder>" mod_override`), the interface theme (`ui-theme/tools/build_*.py`), romania (`romania/tools/build_data.py`), and the translations last (`translations/tools/build_data.py "<game folder>" mod_override`, run from `translations/`: it copies every file the mods changed into each language).
+2. The data mods, in this order, since several write the same files and each builds on the one before: data-center, paradrop, entrenchment, general-heal, nuke-fx (each `tools/build_data.py "<game folder>" mod_override`), citizen-icons (`citizen-icons/tools/build_data.py`), the interface theme (`ui-theme/tools/build_*.py`), romania (`romania/tools/build_data.py`), and the translations last (`translations/tools/build_data.py "<game folder>" mod_override`, run from `translations/`: it copies every file the mods changed into each language).
 3. `python package/build_package.py [version]`: it lays the `mod_override/` folders over each other in that order, adds every `nation_art/` folder, the DLL and the `.ini` files, checks them (a DLL older than its sources, a picture `nation_art.ini` names that is missing) and writes `dist/RON_Revived-<version>.zip`. Romania's Enescu music (`romania/music/`) stays out: the recording is not free in the US.

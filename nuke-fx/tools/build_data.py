@@ -13,11 +13,14 @@ r"""Build the nuke-fx data files into nuke-fx\mod_override\.
 - The Interceptor, trained at the Missile Silo. The game refuses extra unit types, so a
   campaign-only slot is taken over: unit 337 "SAS" (type 0x183), with the Cruise Missile's
   fields, under GRAPH SCHWARZENBERG (a campaign hero's graphics entry, help and sounds, used by
-  nobody else), whose graphics entry becomes a copy of the Cruise Missile's (model, icon). The
+  nobody else), whose graphics entry becomes a copy of the Cruise Missile's (its model), with an
+  icon of its own (2026-11-08): icons\interceptor.png (cut from source\interceptor_icon_gemini.png)
+  in the free cell (4, 11) of art\iface_units_03.tga (TEX_UNITS_2, + _half), built on the General's
+  Heal version of that page, which holds the Heal and Entrench icons. The
   DLL (nukefx.c) takes every finished Interceptor out of its silo at once and keeps a count per
   silo (at most 2), which it fires at enemy nukes. Data\unitrules.xml, typenames.xml, help.xml
-  and unit_graphics.xml are built on the other mods' newest versions (MOD_ORDER); Romania builds
-  on these, so build it again afterwards and install it last.
+  and unit_graphics.xml are built on the other mods' newest versions (MOD_ORDER); citizen-icons
+  and then Romania build on these, so build them again afterwards and install Romania last.
 - Data\soundfiles.xml: the game's, with two sounds of the Interceptor at the end (the DLL finds them
   by tag): interceptorlaunch (sounds\interceptor_launch.wav, as it leaves the silo) and
   interceptorhit (sounds\interceptor_hit.wav, the nuke shot down). make_interceptor_sounds.py
@@ -43,6 +46,9 @@ SMOKE_FACTOR = 3
 
 INTERCEPTOR_UNIT = 337
 INTERCEPTOR_GRAPH = "SCHWARZENBERG"
+# its icon: a cell of TEX_UNITS_2 that is flat grey in the game's page and named by no data file
+ICON = os.path.join(MOD, "icons", "interceptor.png")
+ICON_ATLAS, ICON_CELL = "iface_units_03.tga", (4, 11)
 INTERCEPTOR_FIELDS = {
     "GRAPH": INTERCEPTOR_GRAPH,
     "OBJ_MASK": "SBX32",      # the Cruise Missile's: a missile, kept inside the silo
@@ -90,9 +96,12 @@ UNDERLAYS = (
     '    <UNDERLAY name="NukeTarget" tu="0" tv="0" twidth="512" renderstate="Interface Blend" growth="1" tex0="{t}" tex1="-1" passnum="0"/>\r\n'
     '    <UNDERLAY name="NukeHaze" tu="0" tv="0" twidth="256" renderstate="Interface Blend" growth="1" tex0="{h}" tex1="-1" passnum="0"/>\r\n'
     '    <UNDERLAY name="NukeTargetGlow" tu="0" tv="0" twidth="512" renderstate="Shockwave Blend" growth="1" tex0="{g}" tex1="-1" passnum="0"/>\r\n'
+    '    <UNDERLAY name="NukeCore" tu="0" tv="0" twidth="512" renderstate="Interface Blend" growth="1" tex0="{c}" tex1="-1" passnum="0"/>\r\n'
+    '    <UNDERLAY name="NukeCoreGlow" tu="0" tv="0" twidth="512" renderstate="Shockwave Blend" growth="1" tex0="{cg}" tex1="-1" passnum="0"/>\r\n'
 )
 TEXTURES = ('    <TEXTURE file="./art/nuke_target.tga"/>\r\n    <TEXTURE file="./art/nuke_haze.tga"/>\r\n'
-            '    <TEXTURE file="./art/nuke_target_glow.tga"/>\r\n')
+            '    <TEXTURE file="./art/nuke_target_glow.tga"/>\r\n    <TEXTURE file="./art/nuke_core.tga"/>\r\n'
+            '    <TEXTURE file="./art/nuke_core_glow.tga"/>\r\n')
 
 
 def read(path):
@@ -196,7 +205,31 @@ def unit_graphics(text):
     cruise = block("CRUISEMISSILE-DEFAULT-AGE0").group(0)
     old = block(f"{INTERCEPTOR_GRAPH}-DEFAULT-AGE0")
     new = cruise.replace('name="CRUISEMISSILE-DEFAULT-AGE0"', f'name="{INTERCEPTOR_GRAPH}-DEFAULT-AGE0"')
+    tex = 'tex_id="TEX_UNITS_0" tex_col="5" tex_row="10"'
+    if new.count(tex) != 1:
+        raise SystemExit("unit_graphics.xml: the Cruise Missile's icon cell not found once")
+    new = new.replace(tex, f'tex_id="TEX_UNITS_2" tex_col="{ICON_CELL[0]}" tex_row="{ICON_CELL[1]}"')
     return text[:old.start()] + new + text[old.end():]
+
+
+def icon():
+    """The Interceptor's icon into its cell of the unit icon page (61 x 39 cells 62 x 40 apart;
+    _half: 30 x 19, 31 x 20 apart), on the newest version of the page among MOD_ORDER."""
+    for name, step, size in ((ICON_ATLAS, (62, 40), (61, 39)),
+                             (ICON_ATLAS.replace(".tga", "_half.tga"), (31, 20), (30, 19))):
+        src = os.path.join(GAME, "art", name)
+        for mod in MOD_ORDER:
+            p = os.path.join(ROOT, mod, "mod_override", "art", name)
+            if os.path.exists(p):
+                src = p
+                break
+        atlas = Image.open(src).convert("RGBA")
+        cell = Image.open(ICON).convert("RGBA").resize(size, Image.LANCZOS)
+        atlas.paste(cell, (ICON_CELL[0] * step[0], ICON_CELL[1] * step[1]))
+        path = os.path.join(OUT, "art", name)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        atlas.save(path)
+        print(path)
 
 
 def effects():
@@ -214,12 +247,12 @@ def effects():
     sec = src[start:src.index("</UNDERLAYS>")]
     textures = len(re.findall(r"<TEXTURE file=", sec))
     cut = start + sec.index("\n", sec.rindex("<UNDERLAY ")) + 1
-    src = src[:cut] + UNDERLAYS.format(t=textures, h=textures + 1, g=textures + 2) + src[cut:]
+    src = src[:cut] + UNDERLAYS.format(t=textures, h=textures + 1, g=textures + 2, c=textures + 3, cg=textures + 4) + src[cut:]
     end = src.index("</UNDERLAYS>")
     line = src.rindex("\n", 0, end) + 1
     src = src[:line] + TEXTURES + src[line:]
     write(os.path.join(OUT, "Data", "effects_graphics.xml"), src)
-    print(f"  smoke x{SMOKE_FACTOR}, underlays NukeTarget/NukeHaze/NukeTargetGlow on textures {textures}..{textures + 2}")
+    print(f"  smoke x{SMOKE_FACTOR}, underlays NukeTarget/NukeHaze/NukeTargetGlow/NukeCore/NukeCoreGlow on textures {textures}..{textures + 4}")
 
 
 def haze():
@@ -253,7 +286,8 @@ def main():
     write(os.path.join(data, "soundfiles.xml"), sound_files(read(base("soundfiles.xml"))))
     effects()
     haze()
-    for name in ("nuke_target.tga", "nuke_target_glow.tga"):
+    icon()
+    for name in ("nuke_target.tga", "nuke_target_glow.tga", "nuke_core.tga", "nuke_core_glow.tga"):
         shutil.copy(os.path.join(MOD, "art", name), os.path.join(OUT, "art", name))
 
 

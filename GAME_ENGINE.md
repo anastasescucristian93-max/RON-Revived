@@ -69,7 +69,7 @@ Drawing (`Game::loop_render` → `Scene::render`) runs separately and blends bet
 ### 3.1 How mods reach the game: mod_override
 
 - The mods change **no game file**. Each data mod has a `mod_override/` folder holding the game's XML and art. The winmm.dll file hooks (`override.c`, CreateFileW and friends) serve those files instead of the originals.
-- The package lays the folders over each other in build order: data-center, paradrop, entrenchment, general-heal, nuke-fx, ui-theme, romania, translations, nation-music. **The last writer of a shared file wins.** (README § Building)
+- The package lays the folders over each other in build order: data-center, paradrop, entrenchment, general-heal, nuke-fx, citizen-icons, ui-theme, romania, translations, nation-music. **The last writer of a shared file wins.** (README § Building)
 - Folder listings go through `_wfindfirst64i32` → `FindFirstFileExW` (called at 0x00A2CE83, 0x00A2E147). `override.c` redirects exact-file searches; wildcard searches are not merged. A model that existed only in mod_override was invisible to the exact search before this fix and gave "NO DEFAULT UNIT GPIECE - VERY BAD" (0x0090C609). (PD § BH3 and BHA)
 - `override_redirect` can also serve files the DLL writes at run time, e.g. fog ramps in `%TEMP%\RON Revived\` (CS § Fog of war) and replacement shaders (CS § Picture look).
 - **Languages:** `XML::init` 0x00A279E0 adds the language suffix to every XML name (".7" German, "" English, ".10" Spanish, ".12" French, ".16" Italian) and uses that copy if it exists. An English-only override is therefore ignored in German, and every mod text vanished. `translations/` builds a `.N` copy of every file the mods change. (CS § Languages)
@@ -158,6 +158,7 @@ Key **TypeData fields**: +0x10 tribe mask, +0x18 six base costs (`Type::load_cos
 
 ### 4.4 Icons and interface atlases
 - Icon pages: 61x39 cells on a 62x40 step (TEX_UNITS 512x512; TEX_BUILDINGS_3 = `iface_buildings_wonders.tga` 256x256, 4x6). In TEX_ORDERS_0 (`iface_unit_orders.tga`) a cell no craft names may still be drawn from code: (7,4) is the cities' rally-flag button. (DC § Expansions; EN § Untargeted crafts)
+- Rules files name icon cells in element form too (`<TEX_ID>`, `<TEX_COL>`, `<TEX_ROW>` in building/craft/resource/tech rules): search both forms before taking a cell as free. Free cells and the Citizen's per-style icons: [citizen-icons/ENGINE_NOTES.md](citizen-icons/ENGINE_NOTES.md).
 - `GraphicPieces::update_all_icons(player, tribe)` 0x0090D3F0 fills 3 icon slots per type per player, from the player's unit style, only for tribes below 24. (RO § Unit names and icons)
 - Interface pieces are named regions of shared atlases (`wrapper_pieces_01/02.tga`, `iface_diplomacy_01.tga`, `iface_unit_orders.tga`, `iface_AS0_assets.tga`). Replacing an atlas reskins every window that uses it. Textures used by in-game popups must be in the `IFACERENDERMANAGER` list, or they draw as white quads. (UI § Shared atlases, § Dialogs)
 - Interface numbers are per-character glyph quads from a Text file ("interface") via `IFaceRenderManager::setup_text` 0x0051DD50. A non-integer scale makes holes; hud.c draws its own digits at whole-pixel scale. (CS § Resource panel and counters)
@@ -332,7 +333,7 @@ The Windows Application event log gives the fault offset; **offset + 0x400000 = 
 
 ## 12. Rendering
 
-- **Camera:** **orthographic** (view direction (0,0,+1)). `Game::init_camera` 0x00590BC0 sets 7 zoom levels with tilt 60; distances at `Camera+0x320`; `zoom_out` stops at level 4 (2 in a replay), our patch at 0x00844001 lowers it to 3. `Camera+0x304/+0x308` = the screen centre on the ground, `+0x2F0` the zoom distance (18544 at level 5), `+0x294` the level. `Camera::set_loc_adjust` 0x008438C0 shakes it. `world_to_console` rounds to whole pixels, which is why buildings jittered. (CS § Zoom levels, § The flash)
+- **Camera:** **orthographic** (view direction (0,0,+1)). `Game::init_camera` 0x00590BC0 sets 7 zoom levels with tilt 60; distances at `Camera+0x320`; `zoom_out` stops at level 4 (2 in a replay), our patch at 0x00844001 lowers it to 3. `Camera+0x304/+0x308` = the screen centre on the ground, `+0x2F0` the zoom distance (18544 at level 5), `+0x294` the level. `Camera::set_loc_adjust` 0x008438C0 shakes it. `world_to_console` rounds to whole pixels, which is why buildings jittered. Keyboard scroll reads `Game+0xAF0`, filled by `GetKeyboardState` only once per simulation tick (50-200 ms), so `instant_keys` feeds it the live keys. (CS § Zoom levels, § The flash, § Arrow-key scroll delay)
 - **Frame:** `Scene::render`: ground (`TerrainOut::render` 0x008558B0), underlays (`Underlays::draw`), buildings and units, `Nuke::draw`, then the tone mapper (`D3D11ToneMapper::do_run`, `shaders\ps_tonemap.hlsl`: +8 exposure, +0xC white flash, +0x1C saturation, ...), FXAA (`D3D11AntiAlias::run`, takes luma from alpha, which only bloom writes), overlays and interface. Shaders compile at run time from `shaders\*.hlsl` and can be overridden; constant buffer b7 is free. Depth is D32 with **no stencil** and no MSAA. (CS § Picture look, § The flash)
 - **Ground:** TerrainVis (`*0x00C06218 + 0x533C`) streams blocks of 25 or 9 vertices per tile with **unsigned short** indices, so a stream past 2621 blocks wraps and draws streaks (`ground_guard` caps the zoom and clears with `set_zoom(5)` 0x008B3190 + `clear` 0x008B1480). The visible ground is rebuilt when `camera+0x28C` (or scene +0x22C / +0x229) is set. A stale set shows as black ground with a slanted edge. (CS § Ground vertex streams, § Fog of war)
 - **Fog of war:** `TerrainVis::fill_fog_texcoords` 0x008B19F0 reads the fog grid `[0xE8A894]` and looks up a 256x1 ramp (`fow_fade.tga`); a cliff in the ramp gives sawtooth edges (fog.c blurs it). Fog affects only the ground drawing, not which objects show. (CS § Fog of war)
@@ -401,6 +402,7 @@ The Windows Application event log gives the fault offset; **offset + 0x400000 = 
 | Crafts, unit creation, BH3/BHA, helicopters | [paradrop/ENGINE_NOTES.md](paradrop/ENGINE_NOTES.md) |
 | Building art: depth meshes, projection, colour, light, styles, farms | [roman-buildings/ENGINE_NOTES.md](roman-buildings/ENGINE_NOTES.md) |
 | Nations: the 24 limit, masks, powers, GRAFT, icons, music, models | [romania/ENGINE_NOTES.md](romania/ENGINE_NOTES.md) |
+| Icon cells: which are free, both ways of naming them, the Citizen per unit style | [citizen-icons/ENGINE_NOTES.md](citizen-icons/ENGINE_NOTES.md) |
 | Music formats and memory | [nation-music/ENGINE_NOTES.md](nation-music/ENGINE_NOTES.md) |
 | Game scripts | [survival/ENGINE_NOTES.md](survival/ENGINE_NOTES.md) |
 | Interface theme, launcher | [ui-theme/ENGINE_NOTES.md](ui-theme/ENGINE_NOTES.md) |

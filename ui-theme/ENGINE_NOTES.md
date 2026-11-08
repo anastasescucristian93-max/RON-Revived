@@ -41,6 +41,8 @@ Findings about how the game and the launcher draw their interface, used by the b
 - `Wrapper_pieces_gamespy.tga`: lobby pieces in 205..505 x 0..305; the rest are pictures (globes, hand, logos).
 - Replacing these files in mod_override reskins every window that uses them without touching their XML.
 
+- **Magenta gutters (2026-11-08):** `art\iface_AS0_assets.tga` (TEX_CIV, 512 x 512, 32-bit, uncompressed) keeps its pieces apart with 1-pixel lines of opaque magenta (255, 0, 255; 10763 pixels). The interface is drawn enlarged and filtered, so a piece's edge picks up the gutter: pink lines at every joint of the tiled frieze `bar` (390, 131, 122 x 34; the column at x 389 is magenta) and on the edges of `building_decoration2`, `help_button`, `thin_vert_bar`, whose rects reach a pixel into a gutter. No piece uses magenta on purpose. `tools/fix_iface_gutters.py` gives every magenta pixel its non-magenta neighbours' colour (opaque ones first) and writes `mod_override/art/iface_AS0_assets.tga` with the game's own header and orientation.
+
 ## Command button icons (Data\options.xml)
 
 - Every command button's icon comes from `options.xml`: the n-th `<OPTION>` is option code n (`OptionIndex`), with `tex_id` / `tex_col` / `tex_row` giving its cell. `TEX_ORDERS_0` is `art\iface_unit_orders.tga`, cells 62x40 (61x39 drawn). Found 2026-10-27.

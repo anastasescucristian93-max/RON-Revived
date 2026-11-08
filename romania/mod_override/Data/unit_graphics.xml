@@ -32518,7 +32518,7 @@
       <SOUNDEVENT starttime="800" anim="CHAR_ATTACK3" file="ATTACK"/>
       <SOUNDEVENT starttime="1200" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENSKOREAN-DEFAULT-AGE5" model=".\art\peasant6_male_arab.bh3" texture=".\art\peasant6_male_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENSKOREAN-DEFAULT-AGE5" model=".\art\peasant6_male_arab.bh3" texture=".\art\peasant6_male_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="5" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ARCTIC model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -32605,7 +32605,7 @@
       <SOUNDEVENT starttime="1234" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="1467" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENSKOREAN-DEFAULT-AGE5-FEMALE" model=".\art\peasant6_fem_asian.bh3" texture=".\art\peasant6_fem_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENSKOREAN-DEFAULT-AGE5-FEMALE" model=".\art\peasant6_fem_asian.bh3" texture=".\art\peasant6_fem_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="5" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ARCTIC model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -32968,7 +32968,7 @@
       <SOUNDEVENT starttime="800" anim="CHAR_ATTACK3" file="ATTACK"/>
       <SOUNDEVENT starttime="1200" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-AMERICAN-AGE5" model=".\art\peasant6_amer.bh3" texture=".\art\Peasant6_amer.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-AMERICAN-AGE5" model=".\art\peasant6_amer.bh3" texture=".\art\Peasant6_amer.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="3" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ARCTIC model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -33039,7 +33039,7 @@
       <SOUNDEVENT starttime="1234" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="1467" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-AMERICAN-AGE5-FEMALE" model=".\art\peasant6_fem_amer.bh3" texture=".\art\peasant6_fem_amer.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-AMERICAN-AGE5-FEMALE" model=".\art\peasant6_fem_amer.bh3" texture=".\art\peasant6_fem_amer.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="3" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ARCTIC model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -33398,7 +33398,7 @@
       <SOUNDEVENT starttime="800" anim="CHAR_ATTACK3" file="ATTACK"/>
       <SOUNDEVENT starttime="1200" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-ARAB-AGE5" model=".\art\peasant6_male_arab.bh3" texture=".\art\peasant6_male_arab.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-ARAB-AGE5" model=".\art\peasant6_male_arab.bh3" texture=".\art\peasant6_male_arab.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="7" tex_row="9" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant6_male_arab_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ARCTIC model=".\art\peasant6_male_arab_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -33485,7 +33485,7 @@
       <SOUNDEVENT starttime="1234" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="1467" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-ARAB-AGE5-FEMALE" model=".\art\peasant6_fem_arab.bh3" texture=".\art\peasant6_fem_arab.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-ARAB-AGE5-FEMALE" model=".\art\peasant6_fem_arab.bh3" texture=".\art\peasant6_fem_arab.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="7" tex_row="9" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant6_fem_arab_snow.bh3" texture=".\art\peasant6_fem_arab_snow.tga"/>
       <ARCTIC model=".\art\peasant6_fem_arab_snow.bh3" texture=".\art\peasant6_fem_arab_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -33844,7 +33844,7 @@
       <SOUNDEVENT starttime="800" anim="CHAR_ATTACK3" file="ATTACK"/>
       <SOUNDEVENT starttime="1200" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-ASIAN-AGE5" model=".\art\peasant6_male_arab.bh3" texture=".\art\peasant6_male_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-ASIAN-AGE5" model=".\art\peasant6_male_arab.bh3" texture=".\art\peasant6_male_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="5" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ARCTIC model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -33915,7 +33915,7 @@
       <SOUNDEVENT starttime="1234" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="1467" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-ASIAN-AGE5-FEMALE" model=".\art\peasant6_fem_asian.bh3" texture=".\art\peasant6_fem_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-ASIAN-AGE5-FEMALE" model=".\art\peasant6_fem_asian.bh3" texture=".\art\peasant6_fem_asian.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="5" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ARCTIC model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -34300,7 +34300,7 @@
       <SOUNDEVENT starttime="800" anim="CHAR_ATTACK3" file="ATTACK"/>
       <SOUNDEVENT starttime="1200" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-INDIA-AGE5" model=".\art\citizen_6_male_india.bh3" texture=".\art\citizen_6_male_india.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-INDIA-AGE5" model=".\art\citizen_6_male_india.bh3" texture=".\art\citizen_6_male_india.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="6" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ARCTIC model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -34387,7 +34387,7 @@
       <SOUNDEVENT starttime="1234" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="1467" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-INDIA-AGE5-FEMALE" model=".\art\citizen_6_female_india.bh3" texture=".\art\citizen_6_female_india.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-INDIA-AGE5-FEMALE" model=".\art\citizen_6_female_india.bh3" texture=".\art\citizen_6_female_india.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="6" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ARCTIC model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -34750,7 +34750,7 @@
       <SOUNDEVENT starttime="800" anim="CHAR_ATTACK3" file="ATTACK"/>
       <SOUNDEVENT starttime="1200" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-NA-AGE5" model=".\art\citizen6_NA.bh3" texture=".\art\citizen6_NA.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-NA-AGE5" model=".\art\citizen6_NA.bh3" texture=".\art\citizen6_NA.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="7" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ARCTIC model=".\art\citizen_6_male_snow.bh3" texture=".\art\citizen_6_male_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -34837,7 +34837,7 @@
       <SOUNDEVENT starttime="1234" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="1467" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="CITIZENS-NA-AGE5-FEMALE" model=".\art\citizen6_fem_NA.bh3" texture=".\art\citizen6_fem_NA.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_0" tex_col="7" tex_row="8" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="CITIZENS-NA-AGE5-FEMALE" model=".\art\citizen6_fem_NA.bh3" texture=".\art\citizen6_fem_NA.tga" cache="1" scale="1" trackdist="10" tracktype="Foot" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" skeleton="Biped" scorch="Biped" tex_id="TEX_UNITS_2" tex_col="7" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <SNOWY model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ARCTIC model=".\art\peasant_fem6_snow.bh3" texture=".\art\peasant_fem6_snow.tga"/>
       <ANIM name="CHAR_DEFAULT" file="Peasant Default"/>
@@ -42144,7 +42144,7 @@
       <SOUNDEVENT starttime="999" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="866" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="SCHWARZENBERG-DEFAULT-AGE0" model=".\art\cruise_missile.bh3" texture=".\art\cruise_missile.tga" cache="0" scale="1.2" trackdist="-1" tracktype="" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" tex_id="TEX_UNITS_0" tex_col="5" tex_row="10" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="SCHWARZENBERG-DEFAULT-AGE0" model=".\art\cruise_missile.bh3" texture=".\art\cruise_missile.tga" cache="0" scale="1.2" trackdist="-1" tracktype="" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" tex_id="TEX_UNITS_2" tex_col="4" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <BOUNDINGVOLUMES>
         <SPHERE x="0" y="0" z="20" rad="40"/>
       </BOUNDINGVOLUMES>

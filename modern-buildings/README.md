@@ -28,4 +28,11 @@ python ../roman-buildings/tools/depth_mesh.py stable_6
 
 Since 2026-10-28 new sprites get no wear: skip `weather.py` and write `clean/` straight with `write_like.py`.
 
+Brightened 2026-11-08 (the user: too dark; brightness of the building pixels 69 against the original's 110): `brighten_sprite.py` gamma 0.62, warmth 0 (colours kept) on the installed sprite, brightness 110 now. The darker one is kept as `work/stable_6_age8_before_brighten.tga`, the comparison in `work/brighten_compare.png`; the site picture was exported again with `site_image.py`. The same day the shadow went too (the user, seen in game: a dark band on the ground at the lower left): its 2113 shadow pixels (alpha 145, from `make_sprite.py --shadow`) set to transparent, written again with `write_like.py`. Then moved 20 px lower (the user, seen in game: its corners should reach the corners of the grey foundation): the canvas grown 20 rows at the bottom (397 x 317, `write_like.py --any-size`; a canvas grown only downwards needs no offset in `nation_art.ini`), the building pasted 20 px down, the depth mesh made again (`depth_mesh.py stable_6`, 92 % covered). In `footprint_check.py` its wall corners now sit on the footprint's left and right corners (overflow 12.6 at the front, from the crates and robots). The copy before the move is `work/stable_6_age8_before_lower.tga`.
+
+```
+python ../roman-buildings/tools/brighten_sprite.py nation_art/all/stable_6_age8.tga work/lit.png 0.62 0
+python ../roman-buildings/tools/write_like.py work/lit.png for-gemini/stable_6__original.tga nation_art/all/stable_6_age8.tga
+```
+
 The footprint check found no need to scale it: overflow 11.2 px against the original's 9.8. The depth mesh covers 97 % of the sprite.

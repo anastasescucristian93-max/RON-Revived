@@ -110,6 +110,7 @@ static struct {
     int extra_zoom;  /* 1 = one zoom step farther and one closer than the game allows */
     float pan_smooth_ms;
     int fix_stuck_keys;
+    int instant_keys; /* 1 = arrow keys read live every drawn frame, not once per game tick */
     int log;
 } cfg;
 
@@ -150,6 +151,7 @@ static void load_config(void)
     cfg.extra_zoom = GetPrivateProfileIntA("camera", "extra_zoom", 1, path);
     cfg.pan_smooth_ms = ini_float(path, "camera", "pan_smooth_ms", 70.0f);
     cfg.fix_stuck_keys = GetPrivateProfileIntA("camera", "fix_stuck_keys", 1, path);
+    cfg.instant_keys = GetPrivateProfileIntA("camera", "instant_keys", 1, path);
     cfg.log = GetPrivateProfileIntA("camera", "log", 1, path);
     g_zoom_trace = GetPrivateProfileIntA("debug", "zoom_trace", 0, path);
     g_debug_viewports = GetPrivateProfileIntA("debug", "viewport_log", 0, path);
@@ -205,7 +207,7 @@ static void load_config(void)
     airdrop_load_config(g_dir);
     entrench_load_config(g_dir);
     romania_load_config(g_dir);
-    g_hook_check_scroll = cfg.smooth_scroll || cfg.fix_stuck_keys || g_qol_enabled || g_airdrop_enabled;
+    g_hook_check_scroll = cfg.smooth_scroll || cfg.fix_stuck_keys || cfg.instant_keys || g_qol_enabled || g_airdrop_enabled;
     g_hook_draw_build = g_nation_art_enabled || g_subpixel_enabled;
     g_hook_init_display = g_ui_scale_enabled || g_subpixel_enabled || g_postfx_enabled;
     g_extra_in_enabled = cfg.smooth_zoom && cfg.extra_zoom;
@@ -358,18 +360,63 @@ static float scroll_speed_for_zoom(void *cam)
    ridicata cand fereastra pierde focusul (alt-tab, overlay), jocul nu afla si camera
    merge singura pana se apasa alta tasta. Stergem tastele de scroll care nu sunt tinute
    fizic apasate. */
+static const unsigned char scroll_vks[] = {
+    VK_LEFT, VK_UP, VK_RIGHT, VK_DOWN, VK_NUMPAD2, VK_NUMPAD4, VK_NUMPAD6, VK_NUMPAD8, VK_CONTROL, VK_MENU,
+};
+#define NUM_SCROLL_VKS (sizeof scroll_vks)
+
 static void fix_stuck_keys(void)
 {
-    static const unsigned char vks[] = {
-        VK_LEFT, VK_UP, VK_RIGHT, VK_DOWN, VK_NUMPAD2, VK_NUMPAD4, VK_NUMPAD6, VK_NUMPAD8, VK_CONTROL, VK_MENU,
-    };
+    const unsigned char *vks = scroll_vks;
     char *game = *(char **)VA(VA_GAME_PTR);
     if (!game)
         return;
     volatile unsigned char *keys = (volatile unsigned char *)(game + GAME_KEYS);
-    for (unsigned i = 0; i < sizeof vks; i++)
+    for (unsigned i = 0; i < NUM_SCROLL_VKS; i++)
         if ((keys[vks[i]] & 0x80) && !(GetAsyncKeyState(vks[i]) & 0x8000))
             keys[vks[i]] &= 0x7F;
+}
+
+/* The game fills its key array with GetKeyboardState only in Game::do_frame, once per
+   simulation tick (TurnControl::timings: 200 / 125 / 67 / 50 ms by game speed), while
+   check_scroll runs every drawn frame. So a press (and a release) reaches the camera up
+   to a whole tick late. While the original check_scroll runs, the scroll keys hold their
+   live state (GetAsyncKeyState); afterwards the array is put back, so nothing else in
+   the game sees a different key array. Only while the game's window is in front. */
+static unsigned char g_live_saved[NUM_SCROLL_VKS];
+
+static volatile unsigned char *live_keys_begin(void)
+{
+    char *game = *(char **)VA(VA_GAME_PTR);
+    HWND fg = GetForegroundWindow();
+    DWORD pid = 0;
+    if (!game || !fg)
+        return NULL;
+    GetWindowThreadProcessId(fg, &pid);
+    if (pid != GetCurrentProcessId())
+        return NULL;
+    volatile unsigned char *keys = (volatile unsigned char *)(game + GAME_KEYS);
+    for (unsigned i = 0; i < NUM_SCROLL_VKS; i++) {
+        unsigned char vk = scroll_vks[i];
+        g_live_saved[i] = keys[vk];
+        keys[vk] = (unsigned char)((keys[vk] & 0x7F) | ((GetAsyncKeyState(vk) & 0x8000) ? 0x80 : 0));
+    }
+    return keys;
+}
+
+static void live_keys_end(volatile unsigned char *keys)
+{
+    if (!keys)
+        return;
+    for (unsigned i = 0; i < NUM_SCROLL_VKS; i++)
+        keys[scroll_vks[i]] = g_live_saved[i];
+}
+
+static void orig_check_scroll_live(void *self)
+{
+    volatile unsigned char *keys = cfg.instant_keys ? live_keys_begin() : NULL;
+    g_orig_check_scroll(self);
+    live_keys_end(keys);
 }
 
 __attribute__((used)) void c_check_scroll(void *self)
@@ -383,7 +430,7 @@ __attribute__((used)) void c_check_scroll(void *self)
     if (cfg.fix_stuck_keys)
         fix_stuck_keys();
     if (!cfg.smooth_scroll) {
-        g_orig_check_scroll(self);
+        orig_check_scroll_live(self);
         return;
     }
 
@@ -392,7 +439,7 @@ __attribute__((used)) void c_check_scroll(void *self)
 
     sc.mask = 0;
     sc.amount = -1.0f;
-    g_orig_check_scroll(self);
+    orig_check_scroll_live(self);
     if (!cam)
         return;
 
@@ -1479,7 +1526,7 @@ static void install_hooks(void)
     /* Smooth scrolling needs both scroll hooks; buttons need the per-frame tick in check_scroll. */
     if (!g_hook_check_scroll)
         cfg.smooth_scroll = g_qol_enabled = 0;
-    if (!cfg.smooth_scroll && !cfg.fix_stuck_keys && !g_qol_enabled && !g_airdrop_enabled)
+    if (!cfg.smooth_scroll && !cfg.fix_stuck_keys && !cfg.instant_keys && !g_qol_enabled && !g_airdrop_enabled)
         g_hook_check_scroll = 0;
     /* The extra close step is animated by the check_zoom replacement. */
     if (!cfg.smooth_zoom)

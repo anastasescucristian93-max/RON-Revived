@@ -42144,7 +42144,7 @@
       <SOUNDEVENT starttime="999" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="866" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="SCHWARZENBERG-DEFAULT-AGE0" model=".\art\cruise_missile.bh3" texture=".\art\cruise_missile.tga" cache="0" scale="1.2" trackdist="-1" tracktype="" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" tex_id="TEX_UNITS_0" tex_col="5" tex_row="10" tex_x="-1" tex_y="-1" tex_clip="0">
+    <UNIT name="SCHWARZENBERG-DEFAULT-AGE0" model=".\art\cruise_missile.bh3" texture=".\art\cruise_missile.tga" cache="0" scale="1.2" trackdist="-1" tracktype="" shadowtype="Biped Shadow" shadowwidth="50" shadowheight="50" tex_id="TEX_UNITS_2" tex_col="4" tex_row="11" tex_x="-1" tex_y="-1" tex_clip="0">
       <BOUNDINGVOLUMES>
         <SPHERE x="0" y="0" z="20" rad="40"/>
       </BOUNDINGVOLUMES>

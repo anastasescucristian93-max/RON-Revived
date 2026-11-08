@@ -11,9 +11,11 @@
  *    queue command (GroupOut::issue_queue_up, a normal network command) already queues the
  *    unit in each selected building that can make it.
  *
- *  - Button looks. Locked options (wrong age, missing technology) get a padlock on top
- *    of the game's disabled look; available ones the player cannot afford right now are
- *    drawn darker. The game itself never disables a button for its cost.
+ *  - Button looks, as the market's Buy / Sell: a command you can give now stands out (a light
+ *    top-left edge, a shadow bottom-right); one you cannot (not enough resources, no craft
+ *    points, disabled by the game) is darker and sunk in (the shadow on the top-left edge).
+ *    Locked options (wrong age, missing technology) also get a padlock. Research keeps its
+ *    flask and only goes darker. The game itself never disables a button for its cost.
  *
  *  - Hotkeys on the buttons: the key of every command button with a shortcut is written in
  *    its top-left corner (as in Company of Heroes 3), so there is no need to hover for it.
@@ -174,7 +176,12 @@ __attribute__((used)) void c_purge(char *sg, int n)
 
 /* ---- padlock / can't afford ------------------------------------------------------------- */
 
-enum { LOOK_NORMAL, LOOK_LOCKED, LOOK_POOR };
+/* LOOK_READY: a command you can give now (and pay for), drawn raised, in front.
+   LOOK_POOR: cannot pay for it (or no craft points), drawn darker and sunk in.
+   LOOK_DISABLED: the game's own disabled look, sunk in. LOOK_LOCKED: the same with a padlock.
+   LOOK_NORMAL: untouched (not a command button). LOOK_DIM: darker only (research, switches off).
+   The market's Buy / Sell buttons work the same way (the user, 2026-11-08). */
+enum { LOOK_NORMAL, LOOK_READY, LOOK_LOCKED, LOOK_POOR, LOOK_DISABLED, LOOK_DIM };
 
 /* An ability (Option code 4, type = the craft) that some selected unit has but none can cast
    now (GroupData::get_valid_spellcaster runs SpellTypeData::is_castable: craft points, ...). */
@@ -184,49 +191,90 @@ enum { LOOK_NORMAL, LOOK_LOCKED, LOOK_POOR };
 #define VA_SELECTIONS   0x00E8D444u /* SelectGroup[], 0x9F0 each; Console +0x2A0 = the local one */
 typedef int(__attribute__((thiscall)) *caster_t)(void *group, int type);
 
-static int spell_poor(int type)
+static int g_button_depth, g_poor_percent;
+
+static int spell_look(int type)
 {
+    if (airdrop_is_option(OPT_SPELL, type)) /* its clock already darkens it while it recharges */
+        return airdrop_cooldown_permille() > 0 ? LOOK_DISABLED : LOOK_READY;
     char *console = *(char **)VA(VA_CONSOLE_PTR), *sel = *(char **)VA(VA_SELECTIONS);
-    if (!console || !sel || airdrop_is_option(OPT_SPELL, type)) /* the airdrop shows its own clock */
-        return 0;
+    if (!console || !sel)
+        return LOOK_READY;
     char *group = sel + *(int *)(console + 0x2A0) * 0x9F0;
-    return ((caster_t)VA(VA_GET_CASTER))(group, type) >= 0 && ((caster_t)VA(VA_GET_VCASTER))(group, type) < 0;
+    return ((caster_t)VA(VA_GET_CASTER))(group, type) >= 0 && ((caster_t)VA(VA_GET_VCASTER))(group, type) < 0
+               ? LOOK_POOR
+               : LOOK_READY;
 }
 
 static int button_look(char *btn)
 {
     int idx = *(int *)(btn + BTN_OPTION), kind = *(int *)(btn + BTN_KIND), type = *(int *)(btn + BTN_TYPE);
-    if (idx >= 0 && !(*(unsigned short *)(btn + BTN_FLAGS) & 8)) {
-        char *opts = *(char **)VA(VA_OPTIONS_PTR);
-        if (opts && idx < *(int *)(opts + 0x20)) {
-            char *e = *(char **)(opts + 0x10) + idx * OPT_SIZE;
-            if (*(int *)e == OPT_SPELL)
-                return spell_poor(*(int *)(e + 4)) ? LOOK_POOR : LOOK_NORMAL;
-        }
-    }
-    if (idx < 0 || type < 0 || (kind != 3 && kind != 4 && kind != 6) || (*(unsigned short *)(btn + BTN_FLAGS) & 8))
-        return LOOK_NORMAL;
     char *opts = *(char **)VA(VA_OPTIONS_PTR);
-    if (!opts || idx >= *(int *)(opts + 0x20))
-        return LOOK_NORMAL;
+    if (idx < 0 || (*(unsigned short *)(btn + BTN_FLAGS) & 8) || !opts || idx >= *(int *)(opts + 0x20))
+        return LOOK_NORMAL; /* not a command button, or not drawn */
     char *e = *(char **)(opts + 0x10) + idx * OPT_SIZE;
-    if (*(int *)(e + 4) != type)
-        return LOOK_NORMAL;
+    int enabled = ((fn_int_t)VA(VA_IS_ENABLED))(btn) && !*(int *)(e + 0xC);
+    int research = kind == 6 || *(int *)e == OPT_RESEARCH; /* they have their flask: no depth */
+    if (*(int *)e == OPT_SPELL)
+        return enabled ? spell_look(*(int *)(e + 4)) : LOOK_DISABLED;
+    if (type < 0 || (kind != 3 && kind != 4 && kind != 6) || *(int *)(e + 4) != type)
+        return enabled ? LOOK_READY : LOOK_DISABLED; /* the other commands: garrison, eject, delete, ... */
     int p = local_player();
     if (p < 0 || p > 7)
         return LOOK_NORMAL;
     void *leader = (void *)(VA(VA_LEADERS) + p * 0x6EEC);
     int avail = ((type_avail_t)VA(VA_TYPE_AVAIL))(leader, type, 1) == 4;
-    int enabled = ((fn_int_t)VA(VA_IS_ENABLED))(btn);
     if (!enabled)
-        return avail ? LOOK_NORMAL : LOOK_LOCKED;
+        return !avail ? LOOK_LOCKED : research ? LOOK_NORMAL : LOOK_DISABLED;
     if (!avail || *(int *)e == OPT_RESEARCH)
-        return LOOK_NORMAL;
+        return research ? LOOK_NORMAL : LOOK_READY;
     char *td = (*(char ***)VA(VA_TYPE_TABLE))[type];
     if (!td)
         return LOOK_NORMAL;
     int can = ((can_pay_t)(*(void ***)td)[TC_CAN_PAY / 4])(td, p, -1, -1, 1);
-    return can ? LOOK_NORMAL : LOOK_POOR;
+    if (research)
+        return can ? LOOK_NORMAL : LOOK_DIM;
+    return can ? LOOK_READY : LOOK_POOR;
+}
+
+/* Depth from solid rectangles along the edges (they reach the screen over the button's icon).
+   Raised: a warm light on the top and left edges, a shadow on the bottom and right, as a plate
+   standing out of the panel. Sunk: the shadow on the top and left (deepest at the edge), a faint
+   light on the bottom and right, as a hole the icon sits in. */
+static void draw_depth(char *btn, int raised)
+{
+    short *r = (short *)(btn + WIN_RECT);
+    int w = r[1] - r[0], h = r[3] - r[2];
+    if (w < 8 || h < 8)
+        return;
+    void *rm = (void *)VA(VA_IFACE_RM);
+    add_rect_t add = (add_rect_t)VA(VA_RM_ADD_RECT);
+    if (raised) {
+        static const unsigned light[2] = { 0xB0D8F4FF, 0x50D8F4FF }; /* 0xAABBGGRR: warm white */
+        static const unsigned dark[2] = { 0xD0000000, 0x70000000 };
+        for (int i = 0; i < 2; i++) {
+            short top[4] = { (short)i, (short)(w - i), (short)i, (short)(i + 1) };
+            short left[4] = { (short)i, (short)(i + 1), (short)(i + 1), (short)(h - i) };
+            short bottom[4] = { (short)(i + 1), (short)(w - i), (short)(h - 1 - i), (short)(h - i) };
+            short right[4] = { (short)(w - 1 - i), (short)(w - i), (short)(i + 1), (short)(h - 1 - i) };
+            add(rm, NULL, top, light[i], RENDER_SOLID);
+            add(rm, NULL, left, light[i], RENDER_SOLID);
+            add(rm, NULL, bottom, dark[i], RENDER_SOLID);
+            add(rm, NULL, right, dark[i], RENDER_SOLID);
+        }
+    } else {
+        static const unsigned dark[4] = { 0xF0000000, 0xB0000000, 0x70000000, 0x38000000 };
+        for (int i = 0; i < 4; i++) {
+            short top[4] = { (short)i, (short)w, (short)i, (short)(i + 1) };
+            short left[4] = { (short)i, (short)(i + 1), (short)(i + 1), (short)h };
+            add(rm, NULL, top, dark[i], RENDER_SOLID);
+            add(rm, NULL, left, dark[i], RENDER_SOLID);
+        }
+        short bottom[4] = { 4, (short)w, (short)(h - 1), (short)h };
+        short right[4] = { (short)(w - 1), (short)w, 4, (short)(h - 1) };
+        add(rm, NULL, bottom, 0x40D8F4FF, RENDER_SOLID);
+        add(rm, NULL, right, 0x40D8F4FF, RENDER_SOLID);
+    }
 }
 
 /* A small padlock drawn from solid rectangles in the top-right corner of the button
@@ -460,20 +508,23 @@ __attribute__((used)) void c_btn_redraw(char *btn)
         return;
     if (qol_button_redraw(btn)) /* the round buttons of the qol row */
         return;
-    int look = g_panel_enabled ? button_look(btn) : LOOK_NORMAL; /* padlock, darker: command_panel */
+    int look = g_panel_enabled ? button_look(btn) : LOOK_NORMAL; /* depth, padlock, darker: command_panel */
     if (cityrepair_button_off(btn)) /* a city's repair switch while it is off */
-        look = LOOK_POOR;
+        look = LOOK_DIM;
     unsigned char saved[12];
-    if (look == LOOK_POOR) { /* darker, the way the game dims disabled buttons (colour scale) */
+    int dim = look == LOOK_DIM ? 60 : look == LOOK_POOR ? g_poor_percent : 100;
+    if (dim < 100) { /* darker, the way the game dims disabled buttons (colour scale) */
         memcpy(saved, btn + BTN_COLOR, 12);
         unsigned char *rgb = (unsigned char *)btn + BTN_COLOR;
         for (int i = 0; i < 3; i++)
-            rgb[i] = (unsigned char)(rgb[i] * 60 / 100);
+            rgb[i] = (unsigned char)(rgb[i] * dim / 100);
     }
     ((fn_v_t)g_orig_btn_redraw)(btn);
-    if (look == LOOK_POOR)
+    if (dim < 100)
         memcpy(btn + BTN_COLOR, saved, 12);
-    else if (look == LOOK_LOCKED)
+    if (g_button_depth && look != LOOK_NORMAL && look != LOOK_DIM)
+        draw_depth(btn, look == LOOK_READY);
+    if (look == LOOK_LOCKED)
         draw_padlock(btn);
     draw_cooldown(btn);
     draw_charges(btn);
@@ -515,6 +566,10 @@ int g_panel_enabled;
 void panel_load_config(const char *ini_path)
 {
     g_panel_enabled = GetPrivateProfileIntA("qol", "command_panel", 1, ini_path);
+    g_button_depth = GetPrivateProfileIntA("qol", "button_depth", 1, ini_path);
+    g_poor_percent = GetPrivateProfileIntA("qol", "poor_button_percent", 40, ini_path);
+    if (g_poor_percent < 0 || g_poor_percent > 100)
+        g_poor_percent = 40;
     g_show_hotkeys = GetPrivateProfileIntA("qol", "show_hotkeys", 1, ini_path);
     g_hotkey_size = GetPrivateProfileIntA("qol", "hotkey_font_size", 14, ini_path);
     g_hotkey_bold = GetPrivateProfileIntA("qol", "hotkey_bold", 1, ini_path);

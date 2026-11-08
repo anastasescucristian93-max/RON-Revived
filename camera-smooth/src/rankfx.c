@@ -371,6 +371,7 @@ __attribute__((thiscall)) static void rankfx_redraw(void *console)
             if (g_fx[i].obj)
                 draw_one(i, now, local, h, glow, spark);
     }
+    minimap_draw_frame(); /* the minimap is a child of the console, so it is drawn over this */
     prodbar_draw_icons();
     heal_draw_overhead();
     cityrepair_draw_overhead();
@@ -385,7 +386,8 @@ void rankfx_install(void)
     if (g_mode && !g_ranks_enabled)
         g_mode = 0;
     if (!g_mode && !g_prodbar_enabled && !g_ranks_enabled && !g_heal_enabled &&
-        !cityrepair_wanted()) /* ranks: the insignia beside health bars; heal: its crosses; city repair: its pliers */
+        !cityrepair_wanted() && !minimap_frame_wanted())
+        /* ranks: the insignia beside health bars; heal: its crosses; city repair: its pliers; the minimap's frame */
         return;
     static const unsigned char sig[5] = { 0xC3, 0xCC, 0xCC, 0xCC, 0xCC }; /* ret, int3 padding */
     unsigned char *at = (unsigned char *)VA(VA_CON_REDRAW);
