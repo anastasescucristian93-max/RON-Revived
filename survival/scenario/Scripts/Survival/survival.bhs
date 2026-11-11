@@ -1,27 +1,72 @@
-// Survival: hold out for 30 minutes against waves of enemies.
+// Survival: hold out for 30 to 90 minutes against waves of enemies.
 //
-// Set up a game with yourself and ONE computer player as your enemy, then pick "Survival" under
-// Script. The computer player's buildings and units are removed at the start: the whole map is
-// yours. From 2:00 a wave comes every 80 seconds (45 seconds at the end), bigger every time. It
-// appears in the fog just outside your territory and attacks your capital. Its army is one or
-// two ages behind yours. Every 5 minutes a boss wave: heavy cavalry or tanks, siege and a General.
+// Start it with the Survival button of the Solo menu (under Quick Battle), or pick "Survival"
+// under Script in a custom game with yourself and at least one computer player as your enemy.
+// The computer players' buildings and units are removed at the start: the whole map is yours.
+// From 4:00 a wave comes every 80 seconds (45 seconds at the end), bigger every time. The waves
+// march out of the enemy's military buildings spread evenly over the map (Barracks, Stables and
+// Siege Factories, one by one, none near the middle), from one at first and from up to four
+// later, and march on your capital; once all of them are destroyed they come in from the edges
+// of the map. Their army
+// is one or two ages behind yours. After every fifth wave a boss wave: heavy cavalry or tanks,
+// siege and a General.
 //
-// A strip of the map (a tenth, on the side away from your start) is a no-build zone, kept free
-// for the waves; flags mark its edge.
+// A band along the four edges of the map (a tenth of its width) is a no-build zone, kept free
+// for the waves; flags mark its inner edge.
 //
 // The mod's winmm.dll reads the timers named surv_* (see camera-smooth/src/survival.c): it draws
-// the clocks at the top right and keeps everyone from building in the zone. Without it the
-// script still runs, without clocks and without the zone.
+// the wave bar at the top of the screen and the clocks at the top right, keeps everyone from
+// building in the band, and, when the game is a Survival game, makes the map: flat land without
+// water, you in the middle. Without it the script still runs on any map, without the bar, the
+// clocks and the band.
 //
 // The computer player's difficulty sets the waves: Easiest to Moderate = 2 ages behind, Hard and
 // up = 1 age behind; the waves grow with the difficulty too.
+//
+// Co-op: everyone not at war with the first human player defends (other humans, computer allies).
+// Every human gets a hero; the waves grow by 60 % for every defender past the first, and each part
+// of a wave goes for a defender of its own.
 
 scenario {
-  static int SURVIVE_SECONDS = 1800;
-  static int FIRST_WAVE = 120;
+  static int SURVIVE_SECONDS = 2700;  // 45 minutes (the user, 2026-11-10); the setup's length below
+  // the game's length (the user, 2026-11-11: a dropdown "short, medium, long, very long, 30 min, 45,
+  // 1h, 1,30h", and "automat nr de waveuri creste"): the Survival setup's Time Limit combo, through
+  // the DLL's timers surv_len_30 / _60 / _90 (none expires: 45 minutes). The waves keep their
+  // rhythm, so a longer game has more of them; the waves' ages stretch over the whole game.
+  static int len_min = 45;
+  static int FIRST_WAVE = 420;     // 7 minutes of grace before the first wave (the user: 4, then 3 more, 2026-11-11)
   static int MAX_ALIVE = 200;
+  static int WAVE_PCT = 18;        // every wave's size, percent (the user, 2026-11-10: a third, then 35 % less, then 15 % less)
+  static int WAVE_SPACING = 3;     // waves this many times rarer and this many times bigger (the user,
+                                   // 2026-11-10: "de 3 ori mai rar dar sa fie de 3 ori mai numeroase")
+  static int BOSS_EVERY = 2;       // a boss wave after every second wave (every fifth wave when they
+                                   // came three times as often, the user, 2026-11-10)
+  static int BOSS_DELAY = 30;      // seconds after that wave
   static int debug_lines = 1;      // 1 = a line per wave in the chat (where, which age, how many)
-  static int FOG = 16;             // tiles from any defender object: out of their sight
+  static int GRID = 7;             // the enemy buildings: one in every cell of a GRID x GRID grid,
+                                   // none near the middle (the user, 2026-11-10: one by one, evenly)
+  static int NBMAX = 160;          // enemy buildings the script keeps track of (the arrays below)
+  static int RUIN_PCT = 50;        // the chance a destroyed enemy building leaves ruins, percent
+  static int EXPAND_SECONDS = 120; // a new enemy building every 2 minutes, next to one still standing,
+                                   // never in a defender's territory (the user, 2026-11-11: "sa se
+                                   // extinda incet, cate una noua la 2 minute daca nu e in teritoriul tau")
+
+  // the reward cards (camera-smooth/src/cards.c; the user, 2026-11-11): a boss card after every boss
+  // wave (three to choose from), a small one (a quarter of it) from the ruins every destroyed enemy
+  // building leaves. The DLL shows them and adds the bonuses; the script keeps the counts (quarters,
+  // by player and kind: cards[p * NK + k]), so a saved game keeps them, and does the cards that act
+  // at once: Tribute (resources), Mercenaries (two squads), Respite (a smaller next wave).
+  static int NK = 23;
+  static int K_LEVEL = 8;          // War Veteran: the DLL gives the hero its experience
+  static int K_TRIBUTE = 20;
+  static int K_MERC = 21;
+  static int K_RESPITE = 22;
+  static int card_cap[] = [12, 8, 12, 12, 12, 12, 12, 8, 0, 12, 12, 12, 12, 12, 12, 8, 12, 12, 12, 8, 0, 0, 0];
+  static int cards[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  static int respite = 0;          // percent off the next wave
+  static int nboss = 0;            // boss waves over so far
+  static int boss_pending = 0;     // 1: a boss wave is out; its cards come when its General falls
+  static int bossg = -1;           // that General
 
   // the generic unit of each line, by age (0 Ancient .. 7 Information)
   static String li[] = ["Slingers", "Javelineers", "Elite Javelineers", "Arquebusiers", "Musketeers",
@@ -41,7 +86,11 @@ scenario {
 
   static int W = 0;          // the wave player
   static int diff = 0;
-  static int lag = 1;        // ages behind the defenders
+  static int lag = 1;        // (no longer used: the waves' age follows the wave number)
+  // the waves' age (the user, 2026-11-11: not behind the defenders, "sa progreseze singur in
+  // functie de nr waveului"): wave 1 Ancient, then an age every age_pace / 100 waves, faster
+  // with the difficulty: 240 on Easiest .. 165 on Toughest
+  static int age_pace = 150;
   static int mult = 100;     // wave size, percent
   static int single = 1;     // one human: is_on_screen is safe (it differs between machines)
   static int wave = 0;
@@ -51,13 +100,45 @@ scenario {
   static int tx = 0;
   static int ty = 0;
   static int ms = 0;          // map size in tiles
-  static int zx0 = 0;         // the no-build zone, tiles: zx0 <= x < zx1, zy0 <= y < zy1
-  static int zy0 = 0;
-  static int zx1 = 0;
-  static int zy1 = 0;
-  static String zone_timer;
+  static int band = 0;        // the no-build band along the edges, tiles
+  static String ring_timer;
+  static String plan_timer;
+  static int H = 0;          // the first human player: the waves are at war with it
+  // the heroes, by player (1..8): create_unit's id (-1 none; the DLL keeps it up to date) and
+  // kind (0 the infantry squad, 1 the rider); the DLL's hero slot is 2 * (player - 1) + kind
+  // two of each (the user, 2026-11-10: the infantry hero starts with 6 soldiers, two squads of 3;
+  // the cavalry hero with 2 riders): hid[p * 2 + k], k = 0, 1; the DLL's hero slot is
+  // 4 * (p - 1) + kind + 2 * k, and it keeps the two at the same experience
+  static int hid[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static int hkind[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static int cavalry = 0;    // the hero choice (the Survival setup's buttons)
+  static int coop = 100;     // the waves' size for the defenders there are, percent
+  // the enemy buildings: create_building's id (-1 = none), where it stands, its kind (0 Barracks,
+  // 1 Stable, 2 Siege Factory: the waves march out of these; 3 Tower, 4 Fort: defences only)
+  static String camp_types[] = ["Barracks", "Stable", "Siege Factory"];
+  static int nb = 0;
+  static int camps_made = 0;
+  static int camps_told = 0;
+  static int cleared = 0;    // 1 once the start's clearing is over
+  // the goal (the user, 2026-11-11: the game ends with an event, chosen in the Survival setup):
+  // 0 a Wonder, 1 the Information Age, 2 the time; reaching it (or SURVIVE_SECONDS, whatever the
+  // goal) brings the final assault, and destroying the final assault wins the game
+  static int goal = 2;
+  static int fin = 0;        // 1 once the final assault has come
+  static int go_final = 0;   // 1: the final assault comes in this pass
+  static int wonder_p = 0;   // the defender whose Wonder called it (goal 0): lose it and you lose
+  static int bid[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static int bx[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static int by[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static int bk[] = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+  static int bdead[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  // 1 once destroyed (its ruins laid)
+  // the rider by age: the light cavalry line (no Metal), the nation's own version (Light Camel,
+  // Cossack, ...); there is no cavalry in the Ancient Age, so it starts as Light Horse
+  static String riders[] = ["Light Horse", "Light Horse", "Light Cavalry", "Elite Light Cavalry", "Hussar",
+                            "Armored Car", "Armored Scout Car", "Armored Cavalry"];
 
   int p;
+  int q;
   int n;
   int u;
   int b;
@@ -66,17 +147,14 @@ scenario {
   int c;
   int e;
   int side;
+  int first_side;
+  int nsides;
+  int si;
+  int share;
   int ok;
   int found;
   int tries;
-  int r;
-  int hit;
-  int sx;
-  int sy;
-  int d;
-  float ang;
-  float fx;
-  float fy;
+  int pos;
   int count;
   int pick;
   int top_age;
@@ -86,11 +164,51 @@ scenario {
   int nrg;
   int ncav;
   int nsg;
+  int extra;
+  int tw;
+  int tb;
+  int isfinal;
+  int dx;
+  int dy;
+  int k;
+  int i;
+  int f;
+  int m;
+  int ox;
+  int oy;
+  int camp;
+  int gi;
+  int gj;
+  int cs;
+  int x0;
+  int y0;
+  int nid;
+  int alive;
+  int ix;
+  int iy;
+  int kx;
+  int ky;
+  int gx;
+  int gy;
+  int code;
+  int bv;
+  int cp;
+  int ck;
+  int cq;
+  int o;
+  int done;
   String cap;
+  String kname;
+  String cstr;
 
   run_once {
     for (p = num_players(); p >= 1; p--) {
-      if (W == 0 && !is_human(p)) W = p;
+      if (is_human(p) > 0) H = p;
+    }
+    // the battle director: the computer player at war with the first human (co-op: computer
+    // allies on the human's team defend with it)
+    for (p = num_players(); p >= 1; p--) {
+      if (W == 0 && !is_human(p) && (H == 0 || have_war(p, H))) W = p;
     }
     if (W == 0) {
       print_game_msg("Survival: add one computer player as your enemy; the script does nothing without one.");
@@ -99,9 +217,36 @@ scenario {
       diff = get_leader_difficulty(W);
       if (diff <= 2) lag = 2;
       else lag = 1;
+      // the game's length (the Survival setup's Time Limit combo)
+      set_timer("surv_len_30", 99999);
+      set_timer("surv_len_60", 99999);
+      set_timer("surv_len_90", 99999);
+      if (timer_expired("surv_len_30") == 1) len_min = 30;
+      if (timer_expired("surv_len_60") == 1) len_min = 60;
+      if (timer_expired("surv_len_90") == 1) len_min = 90;
+      SURVIVE_SECONDS = len_min * 60;
+      // the DLL's cards: who sends the waves (it gets none)
+      set_timer("surv_director " + W, 99999);
+      age_pace = 240 - 15 * diff;  // 180 - 10 per level was too fast (the user, 2026-11-11)
+      if (age_pace < 100) age_pace = 100;
+      age_pace = age_pace * len_min / 45;  // the same ages by the end of a longer or shorter game
       mult = 60 + 20 * diff;
       if (num_human_players() == 1) single = 1;
       else single = 0;
+
+      // co-op without teams (the user, 2026-11-10): every other computer player at war with the
+      // battle director too (Survival of the Fittest) becomes an ally of the humans and of the
+      // others; one allied with the director (a team game) stays an enemy and is removed below
+      for (p = 1; p <= num_players(); p++) {
+        if (p != W && !is_human(p) && have_war(p, W)) {
+          for (q = 1; q <= num_players(); q++) {
+            if (q != p && q != W && (is_human(q) > 0 || have_war(q, W))) {
+              make_alliance(p, q);
+              make_alliance(q, p);
+            }
+          }
+        }
+      }
 
       disable_city_defeat(W);
       disable_production_ai(W);
@@ -110,237 +255,718 @@ scenario {
       disable_take_attrition(W);
       set_population_cap(W, 1000);
 
-      // the no-build zone: a tenth of the map on the side away from the defenders' starts
+      // the no-build band: a tenth of the map along all four edges, where the waves come in
       ms = get_map_size();
-      sx = 0;
-      sy = 0;
-      for (p = 1; p <= num_players(); p++) {
-        if (p != W && have_war(W, p)) {
-          sx = sx + get_starting_loc_x(p) - ms / 2;
-          sy = sy + get_starting_loc_y(p) - ms / 2;
-        }
-      }
-      d = ms / 10;
-      if (d < 6) d = 6;
-      zx0 = 0;
-      zy0 = 0;
-      zx1 = ms;
-      zy1 = ms;
-      fx = (float)sx;
-      fy = (float)sy;
-      if (fx < 0.0) fx = 0.0 - fx;
-      if (fy < 0.0) fy = 0.0 - fy;
-      if (fx >= fy) {
-        if (sx > 0) zx1 = d;
-        else zx0 = ms - d;
-      } else {
-        if (sy > 0) zy1 = d;
-        else zy0 = ms - d;
-      }
-      zone_timer = "surv_zone " + zx0 + " " + zy0 + " " + zx1 + " " + zy1;
-      set_timer(zone_timer, 99999);
+      band = ms / 10;
+      if (band < 6) band = 6;
+      ring_timer = "surv_ring " + band + " " + ms;
+      set_timer(ring_timer, 99999);
       // flags along its inner edge (single player only: the game ignores them in multiplayer)
-      for (n = 2; n < ms - 2; n = n + 5) {
-        if (zx0 > 0) add_flag(zx0, n);
-        else if (zx1 < ms) add_flag(zx1 - 1, n);
-        else if (zy0 > 0) add_flag(n, zy0);
-        else add_flag(n, zy1 - 1);
+      for (n = band; n < ms - band; n = n + 6) {
+        add_flag(band, n);
+        add_flag(ms - band - 1, n);
+        add_flag(n, band);
+        add_flag(n, ms - band - 1);
       }
 
+      // no score list at the right edge: the wave bar stands there (camera-smooth/src/survival.c)
+      ui_hide_score();
+      // the hero: a squad of the first infantry line (Slingers ... Assault Infantry) beside your
+      // capital; the DLL lets it rank to level 30 and turns it into the unit of every new age
+      // which hero: the Survival setup's Hero button (the DLL makes this timer expire at once
+      // for the rider; without the DLL, from Script: Survival, or in multiplayer, the infantry)
+      set_timer("surv_herochoice", 99999);
+      if (timer_expired("surv_herochoice") == 1) cavalry = 1;
+      // the goal: the Survival setup's goal buttons (the DLL makes the chosen one's timer expire
+      // at once; without the DLL or in multiplayer, the time)
+      set_timer("surv_goal_wonder", 99999);
+      set_timer("surv_goal_tech", 99999);
+      if (timer_expired("surv_goal_wonder") == 1) goal = 0;
+      if (timer_expired("surv_goal_tech") == 1) goal = 1;
+      for (p = 1; p <= num_players(); p++) {
+        // every human, and every computer ally (the user, 2026-11-10: "pune i si ai-ului care e de
+        // partea mea o unitate eroica"): the allies get the rider, one unit whose id stays the
+        // same, so the care below can follow it
+        if (p != W && (is_human(p) > 0 || !have_war(p, H))) {
+          cap = find_capital(p);
+          b = 0;
+          if (cap != "") b = find_city_id(cap);
+          if (b > 0) {
+            x = object_position_x(p, b) + 3;
+            y = object_position_y(p, b) + 3;
+          } else {
+            x = get_starting_loc_x(p);
+            y = get_starting_loc_y(p);
+          }
+          e = age(p);
+          if (e < 0) e = 0;
+          if (e > 7) e = 7;
+          hkind[p] = cavalry;
+          if (is_human(p) <= 0) hkind[p] = 1;
+          // one squad, made bigger than its type's for the moment it is created (the DLL's
+          // surv_uber): six infantry or two riders that move as one squad
+          for (k = 0; k < 1; k++) {
+            i = p * 2 + k;
+            if (hkind[p] == 1) {
+              set_timer("surv_uber " + p + " 2 " + riders[e], 99999);
+              hid[i] = create_unit(p, x, y, riders[e], 1);
+              set_timer("surv_uber " + p + " 0 " + riders[e], 99999);
+            } else {
+              set_timer("surv_uber " + p + " 6 " + li[e], 99999);
+              hid[i] = create_unit(p, x, y, li[e], 1);
+              set_timer("surv_uber " + p + " 0 " + li[e], 99999);
+            }
+            if (hid[i] >= 0) set_timer("surv_hero " + p + " " + hid[i] + " " + (4 * (p - 1) + hkind[p] + 2 * k), 99999);
+          }
+        }
+      }
+      if (cavalry == 1) print_game_msg("Your hero is here, with the medallion: a squad of two riders that ranks up to level 30 and becomes armoured cars. If it falls, it is gone for good.");
+      else print_game_msg("Your hero is here, with the medallion: a squad of six soldiers that ranks up to level 30 and grows with every age. If it falls, it is gone for good.");
+
       set_timer("clear", 10);
+      set_timer("camps", 12);  // after the clearing, which removes every building of the wave player
       set_timer("surv_end", SURVIVE_SECONDS);
+      // the plan for the DLL's wave bar: the length, the first wave (the rest follows the
+      // rule below: 80 seconds less one per minute played, at least 45) and the boss rule
+      plan_timer = "surv_plan " + SURVIVE_SECONDS + " " + FIRST_WAVE + " " + BOSS_EVERY + " " + BOSS_DELAY + " " + WAVE_SPACING;
+      set_timer(plan_timer, 99999);
       set_timer("minute", 60);
       set_timer("surv_wave", FIRST_WAVE);
       set_timer("regroup", 15);
-      set_timer("surv_boss", 99999);  // started for real a minute before every fifth minute
+      set_timer("allycare", 5);
+      set_timer("surv_boss", 99999);  // started for real by every fifth wave
 
-      print_game_msg("*SURVIVAL*  Hold out for 30 minutes. The first wave comes at 2:00.");
-      print_game_msg("Waves come out of the fog at the edge of your territory, " + lag + " age(s) behind you. Boss waves every 5 minutes.");
-      print_game_msg("Nobody can build in the strip of the map behind the flags: the waves gather there.");
-      if (debug_lines == 1) print_game_msg("[survival] wave player " + W + ", difficulty " + diff + ", lag " + lag + ", size " + mult + "%");
+      if (goal == 0) print_game_msg("*SURVIVAL*  Build a Wonder: it calls the final assault, and destroying the final assault wins the game. Lose the Wonder and you lose. The final assault comes at " + (SURVIVE_SECONDS / 60) + ":00 anyway. The first wave comes at " + (FIRST_WAVE / 60) + ":00.");
+      else if (goal == 1) print_game_msg("*SURVIVAL*  Reach the Information Age: it calls the final assault, and destroying the final assault wins the game. It comes at " + (SURVIVE_SECONDS / 60) + ":00 anyway. The first wave comes at " + (FIRST_WAVE / 60) + ":00.");
+      else print_game_msg("*SURVIVAL*  Hold out " + (SURVIVE_SECONDS / 60) + " minutes for the final assault; destroy it to win. The first wave comes at " + (FIRST_WAVE / 60) + ":00.");
+      print_game_msg("Waves march out of the enemy's Barracks, Stables and Siege Factories all over the map, a new age every few waves; destroy them all and they come in from the edges. A boss wave follows every " + BOSS_EVERY + "th wave.");
+      print_game_msg("Nobody can build in the band along the edges, behind the flags: the waves come in there.");
+      print_game_msg("Survive a boss wave for a reward card. An enemy building you destroy may leave ruins (one time in two): explore them for a small card. The enemy builds a new camp every " + (EXPAND_SECONDS / 60) + " minutes outside your territory.");
+      if (debug_lines == 1) print_game_msg("[survival] wave player " + W + ", difficulty " + diff + ", " + len_min + " minutes, an age every " + age_pace + "/100 waves, size " + mult + "%, map " + ms + ", band " + band);
     }
   }
 
-  // the wave player's start (capital, citizens, scout) goes away: the whole map is yours
-  if (over == 0 && !timer_expired("clear")) {
-    kill_unit_type(W, "Citizen");
-    kill_unit_type(W, "Scout");
-    destroy_building_type(W, "Small City");
-    destroy_building_type(W, "Large City");
-    destroy_building_type(W, "Major City");
-    for (n = num_units(W) + 2; n > 0; n--) {
-      u = find_all_unit(W, "");
-      if (u > 0) kill_unit(W, u);
-    }
-    for (n = num_buildings(W) + 2; n > 0; n--) {
-      b = find_build(W, "");
-      if (b > 0) destroy_building(W, b);
-    }
-  }
-
-  if (over == 0 && timer_expired("surv_end")) {
-    over = 1;
+  // the start of the computer players at war with you (capital, citizens, scout) goes away:
+  // the whole map is yours. The wave player stays in the game; any other enemy is defeated.
+  // timer_expired gives 1 once (and removes the timer), 0 while it runs, -1 when there is none,
+  // and an int in a condition counts as true only above 0: "!timer_expired(...)" was true again
+  // once the timer was gone, so this clearing went on all game, killing every wave as it came
+  // and the camps (2026-11-10). Over for good the first time the timer is not running.
+  if (cleared == 0 && timer_expired("clear") != 0) cleared = 1;
+  if (over == 0 && cleared == 0) {
     for (p = 1; p <= num_players(); p++) {
-      if (p != W && !is_defeated(p)) victory(p);
+      extra = 0;
+      if (p == W) extra = 1;
+      for (q = 1; q <= num_players(); q++) {
+        if (extra == 0 && p != q && !is_human(p) && is_human(q) > 0 && have_war(p, q)) extra = 1;
+      }
+      if (extra == 1) {
+        // kept in the game, emptied: a computer player that loses everything would be
+        // announced "defeated" (an older setup could still have several)
+        disable_city_defeat(p);
+        disable_production_ai(p);
+        disable_city_ai(p);
+        disable_combat_ai(p);
+        kill_unit_type(p, "Citizen");
+        kill_unit_type(p, "Scout");
+        destroy_building_type(p, "Small City");
+        destroy_building_type(p, "Large City");
+        destroy_building_type(p, "Major City");
+        for (n = num_units(p) + 2; n > 0; n--) {
+          u = find_all_unit(p, "");
+          if (u > 0) kill_unit(p, u);
+        }
+        for (n = num_buildings(p) + 2; n > 0; n--) {
+          b = find_build(p, "");
+          if (b > 0) destroy_building(p, b);
+        }
+      }
+    }
+  }
+
+  // the enemy buildings (the user, 2026-11-10: "cateva zeci de barracks inamice pe harta
+  // imprastiate dar nu in centru", then "nu trebuie sa fie clustere de cate 3, trebuie sa fie cate
+  // una si imprastiate uniform"): the map inside the no-build band cut into GRID x GRID cells,
+  // one building at a random point in the middle of each cell whose middle is at least 22 % of
+  // the map from the map's middle; the kinds in turn so that neighbours differ. create_building
+  // refuses a taken or blocked site (-1), so each tries a few points.
+  if (over == 0 && camps_made == 0 && timer_expired("camps") == 1) {
+    camps_made = 1;
+    cs = (ms - 2 * band - 16) / GRID;
+    for (gi = 0; gi < GRID; gi++) {
+      for (gj = 0; gj < GRID; gj++) {
+        x0 = band + 8 + gi * cs;
+        y0 = band + 8 + gj * cs;
+        dx = x0 + cs / 2 - ms / 2;
+        dy = y0 + cs / 2 - ms / 2;
+        if (dx * dx + dy * dy >= (ms * 22 / 100) * (ms * 22 / 100) && nb < NBMAX) {
+          k = (gi + 2 * gj) % 3;
+          nid = -1;
+          for (tries = 0; tries < 12; tries++) {
+            if (nid < 0) {
+              x = x0 + cs / 5 + rand_int(0, cs * 3 / 5);
+              y = y0 + cs / 5 + rand_int(0, cs * 3 / 5);
+              nid = create_building(W, x, y, camp_types[k]);
+            }
+          }
+          if (nid >= 0) {
+            bid[nb] = nid;
+            bx[nb] = x;
+            by[nb] = y;
+            bk[nb] = k;
+            nb++;
+          }
+        }
+      }
+    }
+    // the defences (the user, 2026-11-10: "cateva forturi, dar putine si mai multe watch towers
+    // dar sa nu fie prea aproape de centrul hartii"): a Tower on every inner corner of the grid
+    // at least 30 % of the map from the middle (between four of the buildings above), and a Fort
+    // on each diagonal, 36 % of the map out; they are not spawn points
+    n = 0;
+    for (gi = 1; gi < GRID; gi++) {
+      for (gj = 1; gj < GRID; gj++) {
+        x0 = band + 8 + gi * cs;
+        y0 = band + 8 + gj * cs;
+        dx = x0 - ms / 2;
+        dy = y0 - ms / 2;
+        if (dx * dx + dy * dy >= (ms * 30 / 100) * (ms * 30 / 100)) {
+          nid = -1;
+          for (tries = 0; tries < 12; tries++) {
+            if (nid < 0) {
+              x = x0 + rand_int(-cs / 8, cs / 8);
+              y = y0 + rand_int(-cs / 8, cs / 8);
+              nid = create_building(W, x, y, "Tower");
+            }
+          }
+          if (nid >= 0) {
+            n++;
+            if (nb < NBMAX) {
+              bid[nb] = nid;
+              bx[nb] = x;
+              by[nb] = y;
+              bk[nb] = 3;
+              nb++;
+            }
+          }
+        }
+      }
+    }
+    c = 0;
+    for (k = 0; k < 4; k++) {
+      dx = ms * 36 / 141;   // 36 % of the map along a diagonal: 36 / sqrt(2) on each axis
+      if (k == 1 || k == 2) dx = 0 - dx;
+      dy = ms * 36 / 141;
+      if (k >= 2) dy = 0 - dy;
+      nid = -1;
+      for (tries = 0; tries < 16; tries++) {
+        if (nid < 0) {
+          x = ms / 2 + dx + rand_int(-8, 8);
+          y = ms / 2 + dy + rand_int(-8, 8);
+          nid = create_building(W, x, y, "Fort");
+        }
+      }
+      if (nid >= 0) {
+        c++;
+        if (nb < NBMAX) {
+          bid[nb] = nid;
+          bx[nb] = x;
+          by[nb] = y;
+          bk[nb] = 4;
+          nb++;
+        }
+      }
+    }
+    set_timer("ruins", 3);
+    set_timer("expand", EXPAND_SECONDS);
+    if (debug_lines == 1) print_game_msg("[survival] " + nb + " enemy buildings, " + n + " towers and " + c + " forts on the map");
+  }
+
+  // the final assault comes when the goal is reached, or when the time is up whatever the goal
+  if (over == 0 && fin == 0) {
+    if (timer_expired("surv_end") == 1) go_final = 1;
+    for (p = 1; p <= num_players(); p++) {
+      if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) {
+        if (goal == 0 && get_wonder_points(p) > 0) {
+          go_final = 1;
+          if (wonder_p == 0) wonder_p = p;
+        }
+        if (goal == 1 && age(p) >= 7) go_final = 1;
+      }
+    }
+  }
+
+  // the final assault destroyed: victory; the Wonder that called it lost: defeat
+  if (over == 0 && fin == 1 && timer_expired("fincheck") == 1) {
+    set_timer("fincheck", 5);
+    if (goal == 0 && wonder_p > 0 && get_wonder_points(wonder_p) <= 0) {
+      over = 1;
+      show_notice("Your Wonder has fallen. The survivors scatter...", "city_under_attack_notice", 1);
+      for (p = 1; p <= num_players(); p++) {
+        if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) defeat(p);
+      }
+    } else if (num_military_units(W) <= 0) {
+      over = 1;
+      for (p = 1; p <= num_players(); p++) {
+        if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) victory(p);
+      }
     }
   }
 
   if (over == 0 && timer_expired("minute")) {
     set_timer("minute", 60);
     minute++;
-    if (minute < 30) {
+    if (minute < SURVIVE_SECONDS / 60 && fin == 0) {
       // set again every minute: the DLL learns timers only when they are set, so after a saved
-      // game is loaded the clocks and the zone come back within a minute
+      // game is loaded the bar, the clocks and the band come back within a minute
       set_timer("surv_end", SURVIVE_SECONDS - minute * 60);
-      set_timer(zone_timer, 99999);
-      if (30 - minute <= 5 || minute % 5 == 0) {
-        print_game_msg("Survival: " + (30 - minute) + " minutes left.");
+      set_timer(plan_timer, 99999);
+      set_timer(ring_timer, 99999);
+      set_timer("surv_director " + W, 99999);
+      for (p = 1; p <= num_players(); p++) {
+        n = 0;
+        for (k = 0; k < NK; k++) n = n + cards[p * NK + k];
+        if (n > 0) {
+          cstr = "surv_cards " + p;
+          for (k = 0; k < NK; k++) cstr = cstr + " " + cards[p * NK + k];
+          set_timer(cstr, 99999);
+          stop_timer(cstr);
+        }
       }
-      // a boss wave on every fifth minute, its clock started a minute before
-      if (minute % 5 == 4 && minute < 29) set_timer("surv_boss", 60);
+      for (p = 1; p <= num_players(); p++) {
+        for (k = 0; k < 2; k++) {
+          i = p * 2 + k;
+          if (hid[i] >= 0) set_timer("surv_hero " + p + " " + hid[i] + " " + (4 * (p - 1) + hkind[p] + 2 * k), 99999);
+        }
+      }
+      if (SURVIVE_SECONDS / 60 - minute <= 5 || minute % 5 == 0) {
+        print_game_msg("Survival: the final assault in " + (SURVIVE_SECONDS / 60 - minute) + " minutes.");
+      }
     }
   }
 
-  // a wave: pick a defender to attack, a spawn point at the edge, the army of its age
-  if (over == 0 && (timer_expired("surv_wave") || timer_expired("surv_boss"))) {
+  // a wave: pick a defender to attack, one to four sides of the map, the army of its age
+  // each timer read once a pass: an expired one is gone after the first look
+  tw = 0;
+  tb = 0;
+  isfinal = 0;
+  if (over == 0 && fin == 0) {
+    tw = timer_expired("surv_wave");
+    tb = timer_expired("surv_boss");
+  }
+  if (over == 0 && (tw == 1 || tb == 1 || go_final == 1)) {
     boss = 0;
-    if (timer_expired("surv_boss")) boss = 1;
-    if (boss == 1) set_timer("surv_boss", 99999);
-    else {
+    if (tb == 1) boss = 1;
+    if (go_final == 1) {
+      // the final assault: no more waves after it; the clocks and the bar go
+      isfinal = 1;
+      boss = 0;
+      go_final = 0;
+      fin = 1;
+      set_timer("surv_boss", 99999);
+      set_timer("surv_end", 1);
+      set_timer("fincheck", 20);
+    } else if (boss == 1) {
+      set_timer("surv_boss", 99999);
+      if (tw == 1) set_timer("surv_wave", 3);  // both at once: the normal wave right after
+    } else {
       n = 80 - minute;
       if (n < 45) n = 45;
-      set_timer("surv_wave", n);
+      set_timer("surv_wave", n * WAVE_SPACING);
       wave++;
+      // a boss wave BOSS_DELAY seconds after every fifth wave (the user, 2026-11-10: not right
+      // after wave 1 as when it went by the clock), unless the game ends before it
+      if (wave % BOSS_EVERY == 0 && minute < SURVIVE_SECONDS / 60 - 1) set_timer("surv_boss", BOSS_DELAY);
     }
 
     // the defenders: everyone at war with the wave player
     count = 0;
     top_age = 0;
     for (p = 1; p <= num_players(); p++) {
-      if (p != W && !is_defeated(p) && have_war(W, p)) {
+      if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) {
         count++;
         if (age(p) > top_age) top_age = age(p);
       }
     }
     if (count > 0) {
-      pick = rand_int(1, count);
-      for (p = 1; p <= num_players(); p++) {
-        if (p != W && !is_defeated(p) && have_war(W, p)) {
-          pick--;
-          if (pick == 0) T = p;
-        }
-      }
+      // co-op: 60 % more for every defender past the first
+      coop = 100 + 60 * (count - 1);
 
-      cap = find_capital(T);
-      b = 0;
-      if (cap != "") b = find_city_id(cap);
-      if (b <= 0) b = find_build(T, "");
-      tx = object_position_x(T, b);
-      ty = object_position_y(T, b);
-
-      e = top_age - lag;
+      // the age of the wave number (the boss, the age of the wave before it; the final assault
+      // one age more)
+      e = (wave - 1) * 100 / age_pace;
+      if (isfinal == 1) e = e + 1;
       if (e < 0) e = 0;
       if (e > 7) e = 7;
 
-      // a point just outside the defenders' territory and sight: from the capital outwards along
-      // a random direction, the first land tile no defender owns or sees
-      found = 0;
-      for (tries = 0; tries < 24; tries++) {
-        if (found == 0) {
-          ang = (float)rand_int(0, 359);
-          hit = 0;
-          for (r = 6; r < ms; r = r + 3) {
-            if (found == 0 && hit == 0) {
-              fx = (float)tx + (float)r * cos(ang);
-              fy = (float)ty + (float)r * sin(ang);
-              x = (int)fx;
-              y = (int)fy;
-              if (x < 2 || y < 2 || x > ms - 3 || y > ms - 3) hit = 1;
-              else {
-                ok = 0;
-                if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
-                for (p = 1; p <= num_players(); p++) {
-                  if (ok == 1 && p != W && have_war(W, p) && territory_owner(x, y) == p) ok = 0;
+      // the size of the wave
+      if (boss == 1) {
+        c = (4 + 2 * wave) * coop / 100 * WAVE_PCT / 100 * WAVE_SPACING;
+        if (c < 2) c = 2;
+      } else {
+        // as big as the WAVE_SPACING waves it stands for: the wave number counts them too
+        c = (4 + wave * WAVE_SPACING * 3 / 2) * mult / 100 * coop / 100 * WAVE_PCT / 100 * WAVE_SPACING;
+        if (c < 2) c = 2;
+        if (c > 60 * coop / 100 * WAVE_PCT / 100 * WAVE_SPACING) c = 60 * coop / 100 * WAVE_PCT / 100 * WAVE_SPACING;
+        // the final assault: three waves in one
+        if (isfinal == 1) c = c * 3;
+        n = num_military_units(W);
+        if (isfinal == 0 && n + c > MAX_ALIVE * coop / 100) c = MAX_ALIVE * coop / 100 - n;
+        // the card Respite: this wave smaller
+        if (isfinal == 0 && respite > 0) {
+          if (respite > 90) respite = 90;
+          c = c * (100 - respite) / 100;
+          respite = 0;
+        }
+      }
+
+      // how many sides: one for the first waves and the bosses, all four near the end
+      nsides = 1;
+      if (boss == 0 && wave * WAVE_SPACING >= 4) nsides = 2;
+      if (boss == 0 && wave * WAVE_SPACING >= 10) nsides = 3;
+      if (boss == 0 && wave * WAVE_SPACING >= 18) nsides = 4;
+      // co-op: at least a part for every defender (up to four)
+      if (boss == 0 && nsides < count) nsides = count;
+      if (nsides > 4) nsides = 4;
+      if (boss == 0 && c < nsides * 2) nsides = 1;
+      if (isfinal == 1) nsides = 4;  // the final assault from all four sides
+      first_side = rand_int(0, 3);
+
+      for (si = 0; si < nsides; si++) {
+        side = (first_side + si) % 4;
+        // whom this part goes for: a defender picked at random
+        pick = rand_int(1, count);
+        for (p = 1; p <= num_players(); p++) {
+          if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) {
+            pick--;
+            if (pick == 0) T = p;
+          }
+        }
+        cap = find_capital(T);
+        b = 0;
+        if (cap != "") b = find_city_id(cap);
+        if (b <= 0) b = find_build(T, "");
+        tx = object_position_x(T, b);
+        ty = object_position_y(T, b);
+        // where this part marches out: one of the enemy buildings still standing, at random
+        camp = -1;
+        alive = 0;
+        for (i = 0; i < nb; i++) {
+          if (bk[i] < 3 && bid[i] >= 0 && building_destroyed(W, bid[i]) == 0) alive++;
+        }
+        if (alive > 0) {
+          pick = rand_int(1, alive);
+          for (i = 0; i < nb; i++) {
+            if (bk[i] < 3 && bid[i] >= 0 && building_destroyed(W, bid[i]) == 0) {
+              pick--;
+              if (pick == 0) camp = i;
+            }
+          }
+        }
+        // none left: a land tile on that edge of the map, away from the corners and off screen
+        found = 0;
+        if (camp >= 0) found = 2;
+        for (tries = 0; tries < 40; tries++) {
+          if (found == 0) {
+            pos = rand_int(band, ms - band - 1);
+            if (side == 0) { x = 2; y = pos; }
+            else if (side == 1) { x = ms - 3; y = pos; }
+            else if (side == 2) { x = pos; y = 2; }
+            else { x = pos; y = ms - 3; }
+            ok = 0;
+            if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
+            if (ok == 1 && single == 1 && tries < 30 && is_on_screen(x, y)) ok = 0;
+            if (ok == 1) found = 1;
+          }
+        }
+        ix = x;
+        iy = y;
+        kx = x;
+        ky = y;
+        gx = x;
+        gy = y;
+        if (camp >= 0) {
+          // each kind out of the nearest building of its kind still standing (infantry from a
+          // Barracks, cavalry from a Stable, siege from a Siege Factory), 4 tiles towards the
+          // middle of the map; out of the picked one when none of that kind is left
+          for (k = 0; k < 3; k++) {
+            f = camp;
+            m = -1;
+            for (i = 0; i < nb; i++) {
+              if (bk[i] == k && bid[i] >= 0 && building_destroyed(W, bid[i]) == 0) {
+                dx = bx[i] - bx[camp];
+                dy = by[i] - by[camp];
+                if (m < 0 || dx * dx + dy * dy < m) {
+                  m = dx * dx + dy * dy;
+                  f = i;
                 }
-                for (p = 1; p <= num_players(); p++) {
-                  if (ok == 1 && p != W && have_war(W, p) && any_object_near(p, 1, x, y, FOG)) ok = 0;
+              }
+            }
+            x = bx[f];
+            y = by[f];
+            if (x < ms / 2) x = x + 4;
+            else x = x - 4;
+            if (y < ms / 2) y = y + 4;
+            else y = y - 4;
+            if (k == 0) { ix = x; iy = y; }
+            else if (k == 1) { kx = x; ky = y; }
+            else { gx = x; gy = y; }
+          }
+        }
+
+        clear_group(W);
+        if (boss == 1) {
+          // the General apart (create_unit gives its id): its fall brings the boss cards
+          if (si == 0) {
+            if (boss_pending == 1) {
+              // the last boss wave still out: its cards now
+              nboss++;
+              for (p = 1; p <= num_players(); p++) {
+                if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) {
+                  cstr = "surv_bosscards " + p + " " + nboss;
+                  set_timer(cstr, 99999);
+                  stop_timer(cstr);
                 }
-                if (ok == 1 && single == 1 && is_on_screen(x, y)) ok = 0;
-                if (ok == 1) found = 1;
+              }
+            }
+            bossg = create_unit(W, ix, iy, "General", 1);
+            boss_pending = 1;
+            set_timer("bossdone", 240);
+          }
+          create_unit_in_group(W, kx, ky, hc[e], c * mult / 100 + 1);
+          // siege in every other boss wave only (the user, 2026-11-10: half as much siege)
+          if (e >= 1 && (wave / BOSS_EVERY) % 2 == 1) create_unit_in_group(W, gx, gy, sg[e], 1 + minute / 15);
+          create_unit_in_group(W, ix, iy, hi[e], c * mult / 200 + 1);
+        } else if (c > 0) {
+          share = c / nsides;
+          if (si == 0) share = share + c - (c / nsides) * nsides;
+          nli = share * 40 / 100;
+          nhi = share * 25 / 100;
+          nrg = share * 15 / 100;
+          ncav = share - nli - nhi - nrg;
+          if (e == 0) { nhi = nhi + ncav; ncav = 0; }
+          nsg = 0;
+          // siege in every other wave only (the user, 2026-11-10: "cu 50% mai putine siege units")
+          if (e >= 1 && wave * WAVE_SPACING >= 6 && si == 0) nsg = 1 + wave / 4;
+          if (e >= 1 && isfinal == 1) nsg = 1 + wave / 4;
+          if (isfinal == 1) create_unit_in_group(W, ix, iy, "General", 1);
+
+          if (nli > 0) create_unit_in_group(W, ix, iy, li[e], nli);
+          if (nhi > 0) create_unit_in_group(W, ix, iy, hi[e], nhi);
+          if (nrg > 0) create_unit_in_group(W, ix, iy, rg[e], nrg);
+          if (ncav / 2 > 0) create_unit_in_group(W, kx, ky, lc[e], ncav / 2);
+          if (ncav - ncav / 2 > 0) create_unit_in_group(W, kx, ky, hc[e], ncav - ncav / 2);
+          if (nsg > 0) create_unit_in_group(W, gx, gy, sg[e], nsg);
+        }
+        group_attack_to_order(W, tx + rand_int(-3, 3), ty + rand_int(-3, 3));
+        if (boss == 1 && si == 0 && bossg >= 0) unit_attack_to_order(W, bossg, tx + rand_int(-3, 3), ty + rand_int(-3, 3));
+        // found: 2 = from enemy building n (camp), 1 = a free tile on that edge, 0 = none found, the last one tried
+        if (debug_lines == 1) print_game_msg("[survival] wave " + wave + " boss " + boss + " building " + camp + " of " + alive + " side " + side + " at " + ix + "," + iy + " (found " + found + ") age " + e + " for player " + T + " at " + tx + "," + ty);
+      }
+
+      if (isfinal == 1) {
+        show_notice("THE FINAL ASSAULT: " + c + " " + age_names[e] + " Age soldiers from every side. Destroy them all to win!", "city_under_attack_notice", 1);
+        print_game_msg("The final assault has come. Destroy every enemy soldier to win.");
+      } else if (boss == 1) {
+        show_notice("BOSS WAVE: a " + age_names[e] + " Age army with a General!", "city_under_attack_notice", 1);
+        print_game_msg("Boss wave, " + age_names[e] + " Age.");
+      } else if (c > 0) {
+        if (nsides == 1) show_notice("Wave " + wave + " is coming: " + c + " " + age_names[e] + " Age soldiers!", "city_under_attack_notice", 1);
+        else show_notice("Wave " + wave + " is coming from " + nsides + " sides: " + c + " " + age_names[e] + " Age soldiers!", "city_under_attack_notice", 1);
+      }
+    }
+  }
+
+  // the reward cards: a pick the DLL has for the script (player, kind, size in 9 bits, one timer
+  // per bit), taken with surv_pkack; the cards that act at once are done here, the counts go back
+  set_timer("surv_pick", 99999);
+  if (timer_expired("surv_pick") == 1) {
+    code = 0;
+    bv = 1;
+    for (k = 0; k < 9; k++) {
+      set_timer("surv_pkb " + k, 99999);
+      if (timer_expired("surv_pkb " + k) == 1) code = code + bv;
+      bv = bv * 2;
+    }
+    set_timer("surv_pkack", 99999);
+    stop_timer("surv_pkack");
+    cp = code % 8 + 1;
+    ck = (code / 8) % 32;
+    cq = 1;
+    if (code / 256 == 1) cq = 4;
+    if (ck < NK && cp <= num_players()) {
+      e = age(cp);
+      if (e < 0) e = 0;
+      if (e > 7) e = 7;
+      if (ck == K_TRIBUTE) {
+        n = 180 * (e + 1) * cq / 4;
+        give_good(cp, "Food", n);
+        give_good(cp, "Timber", n);
+        give_good(cp, "Wealth", n);
+        give_good(cp, "Metal", n);
+      } else if (ck == K_MERC) {
+        cap = find_capital(cp);
+        b = 0;
+        if (cap != "") b = find_city_id(cap);
+        if (b > 0) {
+          x = object_position_x(cp, b) + 4;
+          y = object_position_y(cp, b) + 4;
+        } else {
+          x = get_starting_loc_x(cp);
+          y = get_starting_loc_y(cp);
+        }
+        create_unit(cp, x, y, li[e], 1);
+        create_unit(cp, x + 2, y, hi[e], 1);
+      } else if (ck == K_RESPITE) {
+        respite = respite + 18 * cq / 4;
+      } else if (ck != K_LEVEL) {
+        i = cp * NK + ck;
+        cards[i] = cards[i] + cq;
+        if (card_cap[ck] > 0 && cards[i] > card_cap[ck]) cards[i] = card_cap[ck];
+      }
+      cstr = "surv_cards " + cp;
+      for (k = 0; k < NK; k++) cstr = cstr + " " + cards[cp * NK + k];
+      set_timer(cstr, 99999);
+      stop_timer(cstr);
+    }
+  }
+
+  // every 3 seconds: ruins where an enemy building fell (the DLL lays them, a Goody Box), and the
+  // boss cards once the boss wave's General has fallen (or 4 minutes after it came)
+  if (over == 0 && camps_made == 1 && timer_expired("ruins") == 1) {
+    set_timer("ruins", 3);
+    for (i = 0; i < nb; i++) {
+      if (bid[i] >= 0 && bdead[i] == 0 && building_destroyed(W, bid[i]) != 0) {
+        bdead[i] = 1;
+        // ruins one time in two (the user, 2026-11-11: "50% sanse sa spawneze ruins")
+        if (rand_int(0, 99) < RUIN_PCT) {
+          cstr = "surv_ruin " + bx[i] + " " + by[i];
+          set_timer(cstr, 99999);
+          stop_timer(cstr);
+        }
+      }
+    }
+    if (boss_pending == 1) {
+      done = 0;
+      if (bossg < 0) done = 1;
+      else if (object_health(W, bossg) <= 0) done = 1;
+      if (done == 0 && timer_expired("bossdone") == 1) done = 1;
+      if (done == 1) {
+        boss_pending = 0;
+        bossg = -1;
+        nboss++;
+        for (p = 1; p <= num_players(); p++) {
+          if (p != W && !is_defeated(p) && (p == H || !have_war(H, p))) {
+            cstr = "surv_bosscards " + p + " " + nboss;
+            set_timer(cstr, 99999);
+            stop_timer(cstr);
+          }
+        }
+      }
+    }
+  }
+
+  // every EXPAND_SECONDS: a new enemy building near one still standing, 8 to 14 tiles from it, off
+  // the band and the middle, never in a defender's territory; a camp (it sends waves too) or, one
+  // time in three, a Tower
+  if (over == 0 && camps_made == 1 && fin == 0 && timer_expired("expand") == 1) {
+    set_timer("expand", EXPAND_SECONDS);
+    alive = 0;
+    for (i = 0; i < nb; i++) {
+      if (bid[i] >= 0 && bdead[i] == 0) alive++;
+    }
+    if (alive > 0 && nb < NBMAX) {
+      pick = rand_int(1, alive);
+      f = -1;
+      for (i = 0; i < nb; i++) {
+        if (bid[i] >= 0 && bdead[i] == 0) {
+          pick--;
+          if (pick == 0) f = i;
+        }
+      }
+      k = rand_int(0, 8);
+      if (k < 6) k = k % 3;
+      else k = 3;
+      kname = "Tower";
+      if (k < 3) kname = camp_types[k];
+      nid = -1;
+      for (tries = 0; tries < 16; tries++) {
+        if (nid < 0 && f >= 0) {
+          x = bx[f] + rand_int(-14, 14);
+          y = by[f] + rand_int(-14, 14);
+          dx = x - ms / 2;
+          dy = y - ms / 2;
+          ok = 1;
+          if (x < band + 6 || y < band + 6 || x > ms - band - 7 || y > ms - band - 7) ok = 0;
+          if (ok == 1 && dx * dx + dy * dy < (ms * 22 / 100) * (ms * 22 / 100)) ok = 0;
+          if (ok == 1 && (x - bx[f]) * (x - bx[f]) + (y - by[f]) * (y - by[f]) < 64) ok = 0;
+          if (ok == 1) {
+            o = territory_owner(x, y);
+            if (o > 0 && o != W) ok = 0;
+          }
+          if (ok == 1) nid = create_building(W, x, y, kname);
+        }
+      }
+      if (nid >= 0) {
+        bid[nb] = nid;
+        bx[nb] = x;
+        by[nb] = y;
+        bk[nb] = k;
+        bdead[nb] = 0;
+        nb++;
+        if (k < 3) camps_told = 0;
+        if (debug_lines == 1) print_game_msg("[survival] the enemy builds a " + kname + " at " + x + "," + y + " (" + nb + " kept)");
+      }
+    }
+  }
+
+  // units that stand idle (their target fell, or the fight is over) go for the defender again
+  // the computer allies' heroes are kept alive (the user, 2026-11-10: "sa il faci sa aiba grija
+  // de ea sa nu o omoare"): every 5 seconds a hero below 60 % of its hit points, or more than
+  // 20 tiles from its capital, is sent back to the capital (where it heals from level 8, and the
+  // ally's army stands); otherwise its AI uses it
+  if (over == 0 && timer_expired("allycare")) {
+    set_timer("allycare", 5);
+    for (p = 1; p <= num_players(); p++) {
+      for (k = 0; k < 2; k++) {
+        i = p * 2 + k;
+        if (hid[i] >= 0 && is_human(p) <= 0) {
+          if (object_health(p, hid[i]) <= 0) {
+            hid[i] = -1;
+          } else {
+            cap = find_capital(p);
+            b = 0;
+            if (cap != "") b = find_city_id(cap);
+            if (b > 0) {
+              x = object_position_x(p, b);
+              y = object_position_y(p, b);
+              dx = object_position_x(p, hid[i]) - x;
+              dy = object_position_y(p, hid[i]) - y;
+              if (object_health(p, hid[i]) * 100 < object_max_health(p, hid[i]) * 60 || dx * dx + dy * dy > 400) {
+                unit_move_order(p, hid[i], x + 3 + k * 2, y + 3);
               }
             }
           }
         }
       }
-      // none (the defenders own or see everything around): somewhere in the no-build zone
-      for (tries = 0; tries < 40; tries++) {
-        if (found == 0) {
-          x = rand_int(zx0 + 1, zx1 - 2);
-          y = rand_int(zy0 + 1, zy1 - 2);
-          ok = 0;
-          if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
-          if (ok == 1 && single == 1 && is_on_screen(x, y)) ok = 0;
-          if (ok == 1) found = 2;
-        }
-      }
-      // and last, the edge of the map
-      for (tries = 0; tries < 60; tries++) {
-        if (found == 0) {
-          side = rand_int(0, 3);
-          if (side == 0) { x = 3; y = rand_int(3, ms - 4); }
-          else if (side == 1) { x = ms - 4; y = rand_int(3, ms - 4); }
-          else if (side == 2) { x = rand_int(3, ms - 4); y = 3; }
-          else { x = rand_int(3, ms - 4); y = ms - 4; }
-          ok = 0;
-          if (map_is_land(x, y) && map_is_passable(x, y)) ok = 1;
-          if (ok == 1 && single == 1 && is_on_screen(x, y)) ok = 0;
-          if (ok == 1 && tries < 40 && territory_owner(x, y) == T) ok = 0;
-          if (ok == 1) found = 3;
-        }
-      }
-
-      clear_group(W);
-      if (boss == 1) {
-        c = 4 + 2 * (minute / 5);
-        create_unit_in_group(W, x, y, "General", 1);
-        create_unit_in_group(W, x, y, hc[e], c * mult / 100 + 1);
-        if (e >= 1) create_unit_in_group(W, x, y, sg[e], 2 + minute / 10);
-        create_unit_in_group(W, x, y, hi[e], c * mult / 200 + 1);
-        show_notice("BOSS WAVE: a " + age_names[e] + " Age army with a General!", "city_under_attack_notice", 1);
-        print_game_msg("Boss wave, " + age_names[e] + " Age.");
-      } else {
-        c = (4 + wave * 3 / 2) * mult / 100;
-        if (c < 3) c = 3;
-        if (c > 60) c = 60;
-        n = num_military_units(W);
-        if (n + c > MAX_ALIVE) c = MAX_ALIVE - n;
-        if (c > 0) {
-          nli = c * 40 / 100;
-          nhi = c * 25 / 100;
-          nrg = c * 15 / 100;
-          ncav = c - nli - nhi - nrg;
-          if (e == 0) { nhi = nhi + ncav; ncav = 0; }
-          nsg = 0;
-          if (e >= 1 && wave >= 6) nsg = 1 + wave / 8;
-
-          if (nli > 0) create_unit_in_group(W, x, y, li[e], nli);
-          if (nhi > 0) create_unit_in_group(W, x, y, hi[e], nhi);
-          if (nrg > 0) create_unit_in_group(W, x, y, rg[e], nrg);
-          if (ncav / 2 > 0) create_unit_in_group(W, x, y, lc[e], ncav / 2);
-          if (ncav - ncav / 2 > 0) create_unit_in_group(W, x, y, hc[e], ncav - ncav / 2);
-          if (nsg > 0) create_unit_in_group(W, x, y, sg[e], nsg);
-          show_notice("Wave " + wave + " is coming: " + c + " " + age_names[e] + " Age soldiers!", "city_under_attack_notice", 1);
-        }
-      }
-      group_attack_to_order(W, tx, ty);
-      // found: 1 at the edge of the territory, 2 in the zone, 3 at the map's edge, 0 anywhere
-      if (debug_lines == 1) print_game_msg("[survival] wave " + wave + " boss " + boss + " at " + x + "," + y + " (found " + found + ") age " + e + " for player " + T + " at " + tx + "," + ty);
     }
   }
 
-  // units that stand idle (their target fell, or the fight is over) go for the defender again
   if (over == 0 && timer_expired("regroup")) {
     set_timer("regroup", 15);
+    ui_hide_score();   // again, in case it was turned back on
+    // the hero: the unit of your age now (the DLL changes it only when the age is new)
+    for (p = 1; p <= num_players(); p++) {
+      e = age(p);
+      if (e < 0) e = 0;
+      if (e > 7) e = 7;
+      for (k = 0; k < 2; k++) {
+        if (hid[p * 2 + k] >= 0) {
+          if (hkind[p] == 1) set_timer("surv_heroage " + p + " " + (4 * (p - 1) + 1 + 2 * k) + " " + riders[e], 99999);
+          else set_timer("surv_heroage " + p + " " + (4 * (p - 1) + 2 * k) + " " + li[e], 99999);
+        }
+      }
+    }
     if (T > 0 && !is_defeated(T)) {
       cap = find_capital(T);
       b = 0;
@@ -349,6 +975,17 @@ scenario {
       if (b > 0) {
         tx = object_position_x(T, b);
         ty = object_position_y(T, b);
+      }
+    }
+    // the last enemy building has fallen: say so once
+    if (camps_made == 1 && camps_told == 0 && nb > 0) {
+      alive = 0;
+      for (i = 0; i < nb; i++) {
+        if (bk[i] < 3 && bid[i] >= 0 && building_destroyed(W, bid[i]) == 0) alive++;
+      }
+      if (alive == 0) {
+        camps_told = 1;
+        show_notice("Every enemy Barracks, Stable and Siege Factory is destroyed: the waves now come in from the edges of the map.", "city_under_attack_notice", 1);
       }
     }
     for (n = num_military_units(W); n > 0; n--) {

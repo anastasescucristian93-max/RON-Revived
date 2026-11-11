@@ -165,7 +165,7 @@ static int is_centred_combo(char *combo)
     return (id >= 0 && id < 0x10) || (id >= 0x18 && id < 0x28);
 }
 
-__attribute__((used, thiscall)) int c_flag_write(void *buf, const void *str, const short *rect, int len)
+static int flag_write(void *buf, const void *str, const short *rect, int len)
 {
     write_t write = (write_t)VA(k_sites[g_flag_site].target);
     char *sw = *(char **)VA(VA_SETUPWIN);
@@ -202,6 +202,19 @@ __attribute__((used, thiscall)) int c_flag_write(void *buf, const void *str, con
     }
     r[0] = (short)(r[0] + lead);
     return write(buf, str, r, len);
+}
+
+/* The written text itself may change first: a Survival setup shows its fixed map style and
+   script in those (disabled) combos (survival.c). */
+__attribute__((used, thiscall)) int c_flag_write(void *buf, const void *str, const short *rect, int len)
+{
+    unsigned char alt[0x14] __attribute__((aligned(4))) = { 0 };
+    if (g_flag_site <= 1 ? survival_combo_text(g_flag_combo, alt) : survival_list_text(g_flag_combo, g_flag_item, alt)) {
+        int r = flag_write(buf, alt, rect, *(unsigned short *)(alt + 8));
+        ((void(__attribute__((thiscall)) *)(void *))VA(VA_STRING_CLOSE))(alt);
+        return r;
+    }
+    return flag_write(buf, str, rect, len);
 }
 
 /* ---- hooks ---------------------------------------------------------------------------- */

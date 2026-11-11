@@ -12,6 +12,9 @@
  * colour instead. Nothing else reads those two answers. For a unit, any soldier of the hovered
  * squad counts (squad_hovered, squadhp.c), so the whole squad gets the circle.
  *
+ * The member answer also says yes for bigsel.c's overflow (selected beyond the game's 128), so
+ * those get their circle too; installed when either is on.
+ *
  * Only the drawing is changed, so it is multiplayer-safe.
  */
 #include "ron.h"
@@ -60,7 +63,9 @@ __attribute__((used, thiscall)) int c_hover_member(void *group, int id, int play
 {
     g_pending = -1;
     int r = ((member_t)VA(VA_MEMBER))(group, id, player, alive);
-    if (r || !hovered(id, player))
+    if (r || bigsel_has(group, id, player)) /* bigsel.c: selected beyond the game's 128 */
+        return 1;
+    if (!g_hover_enabled || !hovered(id, player))
         return r;
     g_pending = player;
     return 1;
@@ -71,7 +76,9 @@ __attribute__((used, thiscall)) int c_hover_member_unit(void *group, int id, int
 {
     g_pending = -1;
     int r = ((member_t)VA(VA_MEMBER))(group, id, player, alive);
-    if (r || !squad_hovered(id, player))
+    if (r || bigsel_has(group, id, player))
+        return 1;
+    if (!g_hover_enabled || !squad_hovered(id, player))
         return r;
     g_pending = player;
     return 1;
@@ -129,7 +136,7 @@ static const struct {
 /* Called from install_hooks once the exe is known to be the supported version. */
 void hover_install(void)
 {
-    if (!g_hover_enabled)
+    if (!g_hover_enabled && !g_bigsel_enabled) /* bigsel.c needs the member answer too */
         return;
     for (int i = 0; i < 4; i++) {
         unsigned char *at = (unsigned char *)VA(k_sites[i].at);

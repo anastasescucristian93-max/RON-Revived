@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- RON Revived, Survival (survival\README.md): an open, flat, dry plain without water, made
+     when the game runs the Survival script. camera-smooth\src\survival.c loads this file in
+     place of the chosen map style and lays the map as all land, the player in the middle.
+     No cliffs, rivers or fish; a mountain by your city for Metal, a few small ones out on the plain,
+     light woods and rocks, none near the edges, where the waves come in. -->
+<ROOT>
+  <MAP>
+    <SEA_MAP value="0"/>
+    <AVOID_EDGE_0 scalevalue="0"/>
+    <AVOID_EDGE_1 scalevalue="0"/>
+    <AVOID_EDGE_2 scalevalue="0"/>
+    <AVOID_EDGE_3 scalevalue="0"/>
+    <TILESET>
+      <TILECHANCE type="m_steppe" chance="40"/>
+      <TILECHANCE type="m_steppe_2" chance="30"/>
+      <TILECHANCE type="african_savannah" chance="30"/>
+    </TILESET>
+  </MAP>
+  <TERRAIN_GROUPS>
+    <GROUPENTRY type="mountains" comment="home mountain: Metal (mines) near your city" chance="100" grouping="0" min_clumps="1 min" max_clumps="1" pattern="player" min_size="2" max_size="2" city_keep_away="6 mindist" city_stay_near="9 maxdist" mount_space="4" forest_space="1" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0"/>
+    <GROUPENTRY type="mountains" comment="small mountains out on the plain, off the edges" chance="100" grouping="0" min_clumps="4 SCALE" max_clumps="5 SCALE" pattern="world" min_size="1" max_size="2" city_keep_away="14" city_stay_near="0" mount_space="4" forest_space="1" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="14" edge_stay_near="0"/>
+    <GROUPENTRY type="trees" comment="home wood" chance="100" grouping="0" min_clumps="1 min" max_clumps="1" pattern="player" min_size="6" max_size="8" city_keep_away="3 mindist" city_stay_near="5 maxdist" mount_space="1" forest_space="1" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0"/>
+    <GROUPENTRY type="trees" comment="home groves" chance="100" grouping="0" min_clumps="2" max_clumps="2" pattern="player" min_size="3" max_size="4" city_keep_away="3" city_stay_near="6" mount_space="1" forest_space="2" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0"/>
+    <GROUPENTRY type="rocks" comment="home rocks" chance="100" grouping="0" min_clumps="1 min" max_clumps="1" pattern="player" min_size="3" max_size="3" city_keep_away="3 mindist" city_stay_near="7 maxdist" mount_space="1" forest_space="1" rock_space="8" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0" min_oil="1" max_oil="2"/>
+    <GROUPENTRY type="trees" comment="second city woods" chance="100" grouping="0" min_clumps="2 SCALE" max_clumps="2 SCALE" pattern="player" min_size="5" max_size="8" city_keep_away="9" city_stay_near="15" mount_space="1" forest_space="2" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0"/>
+    <GROUPENTRY type="rocks" comment="second city rocks" chance="100" grouping="0" min_clumps="2 SCALE" max_clumps="3 SCALE" pattern="player" min_size="2" max_size="4" city_keep_away="9" city_stay_near="20 SCALE" mount_space="1" forest_space="1" rock_space="8" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0" min_oil="1" max_oil="2"/>
+    <GROUPENTRY type="trees" comment="small woods, kept off the edges where the waves come in" chance="100" grouping="0" min_clumps="8 SCALE" max_clumps="12 SCALE" pattern="world" min_size="3" max_size="6" city_keep_away="14" city_stay_near="0" mount_space="1" forest_space="4" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="10 SCALE" edge_stay_near="0"/>
+    <GROUPENTRY type="trees" comment="single trees" chance="100" grouping="0" min_clumps="14 SCALE" max_clumps="20 SCALE" pattern="world" min_size="1" max_size="2" city_keep_away="10" city_stay_near="0" mount_space="1" forest_space="3" rock_space="1" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="8 SCALE" edge_stay_near="0"/>
+    <GROUPENTRY type="rocks" comment="general rocks" chance="100" grouping="0" min_clumps="5 SCALE" max_clumps="7 SCALE" pattern="world" min_size="2" max_size="4" city_keep_away="10" city_stay_near="0" mount_space="1" forest_space="1" rock_space="8" coast_space="1" cent_keep_away="0" cent_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="8 SCALE" edge_stay_near="0" min_oil="1" max_oil="2"/>
+  </TERRAIN_GROUPS>
+  <BONUSES>
+    <BONUS type="Early" comment="one at the start" chance="100" group="0" numrare="1" pattern="player" saturate="0" player_keep_away="3" player_stay_near="6" spacing="8 SCALE" group_spacing="6 SCALE" center_keep_away="0" center_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0"/>
+    <BONUS type="Early" comment="two more in reach" chance="100" group="0" numrare="2 SCALE" pattern="player" saturate="0" player_keep_away="8" player_stay_near="16" spacing="8 SCALE" group_spacing="6 SCALE" center_keep_away="0" center_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="0" edge_stay_near="0"/>
+    <BONUS type="Early" comment="out on the plain" chance="100" group="0" numrare="7 SCALE" pattern="world" saturate="0" player_keep_away="18" player_stay_near="0" spacing="10" group_spacing="8" center_keep_away="0" center_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="14" edge_stay_near="0"/>
+    <BONUS type="Late" comment="industrial, out on the plain" chance="100" group="0" numrare="4 SCALE" pattern="world" saturate="0" player_keep_away="16" player_stay_near="0" spacing="10" group_spacing="8" center_keep_away="0" center_stay_near="0" corner_keep_away="0" corner_stay_near="0" edge_keep_away="14" edge_stay_near="0"/>
+  </BONUSES>
+  <FISH/>
+  <RIVERLIST/>
+</ROOT>

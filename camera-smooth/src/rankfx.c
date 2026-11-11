@@ -376,6 +376,7 @@ __attribute__((thiscall)) static void rankfx_redraw(void *console)
     heal_draw_overhead();
     cityrepair_draw_overhead();
     ranks_draw_insignia_queue();
+    ranks_draw_hero_marks(); /* the Survival heroes' medallions */
     (*depth)--;
 }
 

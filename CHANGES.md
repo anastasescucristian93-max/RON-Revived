@@ -6,7 +6,131 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 ## Installing
 
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
-- **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update asks first, closes the launcher, downloads only the parts of the pack that changed (and of the extras only the ones you installed), checks that they arrived whole, installs them the same way `install.bat` does and starts the game again. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
+- **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
+
+## Tank Traps in every age (`entrenchment`, `camera-smooth`), new 2026-11-10
+
+- **Citizens build Tank Traps from the Ancient Age**, for 20 Wood (+5 for every one you own) in every age, instead of 20 Metal from the Modern Age.
+- **A look of their own in the early ages:** sharpened stakes lashed with rope in the Ancient Age, a beam bristling with iron-tipped spikes in the Classical, Medieval and Gunpowder Ages, a hedgehog of squared timber with iron straps and barbed wire in the Enlightenment and Industrial Ages, the steel hedgehogs from the Modern Age.
+- **They grow stronger with your age:** 240 hit points and armor 2 in the Ancient Age, 300 in the Classical, 420, 540, 720 and 960 in the ages after, 1200 and armor 8 from the Modern Age. Traps you built earlier grow when you age up.
+
+## Survival: its own button, its own map, a wave bar (`survival`, `camera-smooth`), new 2026-11-10
+
+- **A Survival button in the Solo menu**, under Quick Battle (the menu's frame is one button taller). It opens the Quick Battle setup: choose your nation, the starting age, the map size and **one computer player as your enemy** (its difficulty sets the waves), then Start. Map Style reads **Survival plain** and Script **Survival**, both greyed: the game runs the Survival script on its own map by itself.
+- **The Survival map:** a flat, open, dry plain with no water, no rivers, no mountains or cliffs, light woods and rocks, and **you in the middle**. It replaces whatever map style is chosen in the setup. Picking Survival under Script in a custom game gives the same map (`survival_map=0` under `[gameplay]` in `ron_camera.ini` keeps the chosen map).
+- **Enemy buildings:** 36 Barracks, Stables and Siege Factories stand one by one, spread evenly over the map (one in every cell of a 7 x 7 grid, none near the middle), and the waves march out of them: infantry from a Barracks, cavalry from the nearest Stable, siege from the nearest Siege Factory. 12 Towers stand between them and 4 Forts on the diagonals, far from the middle. From one building for the first waves, from two from wave 4, three from wave 10 and four from wave 18. Destroy all of them and the waves come in from the edges of the map instead.
+- **Waves three times rarer and three times bigger** (time to build between them): about every 4 minutes at first, every 2 1/4 minutes at the end; a boss wave after every second wave. `WAVE_SPACING` in the script; the wave bar follows it.
+- **Reward cards after every boss wave:** when a boss wave's General falls (or 4 minutes after it came), the game pauses and three cards rise in the middle of the screen: pick one, and its bonus lasts all game. **Buildings:** +15 % hit points, +1 range, +12 % damage, +12 % attack speed, -9 % damage taken. **Hero:** +15 % damage, -12 % damage taken, +1 range and sight, +1 level, +1 soldier in the squad, healing 0.6 % of its hit points a second in battle too. **Army:** +6 % damage, -6 % damage taken, +6 % attack speed, +9 % hit points, +1 range for ranged units, every soldier at least veteran level 1; +12 % damage for infantry, +12 % hit points for cavalry and armour, +1 range for siege and artillery. **At once:** resources (180 of each per age), two squads of mercenaries, or a next wave 18 % smaller. Cards of one kind add up, at most three of each (two for range); Reinforcements and War School (gold rim) come from the second boss on. Your computer allies take a card too.
+- **Ruins and small cards:** an enemy building you destroy (camps, Towers, Forts) leaves ruins where it stood one time in two. Send any unit to explore them: besides the ruins' usual resources you get a small card, a quarter of a boss card's bonus (Mercenaries never come from ruins), shown the same way in the middle of the screen; a click goes on.
+- **The enemy expands:** every 2 minutes it builds a new camp (Barracks, Stable or Siege Factory) or a Tower 8 to 14 tiles from one of its buildings still standing, never in your territory, off the edges and away from the middle. New camps send waves too, and leave ruins when destroyed.
+- **Choose the game's length:** the Survival setup's Time Limit list: **Short** (30 minutes), **Medium** (45), **Long** (1 hour) or **Very long** (1 hour 30). The waves keep their rhythm, so a longer game has more of them; their ages stretch over the whole game, and the final assault comes at the end of the time you chose. Your choice is kept for the next game.
+- **The waves age on their own:** their age no longer trails yours; it follows the wave number, from the Ancient Age at wave 1 to the Enlightenment (Easiest), the Industrial (Moderate) or the Modern Age (Toughest) by the last waves, faster with the difficulty. The final assault is one age ahead of the last wave.
+- **The game ends with a final assault, and you choose what calls it:** three buttons in the Survival setup, beside the hero's: **a Wonder** (finish any Wonder; lose it and you lose), **the Information Age**, or **the time** (45 minutes). Whatever you choose, the final assault comes at 45:00 at the latest. It is the biggest wave of the game, three in one, from all four sides with Generals; destroy every enemy soldier and you win. The clock at the top right counts down to it ("Final assault"). Your choice is kept for the next game.
+- **Fixed: the hero squad's hit points** showed more than the maximum (170 / 85, 114 / 77 for the two riders): the maximum now counts the whole squad.
+- **Big squads stand side by side:** a squad of more than 3 (the hero's six) stands in a row beside its captain when it stops (in a ring after some moves), instead of piling up on three spots. Squads of 3 stand as before.
+- **A bigger hero squad:** the infantry hero starts as one squad of six soldiers (8, 12, 14, 18 at levels 15 to 30), the cavalry hero as one squad of two riders that move together like an infantry squad; a fallen soldier or rider comes back when the squad heals.
+- **Waves about a sixth as big** as before (18 %): about 1 + a soldier every three waves (times the difficulty), at most 12 a wave. Siege comes with every other wave only (and every other boss wave), half as much as before. `WAVE_PCT` in the script.
+- **Your computer allies get a hero too:** the rider, which becomes an armoured car. Their AI takes care of it: every 5 seconds a hero below 60 % of its hit points, or more than 20 tiles from its capital, is sent back home.
+- **Fixed: the waves never reached you.** The clearing that removes the battle director's town in the first 10 seconds never stopped, so it killed every wave as it came out and destroyed the enemy camps. It stops now. Boss waves are now told apart from normal ones properly too (the boss clock was read twice, and the second look always missed it).
+- **Fixed: a computer ally started at the edge of the map** (and was cleared away) when the game built its town before yours; your allies now always start round the middle.
+- **Co-op:** everyone on your side defends together: other human players and computer allies. Every human player gets a hero, the waves are 60 % bigger for every defender past the first, and each part of a wave goes for one of you. Your allies start round the middle of the map, the battle director at the edge. Without teams, the last computer player is the battle director and every other computer becomes your ally. For a test with computer allies, `coop_test=1` under `[survival]` in `ron_camera.ini` keeps the computer rows and Other Nations in the Survival setup; Other Nations then counts your allies only (one to begin with), and the battle director is added after them when you press Start.
+- **The battle director plays in white**, so its buildings and soldiers stand out from yours and your allies' (the game has no grey player colour). The hero buttons now stand at the bottom of the players panel, under the rows.
+- **See the whole map:** `reveal_map=1` under `[survival]` in `ron_camera.ini` sets Reveal Map to All Visible in Survival games, to watch the waves (0, Normal, by default).
+- **No-build band:** a tenth of the map along all four edges, where the waves come in, instead of one side. Flags mark its inner edge.
+- **The wave bar** standing at the right edge of the screen, under the clocks: a circle for every wave down the 45 minutes, grey once it has come, the next one lit amber and pulsing, the boss waves larger and red with a skull, and a small pointer where the game is now; "Wave 7 / 27" under it. The players' score list is hidden in Survival games, so the bar reaches down to 84 % of the screen's height. `survival_bar=0` under `[ui]` turns it off, `survival_bar_top` and `survival_bar_length` move and size it.
+- **Metal:** the Survival plain has a mountain by your city (and, with every start in the middle while the map is made, usually a second one) and a few small mountains out on the plain, for mines.
+- **The hero's medallion** floats over its head (infantry or cavalry), so you can find it among your soldiers; the Patriots' light is gone again.
+- **The heroes grow alike:** a power that rises at levels 15, 20, 25 and 30 (x1.33, x2, x2.33, x3). The infantry hero's squad grows with it (3, 4, 6, 7, 9 soldiers, the new ones coming as the squad heals); the rider stays one unit and gets the same power as hit points (up to x3) and damage and attack rate (up to x1.73 each). Their experience is divided by that power, so a bigger squad does not rank faster.
+- **Choose your hero** in the Survival setup with two medallion buttons under your own row (name and nation): the infantryman or the rider; the chosen one is lit. Infantry: a squad of the Barracks' first line (Slingers ... Assault Infantry). Cavalry: the Stable's first cavalry (Light Horse, Light Cavalry, Elite Light Cavalry, Hussar), which becomes an armoured car in the Industrial Age (Armored Car, Armored Scout Car, Armored Cavalry); no Metal in that line, and each nation gets its own version. Your choice is kept for the next Survival game.
+- **Resources round you:** the map's resources, woods and rocks no longer pile up round the battle director's start in one corner; they lie round your city and out on the plain.
+- **The setup shows only your row:** the waves come from one hidden computer player, the battle director; its rows and Other Nations are gone. Your Difficulty sets the waves.
+- **The setup's rules are fixed and locked:** Big Huge map size, Normal speed, Small Town, Standard resources, Normal technology, population 200, Ancient to Information Age, Elimination Conquest, Victory Survival (no wonder, territory or income victory). Turbo Resources, No Nation Powers, No Unique Units, Save to Profile, the Nukes slider and the Units button are gone (no units are turned off in a Survival game). Your nation, colour, Difficulty and Cooperative AI stay yours to choose. Cooperative AI is off in a Survival setup unless you ticked it the last time (kept apart from Quick Battle's profile, under `[survival]` in `ron_camera.ini`).
+- **Your hero:** you start with a squad of the first infantry line (Slingers, then Javelineers, Elite Javelineers, Arquebusiers, Musketeers, Riflemen, Infantry, Assault Infantry) beside your capital. It becomes the unit of every new age by itself, ranks on past level 10 up to **level 30** (each level above 10: +2 % damage, +3 % hit points, +2 % attack rate; its rank shows as "Hero"), and if it falls it is gone for good.
+- **The wave bar shows a section:** the last 2 waves and the next 6, large, each with its number ("Boss" with a skull), the pointer moving from one to the next; "Wave 7 / 55" under it.
+- **The next wave's clock in large letters** at the top centre, under the nation's title (yellow for a boss wave, red in the last 10 seconds); "Survive" stays at the top right. `survival_timer_y` under `[ui]` moves it.
+- **45 minutes** to hold out instead of 30, a **boss wave 30 seconds after every fifth wave** (after waves 5, 10, 15 ...; no longer by the clock, which sent the first boss right after wave 1), and **7 minutes of grace**: the first wave comes at 7:00 instead of 2:00.
+
+## Shorter menu buttons (`ui-theme`), new 2026-11-10
+
+- The main menus' buttons say it in a word or two: Tutorial, Campaign, Solo, Multiplayer, Options, Extras; in the Solo menu Quick Battle, Survival, Campaign, Scenarios, Load Game, Replays, Main Menu; in Multiplayer Quick Match, Browse Games, Leaderboards, Replays; in Extras Editor, Workshop, Credits, About. Every one of them is translated in all ten languages.
+- The menu buttons are a little taller and narrower (270 x 46, with 10 pixels between them; 340 x 40 before), and the menu's frame is as much narrower.
+- **The main menu is Play, Options, Extras, Exit.** Play opens a panel with Tutorial, Campaign, Solo, Multiplayer and Main Menu.
+- **The menus' help line** (what the button under the mouse does) stands right under the menu's frame, centred, whatever the menu's length; before it was fixed low and went under the Solo menu's buttons (`menu_help_centred=0` under `[ui]` for the game's place).
+- **The menus slide 25 % faster** when one panel falls away and the next falls in (`menu_anim_speed` under `[ui]`, 125 = 25 % faster, 100 = the game's).
+- **Conquer the World's screens** have the steel buttons too (New Campaign, Load Campaign, Back, Continue and the battle windows' buttons).
+- Fixed: the game wrote the menus' new titles into its own `Data\string_lookup.xml` (it saves every text it meets that the file lacks). That file is put back as it shipped, and such writes now go to `mod_override\` instead.
+
+## Veteran ranks rebalanced (`camera-smooth`), new 2026-11-10
+
+- Every level now gives **+2 % damage, +3 % hit points and +3 % attack rate** (before: +4 % attack and +4 % hit points). Armor is taken off every hit as a flat amount, so extra damage used to break through armor far more than its percent; a faster attack adds exactly what it says. Level 10 in all: +20 % damage, +30 % hit points, +30 % attack rate (before +40 % / +40 %, and +30 % attack rate from levels 5 and 8, which are gone).
+- **Healing out of combat from level 8** instead of 9.
+- The other bonuses stay: +1 sight at 3, 10 % less damage taken at 6, +1 range at 7, 20 % less at 10. In `ron_camera.ini` the keys are new (`damage_percent_per_level`, `hit_points_percent_per_level`, `attack_rate_percent_per_level` under `[ranks]`), so an older file does not bring the old values back; they are game rules, the same for every player.
+
+## Lines of Tank Traps with Shift + drag (`camera-smooth`), new 2026-11-10
+
+- Placing Tank Traps: hold **Shift**, press, **drag** and let go, and a whole line of traps is laid from where you pressed to where you let go, in any direction, **diagonals too**. While you drag, every trap of the line shows as a ghost, red where it cannot stand (those are skipped).
+- **Turn the line:** with Shift still held, start the next drag at the end of the last line and it goes on from there in the new direction, as in other strategy games.
+- A diagonal line is solid: each trap touches the next by a side, so nothing slips between two traps on the diagonal (`tank_trap_solid_lines=0` under `[qol]` for a thin diagonal with fewer traps).
+- The Citizens build them one after the other, after what they were doing; each trap costs what it costs one by one, so a long line stops where your Metal runs out.
+- A plain click (or Shift + click) places one trap as before. `tank_trap_lines=0` under `[qol]` turns the lines off.
+
+## Farms in a block with Shift (`camera-smooth`), new 2026-11-10
+
+- Placing Farms with **Shift** held: after each Farm the building ghost jumps to the next free plot touching the Farms you just placed, so you can click again without moving the mouse.
+- The plots fill a square block around the first Farm of the row (the 8 plots around it, then the next ring), not a long strip; the nearest free plot comes first, and among equals the one next to the last Farm.
+- Only plots where the game would let the Farm stand are offered (your territory, the city's Farms, no trees or buildings). When none is free, the ghost stays with the mouse.
+- Moving the mouse takes the ghost back; letting go of Shift ends it as before.
+- `farm_snap=0` under `[qol]` in `ron_camera.ini` turns it off.
+
+## Fix: the AI assistant and the Cooperative AI really stop (`camera-smooth`), new 2026-11-10
+
+- **NO CONTROL now unticks every box**, as FULL CONTROL ticks them all. The boxes are what the computer does: unticking the last one is NO CONTROL, ticking one while it is off lets the computer do that one (CUSTOM).
+- **The game's Cooperative AI** (the setup box) now shows in the panel as the computer playing (CUSTOM or FULL CONTROL), and **NO CONTROL turns it off**: the computer no longer moves your units, takes them into its armies, builds or buys for you, and the units you make from then on are yours alone. Before, the panel read NO CONTROL while the Cooperative AI went on moving units in the background.
+- **Control groups always work while the computer plays:** the game made the number keys select the computer's armies instead, so Ctrl+number did not seem to work until you switched it off and on again.
+- Units you put in a control group count as given an order: the computer leaves them alone, and they are not handed back to it after standing idle.
+
+## More than 128 in a selection or a control group (`camera-smooth`), new 2026-11-10
+
+- **Select All**, a drag box, a double-click and the **control groups** (Ctrl+number) are no longer cut off when the selection is full. The game holds at most 128 in a selection, and the soldiers of a squad count one by one there, so it stopped at about 80 units. What does not fit is now kept by the mod: those units get the selection circle and every order you give the selection (move, attack, gather, garrison, patrol, stance, formation, halt, ...), sent in batches of about 100 right after the order to the others.
+- A control group made with more than 128 brings all of its units back when you press its number.
+- Crafts (a General's or a Spy's abilities) and Build stay with the units in the selection panel, so a second General does not cast too and a second building site is not laid and paid for.
+- The selection panel still shows the game's part only. Each batch keeps its own formation when moving in formation.
+- Only in single player games and campaigns: in multiplayer the game's limit stays.
+- `big_selection=0` under `[qol]` in `ron_camera.ini` turns it off.
+
+## Fix: the city districts' builder builds again (`camera-smooth`), new 2026-11-09
+
+- The District Builder who comes out of the city stood idle next to a new district's site, and a Citizen had to build it. He now builds it himself, then the next site, as described.
+
+## Quicksave with Ctrl+S (`camera-smooth`), new 2026-11-09
+
+- **Ctrl+S** saves the game at once, without the Save Game window. The save is called "Quicksave" and is in the Load Game list with the other saves; each quicksave replaces the last one. "Game saved (Quicksave)" shows in the message log.
+- Only in single player games and in the campaigns: in a Conquer the World battle it is saved as a campaign save, the same as a save from the menu. In multiplayer and in replays Ctrl+S does nothing.
+- `quicksave_key` under `[qol]` in `ron_camera.ini` changes the key (for example `F5`, `Ctrl+Q`); empty turns it off.
+
+## Turn units off in the game setup (`camera-smooth`, `ui-theme`), new 2026-11-09
+
+- Beside the Nukes slider in the game setup there is now a **Units** button ("Units: all allowed", or how many are off). It opens a window from the top of the screen, over everything else, in the theme's steel (the setup panels' riveted frame round a brushed-metal plate), with every unit of the game as its picture, in columns, on two pages:
+  - **Standard units**: one upgrade line per column (Hoplites to Anti-Tank Missile, Slingers to Assault Infantry, Cataphract to Main Battle Tank, Catapult to Rocket Artillery, the three warship lines, and so on), with the General, Spy and Supply Wagon in a column of their own.
+  - **Unique units**: one column per nation, under its flag and name, with every unit only that nation has (Romania's included).
+- Point at a picture to see the unit's name under the columns. A unit that is off is darkened and crossed with a red X.
+- Click a unit to turn it off: nobody can train it or research it in that game, the computer players neither. Its later upgrades go off with it, since the game only offers an upgrade after the one before (turn off the Light Tank and the Tank and Main Battle Tank go too). Click it again to turn it back on; the units it is upgraded from come back with it.
+- The **X** above a column turns the whole column off; on a column that is all off it turns it back on. **Allow all** turns everything back on. A click beside the window, the X in its corner or a right-click closes it.
+- The choice is remembered for the next games. Nuclear weapons are not in the list: the Nukes slider has them. Citizens, Scholars, Caravans, Merchants and the transport and trade fleets are not in it either.
+- In multiplayer the host chooses for everyone: the other players can open the window and see what is off, greyed. Every player needs this version.
+- A saved game keeps its units off when it is loaded in the same session, or when the window still has the same list.
+- `unit_bans_option=0` under `[gameplay]` in `ron_camera.ini` removes the button (it needs `no_nukes_option=1`).
+- The setup screen's options now sit in the same places in single player and multiplayer: the Nukes slider and the Units button on the first row on the left, Save to Profile to Cooperative AI on the right, and the multiplayer-only boxes (Allow Observer Chat to Require Random Nations) in the free rows. Multiplayer shows Cooperative AI too, greyed: the game has no Cooperative AI there.
+
+## Fix: crops and units no longer show through Romania's buildings (`romanian-buildings`), new 2026-11-09
+
+- Wheat from a farm behind a Romanian building, and units walking behind it, could draw over parts of the building: mostly its left walls, chimneys, church domes and tower tops. Every Romanian building now has a fuller hidden shape behind its picture, so what stands behind it stays hidden behind it. The Smelter, Large City of ages 1-3, Temple of ages 1-3, the age-6 cities and the Modern Age church gained the most.
+
+## The update downloads inside the launcher, with a progress bar (`camera-smooth`, `package`), new 2026-11-08
+
+- Pressing **Update** on the launcher's plate no longer opens a black console window. The launcher downloads the new version itself: the button becomes a progress bar with the percentage and the megabytes so far ("Cancel" when the mouse is on it). When everything has arrived, the plate says it is installing, the launcher closes for a few seconds and the game starts again by itself. If the download fails, the plate says so and the button becomes **Retry**.
+- The update no longer downloads the nation music again with the pack. Extras are updated only from the Extras tray, when you choose.
+- Works from the version after this one: the update to it still shows the old console window once.
 
 ## The jeep scene is back in the main menu, redrawn (`ui-theme`), new 2026-11-08
 
@@ -271,9 +395,8 @@ The game in ten languages. Choose under Options > Player > Language, or in the l
 
 ## Survival mode (`survival`), new 2026-10-29
 
-A new way to play: hold out for 30 minutes. In the custom game setup, play against one computer player and pick **Survival** under **Script**. The computer player's cities and units are removed at the start, so the whole map is yours; instead it sends waves of soldiers that appear in the fog just outside your territory and march on your capital.
+A new way to play: hold out for 30 minutes. Since 2026-11-10 it has its own button in the Solo menu, its own map and a wave bar (above). The computer player's cities and units are removed at the start, so the whole map is yours; instead it sends waves of soldiers that march on your capital.
 - **Clocks** at the top right: the time left to survive and the time to the next wave (yellow for a boss wave, red in the last 10 seconds).
-- **No-build zone:** a tenth of the map, on the side away from your start, where nobody can build, so the waves always have room to gather. Flags mark its edge.
 - The first wave comes at 2:00, then one every 80 seconds, down to 45 seconds by the end; every wave is bigger than the one before. Infantry, archers, cavalry, and siege from the sixth wave on.
 - The waves are **1 or 2 ages behind you**: 2 ages on Easiest to Moderate, 1 age on Hard to Toughest (the computer player's difficulty). Age up and they come stronger too.
 - **Boss waves** at 5, 10, 15, 20 and 25 minutes: a General with heavy cavalry (tanks later), siege and heavy infantry.

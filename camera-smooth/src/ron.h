@@ -104,6 +104,9 @@ void launcher_update_install(const char *res_dir, int scale_percent, const WCHAR
 void launcher_update_attach(HWND dlg);
 void launcher_update_relabel(void); /* the language changed */
 int launcher_http_get(const char *url, char *out, int size); /* `url` into `out`; the bytes read, or -1 */
+/* launcher_extras.c: `url` into `path`, SHA-256 checked; progress in *done_kb, stopped by *cancel */
+int launcher_download(const char *url, const WCHAR *path, const char *sha, volatile LONG *done_kb,
+                      volatile LONG *cancel);
 /* the list of the latest release, for the updater and the extras (package/build_package.py) */
 #define RON_REVIVED_INDEX "https://github.com/anastasescucristian93-max/RON-Revived/releases/latest/download/RON_Revived_update.txt"
 /* launcher_extras.c (the Extras tray: optional downloads) */
@@ -160,6 +163,7 @@ void assist_panel_create(char *iface, char *parent);
 void assist_panel_toggle(char *parent);
 int assist_panel_is(void *btn);
 void assist_panel_click(void);
+void assist_panel_install(void); /* the number keys stay your control groups while the computer plays */
 int assist_panel_redraw(void *btn);
 /* armageddon.c */
 extern int g_arm_enabled;
@@ -180,6 +184,15 @@ void nonukes_install(void);
 int nonukes_type_blocked(int type); /* datacenter.c's type_eligible hook: 0 = not offered */
 int nonukes_launch_full(void);       /* armageddon.c's can_nuke: the chosen count is used up */
 void nonukes_frame(void);            /* airdrop.c's Objects::process_all: the Armageddon constants */
+/* unitbans.c (the game setup's Units window; rides on nonukes.c's setup screen hooks) */
+extern int g_unitbans_enabled;
+void unitbans_load_config(const char *ini_path);
+void unitbans_install(void);              /* from nonukes_install */
+int unitbans_type_blocked(int type);      /* datacenter.c's type_eligible hook: 0 = not offered */
+void unitbans_frame(void);                /* from nonukes_frame */
+void unitbans_setup(char *sw);            /* from nonukes.c's setup_checks hook */
+int unitbans_check_redraw(char *sw, char *box, int id); /* from nonukes.c's on_check_redraw hook */
+void unitbans_setup_game(char *sw);       /* from nonukes.c's setup_game hook */
 int nukefx_nukes_in_flight(void);    /* nukefx.c: Nuclear Missiles and ICBMs in the air now */
 /* nukefx.c (a nuclear blast's white flash fades with its distance from the screen centre) */
 void nukefx_load_config(const char *ini_path);
@@ -210,6 +223,26 @@ void selpanel_install(void);
 /* survival.c */
 void survival_load_config(const char *ini_path);
 void survival_install(void);
+/* menuhelp.c: the main menu's help line under the menu's frame, centred */
+void menuhelp_load_config(const char *ini_path);
+void menuhelp_install(void);
+void survival_setup_game(void); /* nonukes.c's setup_game hook, after the game's */
+int survival_combo_text(char *combo, void *str_out); /* flags.c: a Survival setup's fixed combo text */
+int survival_list_text(char *combo, int item, void *str_out); /* flags.c: a row of its open lists */
+void survival_setup_checks(char *sw); /* nonukes.c's setup_checks hook: the Survival setup's rows */
+int survival_setup_active(void);       /* the setup the Survival button opened is up */
+int survival_hidden_check(int id);     /* a check box (or the Nukes slider 14) it hides */
+int survival_hero_choice(void);        /* the Survival hero: 0 infantry, 1 cavalry */
+void survival_hero_toggle(void);       /* unitbans.c's button in the Survival setup */
+int survival_button_redraw(char *sw, char *button); /* unitbans.c's on_button_redraw hook */
+void survival_hide_box(char *box);
+void survival_fix_rules(char *sw);     /* its fixed, locked rules; nonukes.c before setup_game */
+void survival_before_game(char *sw);   /* its battle director (added, white); nonukes.c, after it */
+void unitbans_hide_box(void);
+void ranks_set_hero(int p, int id, int slot); /* ranks.c: a Survival hero, player index p (script player - 1) */
+int ranks_hero_squad(int p, int slot, char **out); /* its soldiers now, 0 when fallen */
+void ranks_draw_hero_marks(void);       /* rankfx.c's redraw: the heroes' medallions */
+void survival_hero_level(int p, int level); /* ranks.c, when the hero reaches a new level */
 /* defenseramp.c */
 void defenseramp_load_config(const char *ini_path);
 void defenseramp_install(void);
@@ -264,6 +297,26 @@ void facing_install(void);
 extern int g_entrench_enabled;
 void entrench_load_config(const char *dir);
 void entrench_install(void);
+int entrench_traps_hits_pct(char *o);
+void ranks_forget_heroes(void);
+/* cards.c: the Survival reward cards (boss waves and ruins) */
+enum { CS_DMG, CS_TAKEN, CS_RATE, CS_HITS, CS_RANGE, CS_LOS, CS_REGEN };
+enum { CC_UNIT, CC_HERO, CC_BUILD };
+extern int g_cards_on;                       /* a card was picked this game: the bonuses are looked up */
+int cards_bonus(int p, int cls, int cat, int stat); /* ranks.c: tenths of %, tiles or per mille */
+int cards_min_level(int p);                  /* War School: the army's lowest level */
+int cards_hero_extra(int p, int rider);      /* Reinforcements: soldiers more in the hero's squad */
+int cards_timer(const char *name, int end, int now); /* survival.c's add_timer hook; -2 = not a card timer */
+void cards_forget(void);                     /* survival.c: a new game */
+void cards_install(void);
+void cards_panel_create(char *iface, char *parent); /* qol.c, with the assistant panel */
+int cards_panel_is(void *btn);
+int cards_panel_redraw(void *btn);           /* panel.c's IFaceButton::on_redraw hook */
+void cards_panel_click(void);                /* qol.c's on_button_clicked hook */
+int ranks_has_hero(int p);
+void ranks_refresh_hits(int p);
+void ranks_hero_quarter_levels(int p, int q);
+int survival_goal(void);               /* the Survival setup's goal: 0 Wonder, 1 Information Age, 2 time */          /* survival.c: a new game */    /* ranks.c's Wall::update_hits hook: the Tank Traps by age */
 void entrench_frame(void);               /* from airdrop.c's Objects::process_all hook */
 void entrench_make_options(char *self);  /* from airdrop.c's BuildOut::make_options hook */
 /* the Entrench, Dig and Leave Nest buttons are crafts: airdrop.c's spell hooks hand them over
@@ -307,6 +360,30 @@ void heal_start(char *general);
 void heal_frame(void);
 void heal_install(void);                    /* the hotkey */
 const char *heal_hotkey(int code, int type); /* for panel.c: the letter on the Heal button */
+
+/* quicksave.c (one key saves the game as "Quicksave"; single player and campaign) */
+extern int g_quicksave_key;
+void quicksave_load_config(const char *ini_path);
+int quicksave_key(int key); /* from heal.c's Console::on_key_down hook: 1 = handled */
+
+/* bigsel.c (selections and control groups beyond the game's 128 objects; single player) */
+extern int g_bigsel_enabled;
+void bigsel_load_config(const char *ini_path);
+void bigsel_install(void);
+void bigsel_tick(void);                            /* once per rendered frame */
+void bigsel_after_add(char *self, int id, int p);  /* airdrop.c's SelectGroup::add hook */
+int bigsel_has(char *group, int id, int p);        /* hover.c: the selection circle */
+unsigned bigsel_gen(void);                         /* heal.c's key hook, around the game's handling */
+void bigsel_after_key(unsigned gen);
+
+/* placement.c (Shift + Farm: the ghost jumps to the next free plot of the block; Shift + drag:
+   a line of Tank Traps) */
+extern int g_farmsnap_enabled, g_ttline_enabled;
+extern int g_place_extra; /* set while placement.c draws the extra ghosts of a line */
+void placement_draw_ghosts(char *opts, void *orig_follows); /* airdrop.c's draw_cursor_follows hook */
+void placement_tick(void);                                  /* once per rendered frame */
+void farmsnap_load_config(const char *ini_path);
+void farmsnap_install(void);
 
 /* shove.c (idle units step aside for their own moving units; own units walk through each other) */
 extern int g_make_way_enabled, g_pass_enabled;

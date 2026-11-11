@@ -5,11 +5,18 @@
  *
  * The switch hands your nation to the computer and takes it back, like the console commands
  * "computer <name>" and "human <name>": one click on FULL CONTROL ticks every kind and lets the
- * computer play, one click on NO CONTROL takes it back. With some kinds unticked while the
- * computer plays, the switch reads CUSTOM. The game's own ScenarioFuncSet::change_to_ai /
+ * computer play, one click on NO CONTROL unticks every kind and takes it back. With some kinds
+ * unticked while the computer plays, the switch reads CUSTOM; unticking the last one is NO
+ * CONTROL, ticking one while it is off is CUSTOM. The game's own ScenarioFuncSet::change_to_ai /
  * change_to_human do the switching (the human flag of the leader, bit 2 of [leader + 0], and
- * the AI flag of every unit). Single player only: in a multiplayer game only this machine
- * would know, and the game would go out of sync.
+ * the AI flag of every unit). The game's Cooperative AI (setup box) counts as the computer
+ * playing too; NO CONTROL also turns it off (bit 3 of the leader, the AI flag of its units).
+ * Single player only: in a multiplayer game only this machine would know, and the game would
+ * go out of sync.
+ *
+ * While the computer plays, the number keys would select its armies instead of your control
+ * groups (Console::on_key_down, ArmiesOut::select_army for a leader without the human flag);
+ * assist_panel_install makes them always the control groups.
  *
  * The window is a native IFaceButton, a child of the Console window (the in-game screen),
  * so the game positions, clips, layers and clicks it like its own interface. Its contents
@@ -63,6 +70,11 @@
 #define RENDER_SOLID 5
 #define LEADER_SIZE  0x6EEC
 #define LD_HUMAN     4     /* [leader + 0]: bit 2 set = a human plays it */
+#define LD_COOP_AI   8     /* [leader + 0]: a human with the Cooperative AI */
+#define VA_OBJECTS   0x00C0618Cu /* Objects *: +0x14 + 0x1C * p = Object **, +0x15C + 4 * p = unit count */
+#define OBJS_UNITS_N 0x15C
+#define U_FLAGS      0x68  /* 0x40000: the computer runs the unit */
+#define U_AI_UNIT    0x40000
 #define GAME_FLAGS   0x820 /* byte, bit 2: multiplayer game */
 
 /* layout, in window pixels; the art (build_assist_panel.py) has the same sizes */
@@ -190,20 +202,49 @@ static int multiplayer(void)
     return !game || (game[GAME_FLAGS] & 4);
 }
 
+/* The computer plays the local nation: the "computer" switch (no human flag), or the game's
+   Cooperative AI from the setup (human flag + LD_COOP_AI, its new units get U_AI_UNIT). */
 static int computer_plays(void)
 {
     int p = local_player();
-    return p >= 0 && !(*(unsigned *)(VA(VA_LEADERS) + p * LEADER_SIZE) & LD_HUMAN);
+    if (p < 0)
+        return 0;
+    unsigned flags = *(unsigned *)(VA(VA_LEADERS) + p * LEADER_SIZE);
+    return !(flags & LD_HUMAN) || (flags & LD_COOP_AI);
 }
 
 static void set_computer(int on)
 {
     int p = local_player();
-    if (p < 0 || multiplayer() || computer_plays() == on)
+    if (p < 0 || multiplayer())
         return;
+    unsigned *flags = (unsigned *)(VA(VA_LEADERS) + p * LEADER_SIZE);
+    if (on ? !(*flags & LD_HUMAN) : !computer_plays())
+        return; /* already so (with the Cooperative AI, "on" still hands the nation over) */
     int n = p + 1; /* the scenario functions count players from 1 */
-    ((change_t)VA(on ? VA_TO_AI : VA_TO_HUMAN))(NULL, &n);
-    logf_("assistant panel: %s", on ? "the computer plays your nation" : "you play your nation again");
+    if (on) {
+        ((change_t)VA(VA_TO_AI))(NULL, &n);
+        logf_("assistant panel: the computer plays your nation");
+        return;
+    }
+    int coop = (*flags & LD_COOP_AI) != 0;
+    if (!(*flags & LD_HUMAN))
+        ((change_t)VA(VA_TO_HUMAN))(NULL, &n);
+    /* the Cooperative AI too: its armies, planners and new units go by the leader's bit 3, and
+       the units it already had by their own flag */
+    *flags &= ~LD_COOP_AI;
+    char *objs = *(char **)VA(VA_OBJECTS);
+    int units = objs ? *(int *)(objs + OBJS_UNITS_N + 4 * p) : 0, freed = 0;
+    char **arr = objs ? *(char ***)(objs + 0x14 + 0x1C * p) : NULL;
+    for (int id = 0; arr && id < units; id++) {
+        char *u = arr[id];
+        if (u && (u[8] & 1) && (*(unsigned *)(u + U_FLAGS) & U_AI_UNIT)) {
+            *(unsigned *)(u + U_FLAGS) &= ~U_AI_UNIT;
+            freed++;
+        }
+    }
+    logf_("assistant panel: you play your nation again%s (%d units given back)", coop ? ", Cooperative AI off" : "",
+          freed);
 }
 
 static int all_allowed(void)
@@ -395,6 +436,27 @@ int assist_panel_redraw(void *btn)
     return 1;
 }
 
+/* ---- the number keys ----------------------------------------------------------------- */
+
+/* Console::on_key_down: "test byte [leader], 4 (human) / jne control groups", else the number
+   keys select the computer's armies (ArmiesOut::select_army). The jne becomes a jmp. */
+#define VA_KEYS_HUMAN 0x007CC7BDu
+void assist_panel_install(void)
+{
+    static const unsigned char sig[6] = { 0xF6, 0x04, 0x01, 0x04, 0x75, 0x19 };
+    unsigned char *at = (unsigned char *)VA(VA_KEYS_HUMAN);
+    if (memcmp(at, sig, sizeof sig) != 0) {
+        logf_("assistant panel: signature mismatch at Console::on_key_down, the number keys keep the game's way");
+        return;
+    }
+    DWORD old;
+    VirtualProtect(at + 4, 1, PAGE_EXECUTE_READWRITE, &old);
+    at[4] = 0xEB;
+    VirtualProtect(at + 4, 1, old, &old);
+    FlushInstructionCache(GetCurrentProcess(), at, 6);
+    logf_("assistant panel: the number keys are your control groups while the computer plays");
+}
+
 /* ---- clicks -------------------------------------------------------------------------- */
 
 void assist_panel_click(void)
@@ -409,23 +471,26 @@ void assist_panel_click(void)
         return;
     }
     if (inside(mx, my, TG_L, TG_T, TG_L + TG_W, TG_T + TG_H)) {
-        /* a switch: a click on either side flips it; FULL CONTROL ticks every kind */
+        /* a switch: a click on either side flips it; FULL CONTROL ticks every kind, NO CONTROL
+           unticks them all */
         int st = state();
         int want_full = mx >= TG_L + TG_W / 2 ? st != S_FULL : st == S_NONE;
-        if (want_full) {
-            for (int k = 0; k < assistant_kinds(); k++)
-                if (!assistant_allowed(k))
-                    assistant_set_allowed(k, 1);
-            set_computer(1);
-        } else {
-            set_computer(0);
-        }
+        for (int k = 0; k < assistant_kinds(); k++)
+            if (assistant_allowed(k) != want_full)
+                assistant_set_allowed(k, want_full);
+        set_computer(want_full);
         return;
     }
     for (int k = 0; k < assistant_kinds(); k++) {
         int t = row_top(k);
         if (inside(mx, my, 14, t, PW - 14, t + ROW_H)) {
+            /* the boxes are what the computer does: none ticked = it does nothing (NO CONTROL),
+               a tick while it is off lets it do that one (CUSTOM) */
             assistant_set_allowed(k, !assistant_allowed(k));
+            int any = 0;
+            for (int j = 0; j < assistant_kinds(); j++)
+                any |= assistant_allowed(j);
+            set_computer(any);
             return;
         }
     }

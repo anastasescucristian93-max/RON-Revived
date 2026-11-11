@@ -3314,7 +3314,7 @@ your libraries.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Steel anti-tank obstacles on one tile, built by Citizens in the Modern and Information Ages. Nothing can pass through them, your own units neither: an enemy has to destroy them to get through. Lay them in a line to close a gap; leave a way open for your own army. 1200 hit points and heavy armor: rifles barely scratch them, tanks, artillery and aircraft break them.</STRING>
+				<BULLET/>Obstacles on one tile, built by Citizens in every age: sharpened stakes at first, spiked beams, then gabions and, from the Modern Age, steel anti-tank hedgehogs. Nothing can pass through them, your own units neither: an enemy has to destroy them to get through. Lay them in a line to close a gap; leave a way open for your own army. They grow stronger with your age: 240 hit points in the Ancient Age, 1200 and heavy armor from the Modern Age.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

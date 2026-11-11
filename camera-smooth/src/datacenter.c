@@ -168,6 +168,8 @@ __attribute__((used)) int c_type_eligible(char *self, int type, int a)
 {
     if (nonukes_type_blocked(type)) /* nonukes.c: No Nukes ticked in the game setup */
         return 0;
+    if (unitbans_type_blocked(type)) /* unitbans.c: turned off in the game setup's Units window */
+        return 0;
     if (arm_type_blocked(type)) /* armageddon.c: the clock is out */
         return ((fn2_t)g_orig_type_eligible)(self, type, a) ? 1 : 0;
     if (!g_dc_enabled)
@@ -606,6 +608,44 @@ static void lift_999(void)
     }
 }
 
+/* Group::action_swarm_around (build order 6, repair 0xD) gives the order only to units of type
+   0x32 or 0x33 (the Citizens) or to units that carry Citizens or can cast its craft; the others
+   are left out. Unit::do_build sends a builder that is not yet next to its site through it, so the
+   district builder stood idle beside the site. "cmp eax, 0x32 / je / cmp eax, 0x33 / je" becomes
+   "call dc_swarm_builder / je": ZF set for the two Citizens and the builder. */
+#define VA_SWARM_CITIZEN 0x00710062u
+UINT_PTR g_swarm_builder = (UINT_PTR)-1;
+void dc_swarm_builder(void);
+__asm__(".intel_syntax noprefix\n"
+        ".globl _dc_swarm_builder\n"
+        "_dc_swarm_builder:\n"
+        "    cmp eax, 0x32\n"
+        "    je 1f\n"
+        "    cmp eax, 0x33\n"
+        "    je 1f\n"
+        "    cmp eax, [_g_swarm_builder]\n"
+        "1:  ret\n"
+        ".att_syntax prefix\n");
+
+static void swarm_builder(void)
+{
+    /* cmp eax,0x32 / je +0x5A / cmp eax,0x33 / je +0x55 (both to 0x007100C1) */
+    static const unsigned char sig[10] = { 0x83, 0xF8, 0x32, 0x74, 0x5A, 0x83, 0xF8, 0x33, 0x74, 0x55 };
+    unsigned char *at = (unsigned char *)VA(VA_SWARM_CITIZEN);
+    if (memcmp(at, sig, sizeof sig) != 0) {
+        logf_("districts: signature mismatch at Group::action_swarm_around, the builder may stand idle");
+        return;
+    }
+    g_swarm_builder = TECHNICIAN;
+    unsigned char code[10] = { 0xE8, 0, 0, 0, 0, 0x74, 0x58, 0x90, 0x90, 0x90 }; /* je 0x007100C1 */
+    int rel = (int)((UINT_PTR)dc_swarm_builder - (UINT_PTR)(at + 5));
+    memcpy(code + 1, &rel, 4);
+    DWORD old;
+    VirtualProtect(at, sizeof code, PAGE_EXECUTE_READWRITE, &old);
+    memcpy(at, code, sizeof code);
+    VirtualProtect(at, sizeof code, old, &old);
+}
+
 void dc_install(void)
 {
     /* the type_eligible hook also serves armageddon.c and nonukes.c */
@@ -639,7 +679,7 @@ void dc_install(void)
     for (int i = 0; i < n; i++)
         if (memcmp((void *)VA(hooks[i].va), hooks[i].sig, hooks[i].sig_len) != 0) {
             logf_("data center: signature mismatch at %s, turned off", hooks[i].name);
-            g_dc_enabled = g_arm_enabled = g_nonukes_enabled = 0;
+            g_dc_enabled = g_arm_enabled = g_nonukes_enabled = g_unitbans_enabled = 0;
             return;
         }
     unsigned char *mem = VirtualAlloc(NULL, 4096, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
@@ -652,8 +692,10 @@ void dc_install(void)
         *hooks[i].orig = hook_trampoline(at, hooks[i].steal, mem + i * 32);
         hook_jmp5(at, hooks[i].hook);
     }
-    if (g_dc_enabled)
+    if (g_dc_enabled) {
         lift_999();
+        swarm_builder();
+    }
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
     if (!g_dc_enabled)
         return;

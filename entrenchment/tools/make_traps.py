@@ -4,6 +4,13 @@ plain white:
     C:\AI\ComfyUI-Easy-Install\ComfyUI-Easy-Install\python_embeded\python.exe ^
         ..\..\roman-buildings\tools\rmbg_matte.py <picture> ..\work\traps_matte.png
     python make_traps.py <picture> ..\work\traps_matte.png [--grid 2x2] [--order 0,1,2,3] [--width 76]
+    python make_traps.py <picture> <matte> --age 1 --grid 1x1 --order 0,0,0,0
+
+--age N makes the look of one age (1 Ancient .. 8 Information; the user, 2026-11-10: wooden
+stakes in the first ages, sandbags later): tank_traps_age<N>_<i>.tga on the canvas and origin of
+tank_traps_0.tga (made first, without --age), scaled to fit it, so they stand on the same tile,
+depth mesh and offsets; nation_art.ini's [all] rule "tank_traps_0.tga@N~4:pick" swaps them in
+for that age (an age rule wins over the every-age one). No mesh, offsets or icon of their own.
 
 The picture is cut into its variations by --grid (columns x rows, default: 4x1 for a wide picture,
 2x2 otherwise); --order picks and orders the cells (0 = top left, row by row), so a bad
@@ -150,6 +157,7 @@ def main():
     p.add_argument("--width", type=float, default=76, help="width of each cluster in game pixels")
     p.add_argument("--mesh-height", type=float, default=0.5, help="depth box height / the art's height")
     p.add_argument("--wire", type=int, default=0, help="grow thin parts (barbed wire) by this many picture pixels")
+    p.add_argument("--age", type=int, default=0, help="the look of one age (1..8), on tank_traps_0's canvas")
     args = p.parse_args()
     global WIRE
     WIRE = args.wire
@@ -168,16 +176,28 @@ def main():
     # variation; one canvas, as tall as the tallest
     s = args.width / max(bb[2] - bb[0] for _, _, bb in vs)
     heights = [s * (bb[3] - bb[1]) for _, _, bb in vs]
-    W = int(round(args.width)) + 2 * MARGIN
     tip = C * TILE                        # the tile's front corner lies this far below its centre
-    H = int(np.ceil(max(heights))) + MARGIN + 2
+    if args.age:
+        # one age's look on the every-age canvas: same size and origin, scaled down to fit
+        W, H = Image.open(os.path.join(WORK_ART, f"{NAME}_0.tga")).size
+        if max(heights) > H - MARGIN - 2:
+            s *= (H - MARGIN - 2) / max(heights)
+            heights = [s * (bb[3] - bb[1]) for _, _, bb in vs]
+        out = f"{NAME}_age{args.age}"
+    else:
+        W = int(round(args.width)) + 2 * MARGIN
+        H = int(np.ceil(max(heights))) + MARGIN + 2
+        out = NAME
     base = H - 2                          # the clusters' bottom: the tile's front corner, roughly
     x0, y0 = W // 2, int(round(base - tip))
     os.makedirs(WORK_ART, exist_ok=True)
     for i, (pre, a, bb) in enumerate(vs):
         img = sprite(pre, a, bb, s, (W, H), base)
-        write_tga(img, os.path.join(WORK_ART, f"{NAME}_{i}.tga"))
-        print(os.path.join(WORK_ART, f"{NAME}_{i}.tga"), img.size)
+        write_tga(img, os.path.join(WORK_ART, f"{out}_{i}.tga"))
+        print(os.path.join(WORK_ART, f"{out}_{i}.tga"), img.size)
+    if args.age:
+        preview(W, H, x0, y0, out)
+        return
     art_h = (max(heights) - 2 * tip) / E  # world units above the tile's middle, roughly
     verts, tris = box_mesh(TILE / 2 * 0.8, max(6.0, art_h * args.mesh_height))
     write_bh3(verts, tris, os.path.join(WORK_ART, f"{NAME}_0z.bh3"))
@@ -195,7 +215,11 @@ def main():
     icon.paste(rgb.resize((tw, th), Image.LANCZOS), ((cw - tw) // 2, ch - th - 1), al.resize((tw, th), Image.LANCZOS))
     icon.save(os.path.join(WORK, f"{NAME}_icon.png"))
 
-    # preview: the four on grass at 3x, with the tile's diamond under each
+    preview(W, H, x0, y0, NAME)
+
+
+def preview(W, H, x0, y0, out):
+    """the four on grass at 3x, with the tile's diamond under each"""
     k = 3
     prev = grass(W * VARIANTS * k, H * k).convert("RGB")
     d = ImageDraw.Draw(prev)
@@ -204,11 +228,11 @@ def main():
         h = TILE / 2
         pts = [(cx + k * A * (x - y), cy + k * C * (x + y)) for x, y in ((-h, -h), (h, -h), (h, h), (-h, h))]
         d.polygon(pts, outline=(255, 255, 0))
-        spr = Image.open(os.path.join(WORK_ART, f"{NAME}_{i}.tga")).convert("RGBA")
+        spr = Image.open(os.path.join(WORK_ART, f"{out}_{i}.tga")).convert("RGBA")
         spr = spr.resize((W * k, H * k), Image.NEAREST)
         prev.paste(spr, (i * W * k, 0), spr.getchannel("A").point(lambda v: 255 if v else 0))
-    prev.save(os.path.join(WORK, f"preview_{NAME}.png"))
-    print(os.path.join(WORK, f"preview_{NAME}.png"))
+    prev.save(os.path.join(WORK, f"preview_{out}.png"))
+    print(os.path.join(WORK, f"preview_{out}.png"))
 
 
 if __name__ == "__main__":

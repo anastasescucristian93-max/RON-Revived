@@ -6,15 +6,17 @@
  * bottom of the launcher's picture: "RON Revived <version> is out", how much there is to
  * download, and an Update button in the theme's BUTTONU.bmp.
  *
- * The pack comes in parts (package\build_package.py): core, art and music, each a zip of its
- * own with a hash of its contents in the index. RON_Revived_parts.txt in the game folder holds
- * the hashes of the parts installed, so only the parts that changed are counted (and
- * downloaded).
+ * The pack comes in parts (package\build_package.py): core and art, each a zip of its own with
+ * a hash of its contents in the index. RON_Revived_parts.txt in the game folder holds the hashes
+ * of the parts installed, so only the parts that changed are counted (and downloaded). The
+ * extras (the nation music...) are left out: the Extras tray (launcher_extras.c) updates them.
  *
- * Update asks first, then starts RON_Revived_update.ps1 from the game folder in its own console
- * window and closes the launcher: the script waits for it to exit (winmm.dll cannot be replaced
- * while it is loaded), downloads the changed parts, checks their SHA-256, installs them with
- * RON_Revived_install.ps1 and starts the game again through Steam.
+ * Update downloads the changed parts here, into %TEMP%\RON_Revived_dl\, with a progress bar in
+ * the button's place ("Cancel" under the mouse) and each zip's SHA-256 checked. Then it starts
+ * RON_Revived_update.ps1 hidden with -Staged <that folder> -Quiet and closes the launcher: the
+ * script waits for it to exit (winmm.dll cannot be replaced while it is loaded), installs the
+ * parts with RON_Revived_install.ps1 and starts the game again through Steam. A failed download
+ * says so on the plate and the button retries.
  *
  * The plate's texts are in launcher_res\locale\<code>.ini (launcher.json in translations\).
  */
@@ -30,7 +32,10 @@
 #define DEFAULT_INDEX RON_REVIVED_INDEX
 #define RELEASES_PAGE L"https://github.com/anastasescucristian93-max/RON-Revived/releases/latest"
 #define WM_FOUND     (WM_APP + 1)
+#define WM_GOT       (WM_APP + 2) /* the download thread ended; wp 1 = every zip arrived whole */
 #define ANIM_TIMER   1
+#define EXIT_TIMER   2
+#define MAXZ         8
 #define FADE_MS      450.0f
 #define PULSE_MS     2400.0f
 #define PI_F         3.14159265f
@@ -57,6 +62,17 @@ static WCHAR g_face[64];
 static char g_new[32];
 static double g_bytes;
 static volatile LONG g_found;
+static char g_base[512]; /* where the zips are */
+static struct {
+    char sha[72], name[160];
+} g_zip[MAXZ]; /* the zips of the parts that changed */
+static int g_nz;
+
+/* the download: what the plate shows */
+enum { ST_IDLE, ST_GET, ST_INSTALL, ST_FAILED };
+static volatile LONG g_st, g_done_kb, g_cancel;
+static WCHAR g_stage[MAX_PATH];
+static int g_shown_mb = -1; /* the megabytes line 2 shows while downloading */
 
 static HWND g_dlg;
 static HWND volatile g_win;
@@ -183,12 +199,14 @@ static DWORD WINAPI check_thread(void *arg)
         double size;
         if (sscanf(line, "version=%31s", version) == 1)
             continue;
+        if (sscanf(line, "base=%511s", g_base) == 1)
+            continue;
         /* <part>=<content hash>, then per zip <sha256> <bytes> <zip name> */
         if (sscanf(line, "%31[a-z]=%79s %*s %lf", key, content, &size) != 3)
             continue;
         GetPrivateProfileStringA("parts", key, "", have, sizeof have, parts);
         snprintf(tag, sizeof tag, ",%s,", key);
-        if (strstr(extras, tag) && !have[0])
+        if (strstr(extras, tag)) /* the Extras tray's */
             continue;
         listed++;
         if (_stricmp(have, content) != 0) {
@@ -196,11 +214,17 @@ static DWORD WINAPI check_thread(void *arg)
             const char *p = strchr(line, '=') + 1 + strlen(content);
             char sha[80], zip[160];
             int at = 0;
-            while (sscanf(p, "%79s %lf %159s%n", sha, &size, zip, &at) == 3)
+            while (sscanf(p, "%79s %lf %159s%n", sha, &size, zip, &at) == 3) {
                 bytes += size, p += at;
+                if (g_nz < MAXZ) {
+                    snprintf(g_zip[g_nz].sha, sizeof g_zip[0].sha, "%s", sha);
+                    snprintf(g_zip[g_nz].name, sizeof g_zip[0].name, "%s", zip);
+                    g_nz++;
+                }
+            }
         }
     }
-    if (!version[0] || !listed) {
+    if (!version[0] || !listed || !g_base[0]) {
         logf_("update: %s is not an update list", g_index);
         return 0;
     }
@@ -366,6 +390,60 @@ static void draw_back(float alpha, float pulse)
         }
 }
 
+/* a rounded rectangle in one colour over the plate */
+static void fill_round(float x0, float y0, float x1, float y1, float rad, float r, float g, float b, float alpha)
+{
+    float hw = (x1 - x0) / 2.0f, hh = (y1 - y0) / 2.0f, cx = x0 + hw, cy = y0 + hh;
+    if (hw <= 0 || hh <= 0)
+        return;
+    rad = fminf(rad, fminf(hw, hh));
+    for (int y = (int)y0; y < (int)ceilf(y1) && y < g_h; y++)
+        for (int x = (int)x0; x < (int)ceilf(x1) && x < g_w; x++) {
+            if (x < 0 || y < 0)
+                continue;
+            float qx = fabsf((float)x + 0.5f - cx) - (hw - rad), qy = fabsf((float)y + 0.5f - cy) - (hh - rad);
+            float d = hypotf(fmaxf(qx, 0.0f), fmaxf(qy, 0.0f)) + fminf(fmaxf(qx, qy), 0.0f) - rad;
+            float a = 255.0f * clampf(0.5f - d, 0.0f, 1.0f) * alpha;
+            if (a > 0.5f)
+                over(g_px + (size_t)y * g_w + x, b * a / 255.0f, g * a / 255.0f, r * a / 255.0f, a);
+        }
+}
+
+/* the download's bar in the button's place: a dark groove, an amber fill, the percent on it
+   ("Cancel" under the mouse); while installing, the whole bar lit and breathing */
+static void draw_bar(float alpha, float pulse)
+{
+    float x0 = (float)g_btn_at.left, y0 = (float)g_btn_at.top + 6.0f * g_k;
+    float x1 = (float)g_btn_at.right, y1 = (float)g_btn_at.bottom - 6.0f * g_k, rad = 5.0f * g_k;
+    fill_round(x0, y0, x1, y1, rad, 150, 120, 70, alpha * 0.55f); /* the rim */
+    fill_round(x0 + 1.5f, y0 + 1.5f, x1 - 1.5f, y1 - 1.5f, rad - 1.0f, 18, 16, 14, alpha);
+    float f = 1.0f;
+    if (g_st == ST_GET)
+        f = g_bytes > 0 ? clampf((float)(g_done_kb * 1024.0 / g_bytes), 0.0f, 1.0f) : 0.0f;
+    float light = g_st == ST_INSTALL ? 0.8f + 0.2f * pulse : 1.0f;
+    float fx1 = x0 + 2.5f + (x1 - x0 - 5.0f) * f;
+    if (fx1 > x0 + 4.0f) {
+        fill_round(x0 + 2.5f, y0 + 2.5f, fx1, y1 - 2.5f, rad - 2.0f, 200 * light, 132 * light, 44 * light, alpha);
+        fill_round(x0 + 2.5f, y0 + 2.5f, fx1, (y0 + y1) / 2.0f, rad - 2.0f, 255, 214, 140, alpha * 0.22f);
+    }
+    WCHAR cap[64] = L"";
+    if (g_st == ST_GET && g_a.hover)
+        launcher_text("ron_extras_cancel", L"Cancel", cap, 64);
+    else if (g_st == ST_GET)
+        _snwprintf(cap, 64, L"%d%%", (int)(f * 100.0f));
+    cap[63] = 0;
+    if (cap[0]) {
+        label_t lb = {0};
+        make_label(&lb, cap, 15.0f * g_k, FW_SEMIBOLD, (int)(x1 - x0));
+        if (lb.cov) {
+            int lx = (int)((x0 + x1) / 2.0f) - lb.w / 2, ly = (int)((y0 + y1) / 2.0f) - lb.h / 2;
+            draw_label(&lb, lx + 1, ly + 1, 0, 0, 0, alpha * 0.6f);
+            draw_label(&lb, lx, ly, 250, 240, 220, alpha);
+            free(lb.cov);
+        }
+    }
+}
+
 static void draw_button(float alpha, float light)
 {
     const plate_t *pl = &g_btn[g_a.down && g_a.hover && g_btn[1].px ? 1 : 0];
@@ -387,12 +465,16 @@ static void draw_button(float alpha, float light)
                alpha);
 }
 
+static void make_labels(void);
+
 static void render(void)
 {
     if (!g_win)
         return;
     float t = smooth((float)(GetTickCount() - g_a.start) / FADE_MS);
     float pulse = 0.5f - 0.5f * cosf((float)(GetTickCount() - g_a.start) / PULSE_MS * 2.0f * PI_F);
+    if (g_st == ST_GET && (int)(g_done_kb / 1024) != g_shown_mb)
+        make_labels(); /* the megabytes so far */
     memset(g_px, 0, (size_t)g_w * g_h * 4);
     draw_back(t, pulse);
     int left = (int)(16.0f * g_k), gap = (int)(3.0f * g_k);
@@ -401,7 +483,10 @@ static void render(void)
         draw_label(&g_line1, left, top, 240, 228, 200, t);
     if (g_line2.cov)
         draw_label(&g_line2, left, top + g_line1.h + gap, 170, 175, 182, t);
-    draw_button(t, 1.0f + 0.05f * pulse + 0.18f * g_a.hv);
+    if (g_st == ST_GET || g_st == ST_INSTALL)
+        draw_bar(t, pulse);
+    else
+        draw_button(t, 1.0f + 0.05f * pulse + 0.18f * g_a.hv);
 
     POINT zero = {0, 0};
     SIZE sz = {g_w, g_h};
@@ -422,58 +507,117 @@ static void fill(WCHAR *out, int size, const WCHAR *fmt, const WCHAR *arg)
 static void make_labels(void)
 {
     WCHAR fmt[256], s[256], ver[32], mb[32];
-    int text_w = g_btn_at.left - (int)(28.0f * g_k);
+    int text_w = g_btn_at.left - (int)(28.0f * g_k), st = g_st;
     MultiByteToWideChar(CP_ACP, 0, g_new, -1, ver, 32);
-    launcher_text("ron_update_out", L"RON Revived %s is out", fmt, 256);
+    if (st == ST_GET)
+        launcher_text("ron_update_downloading", L"Downloading RON Revived %s", fmt, 256);
+    else if (st == ST_INSTALL)
+        launcher_text("ron_update_installing", L"Installing RON Revived %s", fmt, 256);
+    else
+        launcher_text("ron_update_out", L"RON Revived %s is out", fmt, 256);
     fill(s, 256, fmt, ver);
     make_label(&g_line1, s, 17.0f * g_k, FW_SEMIBOLD, text_w);
     double m = g_bytes / 1048576.0;
-    if (m < 1.0)
-        wcscpy(mb, L"< 1");
-    else
-        _snwprintf(mb, 32, L"%d", (int)(m + 0.5));
-    launcher_text("ron_update_size", L"%s MB to download", fmt, 256);
-    fill(s, 256, fmt, mb);
+    if (st == ST_GET) {
+        g_shown_mb = (int)(g_done_kb / 1024);
+        _snwprintf(s, 256, L"%d / %d MB", g_shown_mb, m >= 1.0 ? (int)(m + 0.5) : 1);
+    } else if (st == ST_INSTALL)
+        launcher_text("ron_update_restart", L"The game starts again by itself in a moment.", s, 256);
+    else if (st == ST_FAILED)
+        launcher_text("ron_update_failed", L"The download failed. Check your connection and try again.", s, 256);
+    else {
+        if (m < 1.0)
+            wcscpy(mb, L"< 1");
+        else
+            _snwprintf(mb, 32, L"%d", (int)(m + 0.5));
+        launcher_text("ron_update_size", L"%s MB to download", fmt, 256);
+        fill(s, 256, fmt, mb);
+    }
+    s[255] = 0;
     make_label(&g_line2, s, 13.5f * g_k, FW_NORMAL, text_w);
-    launcher_text("ron_update_button", L"Update", s, 256);
+    if (st == ST_FAILED)
+        launcher_text("ron_extras_retry", L"Retry", s, 256);
+    else
+        launcher_text("ron_update_button", L"Update", s, 256);
     make_label(&g_caption, s, 17.0f * g_k, FW_SEMIBOLD, g_btn_at.right - g_btn_at.left - (int)(12.0f * g_k));
 }
 
 /* --- the update ---------------------------------------------------------------------------- */
 
+static DWORD WINAPI get_thread(void *arg)
+{
+    (void)arg;
+    int ok = 1;
+    char url[1024];
+    WCHAR path[MAX_PATH], wzip[160];
+    for (int i = 0; ok && i < g_nz; i++) {
+        snprintf(url, sizeof url, "%s%s", g_base, g_zip[i].name);
+        MultiByteToWideChar(CP_UTF8, 0, g_zip[i].name, -1, wzip, 160);
+        _snwprintf(path, MAX_PATH, L"%ls%ls", g_stage, wzip);
+        path[MAX_PATH - 1] = 0;
+        ok = launcher_download(url, path, g_zip[i].sha, &g_done_kb, &g_cancel);
+    }
+    logf_("update: download %s", g_cancel ? "cancelled" : ok ? "complete" : "failed");
+    HWND w = g_win;
+    if (w)
+        PostMessageW(w, WM_GOT, ok && !g_cancel, 0);
+    return 0;
+}
+
+/* Update (or Retry): the changed parts into %TEMP%\RON_Revived_dl\, the bar in the button's place */
 static void start_update(void)
 {
-    WCHAR fmt[512], ask[600], ver[32];
-    MultiByteToWideChar(CP_ACP, 0, g_new, -1, ver, 32);
-    launcher_text("ron_update_ask",
-                  L"Download and install RON Revived %s now?\n\nThe launcher closes while it installs and opens again "
-                  L"when it is done.",
-                  fmt, 512);
-    fill(ask, 600, fmt, ver);
-    if (MessageBoxW(g_dlg, ask, L"RON Revived", MB_YESNO | MB_ICONQUESTION) != IDYES)
+    if (g_st == ST_GET || g_st == ST_INSTALL)
         return;
+    DWORD n = GetTempPathW(MAX_PATH, g_stage);
+    if (!n || n > MAX_PATH - 24)
+        return;
+    wcscat(g_stage, L"RON_Revived_dl\\");
+    CreateDirectoryW(g_stage, NULL);
+    g_cancel = 0, g_done_kb = 0;
+    InterlockedExchange(&g_st, ST_GET);
+    make_labels();
+    HANDLE t = CreateThread(NULL, 0, get_thread, NULL, 0, NULL);
+    if (!t) {
+        InterlockedExchange(&g_st, ST_FAILED);
+        make_labels();
+        return;
+    }
+    CloseHandle(t);
+    logf_("update: downloading %d zips, %.1f MB", g_nz, g_bytes / 1048576.0);
+}
 
+/* every zip is here: the script installs them once the launcher is gone */
+static void hand_over(void)
+{
     char script[MAX_PATH];
     snprintf(script, sizeof script, "%sRON_Revived_update.ps1", g_dir);
-    WCHAR cmd[2048], wscript[MAX_PATH], windex[512];
+    WCHAR cmd[2048], wscript[MAX_PATH], windex[512], stage[MAX_PATH];
     MultiByteToWideChar(CP_ACP, 0, script, -1, wscript, MAX_PATH);
     MultiByteToWideChar(CP_UTF8, 0, g_index, -1, windex, 512);
+    wcscpy(stage, g_stage);
+    stage[wcslen(stage) - 1] = 0; /* no trailing backslash: it would escape the closing quote */
     _snwprintf(cmd, 2048,
-               L"powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"%ls\" -Index \"%ls\" -WaitPid %lu", wscript,
-               windex, GetCurrentProcessId());
+               L"powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"%ls\" -Index \"%ls\" "
+               L"-WaitPid %lu -Staged \"%ls\" -Quiet",
+               wscript, windex, GetCurrentProcessId(), stage);
     cmd[2047] = 0;
     STARTUPINFOW si = {sizeof si};
     PROCESS_INFORMATION pi;
     if (GetFileAttributesA(script) == INVALID_FILE_ATTRIBUTES ||
-        !CreateProcessW(NULL, cmd, NULL, NULL, FALSE, CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi)) {
+        !CreateProcessW(NULL, cmd, NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
         logf_("update: could not start %s (error %lu), the releases page instead", script, GetLastError());
         ShellExecuteW(NULL, L"open", RELEASES_PAGE, NULL, NULL, SW_SHOWNORMAL);
+        InterlockedExchange(&g_st, ST_FAILED);
+        make_labels();
         return;
     }
     CloseHandle(pi.hThread);
     CloseHandle(pi.hProcess);
     logf_("update: %s started, the launcher closes", script);
-    ExitProcess(0); /* the script waits for this process to go before it replaces winmm.dll */
+    InterlockedExchange(&g_st, ST_INSTALL);
+    make_labels();
+    SetTimer(g_win, EXIT_TIMER, 1500, NULL); /* "Installing" for a moment, then the launcher goes */
 }
 
 /* --- the window --------------------------------------------------------------------------- */
@@ -545,10 +689,18 @@ static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
     case WM_FOUND:
         show();
         return 0;
+    case WM_GOT:
+        if (wp)
+            hand_over();
+        else {
+            InterlockedExchange(&g_st, g_cancel ? ST_IDLE : ST_FAILED);
+            make_labels();
+        }
+        return 0;
     case WM_MOUSEACTIVATE:
         return MA_NOACTIVATE;
     case WM_SETCURSOR:
-        SetCursor(LoadCursor(NULL, g_a.hover ? IDC_HAND : IDC_ARROW));
+        SetCursor(LoadCursor(NULL, g_a.hover && g_st != ST_INSTALL ? IDC_HAND : IDC_ARROW));
         return TRUE;
     case WM_MOUSEMOVE: {
         int was = g_a.hover;
@@ -567,7 +719,7 @@ static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
             g_a.hover = 0;
         return 0;
     case WM_LBUTTONDOWN:
-        if (on_button(x, y)) {
+        if (on_button(x, y) && g_st != ST_INSTALL) {
             g_a.down = 1;
             SetCapture(h);
             launcher_sound(1);
@@ -578,8 +730,12 @@ static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
             g_a.down = 0;
             ReleaseCapture();
             render();
-            if (on_button(x, y))
-                start_update();
+            if (on_button(x, y)) {
+                if (g_st == ST_GET)
+                    InterlockedExchange(&g_cancel, 1); /* WM_GOT puts the button back */
+                else
+                    start_update();
+            }
         }
         return 0;
     case WM_CAPTURECHANGED:
@@ -588,6 +744,8 @@ static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
     case WM_TIMER:
         if (wp == ANIM_TIMER)
             tick();
+        else if (wp == EXIT_TIMER)
+            ExitProcess(0); /* the script waits for this process to go before it replaces winmm.dll */
         return 0;
     }
     return DefWindowProcW(h, msg, wp, lp);

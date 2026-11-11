@@ -24,3 +24,7 @@ Findings of 2026-10-26, from `riseofnations.exe` (Steam EE, timestamp 6674863F) 
 ## Tool
 
 `tools/emu_damage.py "<attackers,...>" "<targets,...>"` runs the real `type_damage` under unicorn (`pip install unicorn`) with fake type objects built from the XML and prints the percents. Sanity checks: Pikemen vs Knight 387%, Slingers vs Bowmen 210%, Knight vs Small City 33%. The `balance.xml` layer is not included, so add it by hand.
+
+## Armor is subtracted (found 2026-11-10)
+
+- `ObjectData::get_damage` 0x00644130: the attacker's attack (virtual +0x120, kept x10) times the cached modifier (`0x00C06AFC` table) / 100, ..., then `(value + 5) / 10` and **`sub edi, [ebp-4]`** at 0x00644B91, where `[ebp-4]` is the target's armor (the target's virtual +0x124, read at 0x006441B1; x1.33 at 0x006442CF when the attacker's OBJ_MASK has bit 3). So armor is a flat amount taken off every hit: a percent added to the attack beats armor by more than its percent (a hit of 10 against armor 6 does 4; +20 % attack makes it 6, +50 % damage), while a percent on the attack rate adds exactly its percent.

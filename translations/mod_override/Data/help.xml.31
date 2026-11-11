@@ -2803,7 +2803,7 @@ bu otomatik olarak gerçekleşir.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Tek kareye kurulan çelik tanksavar engelleri; Modern Çağ ve Bilgi Çağı'nda vatandaşlar tarafından inşa edilir. İçlerinden hiçbir şey geçemez, kendi birlikleriniz bile: düşman geçmek için onları yok etmek zorundadır. Bir geçidi kapatmak için onları sıra hâlinde dizin ve kendi ordunuza bir yol bırakın. 1200 can puanı ve ağır zırh: tüfekler onları zar zor çizer, tanklar, topçu ve uçaklar onları yıkar.</STRING>
+				<BULLET/>Tek kareye kurulan engeller; her çağda vatandaşlar tarafından inşa edilir: önce sivri kazıklar, sonra dikenli kirişler, ardından toprak sepetleri ve Modern Çağ'dan itibaren çelik tanksavar kirpileri. İçlerinden hiçbir şey geçemez, kendi birlikleriniz bile: düşman geçmek için onları yok etmek zorundadır. Bir geçidi kapatmak için onları sıra hâlinde dizin ve kendi ordunuza bir yol bırakın. Çağınızla birlikte güçlenirler: Antik Çağ'da 240 can puanı, Modern Çağ'dan itibaren 1200 ve ağır zırh.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

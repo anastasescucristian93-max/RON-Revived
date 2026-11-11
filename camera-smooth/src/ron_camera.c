@@ -165,6 +165,9 @@ static void load_config(void)
     ranks_load_config(path);
     rankfx_load_config(path);
     heal_load_config(path);
+    quicksave_load_config(path);
+    bigsel_load_config(path);
+    farmsnap_load_config(path);
     make_way_load_config(path);
     formation_load_config(path);
     hud_load_config(path);
@@ -178,12 +181,14 @@ static void load_config(void)
     corpses_load_config(path);
     nukefx_load_config(path);
     nonukes_load_config(path);
+    unitbans_load_config(path);
     attrition_load_config(path);
     defenseramp_load_config(path);
     notices_load_config(path);
     minimap_load_config(path);
     selpanel_load_config(path);
     survival_load_config(path);
+    menuhelp_load_config(path);
     assistant_load_config(path);
     assist_orders_load_config(path);
     hover_load_config(path);
@@ -425,6 +430,8 @@ __attribute__((used)) void c_check_scroll(void *self)
     if (g_qol_enabled)
         qol_tick(now_s());
     minimap_tick();
+    bigsel_tick();
+    placement_tick();
     if (g_airdrop_enabled)
         airdrop_ui_tick();
     if (cfg.fix_stuck_keys)
@@ -1583,8 +1590,12 @@ static void install_hooks(void)
     minimap_install();
     selpanel_install();
     survival_install();
+    menuhelp_install();
     assistant_install();
     assist_orders_install();
+    assist_panel_install();
+    farmsnap_install();
+    bigsel_install(); /* before airdrop, heal and hover, which call into it */
     dc_install();
     entrench_install();
     airdrop_install();

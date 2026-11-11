@@ -595,6 +595,10 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     <details class="feature"><summary><h4>Play button after loading</h4><p>In single player, when the game has loaded, the loading bar turns into a glowing PLAY button, and the game starts only when you click it (or press Enter or Space). Read the loading screen (players, unique units, rules) for as long as you like.</p></summary></details>
     <details class="feature"><summary><h4>Build grid</h4><p>While you place a building, the tiles of your territory around the cursor turn green where it fits and red where it is blocked by trees, resources, buildings, water or cliffs. It follows each building's own rules (a Dock needs water) and fades out towards the edge.</p></summary></details>
     <details class="feature"><summary><h4>Range circles</h4><p>Select a Tower, Fort, City or any other building that shoots, and its attack range is drawn on the map as a semi-transparent circle in your colour.</p></summary></details>
+    <details class="feature"><summary><h4>Lines of Tank Traps</h4><p>Hold Shift, press, drag and let go: a whole line of Tank Traps, in any direction, diagonals too, with a ghost for every trap while you drag. Keep Shift held and start the next drag at the line's end to turn it. Diagonal lines are solid, so nothing slips between two traps.</p></summary></details>
+    <details class="feature"><summary><h4>Farms in a block with Shift</h4><p>Placing Farms with Shift held, the ghost jumps after each one to the next free plot touching them, filling a square block around the first Farm instead of a strip, so you can click again without moving the mouse. Move the mouse to place it yourself.</p></summary></details>
+    <details class="feature"><summary><h4>More than 128 in a selection</h4><p>Select All, a drag box and the control groups are no longer cut off at the game's 128 (about 80 units with squads). The extra units get the selection circle and every order the selection gets; crafts and Build stay with the units in the panel. A control group keeps all of its units. Single player and campaigns only.</p></summary></details>
+    <details class="feature"><summary><h4>Quicksave with Ctrl+S</h4><p>Ctrl+S saves the game at once, without the Save Game window, as "Quicksave" in the Load Game list (each quicksave replaces the last one). Single player and campaigns only; a Conquer the World battle is saved as a campaign save. The key can be changed in <code>ron_camera.ini</code>.</p></summary></details>
     <details class="feature"><summary><h4>Hotkeys on the buttons</h4><p>Every command button with a keyboard shortcut shows its key in the corner, as in Company of Heroes 3. No more hovering to find out. If you change your keys in the options, the letters follow.</p></summary></details>
     <details class="feature"><summary><h4>Clearer buttons</h4><p>Command buttons work like the market's Buy / Sell: what you can click right now is lit and raised (a light top-left edge, a shadow bottom-right); what you cannot (not enough resources, no craft points, disabled) is darker and sunk into the panel. Locked options (wrong age, missing research) also show a small gold padlock. Unaffordable buttons stay clickable, so you can queue ahead.</p></summary><p>Research keeps its own look (the flask). Under <code>[qol]</code>: <code>button_depth=0</code> keeps only the darker colour, <code>poor_button_percent</code> sets how dark (40).</p></details>
     <details class="feature"><summary><h4>Mixed building selection</h4><p>Select different military buildings together and train from one panel: infantry on the first row, cavalry and tanks on the second, artillery on the third, aircraft on the fourth. A click queues the unit in every selected building that can train it. The original game showed nothing.</p></summary></details>
@@ -613,6 +617,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <div class="features">
     <details class="feature"><summary><h4>No Armageddon defeat <span class="tag rule">Rule</span></h4><p>When the Armageddon clock reaches zero, the game no longer ends with everyone defeated. The game goes on, and from then on nobody can build or launch nuclear weapons.</p></summary></details>
     <details class="feature"><summary><h4>Nukes slider <span class="tag rule">Rule</span></h4><p>A slider in the game setup sets how many nuclear weapons may go off: far left None (nobody can build Nuclear Missiles, ICBMs or Interceptors; Cruise Missiles stay), 1 to 250 for the Armageddon clock, with wider steps to the right, or far right Unlimited, with no clock at all. Right-click it for the game's own rule. In multiplayer only the host can move it.</p></summary></details>
+    <details class="feature"><summary><h4>Turn units off <span class="tag rule">Rule</span></h4><p>A Units button beside the Nukes slider opens every unit of the game as a picture, in columns, over the whole setup screen: the standard units one upgrade line per column, the unique units one column per nation under its flag. Click a unit to turn it off for the game (its later upgrades go with it), or the X above a column to turn the whole column off; Allow all turns everything back on. Nobody can train or research what is off, the computer players neither. In multiplayer the host chooses for everyone.</p></summary></details>
     <details class="feature"><summary><h4>Stronger attrition <span class="tag rule">Rule</span></h4><p>Units in enemy territory without supply lose hit points 1.5 times as often, so armies deep in enemy land wear down faster and Supply Wagons, and raids on them, matter more. Supply Wagons, the supply technologies and nation bonuses reduce it as before.</p></summary></details>
     <details class="feature"><summary><h4>Fishing boats find a new fish <span class="tag rule">Rule</span></h4><p>A fishing boat left without a fish (two boats picked the same one, or ships block its way) looks for another free fish after a few seconds, instead of sitting idle for about a minute with the idle alarm ringing.</p></summary></details>
     <details class="feature"><summary><h4>Towers and forts get dearer with every one <span class="tag rule">Fix</span></h4><p>Every Tower, Keep, Stockade or Bunker you own adds 10 Wealth and 25 Metal to the price of the next one, as the game intends. In some games (an Information Age start, for example) the price never rose and the computer players covered the map with towers. Now all four levels count together, and the same for Forts, Castles, Fortresses and Redoubts (<code>defense_ramp_whole_line</code>).</p></summary><p>In an "All Technologies" game the computer players (and the Cooperative AI building for you) also laid plain Towers among their Bunkers. They now build the newest level they have, the one your build menu shows, and the older levels are out of date for them as in a normal game (<code>defense_build_current_level</code>; in multiplayer every player needs the same setting).</p></details>
@@ -627,10 +632,10 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     <details class="feature"><summary><h4>Generals and Supply Wagons in proportion <span class="tag rule">Rule</span></h4><p>Computer players (and the assistant playing for you) no longer make a crowd of Generals and Supply Wagons and no soldiers: one General per 20 army units, at most 3, and one Supply Wagon per 15, at most 4.</p></summary></details>
     <details class="feature"><summary><h4>Aircraft take off together <span class="tag rule">Rule</span></h4><p>An Airbase used to launch one aircraft about every second, so strikes arrived one plane at a time and the anti-aircraft guns picked them off. Now they take off almost together (<code>air_launch_frames</code>).</p></summary></details>
     <details class="feature"><summary><h4>The dead stay longer <span class="tag rule">Rule</span></h4><p>Fallen soldiers, wrecks and the marks under them stay on the ground about a minute instead of about 9 seconds, and the map keeps up to 400 dead at once instead of 100, so even an 8-player battle does not wipe its dead early; tank wrecks block the ground for that long too (<code>corpse_time_percent</code>, <code>corpse_limit</code>).</p></summary></details>
-    <details class="feature"><summary><h4>Survival mode <span class="tag rule">Rule</span></h4><p>Hold out for 30 minutes against waves from the fog. It has <a href="#survival">its own section</a>.</p></summary></details>
+    <details class="feature"><summary><h4>Survival mode <span class="tag rule">Rule</span></h4><p>Hold out for 30 minutes to an hour and a half against waves of enemies, win reward cards, with its own button in the Solo menu. It has <a href="#survival">its own section</a>.</p></summary></details>
     <details class="feature"><summary><h4>Airdrop <span class="tag rule">Rule</span></h4><p>A Chinook flies two squads of Paratroopers (6 soldiers) from your Airbase to any spot on the map. It has <a href="#airdrop">its own section</a>.</p></summary></details>
     <details class="feature"><summary><h4>Field Fortification <span class="tag rule">Rule</span></h4><p>Ranged infantry build their own cover and dig into it. It has <a href="#fortification">its own section</a>.</p></summary></details>
-    <details class="feature"><summary><h4>Tank Traps <span class="tag rule">Rule</span></h4><p>Steel obstacles on one tile that nothing gets through, built by Citizens in the Modern and Information Ages. See <a href="#fortification">Tank Traps</a>.</p></summary></details>
+    <details class="feature"><summary><h4>Tank Traps <span class="tag rule">Rule</span></h4><p>Obstacles on one tile that nothing gets through, built by Citizens in every age: sharpened stakes, spiked beams, timber hedgehogs, then steel. See <a href="#fortification">Tank Traps</a>.</p></summary></details>
   </div>
   </div>
 </section>
@@ -655,18 +660,18 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Level</th><th>Rank</th><th>Insignia</th><th>Experience</th><th>Attack</th><th>Hit points</th><th>Also</th></tr></thead>
+        <thead><tr><th>Level</th><th>Rank</th><th>Insignia</th><th>Experience</th><th>Damage</th><th>Hit points</th><th>Attack rate</th><th>Also</th></tr></thead>
         <tbody>
-          <tr><td class="num">1</td><td>Private First Class</td><td><span class="rank-ins"><img src="assets/ranks/rank_1.png" alt="" width="24" height="28">bronze, 1 bar</span></td><td class="num">0.4</td><td class="num">+4%</td><td class="num">+4%</td><td></td></tr>
-          <tr><td class="num">2</td><td>Corporal</td><td><span class="rank-ins"><img src="assets/ranks/rank_2.png" alt="" width="24" height="28">bronze, 2 bars</span></td><td class="num">0.9</td><td class="num">+8%</td><td class="num">+8%</td><td></td></tr>
-          <tr><td class="num">3</td><td>Sergeant</td><td><span class="rank-ins"><img src="assets/ranks/rank_3.png" alt="" width="24" height="28">bronze, 3 bars</span></td><td class="num">1.7</td><td class="num">+12%</td><td class="num">+12%</td><td>+1 line of sight</td></tr>
-          <tr><td class="num">4</td><td>Staff Sergeant</td><td><span class="rank-ins"><img src="assets/ranks/rank_4.png" alt="" width="24" height="28">silver, 1 bar</span></td><td class="num">2.6</td><td class="num">+16%</td><td class="num">+16%</td><td></td></tr>
-          <tr><td class="num">5</td><td>Master Sergeant</td><td><span class="rank-ins"><img src="assets/ranks/rank_5.png" alt="" width="24" height="28">silver, 2 bars</span></td><td class="num">3.9</td><td class="num">+20%</td><td class="num">+20%</td><td>attacks 10% faster</td></tr>
-          <tr><td class="num">6</td><td>Lieutenant</td><td><span class="rank-ins"><img src="assets/ranks/rank_6.png" alt="" width="24" height="28">silver, 3 bars</span></td><td class="num">5.2</td><td class="num">+24%</td><td class="num">+24%</td><td>10% less damage taken</td></tr>
-          <tr><td class="num">7</td><td>Captain</td><td><span class="rank-ins"><img src="assets/ranks/rank_7.png" alt="" width="24" height="28">gold, 1 bar</span></td><td class="num">7</td><td class="num">+28%</td><td class="num">+28%</td><td>+1 range (ranged units)</td></tr>
-          <tr><td class="num">8</td><td>Major</td><td><span class="rank-ins"><img src="assets/ranks/rank_8.png" alt="" width="24" height="28">gold, 2 bars</span></td><td class="num">9.1</td><td class="num">+32%</td><td class="num">+32%</td><td>attacks 20% faster</td></tr>
-          <tr><td class="num">9</td><td>Colonel</td><td><span class="rank-ins"><img src="assets/ranks/rank_9.png" alt="" width="24" height="28">gold, 3 bars</span></td><td class="num">11.7</td><td class="num">+36%</td><td class="num">+36%</td><td>heals 1% a second after 10 seconds out of combat</td></tr>
-          <tr><td class="num">10</td><td>Brigadier General</td><td><span class="rank-ins"><img src="assets/ranks/rank_10.png" alt="" width="24" height="28">gold, star</span></td><td class="num">13.9</td><td class="num">+40%</td><td class="num">+40%</td><td>20% less damage taken (instead of 10%)</td></tr>
+          <tr><td class="num">1</td><td>Private First Class</td><td><span class="rank-ins"><img src="assets/ranks/rank_1.png" alt="" width="24" height="28">bronze, 1 bar</span></td><td class="num">0.4</td><td class="num">+2%</td><td class="num">+3%</td><td class="num">+3%</td><td></td></tr>
+          <tr><td class="num">2</td><td>Corporal</td><td><span class="rank-ins"><img src="assets/ranks/rank_2.png" alt="" width="24" height="28">bronze, 2 bars</span></td><td class="num">0.9</td><td class="num">+4%</td><td class="num">+6%</td><td class="num">+6%</td><td></td></tr>
+          <tr><td class="num">3</td><td>Sergeant</td><td><span class="rank-ins"><img src="assets/ranks/rank_3.png" alt="" width="24" height="28">bronze, 3 bars</span></td><td class="num">1.7</td><td class="num">+6%</td><td class="num">+9%</td><td class="num">+9%</td><td>+1 line of sight</td></tr>
+          <tr><td class="num">4</td><td>Staff Sergeant</td><td><span class="rank-ins"><img src="assets/ranks/rank_4.png" alt="" width="24" height="28">silver, 1 bar</span></td><td class="num">2.6</td><td class="num">+8%</td><td class="num">+12%</td><td class="num">+12%</td><td></td></tr>
+          <tr><td class="num">5</td><td>Master Sergeant</td><td><span class="rank-ins"><img src="assets/ranks/rank_5.png" alt="" width="24" height="28">silver, 2 bars</span></td><td class="num">3.9</td><td class="num">+10%</td><td class="num">+15%</td><td class="num">+15%</td><td></td></tr>
+          <tr><td class="num">6</td><td>Lieutenant</td><td><span class="rank-ins"><img src="assets/ranks/rank_6.png" alt="" width="24" height="28">silver, 3 bars</span></td><td class="num">5.2</td><td class="num">+12%</td><td class="num">+18%</td><td class="num">+18%</td><td>10% less damage taken</td></tr>
+          <tr><td class="num">7</td><td>Captain</td><td><span class="rank-ins"><img src="assets/ranks/rank_7.png" alt="" width="24" height="28">gold, 1 bar</span></td><td class="num">7</td><td class="num">+14%</td><td class="num">+21%</td><td class="num">+21%</td><td>+1 range (ranged units)</td></tr>
+          <tr><td class="num">8</td><td>Major</td><td><span class="rank-ins"><img src="assets/ranks/rank_8.png" alt="" width="24" height="28">gold, 2 bars</span></td><td class="num">9.1</td><td class="num">+16%</td><td class="num">+24%</td><td class="num">+24%</td><td>heals 1% a second after 10 seconds out of combat</td></tr>
+          <tr><td class="num">9</td><td>Colonel</td><td><span class="rank-ins"><img src="assets/ranks/rank_9.png" alt="" width="24" height="28">gold, 3 bars</span></td><td class="num">11.7</td><td class="num">+18%</td><td class="num">+27%</td><td class="num">+27%</td><td></td></tr>
+          <tr><td class="num">10</td><td>Brigadier General</td><td><span class="rank-ins"><img src="assets/ranks/rank_10.png" alt="" width="24" height="28">gold, star</span></td><td class="num">13.9</td><td class="num">+20%</td><td class="num">+30%</td><td class="num">+30%</td><td>20% less damage taken (instead of 10%)</td></tr>
         </tbody>
       </table>
     </div>
@@ -684,7 +689,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="sub">The game can play your nation for you, but its computer player spends everything you have. The assistant settings tell it what it may buy and how much it must leave you.</p>
   <div class="two">
     <div class="prose">
-      <p>Open the panel with the assistant button (the Senate icon) in the row of new buttons. The switch at the top hands your nation to the computer and takes it back: <b>FULL CONTROL</b> ticks every kind below and lets the computer play, <b>NO CONTROL</b> gives you your nation back. Untick some kinds while the computer plays and the switch reads <b>CUSTOM</b>. What the computer may buy:</p>
+      <p>Open the panel with the assistant button (the Senate icon) in the row of new buttons. The switch at the top hands your nation to the computer and takes it back: <b>FULL CONTROL</b> ticks every kind below and lets the computer play, <b>NO CONTROL</b> unticks them all and gives you your nation back. The boxes are what the computer does: untick some while it plays and the switch reads <b>CUSTOM</b>; untick the last one and it is NO CONTROL. With the game's <b>Cooperative AI</b> on, the panel shows it as the computer playing, and NO CONTROL turns it off too: the computer stops moving your units and buying for you. Your control groups work while the computer plays, and units you put in one are left to you. What the computer may buy:</p>
       <ul class="plain">
         <li><b>Economy</b>: citizens, scholars, caravans, merchants, fishermen; farms, camps, mines, Market, Library, Temple, Senate, Docks.</li>
         <li><b>Military</b>: armies, Barracks, Stables, Siege Factories, Airbases, towers, forts, Missile Silos.</li>
@@ -823,22 +828,22 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <h3>Tank Traps</h3>
   <div class="two">
     <div class="prose">
-      <p>Steel anti-tank obstacles on a single tile, for the Modern and Information Ages. Citizens build them from the <b>military</b> build menu, next to the Lookout.</p>
+      <p>Obstacles on a single tile, in every age. Citizens build them from the <b>military</b> build menu, next to the Lookout. Hold <b>Shift and drag</b> to lay a whole line of them.</p>
       <ul class="plain">
         <li>Nothing gets through them, your own units neither: an enemy has to destroy them to pass. Lay them in a line to close a gap or a bridge, and leave your army a way out.</li>
         <li>No weapon. Rifles barely scratch them; tanks, artillery and aircraft break them.</li>
         <li>They stay yours when the city nearby is captured, like Towers. Computer players do not build them.</li>
-        <li>They look like a steel hedgehog wrapped in barbed wire.</li>
+        <li>Their look follows your age: sharpened stakes lashed with rope in the Ancient Age, a beam bristling with iron-tipped spikes in the Classical to Gunpowder Ages, a hedgehog of squared timber with iron straps in the Enlightenment and Industrial Ages, a steel hedgehog wrapped in barbed wire from the Modern Age.</li>
       </ul>
     </div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Tank Traps</th><th>Value</th></tr></thead>
         <tbody>
-          <tr><td>Size and price</td><td>1&times;1 tile, 20 Metal (+5 for each one you own)</td></tr>
-          <tr><td>Hit points and armor</td><td>1200, armor 8 (as a Redoubt)</td></tr>
+          <tr><td>Size and price</td><td>1&times;1 tile, 20 Timber (+5 for each one you own)</td></tr>
+          <tr><td>Hit points and armor</td><td>240 and armor 2 in the Ancient Age, rising with every age (300, 420, 540, 720, 960) to 1200 and armor 8 from the Modern Age; built ones grow when you age up</td></tr>
           <tr><td>Built by</td><td>Citizens, about 13 seconds for one</td></tr>
-          <tr><td>Ages</td><td>Modern and Information (7 and 8)</td></tr>
+          <tr><td>Ages</td><td>All</td></tr>
         </tbody>
       </table>
     </div>
@@ -848,22 +853,25 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 
 <section id="survival">
   <h2>Survival mode</h2>
-  <p class="sub">A new way to play: hold out for 30 minutes. The whole map is yours; the enemy comes in waves from the fog, one or two ages behind you.</p>
+  <p class="sub">A new way to play: hold out against waves of enemies until the final assault, and beat it. You start in the middle of an open plain; the enemy's camps are all around you.</p>
   <div class="two">
     <div class="prose">
       <h3>How to play it</h3>
       <ul class="plain">
-        <li>In the custom game setup, play against one computer player on any map and pick <b>Survival</b> under <b>Script</b>.</li>
-        <li>The computer player's cities and units are removed at the start. Instead it sends waves of soldiers that appear in the fog just outside your territory.</li>
-        <li>The first wave comes at 2:00, then one every 80 seconds, down to 45 seconds by the end; every wave is bigger than the one before. Infantry, archers, cavalry, and siege from the sixth wave on.</li>
-        <li>The waves are <b>1 or 2 ages behind you</b>: 2 on Easiest to Moderate, 1 on Hard to Toughest (the computer player's difficulty). Age up and they come stronger too.</li>
-        <li><b>Boss waves</b> at 5, 10, 15, 20 and 25 minutes: a General with heavy cavalry (tanks later), siege and heavy infantry.</li>
-        <li>The waves take no attrition in your territory. You win when the 30 minutes are up.</li>
+        <li>In the <b>Solo</b> menu, click <b>Survival</b> (under Quick Battle). Choose your nation, the starting age, <b>one computer player as your enemy</b> (its difficulty sets the waves), your <b>hero</b> (an infantry squad or two riders), the <b>goal</b> (a Wonder, the Information Age or the time) and the <b>length</b> under Time Limit: Short (30 minutes), Medium (45), Long (1 hour) or Very long (1 hour 30). Then Start.</li>
+        <li>The map is always the same kind (Map Style reads <b>Survival plain</b>): a flat, dry plain without water, with light woods and rocks, and you in the middle.</li>
+        <li>The computer player's cities and units are removed at the start. Instead it has Barracks, Stables and Siege Factories spread evenly over the map, guarded by Towers and a few Forts, never near you, and its waves march out of them. Every 2 minutes it builds a new camp or Tower next to one it still has, never in your territory. Destroy them all and the waves come in from the edges of the map.</li>
+        <li>You have <b>7 minutes</b> to set up; then a wave every 4 minutes or so, down to about 2 minutes later on, each bigger than the one before. Their age grows with the wave number, from the Ancient Age to the Industrial or Modern Age by the end. A longer game has more waves.</li>
+        <li><b>Boss waves</b> after every second wave: a General with heavy cavalry (tanks later), siege and heavy infantry.</li>
+        <li><b>Reward cards:</b> when a boss wave's General falls, the game pauses and three cards appear: pick one, its bonus lasts all game (more hit points, damage, range or speed for your buildings, your hero or your army; or resources, mercenaries, a smaller next wave).</li>
+        <li><b>Ruins:</b> an enemy building you destroy leaves ruins one time in two. Explore them with any unit for a small card, a quarter of a boss card.</li>
+        <li>Reach your goal, or wait for the time to run out, and the <b>final assault</b> comes: three waves in one, from every side. Destroy it and you win.</li>
       </ul>
     </div>
     <div class="callout">
+      <p><b>Wave bar</b> at the right edge of the screen: a circle for every wave, grey once it has come, the next one lit, the boss waves red with a skull.</p>
       <p><b>Clocks</b> at the top right show the time left to survive and the time to the next wave: yellow before a boss wave, red in the last 10 seconds.</p>
-      <p><b>No-build zone:</b> a tenth of the map, on the side away from your start, where nobody can build, so the waves always have room to gather. Flags mark its edge.</p>
+      <p><b>No-build band:</b> a tenth of the map along the four edges, where nobody can build, so the waves always have room to come in. Flags mark its edge.</p>
     </div>
   </div>
 </section>
@@ -2636,6 +2644,10 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
         <tr><td><code>tray</code></td><td>extras</td><td>The Extras tray in the launcher</td></tr>
         <tr><td><code>crash_reports</code></td><td>debug</td><td>The crash report panel</td></tr>
         <tr><td><code>senator_bribe_hotkey</code></td><td>qol</td><td>The Senator's Bribe on the Spy's Bribe key</td></tr>
+        <tr><td><code>quicksave_key</code></td><td>qol</td><td>The quicksave key (Ctrl+S); empty turns it off</td></tr>
+        <tr><td><code>big_selection</code></td><td>qol</td><td>Selections and control groups beyond the game's 128</td></tr>
+        <tr><td><code>farm_snap</code></td><td>qol</td><td>Shift + Farm: the ghost jumps to the next plot of the block</td></tr>
+        <tr><td><code>tank_trap_lines</code>, <code>tank_trap_solid_lines</code></td><td>qol</td><td>Shift + drag lays a line of Tank Traps; solid diagonals</td></tr>
         <tr><td><code>attack_percent_per_level</code>, <code>hits_percent_per_level</code>, <code>heal_percent_per_second</code>, <code>heal_after_seconds</code></td><td>ranks</td><td>The veteran ranks' bonuses</td></tr>
         <tr><td><code>economy</code>, <code>military</code>, <code>research</code>, <code>expansion</code>, <code>wonders</code>, <code>reserve</code></td><td>assistant</td><td>The AI assistant settings (also changed from its panel)</td></tr>
       </tbody>
@@ -2667,8 +2679,41 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="sub">Everything added or changed, newest first. Click a day to open or close it.</p>
 
   <details class="day" open>
+    <summary><time datetime="2026-11-11">11 Nov 2026<small>Day 21</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag new">New</span><span><b><a href="#survival">Survival: reward cards.</a></b> When a boss wave's General falls, the game pauses and three cards rise in the middle of the screen; pick one and its bonus lasts all game: hit points, damage, range or attack speed for your buildings, your hero or your army, or resources, mercenaries, a smaller next wave.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#survival">Survival: ruins.</a></b> An enemy building you destroy leaves ruins one time in two; explore them with any unit for a small card, a quarter of a boss card.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#survival">Survival: the enemy expands,</a></b> a new camp or Tower every 2 minutes next to one it still has, never in your territory.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#survival">Survival: choose the length</a></b> (30 minutes, 45, 1 hour or 1 hour 30) and the <b>goal</b> (a Wonder, the Information Age or the time). Reaching it brings the <b>final assault</b>, three waves in one from every side; destroy it to win.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#survival">Survival waves</a></b> age with the wave number instead of trailing yours, come three times rarer and three times bigger, with less siege; the hero is one squad of six soldiers or two riders, and your computer allies get a hero too.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Big squads</b> (the hero's six) stand side by side instead of piling up on three spots, and the hero squad's hit points no longer read more than the maximum.</span></li>
+    </ul>
+  </details>
+  <details class="day">
+    <summary><time datetime="2026-11-10">10 Nov 2026<small>Day 20</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag new">New</span><span><b><a href="#survival">Survival mode, its own button:</a></b> Survival under Quick Battle in the Solo menu, its own open plain with you in the middle, enemy camps all over the map that send the waves, a hero that ranks to level 30 and grows with every age, a wave bar at the right edge and a large next-wave clock.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#fortification">Tank Traps in every age,</a></b> for Timber: stakes, spiked beams, timber hedgehogs, then steel, stronger with every age.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#interface">Lines of Tank Traps with Shift + drag,</a></b> diagonals too, and <b>Farms in a block with Shift</b>.</span></li>
+      <li><span class="tag new">New</span><span><b>More than 128 in a selection or a control group</b> in single player games: Select All, drag boxes and control groups are no longer cut off.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#look">Shorter menu buttons:</a></b> the main menu is Play, Options, Extras, Exit; Play opens Tutorial, Campaign, Solo and Multiplayer. Buttons say it in a word or two, the menus slide faster and their help line sits under the frame.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#ranks">Veteran ranks rebalanced:</a></b> +2 % damage, +3 % hit points and +3 % attack rate a level; healing out of combat from level 8.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>The AI assistant's NO CONTROL</b> really stops the computer, the game's Cooperative AI included, and control groups always work while it plays.</span></li>
+    </ul>
+  </details>
+  <details class="day">
+    <summary><time datetime="2026-11-09">9 Nov 2026<small>Day 19</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag new">New</span><span><b><a href="#rules">Turn units off in the game setup:</a></b> a Units button beside the Nukes slider opens every unit in columns (one upgrade line per column, one column of unique units per nation); click a unit, or the X above a column, to turn it off for the game. In multiplayer the host chooses for everyone.</span></li>
+      <li><span class="tag new">New</span><span><b><a href="#interface">Quicksave with Ctrl+S</a></b> in single player games and campaigns.</span></li>
+      <li><span class="tag fix">Fix</span><span><b><a href="#districts">The District Builder</a></b> builds the new district himself again instead of standing idle.</span></li>
+      <li><span class="tag fix">Fix</span><span><b><a href="#romanian">Romania's buildings:</a></b> crops and units behind them no longer show through their walls, domes and towers.</span></li>
+    </ul>
+  </details>
+  <details class="day">
     <summary><time datetime="2026-11-08">8 Nov 2026<small>Day 18</small></time><span class="digest"></span></summary>
     <ul>
+      <li><span class="tag new">New</span><span><b><a href="#install">The update downloads inside the launcher</a></b>, with a progress bar on the Update button, and no longer downloads the nation music again.</span></li>
       <li><span class="tag new">New</span><span><b><a href="#look">Jeep scene in the main menu:</a></b> the background now plays two redrawn scenes in turn, the destroyer in the storm and a World War II jeep bursting out of a shell explosion at night.</span></li>
       <li><span class="tag new">New</span><span><b>A modern Citizen icon for every people:</b> in the Industrial, Modern and Information Ages the Citizen icon shows a European, African, East Asian, South Asian, Native North American or Indigenous Latin American worker, by the nation's unit style, instead of the same European worker for everyone.</span></li>
       <li><span class="tag new">New</span><span><b><a href="#interface">Steel frame round the minimap:</a></b> with the interface folded, the minimap at the top right sits in a riveted steel frame with a domed bolt at each corner.</span></li>

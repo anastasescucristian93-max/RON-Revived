@@ -710,7 +710,9 @@ __attribute__((used)) int c_ad_select_add(char *self, int *a)
     char *o = object(a[1], a[0]);
     if (o && ((g_airdrop_enabled && type_of(o) == HELI) || dc_is_technician(type_of(o))))
         return 0; /* the transport and the Data Center's technician are not the player's to command */
-    return ((fn3_t)g_orig_select_add)(self, a[0], a[1], a[2]);
+    int r = ((fn3_t)g_orig_select_add)(self, a[0], a[1], a[2]);
+    bigsel_after_add(self, a[0], a[1]); /* bigsel.c: what no longer fits */
+    return r;
 }
 
 /* For panel.c: is this option the Airdrop button, and how much of the cooldown is left for the
@@ -861,6 +863,7 @@ __asm__(".intel_syntax noprefix\n"
 __attribute__((used)) int c_ad_follows(char *opts)
 {
     ((fn0_t)g_orig_follows)(opts);
+    placement_draw_ghosts(opts, g_orig_follows); /* placement.c: a Tank Trap line */
     int p = local_player();
     if (!g_airdrop_enabled || !aiming(opts) || p < 0 || p > 7)
         return 0;
@@ -935,11 +938,13 @@ void airdrop_load_config(const char *dir)
 /* Objects::process_all, BuildOut::make_options and the four spell hooks are shared with
    entrench.c (its buttons are crafts), and process_all, make_options and SelectGroup::add with
    datacenter.c (the Expansions' technician), process_all with ranks.c and heal.c (healing), and
-   make_options with airstrike.c, so they are installed when any of them is on. */
+   make_options with airstrike.c, draw_cursor_follows with placement.c (the ghosts of a Tank Trap
+   line), so they are installed when any of them is on. */
 void airdrop_install(void)
 {
     if (!g_airdrop_enabled && !g_entrench_enabled && !g_dc_enabled && !g_ranks_enabled && !g_heal_enabled &&
-        !g_nuke_sim_enabled && !airstrike_wanted() && !g_romania_enabled && !cityrepair_wanted())
+        !g_nuke_sim_enabled && !airstrike_wanted() && !g_romania_enabled && !cityrepair_wanted() &&
+        !g_bigsel_enabled && !g_ttline_enabled)
         return;
     static const struct {
         const char *name;
@@ -974,7 +979,7 @@ void airdrop_install(void)
           &g_orig_target, 0 },
         /* push ebp / mov ebp,esp / sub esp,0x28 */
         { "Options::draw_cursor_follows", VA_CURSOR_FOLLOWS, { 0x55, 0x8B, 0xEC, 0x83, 0xEC, 0x28 }, 6, 6,
-          hk_ad_follows, &g_orig_follows, 0 },
+          hk_ad_follows, &g_orig_follows, 1 },
     };
     int n = (int)(sizeof hooks / sizeof hooks[0]);
     for (int i = 0; i < n; i++)

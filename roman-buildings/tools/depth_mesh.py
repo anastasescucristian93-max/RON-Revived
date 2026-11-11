@@ -40,7 +40,9 @@ Q = 8.0                     # column heights are rounded down to this
 PAD = 0.15                  # the grid covers the old mesh's ground area and this much around it
 CARDS = {"tower_6",         # sprites whose overhangs get camera-facing cards (cards()); Romania's modern tower
          "village_6_age7"}  # Romania's age 7 Small City: at grid 28 the left walls had no depth, wheat showed through
-CELLS = (1, 2, 3, 4, 5, 6, 8)  # card block sizes, pixels: pixel runs make 300-500 card vertices on ragged edges
+CARD_NATIONS = {"romania"}  # every sprite of these nations gets cards: without them the left walls, chimneys and
+                            # domes of Romania's buildings had no depth (an audit of 2026-11-09: 70-90 % covered)
+CELLS = (1, 2, 3, 4, 5, 6, 8, 10, 12, 16)  # card block sizes, pixels: pixel runs make 300-500 card vertices on ragged edges
 MAX_VERTS = 500            # the game's own depth meshes: at most 1096 vertices, median 129. Every depth mesh
                            # and model on screen shares one Pre-Transform batch of 3 x 16383 vertices
                            # (PreTransformBatchMethod::execute); meshes of 1000-6300 vertices filled it in a
@@ -289,6 +291,7 @@ def repo_file(game_rel):
 
 def make(texture, game_rel):
     name = os.path.splitext(os.path.basename(game_rel))[0]
+    nation = os.path.basename(os.path.dirname(game_rel.replace("/", "\\"))).lower()
     src = repo_file(game_rel)
     entries = build_entries(texture)
     if not src or not entries:
@@ -308,7 +311,7 @@ def make(texture, game_rel):
     for step in STEPS:
         xs, ys, H = heights(solid, x0, y0, old[:, :2].min(0) - PAD * span, old[:, :2].max(0) + PAD * span, step)
         verts, tris = columns(xs, ys, H, step)
-        if name not in CARDS:
+        if name not in CARDS and nation not in CARD_NATIONS:
             if len(verts) <= MAX_VERTS:
                 best = verts, tris, step, 0
                 break
@@ -320,8 +323,8 @@ def make(texture, game_rel):
         mk = silhouette(verts, tris, size, x0, y0)
         uncovered = ndimage.binary_opening(solid & ~mk, np.ones((2, 2)))  # not the 1-pixel edge seams
         k = float((old[:, 0] + old[:, 1]).mean())
-        for cell in CELLS:
-            cv, ct = cards(blocks(uncovered, cell), x0, y0, k, len(verts))
+        for cell in (0,) + CELLS:  # 0: columns only, when no card set fits under MAX_VERTS
+            cv, ct = cards(blocks(uncovered, cell), x0, y0, k, len(verts)) if cell else (np.zeros((0, 3)), np.zeros((0, 3), int))
             if len(verts) + len(cv) > MAX_VERTS:
                 continue
             v2, t2 = np.r_[verts, cv], np.r_[tris, ct]

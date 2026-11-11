@@ -143,17 +143,17 @@ TRAPS_VARIANTS = 4
 TRAPS_RULES = {
     "OBJ_MASKS": "",              # no weapon
     "BUILD_FLAGS": "ean",         # land, outside city radius (in your territory), not captured with the city
-    "PREQ0": "Modern Age",       # ages 7 and 8 (the user, 2026-11-05)
-    "COST": "2m",                 # x10: 20 Metal, +5 for every one already owned (the user, 2026-11-05: 50 was too dear)
-    "SUPPORT0": "metal",
+    "PREQ0": "none",              # every age (the user, 2026-11-10; ages 7-8 only before): stakes, then sandbags, then steel
+    "COST": "2t",                 # x10: 20 Wood, +5 for every one already owned, in every age (the user, 2026-11-10; 20 Metal before)
+    "SUPPORT0": "timber",
     "SUPPORTVALUE0": "5",
     "SUPPORT1": "none",
     "SUPPORTVALUE1": "0",
-    "PLUNDER_GOOD": "metal",
+    "PLUNDER_GOOD": "timber",
     "PLUNDER": "0",
     "CAT": "M",
     "JOB_TIME": "200",            # 13 seconds for one Citizen
-    "HITS": "1200",
+    "HITS": "1200",               # in the Modern and Information Ages; less before (entrench.c, by the owner's age)
     "TO_HIT": "0",
     "ATTENUATE": "0",
     "ATTACK": "0",
@@ -163,7 +163,7 @@ TRAPS_RULES = {
     "BASE_ARROWS": "0",
     "GARRISON_MAX": "0",
     "RECHARGE": "0",
-    "ARMOR": "8",                 # the Redoubt's: rifles barely scratch them
+    "ARMOR": "8",                 # the Redoubt's: rifles barely scratch them (ages 7-8; 2 to 6 before, entrench.c)
     "X_SIZE": "1",
     "Y_SIZE": "1",
     "LOS": "2",
@@ -181,9 +181,11 @@ TRAPS_GRAPHICS = (  # origin = the tile's centre (halfoffset 0), offsets from ma
     '      </BOUNDINGVOLUMES>\r\n'
     '    </BUILD>'
 )
-TRAPS_HELP = ("Steel anti-tank obstacles on one tile, built by Citizens in the Modern and Information Ages. Nothing can "
-              "pass through them, your own units neither: an enemy has to destroy them to get through. Lay "
-              "them in a line to close a gap; leave a way open for your own army. 1200 hit points and heavy armor: rifles barely scratch them, tanks, artillery and aircraft break them.")
+TRAPS_HELP = ("Obstacles on one tile, built by Citizens in every age: sharpened stakes at first, spiked beams, then "
+              "gabions and, from the Modern Age, steel anti-tank hedgehogs. Nothing can pass through them, your own "
+              "units neither: an enemy has to destroy them to get through. Lay them in a line to close a gap; leave a "
+              "way open for your own army. They grow stronger with your age: 240 hit points in the Ancient Age, 1200 "
+              "and heavy armor from the Modern Age.")
 TRAPS_ICON = os.path.join(HERE, "..", "work", "tank_traps_icon.png")
 
 
@@ -381,7 +383,10 @@ def main(game, out):
             shutil.copyfile(os.path.join(WORK_ART, f), os.path.join(out, "art", f))
             print(os.path.join(out, "art", f))
     if traps_ready():
-        for f in [f"{TRAPS_ART}_{i}.tga" for i in range(TRAPS_VARIANTS)] + [f"{TRAPS_ART}_0z.bh3"]:
+        # the every-age look and the looks of single ages (make_traps.py --age N, where made)
+        age_art = [f"{TRAPS_ART}_age{a}_{i}.tga" for a in range(1, 9) for i in range(TRAPS_VARIANTS)
+                if os.path.exists(os.path.join(WORK_ART, f"{TRAPS_ART}_age{a}_{i}.tga"))]
+        for f in [f"{TRAPS_ART}_{i}.tga" for i in range(TRAPS_VARIANTS)] + [f"{TRAPS_ART}_0z.bh3"] + age_art:
             shutil.copyfile(os.path.join(WORK_ART, f), os.path.join(out, "art", f))
             print(os.path.join(out, "art", f))
     else:

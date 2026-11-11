@@ -20,6 +20,40 @@
     <IFACETEX name="nukes_track_m" texture="TEX_WRAPPER_1" left="119" top="380" width="173" height="16"/>
     <IFACETEX name="nukes_track_r" texture="TEX_WRAPPER_1" left="293" top="380" width="5" height="16"/>
     <IFACETEX name="nukes_caret" texture="TEX_WRAPPER_1" left="382" top="0" width="17" height="28"/>
+    <IFACETEXLOAD id="TEX_REVIVED_UNIT_BANS" file=".\art\revived\unit_bans.tga" pixformat="PF_32"/>
+    <IFACETEX name="ub_plate" texture="TEX_REVIVED_UNIT_BANS" left="0" top="0" width="128" height="128"/>
+    <IFACETEX name="ub_cell" texture="TEX_REVIVED_UNIT_BANS" left="130" top="0" width="66" height="44"/>
+    <IFACETEX name="ub_x_off" texture="TEX_REVIVED_UNIT_BANS" left="198" top="0" width="24" height="24"/>
+    <IFACETEX name="ub_x_off_hover" texture="TEX_REVIVED_UNIT_BANS" left="224" top="0" width="24" height="24"/>
+    <IFACETEX name="ub_x_on" texture="TEX_REVIVED_UNIT_BANS" left="198" top="26" width="24" height="24"/>
+    <IFACETEX name="ub_x_on_hover" texture="TEX_REVIVED_UNIT_BANS" left="224" top="26" width="24" height="24"/>
+    <IFACETEX name="ub_glow" texture="TEX_REVIVED_UNIT_BANS" left="130" top="46" width="16" height="16"/>
+    <IFACETEX name="ub_well" texture="TEX_REVIVED_UNIT_BANS" left="148" top="46" width="16" height="16"/>
+    <IFACETEX name="ub_band" texture="TEX_REVIVED_UNIT_BANS" left="166" top="46" width="16" height="16"/>
+    <IFACETEX name="ub_line" texture="TEX_REVIVED_UNIT_BANS" left="184" top="46" width="32" height="4"/>
+    <IFACETEX name="ub_ban" texture="TEX_REVIVED_UNIT_BANS" left="0" top="130" width="61" height="39"/>
+    <IFACETEX name="ub_tab" texture="TEX_REVIVED_UNIT_BANS" left="64" top="130" width="120" height="26"/>
+    <IFACETEX name="ub_tab_on" texture="TEX_REVIVED_UNIT_BANS" left="64" top="158" width="120" height="26"/>
+    <IFACETEX name="ub_button" texture="TEX_REVIVED_UNIT_BANS" left="64" top="186" width="120" height="26"/>
+    <IFACETEX name="ub_button_hover" texture="TEX_REVIVED_UNIT_BANS" left="64" top="214" width="120" height="26"/>
+    <IFACETEXLOAD id="TEX_UB_ICONS_0" file=".\art\iface_units_01.tga" pixformat="PF_32"/>
+    <IFACETEX name="ub_icons_0" texture="TEX_UB_ICONS_0" left="0" top="0" width="61" height="39"/>
+    <IFACETEXLOAD id="TEX_UB_ICONS_1" file=".\art\iface_units_02.tga" pixformat="PF_32"/>
+    <IFACETEX name="ub_icons_1" texture="TEX_UB_ICONS_1" left="0" top="0" width="61" height="39"/>
+    <IFACETEXLOAD id="TEX_UB_ICONS_2" file=".\art\iface_units_03.tga" pixformat="PF_32"/>
+    <IFACETEX name="ub_icons_2" texture="TEX_UB_ICONS_2" left="0" top="0" width="61" height="39"/>
+    <IFACETEXLOAD id="TEX_UB_ICONS_3" file=".\art\romania_units_0.tga" pixformat="PF_32"/>
+    <IFACETEX name="ub_icons_3" texture="TEX_UB_ICONS_3" left="0" top="0" width="61" height="39"/>
+    <IFACEBORDER name="ub_border">
+      <IFACETEX name="corner0" texture="TEX_GAMESPY" left="209" top="0" width="18" height="18"/>
+      <IFACETEX name="corner1" texture="TEX_GAMESPY" left="494" top="0" width="18" height="18"/>
+      <IFACETEX name="corner2" texture="TEX_GAMESPY" left="494" top="285" width="18" height="18"/>
+      <IFACETEX name="corner3" texture="TEX_GAMESPY" left="209" top="285" width="18" height="18"/>
+      <IFACETEX name="edge0" texture="TEX_GAMESPY" left="228" top="0" width="265" height="18"/>
+      <IFACETEX name="edge1" texture="TEX_GAMESPY" left="494" top="19" width="18" height="265"/>
+      <IFACETEX name="edge2" texture="TEX_GAMESPY" left="228" top="285" width="265" height="18"/>
+      <IFACETEX name="edge3" texture="TEX_GAMESPY" left="209" top="19" width="18" height="265"/>
+    </IFACEBORDER>
     <IFACETEXLOAD id="TEX_REVIVED_FLAGS" file=".\art\revived\nation_flags.tga" pixformat="PF_32"/>
     <IFACETEX name="flag_0" texture="TEX_REVIVED_FLAGS" left="0" top="0" width="64" height="64"/>
     <IFACETEX name="flag_1" texture="TEX_REVIVED_FLAGS" left="64" top="0" width="64" height="64"/>
@@ -48,6 +82,18 @@
     <IFACETEX name="flag_24" texture="TEX_REVIVED_FLAGS" left="0" top="192" width="64" height="64"/>
     <IFACETEX name="flag_italy" texture="TEX_REVIVED_FLAGS" left="64" top="192" width="64" height="64"/>
     <IFACETEX name="flag_bg" texture="TEX_REVIVED_FLAGS" left="456" top="200" width="48" height="48"/>
+    <IFACETEXLOAD id="TEX_REVIVED_SURVIVAL" file=".\art\revived\survival_bar.tga" pixformat="PF_32"/>
+    <IFACETEX name="surv_disc" texture="TEX_REVIVED_SURVIVAL" left="0" top="0" width="64" height="64"/>
+    <IFACETEX name="surv_ring" texture="TEX_REVIVED_SURVIVAL" left="64" top="0" width="64" height="64"/>
+    <IFACETEX name="surv_glow" texture="TEX_REVIVED_SURVIVAL" left="128" top="0" width="64" height="64"/>
+    <IFACETEX name="surv_pip" texture="TEX_REVIVED_SURVIVAL" left="192" top="0" width="64" height="64"/>
+    <IFACETEX name="surv_pip_r" texture="TEX_REVIVED_SURVIVAL" left="256" top="0" width="64" height="64"/>
+    <IFACETEX name="hero_infantry" texture="TEX_REVIVED_SURVIVAL" left="0" top="64" width="128" height="128"/>
+    <IFACETEX name="hero_cavalry" texture="TEX_REVIVED_SURVIVAL" left="128" top="64" width="128" height="128"/>
+    <IFACETEXLOAD id="TEX_REVIVED_ALERTS" file="art\iface_alerts.tga" pixformat="PF_32"/>
+    <IFACETEX name="goal_wonder_icon" texture="TEX_REVIVED_ALERTS" left="0" top="149" width="63" height="45"/>
+    <IFACETEX name="goal_tech_icon" texture="TEX_REVIVED_ALERTS" left="64" top="260" width="63" height="64"/>
+    <IFACETEX name="goal_time_icon" texture="TEX_REVIVED_ALERTS" left="0" top="1" width="63" height="63"/>
     <IFACETEX name="team_color" texture="TEX_SETUP_BUTTONS" left="0" top="284" width="21" height="20"/>
     <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
     <IFACETEX name="combo_mid" texture="TEX_WRAPPER_1" left="198" top="1" width="130" height="21"/>
@@ -80,6 +126,11 @@
 		<STRINGBOX name="game_elo" width="250" height="20"/>
 	</POSITIONING>
     <PLAYERSWINSOLO name="playerswin" left_percent="40" top_percent="65" percent_width="520" bottom_inverse_percent="26">
+      <BUTTON name="hero_inf" title="" show="0" left="24" top_inverse="190" width="84" height="84"/>
+      <BUTTON name="hero_cav" title="" show="0" left="120" top_inverse="190" width="84" height="84"/>
+      <BUTTON name="goal_wonder" title="" show="0" left="252" top_inverse="190" width="84" height="84"/>
+      <BUTTON name="goal_tech" title="" show="0" left="348" top_inverse="190" width="84" height="84"/>
+      <BUTTON name="goal_time" title="" show="0" left="444" top_inverse="190" width="84" height="84"/>
       <STYLE TOP="1" CHILD="1" MOUSE_THRU="1" PASS_CONTROLS="1"/>
       <BUTTON name="start" title="Start" left_percent="535" bottom_inverse="47" percent_width="197" height="-38">
         <FONT size="18" style="B"/>
@@ -811,19 +862,19 @@
         <CHECK name="check3" show="0" right_inverse="14" percent_width="-400" height="21"/>
         <CHECK name="check4" show="0" right_inverse="14" percent_width="-400" height="21"/>
       </POSITIONING>
-      <POSITIONING x="20" y="584" inc_y="26">
+      <POSITIONING x="20" y="584">
+        <CHECK name="nonukes" show="0" percent_width="310" height="21"/>
+      </POSITIONING>
+      <CHECK name="unitbans" show="0" left_percent="360" top="584" percent_width="160" height="21"/>
+      <POSITIONING x="20" y="610" inc_y="26">
         <CHECK name="check5" show="0" percent_width="400" height="21"/>
         <CHECK name="check6" show="0" percent_width="400" height="21"/>
         <CHECK name="check7" show="0" percent_width="400" height="21"/>
         <CHECK name="check8" show="0" percent_width="400" height="21"/>
         <CHECK name="check9" show="0" percent_width="400" height="21"/>
-        <CHECK name="check10" show="0" percent_width="400" height="21"/>
       </POSITIONING>
-      <POSITIONING x="20" y="584">
-        <CHECK name="nonukes_solo" show="0" percent_width="520" height="21"/>
-      </POSITIONING>
-      <POSITIONING y="688">
-        <CHECK name="nonukes_mp" show="0" right_inverse="14" percent_width="-400" height="21"/>
+      <POSITIONING y="714">
+        <CHECK name="check10" show="0" right_inverse="14" percent_width="-400" height="21"/>
       </POSITIONING>
     </RULESWIN>
     <CUSTOMWIN name="customwin" left="0" top="205" right_inverse="0" height="403">

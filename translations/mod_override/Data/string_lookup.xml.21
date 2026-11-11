@@ -1248,7 +1248,7 @@
 		<STRING hash="8082931" hash_i="8090339" needed="1">Odblokuj użytkownika</STRING>
 		<STRING hash="41212752" hash_i="42418520" needed="1">Wyłącz grę między sieciami</STRING>
 		<STRING hash="6204281" hash_i="6214461" needed="1">Zaproszenie do gry</STRING>
-	</CAT>
+		<STRING hash="3503584" hash_i="3481762" needed="1">Przetrwanie</STRING></CAT>
 	<CAT hash="18830057">
 		<STRING hash="205886020" hash_i="206425258" needed="1">Wróg stawia opór twojej inwazji.  Zdobądź jego stolicę, aby wygrać.</STRING>
 		<STRING hash="435786597" hash_i="434710227" needed="1">Wróg przypuścił niespodziewany atak na to terytorium.  Odeprzyj napastników, aby odnieść zwycięstwo.</STRING>
@@ -2018,4 +2018,19 @@
 	<CAT hash="8642411">
 		<STRING hash="10382704" hash_i="10382704" needed="1">propose_peace</STRING>
 	</CAT>
-	</ROOT>
+	<CAT hash="7796811">
+		<STRING hash="3390586" hash_i="3368080" needed="1">Samouczek</STRING>
+		<STRING hash="3251912" hash_i="3327304" needed="1">Kampania</STRING>
+		<STRING hash="638541" hash_i="616719" needed="1">Solo</STRING>
+		<STRING hash="1982992" hash_i="1968854" needed="1">Dodatki</STRING>
+		<STRING hash="4447672" hash_i="4425850" needed="1">Scenariusze</STRING>
+		<STRING hash="4137969" hash_i="4153337" needed="1">Wczytaj grę</STRING>
+		<STRING hash="2706724" hash_i="2685282" needed="1">Powtórki</STRING>
+		<STRING hash="7678245" hash_i="7782255" needed="1">Przeglądaj gry</STRING>
+		<STRING hash="1580672" hash_i="1566534" needed="1">Edytor</STRING>
+		<STRING hash="1195912" hash_i="1263618" needed="1">O grze</STRING>
+		<STRING hash="7617834" hash_i="8032646" needed="1">Balans mapy</STRING>
+		<STRING hash="2986921" hash_i="2962567" needed="1">Warsztat</STRING>
+		<STRING hash="884560" hash_i="863716" needed="1">Graj</STRING>
+	</CAT>
+</ROOT>

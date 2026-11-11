@@ -16,7 +16,8 @@
  * "lobby_flags" (ConnectionData+0x2BE), so every machine gets the host's choice; bits 12 and up
  * are read nowhere else.
  *
- * The box ("nonukes_solo" / "nonukes_mp" in ui-theme's setupwin.xml) is the game's CheckBox,
+ * The box ("nonukes" in ui-theme's setupwin.xml, first row of the left column in both single
+ * player and multiplayer, the Units button beside it) is the game's CheckBox,
  * set up after setup_checks with id 14. It gets a vtable of its own (a copy of its class's with
  * the mouse slots replaced), so the game's other check boxes are untouched: left button down
  * takes the mouse (as Button::on_left_down does) and moves the knob, moves drag it, the button
@@ -290,6 +291,7 @@ void nonukes_frame(void)
         return;
     apply();
     stop_kept();
+    unitbans_frame();
 }
 
 /* ---- the count is exact: a nuke that would go over does not fire ------------------------- */
@@ -405,7 +407,7 @@ static char *find_box(char *sw)
 {
     char *rules = sw + SW_RULES; /* setup_checks: lea ecx, [sw+0x2A6C] / call [[ecx]+0x438] */
     unsigned char str[64];
-    game_string(solo(sw) ? "nonukes_solo" : "nonukes_mp", str);
+    game_string("nonukes", str);
     char *box = ((find_t)(*(void ***)rules)[VT_FIND / 4])(rules, str, 0);
     ((fn0_t)VA(VA_STRING_CLOSE))(str);
     return box;
@@ -544,19 +546,72 @@ static void own_vtable(char *box)
     *(void ***)box = mine;
 }
 
+/* Multiplayer has no Cooperative AI (setup_checks skips box 4 there). So that the setup screen
+   looks the same as in single player, its box is shown anyway, greyed and dead: set up as
+   setup_checks sets up a box (title from the category, font, colours), with an id no game code
+   uses (so the game's check box logic and its slot 4, empty in multiplayer, stay untouched), a
+   vtable copy without mouse slots (no click, no tooltip) and disabled. */
+#define VA_CATEGORIES 0x00E80560u /* the gameinfo_flags categories, 0x58 each; the box title */
+#define COOP_ID       16
+static void *g_coop_vt[VT_COPY / 4 + 1];
+
+__attribute__((used, thiscall)) static void c_coop_nothing(char *box, int x, int y) { (void)box, (void)x, (void)y; }
+
+static void coop_ai_greyed(char *sw)
+{
+    if (solo(sw))
+        return;
+    char *rules = sw + SW_RULES;
+    unsigned char str[64];
+    game_string("check4", str);
+    char *box = ((find_t)(*(void ***)rules)[VT_FIND / 4])(rules, str, 0);
+    ((fn0_t)VA(VA_STRING_CLOSE))(str);
+    char *cats = *(char **)VA(VA_CATEGORIES);
+    if (!box || !cats)
+        return;
+    ((assign_t)VA(VA_STRING_ASSIGN))(box + CB_TITLE, cats + 4 * 0x58);
+    ((fn1_t)VA(VA_SET_ID))(box, COOP_ID);
+    void **font = *(void ***)(sw + SW_FONT);
+    if (font) {
+        if (*font)
+            *(void **)(box + CB_FONT) = font;
+        *(int *)(box + CB_FONT + 4) = 0;
+        *(int *)(box + CB_FONT + 8) = 0;
+    }
+    char *buf = box + CB_BUFFER;
+    memcpy(buf + 0x90, (void *)VA(VA_WHITE), 12);
+    memcpy(buf + 0xCC, (void *)VA(VA_COLOR_NONE), 12);
+    buf[0x108] = 1;
+    buf[0x10D] = 1;
+    *(unsigned char *)(box + 0x284) &= ~1u; /* not ticked */
+    void **vt = *(void ***)box;
+    if (vt != g_coop_vt + 1) {
+        memcpy(g_coop_vt, vt - 1, sizeof g_coop_vt);
+        void **mine = g_coop_vt + 1;
+        mine[VT_MOVE / 4] = mine[VT_CLICK / 4] = mine[VT_LDOWN / 4] = mine[VT_LUP / 4] = (void *)c_coop_nothing;
+        mine[VT_RCLICK / 4] = mine[VT_RDOWN / 4] = (void *)c_coop_nothing;
+        *(void ***)box = mine;
+    }
+    ((fn1_t)VA(VA_SET_ENABLED))(box, 0);
+    ((fn1_t)(*(void ***)box)[VT_SHOW / 4])(box, 0);
+}
+
 /* After setup_checks: the box set up as the game sets up its own (font, colours), its own mouse
    handling, the art. */
 __attribute__((used, thiscall)) void c_nn_setup_checks(char *sw)
 {
     ((fn0_t)VA(VA_SETUP_CHECKS))(sw);
+    survival_setup_checks(sw); /* the Survival setup: one computer player, its rows hidden */
     g_sw = sw;
     g_drag = 0;
     g_track_w = 0; /* measured again at the first drawing, in this screen's font */
+    unitbans_setup(sw);  /* the Units button beside the slider */
+    coop_ai_greyed(sw); /* multiplayer: the same layout as single player */
     g_box = find_box(sw);
     if (!g_box) {
         static int said;
         if (!said++)
-            logf_("nukes: no nonukes_solo / nonukes_mp box in setupwin.xml (ui-theme not installed?)");
+            logf_("nukes: no nonukes box in setupwin.xml (ui-theme not installed?)");
         return;
     }
     unsigned char str[64] = { 0 };
@@ -584,6 +639,8 @@ __attribute__((used, thiscall)) void c_nn_setup_checks(char *sw)
     unsigned *f = game_flags();
     g_pos = f ? pos_of(*f) : POS_RULE;
     ((fn1_t)(*(void ***)g_box)[VT_SHOW / 4])(g_box, 0);
+    if (survival_setup_active()) /* the Survival setup: no slider; the Units button chooses the hero */
+        survival_hide_box(g_box);
     static int said;
     if (!said++)
         logf_("nukes: slider in the game setup (%d stops, art %s)", N_STOPS,
@@ -686,6 +743,12 @@ static void draw_slider(char *box, int enabled)
 /* The box is drawn by hand; the game's other boxes as before. */
 __attribute__((used, thiscall)) int c_nn_check_redraw(char *sw, char *box, int id)
 {
+    if (survival_hidden_check(id)) { /* shown again by an update: hidden again */
+        survival_hide_box(box);
+        return 1;
+    }
+    if (unitbans_check_redraw(sw, box, id))
+        return 1;
     if (!box || box != g_box || id != BIT)
         return ((redraw_t)VA(VA_ON_REDRAW))(sw, box, id);
     if (g_drag && !(GetAsyncKeyState(GetSystemMetrics(SM_SWAPBUTTON) ? VK_RBUTTON : VK_LBUTTON) & 0x8000)) {
@@ -731,6 +794,7 @@ __attribute__((used, thiscall)) int c_nn_setup_game(char *sw)
     set_pos(game_flags(), pos);
     g_drag = 0;
     apply();
+    unitbans_setup_game(sw);
     if (pos == POS_NONE)
         logf_("nukes: the game starts WITHOUT nuclear weapons");
     else if (pos == POS_RULE)
@@ -739,7 +803,11 @@ __attribute__((used, thiscall)) int c_nn_setup_game(char *sw)
         logf_("nukes: the game starts with unlimited nuclear weapons, no Armageddon clock");
     else
         logf_("nukes: the game starts with %d nuclear weapons on the Armageddon clock", g_counts[pos - 1]);
-    return ((fn0_t)VA(VA_SETUP_GAME))(sw);
+    survival_fix_rules(sw); /* the Survival setup's fixed rules, before the game reads them */
+    survival_before_game(sw); /* its battle director: added after a co-op test's allies, white */
+    int r = ((fn0_t)VA(VA_SETUP_GAME))(sw);
+    survival_setup_game(); /* after the game's: a game from the Survival button runs its script */
+    return r;
 }
 
 static int call_to(UINT_PTR at, UINT_PTR target)
@@ -768,8 +836,10 @@ static void patch_slot(UINT_PTR slot, void *to)
 
 void nonukes_install(void)
 {
-    if (!g_nonukes_enabled)
+    if (!g_nonukes_enabled) {
+        g_unitbans_enabled = 0; /* the Units window rides on the slider's hooks */
         return;
+    }
     const unsigned char *jne = (const unsigned char *)VA(VA_CLOCK_JNE);
     const unsigned char *sub = (const unsigned char *)VA(VA_CALL_AI_ARM + 0xB); /* sub eax, 2 */
     if (!call_to(VA_CALL_CHECKS, VA_SETUP_CHECKS) || !call_to(VA_CALL_GAME_1, VA_SETUP_GAME) ||
@@ -778,7 +848,7 @@ void nonukes_install(void)
         *(UINT_PTR *)VA(VT_CHECK_REDRAW) != VA(VA_ON_REDRAW) ||
         *(UINT_PTR *)VA(VT_CHECK_CLICKED) != VA(VA_ON_CLICKED) || *(UINT_PTR *)VA(VT_CHECK_MOVE) != VA(VA_ON_MOVE)) {
         logf_("nukes: setup screen code differs, the option is off");
-        g_nonukes_enabled = 0;
+        g_nonukes_enabled = g_unitbans_enabled = 0;
         return;
     }
     patch_call(VA_CALL_CHECKS, c_nn_setup_checks);
@@ -807,4 +877,5 @@ void nonukes_install(void)
     patch_slot(VT_CHECK_MOVE, c_nn_check_move);
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
     logf_("nukes: slider in the game setup (Game+0x20 bit %d = none, bits %d.. = the count)", BIT, POS_SHIFT);
+    unitbans_install();
 }

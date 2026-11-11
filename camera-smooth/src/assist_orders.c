@@ -16,7 +16,9 @@
  *   - its own idle thinking (Unit::think) runs as for a human player's unit: it still
  *     defends itself and fights what comes in range, idle Citizens still look for work as
  *     your stance tells them, but it does not join armies or walk off to defend a city.
- * It is handed back once it has stood idle for ordered_units_idle_seconds (-1: never).
+ * It is handed back once it has stood idle for ordered_units_idle_seconds (-1: never), unless
+ * it is in one of your control groups. Putting units in a control group (Ctrl+number, command
+ * 0x22) keeps them like an order.
  *
  * Your orders reach the game as commands (CommandPackage::process); the unit orders among them
  * act on the package's current group, the units of the command's group. The computer never
@@ -70,8 +72,30 @@ static const unsigned char k_order_cmds[] = {
     0x0A /* patrol */,     0x0B /* launch patrol */, 0x0C /* halt */,         0x0D /* transport */,
     0x0F /* board ship */, 0x10 /* repair */,       0x11 /* trade */,         0x13 /* gather */,
     0x14 /* garrison */,   0x17 /* spell */,        0x19 /* build */,         0x1C /* flight */,
-    0x1E /* follow */,     0x1F /* guard */,        0x23 /* recall */,        0x24 /* scramble */,
+    0x1E /* follow */,     0x1F /* guard */,        0x22 /* control group */, 0x23 /* recall */,
+    0x24 /* scramble */,
 };
+
+#define CMD_HOTKEY   0x22   /* +5: 1 = no group (the control group emptied) */
+#define VA_HOTKEYS   0x00C0AFE0u /* HotKeyGroup[], 0x9FC each, the Group at +0 */
+#define VA_HOTKEYS_N 0x00C0AFD4u
+#define HOTKEY_SIZE  0x9FC
+#define VA_MEMBER    0x0070F8F0u /* GroupData::member(id, player, alive) const */
+typedef int(__attribute__((thiscall)) *member_t)(void *g, int id, int player, int alive);
+
+/* Is u in one of its player's control groups? Then it stays yours while it stands idle. */
+static int in_control_group(char *u)
+{
+    char *hk = *(char **)VA(VA_HOTKEYS);
+    int n = *(int *)VA(VA_HOTKEYS_N), p = (unsigned char)u[OBJ_PLAYER], id = *(short *)(u + OBJ_ID);
+    for (int i = 0; hk && i < n && i < 0x100; i++) {
+        char *g = hk + i * HOTKEY_SIZE;
+        if (*(int *)(g + GRP_COUNT) > 0 && (unsigned char)g[GRP_PLAYER] == p &&
+            ((member_t)VA(VA_MEMBER))(g, id, p, 1))
+            return 1;
+    }
+    return 0;
+}
 
 /* the computer's calls of Group actions that must leave kept units out */
 enum { GA_MOVE_TO, GA_SIEGE_TO, GA_STANCE, GA_HALT, GA_SWARM, GA_DISBAND, GA_COUNT };
@@ -195,6 +219,8 @@ __attribute__((used)) void c_ao_command(char *pkg, unsigned char *cmd)
 {
     if (!g_enabled || !cmd || !memchr(k_order_cmds, cmd[0], sizeof k_order_cmds))
         return;
+    if (cmd[0] == CMD_HOTKEY && *(int *)(cmd + 5))
+        return; /* a control group emptied: no group of units with it */
     int gi = *(int *)(pkg + PKG_GROUP);
     char *groups = *(char **)VA(VA_GROUPS_PTR);
     if (gi < 0 || !groups)
@@ -283,7 +309,9 @@ __attribute__((used)) int c_ao_think_pre(char *u, UINT_PTR ret)
         if (k->idle_from < 0 || t - k->idle_last > 45)
             k->idle_from = t;
         k->idle_last = t;
-        if (g_idle_frames >= 0 && t - k->idle_from >= g_idle_frames) {
+        if (g_idle_frames >= 0 && t - k->idle_from >= g_idle_frames && in_control_group(u)) {
+            k->idle_from = t; /* in a control group of yours: it stays yours */
+        } else if (g_idle_frames >= 0 && t - k->idle_from >= g_idle_frames) {
             static int logged;
             if (logged < 20) {
                 logged++;

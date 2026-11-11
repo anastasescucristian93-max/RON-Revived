@@ -3283,7 +3283,7 @@ in eine Warteschleife stellen.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Stählerne Panzersperren auf einem Feld, von Bürgern in der Moderne und im Informationszeitalter gebaut. Nichts kommt durch sie hindurch, auch Ihre eigenen Einheiten nicht: Ein Feind muss sie zerstören, um durchzukommen. Bauen Sie sie in einer Reihe, um eine Lücke zu schließen, und lassen Sie Ihrer eigenen Armee einen Weg frei. 1200 Trefferpunkte und schwere Panzerung: Gewehre kratzen sie kaum an, Panzer, Artillerie und Flugzeuge zerstören sie.</STRING>
+				<BULLET/>Hindernisse auf einem Feld, von Bürgern in jedem Zeitalter gebaut: zuerst angespitzte Pfähle, dann Balken mit Spitzen, später Schanzkörbe und ab der Moderne stählerne Panzersperren. Nichts kommt durch sie hindurch, auch Ihre eigenen Einheiten nicht: Ein Feind muss sie zerstören, um durchzukommen. Bauen Sie sie in einer Reihe, um eine Lücke zu schließen, und lassen Sie Ihrer eigenen Armee einen Weg frei. Sie werden mit Ihrem Zeitalter stärker: 240 Trefferpunkte in der Antike, 1200 und schwere Panzerung ab der Moderne.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>
@@ -4716,16 +4716,7 @@ feindliche schwere Infanterie.
 
 
          
-            
-
-
-
-
-
-
-         
-            <!--General-->
-			</STRING>
+            <!--General--></STRING>
 		</ENTRY>
 		<ENTRY name="GENERALV">
 			<STRING>
@@ -6524,7 +6515,9 @@ kann nur durch Einsatz schwerer Waffen zerstört werden.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Fliegt einen Elitetrupp Fallschirmjäger von einem Fliegerhorst zum gewählten Ort, setzt ihn ab und fliegt zurück. Ein Teil des Preises wird erstattet, wenn er wieder auf seinem Fliegerhorst landet.</STRING>
+				<BULLET/>
+             {Jagdflugzeug}, Moderne #ICON33 - auf Flugzeugträgern stationiert; wirkungsvoll im Kampf gegen feindliche Luftfahrzeuge und gut geeignet, um feindliche Bodentruppen unter Beschuss zu nehmen.
+            <!--Fighter Bomber--></STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -7849,11 +7842,13 @@ feindlicher Gebäude und Fußsoldaten.
 		</ENTRY>
 		<ENTRY name="FOUCHE">
 			<STRING>
-				<BULLET/>Elite-Infanterie, die ein Transport-Hubschrauber von einem Fliegerhorst aus absetzt (Luftlandung). Zäher, schneller und besser gepanzert als Sturmtruppen; kann Städte erobern.</STRING>
+				<BULLET/>Deckt alle Gegner auf. <BULLET/>Hat dreifache Spionageenergie.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="SCHWARZENBERG">
 			<STRING>
-				<BULLET/>Schießt feindliche Atomraketen ab. Jedes Raketensilo fasst bis zu 2 und feuert selbstständig eine auf jede feindliche Nuklearrakete oder Interkontinentalrakete in Reichweite ab, wenn es sie noch einholen kann. Eine abgeschossene Atomrakete richtet keinen Schaden an und zählt nicht für Armageddon.</STRING>
+				<BULLET/>Hat doppelte Energie und Trefferpunkte.<BULLET/>Starte mit einem Team aus 4 Kommandoeinheiten.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BLUCHER">
 			<STRING>
@@ -8342,20 +8337,8 @@ feindlicher Gebäude und Fußsoldaten.
 		</ENTRY>
 		<ENTRY name="BARBARIANJAVELINEERS">
 			<STRING>
-				<BULLET/>
-            
-
-
-
-         {Jagdflugzeug}, Moderne #ICON33 - wirkungsvoll im Kampf gegen feindliche Luftfahrzeuge und gut geeignet, um feindliche Bodentruppen unter Beschuss zu nehmen.
-
-
-
-
-
-         
-            <!--Fighter-->
-			</STRING>
+				<BULLET/>         Barbaren-Spezialeinheit {Leichte Infantrie} - schnell, billig und kurze Reichweite.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BARBARIANPHALANX">
 			<STRING>
@@ -8390,20 +8373,8 @@ feindlicher Gebäude und Fußsoldaten.
 		<ENTRY name="TYPHOON">
 			<STRING>
 				<BULLET/>
-            
-
-
-
-         {Panzer}, Moderne #ICON33 - gepanzert und äußerst schlagkräftig; schwer zu zerstören,
-außer mit schweren Waffen.
-
-
-
-
-
-         
-            <!--Tank-->
-			</STRING>
+        {U-Boote}, Informationszeitalter #ICON34 - schwierig, außer durch Zerstörer und Kreuzer erkennen.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="HIND">
 			<STRING>
@@ -8599,7 +8570,7 @@ Die Wirkung ist bei Fußtruppen am stärksten; bei Reiter- und Fahrzeugeinheiten
 		</ENTRY>
 		<ENTRY name="RALLY">
 			<STRING>
-Heilt Ihre Einheiten in der Nähe des Generals: Innerhalb von 5 Sekunden erhalten sie 25 % ihrer Trefferpunkte zurück. Bereits gefallene Truppmitglieder kehren nicht zurück.
+Erhöht für kurze Zeit die Geschwindigkeit, mit der freundlich gesinnte Einheiten in der Nähe des Generals angreifen können.
 </STRING>
 		</ENTRY>
 		<ENTRY name="CREATEDECOY">
@@ -8649,7 +8620,25 @@ Fußtruppen oder berittene Einheiten können auf größere Entfernung abgeschoss
 		</ENTRY>
 		<ENTRY name="PARADROP">
 			<STRING>
-				<BULLET/>Ein Transport-Hubschrauber fliegt 2 Trupps Elite-Fallschirmjäger von diesem Fliegerhorst zum angeklickten Ort, setzt sie ab und fliegt zurück. Ein Drittel des Preises wird erstattet, wenn der Hubschrauber wieder zurück ist. Jeder Fliegerhorst kann alle 45 Sekunden einen entsenden. Ab dem Informationszeitalter.</STRING>
+				<BULLET/>
+
+
+
+         Setzt Einheiten schnell hinter feindlichen Linien ab.
+
+
+
+
+         <BULLET/>
+
+
+
+         Kann nur von Freundesgebiet aus initiiert werden.
+
+
+
+
+      </STRING>
 		</ENTRY>
 		<ENTRY name="JAMRADAR">
 			<STRING>
@@ -10546,7 +10535,8 @@ Spione können feindliche Einheiten {Bestechen} und somit auf Ihre Seite ziehen.
 			<STRING>
 Generäle können den Wert ihrer Truppen in einem Kampfeinsatz steigern und werden in der Nähe dieser Truppen positioniert. Generäle können einen {Gewaltmarsch} befehlen und dadurch zeitweilig das Marschtempo all ihrer Truppen erhöhen.
 Sie können mit ihren Truppen einen {Hinterhalt} legen und so diese Einheiten zeitweilig vor feindlichen Truppen verbergen.
-Sie können Infanterieeinheiten in {Schützengräben} verschanzen, um sie vor feindlichem Feuer zu schützen.
+Sie können Infanterieeinheiten in {Schützengräben} verschanzen, um sie vor feindlichem Feuer zu schützen, und sie können durch Erstellen von
+{Ablenkungseinheiten} den Feind verwirren und ablenken.
 </STRING>
 		</ENTRY>
 		<ENTRY name="T51">

@@ -99,7 +99,8 @@ def part_of(rel):
     return "core"
 
 # game scripts (the Script choice in the game setup): repo folder -> game folder
-SCRIPT_TREES = {r"survival\scenario": "scenario"}
+# (and the Survival map style, read by camera-smooth\src\survival.c in Survival games)
+SCRIPT_TREES = {r"survival\scenario": "scenario", r"survival\mapstyles": "mapstyles"}
 
 PLAYER_FILES = ["install.bat", "install.ps1", "uninstall.bat", "uninstall.ps1", "README.txt"]
 

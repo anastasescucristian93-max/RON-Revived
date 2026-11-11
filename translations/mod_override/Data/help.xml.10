@@ -3289,7 +3289,7 @@ misma biblioteca.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Obstáculos antitanque de acero en una casilla, construidos por los ciudadanos en la Edad Moderna y el Siglo de la Información. Nada puede atravesarlos, ni siquiera tus propias unidades: el enemigo tiene que destruirlos para pasar. Colócalos en línea para cerrar un paso y deja un camino libre a tu propio ejército. 1200 puntos de vida y blindaje pesado: los fusiles apenas los arañan; los tanques, la artillería y los aviones los destruyen.</STRING>
+				<BULLET/>Obstáculos en una casilla, construidos por los ciudadanos en cualquier edad: primero estacas afiladas, luego vigas con púas, después cestones y, desde la Edad Moderna, obstáculos antitanque de acero. Nada puede atravesarlos, ni siquiera tus propias unidades: el enemigo tiene que destruirlos para pasar. Colócalos en línea para cerrar un paso y deja un camino libre a tu propio ejército. Se hacen más fuertes con tu edad: 240 puntos de vida en la Edad Antigua, 1200 y blindaje pesado desde la Edad Moderna.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>
@@ -4684,7 +4684,7 @@ del enemigo.
 		<ENTRY name="GENERAL">
 			<STRING>
 				<BULLET/>
-            Aumenta en +$NUMBER0 la armadura de todas las tropas amigas cercanas (mayor incremento por cada nivel de mejora del general).
+            Aumenta la armadura de todas las tropas amigas cercanas (mayor incremento por cada nivel de mejora del general) en $NUMBER0.
 
         
             <BULLET/>
@@ -4723,16 +4723,7 @@ del enemigo.
 
 
          
-            
-
-
-
-
-
-
-         
-            <!--General-->
-			</STRING>
+            <!--General--></STRING>
 		</ENTRY>
 		<ENTRY name="GENERALV">
 			<STRING>
@@ -6531,7 +6522,9 @@ destruir excepto con armas pesadas.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Lleva un pelotón de élite de paracaidistas desde una base aérea al punto que elijas, lo desembarca y regresa. Parte del precio se recupera cuando vuelve a aterrizar en su base aérea.</STRING>
+				<BULLET/>
+             {Cazas}, Edad Moderna #ICON33 - desplegados en portaaviones; potentes contra aviones enemigos y útiles para ametrallar tropas de tierra enemigas.
+            <!--Fighter Bomber--></STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -7854,11 +7847,13 @@ tropas de a pie enemigas.
 		</ENTRY>
 		<ENTRY name="FOUCHE">
 			<STRING>
-				<BULLET/>Infantería de élite que un helicóptero de transporte desembarca desde una base aérea (Desembarco aéreo). Más resistente, más rápida y mejor blindada que la infantería de asalto; puede capturar ciudades.</STRING>
+				<BULLET/>Revela todos los enemigos. <BULLET/>Tiene el triple de Destreza que un espía normal.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="SCHWARZENBERG">
 			<STRING>
-				<BULLET/>Derriba los misiles nucleares enemigos. Cada silo de misiles almacena hasta 2 y lanza uno por sí solo contra cada misil nuclear o ICBM enemigo que pase a su alcance, si aún puede alcanzarlo. Un misil nuclear derribado no causa daños y no cuenta para el Armagedón.</STRING>
+				<BULLET/>Tiene el doble de Destreza y de puntos de vida.<BULLET/>Empieza con un equipo de 4 comandos.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BLUCHER">
 			<STRING>
@@ -8347,20 +8342,8 @@ tropas de a pie enemigas.
 		</ENTRY>
 		<ENTRY name="BARBARIANJAVELINEERS">
 			<STRING>
-				<BULLET/>
-            
-
-
-
-         {Cazas}, Edad Moderna #ICON33 - potentes contra aviones enemigos y útiles para ametrallar tropas de tierra enemigas.
-
-
-
-
-
-         
-            <!--Fighter-->
-			</STRING>
+				<BULLET/>         Exclusiva bárbaros {infantería ligera} - rápida, barata, y de corto alcance.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BARBARIANPHALANX">
 			<STRING>
@@ -8395,19 +8378,7 @@ tropas de a pie enemigas.
 		<ENTRY name="TYPHOON">
 			<STRING>
 				<BULLET/>
-            
-
-
-
-         {Tanques}, Edad Moderna #ICON33 - blindados y extremadamente potentes; difíciles de destruir
-salvo con armas pesadas.
-
-
-
-
-
-         
-            <!--Tank-->
+				{Submarinos}, Edad Industrial #ICON34 - difíciles de detectar, excepto por destructores y cruceros.
 			</STRING>
 		</ENTRY>
 		<ENTRY name="HIND">
@@ -8607,7 +8578,7 @@ El efecto es máximo sobre las tropas de a pie pero menor sobre las unidades a c
 		</ENTRY>
 		<ENTRY name="RALLY">
 			<STRING>
-Cura a tus unidades cercanas al general: en 5 segundos recuperan el 25% de sus puntos de vida. Los miembros del pelotón ya caídos no vuelven.
+Aumenta durante un breve período de tiempo la velocidad de ataque de las unidades situadas cerca del general.
 </STRING>
 		</ENTRY>
 		<ENTRY name="CREATEDECOY">
@@ -8657,7 +8628,25 @@ Las unidades de a pie y la unidades a caballo se abaten a larga distancia, pero 
 		</ENTRY>
 		<ENTRY name="PARADROP">
 			<STRING>
-				<BULLET/>Un helicóptero de transporte lleva 2 pelotones de paracaidistas de élite desde esta base aérea al punto en el que hagas clic, los desembarca y regresa. Se recupera un tercio del precio cuando el helicóptero vuelve. Cada base aérea puede enviar uno cada 45 segundos. A partir del Siglo de la Información.</STRING>
+				<BULLET/>
+
+
+
+         Introduce unidades rápidamente tras las líneas enemigas.
+
+
+
+
+         <BULLET/>
+
+
+
+         Sólo puede iniciarse desde territorio amigo.
+
+
+
+
+      </STRING>
 		</ENTRY>
 		<ENTRY name="JAMRADAR">
 			<STRING>
@@ -10559,7 +10548,8 @@ Los espías se pueden utilizar para {sobornar} a unidades enemigas con el fin de
 			<STRING>
 Los generales pueden aumentar el valor de las tropas en el combate. Si los sitúas cerca de sus tropas, conseguirás aumentar su valor de combate. Los generales pueden ordenar la {marcha forzada} durante un tiempo para aumentar la velocidad de todas las
 tropas. También pueden hacer que las tropas lleven a cabo una {emboscada} ocultándolas al enemigo durante un
-tiempo. Pueden hacer que la infantería se {atrinchere} para protegerla de gran parte del fuego enemigo.
+tiempo. Pueden hacer que la infantería se {atrinchere} para protegerla de gran parte del fuego enemigo y pueden crear unidades {señuelo}
+para distraer y confundir al enemigo.
 </STRING>
 		</ENTRY>
 		<ENTRY name="T51">

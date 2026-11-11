@@ -3327,7 +3327,7 @@ bibliotece.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Stalowe zapory przeciwpancerne na jednym polu, budowane przez obywateli w epoce nowoczesnej i epoce informacji. Nic przez nie nie przejdzie, nawet twoje własne jednostki: wróg musi je zniszczyć, żeby przejść. Ustaw je w linii, by zamknąć przejście, i zostaw drogę dla własnej armii. 1200 punktów wytrzymałości i ciężki pancerz: karabiny ledwo je rysują, czołgi, artyleria i lotnictwo je niszczą.</STRING>
+				<BULLET/>Zapory na jednym polu, budowane przez obywateli w każdej epoce: najpierw zaostrzone pale, potem belki z kolcami, następnie kosze szańcowe, a od epoki nowoczesnej stalowe jeże przeciwpancerne. Nic przez nie nie przejdzie, nawet twoje własne jednostki: wróg musi je zniszczyć, żeby przejść. Ustaw je w linii, by zamknąć przejście, i zostaw drogę dla własnej armii. Wzmacniają się wraz z twoją epoką: 240 punktów wytrzymałości w starożytności, 1200 i ciężki pancerz od epoki nowoczesnej.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

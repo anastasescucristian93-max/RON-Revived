@@ -2934,7 +2934,7 @@ Crește raza atacului orașului cu +$NUMBER2.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Obstacole antitanc din oțel pe o singură celulă, construite de cetățeni în Epoca modernă și în Epoca informației. Nimic nu trece prin ele, nici unitățile tale: inamicul trebuie să le distrugă ca să treacă. Pune-le în linie ca să închizi o trecătoare și lasă-i armatei tale o cale liberă. 1200 de puncte de viață și blindaj greu: puștile abia le zgârie, tancurile, artileria și avioanele le distrug.</STRING>
+				<BULLET/>Obstacole pe o singură celulă, construite de cetățeni în orice epocă: întâi țăruși ascuțiți, apoi bârne cu țepi, mai târziu gabioane și, din Epoca modernă, arici antitanc din oțel. Nimic nu trece prin ele, nici unitățile tale: inamicul trebuie să le distrugă ca să treacă. Pune-le în linie ca să închizi o trecătoare și lasă-i armatei tale o cale liberă. Devin mai rezistente odată cu epoca ta: 240 de puncte de viață în Antichitate, 1200 și blindaj greu din Epoca modernă.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

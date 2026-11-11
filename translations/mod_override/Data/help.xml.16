@@ -3288,7 +3288,7 @@ biblioteca.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Ostacoli anticarro d'acciaio su una casella, costruiti dai cittadini nell'Età moderna e nell'Età dell'informazione. Niente può attraversarli, nemmeno le tue unità: il nemico deve distruggerli per passare. Disponili in fila per chiudere un varco e lascia una via libera al tuo esercito. 1200 punti ferita e corazza pesante: i fucili li scalfiscono appena, carri armati, artiglieria e aerei li distruggono.</STRING>
+				<BULLET/>Ostacoli su una casella, costruiti dai cittadini in ogni età: prima pali appuntiti, poi travi irte di punte, quindi gabbioni e, dall'Età moderna, ostacoli anticarro d'acciaio. Niente può attraversarli, nemmeno le tue unità: il nemico deve distruggerli per passare. Disponili in fila per chiudere un varco e lascia una via libera al tuo esercito. Diventano più robusti con la tua età: 240 punti ferita nell'Età antica, 1200 e corazza pesante dall'Età moderna.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>
@@ -4722,16 +4722,7 @@ fanteria pesante nemica.
 
 
          
-            
-
-
-
-
-
-
-         
-            <!--General-->
-			</STRING>
+            <!--Generale--></STRING>
 		</ENTRY>
 		<ENTRY name="GENERALV">
 			<STRING>
@@ -6530,7 +6521,9 @@ se non con armi pesanti.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Trasporta una squadra scelta di paracadutisti da una base aerea al punto scelto, la sbarca e torna indietro. Parte del prezzo viene restituita quando atterra di nuovo alla sua base aerea.</STRING>
+				<BULLET/>
+             {Caccia}: età moderna #ICON33 - unità trasportate da portaerei, potenti contro i velivoli nemici e utili per il mitragliamento a bassa quota delle truppe di terra.
+            <!--Fighter Bomber--></STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -7854,11 +7847,13 @@ le truppe a piedi nemiche.
 		</ENTRY>
 		<ENTRY name="FOUCHE">
 			<STRING>
-				<BULLET/>Fanteria scelta sbarcata da un elicottero da trasporto partito da una base aerea (Sbarco aereo). Più resistente, veloce e corazzata della fanteria d'assalto; può conquistare le città.</STRING>
+				<BULLET/>Rivela tutti i nemici. <BULLET/>Ha una destrezza triplicata rispetto a una Spia normale.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="SCHWARZENBERG">
 			<STRING>
-				<BULLET/>Abbatte i missili nucleari nemici. Ogni centro missilistico ne contiene fino a 2 e ne lancia uno automaticamente contro ogni missile nucleare o missile balistico nemico che passa entro la sua portata, se può ancora raggiungerlo. Un missile nucleare abbattuto non causa danni e non conta per l'Armageddon.</STRING>
+				<BULLET/>Ha salute e destrezza raddoppiate.<BULLET/>Inizia con una squadra di 4 Commando.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BLUCHER">
 			<STRING>
@@ -8347,20 +8342,8 @@ le truppe a piedi nemiche.
 		</ENTRY>
 		<ENTRY name="BARBARIANJAVELINEERS">
 			<STRING>
-				<BULLET/>
-            
-
-
-
-         {Caccia}: età moderna #ICON33 - unità potenti contro i velivoli nemici e utili per il mitragliamento a bassa quota delle truppe di terra.
-
-
-
-
-
-         
-            <!--Fighter-->
-			</STRING>
+				<BULLET/>         Barbaro Speciale {Fanteria Leggera} - veloce, economico e a corta gittata.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BARBARIANPHALANX">
 			<STRING>
@@ -8395,20 +8378,8 @@ le truppe a piedi nemiche.
 		<ENTRY name="TYPHOON">
 			<STRING>
 				<BULLET/>
-            
-
-
-
-         {Carri armati}: età moderna #ICON33 - unità corazzate ed estremamente potenti, difficili da distruggere
-se non con armi pesanti.
-
-
-
-
-
-         
-            <!--Tank-->
-			</STRING>
+        {Sottomarini}: età dell'informazione #ICON34 - unità difficili da individuare, se non utilizzando cacciatorpediniere e incrociatori.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="HIND">
 			<STRING>
@@ -8607,7 +8578,7 @@ L'effetto è superiore per le unità a piedi e inferiore per le unità a cavallo
 		</ENTRY>
 		<ENTRY name="RALLY">
 			<STRING>
-Guarisce le tue unità nei pressi dell'unità speciale: in 5 secondi recuperano il 25% dei punti salute. I membri della squadra già caduti non ritornano.
+Aumenta la velocità di attacco delle unità amiche nei pressi dell'unità speciale per un breve periodo di tempo.
 </STRING>
 		</ENTRY>
 		<ENTRY name="CREATEDECOY">
@@ -8657,7 +8628,25 @@ Le unità a piedi e a cavallo possono essere colpite a distanza, mentre è neces
 		</ENTRY>
 		<ENTRY name="PARADROP">
 			<STRING>
-				<BULLET/>Un elicottero da trasporto porta 2 squadre di paracadutisti scelti da questa base aerea al punto su cui fai clic, li sbarca e torna indietro. Un terzo del prezzo viene restituito quando l'elicottero rientra. Ogni base aerea può inviarne uno ogni 45 secondi. Dall'età dell'informazione.</STRING>
+				<BULLET/>
+
+
+
+         Consente di infiltrare rapidamente unità oltre le linee nemiche.
+
+
+
+
+         <BULLET/>
+
+
+
+         Può avere inizio solo da uno dei tuoi territori.
+
+
+
+
+      </STRING>
 		</ENTRY>
 		<ENTRY name="JAMRADAR">
 			<STRING>
@@ -10557,7 +10546,8 @@ Puoi utilizzare le spie per {corrompere} le unità nemiche e portarle dalla tua 
 			<STRING>
 Le unità speciali possono aumentare il valore delle truppe in combattimento. Collocando queste unità accanto alle tue truppe puoi ottenere un maggior valore in combattimento. Le unità speciali possono ordinare una {marcia forzata} per ottenere temporaneamente una velocità superiore per tutte le
 truppe, organizzare un'{imboscata} per nascondere le forze alle unità nemiche per un breve periodo
-di tempo e ordinare il {trinceramento} della fanteria per proteggerla dal fuoco nemico.
+di tempo, ordinare il {trinceramento} della fanteria per proteggerla dal fuoco nemico e creare unità {esca}
+per distrarre e confondere il nemico.
 </STRING>
 		</ENTRY>
 		<ENTRY name="T51">

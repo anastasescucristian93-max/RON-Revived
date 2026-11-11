@@ -2,10 +2,11 @@
  * Veteran ranks: military units earn experience from the damage they deal and rise through 10
  * levels in 3 tiers (bronze, silver, gold; level 10 is gold with a star). One selected unit shows
  * its rank, a large experience bar, its kills and its bonuses in the selection panel's right half
- * (ranks_draw_panel). Each level gives +4 %
- * attack and +4 % hit points; level 3 +1 line of sight, 5 +10 % attack rate, 6 -10 % damage taken,
- * 7 +1 range (ranged units), 8 +20 % attack rate, 9 slow healing out of combat, 10 -20 % damage
- * taken. [ranks] xp_gain_percent scales every gain (115 = 15 % faster). The rank stays when the unit's line is
+ * (ranks_draw_panel). Each level gives +2 % damage, +3 % hit points and +3 % attack rate (the
+ * user, 2026-11-10: armor is taken off every hit as a flat amount, tools/COMBAT_NOTES.md, so a
+ * percent on the attack beat armor by more than its percent; the attack rate scales fairly);
+ * level 3 +1 line of sight, 6 -10 % damage taken, 7 +1 range (ranged units), 8 slow healing out
+ * of combat, 10 -20 % damage taken. [ranks] xp_gain_percent scales every gain (115 = 15 % faster). The rank stays when the unit's line is
  * upgraded. A selected or hovered unit shows its rank as 1-3 small bars beside its health bar;
  * its portrait in the selection panel shows the bars in the top-right corner and a yellow experience
  * bar along the bottom; its tooltip (portrait or map) names the rank, the progress to the next
@@ -107,23 +108,28 @@ static const UINT_PTR g_shown_attack_at[4] = { 0x008217F9u, 0x0082185Bu, 0x00821
 #define OBJ_DAMAGE   0x24 /* hit points lost */
 #define U_FLAGS      0x68 /* bit 0 = decoy */
 #define U_FLAGS2     0x6C /* bits 20-31: experience (this mod) */
-#define U_CAPTAIN    0x8E /* word: bit 15 = captain, else the captain's id */
+#define U_CAPTAIN    0x8E /* word: bit 15 = captain, else the soldier before it in the chain (the
+                              captain for the first one only: UnitData::get_captain 0x00610AB0 walks
+                              up the chain) */
 #define U_NEXT       0x90 /* short: next soldier of the squad, -1 = last */
 #define T_COST       0x18 /* int[6]: the base cost */
 #define T_ATTACK     0x1E8
 #define T_UBER       0x308 /* UBER_SIZE: soldiers per squad */
 #define T_RECHARGE   0x1F4
+#define T_CAT        0x14  /* CAT in unitrules.xml: 0 Foot, 1 Mounted, 2 Mech, 3 Artillery, 4 Command,
+                              5 Civilian, 6 Sail, 7 Naval, 8 Air */
 #define B_XP         0x65  /* buildings: experience / 16 (this mod) */
 #define B_CONSTRUCT  0x54  /* buildings: construct_hits, the hit points so far built */
 #define MAX_BUILDS   8192  /* building ids FIRST_BUILD .. FIRST_BUILD + MAX_BUILDS - 1 kept */
 #define VT_MAX_HITS  0x11C
 #define VT_UPDATE_HITS 0x15C
 #define OBJS_UNITS_N 0x15C /* + 4 * p: unit ids 0 .. n-1 */
+#define OBJS_BUILDS_END 0x184 /* + 4 * p: building ids FIRST_BUILD .. n-1 (cityrepair.c) */
 #define FIRST_BUILD  2000
 #define XP_SHIFT     20
 #define XP_MAX       0xFFF
 #define LEVELS       10
-#define HEAL_LEVEL   9
+#define HEAL_LEVEL   8
 
 typedef int(__attribute__((thiscall)) *fn0_t)(void *self);
 typedef int(__attribute__((thiscall)) *fn1_t)(void *self, int a);
@@ -132,7 +138,7 @@ typedef int(__attribute__((thiscall)) *fn2_t)(void *self, int a, int b);
 int g_ranks_enabled;
 static int g_mana_bar = 1;
 static int g_insignia_pct = 100; /* [ranks] insignia_size: the insignia beside the health bar */
-static int g_attack_step = 4, g_hits_step = 4, g_heal_pct = 1, g_calm_s = 10, g_ability_pct = 35;
+static int g_attack_step = 2, g_hits_step = 3, g_rate_step = 3, g_heal_pct = 1, g_calm_s = 10, g_ability_pct = 35;
 static int g_build_min_cost = 150, g_xp_pct = 115;
 static void *g_orig_unit_hits, *g_orig_los, *g_orig_cast, *g_orig_describe, *g_orig_wall_hits, *g_orig_brange;
 UINT_PTR g_rk_gp_bar;
@@ -143,6 +149,27 @@ static const int g_need[LEVELS + 1] = { 0, 128, 256, 512, 768, 1152, 1536, 2048,
 static const char *const g_name[LEVELS + 1] = { "Private", "Private First Class", "Corporal", "Sergeant",
                                                 "Staff Sergeant", "Master Sergeant", "Lieutenant", "Captain",
                                                 "Major", "Colonel", "Brigadier General" };
+/* The Survival hero (survival.c, the user, 2026-11-10): one squad that ranks on to level
+   HERO_LEVELS. Its 12 bits count HERO_XP_UNIT / 256 of its cost each (32760 / 256 at most), the
+   rest below that is kept in memory. Levels 11-30: +2 % damage, +3 % hit points, +2 % attack rate
+   each. Who it is: the ids of its soldiers, from the script (create_unit's id) and kept up to date
+   once a second (a new captain when the first one falls); gone when the whole squad is. */
+#define HERO_LEVELS  30
+#define HERO_XP_UNIT 8
+static int g_hero_need[HERO_LEVELS + 1];
+/* the heroes, by slot: 4 * player + kind + 2 * k (survival.bhs: kind 0 an infantry squad, 1 a
+   rider; k 0 or 1: every hero is two of them, the user, 2026-11-10: six soldiers or two riders),
+   so every player of a co-op game can have one; the two halves (slots h and h + 2) keep the same
+   experience (hero_refresh) */
+#define MAX_HEROES 32
+#define HERO_RIDER(slot) ((slot) >= 0 && ((slot) & 1))
+#define HERO_SQUAD(slot) ((slot) >= 0 && !((slot) & 1))
+static struct {
+    int p, ids[32], n, rem; /* p < 0: none */
+} g_heroes[MAX_HEROES] = { [0 ... MAX_HEROES - 1] = { -1 } };
+static int is_hero(char *u);
+static int hero_power(int l);
+
 static int g_last[8][FIRST_BUILD]; /* frame of each unit's last hit given or taken (not saved) */
 static unsigned char g_bfrac[8][MAX_BUILDS]; /* buildings: experience below 16 (not saved) */
 
@@ -153,8 +180,12 @@ void ranks_load_config(const char *ini_path)
     g_insignia_pct = GetPrivateProfileIntA("ranks", "insignia_size", 100, ini_path);
     if (g_insignia_pct < 50 || g_insignia_pct > 300)
         g_insignia_pct = 100;
-    g_attack_step = GetPrivateProfileIntA("ranks", "attack_percent_per_level", g_attack_step, ini_path);
-    g_hits_step = GetPrivateProfileIntA("ranks", "hits_percent_per_level", g_hits_step, ini_path);
+    /* new key names since 2026-11-10 (4 / 4 before, no attack rate): an old ron_camera.ini, kept
+       by the installer, must not bring the old values back; they are game rules, the same for
+       every player */
+    g_attack_step = GetPrivateProfileIntA("ranks", "damage_percent_per_level", g_attack_step, ini_path);
+    g_hits_step = GetPrivateProfileIntA("ranks", "hit_points_percent_per_level", g_hits_step, ini_path);
+    g_rate_step = GetPrivateProfileIntA("ranks", "attack_rate_percent_per_level", g_rate_step, ini_path);
     g_heal_pct = GetPrivateProfileIntA("ranks", "heal_percent_per_second", g_heal_pct, ini_path);
     g_calm_s = GetPrivateProfileIntA("ranks", "heal_after_seconds", g_calm_s, ini_path);
     g_ability_pct = GetPrivateProfileIntA("ranks", "ability_xp_percent", g_ability_pct, ini_path);
@@ -193,7 +224,7 @@ static int ranked_build(char *o)
 static int xp_of(char *u)
 {
     if (is_unit(u))
-        return (int)(*(unsigned *)(u + U_FLAGS2) >> XP_SHIFT);
+        return (int)(*(unsigned *)(u + U_FLAGS2) >> XP_SHIFT) * (is_hero(u) ? HERO_XP_UNIT : 1);
     if (!ranked_build(u))
         return 0;
     return ((unsigned char)u[B_XP] << 4) + g_bfrac[owner(u)][id_of(u) - FIRST_BUILD];
@@ -203,6 +234,10 @@ static void set_xp(char *u, int xp)
 {
     if (is_unit(u)) {
         unsigned *f = (unsigned *)(u + U_FLAGS2);
+        if (is_hero(u))
+            xp /= HERO_XP_UNIT;
+        if (xp > XP_MAX)
+            xp = XP_MAX;
         *f = (*f & ((1u << XP_SHIFT) - 1)) | ((unsigned)xp << XP_SHIFT);
     } else if (ranked_build(u)) {
         if (xp > 0xFFF)
@@ -220,19 +255,50 @@ static int level_of_xp(int xp)
     return l;
 }
 
+static int hero_level_of_xp(int xp)
+{
+    int l = 0;
+    while (l < HERO_LEVELS && xp >= g_hero_need[l + 1])
+        l++;
+    return l;
+}
+
+static int level_u(char *o) { return is_hero(o) ? hero_level_of_xp(xp_of(o)) : level_of_xp(xp_of(o)); }
+static int max_level(char *o) { return is_hero(o) ? HERO_LEVELS : LEVELS; }
+
 /* The unit's or defensive building's level, 0 for other objects and when the mod is off. */
 static int level(char *o)
 {
-    return g_ranks_enabled && o && (is_unit(o) || ranked_build(o)) ? level_of_xp(xp_of(o)) : 0;
+    if (!g_ranks_enabled || !o || !(is_unit(o) || ranked_build(o)))
+        return 0;
+    int l = level_u(o);
+    /* the Survival card War School (cards.c): the army is at least this level; not the hero */
+    if (g_cards_on && is_unit(o) && owner(o) < 8) {
+        int m = cards_min_level(owner(o));
+        if (m > l && !is_hero(o))
+            l = m;
+    }
+    return l;
 }
+
+/* the attack rate bonus: g_rate_step a level to 10, then 2 % a level (the hero) */
+static int rate_pct(int l) { return g_rate_step * (l < LEVELS ? l : LEVELS) + 2 * (l > LEVELS ? l - LEVELS : 0); }
+/* the insignia: the hero's levels above 10 show level 10's */
+static int ins_level(int l) { return l > LEVELS ? LEVELS : l; }
+static const char *rank_name(int l) { return l <= LEVELS ? g_name[l] : "Hero"; }
 
 static int is_captain(char *u) { return (*(unsigned short *)(u + U_CAPTAIN) & 0x8000) != 0; }
 static char *captain_of(char *u)
 {
-    if (!is_unit(u) || is_captain(u))
-        return u;
-    char *c = object(owner(u), *(short *)(u + U_CAPTAIN));
-    return c ? c : u;
+    /* up the chain to the captain (+0x8E is the soldier before, not the captain: a squad's third
+       soldier pointed at the second, 2026-11-10) */
+    for (int i = 0; i < 32 && is_unit(u) && !is_captain(u); i++) {
+        char *c = object(owner(u), *(short *)(u + U_CAPTAIN));
+        if (!c)
+            break;
+        u = c;
+    }
+    return u;
 }
 
 /* The squad's soldiers from the captain on; at most 32. A building is its own squad. */
@@ -251,6 +317,478 @@ static int squad(char *cap, char **out)
     return n;
 }
 
+/* the hero slot of u, -1 when it is no hero */
+static int hero_slot(char *u)
+{
+    if (!u || !is_unit(u))
+        return -1;
+    int id = id_of(u), p = owner(u);
+    for (int h = 0; h < MAX_HEROES; h++)
+        if (g_heroes[h].p == p)
+            for (int i = 0; i < g_heroes[h].n; i++)
+                if (g_heroes[h].ids[i] == id)
+                    return h;
+    return -1;
+}
+
+static int is_hero(char *u) { return hero_slot(u) >= 0; }
+
+/* The Survival reward cards' bonus (cards.c) for this object and stat: tenths of a percent for
+   damage, damage taken, attack rate and hit points, tiles for range and sight, per mille a second
+   for healing. 0 outside a Survival game with cards. */
+static int card(char *o, int stat)
+{
+    if (!g_cards_on || !o || owner(o) > 7)
+        return 0;
+    if (!is_unit(o))
+        return cards_bonus(owner(o), CC_BUILD, -1, stat);
+    char *t = type(o);
+    return cards_bonus(owner(o), hero_slot(captain_of(o)) >= 0 ? CC_HERO : CC_UNIT, t ? *(int *)(t + T_CAT) : -1,
+                       stat);
+}
+
+static void hero_table(void)
+{
+    if (g_hero_need[1])
+        return;
+    for (int l = 0; l <= LEVELS; l++)
+        g_hero_need[l] = g_need[l];
+    /* 11..30 from level 10's 4095 to 32000, steeper towards the end */
+    for (int l = LEVELS + 1; l <= HERO_LEVELS; l++) {
+        double f = (double)(l - LEVELS) / (HERO_LEVELS - LEVELS);
+        g_hero_need[l] = XP_MAX + (int)((32000 - XP_MAX) * f * (0.4 + 0.6 * f));
+    }
+}
+
+/* a Survival hero: player p's squad (or single unit) with the soldier `id`, in hero slot `slot`
+   (survival.c) */
+void ranks_set_hero(int p, int id, int slot)
+{
+    hero_table();
+    char *u = object(p, id);
+    if (!u || !is_unit(u) || slot < 0 || slot >= MAX_HEROES)
+        return;
+    char *soldiers[32];
+    int n = squad(captain_of(u), soldiers);
+    int same = g_heroes[slot].p == p && g_heroes[slot].n == n;
+    for (int i = 0; i < n; i++) {
+        if (same && g_heroes[slot].ids[i] != id_of(soldiers[i]))
+            same = 0;
+        g_heroes[slot].ids[i] = id_of(soldiers[i]);
+    }
+    g_heroes[slot].n = n;
+    g_heroes[slot].p = p;
+    int top = 0;
+    for (int i = 0; i < n; i++)
+        if (xp_of(soldiers[i]) > top)
+            top = xp_of(soldiers[i]);
+    for (int i = 0; i < n; i++)
+        if (xp_of(soldiers[i]) < top)
+            set_xp(soldiers[i], top);
+    if (!same)
+        logf_("ranks: Survival hero %d is player %d's unit of %d (captain %d)", slot, p, n, id_of(captain_of(u)));
+    g_heroes[slot].p = p;
+}
+
+/* a new game: no heroes (survival.c) */
+void ranks_forget_heroes(void)
+{
+    for (int h = 0; h < MAX_HEROES; h++) {
+        g_heroes[h].p = -1;
+        g_heroes[h].n = 0;
+        g_heroes[h].rem = 0;
+    }
+}
+
+/* ---- for the Survival cards (cards.c) ------------------------------------------------------ */
+
+/* player p has a hero standing */
+int ranks_has_hero(int p)
+{
+    for (int h = 0; h < MAX_HEROES; h++)
+        if (g_heroes[h].p == p)
+            for (int i = 0; i < g_heroes[h].n; i++)
+                if (object(p, g_heroes[h].ids[i]))
+                    return 1;
+    return 0;
+}
+
+/* every unit and building of player p works out its hit points again (a card changed them) */
+void ranks_refresh_hits(int p)
+{
+    if (p < 0 || p > 7)
+        return;
+    char *objs = *(char **)VA(VA_OBJECTS);
+    int n = *(int *)(objs + OBJS_UNITS_N + 4 * p), nb = *(int *)(objs + OBJS_BUILDS_END + 4 * p);
+    if (n > FIRST_BUILD)
+        n = FIRST_BUILD;
+    for (int id = 0; id < n; id++) {
+        char *u = object(p, id);
+        if (u && is_captain(u))
+            ((fn1_t)(*(void ***)u)[VT_UPDATE_HITS / 4])(u, 0);
+    }
+    for (int id = FIRST_BUILD; id < nb && id < FIRST_BUILD + MAX_BUILDS; id++) {
+        char *b = object(p, id);
+        if (b)
+            ((fn1_t)(*(void ***)b)[VT_UPDATE_HITS / 4])(b, 0);
+    }
+}
+
+/* the card War Veteran: q quarters of a level more for player p's hero (both halves alike) */
+void ranks_hero_quarter_levels(int p, int q)
+{
+    hero_table();
+    for (int h = 0; h < MAX_HEROES; h++) {
+        if (g_heroes[h].p != p)
+            continue;
+        char *cap = NULL;
+        for (int i = 0; i < g_heroes[h].n && !cap; i++)
+            cap = object(p, g_heroes[h].ids[i]);
+        if (!cap)
+            continue;
+        cap = captain_of(cap);
+        int xp = xp_of(cap), l = hero_level_of_xp(xp);
+        if (l >= HERO_LEVELS)
+            continue;
+        int step = g_hero_need[l + 1] - g_hero_need[l];
+        int want = xp + step * q / 4, top = XP_MAX * HERO_XP_UNIT;
+        if (want > top)
+            want = top;
+        char *soldiers[32];
+        int n = squad(cap, soldiers);
+        for (int i = 0; i < n; i++)
+            set_xp(soldiers[i], want);
+        int is = hero_level_of_xp(want);
+        ((fn1_t)(*(void ***)cap)[VT_UPDATE_HITS / 4])(cap, 0);
+        if (is > l) {
+            rankfx_promoted(cap, ins_level(is));
+            survival_hero_level(p, is);
+        }
+        logf_("ranks: card: hero %d of player %d from %d to %d experience (level %d -> %d)", h, p, xp, want, l, is);
+    }
+}
+
+/* the two halves of one hero (slots a and a + 2) at the higher experience of the two */
+static void hero_pair_sync(int a, int b)
+{
+    if (g_heroes[a].p < 0 || g_heroes[b].p < 0 || g_heroes[a].p != g_heroes[b].p)
+        return;
+    int p = g_heroes[a].p, top = 0;
+    for (int k = 0; k < 2; k++) {
+        int h = k ? b : a;
+        for (int i = 0; i < g_heroes[h].n; i++) {
+            char *u = object(p, g_heroes[h].ids[i]);
+            if (u && is_unit(u) && xp_of(u) > top)
+                top = xp_of(u);
+        }
+    }
+    for (int k = 0; k < 2; k++) {
+        int h = k ? b : a;
+        for (int i = 0; i < g_heroes[h].n; i++) {
+            char *u = object(p, g_heroes[h].ids[i]);
+            if (u && is_unit(u) && xp_of(u) < top)
+                set_xp(u, top);
+        }
+    }
+}
+
+/* once a second: each hero as it is now (a fallen captain, soldiers back from healing) */
+static void hero_refresh(void)
+{
+    for (int h = 0; h < MAX_HEROES; h++) {
+        if (g_heroes[h].p < 0)
+            continue;
+        int found = 0;
+        for (int i = 0; i < g_heroes[h].n && !found; i++) {
+            char *u = object(g_heroes[h].p, g_heroes[h].ids[i]);
+            if (u && is_unit(u)) {
+                ranks_set_hero(g_heroes[h].p, id_of(u), h);
+                found = 1;
+            }
+        }
+        if (!found) {
+            logf_("ranks: Survival hero %d has fallen", h);
+            g_heroes[h].p = -1;
+            g_heroes[h].n = 0;
+        }
+    }
+    for (int h = 0; h + 2 < MAX_HEROES; h++)
+        if (!(h & 2))
+            hero_pair_sync(h, h + 2);
+}
+
+/* ---- the infantry hero's extra soldiers ----------------------------------------------------- */
+
+/* The infantry hero's squad grows with its power (hero_power): 3, 4 at level 15, 6 at 20, 7 at
+   25, 9 at 30 (the user, 2026-11-10). The game brings a squad's fallen soldiers back while it heals, up to its
+   type's UBER_SIZE (Unit::repair_damage 0x0060E027: mov esi, [type+0x308] / curr_uber_size /
+   jge); that read asks here, so the hero's squad is filled up to its own size, new soldiers
+   included, and every other unit keeps its type's. */
+#define VA_REFILL_UBER 0x0060E027u /* mov esi, [eax+0x308] (6 bytes): eax = the type, edi = the unit */
+
+__attribute__((used)) int c_hero_uber(char *u, char *t)
+{
+    int base = t ? *(int *)(t + T_UBER) : 1;
+    char *cap = u ? captain_of(u) : NULL;
+    int slot = hero_slot(cap);
+    if (slot < 0)
+        return base;
+    /* the Survival card Reinforcements (cards.c): more soldiers, brought in as the squad heals */
+    int extra = g_cards_on ? cards_hero_extra(g_heroes[slot].p, HERO_RIDER(slot)) : 0;
+    if (HERO_RIDER(slot)) /* the riders: a squad of two (made so by survival.c), refilled to two */
+        return 2 + extra;
+    return 2 * base * hero_power(level(cap)) / 100 + extra; /* the infantry: twice its type's 3, then 8, 12, 14, 18 */
+}
+
+void hk_hero_uber(void);
+__asm__(".intel_syntax noprefix\n"
+        ".globl _hk_hero_uber\n_hk_hero_uber:\n" HOOK_ENTER
+        "    sub esp, 8\n"
+        "    push dword ptr [ebx+28]\n" /* eax: the type */
+        "    push dword ptr [ebx+0]\n"  /* edi: the unit */
+        "    call _c_hero_uber\n"
+        "    add esp, 16\n"
+        "    mov [ebx+4], eax\n" HOOK_LEAVE /* esi */
+        "    ret\n"
+        ".att_syntax prefix\n");
+
+static void uber_install(void)
+{
+    static const unsigned char sig[6] = { 0x8B, 0xB0, 0x08, 0x03, 0x00, 0x00 };
+    unsigned char *at = (unsigned char *)VA(VA_REFILL_UBER);
+    if (memcmp(at, sig, 6) != 0) {
+        logf_("ranks: signature mismatch in Unit::repair_damage, the hero's squad stays at its type's size");
+        return;
+    }
+    DWORD old;
+    VirtualProtect(at, 6, PAGE_EXECUTE_READWRITE, &old);
+    at[0] = 0xE8;
+    *(INT32 *)(at + 1) = (INT32)((UINT_PTR)hk_hero_uber - (UINT_PTR)(at + 5));
+    at[5] = 0x90;
+    VirtualProtect(at, 6, old, &old);
+    logf_("ranks: the infantry hero's squad grows at levels 15, 20, 25 and 30");
+}
+
+/* ---- big squads stand in a ring --------------------------------------------------------- */
+
+/* Where a squad's soldiers stop (the user, 2026-11-10: the hero's six soldiers "ocupa 3 locuri si se
+   stacheaza"): Group::action_move_near gives each soldier a spot beside its captain's destination
+   (UnitType::find_nearby_spot at the type's size, +0x224) in the direction 0x00705CC0 picks: the
+   soldier right after the captain (its +0x8E is the captain) to the left, +90 degrees, every other
+   one to the right, -90 degrees. That is a triangle for the game's squads of 3, but the extra
+   soldiers of a bigger squad all go to the right-hand spot. For a squad of more than 3 the
+   soldiers are spread round the captain instead, one angle each, starting on the left;
+   squads of 3 and less keep the game's two sides. Angles are the game's 32-bit turns. */
+#define VA_SQUAD_SIDE   0x00705CC0u /* movsx eax, word [eax+0x8E] ... 26 bytes, on to 0x00705CDA */
+#define VA_SQUAD_SIDE_TO 0x00705CDAu
+
+__attribute__((used)) unsigned c_squad_angle(char *soldier, int captain_id, unsigned base)
+{
+    unsigned side = *(short *)(soldier + U_CAPTAIN) == captain_id ? base + 0x40000000u : base + 0xC0000000u;
+    char *list[32];
+    int n = squad(captain_of(soldier), list), k = -1;
+    if (n <= 3)
+        return side;
+    for (int i = 1; i < n; i++)
+        if (list[i] == soldier)
+            k = i;
+    if (k < 1)
+        return side;
+    return base + 0x40000000u + (unsigned)(k - 1) * (unsigned)(0x100000000ull / (unsigned)(n - 1));
+}
+
+void hk_squad_angle(void);
+__asm__(".intel_syntax noprefix\n"
+        ".globl _hk_squad_angle\n_hk_squad_angle:\n" HOOK_ENTER
+        "    sub esp, 4\n"
+        "    mov ecx, [ebx+8]\n"         /* the function's ebp */
+        "    push dword ptr [ecx+0x1c]\n" /* the facing */
+        "    push dword ptr [ebx+16]\n"   /* ebx: the captain's id */
+        "    push dword ptr [ebx+28]\n"   /* eax: the soldier */
+        "    call _c_squad_angle\n"
+        "    add esp, 16\n"
+        "    mov [ebx+28], eax\n" HOOK_LEAVE
+        "    ret\n"
+        ".att_syntax prefix\n");
+
+static void squad_ring_install(void)
+{
+    static const unsigned char sig[9] = { 0x0F, 0xBF, 0x80, 0x8E, 0x00, 0x00, 0x00, 0x3B, 0xC3 };
+    unsigned char *at = (unsigned char *)VA(VA_SQUAD_SIDE);
+    if (memcmp(at, sig, 9) != 0) {
+        logf_("ranks: signature mismatch in Group::action_move_near, big squads keep the game's two sides");
+        return;
+    }
+    DWORD old;
+    VirtualProtect(at, 26, PAGE_EXECUTE_READWRITE, &old);
+    at[0] = 0xE8; /* call hk_squad_angle: eax = the angle */
+    *(INT32 *)(at + 1) = (INT32)((UINT_PTR)hk_squad_angle - (UINT_PTR)(at + 5));
+    at[5] = 0xEB; /* jmp short to 0x00705CDA */
+    at[6] = (unsigned char)(VA(VA_SQUAD_SIDE_TO) - (UINT_PTR)(at + 7));
+    for (int i = 7; i < 26; i++)
+        at[i] = 0x90;
+    VirtualProtect(at, 26, old, &old);
+}
+
+/* The same in formations (the moves the player orders): Form::compute_dests 0x0072CBA0 puts a
+   squad's soldiers beside its captain's place, the type's size (+0x224) to the side: the first
+   soldier after the captain on one side (its flag [ebp-0x3C] is still 1 from the captain), every
+   other one on the other side (0x0072D375 .. 0x0072D38F), so the soldiers of a squad bigger than
+   3 pile up there (the user, 2026-11-10: "tot 3 se stacheaza"). Here the soldiers after the first
+   go out further each, side by side: +1, -1, +2, -2, +3 sizes, a row; a squad of 3 is +1, -1 as
+   before. The count runs in the order the game takes the soldiers (the same on every machine). */
+#define VA_FORM_SIDE 0x0072D385u /* mov eax, [eax+0x224] / jne +2 / neg eax: 10 bytes */
+static int g_form_k;
+
+__attribute__((used)) int c_form_side(char *type, int first)
+{
+    int size = type ? *(int *)(type + 0x224) : 0;
+    g_form_k = first ? 1 : g_form_k + 1;
+    int k = g_form_k, steps = (k + 1) / 2;
+    return k & 1 ? size * steps : -size * steps;
+}
+
+void hk_form_side(void);
+__asm__(".intel_syntax noprefix\n"
+        ".globl _hk_form_side\n_hk_form_side:\n" HOOK_ENTER
+        "    sub esp, 8\n"
+        "    mov ecx, [ebx+8]\n"          /* the function's ebp */
+        "    push dword ptr [ecx-0x3c]\n" /* 1: the first soldier after the captain */
+        "    push dword ptr [ebx+28]\n"   /* eax: the soldier's type */
+        "    call _c_form_side\n"
+        "    add esp, 16\n"
+        "    mov [ebx+28], eax\n" HOOK_LEAVE
+        "    ret\n"
+        ".att_syntax prefix\n");
+
+static void form_side_install(void)
+{
+    static const unsigned char sig[10] = { 0x8B, 0x80, 0x24, 0x02, 0x00, 0x00, 0x75, 0x02, 0xF7, 0xD8 };
+    unsigned char *at = (unsigned char *)VA(VA_FORM_SIDE);
+    if (memcmp(at, sig, 10) != 0) {
+        logf_("ranks: signature mismatch in Form::compute_dests, big squads pile up in formations");
+        return;
+    }
+    DWORD old;
+    VirtualProtect(at, 10, PAGE_EXECUTE_READWRITE, &old);
+    at[0] = 0xE8;
+    *(INT32 *)(at + 1) = (INT32)((UINT_PTR)hk_form_side - (UINT_PTR)(at + 5));
+    for (int i = 5; i < 10; i++)
+        at[i] = 0x90;
+    VirtualProtect(at, 10, old, &old);
+    logf_("ranks: squads bigger than 3 stand in a row in formations");
+}
+
+/* ---- the hero's mark ------------------------------------------------------------------------ */
+
+/* Over each hero's captain, every frame (rankfx.c's map window redraw): its medallion (interface
+   IFACETEX "hero_infantry" / "hero_cavalry", ui-theme's survival_bar.tga), above the health bar's
+   place, sized with the zoom. Only the drawing. */
+void ranks_draw_hero_marks(void)
+{
+    for (int h = 0; h < MAX_HEROES; h++) {
+        if (g_heroes[h].p < 0)
+            continue;
+        const void *tex = qol_iface_tex(HERO_RIDER(h) ? "hero_cavalry" : "hero_infantry");
+        if (!tex)
+            continue;
+        char *u = NULL;
+        for (int i = 0; i < g_heroes[h].n && !u; i++)
+            u = object(g_heroes[h].p, g_heroes[h].ids[i]);
+        if (!u)
+            continue;
+        char *cap = captain_of(u);
+        float x, y;
+        if (!rankfx_anchor(cap, &x, &y))
+            continue;
+        float s = 30.0f * rankfx_zoom();
+        s = s < 20.0f ? 20.0f : s > 40.0f ? 40.0f : s;
+        rf_add(tex, x - s * 0.5f, y - s * 1.45f, s, s, 0xFFFFFFFFu);
+    }
+}
+
+/* ---- the hero's light ------------------------------------------------------------------- */
+
+/* The Survival hero wears the Patriots' light (the user, 2026-11-10: "lumina de deasupra de la
+   patriot"): UnitOut::draw_overlays draws the "CTWGlow" column (GraphicPieces+0x1048) over a
+   unit when it is a government hero (UnitData::is_gov_hero, type FLAGS & 0x4000000) or in some
+   Conquer the World cases. Its three ways to "no light" (0x006159A9 jge, 0x006159E3 test / jne /
+   jmp, 0x00615A20 test / je, all to 0x00615B5C, "light" being 0x00615A28) jump here instead,
+   with esi = the player and edi = the unit's id as there: the hero gets the light too. Only the
+   drawing changes: the hero does not become a Patriot. */
+#define VA_GLOW_A    0x006159A9u /* jge 0x00615B5C (6 bytes) */
+#define VA_GLOW_A_GO 0x006159AFu /* the government hero test */
+#define VA_GLOW_B    0x006159E3u /* test eax, eax / jne 0x00615A28 / jmp 0x00615B5C (9 bytes) */
+#define VA_GLOW_C    0x00615A20u /* test eax, eax / je 0x00615B5C (8 bytes) */
+#define VA_GLOW_YES  0x00615A28u
+#define VA_GLOW_NO   0x00615B5Cu
+void *g_glow_yes, *g_glow_no, *g_glow_a_go;
+
+__attribute__((used)) int c_glow_hero(int p, int id)
+{
+    char *u = object(p, id);
+    return u && is_hero(u);
+}
+
+void hk_glow_a(void);
+void hk_glow_bc(void);
+__asm__(".intel_syntax noprefix\n"
+        /* A: in the game's "jge no light": light for the hero, else on as before */
+        ".globl _hk_glow_a\n_hk_glow_a:\n"
+        "    jl 3f\n"
+        "    xor eax, eax\n"
+        "    jmp _hk_glow_bc\n"
+        "3:\n"
+        "    jmp dword ptr [_g_glow_a_go]\n"
+        /* B, C: eax = the game's answer; the hero is a yes too */
+        ".globl _hk_glow_bc\n_hk_glow_bc:\n"
+        "    test eax, eax\n"
+        "    jnz 1f\n" HOOK_ENTER
+        "    sub esp, 8\n"
+        "    push dword ptr [ebx+0]\n" /* edi: the id */
+        "    push dword ptr [ebx+4]\n" /* esi: the player */
+        "    call _c_glow_hero\n"
+        "    add esp, 16\n"
+        "    mov [ebx+28], eax\n" HOOK_LEAVE
+        "    test eax, eax\n"
+        "    jnz 1f\n"
+        "    jmp dword ptr [_g_glow_no]\n"
+        "1:\n"
+        "    jmp dword ptr [_g_glow_yes]\n"
+        ".att_syntax prefix\n");
+
+static void glow_install(void)
+{
+    static const unsigned char a[6] = { 0x0F, 0x8D, 0xAD, 0x01, 0x00, 0x00 };
+    static const unsigned char b[9] = { 0x85, 0xC0, 0x75, 0x41, 0xE9, 0x70, 0x01, 0x00, 0x00 };
+    static const unsigned char c[8] = { 0x85, 0xC0, 0x0F, 0x84, 0x34, 0x01, 0x00, 0x00 };
+    if (memcmp((void *)VA(VA_GLOW_A), a, 6) || memcmp((void *)VA(VA_GLOW_B), b, 9) ||
+        memcmp((void *)VA(VA_GLOW_C), c, 8)) {
+        logf_("ranks: signature mismatch in UnitOut::draw_overlays, the hero has no light");
+        return;
+    }
+    g_glow_yes = (void *)VA(VA_GLOW_YES);
+    g_glow_no = (void *)VA(VA_GLOW_NO);
+    g_glow_a_go = (void *)VA(VA_GLOW_A_GO);
+    hook_jmp5((unsigned char *)VA(VA_GLOW_A), hk_glow_a);
+    hook_jmp5((unsigned char *)VA(VA_GLOW_B), hk_glow_bc);
+    hook_jmp5((unsigned char *)VA(VA_GLOW_C), hk_glow_bc);
+    logf_("ranks: the Survival hero wears the Patriots' light");
+}
+
+/* hero `slot`'s soldiers now (survival.c: its evolution); 0 when it has fallen */
+int ranks_hero_squad(int p, int slot, char **out)
+{
+    if (slot < 0 || slot >= MAX_HEROES || g_heroes[slot].p != p)
+        return 0;
+    for (int i = 0; i < g_heroes[slot].n; i++) {
+        char *u = object(p, g_heroes[slot].ids[i]);
+        if (u && is_unit(u))
+            return squad(captain_of(u), out);
+    }
+    return 0;
+}
+
 static long long cost(char *t)
 {
     long long c = 0;
@@ -262,33 +800,84 @@ static long long cost(char *t)
 
 /* ---- the bonuses (also called from entrench.c and kills.c) ------------------------------- */
 
+/* The heroes' growth (the user, 2026-11-10: "sa fie echilibrat si la infanterie si la
+   cavalerie"): a power factor, percent, by level: 100 to 14, 133 at 15, 200 at 20, 233 at 25,
+   300 at 30. The infantry squad has that many times its 3 soldiers (3, 4, 6, 7, 9: c_hero_uber).
+   The rider stays one unit (the game refills squads only, Unit::repair_damage) and gets the same
+   power as hit points x power and damage and attack rate x its square root each (damage x rate =
+   power: the same damage a second as the squad, without a rider that hits absurdly fast). Both
+   earn their experience divided by the power, so more soldiers do not rank faster. */
+static int hero_power(int l) { return l >= 30 ? 300 : l >= 25 ? 233 : l >= 20 ? 200 : l >= 15 ? 133 : 100; }
+static int isqrt100(int p) /* sqrt(p / 100) x 100 */
+{
+    int r = 100;
+    while ((r + 1) * (r + 1) <= p * 100)
+        r++;
+    return r;
+}
+/* the rider's power (hero slot 1), 100 for anyone else */
+static int rider_power(char *u)
+{
+    char *cap = u ? captain_of(u) : NULL;
+    return HERO_RIDER(hero_slot(cap)) ? hero_power(level(cap)) : 100;
+}
+
 int ranks_damage(char *attacker, int dmg)
 {
+    if (dmg <= 0)
+        return dmg;
     int l = level(attacker);
-    return l && dmg > 0 ? dmg * (100 + g_attack_step * l) / 100 : dmg;
+    if (l) {
+        dmg = dmg * (100 + g_attack_step * l) / 100;
+        int pw = rider_power(attacker);
+        if (pw > 100)
+            dmg = dmg * isqrt100(pw) / 100;
+    }
+    int c = card(attacker, CS_DMG);
+    return c ? dmg * (1000 + c) / 1000 : dmg;
 }
 
 int ranks_recharge(char *u, int r)
 {
-    int l = level(u), rate = l >= 8 ? 20 : l >= 5 ? 10 : 0;
-    if (!rate || r <= 0)
+    if (r <= 0)
         return r;
-    r = r * 100 / (100 + rate);
+    int l = level(u), rate = rate_pct(l), c = card(u, CS_RATE);
+    if (rate <= 0 && !c)
+        return r;
+    if (rate > 0) {
+        r = r * 100 / (100 + rate);
+        int pw = rider_power(u);
+        if (pw > 100)
+            r = r * 100 / isqrt100(pw);
+    }
+    if (c)
+        r = r * 1000 / (1000 + c);
     return r < 1 ? 1 : r;
 }
 
-int ranks_range(char *u, int r) { return r > 0 && level(u) >= 7 ? r + 1 : r; }
+int ranks_range(char *u, int r)
+{
+    if (r <= 0)
+        return r;
+    return r + (level(u) >= 7 ? 1 : 0) + card(u, CS_RANGE);
+}
 
 /* Before Object::take_damage: -10 % from level 6, -20 % at level 10, for a hit by an object (not
-   attrition). *whole = hit points, *part = sixteenths. */
+   attrition), and the Survival cards' armour. *whole = hit points, *part = sixteenths. */
 void ranks_before_hit(char *victim, int *whole, int *part, int attacker_id)
 {
-    if (attacker_id < 0 || level(victim) < 6)
+    if (attacker_id < 0)
+        return;
+    int l = level(victim), c = card(victim, CS_TAKEN);
+    if (l < 6 && !c)
         return;
     int t = *whole * 16 + (signed char)*part;
     if (t <= 0)
         return;
-    t = t * (level(victim) >= 10 ? 80 : 90) / 100;
+    if (l >= 6)
+        t = t * (l >= 10 ? 80 : 90) / 100;
+    if (c)
+        t = t * (1000 - (c > 900 ? 900 : c)) / 1000;
     *whole = t >> 4;
     *part = t & 15;
 }
@@ -299,24 +888,33 @@ static void add_xp(char *att, long long g)
     if (g <= 0)
         return;
     char *cap = captain_of(att), *soldiers[32];
-    int old = xp_of(cap), xp = old + (int)(g > XP_MAX ? XP_MAX : g);
-    if (xp > XP_MAX)
-        xp = XP_MAX;
+    int slot = hero_slot(cap), hero = slot >= 0, top = hero ? XP_MAX * HERO_XP_UNIT : XP_MAX;
+    if (hero)
+        g = g * 100 / hero_power(level(cap));
+    if (hero) { /* below HERO_XP_UNIT is carried here */
+        g += g_heroes[slot].rem;
+        g_heroes[slot].rem = (int)(g % HERO_XP_UNIT);
+    }
+    int old = xp_of(cap), xp = old + (int)(g > top ? top : g);
+    if (xp > top)
+        xp = top;
     if (xp == old)
         return;
     int n = squad(cap, soldiers);
     for (int i = 0; i < n; i++)
         set_xp(soldiers[i], xp);
-    int was = level_of_xp(old), is = level_of_xp(xp);
+    int was = hero ? hero_level_of_xp(old) : level_of_xp(old), is = hero ? hero_level_of_xp(xp) : level_of_xp(xp);
     if (is != was) {
         ((fn1_t)(*(void ***)cap)[VT_UPDATE_HITS / 4])(cap, 0); /* the new hit points */
         if (is > was)
-            rankfx_promoted(cap, is); /* the insignia over its head (rankfx.c) */
+            rankfx_promoted(cap, ins_level(is)); /* the insignia over its head (rankfx.c) */
+        if (hero && is > was)
+            survival_hero_level(owner(cap), is); /* survival.c: the notice */
         static int logged;
         if (logged < 40) {
             logged++;
             logf_("ranks: player %d unit %d (squad of %d) is now level %d, %s (%d / 256 of its cost)", owner(cap),
-                  id_of(cap), n, is, g_name[is], xp);
+                  id_of(cap), n, is, rank_name(is), xp);
         }
     }
 }
@@ -376,10 +974,34 @@ void ranks_after_hit(char *victim, int before, int vmax, int was_decoy, int atta
 /* Once per simulation frame (airdrop.c's Objects::process_all): level 9 and up heal once a second. */
 void ranks_frame(void)
 {
-    if (!g_ranks_enabled || g_heal_pct <= 0)
+    if (!g_ranks_enabled)
         return;
     int t = now();
     if (t % 15)
+        return;
+    hero_refresh();
+    /* the Survival card Iron Blood (cards.c): the hero heals a little every second, in combat too */
+    if (g_cards_on)
+        for (int h = 0; h < MAX_HEROES; h++) {
+            int hp = g_heroes[h].p;
+            if (hp < 0)
+                continue;
+            char *first = NULL;
+            for (int i = 0; i < g_heroes[h].n && !first; i++)
+                first = object(hp, g_heroes[h].ids[i]);
+            int pm = first ? card(first, CS_REGEN) : 0;
+            for (int i = 0; pm > 0 && i < g_heroes[h].n; i++) {
+                char *u = object(hp, g_heroes[h].ids[i]);
+                int lost = u ? *(int *)(u + OBJ_DAMAGE) : 0;
+                if (lost <= 0)
+                    continue;
+                int heal = max_hits(u) * pm / 1000;
+                if (heal < 1)
+                    heal = 1;
+                *(int *)(u + OBJ_DAMAGE) = lost > heal ? lost - heal : 0;
+            }
+        }
+    if (g_heal_pct <= 0)
         return;
     char *objs = *(char **)VA(VA_OBJECTS);
     for (int p = 0; p < 8; p++) {
@@ -461,12 +1083,13 @@ static int shows_rank(char *u)
 }
 
 /* 0..1000 of the way from the current level to the next; 1000 at the last level. */
-static int progress_permille(int xp)
+static int progress_u(char *u)
 {
-    int l = level_of_xp(xp);
-    if (l >= LEVELS)
+    int xp = xp_of(u), l = level_u(u);
+    const int *need = is_hero(u) ? g_hero_need : g_need;
+    if (l >= max_level(u))
         return 1000;
-    return (xp - g_need[l]) * 1000 / (g_need[l + 1] - g_need[l]);
+    return (xp - need[l]) * 1000 / (need[l + 1] - need[l]);
 }
 
 static void solid(const short *r, unsigned color)
@@ -492,9 +1115,9 @@ void ranks_draw_button(char *btn)
     int w = wr[1] - wr[0], h = wr[3] - wr[2];
     if (w < 16 || h < 12)
         return;
-    int xp = xp_of(u), l = level_of_xp(xp);
+    int l = level_u(u);
     char name[16];
-    snprintf(name, sizeof name, "rank_%d", l);
+    snprintf(name, sizeof name, "rank_%d", ins_level(l));
     void *tex = l ? qol_iface_tex(name) : NULL;
     static int logged;
     if (l && !logged) {
@@ -524,10 +1147,10 @@ void ranks_draw_button(char *btn)
     int bh = h / 12 < 3 ? 3 : h / 12, x0 = 2, x1 = w - 2, y1 = h - 2, y0 = y1 - bh;
     short back[4] = { (short)x0, (short)x1, (short)y0, (short)y1 };
     solid(back, 0xC0101010);
-    int fill = (x1 - x0 - 2) * progress_permille(xp) / 1000;
+    int fill = (x1 - x0 - 2) * progress_u(u) / 1000;
     if (fill > 0) {
         short bar[4] = { (short)(x0 + 1), (short)(x0 + 1 + fill), (short)(y0 + 1), (short)(y1 - 1) };
-        solid(bar, l >= LEVELS ? g_tier_rgba[2] : 0xFF20E6FF); /* yellow, gold when complete */
+        solid(bar, l >= max_level(u) ? g_tier_rgba[2] : 0xFF20E6FF); /* yellow, gold when complete */
     }
 }
 
@@ -612,10 +1235,10 @@ int ranks_draw_panel(char *panel, char *u, int kills, int show_kills)
     g_panel_tick = GetTickCount();
 
     /* the insignia and the rank's name */
-    int xp = xp_of(u), l = level_of_xp(xp), x = PX0;
+    int l = level_u(u), x = PX0;
     char text[160];
     if (l) {
-        snprintf(text, sizeof text, "rank_%d", l);
+        snprintf(text, sizeof text, "rank_%d", ins_level(l));
         void *tex = qol_iface_tex(text);
         if (tex) {
             short r[4] = { (short)PX0, (short)(PX0 + 17), (short)top, (short)(top + 20) };
@@ -623,7 +1246,7 @@ int ranks_draw_panel(char *panel, char *u, int kills, int show_kills)
             x = PX0 + 21;
         }
     }
-    const char *name = lang_text(g_name[l]);
+    const char *name = lang_text(rank_name(l));
     panel_text(panel, name, strlen(name) <= 12 ? 12 : 10, 1, 0, x, top, PX1 - (show_kills ? 46 : 0), top + 20);
 
     /* the level, the experience bar and the way to the next rank */
@@ -635,14 +1258,14 @@ int ranks_draw_panel(char *panel, char *u, int kills, int show_kills)
     short in[4] = { (short)(b0 + 1), (short)(b1 - 1), (short)(y + 1), (short)(y + 11) };
     solid(out, 0xFF080808);
     solid(in, 0xFF34302C);
-    int fill = (b1 - b0 - 2) * progress_permille(xp) / 1000;
+    int fill = (b1 - b0 - 2) * progress_u(u) / 1000;
     if (fill > 0) {
         short bar[4] = { (short)(b0 + 1), (short)(b0 + 1 + fill), (short)(y + 1), (short)(y + 11) };
-        solid(bar, l >= LEVELS ? g_tier_rgba[2] : 0xFF20E6FF); /* yellow, gold at the last rank */
+        solid(bar, l >= max_level(u) ? g_tier_rgba[2] : 0xFF20E6FF); /* yellow, gold at the last rank */
         short shine[4] = { bar[0], bar[1], bar[2], (short)(y + 4) };
         solid(shine, 0x50FFFFFF);
     }
-    snprintf(text, sizeof text, "%d%%", progress_permille(xp) / 10);
+    snprintf(text, sizeof text, "%d%%", progress_u(u) / 10);
     panel_text(panel, text, 10, 1, 1, PX1 - 30, y, PX1, y + 12);
 
     /* the bonuses, one per line, the tooltip's pieces */
@@ -663,8 +1286,8 @@ int ranks_draw_panel(char *panel, char *u, int kills, int show_kills)
         }
         n++;
     }
-    if (armed && l >= 5)
-        bonus_line(lines[n++], sizeof lines[0], "+%d%% attack rate,", l >= 8 ? 20 : 10);
+    if (armed && g_rate_step > 0)
+        bonus_line(lines[n++], sizeof lines[0], "+%d%% attack rate,", rate_pct(l));
     if (l >= 6)
         bonus_line(lines[n++], sizeof lines[0], "-%d%% damage taken,", l >= 10 ? 20 : 10);
     if (l >= HEAL_LEVEL)
@@ -719,13 +1342,14 @@ __attribute__((used)) int c_rk_describe(void *self, int *a)
     char *u = opt && g_ranks_enabled ? described_unit(opt) : NULL;
     if (!shows_rank(u))
         return 0;
-    int xp = xp_of(u), l = level_of_xp(xp);
+    int l = level_u(u);
     char line[512];
-    snprintf(line, sizeof line, lang_text("Rank: {%s} (level %d of %d)"), lang_text(g_name[l]), l, LEVELS);
+    snprintf(line, sizeof line, lang_text("Rank: {%s} (level %d of %d)"), lang_text(rank_name(l)), l,
+             max_level(u));
     tip_line(line);
-    if (l < LEVELS)
-        snprintf(line, sizeof line, lang_text("Experience: %d%% of the way to %s"), progress_permille(xp) / 10,
-                 lang_text(g_name[l + 1]));
+    if (l < max_level(u))
+        snprintf(line, sizeof line, lang_text("Experience: %d%% of the way to %s"), progress_u(u) / 10,
+                 lang_text(rank_name(l + 1)));
     else
         snprintf(line, sizeof line, "%s", lang_text("Experience: highest rank"));
     tip_line(line);
@@ -744,8 +1368,8 @@ __attribute__((used)) int c_rk_describe(void *self, int *a)
     tip_line(line);
     n = 0;
     line[0] = 0;
-    if (armed && l >= 5)
-        n += snprintf(line + n, sizeof line - n, lang_text("+%d%% attack rate, "), l >= 8 ? 20 : 10);
+    if (armed && g_rate_step > 0)
+        n += snprintf(line + n, sizeof line - n, lang_text("+%d%% attack rate, "), rate_pct(l));
     if (l >= 6)
         n += snprintf(line + n, sizeof line - n, lang_text("-%d%% damage taken, "), l >= 10 ? 20 : 10);
     if (armed && l >= 7 && (!is_unit(u) || ((fn0_t)VA(VA_MAX_RANGE))(u) > 0))
@@ -768,12 +1392,15 @@ __attribute__((used)) int c_rk_describe(void *self, int *a)
 __attribute__((used)) int c_rk_wall_hits(char *self, int *a)
 {
     int hits = ((fn1_t)g_orig_wall_hits)(self, a[0]);
-    int l = level(self);
-    if (!l)
+    /* the Tank Traps' hit points by their owner's age, the rank and the Survival card Thick
+       Walls (cards.c, tenths of a percent), all at once */
+    int pct = entrench_traps_hits_pct(self), l = level(self), c = card(self, CS_HITS);
+    if (pct == 100 && !l && !c)
         return hits;
+    long long m = (long long)pct * (100 + g_hits_step * l) * (1000 + c); /* / 10^7 */
     int full = *(int *)(self + OBJ_MAXHITS), built = *(int *)(self + B_CONSTRUCT);
-    int up = full * (100 + g_hits_step * l) / 100;
-    built = built >= full ? up : built * (100 + g_hits_step * l) / 100;
+    int up = (int)(full * m / 10000000);
+    built = built >= full ? up : (int)(built * m / 10000000);
     *(int *)(self + OBJ_MAXHITS) = up;
     *(int *)(self + B_CONSTRUCT) = built;
     return a[0] ? up : built;
@@ -783,7 +1410,7 @@ __attribute__((used)) int c_rk_wall_hits(char *self, int *a)
 __attribute__((used)) int c_rk_wall_los(char *self)
 {
     int r = (signed char)self[0x3C];
-    return level(self) >= 3 ? r + 1 : r;
+    return (level(self) >= 3 ? r + 1 : r) + card(self, CS_LOS);
 }
 
 __attribute__((used)) int c_rk_brange(char *self, int *a)
@@ -804,13 +1431,32 @@ void ranks_draw_insignia(char *o, short *rect)
 
 /* The captain works out the squad's hit points and copies them to its soldiers (+0x20); the
    others ask the captain. */
+__attribute__((used)) int c_hero_uber(char *u, char *t);
+
 __attribute__((used)) int c_rk_unit_hits(char *self, int *a)
 {
     int hits = ((fn1_t)g_orig_unit_hits)(self, a[0]);
     int l = level(self);
-    if (!l || !is_captain(self))
+    if (!is_captain(self))
+        return hits;
+    /* a hero's squad is bigger than its type's (survival.c, c_hero_uber): the game
+       counts the squad's hit points for the type's size (the user, 2026-11-10: "170/85"), so they
+       grow in the same proportion */
+    int big = hero_slot(self) >= 0; /* the infantry's six and the riders' two alike */
+    if (big) {
+        char *t = type(self);
+        int base = t ? *(int *)(t + T_UBER) : 1, want = c_hero_uber(self, t);
+        if (base > 0 && want > base)
+            hits = hits * want / base;
+    }
+    int c = card(self, CS_HITS); /* the Survival cards (cards.c), tenths of a percent */
+    if (!l && !big && !c)
         return hits;
     hits = hits * (100 + g_hits_step * l) / 100;
+    if (c)
+        hits = hits * (1000 + c) / 1000;
+    if (rider_power(self) > 100)
+        hits = hits * rider_power(self) / 100;
     char *soldiers[32];
     int n = squad(self, soldiers);
     for (int i = 0; i < n; i++)
@@ -822,7 +1468,7 @@ __attribute__((used)) int c_rk_los(char *self, int *a)
 {
     (void)a;
     int r = ((fn0_t)g_orig_los)(self);
-    return level(self) >= 3 ? r + 1 : r;
+    return (level(self) >= 3 ? r + 1 : r) + card(self, CS_LOS);
 }
 
 /* Colors as the game's: r, g, b, a, then 555 and 565 words, then 2. */
@@ -901,7 +1547,7 @@ __attribute__((used)) void c_rk_bar(char *u, short *rect)
         if (g_ins_n < MAX_INSIGNIA) {
             g_ins[g_ins_n].left = rect[0];
             g_ins[g_ins_n].mid = (short)((rect[2] + rect[3]) / 2);
-            g_ins[g_ins_n].level = (char)(l > LEVELS ? LEVELS : l);
+            g_ins[g_ins_n].level = (char)ins_level(l);
             g_ins_n++;
         }
         return;
@@ -1057,6 +1703,11 @@ __asm__(".intel_syntax noprefix\n"
    kills_install, entrench_install and airdrop_install, which install the shared hooks). */
 void ranks_install(void)
 {
+    /* glow_install(): the Patriots' light, off since 2026-11-10 (the user); the medallion over the
+       hero's head marks it instead (ranks_draw_hero_marks) */
+    uber_install();
+    squad_ring_install();
+    form_side_install();
     if (!g_ranks_enabled && !g_heal_enabled)
         return;
     unsigned char *mem = VirtualAlloc(NULL, 256, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
@@ -1154,6 +1805,7 @@ void ranks_install(void)
     *(INT32 *)(hb + 1) = (INT32)((UINT_PTR)hk_rk_hb - (UINT_PTR)(hb + 5));
     VirtualProtect(hb, 5, old, &old);
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
-    logf_("ranks: on (attack +%d%% and hit points +%d%% per level, healing %d%%/s after %d s, abilities %d%%)",
-          g_attack_step, g_hits_step, g_heal_pct, g_calm_s, g_ability_pct);
+    logf_("ranks: on (damage +%d%%, hit points +%d%%, attack rate +%d%% per level, healing %d%%/s after %d s, "
+          "abilities %d%%)",
+          g_attack_step, g_hits_step, g_rate_step, g_heal_pct, g_calm_s, g_ability_pct);
 }

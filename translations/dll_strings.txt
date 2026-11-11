@@ -56,16 +56,38 @@ AI assistant: let the computer play your nation (Full control) or take it back (
 Minimap size: click for the next one (small, medium, large).
 # play_button.c
 PLAY
-# survival.c, the Survival mode's clocks (followed by two spaces and m:ss)
+# survival.c, the Survival mode's clocks (followed by two spaces and m:ss) and its wave bar ("Wave 7 / 27")
 Survive
+Final assault
 Next wave in
 Boss wave in
 Survived!
+Wave
+Boss
+# ranks.c, the Survival hero's rank above level 10
+Hero
+# unitbans.c's button in the Survival setup ("Hero: Infantry")
+Infantry
+Cavalry
+# survival.c, the setup screen of the Survival button: the fixed Map Style and Script
+Survival plain
+Survival
 # nonukes.c, the Nukes slider of the game setup ("Nukes: 25")
 Nukes
 game rule
 none
 unlimited
+# unitbans.c, the game setup's Units button ("Units: all allowed", "Units: 12 off") and window
+Units
+all allowed
+%d off
+UNITS IN THIS GAME
+Standard units
+Unique units
+Allow all
+%d of %d units turned off
+Click a unit to turn it off, with its later upgrades. The X turns off a whole column.
+Only the host can change them.
 # cityrepair.c, the city's repair switch (tooltip)
 City Repair: On
 City Repair: Off
@@ -77,3 +99,74 @@ Repairing a building: %d%% of its hit points.
 Nothing to repair right now.
 Click to turn it off.
 Click to turn it on.
+# quicksave.c, the message after the quicksave key
+Game saved (Quicksave)
+Quicksave failed
+# survival.c, the Survival setup's game length (the Time Limit combo)
+Short: 30 minutes
+Medium: 45 minutes
+Long: 1 hour
+Very long: 1 hour 30
+# cards.c, the Survival reward cards: the panel
+BOSS WAVE SURVIVED
+Choose one card. Its bonus lasts all game.
+The game is paused until you choose.
+RUINS EXPLORED
+You found a card.
+Click to continue.
+Small card: a quarter of a boss card
+You have %d/%d
+BUILDINGS
+HERO
+ARMY
+AT ONCE
+# cards.c, the cards' names
+Thick Walls
+High Ramparts
+Heavy Shot
+Vigilant Garrison
+Buttresses
+Elite Blade
+Champion's Armour
+Eagle Eye
+War Veteran
+Reinforcements
+Iron Blood
+Discipline
+Shields
+Drill
+Good Rations
+Keen Eyes
+War School
+Infantry Drill
+Cavalry Barding
+Gunnery School
+Tribute
+Mercenaries
+Respite
+# cards.c, whom a card helps
+All your buildings
+Your towers, forts and cities
+Your buildings that shoot
+Your hero
+Your army
+Your ranged units
+Your infantry
+Your cavalry and armour
+Your siege and artillery
+At once
+The next wave
+# cards.c, a card's effect (%s = the amount: "+15%", "-9%", "1", "1/4", "720")
++%s hit points
++%s range
++%s damage
++%s attack speed
+%s damage taken
++%s range and sight
++%s level
++%s soldiers in the squad
+heals %s of its hit points a second, in battle too
+every soldier at least veteran level %s
+%s food, timber, wealth and metal
+two squads of your age's infantry join you
+%s smaller

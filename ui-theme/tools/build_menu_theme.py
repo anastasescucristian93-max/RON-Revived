@@ -33,6 +33,7 @@ Outputs (paths relative to the game folder, under <out>):
   art\revived\minimap_frame.tga the steel frame round the folded minimap (build_minimap_frame.py),
                                declared there too
   art\revived\assist_panel.tga the AI assistant panel (build_assist_panel.py), declared there too
+  art\revived\unit_bans.tga    the game setup's Units window (build_unit_bans.py), in setupwin.xml
   art\revived\hud_digits.tga   the resource panel's digits from a real font (build_hud_digits.py),
                                declared there too
 """
@@ -45,9 +46,12 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 import build_assist_panel
+import build_unit_bans
 import build_flags
 import build_hud_digits
 import build_qol_buttons
+import build_survival_bar
+import build_survival_cards
 import build_rank_icons
 import build_minimap_frame
 
@@ -90,18 +94,21 @@ TILE_V = 40        # length of the vertical edge tiles
 # Button pieces: the game draws them at their texture size (TopMenuSelection::on_button_redraw,
 # end pieces with add_smooth, the middle tiled), so the texture height is the button height.
 # BTN_H rows hold a BTN_PLATE_H plate with transparent rows above and below: the gap between
-# stacked buttons. The three states sit BTN_H + 1 apart, above the title plate at 300..374.
-BTN_X, BTN_Y, BTN_H = 1, 422, 44
-BTN_PLATE_H = 40
+# stacked buttons. The three states sit BTN_H + 1 apart, in rows ATLAS_H added under the old
+# 512 (2026-11-10: taller buttons, the user: "un pic mai inalte si mai putin late", so the
+# shorter titles sit well in them; they no longer fit above the title plate at 300..374).
+ATLAS_H = 1024
+BTN_X, BTN_Y, BTN_H = 1, 600, 56
+BTN_PLATE_H = 46  # 10 px between stacked buttons (the rows are BTN_H apart)
 BTN_L, BTN_M, BTN_R = 19, 291, 19
 # Menu buttons and title are MENU_W wide instead of the game's 454, and the menu windows
 # shrink by the same amount (548 -> 434), so the frame around them, which follows the
 # window, is as narrow as the buttons. The plate is drawn 320 px wide, centred: the end
 # pieces carry BTN_PAD transparent pixels.
-MENU_W = 340
+MENU_W = 270  # 340 before 2026-11-10 (the titles are short now), then 10 % less
 MENU_BUTTON = (MENU_W, BTN_H)  # layout size of the menu buttons (the game's: 454x35)
 MENU_WINDOW_W = 548 - (454 - MENU_W)
-BTN_PAD = (MENU_W - 320) // 2
+BTN_PAD = 10  # the middle piece is tiled to the button's width, so it does not change with it
 BTN_L_TEX, BTN_R_TEX = BTN_L + BTN_PAD, BTN_R + BTN_PAD  # widths of the padded end pieces
 # Dialog buttons ("large_button" in interface.xml and the setup / options / workshop screens),
 # same piece sizes as the game's, in the free rows 150..241 of the atlas.
@@ -191,7 +198,7 @@ def sliced(img, l, m):
 
 
 def build_parts():
-    atlas = Image.new("RGBA", (512, 512))
+    atlas = Image.new("RGBA", (512, ATLAS_H))
     frame = element(5)  # 297x372 riveted metal frame
     fw, fh = frame.size
     corners = {
@@ -519,6 +526,68 @@ def build_jeep_scene(out):
 
 # ---- topmenu.xml ---------------------------------------------------------------------------
 
+SHORT_TITLES = {
+    "Learn to Play": "Tutorial",
+    "Conquer the World Campaigns": "Campaign",
+    "Conquer the World Campaign": "Campaign",
+    "Solo Game": "Solo",
+    "Multiplayer Game": "Multiplayer",
+    "Options &amp; Profiles": "Options",
+    "Tools &amp; Extras": "Extras",
+    "Load a Scenario": "Scenarios",
+    "Load Saved Game": "Load Game",
+    "Recorded Game Playback": "Replays",
+    "Back to Main Menu": "Main Menu",
+    "Back to Multiplayer Menu": "Multiplayer",
+    "QuickMatch": "Quick Match",
+    "Game Browser": "Browse Games",
+    "Scenario Editor": "Editor",
+    "About Rise of Nations": "About",
+    "View Credits": "Credits",
+    "Map Balance Tool": "Map Balance",
+    "Steam Workshop": "Workshop",
+}
+
+
+# String::generate_hash 0x00A1B6B0 (the hash string_lookup.xml keys its texts by, and hash_i of
+# the lower-case text): over the characters from the last to the first, p = PRIMES[i % 50],
+# hash += p * c + PRIMES[c % 50] * (i + 1), 32 bits. PRIMES = the exe's table at 0x00B14500.
+PRIMES = [127, 811, 1597, 2131, 2749, 4759, 5527, 5953, 8117, 9539, 10273, 10753, 11159, 12301, 13217,
+          14207, 15413, 17681, 18661, 19013, 21089, 22051, 25111, 25801, 27457, 28057, 29581, 30809,
+          32611, 34469, 36067, 37511, 38723, 40093, 41983, 43321, 45083, 47431, 49667, 50767, 53453,
+          55469, 57193, 59369, 61987, 65071, 73421, 77849, 84223, 89009]
+
+
+def game_hash(text):
+    h = hi = 0
+    for i in range(len(text) - 1, -1, -1):
+        c, lc, p = ord(text[i]), ord(text[i].lower()), PRIMES[i % 50]
+        h = (h + p * c + PRIMES[c % 50] * (i + 1)) & 0xFFFFFFFF
+        hi = (hi + p * lc + PRIMES[lc % 50] * (i + 1)) & 0xFFFFFFFF
+    return h, hi
+
+
+def build_string_lookup(game):
+    r"""The game's Data\string_lookup.xml with the short menu titles it does not have (SHORT_TITLES)
+    in one more CAT: the menus translate a button's title by the hash of its English text through
+    this file, and the translations (translations\, string_lookup.xml.<id>) then give every
+    language its own word. Checked: game_hash("Quick Battle") = 7943953 / 8581341 as in the file."""
+    src = open(os.path.join(game, "Data", "string_lookup.xml"), encoding="utf-8").read()
+    have = set(re.findall(r">([^<]*)</STRING>", src))
+    new = []
+    for title in dict.fromkeys(list(SHORT_TITLES.values()) + ["Play"]):
+        text = title.replace("&amp;", "&")
+        if text in have or title in have:
+            continue
+        h, hi = game_hash(text)
+        new.append(f'\t\t<STRING hash="{h}" hash_i="{hi}" needed="1">{title}</STRING>')
+    if not new:
+        return src
+    cat = '\t<CAT hash="%d">\n%s\n\t</CAT>\n' % (game_hash("revived_menu")[0], "\n".join(new))
+    end = src.rindex("</ROOT>")
+    return src[:end] + cat + src[end:]
+
+
 def tex(name, rect):
     x, y, w, h = rect
     return f'<IFACETEX name="{name}" texture="TEX_REVIVED_MENU" left="{x}" top="{y}" width="{w}" height="{h}"/>'
@@ -553,10 +622,76 @@ def build_xml(game, rects, scene_sizes, jeep=False):
     # Menu buttons narrower and a little taller, and the menu windows (whose width the frame
     # follows) narrower by as much.
     xml, k = re.subn(r'(<BUTTON\b[^>]*?)width="454" height="35"', r'\g<1>width="%d" height="%d"' % MENU_BUTTON, xml)
+    # The menus place their buttons inc_y apart (36 in the game's file), not by their height: with
+    # BTN_H tall buttons that step made them overlap and the gap left in the texture was covered
+    # (the user, 2026-11-10, twice). One button row a step, so the plates stand 10 px apart.
+    xml, k = re.subn(r'(<POSITIONING\b[^>]*?)inc_y="36"', r'\g<1>inc_y="%d"' % BTN_H, xml)
+    assert k >= 10, "menu button steps"
     assert k > 0, "menu buttons"
     xml, k = re.subn(r'(<[A-Z]+ name="[^"]*" title="[^"]*" left="30" top="40" )width="548" height="768"',
                      r'\g<1>width="%d" height="768"' % MENU_WINDOW_W, xml)
     assert k >= 5, "menu windows"
+    # Short button titles (the user, 2026-11-10: "nu imi plac cuvintele astea lungi"). Titles the
+    # game's string_lookup.xml has (Multiplayer, Options, Load Game, Main Menu, ...) stay translated
+    # in every language; the others show in English there.
+    for old, new in SHORT_TITLES.items():
+        xml = re.sub(r'(<BUTTON name="[^"]*" title=")%s(")' % re.escape(old), r"\g<1>%s\g<2>" % new, xml)
+    # The main menu: Play, Options, Extras, Exit (the user, 2026-11-10); Play opens the PLAY panel
+    # with Tutorial, Campaign, Solo, Multiplayer and Main Menu (camera-smooth\src\survival.c opens it
+    # for the "play_menu" button, as the game opens SOLO for "solo_menu").
+    def play_main(m):
+        block = m.group(0)
+        names = ("tutorial", "ctw", "solo_menu", "solo", "mp_menu")
+        rows = re.findall(r'[ \t]*<BUTTON name="([^"]*)"[^>]*/>\r?\n', block)
+        first = None
+        for row in re.finditer(r'([ \t]*)<BUTTON name="([^"]*)"[^>]*/>\r?\n', block):
+            if row.group(2) in names and first is None:
+                first = row
+        if first is None:
+            return block
+        size = re.search(r'width="\d+" height="\d+"', first.group(0)).group(0)
+        play = '%s<BUTTON name="play_menu" title="Play" %s/>\n' % (first.group(1), size)
+        out, done = [], False
+        for line in block.splitlines(keepends=True):
+            mm = re.match(r'[ \t]*<BUTTON name="([^"]*)"', line)
+            if mm and mm.group(1) in names:
+                if not done:
+                    out.append(play)
+                    done = True
+                continue
+            out.append(line)
+        return "".join(out)
+
+    xml, k = re.subn(r"<MAINMENU\b.*?</MAINMENU>", play_main, xml, flags=re.S)
+    assert k >= 2, "main menus"
+
+    def play_panel(m):
+        solo = m.group(0)
+        head = solo[: solo.index(">") + 1].replace("<SOLO", "<PLAY").replace(
+            'name="Solo Game Menu" title="Solo Game Menu"', 'name="Play" title="Play"')
+        body = solo[solo.index(">") + 1: solo.rindex("</SOLO>")]
+        rows = re.findall(r'([ \t]*)<BUTTON name="([^"]*)" title="[^"]*" (width="\d+" height="\d+")/>', body)
+        ind, _, size = rows[0]
+        buttons = "".join('%s<BUTTON name="%s" title="%s" %s/>\n' % (ind, n, t, size) for n, t in (
+            ("tutorial", "Tutorial"), ("ctw", "Campaign"), ("solo_menu", "Solo"), ("mp_menu", "Multiplayer"),
+            ("back", "Main Menu")))
+        first = body.index(rows[0][0] + "<BUTTON")
+        last = body.rindex("/>") + 2
+        last = body.index("\n", last) + 1
+        panel = head + body[:first] + buttons + body[last:] + "</PLAY>"
+        return panel + "\n    " + solo
+
+    xml, k = re.subn(r"<SOLO\b.*?</SOLO>", play_panel, xml, flags=re.S)
+    assert k >= 2, "play panels"
+    # The Solo menu: a Survival button under Quick Battle (camera-smooth\src\survival.c opens the
+    # Quick Battle setup with the Survival game, the user, 2026-11-10). The menu's frame follows
+    # its buttons, as the main menu's seven do. Only the SOLO blocks: MAINMENU has a solo button too.
+    def add_survival(m):
+        return re.sub(r'([ \t]*)(<BUTTON name="solo" title="Quick Battle" [^>]*/>)',
+                      lambda b: b.group(1) + b.group(2) + "\n" + b.group(1) + b.group(2).replace(
+                          'name="solo" title="Quick Battle"', 'name="survival" title="Survival"'), m.group(0))
+    xml, k = re.subn(r"<SOLO\b.*?</SOLO>", add_survival, xml, flags=re.S)
+    assert k >= 2 and xml.count('name="survival"') == k, "survival button"
     for n, (w, h) in scene_sizes.items():
         xml, k = re.subn(r'(<IFACETEX name="anim_bg0_tex%d"[^>]*?)width="\d+" height="\d+"' % n,
                          r'\g<1>width="%d" height="%d"' % (w, h), xml)
@@ -650,6 +785,36 @@ def capital_star(src):
     return src.replace(old, '<IFACERECT name="capital_star" left="52" top="26" width="22" height="21"/>')
 
 
+def build_conquest_xml(game):
+    """Data\\conquest.xml (Conquer the World's screens: the campaign choice, New / Load Campaign,
+    Back, the battle windows) with the steel dialog buttons of menu_parts.tga (the user,
+    2026-11-10): its "large_button_0/1/2" (wrapper_pieces_02 at 193 / 211 / 354, 47, the game's
+    blue buttons) and the campaign choice's small "Continue" buttons ("small_button_0/1/2" on
+    ctw_mapselect.tga). The atlas is loaded in each window block before its first use (texture
+    ids are per window). The file has no language copies: its texts are looked up like the
+    menus'."""
+    src = open(os.path.join(game, "Data", "conquest.xml"), encoding="utf-8").read()
+    load = '<IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\\art\\revived\\menu_parts.tga" pixformat="PF_32"/>'
+    xs = (POP_X, POP_X + POP_L + 1, POP_X + POP_L + 1 + POP_M + 1)
+    ws = (POP_L, POP_M, POP_R)
+    for part, old_x in enumerate((193, 211, 354)):
+        pat = re.compile(r'<IFACETEX name="large_button_%d" texture="TEX_WRAPPER_1" left="%d" top="47" '
+                         r'width="\d+" height="\d+"/>' % (part, old_x))
+        new = (f'<IFACETEX name="large_button_{part}" texture="TEX_REVIVED_MENU" left="{xs[part]}" top="{POP_Y}" '
+               f'width="{ws[part]}" height="{POP_H}"/>')
+        text = (load + "\n    " + new) if part == 0 else new
+        src, n = pat.subn(lambda m, t=text: t, src)  # a function: the path's backslashes stay as they are
+        assert n, ("conquest large_button", part)
+    for part, old_x in enumerate((314, 319, 432)):
+        pat = re.compile(r'<IFACETEX name="small_button_%d" texture="TEX_CONQ_SETUPWIN1" left="%d" top="0" '
+                         r'width="\d+" height="18"/>' % (part, old_x))
+        new = (f'<IFACETEX name="small_button_{part}" texture="TEX_REVIVED_MENU" left="{xs[part]}" top="{POP_Y}" '
+               f'width="{ws[part]}" height="{POP_H}"/>')
+        src, n = pat.subn(lambda m, t=new: t, src)
+        assert n == 1, ("conquest small_button", part, n)
+    return src
+
+
 def build_popup_xml(game, name, rects, flags):
     """`name` with its blue dialog buttons (wrapper_pieces_02 at 193,47) pointed at the
     steel ones in menu_parts.tga. The atlas is loaded right before each use, in the same
@@ -677,6 +842,7 @@ def build_popup_xml(game, name, rects, flags):
         src = setup_margins(src)
         src = setup_flags(src, flags)
         src = setup_no_nukes(src)
+        src = setup_hero_buttons(src)
     return src
 
 
@@ -824,23 +990,35 @@ def qol_buttons(src):
     lines += build_minimap_frame.tex_lines()  # the folded minimap's steel frame (minimap.c)
     lines += build_assist_panel.tex_lines()  # the AI assistant panel (assist_panel.c)
     lines += [build_hud_digits.load_line()] + build_hud_digits.tex_lines()  # the panel's digits (hud.c)
+    lines += build_survival_bar.tex_lines()  # the Survival wave bar (survival.c)
+    lines += build_survival_cards.tex_lines()  # the Survival reward cards (cards.c)
     # the command panel's empty cell, for the folded selection panel's background (selpanel.c)
     lines += ['<IFACETEX name="sel_blank" texture="TEX_CIV" left="211" top="20" width="60" height="38"/>']
     return src.replace(anchor, anchor + "\n    " + "\n    ".join(lines))
 
 
-# The Nukes slider (camera-smooth\src\nonukes.c, drawn by the DLL over a check box), one per
-# layout: single player shows only the right column (Save to Profile ... Cooperative AI), so it
-# goes at the top of the empty left column, about half the panel wide; multiplayer has no
-# Cooperative AI, so it takes that free last row of the right column. The DLL shows the one
-# that fits. Its art is the game's own slider: the horizontal track (interface.xml's
-# slider_horz) and the caret of the options screen's sliders, both in TEX_WRAPPER_1.
-NO_NUKES_ANCHOR = '        <CHECK name="check10" show="0" percent_width="400" height="21"/>\n      </POSITIONING>\n'
+# The Nukes slider and the Units button (camera-smooth\src\nonukes.c and unitbans.c, drawn by the
+# DLL over check boxes) and the setup screen's check boxes, the same in single player and
+# multiplayer: the right column holds boxes 0-4 (Save to Profile ... Cooperative AI; the DLL shows
+# Cooperative AI greyed in multiplayer, which has none), the left column's first row the slider
+# with the Units button beside it, and the multiplayer-only boxes 5-10 (Allow Observer Chat ...
+# Require Random Nations) the rest: 5-9 under the slider, 10 under Cooperative AI. In single
+# player those stay hidden. The slider's art is the game's own: the horizontal track
+# (interface.xml's slider_horz) and the caret of the options screen's sliders, both in
+# TEX_WRAPPER_1.
+LEFT_COLUMN = ('      <POSITIONING x="20" y="584" inc_y="26">\n' +
+               "".join('        <CHECK name="check%d" show="0" percent_width="400" height="21"/>\n' % i
+                       for i in range(5, 11)) +
+               '      </POSITIONING>\n')
 NO_NUKES = ('      <POSITIONING x="20" y="584">\n'
-            '        <CHECK name="nonukes_solo" show="0" percent_width="520" height="21"/>\n'
+            '        <CHECK name="nonukes" show="0" percent_width="310" height="21"/>\n'
             '      </POSITIONING>\n'
-            '      <POSITIONING y="688">\n'
-            '        <CHECK name="nonukes_mp" show="0" right_inverse="14" percent_width="-400" height="21"/>\n'
+            '      <CHECK name="unitbans" show="0" left_percent="360" top="584" percent_width="160" height="21"/>\n'
+            '      <POSITIONING x="20" y="610" inc_y="26">\n' +
+            "".join('        <CHECK name="check%d" show="0" percent_width="400" height="21"/>\n' % i for i in range(5, 10)) +
+            '      </POSITIONING>\n'
+            '      <POSITIONING y="714">\n'
+            '        <CHECK name="check10" show="0" right_inverse="14" percent_width="-400" height="21"/>\n'
             '      </POSITIONING>\n')
 
 
@@ -854,10 +1032,40 @@ NUKES_TEX = [
 
 
 def setup_no_nukes(src):
-    assert src.count(NO_NUKES_ANCHOR) == 1
-    src = src.replace(NO_NUKES_ANCHOR, NO_NUKES_ANCHOR + NO_NUKES)
+    assert src.count(LEFT_COLUMN) == 1
+    src = src.replace(LEFT_COLUMN, NO_NUKES)
     assert src.count(NUKES_TEX_ANCHOR) == 1
-    return src.replace(NUKES_TEX_ANCHOR, NUKES_TEX_ANCHOR + "\n    " + "\n    ".join(NUKES_TEX))
+    # the Units window's art, icon pages and frame (build_unit_bans.py, unitbans.c)
+    return src.replace(NUKES_TEX_ANCHOR, NUKES_TEX_ANCHOR + "\n    " +
+                       "\n    ".join(NUKES_TEX + build_unit_bans.tex_lines()))
+
+
+# The Survival setup's hero choice (camera-smooth\src\survival.c, the user 2026-11-10): two
+# buttons with the heroes' medallions in the solo players panel, at the bottom of the panel, under the
+# computer rows of a co-op test (top_inverse: from the panel's bottom), hidden by default; survival.c shows them in the Survival setup only and draws them.
+# Their pictures are declared in the SETUPWIN block too, where its find_tex looks.
+HERO_BUTTONS = ('      <BUTTON name="hero_inf" title="" show="0" left="24" top_inverse="190" width="84" height="84"/>\n'
+                '      <BUTTON name="hero_cav" title="" show="0" left="120" top_inverse="190" width="84" height="84"/>\n'
+                # the game's goal (the user, 2026-11-11): what brings the final assault, a Wonder,
+                # the Information Age or the 45 minutes; the game's own alert pictures
+                '      <BUTTON name="goal_wonder" title="" show="0" left="252" top_inverse="190" width="84" height="84"/>\n'
+                '      <BUTTON name="goal_tech" title="" show="0" left="348" top_inverse="190" width="84" height="84"/>\n'
+                '      <BUTTON name="goal_time" title="" show="0" left="444" top_inverse="190" width="84" height="84"/>\n')
+GOAL_TEX = ['<IFACETEXLOAD id="TEX_REVIVED_ALERTS" file="art\\iface_alerts.tga" pixformat="PF_32"/>',
+            '<IFACETEX name="goal_wonder_icon" texture="TEX_REVIVED_ALERTS" left="0" top="149" width="63" height="45"/>',
+            '<IFACETEX name="goal_tech_icon" texture="TEX_REVIVED_ALERTS" left="64" top="260" width="63" height="64"/>',
+            '<IFACETEX name="goal_time_icon" texture="TEX_REVIVED_ALERTS" left="0" top="1" width="63" height="63"/>']
+
+
+def setup_hero_buttons(src):
+    head = '<PLAYERSWINSOLO name="playerswin"'
+    i = src.index(head)
+    j = src.index("\n", i) + 1
+    src = src[:j] + HERO_BUTTONS + src[j:]
+    anchor = '<IFACETEX name="team_color"'
+    assert src.count(anchor) == 1
+    lines = build_survival_bar.tex_lines() + GOAL_TEX
+    return src.replace(anchor, "\n    ".join(lines) + "\n    " + anchor)
 
 
 def setup_flags(src, flags):
@@ -905,12 +1113,21 @@ def main(game, out):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w", encoding="utf-8").write(xml)
     print(path)
+    path = os.path.join(out, "Data", "string_lookup.xml")
+    open(path, "w", encoding="utf-8", newline="\r\n").write(build_string_lookup(game))  # CRLF, as the game's
+    print(path)
     flags = build_flags.main(out)
     build_qol_buttons.main(out)
     build_rank_icons.main(out)
     build_minimap_frame.main(out)
     build_assist_panel.main(out)
+    build_unit_bans.main(out, game)
     build_hud_digits.main(out)
+    build_survival_bar.main(out)
+    build_survival_cards.main(out, write_tga)
+    path = os.path.join(out, "Data", "conquest.xml")
+    open(path, "w", encoding="utf-8").write(build_conquest_xml(game))
+    print(path)
     for name in POP_FILES:
         path = os.path.join(out, "Data", name)
         open(path, "w", encoding="utf-8").write(build_popup_xml(game, name, rects, flags))

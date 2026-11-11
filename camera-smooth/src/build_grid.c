@@ -154,6 +154,8 @@ static float fade(float d)
 /* Called before BuildTypeOut::draw_template(tx, ty, ..., player, ...). */
 __attribute__((used)) void c_draw_grid(char *type, int cx, int cy, int player)
 {
+    if (g_place_extra) /* placement.c's extra ghosts of a line: one grid is enough */
+        return;
     char *world = *(char **)VA(VA_WORLD_PTR);
     char *leaders = *(char **)VA(VA_LEADERS_PTR);
     char *terrain = *(char **)VA(VA_TERRAIN_PTR);

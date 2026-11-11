@@ -124,11 +124,11 @@
     <IFACETEXLOAD id="TEX_WRAPPER_4" file=".\art\wrapper_pieces_05.tga"/>
     <TOPMENUSELECTION name="topmenuselection">
       <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
-      <IFACERECT name="title" left="41" top="22" width="340" height="74"/>
-      <IFACERECT name="title_text" left="41" top="22" width="340" height="60"/>
-      <IFACETEX name="button_left" texture="TEX_REVIVED_MENU" left="1" top="422" width="29" height="44"/>
-      <IFACETEX name="button_mid" texture="TEX_REVIVED_MENU" left="31" top="422" width="291" height="44"/>
-      <IFACETEX name="button_right" texture="TEX_REVIVED_MENU" left="323" top="422" width="29" height="44"/>
+      <IFACERECT name="title" left="41" top="22" width="270" height="74"/>
+      <IFACERECT name="title_text" left="41" top="22" width="270" height="60"/>
+      <IFACETEX name="button_left" texture="TEX_REVIVED_MENU" left="1" top="600" width="29" height="56"/>
+      <IFACETEX name="button_mid" texture="TEX_REVIVED_MENU" left="31" top="600" width="291" height="56"/>
+      <IFACETEX name="button_right" texture="TEX_REVIVED_MENU" left="323" top="600" width="29" height="56"/>
       <IFACETEX name="ribbon" texture="TEX_REVIVED_MENU" left="0" top="300" width="48" height="74"/>
       <IFACETEX name="ribbon" texture="TEX_REVIVED_MENU" left="48" top="300" width="32" height="74"/>
       <IFACETEX name="ribbon" texture="TEX_REVIVED_MENU" left="80" top="300" width="48" height="74"/>
@@ -143,76 +143,88 @@
         <IFACETEX name="edge3" texture="TEX_REVIVED_MENU" left="372" top="0" width="30" height="40"/>
       </IFACEBORDER>
     </TOPMENUSELECTION>
-    <MAINMENU name="Main Menu" title="Main Menu" left="30" top="40" width="434" height="768">
+    <MAINMENU name="Main Menu" title="Main Menu" left="30" top="40" width="364" height="768">
       <STYLE TOP="1" CHILD="0"/>
-      <POSITIONING x="41" y="114" inc_y="36">
-        <BUTTON name="tutorial" title="Learn to Play" width="340" height="44"/>
-        <BUTTON name="ctw" title="Conquer the World Campaigns" width="340" height="44"/>
-        <BUTTON name="solo_menu" title="Solo Game" width="340" height="44"/>
-        <BUTTON name="mp_menu" title="Multiplayer Game" width="340" height="44"/>
-        <BUTTON name="options" title="Options &amp; Profiles" width="340" height="44"/>
-        <BUTTON name="options_menu" title="Tools &amp; Extras" width="340" height="44"/>
-        <BUTTON name="quit" title="Exit" width="340" height="44"/>
+      <POSITIONING x="41" y="114" inc_y="56">
+        <BUTTON name="play_menu" title="Play" width="270" height="56"/>
+        <BUTTON name="options" title="Options" width="270" height="56"/>
+        <BUTTON name="options_menu" title="Extras" width="270" height="56"/>
+        <BUTTON name="quit" title="Exit" width="270" height="56"/>
       </POSITIONING>
     </MAINMENU>
-    <SOLO name="Solo Game Menu" title="Solo Game Menu" left="30" top="40" width="434" height="768">
+    <PLAY name="Play" title="Play" left="30" top="40" width="364" height="768">
       <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
       <STYLE CHILD="0" TOP="1"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="solo" title="Quick Battle" width="340" height="44"/>
-          <BUTTON name="ctw" title="Conquer the World Campaigns" width="340" height="44"/>
-          <BUTTON name="main_load_scenario" title="Load a Scenario" width="340" height="44"/>
-          <BUTTON name="load_solo" title="Load Saved Game" width="340" height="44"/>
-          <BUTTON name="solo_recorded" title="Recorded Game Playback" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="tutorial" title="Tutorial" width="270" height="56"/>
+          <BUTTON name="ctw" title="Campaign" width="270" height="56"/>
+          <BUTTON name="solo_menu" title="Solo" width="270" height="56"/>
+          <BUTTON name="mp_menu" title="Multiplayer" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
+        </POSITIONING>
+      </POSITIONING>
+    </PLAY>
+    <SOLO name="Solo Game Menu" title="Solo Game Menu" left="30" top="40" width="364" height="768">
+      <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
+      <STYLE CHILD="0" TOP="1"/>
+      <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
+      <POSITIONING x="41" y="114">
+        <POSITIONING inc_y="56">
+          <BUTTON name="solo" title="Quick Battle" width="270" height="56"/>
+          <BUTTON name="survival" title="Survival" width="270" height="56"/>
+          <BUTTON name="ctw" title="Campaign" width="270" height="56"/>
+          <BUTTON name="main_load_scenario" title="Scenarios" width="270" height="56"/>
+          <BUTTON name="load_solo" title="Load Game" width="270" height="56"/>
+          <BUTTON name="solo_recorded" title="Replays" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </SOLO>
-    <MULTI name="Multiplayer Game Menu" title="Multiplayer Game Menu" left="30" top="40" width="434" height="768">
+    <MULTI name="Multiplayer Game Menu" title="Multiplayer Game Menu" left="30" top="40" width="364" height="768">
       <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
       <STYLE CHILD="0" TOP="1"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="steamqm" title="QuickMatch" width="340" height="44" disabled="0"/>
-          <BUTTON name="steamlobby" title="Game Browser" width="340" height="44" disabled="0"/>
-          <BUTTON name="steamleaderboards" title="Leaderboards" width="340" height="44" disabled="0"/>
-          <BUTTON name="mp_recorded" title="Recorded Game Playback" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="steamqm" title="Quick Match" width="270" height="56" disabled="0"/>
+          <BUTTON name="steamlobby" title="Browse Games" width="270" height="56" disabled="0"/>
+          <BUTTON name="steamleaderboards" title="Leaderboards" width="270" height="56" disabled="0"/>
+          <BUTTON name="mp_recorded" title="Replays" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </MULTI>
-    <LEADERBOARDS name="Leaderboards Menu" title="Leaderboards Menu" left="30" top="40" width="434" height="768">
+    <LEADERBOARDS name="Leaderboards Menu" title="Leaderboards Menu" left="30" top="40" width="364" height="768">
       <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
       <STYLE CHILD="0" TOP="1"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="Deathmatch" title="Deathmatch" width="340" height="44" disabled="0"/>
-          <BUTTON name="Fast Game" title="Fast Game" width="340" height="44" disabled="0"/>
-          <BUTTON name="No Rush" title="No Rush" width="340" height="44" disabled="0"/>
-          <BUTTON name="Sudden Death" title="Sudden Death" width="340" height="44"/>
-          <BUTTON name="Survival of the Fittest" title="Survival of the Fittest" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Multiplayer Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="Deathmatch" title="Deathmatch" width="270" height="56" disabled="0"/>
+          <BUTTON name="Fast Game" title="Fast Game" width="270" height="56" disabled="0"/>
+          <BUTTON name="No Rush" title="No Rush" width="270" height="56" disabled="0"/>
+          <BUTTON name="Sudden Death" title="Sudden Death" width="270" height="56"/>
+          <BUTTON name="Survival of the Fittest" title="Survival of the Fittest" width="270" height="56"/>
+          <BUTTON name="back" title="Multiplayer" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </LEADERBOARDS>
-    <OPTIONS name="Tools &amp; Extras" title="Tools &amp; Extras" left="30" top="40" width="434" height="768">
+    <OPTIONS name="Tools &amp; Extras" title="Tools &amp; Extras" left="30" top="40" width="364" height="768">
       <STYLE CHILD="0" TOP="1"/>
       <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="editor" title="Scenario Editor" width="340" height="44"/>
-		  <BUTTON name="workshop" title="Steam Workshop" width="340" height="44"/>
-          <BUTTON name="skilltest" title="Skill Test" width="340" height="44"/>
-          <BUTTON name="script_ide" title="Script Editor" width="340" height="44"/>
-          <!--<BUTTON name="map_balance" title="Map Balance Tool" width="340" height="44"/>-->
-          <BUTTON name="credits" title="View Credits" width="340" height="44"/>
-          <BUTTON name="about" title="About Rise of Nations" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="editor" title="Editor" width="270" height="56"/>
+		  <BUTTON name="workshop" title="Workshop" width="270" height="56"/>
+          <BUTTON name="skilltest" title="Skill Test" width="270" height="56"/>
+          <BUTTON name="script_ide" title="Script Editor" width="270" height="56"/>
+          <!--<BUTTON name="map_balance" title="Map Balance" width="270" height="56"/>-->
+          <BUTTON name="credits" title="Credits" width="270" height="56"/>
+          <BUTTON name="about" title="About" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </OPTIONS>
@@ -221,8 +233,8 @@
 		<IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
 		<IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
 		<POSITIONING x="41" y="114">
-			<POSITIONING inc_y="36">
-				<BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+			<POSITIONING inc_y="56">
+				<BUTTON name="back" title="Main Menu" width="270" height="56"/>
 			</POSITIONING>
 		</POSITIONING>
 	</TWITCH>
@@ -292,28 +304,40 @@
     </TOPMENUSELECTION>
     <MAINMENU name="Main Menu" title="Main Menu" left="30" top="40" width="1024" height="768">
       <STYLE TOP="1" CHILD="0"/>
-      <POSITIONING x="41" y="114" inc_y="36">
-        <BUTTON name="tutorial" title="Learn to Play" width="340" height="44"/>
-        <BUTTON name="solo" title="Quick Battle" width="340" height="44"/>
-        <BUTTON name="ctw" title="Conquer the World Campaign" width="340" height="44"/>
-        <BUTTON name="mp_menu" title="Multiplayer Game" width="340" height="44"/>
-        <BUTTON name="options" title="Options &amp; Profiles" width="340" height="44"/>
-        <BUTTON name="about" title="About Rise of Nations" width="340" height="44"/>
-        <BUTTON name="quit" title="Exit" width="340" height="44"/>
+      <POSITIONING x="41" y="114" inc_y="56">
+        <BUTTON name="play_menu" title="Play" width="270" height="56"/>
+        <BUTTON name="options" title="Options" width="270" height="56"/>
+        <BUTTON name="about" title="About" width="270" height="56"/>
+        <BUTTON name="quit" title="Exit" width="270" height="56"/>
       </POSITIONING>
     </MAINMENU>
+    <PLAY name="Play" title="Play" left="30" top="40" width="1024" height="768">
+      <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
+      <STYLE CHILD="0" TOP="1"/>
+      <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
+      <POSITIONING x="41" y="114">
+        <POSITIONING inc_y="56">
+          <BUTTON name="tutorial" title="Tutorial" width="270" height="56"/>
+          <BUTTON name="ctw" title="Campaign" width="270" height="56"/>
+          <BUTTON name="solo_menu" title="Solo" width="270" height="56"/>
+          <BUTTON name="mp_menu" title="Multiplayer" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
+        </POSITIONING>
+      </POSITIONING>
+    </PLAY>
     <SOLO name="Solo Game Menu" title="Solo Game Menu" left="30" top="40" width="1024" height="768">
       <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
       <STYLE CHILD="0" TOP="1"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="solo" title="Quick Battle" width="340" height="44"/>
-          <BUTTON name="ctw" title="Conquer the World Campaign" width="340" height="44"/>
-          <BUTTON name="main_load_scenario" title="Load a Scenario" width="340" height="44"/>
-          <BUTTON name="load_solo" title="Load Saved Game" width="340" height="44"/>
-          <BUTTON name="solo_recorded" title="Recorded Game Playback" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="solo" title="Quick Battle" width="270" height="56"/>
+          <BUTTON name="survival" title="Survival" width="270" height="56"/>
+          <BUTTON name="ctw" title="Campaign" width="270" height="56"/>
+          <BUTTON name="main_load_scenario" title="Scenarios" width="270" height="56"/>
+          <BUTTON name="load_solo" title="Load Game" width="270" height="56"/>
+          <BUTTON name="solo_recorded" title="Replays" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </SOLO>
@@ -322,11 +346,11 @@
       <STYLE CHILD="0" TOP="1"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="gamespy" title="GameSpy Internet Matchmaking" width="340" height="44" disabled="0"/>
-          <BUTTON name="lan" title="Local Area Network or Direct Internet" width="340" height="44"/>
-          <BUTTON name="mp_recorded" title="Recorded Game Playback" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="gamespy" title="GameSpy Internet Matchmaking" width="270" height="56" disabled="0"/>
+          <BUTTON name="lan" title="Local Area Network or Direct Internet" width="270" height="56"/>
+          <BUTTON name="mp_recorded" title="Replays" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </MULTI>
@@ -335,14 +359,14 @@
       <IFACETEXLOAD id="TEX_TOPMENU_0" sort="0" file=".\art\iface_wrapper1.tga" pixformat="PF_32"/>
       <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
       <POSITIONING x="41" y="114">
-        <POSITIONING inc_y="36">
-          <BUTTON name="editor" title="Scenario Editor" width="340" height="44"/>
-          <BUTTON name="skilltest" title="Skill Test" width="340" height="44"/>
-          <BUTTON name="script_ide" title="Script Editor" width="340" height="44"/>
-          <!--<BUTTON name="map_balance" title="Map Balance Tool" width="340" height="44"/>-->
-          <BUTTON name="credits" title="View Credits" width="340" height="44"/>
-          <BUTTON name="about" title="About Rise of Nations" width="340" height="44"/>
-          <BUTTON name="back" title="Back to Main Menu" width="340" height="44"/>
+        <POSITIONING inc_y="56">
+          <BUTTON name="editor" title="Editor" width="270" height="56"/>
+          <BUTTON name="skilltest" title="Skill Test" width="270" height="56"/>
+          <BUTTON name="script_ide" title="Script Editor" width="270" height="56"/>
+          <!--<BUTTON name="map_balance" title="Map Balance" width="270" height="56"/>-->
+          <BUTTON name="credits" title="Credits" width="270" height="56"/>
+          <BUTTON name="about" title="About" width="270" height="56"/>
+          <BUTTON name="back" title="Main Menu" width="270" height="56"/>
         </POSITIONING>
       </POSITIONING>
     </OPTIONS>

@@ -4,58 +4,83 @@ NEXUS MODS PAGE TEXT (BBCode: paste into the Description box as it is)
 --- Name ---
 RON Revived
 
+--- Version ---
+2026.11.08
+
+--- Category ---
+Overhauls
+
 --- Summary / brief overview ---
-Smooth camera and zoom, a cleaner interface, new building art, Romania as a 25th nation, dozens of the game's own bugs fixed and new gameplay: city districts, Airdrop, trenches, missile defence, veteran ranks. One-click install.
+A big overhaul for Rise of Nations: Extended Edition: smooth camera, a cleaner interface, new building art, Romania as a 25th nation, ten languages, music for every nation, new gameplay and dozens of the game's own bugs fixed. One-click install, updates from the launcher.
+
+--- File to upload ---
+dist\RON_Revived-2026.11.08.zip  (main file, about 40 MB)
+File name on Nexus: RON Revived 2026.11.08
+File description: The whole pack. Extract it and double-click install.bat. The nation music is downloaded from the launcher's Extras tray.
 
 --- Description ---
 [size=5][b]RON Revived[/b][/size]
-A mod pack for [b]Rise of Nations: Extended Edition[/b] (Steam). It makes the 20-year-old classic smoother to look at and easier to play, and adds new art, a new nation and new gameplay. The game's own files are never modified: everything goes next to them, and one double-click removes it all again.
-
-[color=#ffcc00][b]Beta:[/b][/color] many of the newest features have not been tested in a full game yet. Please report bugs (with [i]ron_camera.log[/i] from the game folder) in the Bugs tab.
+A mod pack for [b]Rise of Nations: Extended Edition[/b] (Steam). It makes the classic smoother to look at and easier to play, and adds new art, a new nation, new music and new gameplay. The game's own files are never modified: everything goes next to them, and one double-click removes it all again.
 
 [size=4][b]Camera and graphics[/b][/size]
 [list]
 [*]Smooth scrolling and zoom: the camera glides instead of jumping, zoom keeps the point under the cursor, one more zoom step each way
-[*]No vibrating buildings while you scroll, no black ground after zooming, no stuck camera after Alt+Tab
+[*]The arrow keys move the camera the moment you press them
+[*]No shaking buildings while you scroll, no black ground after a zoom, no stuck camera after Alt+Tab
 [*]Smooth, round fog of war instead of the jagged tile grid
 [*]Smooth unit turning (the game had only 256 directions)
-[*]Interface scaling for high-resolution screens
+[*]A sharper, richer picture
+[*]Interface scaling for 1440p, 4K and high-resolution laptop screens
 [/list]
 
 [size=4][b]Interface[/b][/size]
 [list]
-[*]Hover highlight, hit points as numbers, health bars for every soldier of a squad
-[*]Production bar on buildings, rally lines, range circles for towers and forts
-[*]Build grid: green / red tiles while you place a building
-[*]New buttons: select all military buildings, all Airbases, all Docks, the whole army
-[*]Hotkeys printed on the buttons, padlocks on locked options, the missing amount in red on prices you cannot pay
-[*]Selections grouped by unit type, kill counter, craft points bar
-[*]Nation picker as a grid of flags, flags on the game setup screen
-[*]Computer players named after real leaders of their nation
+[*]A folded interface that leaves the map free: the minimap in the top right corner in three sizes, in a steel frame, and the full selection panel next to the command buttons
+[*]A resource panel easier to read, with a bar per resource showing where workers are missing
+[*]Hover highlight, hit points as numbers, larger health bars and a health bar for every soldier of a squad
+[*]Rank, experience and kills of the selected unit; a kill counter
+[*]Build grid: green and red tiles while you place a building; range circles for towers and forts; rally lines; a production bar on buildings
+[*]Command buttons that stand out when you can click them, padlocks on locked options, hotkeys printed on the buttons
+[*]New buttons: select every military building, every Airbase, every Dock or the whole army
+[*]Mixed building selection: train from Barracks, Stables, Factories and Airbases in one panel
+[*]Area strike: drag a circle from your Airbases and every plane takes a target in it
+[*]An AI assistant that can manage your economy, with limits on what it may spend
+[*]A new look for the launcher, the main menu (two redrawn animated scenes), the game setup and the menus
 [/list]
 
 [size=4][b]New building art[/b][/size]
-New buildings for the Romans, Egyptians, Northern Europeans, Dutch, Americans, Spanish, Persians, Nubians, Mongols, Russians and Romania, drawn from the game's own camera angle so they sit on the map like the originals. More nations are in progress.
+New buildings for the Romans, Egyptians, French, Northern Europeans, Dutch, Americans, Spanish, Persians, Nubians, Aztecs, Mongols, Russians and Romania, and a modern art set for every nation, drawn from the game's own camera angle so they sit on the map like the originals. Every people also gets its own modern Citizen icon. More nations are on the way.
 
 [size=4][b]Romania, the 25th nation[/b][/size]
 [list]
-[*]The Power of the Carpathians: stronger attrition against invaders, free attrition research, more Oil
-[*]11 units of its own, quality over quantity: Falxmen, Roxolani Lancers, Viteji, Darabani, Dorobanti, Vanatori de Munte, the IAR-80, the TR-77 and more
+[*]The Power of the Carpathians: stronger attrition against invaders, free attrition research, more Oil, cheaper Forts and Towers
+[*]Units of its own across the ages, from Dacian Falxmen to the R-2 tank and the IAR-80, with their own names and icons
+[*]Its own buildings in every era, from a Dacian sanctuary and village to a communist housing estate
 [*]Leaders and cities from Romanian history: Burebista, Decebalus, Stephen the Great, Michael the Brave...
+[/list]
+
+[size=4][b]Ten languages and music for every nation[/b][/size]
+[list]
+[*]The whole game in Russian, Brazilian Portuguese, Polish, Turkish and Romanian, besides the game's own English, German, Spanish, French and Italian: pick one with the flag button in the launcher
+[*]54 pieces of music, 2 to 4 for each of the 25 nations, with each culture's own instruments (an optional download from the launcher's Extras tray)
 [/list]
 
 [size=4][b]New gameplay[/b][/size]
 [list]
-[*][b]City districts:[/b] late-game Housing, Commerce and Industrial districts built next to your cities, as many as you can pay for
+[*][b]Survival mode:[/b] its own button in the Solo menu; hold out for 45 minutes in the middle of an open plain against waves marching in from the edges of the map, with a wave bar at the right edge of the screen
+[*][b]City districts:[/b] late-game Housing, Commerce and Industrial districts built next to your cities
 [*][b]Airdrop:[/b] an Airbase sends a Chinook that drops two squads of Paratroopers behind enemy lines
-[*][b]Field Fortifications:[/b] ranged infantry dig in: +1 range, faster and stronger attacks, and the fortification takes the hits
-[*][b]Missile defence:[/b] Missile Silos train Interceptors that shoot down enemy nukes; nukes leave radiation and a visible target sign
+[*][b]Field Fortifications and Tank Traps:[/b] infantry dig in; Citizens lay steel obstacles nothing gets through
+[*][b]Missile defence:[/b] Missile Silos train Interceptors that shoot down enemy nukes; nukes leave radiation, and a radiation sign over the target closes in as the nuke falls
+[*][b]Nukes slider:[/b] in the game setup, None, 1 to 250 nuclear weapons, or Unlimited
+[*][b]Veteran ranks:[/b] units, Spies, Generals and towers gain experience and rise through 10 ranks
+[*][b]Cities repair their own buildings[/b]
 [*][b]The General's Heal[/b] replaces Create Decoys
-[*][b]Veteran ranks:[/b] units gain experience and rise through 10 levels
-[*]Units walk through each other and make way, mixed groups move without a slow formation, compact formations
-[*]Aircraft take off together, stronger attrition, the dead stay longer on the battlefield
+[*]Units walk through each other and make way, mixed groups move without a slow formation
+[*]Aircraft take off together, stronger attrition, the dead stay on the battlefield about a minute
 [*]No Armageddon defeat: when the clock runs out, nukes are simply gone
 [*]Auto-trade for idle merchants, fishing boats that find a new fish quickly
+[*]Computer players named after real leaders of their nation, and no longer covering the map with towers
 [/list]
 Almost everything can be turned off one by one in [i]ron_camera.ini[/i] in the game folder.
 
@@ -66,15 +91,19 @@ Almost everything can be turned off one by one in [i]ron_camera.ini[/i] in the g
 [*]Double-click [b]install.bat[/b]. It finds the game through Steam (or asks for the folder with riseofnations.exe).
 [*]Start the game from Steam as usual.
 [/list]
-[b]Update:[/b] install the new version the same way; your settings are kept.
+[b]Updates:[/b] once it is installed, the game's launcher tells you when a new version is out: press [b]Update[/b] on it and it downloads only what changed, installs it and starts the game again. Your settings are kept.
+[b]Extras:[/b] optional content, such as the nation music, comes from the [b]Extras[/b] tray on the launcher's left edge, only if you want it.
 [b]Uninstall:[/b] double-click [b]uninstall.bat[/b]. It removes every file and puts back anything it replaced.
 
 [size=4][b]Good to know[/b][/size]
 [list]
-[*]Made for the Steam version built 2024-06-20. After a game update the camera and gameplay part switches itself off safely until a new version is out.
+[*]Made for the current Steam version of Extended Edition. After a game update the camera and gameplay part switches itself off safely until a new version is out.
 [*][b]Multiplayer:[/b] every player needs the same version of the pack and the same gameplay settings, or the game goes out of sync.
 [*]Not made to run together with other mods that change the rules: turn those off in the game's Mods menu.
-[*]Some antivirus tools flag the [i]winmm.dll[/i] as a false positive: this is how the mod loads into the game (a DLL placed next to the exe). It does not touch anything outside the game.
-[*]Romania's music (George Enescu's Romanian Rhapsodies) is not included: the recording is free in the EU but not in the US.
-[*]The full list of changes is in CHANGES.md inside the zip.
+[*]Some antivirus tools flag [i]winmm.dll[/i] as a false positive: this is how the mod loads into the game (a DLL placed next to the exe). It does not touch anything outside the game.
+[*]If the game crashes, a panel offers to send a crash report to the RON Revived Discord. Nothing is sent unless you press Send.
+[*]The full list of changes is in CHANGES.md inside the zip and on [url=https://github.com/anastasescucristian93-max/RON-Revived]GitHub[/url].
 [/list]
+
+[size=4][b]Feedback[/b][/size]
+Found a bug? Report it in the Bugs tab or on [url=https://github.com/anastasescucristian93-max/RON-Revived/issues]GitHub[/url], and attach [i]ron_camera.log[/i] from the game folder.

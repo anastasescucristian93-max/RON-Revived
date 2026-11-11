@@ -23,6 +23,9 @@
  * The same hook gives the Senator the Spy's Bribe key ([qol] senator_bribe_hotkey): the key table binds Bribe (0x275) in the Spy's key group only, so with a Senator the key
  * did nothing. With a Bribe caster in the selection, the key KeyMap::get_hotkey_string gives for
  * (4, 0x275) presses the Bribe button, as a click on it does.
+ *
+ * quicksave.c's key goes through the same hook, before the others; bigsel.c looks after the
+ * game's handling of every key (a control group called back).
  */
 #include "ron.h"
 #include <math.h>
@@ -383,6 +386,8 @@ static int bribe_letter(void)
 __attribute__((used)) int c_heal_key_down(void *self, int *a)
 {
     int key = a[0];
+    if (quicksave_key(key))
+        return 1;
     char *console = *(char **)VA(VA_CONSOLE), *sel = *(char **)VA(VA_SELECTIONS);
     void *opts = *(void **)VA(VA_OPTIONS);
     if (g_bribe_key && !(key & KEY_MODS) && console && sel && opts) {
@@ -399,7 +404,10 @@ __attribute__((used)) int c_heal_key_down(void *self, int *a)
             return 1;
         }
     }
-    return ((key_down_t)g_orig_key_down)(self, key);
+    unsigned gen = bigsel_gen();
+    int r = ((key_down_t)g_orig_key_down)(self, key);
+    bigsel_after_key(gen); /* bigsel.c: a control group's overflow comes back with it */
+    return r;
 }
 
 void hk_heal_key_down(void);
@@ -430,7 +438,7 @@ void heal_install(void)
             logf_("heal: signature mismatch at UnitOut::draw_underlays, no green rings");
         }
     }
-    if (!(g_heal_enabled && g_key) && !g_bribe_key) {
+    if (!(g_heal_enabled && g_key) && !g_bribe_key && !g_quicksave_key && !g_bigsel_enabled) {
         FlushInstructionCache(GetCurrentProcess(), NULL, 0);
         return;
     }
@@ -441,6 +449,7 @@ void heal_install(void)
         logf_("heal: signature mismatch at Console::on_key_down, no hotkey");
         g_key = 0;
         g_bribe_key = 0;
+        g_quicksave_key = 0;
         return;
     }
     unsigned char *mem = VirtualAlloc(NULL, 64, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
@@ -449,6 +458,7 @@ void heal_install(void)
     g_orig_key_down = hook_trampoline(at, 9, mem);
     hook_jmp5(at, hk_heal_key_down);
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
-    logf_("heal: hotkey %c%s", g_heal_enabled && g_key ? g_key : '-',
-          g_bribe_key ? "; the Senator's Bribe on the Spy's key" : "");
+    logf_("heal: hotkey %c%s%s", g_heal_enabled && g_key ? g_key : '-',
+          g_bribe_key ? "; the Senator's Bribe on the Spy's key" : "",
+          g_quicksave_key ? "; quicksave key" : "");
 }

@@ -2947,7 +2947,7 @@ Aumenta o Alcance de Ataque da Cidade em +$NUMBER2.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Obstáculos antitanque de aço em um único quadrado, construídos pelos cidadãos na Era Moderna e na Era da Informação. Nada passa por eles, nem as suas próprias unidades: o inimigo precisa destruí-los para passar. Coloque-os em linha para fechar uma passagem e deixe um caminho livre para o seu exército. 1200 pontos de vida e blindagem pesada: fuzis mal os arranham; tanques, artilharia e aviões os destroem.</STRING>
+				<BULLET/>Obstáculos em um único quadrado, construídos pelos cidadãos em qualquer era: primeiro estacas afiadas, depois vigas com espetos, em seguida gabiões e, a partir da Era Moderna, ouriços antitanque de aço. Nada passa por eles, nem as suas próprias unidades: o inimigo precisa destruí-los para passar. Coloque-os em linha para fechar uma passagem e deixe um caminho livre para o seu exército. Ficam mais fortes com a sua era: 240 pontos de vida na Era Antiga, 1200 e blindagem pesada a partir da Era Moderna.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>

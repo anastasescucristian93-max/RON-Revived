@@ -3282,7 +3282,7 @@ vos bibliothèques.
 		</ENTRY>
 		<ENTRY name="WASHINGTONMONUMENT">
 			<STRING>
-				<BULLET/>Obstacles antichars en acier sur une case, construits par les citoyens à l'âge moderne et à l'âge de l'information. Rien ne peut les traverser, pas même vos propres unités : l'ennemi doit les détruire pour passer. Alignez-les pour fermer un passage et laissez un chemin libre à votre armée. 1200 points de vie et un blindage lourd : les fusils les égratignent à peine, les chars, l'artillerie et les avions les détruisent.</STRING>
+				<BULLET/>Obstacles sur une case, construits par les citoyens à tous les âges : d'abord des pieux taillés en pointe, puis des poutres hérissées de pointes, ensuite des gabions et, dès l'âge moderne, des hérissons antichars en acier. Rien ne peut les traverser, pas même vos propres unités : l'ennemi doit les détruire pour passer. Alignez-les pour fermer un passage et laissez un chemin libre à votre armée. Ils se renforcent avec votre âge : 240 points de vie à l'Antiquité, 1200 et un blindage lourd dès l'âge moderne.</STRING>
 		</ENTRY>
 		<ENTRY name="TOWER">
 			<STRING>
@@ -4716,16 +4716,7 @@ lourde ennemie.
 
 
          
-            
-
-
-
-
-
-
-         
-            <!--General-->
-			</STRING>
+            <!--General--></STRING>
 		</ENTRY>
 		<ENTRY name="GENERALV">
 			<STRING>
@@ -6527,7 +6518,9 @@ sauf avec des armements lourds.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Transporte une escouade d'élite de parachutistes depuis une base aérienne jusqu'au point choisi, la dépose et rentre. Une partie du prix est remboursée quand il se pose de nouveau sur sa base aérienne.</STRING>
+				<BULLET/>
+             {Chasseur}, âge moderne #ICON33 : déployé sur les porte-avions ; puissant contre les appareils aériens de l'ennemi et utile pour mitrailler ses troupes terrestres.
+            <!--Fighter Bomber--></STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -7853,11 +7846,13 @@ fantassins ennemis.
 		</ENTRY>
 		<ENTRY name="FOUCHE">
 			<STRING>
-				<BULLET/>Infanterie d'élite déposée par un hélicoptère de transport venu d'une base aérienne (Largage aérien). Plus résistante, plus rapide et mieux blindée que l'infanterie d'assaut ; peut capturer des villes.</STRING>
+				<BULLET/>Révèle tous les ennemis. <BULLET/>A le triple de l'énergie d'un espion normal.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="SCHWARZENBERG">
 			<STRING>
-				<BULLET/>Abat les missiles nucléaires ennemis. Chaque silo de missiles en contient jusqu'à 2 et en tire un automatiquement sur chaque missile nucléaire ou MBI ennemi qui passe à portée, s'il peut encore l'atteindre. Un missile nucléaire abattu ne fait aucun dégât et ne compte pas pour l'Armageddon.</STRING>
+				<BULLET/>A le double d'énergie et de points de vie.<BULLET/>Débute avec une équipe de 4 Commandos.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BLUCHER">
 			<STRING>
@@ -8346,20 +8341,8 @@ fantassins ennemis.
 		</ENTRY>
 		<ENTRY name="BARBARIANJAVELINEERS">
 			<STRING>
-				<BULLET/>
-            
-
-
-
-         {Chasseur}, âge moderne #ICON33 : puissant contre les appareils aériens de l'ennemi et utile pour mitrailler ses troupes terrestres.
-
-
-
-
-
-         
-            <!--Fighter-->
-			</STRING>
+				<BULLET/>         Unité Unique Barbare {Infanterie Légère} - rapide, peu onéreuse et à courte distance.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="BARBARIANPHALANX">
 			<STRING>
@@ -8394,20 +8377,8 @@ fantassins ennemis.
 		<ENTRY name="TYPHOON">
 			<STRING>
 				<BULLET/>
-            
-
-
-
-         {Chars}, âge moderne #ICON33 : blindés et extrêmement puissants ; difficiles à détruire
-sauf avec des armes lourdes.
-
-
-
-
-
-         
-            <!--Tank-->
-			</STRING>
+        {Sous-marins}, Ère de l'Information #ICON34 - difficile à détecter que par des destroyers et croiseurs.
+      </STRING>
 		</ENTRY>
 		<ENTRY name="HIND">
 			<STRING>
@@ -8605,7 +8576,7 @@ L'effet est plus important pour les unités de fantassins, plus faible pour les 
 		</ENTRY>
 		<ENTRY name="RALLY">
 			<STRING>
-Soigne vos unités à proximité du général : en 5 secondes, elles récupèrent 25% de leurs points de vie. Les membres d'escouade déjà morts ne reviennent pas.
+Accélère, pendant un court laps de temps, l'attaque des unités amies à proximité du général.
 </STRING>
 		</ENTRY>
 		<ENTRY name="CREATEDECOY">
@@ -8655,7 +8626,25 @@ Les unités de fantassins ou de cavaliers peuvent être victimes d'un tireur iso
 		</ENTRY>
 		<ENTRY name="PARADROP">
 			<STRING>
-				<BULLET/>Un hélicoptère de transport emmène 2 escouades de parachutistes d'élite depuis cette base aérienne jusqu'au point cliqué, les dépose et revient. Un tiers du prix est remboursé quand l'hélicoptère est de retour. Chaque base aérienne peut en envoyer un toutes les 45 secondes. À partir de l'âge de l'information.</STRING>
+				<BULLET/>
+
+
+
+         Insère rapidement des unités derrière les lignes ennemies.
+
+
+
+
+         <BULLET/>
+
+
+
+         Ne peut être initié que depuis un territoire ami.
+
+
+
+
+      </STRING>
 		</ENTRY>
 		<ENTRY name="JAMRADAR">
 			<STRING>
@@ -10543,7 +10532,8 @@ Les espions peuvent {corrompre} les unités ennemies et les convertir à votre c
 			<STRING>
 Les généraux peuvent améliorer la valeur de leurs troupes sur le terrain. Positionnez-les à proximité de leurs troupes pour leur donner plus de valeur au combat. Les généraux peuvent ordonner une {marche forcée} temporaire en augmentant la vitesse de toutes leurs
 troupes. Ils peuvent placer leurs forces en {embuscade} en les cachant des unités ennemies pendant quelque
-temps. Ils peuvent {retrancher} l'infanterie pour la protéger de tirs nourris.
+temps. Ils peuvent {retrancher} l'infanterie pour la protéger de tirs nourris et créer des unités {leurre}
+pour distraire les rangs ennemis et y semer la confusion.
 </STRING>
 		</ENTRY>
 		<ENTRY name="T51">

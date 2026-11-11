@@ -1135,8 +1135,60 @@ static int hook_needed(int shared)
     return g_entrench_enabled || ((shared & SHARED_DC) && g_dc_enabled) || ((shared & SHARED_RANKS) && g_ranks_enabled);
 }
 
+/* ---- the Tank Traps by age ---------------------------------------------------------------- */
+
+/* The Tank Traps can be built in every age (the user, 2026-11-10: wooden stakes in the first
+   ages, sandbags later, the steel hedgehogs from the Modern Age), with one price for all, but
+   their strength follows their owner's age: hit points as a percent of the type's 1200 (ranks.c's
+   Wall::update_hits hook asks here) and the armor (WallData::armor, the buildings' virtual
+   +0x124, replaced in the vtables). Index = age, 1 Ancient .. 8 Information. */
+static const int k_traps_hits[9] = { 100, 20, 25, 35, 45, 60, 80, 100, 100 };
+static const int k_traps_armor[9] = { 8, 2, 2, 3, 4, 5, 6, 8, 8 };
+#define VA_WALL_ARMOR 0x0063FA60u /* WallData::armor(void) const */
+#define VT_ARMOR      0x124
+static void *g_orig_armor;
+
+int entrench_traps_hits_pct(char *o)
+{
+    if (!o || !*(char **)(o + OBJ_TYPE) || type_of(o) != TANK_TRAPS)
+        return 100;
+    int age = player_age(owner(o));
+    return age >= 1 && age <= 8 ? k_traps_hits[age] : 100;
+}
+
+__attribute__((used, thiscall)) static int c_traps_armor(char *self)
+{
+    int armor = ((int(__attribute__((thiscall)) *)(void *))g_orig_armor)(self);
+    if (self && *(char **)(self + OBJ_TYPE) && type_of(self) == TANK_TRAPS) {
+        int age = player_age(owner(self));
+        if (age >= 1 && age <= 8)
+            armor = k_traps_armor[age];
+    }
+    return armor;
+}
+
+/* every vtable of the building classes whose armor slot is WallData::armor */
+static void traps_armor_install(void)
+{
+    static const UINT_PTR vtables[] = { 0x00B42174u /* Build */, 0x00B42CF8u /* Wall */ };
+    int n = 0;
+    for (int i = 0; i < 2; i++) {
+        void **slot = (void **)(VA(vtables[i]) + VT_ARMOR);
+        if (*slot != (void *)VA(VA_WALL_ARMOR))
+            continue;
+        g_orig_armor = *slot;
+        DWORD old;
+        VirtualProtect(slot, 4, PAGE_READWRITE, &old);
+        *slot = (void *)c_traps_armor;
+        VirtualProtect(slot, 4, old, &old);
+        n++;
+    }
+    logf_(n ? "tank traps: armor by age in %d building vtable(s)" : "tank traps: WallData::armor not found in the vtables (%d), one armor for every age", n);
+}
+
 void entrench_install(void)
 {
+    traps_armor_install();
     if (!g_entrench_enabled && !g_dc_enabled && !g_ranks_enabled)
         return;
     static const struct {

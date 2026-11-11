@@ -322,8 +322,11 @@ static DWORD WINAPI index_thread(void *arg)
 
 /* --- the download ------------------------------------------------------------------------- */
 
-/* `url` into `path`, its SHA-256 checked against `sha`; 1 when it arrived whole */
-static int download(const char *url, const WCHAR *path, const char *sha)
+/* `url` into `path`, its SHA-256 checked against `sha`; 1 when it arrived whole. `done_kb` grows
+   by what arrives (it starts where the caller left it); a non-zero `*cancel` stops it. Also the
+   updater's (launcher_update.c). */
+int launcher_download(const char *url, const WCHAR *path, const char *sha, volatile LONG *done_kb,
+                      volatile LONG *cancel)
 {
     WCHAR wurl[1024], host[256], upath[1024];
     MultiByteToWideChar(CP_UTF8, 0, url, -1, wurl, 1024);
@@ -359,16 +362,16 @@ static int download(const char *url, const WCHAR *path, const char *sha)
         (f = CreateFileW(path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL)) !=
             INVALID_HANDLE_VALUE) {
         DWORD n = 0, wrote;
-        double done = 0, base = g_op.done_kb * 1024.0;
+        double done = 0, base = *done_kb * 1024.0;
         ok = 1;
         while (WinHttpReadData(r, buf, sizeof buf, &n) && n) {
-            if (g_op.cancel || !WriteFile(f, buf, n, &wrote, NULL) || wrote != n) {
+            if (*cancel || !WriteFile(f, buf, n, &wrote, NULL) || wrote != n) {
                 ok = 0;
                 break;
             }
             BCryptHashData(hash, buf, n, 0);
             done += n;
-            InterlockedExchange(&g_op.done_kb, (LONG)((base + done) / 1024.0));
+            InterlockedExchange(done_kb, (LONG)((base + done) / 1024.0));
         }
         unsigned char digest[32];
         char hex[72];
@@ -377,11 +380,11 @@ static int download(const char *url, const WCHAR *path, const char *sha)
                 snprintf(hex + i * 2, 3, "%02x", digest[i]);
             ok = _stricmp(hex, sha) == 0;
             if (!ok)
-                logf_("extras: %s arrived with SHA-256 %s, not %s", url, hex, sha);
+                logf_("download: %s arrived with SHA-256 %s, not %s", url, hex, sha);
         } else
             ok = 0;
     } else
-        logf_("extras: %s answered %lu (error %lu)", url, status, GetLastError());
+        logf_("download: %s answered %lu (error %lu)", url, status, GetLastError());
     if (f != INVALID_HANDLE_VALUE)
         CloseHandle(f);
     if (hash)
@@ -455,7 +458,7 @@ static DWORD WINAPI op_thread(void *arg)
                 MultiByteToWideChar(CP_UTF8, 0, x->ch[i].zip, -1, wzip, 160);
                 _snwprintf(path, MAX_PATH, L"%ls%ls", dir, wzip);
                 path[MAX_PATH - 1] = 0;
-                ok = download(url, path, x->ch[i].sha);
+                ok = launcher_download(url, path, x->ch[i].sha, &g_op.done_kb, &g_op.cancel);
                 if (i)
                     wcscat(zips, L";");
                 wcscat(zips, path);

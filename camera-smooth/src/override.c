@@ -122,11 +122,34 @@ static find_ex_w_t r_find_ex_w;
 /* Only reads are redirected: anything opened for writing (logs, saves, prefs) stays put. */
 #define WRITE_ACCESS (GENERIC_WRITE | GENERIC_ALL | FILE_WRITE_DATA | FILE_APPEND_DATA | DELETE)
 
+/* One exception: the game saves its string table (Data\string_lookup.xml and the language copies)
+   with every text it met that the table did not have (found 2026-11-10: our short menu titles
+   were written into the game's own file). Those writes go to mod_override\ instead, so the game's
+   file stays as it shipped. */
+static const wchar_t *lookup_write(const wchar_t *name, wchar_t *out, int size)
+{
+    if (!g_active || !name || TlsGetValue(g_tls_busy))
+        return NULL;
+    char a[MAX_PATH], buf[MAX_PATH];
+    if (!WideCharToMultiByte(CP_ACP, 0, name, -1, a, sizeof a, NULL, NULL))
+        return NULL;
+    const char *rel = relative(a, buf, sizeof buf);
+    if (!rel || _strnicmp(rel, "Data\\string_lookup.xml", 22) != 0)
+        return NULL;
+    char o[MAX_PATH];
+    snprintf(o, sizeof o, "%s%s", g_root, rel);
+    if (first_time(rel))
+        logf_("override: the game writes %s, into mod_override", rel);
+    return MultiByteToWideChar(CP_ACP, 0, o, -1, out, size) ? out : NULL;
+}
+
 static HANDLE WINAPI h_create_w(LPCWSTR name, DWORD access, DWORD share, LPSECURITY_ATTRIBUTES sa, DWORD disp,
                                 DWORD flags, HANDLE tmpl)
 {
     wchar_t o[MAX_PATH];
-    const wchar_t *p = !(access & WRITE_ACCESS) && disp == OPEN_EXISTING ? override_w(name, o, MAX_PATH) : NULL;
+    const wchar_t *p = !(access & WRITE_ACCESS) && disp == OPEN_EXISTING ? override_w(name, o, MAX_PATH)
+                       : (access & WRITE_ACCESS)                         ? lookup_write(name, o, MAX_PATH)
+                                                                         : NULL;
     return r_create_w(p ? p : name, access, share, sa, disp, flags, tmpl);
 }
 

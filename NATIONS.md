@@ -261,7 +261,13 @@ The user plays a random match and improves the nation they get.
 ## Romania
 
 - **New nation** (`romania`, 2026-10-26): tribe 24, key `romania` (for `nation_art.ini` sections).
-- **Buildings now:** the game's Northern European style (`BUILD_CONTINENT 1 NEuro`): Greco-Roman `_0m` in ages 1-3, Northern European `_3n` in 4-5, generic modern in 6-8. None of our art.
+- **Buildings now:** the game's Northern European style (`BUILD_CONTINENT 1 NEuro`): Greco-Roman `_0m` in ages 1-3, Northern European `_3n` in 4-5, generic modern in 6-8, with ours over it where listed below.
+- **Still the game's art (audit 2026-11-09, `romanian-buildings/work/all_buildings.py`):**
+  - Ages 1-3 (Greco-Roman columns next to our Dacian art): Senate, University, Library, Market, Barracks, Stable, Siege Factory, Granary, Lumber Mill, Smelter, Dock.
+  - Ages 4-5 (Northern European half-timbering): Small City, Large City, Temple (4-6), Senate (4-6: the British Parliament with Big Ben), Library, University, Market, Barracks, Stable, Factory, Granary, Lumber Mill, Smelter, Dock.
+  - Age 6 (generic modern next to our Neo-Romanian cities): Library, University, Market, Barracks, Auto Plant, Factory, Smelter, Airbase, Missile Silo.
+  - Major City (`metro_6`) before age 7. Every age: Lookout, Woodcutter, Mine, Oil Well, Refinery (shared camps, low priority), houses.
+  - Depth meshes: all 27 Romanian meshes remade with cards on 2026-11-09 (see `roman-buildings/ENGINE_NOTES.md`); to check in game against wheat behind the buildings.
 - **Units:** European style; in every line the model the Russians have, without the Russian uniques. 12 units of its own (stats); the first with a model of its own is the IAR-80 fighter (2026-10-28, Tripo model by the user). Next, in order of difficulty: TACAM T-60 (Armored Car line, user generating it), R-2, TR-85M1 Bizonul, LAROM; infantry and cavalry (Dorobanti, Vanatori de Munte, Falxmen, Roxolani Lancers) last, they need the biped skeleton. Gemini paints German crosses when asked for Michael's Cross: ask for no insignia, paint them in code (`tools/make_plane.py`).
 - **To improve** (proposal, to agree with the user; one building at a time):
   1. Ages 1-3, Dacian: Sarmizegetusa Regia (the round and rectangular sanctuaries with andesite columns, the stone walls of the citadels with the murus dacicus) for the Temple and Fort. The Small City of ages 1-3 is an old Romanian village like the Village Museum's (the user, 2026-10-27, after a Dacian hut village): limewashed clay houses with very tall, steep thatched roofs, a log house, wattle fences capped with straw; the player colour is the painted band (brau) at the foot of the white walls.
