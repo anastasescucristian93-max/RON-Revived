@@ -235,6 +235,7 @@ int survival_hidden_check(int id);     /* a check box (or the Nukes slider 14) i
 int survival_hero_choice(void);        /* the Survival hero: 0 infantry, 1 cavalry */
 void survival_hero_toggle(void);       /* unitbans.c's button in the Survival setup */
 int survival_button_redraw(char *sw, char *button); /* unitbans.c's on_button_redraw hook */
+void unitbans_button_text(char *button, int l, int t, int r, int b, const char *s, int size, int bold, unsigned rgb);
 void survival_hide_box(char *box);
 void survival_fix_rules(char *sw);     /* its fixed, locked rules; nonukes.c before setup_game */
 void survival_before_game(char *sw);   /* its battle director (added, white); nonukes.c, after it */

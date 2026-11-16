@@ -2,7 +2,7 @@
  * The launcher's Extras tray ([extras] in ron_camera.ini): optional downloads, such as the
  * nation music, that are not in the pack's zip, so a player takes only what they want.
  *
- * On the launcher's left edge, beside the button panel, sits the front of a tray, like a CD
+ * On the launcher's left edge, hanging from its top left corner, sits the front of a tray, like a CD
  * drive's: "EXTRAS" up its face, an eject mark, a light, how many extras are installed of how
  * many there are ("3/7") and a red badge with the news (extras not seen yet and installed ones
  * with a newer version out). A click ejects the tray from behind the launcher (it unlatches,
@@ -28,10 +28,19 @@
  * installs them with RON_Revived_install.ps1 (backups and RON_Revived_files.txt as for the pack).
  * Remove runs it too. The texts are launcher_res\locale\<code>.ini ron_extras_* and
  * ron_extra_<id>, ron_extra_<id>_desc (translations\launcher.json).
+ *
+ * Below the extras come the links: other authors' mods on the Steam Workshop ("links=<id>" on the
+ * list, "workshop.<id>=<item id>"; package\build_package.py LINKS). Nothing of theirs comes from us:
+ * the row says whether the player has the item (its folder under steamapps\workshop\content\
+ * 287450\<item>) and whether it is on (mods\mod-status.txt, which the game writes, says "Yes" in
+ * its ENABLED column), and its button opens the item's Workshop page in Steam. Being on the list,
+ * a link can be taken out without a new launcher.
  */
 #include "ron.h"
+#include <shellapi.h>
 #include <winhttp.h>
 #include <bcrypt.h>
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -80,9 +89,12 @@ typedef struct {
     double bytes;
     char have[80]; /* the installed content hash, "" when not installed */
     int seen, fresh, failed;
+    int link;          /* a link to a Workshop item, not a download */
+    char workshop[24]; /* its item id */
+    int wst;           /* ST_WOFF, ST_WSUB or ST_WON */
 } extra_t;
 
-enum { ST_OFF, ST_ON, ST_UPDATE, ST_GET, ST_INSTALL, ST_REMOVE, ST_FAILED };
+enum { ST_OFF, ST_ON, ST_UPDATE, ST_GET, ST_INSTALL, ST_REMOVE, ST_FAILED, ST_WOFF, ST_WSUB, ST_WON };
 enum { OP_NONE, OP_GET, OP_REMOVE };
 
 static char g_index[512];
@@ -106,7 +118,7 @@ static struct {
 
 /* the background window's shape and where the tray goes */
 static unsigned char *g_alpha;
-static int g_bgw, g_bgh, g_edge, g_top, g_bottom;
+static int g_bgw, g_bgh, g_edge, g_top, g_bottom, g_anchor;
 
 static HWND g_dlg;
 static HWND volatile g_win;
@@ -174,13 +186,86 @@ static void megabytes(double bytes, WCHAR *out, int size)
 
 /* --- what is installed, what was seen ----------------------------------------------------- */
 
+/* 1 when the game's mods\mod-status.txt has Workshop item `item` turned on. The game writes it in
+   UTF-16, a line per mod: ID, "MOD NAME", PRIORITY, ENABLED (Yes/No), LOCAL, ... WORKSHOPID. */
+static int workshop_on(const char *item)
+{
+    char path[MAX_PATH];
+    snprintf(path, sizeof path, "%smods\\mod-status.txt", g_dir);
+    HANDLE f = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+    if (f == INVALID_HANDLE_VALUE)
+        return 0;
+    static unsigned char raw[65536];
+    static char txt[32768];
+    DWORD n = 0;
+    ReadFile(f, raw, sizeof raw - 2, &n, NULL);
+    CloseHandle(f);
+    /* its letters are ASCII: the UTF-16's low bytes */
+    int wide = n >= 2 && ((raw[0] == 0xFF && raw[1] == 0xFE) || raw[1] == 0), k = 0;
+    for (DWORD i = wide && raw[0] == 0xFF ? 2 : 0; i < n && k < (int)sizeof txt - 1; i += wide ? 2 : 1)
+        txt[k++] = raw[i] ? (char)raw[i] : ' ';
+    txt[k] = 0;
+    size_t len = strlen(item);
+    for (char *line = txt; line && *line;) {
+        char *next = strchr(line, '\n');
+        if (next)
+            *next = 0;
+        char *at = strstr(line, item);
+        /* the id as a word of its own */
+        if (at && (at == line || !isdigit((unsigned char)at[-1])) && !isdigit((unsigned char)at[len])) {
+            char *name_end = strrchr(line, '"'), prio[16], on[16];
+            if (name_end && sscanf(name_end + 1, "%15s %15s", prio, on) == 2)
+                return !_stricmp(on, "Yes") || !strcmp(on, "1");
+        }
+        line = next ? next + 1 : NULL;
+    }
+    return 0;
+}
+
+/* a link's state: is the Workshop item on this PC (steamapps\workshop\content\287450\<item>, next
+   to steamapps\common\<the game>) and is it on */
+static void read_link(int i)
+{
+    char steamapps[MAX_PATH], dir[MAX_PATH];
+    g_x[i].wst = ST_WOFF;
+    snprintf(steamapps, sizeof steamapps, "%s", g_dir);
+    for (int up = 0; up < 3; up++) { /* the trailing "\", the game's folder, "common" */
+        char *s = strrchr(steamapps, '\\');
+        if (!s)
+            return;
+        *s = 0;
+    }
+    snprintf(dir, sizeof dir, "%s\\workshop\\content\\287450\\%s\\*", steamapps, g_x[i].workshop);
+    WIN32_FIND_DATAA fd;
+    HANDLE h = FindFirstFileA(dir, &fd);
+    int has = 0;
+    if (h != INVALID_HANDLE_VALUE) {
+        do
+            has |= strcmp(fd.cFileName, ".") && strcmp(fd.cFileName, "..");
+        while (!has && FindNextFileA(h, &fd));
+        FindClose(h);
+    }
+    if (has)
+        g_x[i].wst = workshop_on(g_x[i].workshop) ? ST_WON : ST_WSUB;
+}
+
+static void read_links(void)
+{
+    for (int i = 0; i < g_nx; i++)
+        if (g_x[i].link)
+            read_link(i);
+}
+
 static void read_have(void)
 {
     char parts[MAX_PATH], seen[MAX_PATH], v[8];
+    read_links();
     snprintf(parts, sizeof parts, "%sRON_Revived_parts.txt", g_dir);
     snprintf(seen, sizeof seen, "%sRON_Revived_extras.ini", g_dir);
     for (int i = 0; i < g_nx; i++) {
-        GetPrivateProfileStringA("parts", g_x[i].id, "", g_x[i].have, sizeof g_x[i].have, parts);
+        g_x[i].have[0] = 0;
+        if (!g_x[i].link)
+            GetPrivateProfileStringA("parts", g_x[i].id, "", g_x[i].have, sizeof g_x[i].have, parts);
         GetPrivateProfileStringA("seen", g_x[i].id, "", v, sizeof v, seen);
         g_x[i].seen = v[0] == '1';
     }
@@ -200,6 +285,8 @@ static void mark_seen(void)
 
 static int state_of(int i)
 {
+    if (g_x[i].link)
+        return g_x[i].wst;
     if (g_op.kind != OP_NONE && g_op.which == i)
         return g_op.kind == OP_REMOVE ? ST_REMOVE : g_op.installing ? ST_INSTALL : ST_GET;
     if (g_x[i].failed)
@@ -214,6 +301,15 @@ static int count_installed(void)
     int n = 0;
     for (int i = 0; i < g_nx; i++)
         n += g_x[i].have[0] != 0;
+    return n;
+}
+
+/* the extras without the links: the "3/7" counts only what the tray installs */
+static int count_extras(void)
+{
+    int n = 0;
+    for (int i = 0; i < g_nx; i++)
+        n += !g_x[i].link;
     return n;
 }
 
@@ -238,15 +334,17 @@ static int find_extra(const char *id, int len)
 
 static void parse_index(char *buf)
 {
-    /* the list of extras first, then their lines */
+    /* the list of extras and links first, then their lines */
     for (char *line = buf; line && *line;) {
         char *next = strchr(line, '\n');
-        if (!strncmp(line, "extras=", 7)) {
-            for (char *p = line + 7; *p && *p != '\n' && *p != '\r' && g_nx < MAXX;) {
+        int links = !strncmp(line, "links=", 6);
+        if (links || !strncmp(line, "extras=", 7)) {
+            for (char *p = line + (links ? 6 : 7); *p && *p != '\n' && *p != '\r' && g_nx < MAXX;) {
                 size_t n = strcspn(p, ",\r\n");
                 if (n && n < sizeof g_x[0].id) {
                     memcpy(g_x[g_nx].id, p, n);
                     g_x[g_nx].id[n] = 0;
+                    g_x[g_nx].link = links;
                     g_nx++;
                 }
                 p += n;
@@ -281,7 +379,12 @@ static void parse_index(char *buf)
             MultiByteToWideChar(CP_UTF8, 0, val, -1, g_x[i].name, 96);
         else if (!strncmp(text, "desc.", 5) && (i = find_extra(text + 5, (int)strlen(text + 5))) >= 0)
             MultiByteToWideChar(CP_UTF8, 0, val, -1, g_x[i].desc, 200);
-        else if ((i = find_extra(text, (int)strlen(text))) >= 0) {
+        else if (!strncmp(text, "workshop.", 9) && (i = find_extra(text + 9, (int)strlen(text + 9))) >= 0) {
+            /* digits only: it goes into a steam:// address */
+            size_t n = strspn(val, "0123456789");
+            if (g_x[i].link && n && n < sizeof g_x[i].workshop && !val[n])
+                memcpy(g_x[i].workshop, val, n + 1);
+        } else if ((i = find_extra(text, (int)strlen(text))) >= 0 && !g_x[i].link) {
             /* <content> then <sha256> <bytes> <zip> per zip */
             int at = 0, n = 0;
             if (sscanf(val, "%79s%n", g_x[i].content, &n) != 1)
@@ -297,10 +400,10 @@ static void parse_index(char *buf)
             }
         }
     }
-    /* an extra without zips is not offered */
+    /* an extra without zips is not offered, nor a link without its item */
     int k = 0;
     for (int i = 0; i < g_nx; i++)
-        if (g_x[i].nch && g_x[i].content[0])
+        if (g_x[i].link ? g_x[i].workshop[0] != 0 : g_x[i].nch && g_x[i].content[0])
             g_x[k++] = g_x[i];
     g_nx = k;
 }
@@ -867,16 +970,16 @@ static void draw_button(int i, float bx, float top)
 {
     float x0, y0, x1, y1;
     button_rect(i, bx, top, &x0, &y0, &x1, &y1);
-    int st = state_of(i), busy = g_op.kind != OP_NONE && g_op.which != i;
+    int st = state_of(i), busy = g_op.kind != OP_NONE && g_op.which != i && !g_x[i].link;
     float hv = g_m.hv[i], a = busy ? 0.45f : 1.0f, rad = 4.0f * g_k;
     WCHAR cap[64], under[64] = L"", fmt[64], mb[32], mb2[32];
     /* the plate: dim when the extra is not there, lit when it is */
     paint_t p = STEEL;
-    if (st == ST_OFF || st == ST_FAILED)
+    if (st == ST_OFF || st == ST_FAILED || st == ST_WOFF)
         p.r0 = 70, p.g0 = 72, p.b0 = 76, p.r1 = 44, p.g1 = 46, p.b1 = 50;
-    else if (st == ST_ON)
+    else if (st == ST_ON || st == ST_WON)
         p.r0 = 92, p.g0 = 100, p.b0 = 98, p.r1 = 54, p.g1 = 60, p.b1 = 60;
-    else if (st == ST_UPDATE)
+    else if (st == ST_UPDATE || st == ST_WSUB)
         p.r0 = 120, p.g0 = 96, p.b0 = 60, p.r1 = 70, p.g1 = 52, p.b1 = 32;
     float lift = 14.0f * hv;
     p.r0 += lift, p.g0 += lift, p.b0 += lift, p.r1 += lift, p.g1 += lift, p.b1 += lift;
@@ -884,7 +987,27 @@ static void draw_button(int i, float bx, float top)
     shadow_rr(x0, y0 + 1.5f * g_k, x1, y1 + 1.5f * g_k, rad, 4.0f * g_k, 0.5f * a);
     fill_rr(x0, y0, x1, y1, rad, &p, a);
     float led_x = x0 + 11.0f * g_k, led_y = (y0 + y1) / 2.0f, led_r = 3.4f * g_k;
-    if (st == ST_GET) {
+    if (st == ST_WOFF || st == ST_WSUB || st == ST_WON) {
+        /* a Workshop item: not on the PC, there but off in the game's Mods menu, on. A click
+           opens its page in Steam. */
+        if (st == ST_WOFF) {
+            say("ron_extras_steam_get", L"Get on Steam", cap, 64);
+            say("ron_extras_steam_where", L"Steam Workshop", under, 64);
+            lamp(led_x, led_y, led_r, 80, 82, 86, 0.0f);
+        } else {
+            if (hv > 0.5f)
+                say("ron_extras_steam_open", L"Open in Steam", cap, 64);
+            else if (st == ST_WSUB)
+                say("ron_extras_steam_sub", L"Subscribed", cap, 64);
+            else
+                say("ron_extras_steam_on", L"Active", cap, 64);
+            if (st == ST_WSUB) {
+                say("ron_extras_steam_turn_on", L"Turn it on in Mods", under, 64);
+                lamp(led_x, led_y, led_r, 255, 176, 60, 0.6f);
+            } else
+                lamp(led_x, led_y, led_r, 90, 230, 120, 0.9f);
+        }
+    } else if (st == ST_GET) {
         double total = g_x[i].bytes > 0 ? g_x[i].bytes : 1;
         float f = clampf((float)(g_op.done_kb * 1024.0 / total), 0.0f, 1.0f);
         paint_t bar = {226, 160, 58, 150, 92, 30, 0, 2.0f, 0};
@@ -936,7 +1059,7 @@ static void draw_button(int i, float bx, float top)
     int has_led = st != ST_GET && st != ST_INSTALL && st != ST_REMOVE;
     float cx0 = has_led ? x0 + 20.0f * g_k : x0 + 6.0f * g_k;
     const label_t *lb = text(cap, 14.5f * g_k, FW_SEMIBOLD, (int)(x1 - cx0 - 6.0f * g_k), 0);
-    float bright = st == ST_OFF || st == ST_FAILED ? 205.0f : 240.0f;
+    float bright = st == ST_OFF || st == ST_FAILED || st == ST_WOFF ? 205.0f : 240.0f;
     draw_label(lb, cx0 + (x1 - 6.0f * g_k - cx0 - lb->w) / 2.0f, (y0 + y1 - lb->h) / 2.0f, bright, bright * 0.95f,
                bright * 0.84f, a);
     if (under[0]) {
@@ -982,8 +1105,8 @@ static void draw_body(float bx, float top)
     say("ron_extras_title", L"Extras", s, 160);
     const label_t *lb = text(s, 20.0f * g_k, FW_SEMIBOLD, (int)(170.0f * g_k), 0);
     draw_label(lb, left, top + 12.0f * g_k, 240, 228, 200, 1.0f);
-    if (g_state == 1 && g_nx) {
-        _snwprintf(num, 32, L"%d/%d", count_installed(), g_nx);
+    if (g_state == 1 && count_extras()) {
+        _snwprintf(num, 32, L"%d/%d", count_installed(), count_extras());
         say("ron_extras_count", L"%s installed", fmt, 96);
         fill(s, 160, fmt, num);
         lb = text(s, 13.0f * g_k, FW_NORMAL, (int)(130.0f * g_k), 0);
@@ -1008,7 +1131,7 @@ static void draw_body(float bx, float top)
     for (int i = 0; i < g_nx; i++) {
         float ry = top + (HEAD_H + i * ROW_H) * g_k, bx0, by0, bx1, by1;
         button_rect(i, bx, top, &bx0, &by0, &bx1, &by1);
-        int st = state_of(i), on = st != ST_OFF && st != ST_FAILED;
+        int st = state_of(i), on = st != ST_OFF && st != ST_FAILED && st != ST_WOFF;
         extra_name(i, s, 160);
         lb = text(s, 16.0f * g_k, FW_SEMIBOLD, (int)(bx0 - left - 40.0f * g_k), 1);
         float nr = on ? 240 : 196, ng = on ? 228 : 192, nb = on ? 200 : 184;
@@ -1070,7 +1193,7 @@ static void draw_front(float tx, float top)
         float lr = 70, lg = 72, lb_ = 76, la = 0.0f;
         if (g_op.kind != OP_NONE || news)
             lr = 255, lg = 176, lb_ = 60, la = 0.4f + 0.6f * pulse(1600.0f);
-        else if (g_state == 1 && g_nx && count_installed() == g_nx)
+        else if (g_state == 1 && count_extras() && count_installed() == count_extras())
             lr = 90, lg = 230, lb_ = 120, la = 0.85f;
         else if (g_state == 1 && count_installed())
             lr = 90, lg = 230, lb_ = 120, la = 0.5f;
@@ -1087,8 +1210,8 @@ static void draw_front(float tx, float top)
     draw_label(lb, cx - 1.0f * g_k - lb->w / 2.0f, (mid0 + mid1 - lb->h) / 2.0f, 232 + 23 * hv, 222 + 10 * hv,
                196 - 40 * hv, 1.0f);
     /* installed of how many */
-    if (g_state == 1 && g_nx) {
-        _snwprintf(num, 32, L"%d/%d", count_installed(), g_nx);
+    if (g_state == 1 && count_extras()) {
+        _snwprintf(num, 32, L"%d/%d", count_installed(), count_extras());
         lb = text(num, 11.5f * g_k, FW_SEMIBOLD, (int)(TAB_W * g_k - 4.0f * g_k), 0);
         draw_label(lb, cx - 1.0f * g_k - lb->w / 2.0f, y1 - 24.0f * g_k, 214, 170, 92, 1.0f);
     }
@@ -1247,12 +1370,30 @@ static void toggle(void)
     g_m.start = GetTickCount();
     if (g_m.open) {
         make_room();
-        if (g_state == 1)
+        if (g_state == 1) {
+            read_links(); /* the player may have been to Steam or the game since */
             mark_seen();
+        }
     } else
         for (int i = 0; i < g_nx; i++)
             g_x[i].fresh = 0;
     animate();
+}
+
+/* the link's Workshop page in Steam; the web page when Steam does not take steam:// */
+static void open_workshop(int i)
+{
+    WCHAR url[160], item[24];
+    MultiByteToWideChar(CP_ACP, 0, g_x[i].workshop, -1, item, 24);
+    _snwprintf(url, 160, L"steam://url/CommunityFilePage/%ls", item);
+    url[159] = 0;
+    INT_PTR r = (INT_PTR)ShellExecuteW(NULL, L"open", url, NULL, NULL, SW_SHOWNORMAL);
+    if (r <= 32) {
+        _snwprintf(url, 160, L"https://steamcommunity.com/sharedfiles/filedetails/?id=%ls", item);
+        url[159] = 0;
+        r = (INT_PTR)ShellExecuteW(NULL, L"open", url, NULL, NULL, SW_SHOWNORMAL);
+    }
+    logf_("extras: %s's Workshop page %s (%d)", g_x[i].id, r > 32 ? "opened" : "NOT opened", (int)r);
 }
 
 static void ask_and_do(int i)
@@ -1260,6 +1401,10 @@ static void ask_and_do(int i)
     int st = state_of(i);
     WCHAR name[96], fmt[256], msg[384];
     extra_name(i, name, 96);
+    if (g_x[i].link) {
+        open_workshop(i);
+        return;
+    }
     if (g_op.kind != OP_NONE && g_op.which != i)
         return;
     if (st == ST_OFF || st == ST_UPDATE || st == ST_FAILED) {
@@ -1287,7 +1432,7 @@ static int layout(void)
     g_w = K(MARGIN + TRAVEL + TAB_W + INSET);
     g_h = g_tray_h + 2 * K(MARGIN);
     g_wx = g_edge - K(MARGIN + TRAVEL + TAB_W);
-    g_wy = (g_top + g_bottom) / 2 - g_h / 2;
+    g_wy = g_anchor - K(MARGIN); /* its top level with the launcher's top left corner */
     BITMAPINFO bi = {{sizeof(BITMAPINFOHEADER), g_w, -g_h, 1, 32, BI_RGB}};
     void *bits = NULL;
     HDC screen = GetDC(NULL);
@@ -1351,8 +1496,10 @@ static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
     case WM_MOUSEMOVE: {
         int was = g_m.hover;
         g_m.hover = hit(x, y);
-        if (g_m.hover >= 0 && g_op.kind != OP_NONE && g_op.which != g_m.hover)
+        if (g_m.hover >= 0 && g_op.kind != OP_NONE && g_op.which != g_m.hover && !g_x[g_m.hover].link)
             g_m.hover = -1; /* another one is busy */
+        if (g_m.hover >= 0 && was != g_m.hover && g_x[g_m.hover].link)
+            read_link(g_m.hover); /* back from Steam: its state now */
         if (!g_m.tracking) {
             TRACKMOUSEEVENT tme = {sizeof tme, TME_LEAVE, h, 0};
             g_m.tracking = TrackMouseEvent(&tme);
@@ -1374,7 +1521,7 @@ static LRESULT CALLBACK win_proc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
         if (at == -2) {
             launcher_sound(1);
             toggle();
-        } else if (at >= 0 && (g_op.kind == OP_NONE || g_op.which == at)) {
+        } else if (at >= 0 && (g_op.kind == OP_NONE || g_op.which == at || g_x[at].link)) {
             launcher_sound(1);
             ask_and_do(at);
         }
@@ -1448,6 +1595,18 @@ void launcher_extras_attach(HWND dlg)
             g_edge = x;
             break;
         }
+    /* the tray hangs from the launcher's top: the first row whose outline reaches the edge (below
+       the corner's bevel) */
+    g_anchor = g_top;
+    for (int y = 0; y < g_top && y < g_bgh; y++) {
+        int x = 0;
+        while (x <= g_edge && g_alpha[(size_t)y * g_bgw + x] < 128)
+            x++;
+        if (x <= g_edge) {
+            g_anchor = y;
+            break;
+        }
+    }
 
     HINSTANCE inst = GetModuleHandleA(NULL);
     WNDCLASSW wc = {0};
@@ -1476,7 +1635,7 @@ void launcher_extras_attach(HWND dlg)
     render();
     if (IsWindowVisible(dlg))
         ShowWindow(g_win, SW_SHOWNOACTIVATE);
-    logf_("extras: tray %dx%d at the launcher's edge x %d, rows %d..%d", g_w, g_h, g_edge, g_top, g_bottom);
+    logf_("extras: tray %dx%d at the launcher's edge x %d (rows %d..%d), top at row %d", g_w, g_h, g_edge, g_top, g_bottom, g_anchor);
 }
 
 /* the language changed in the launcher: the tray's texts in the new one */

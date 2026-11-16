@@ -8,6 +8,31 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## Fixed: the nation music in every language (`nation-music`), new 2026-11-16
+
+- **The nation music did not play at all:** its tracks were in a compressed format the game skips without a word. They are now in the game's own format (16-bit stereo WAV, 22 kHz), so the Nation music extra is about 520 MB.
+- The nations' own music played only with the game in English. In German, French, Spanish, Italian, Russian, Portuguese, Polish, Turkish, Romanian and the game's other languages the game reads its own music list for that language, which had only its own tracks. Every language's list now has the nation music too (in the Nation music extra).
+
+## Fixed: five empty buttons in the Skirmish setup (`camera-smooth`), new 2026-11-16
+
+- The Survival setup's hero and final-assault buttons showed as five empty plates at the bottom left of the ordinary game setup. They are hidden there now and show only in the Survival setup.
+
+## Units window: one unit at a time (`camera-smooth`, `translations`), new 2026-11-16
+
+- **A click turns off only the unit you click**, no longer every later unit of its line. The line skips it: you keep training the unit before it, and when the unit after it comes (its Age reached) you research that upgrade straight from the earlier one, at its usual price, and your soldiers of the earlier unit become the later one. Turn off the Phalanx and you train Hoplites in the Classical Age, then upgrade them to Pikemen in the Medieval Age. The computer players follow the same rule.
+- Turn off the first units of a line and the line starts later: with the Hoplites and the Phalanx off, that column gives nothing until the Pikemen. The X above a column still turns the whole column off.
+- In multiplayer every player needs this version: an older one would still turn the later units off and the game would fall out of sync.
+
+## The menu's jeep scene redrawn again (`ui-theme`), new 2026-11-16
+
+- **The jeep scene in the main menu is painted anew:** the Willys jeep and its helmeted driver race out of an explosion of fire, smoke and flying earth in a rainy night, in a painted style instead of the earlier 3D look. The three layers still drift apart slowly.
+
+## CBP in the Extras tray (`camera-smooth`, `package`), new 2026-11-16
+
+- **The launcher's Extras tray has a row for the Community Balance Patch (CBP)**, under the nation music. CBP is a separate mod by other authors, on the Steam Workshop; RON Revived does not include it and does not download or install it. The row tells you whether you have it and its button opens CBP's Workshop page in Steam, where you subscribe; then turn it on in the game's **Mods** menu, and it plays together with RON Revived.
+- The button shows the state: **Get it** (not on your PC), **Subscribed** with an amber light and "Turn it on in Mods" (downloaded by Steam but turned off in the game), **Active** with a green light (on). With the mouse on it, **Open in Steam**. The row checks again when you open the tray or come back to it from Steam.
+- **The tray's front hangs from the launcher's top left corner** instead of the middle of its left edge, and the tray opens downwards from there.
+
 ## Tank Traps in every age (`entrenchment`, `camera-smooth`), new 2026-11-10
 
 - **Citizens build Tank Traps from the Ancient Age**, for 20 Wood (+5 for every one you own) in every age, instead of 20 Metal from the Modern Age.
@@ -25,7 +50,7 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **The enemy expands:** every 2 minutes it builds a new camp (Barracks, Stable or Siege Factory) or a Tower 8 to 14 tiles from one of its buildings still standing, never in your territory, off the edges and away from the middle. New camps send waves too, and leave ruins when destroyed.
 - **Choose the game's length:** the Survival setup's Time Limit list: **Short** (30 minutes), **Medium** (45), **Long** (1 hour) or **Very long** (1 hour 30). The waves keep their rhythm, so a longer game has more of them; their ages stretch over the whole game, and the final assault comes at the end of the time you chose. Your choice is kept for the next game.
 - **The waves age on their own:** their age no longer trails yours; it follows the wave number, from the Ancient Age at wave 1 to the Enlightenment (Easiest), the Industrial (Moderate) or the Modern Age (Toughest) by the last waves, faster with the difficulty. The final assault is one age ahead of the last wave.
-- **The game ends with a final assault, and you choose what calls it:** three buttons in the Survival setup, beside the hero's: **a Wonder** (finish any Wonder; lose it and you lose), **the Information Age**, or **the time** (45 minutes). Whatever you choose, the final assault comes at 45:00 at the latest. It is the biggest wave of the game, three in one, from all four sides with Generals; destroy every enemy soldier and you win. The clock at the top right counts down to it ("Final assault"). Your choice is kept for the next game.
+- **The game ends with a final assault, and you choose what calls it:** three buttons in the Survival setup, beside the hero's. For now only **the time** can be chosen: the final assault comes at the end of the length you chose. **A Wonder** and **the Information Age** are marked "Coming soon". The chosen button stands in a gold frame, and each one explains itself under the mouse (as do the hero buttons). It is the biggest wave of the game, three in one, from all four sides with Generals; destroy every enemy soldier and you win. The clock at the top right counts down to it ("Final assault"). Your choice is kept for the next game.
 - **Fixed: the hero squad's hit points** showed more than the maximum (170 / 85, 114 / 77 for the two riders): the maximum now counts the whole squad.
 - **Big squads stand side by side:** a squad of more than 3 (the hero's six) stands in a row beside its captain when it stops (in a ring after some moves), instead of piling up on three spots. Squads of 3 stand as before.
 - **A bigger hero squad:** the infantry hero starts as one squad of six soldiers (8, 12, 14, 18 at levels 15 to 30), the cavalry hero as one squad of two riders that move together like an infantry squad; a fallen soldier or rider comes back when the squad heals.

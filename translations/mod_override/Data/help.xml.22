@@ -2359,6 +2359,11 @@ Clique para carregar um jogo salvo.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Clique para aplicar as alterações pendentes nas configurações da partida e dos jogadores. As alterações pendentes são marcadas com fundo transparente. O botão fica desativado se não houver alterações pendentes.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{HERÓI DE INFANTARIA}: Seu herói é um esquadrão de seis soldados da sua linha de infantaria. Ele sobe até o nível 30 e se torna a nova unidade de cada era.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{HERÓI DE CAVALARIA}: Seu herói são dois cavaleiros da sua linha de cavalaria. Eles sobem até o nível 30 e se tornam a nova unidade de cada era.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{OBJETIVO: UMA MARAVILHA}: Em breve. Construa uma Maravilha para chamar o ataque final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{OBJETIVO: A ERA DA INFORMAÇÃO}: Em breve. Alcance a Era da Informação para chamar o ataque final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{OBJETIVO: O TEMPO}: Resista até o fim da duração da partida; então vem o ataque final, três ondas em uma, de todos os lados. Destrua-o para vencer.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

@@ -82,3 +82,11 @@ keeps everything up to 20 kHz instead of 11 kHz.
   `open files: limit 512 -> 8192`. It runs from the GraphSys::init_display_quick pre-hook and
   from the play button stub, not from DllMain: winmm.dll is the exe's first import, so its DllMain
   may run before ucrtbase's.
+
+## Languages (2026-11-16)
+
+- `XML::init` adds the language suffix to every XML it opens and falls back to the plain file, so a player in German reads `Data\sound.xml.7`, in Romanian `sound.xml.24` (the game ships `.4 .7 .9 .10 .12 .16 .17 .18`, some in UTF-16; translations\ makes `.21 .22 .24 .25 .31`). Our `sound.xml` alone gave the nation music to English players only. `tools/build_sound.py` now writes every copy with the same nation blocks, in the copy's own encoding.
+
+## ADPCM does not play (2026-11-16)
+
+- With the Doina in ADPCM (44.1 kHz stereo, 512 samples per block) as the only track of `<INTROS>` and `<FULLINTROS>`, the main menu was silent (the user). So the ADPCM tracks of 2026-10-29..11-16 never played in game, although `xasl.dll` has ADPCM strings. `tools/score.py` now writes the game's own format again: PCM, 16 bit, stereo, 22050 Hz (54 tracks, 524 MB).

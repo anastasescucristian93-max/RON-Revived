@@ -282,8 +282,37 @@ def build_typenames(game):
     return text
 
 
+# The Survival setup's own buttons (camera-smooth\src\survival.c; setupwin.xml from ui-theme): the game
+# looks their tooltips up as SETUPWIN/BUTTON/<NAME> ("Text needed for ..." without them). They go here
+# because Romania's help.xml is the one installed.
+SURVIVAL_BUTTONS = [
+    ("HERO_INF", "{INFANTRY HERO}: Your hero is a squad of six soldiers of your infantry line. "
+                 "It ranks up to level 30 and becomes the new unit of every age."),
+    ("HERO_CAV", "{CAVALRY HERO}: Your hero is two riders of your cavalry line. "
+                 "They rank up to level 30 and become the new unit of every age."),
+    # the Wonder and the Information Age are not offered for now (survival.c GOAL_SOON)
+    ("GOAL_WONDER", "{GOAL: A WONDER}: Coming soon. Build a Wonder to call the final assault."),
+    ("GOAL_TECH", "{GOAL: THE INFORMATION AGE}: Coming soon. Reach the Information Age to call the final "
+                  "assault."),
+    ("GOAL_TIME", "{GOAL: THE TIME}: Hold out until the end of the game's length; then the final assault "
+                  "comes, three waves in one from every side. Destroy it to win."),
+]
+
+
+def survival_button_help(text):
+    start = text.index("<SETUPWIN>")
+    end = text.index("</BUTTON>", start)
+    if any('<ENTRY name="%s">' % name in text[start:end] for name, _ in SURVIVAL_BUTTONS):
+        raise SystemExit("help.xml: the Survival buttons' help is already there")
+    nl = newline(text)
+    line_start = text.rindex("\n", 0, end) + 1
+    entries = "".join('\t\t\t<ENTRY name="%s"><STRING>%s</STRING></ENTRY>%s' % (name, desc, nl)
+                      for name, desc in SURVIVAL_BUTTONS)
+    return text[:line_start] + entries + text[line_start:]
+
+
 def build_help(game, rules):
-    text = read(base_of(game, "help.xml"))
+    text = survival_button_help(read(base_of(game, "help.xml")))
     bullets = "".join("\n         <BULLET/>" + line.format(*[constant(rules, c) for c in consts])
                       for consts, line in POWER)
     entry = '\t\t<ENTRY name="TRIBE%d">\n\t\t\t<STRING>%s%s\n         </STRING>\n\t\t</ENTRY>\n' % (

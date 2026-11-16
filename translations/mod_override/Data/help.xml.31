@@ -2330,6 +2330,11 @@ Kayıtlı bir oyunu yüklemek için tıklayın.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Oyun ve oyuncu ayarlarında bekleyen değişiklikleri uygulamak için tıklayın. Bekleyen değişiklikler saydam bir arka planla işaretlenir. Bekleyen değişiklik yoksa düğme devre dışıdır.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{PİYADE KAHRAMANI}: Kahramanın, piyade hattından altı askerlik bir mangadır. 30. seviyeye kadar yükselir ve her çağda yeni birliğe dönüşür.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{SÜVARİ KAHRAMANI}: Kahramanın, süvari hattından iki atlıdır. 30. seviyeye kadar yükselirler ve her çağda yeni birliğe dönüşürler.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{HEDEF: BİR HARİKA}: Yakında. Son saldırıyı çağırmak için bir Harika inşa et.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{HEDEF: BİLGİ ÇAĞI}: Yakında. Son saldırıyı çağırmak için Bilgi Çağı'na ulaş.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{HEDEF: SÜRE}: Oyun süresinin sonuna kadar dayan; sonra son saldırı gelir, her yönden üç dalga bir arada. Kazanmak için onu yok et.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

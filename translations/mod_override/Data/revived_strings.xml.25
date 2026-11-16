@@ -72,7 +72,7 @@
 	<STRING en="Unique units">Уникальные отряды</STRING>
 	<STRING en="Allow all">Разрешить все</STRING>
 	<STRING en="%d of %d units turned off">Отключено отрядов: %d из %d</STRING>
-	<STRING en="Click a unit to turn it off, with its later upgrades. The X turns off a whole column.">Нажмите на отряд, чтобы отключить его вместе с последующими улучшениями. X отключает весь столбец.</STRING>
+	<STRING en="Click a unit to turn only that one off: the line skips it. The X turns off a whole column.">Нажмите на отряд, чтобы отключить только его: линия его пропустит. X отключает весь столбец.</STRING>
 	<STRING en="Only the host can change them.">Изменить их может только хост.</STRING>
 	<STRING en="City Repair: On">Ремонт города: вкл.</STRING>
 	<STRING en="City Repair: Off">Ремонт города: выкл.</STRING>
@@ -149,4 +149,5 @@
 	<STRING en="%s food, timber, wealth and metal">%s пищи, древесины, богатства и металла</STRING>
 	<STRING en="two squads of your age's infantry join you">к вам присоединяются два отряда пехоты вашей эпохи</STRING>
 	<STRING en="%s smaller">меньше на %s</STRING>
+	<STRING en="Coming soon">Скоро</STRING>
 </ROOT>

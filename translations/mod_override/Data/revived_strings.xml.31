@@ -72,7 +72,7 @@
 	<STRING en="Unique units">Özel birlikler</STRING>
 	<STRING en="Allow all">Hepsine izin ver</STRING>
 	<STRING en="%d of %d units turned off">%d / %d birlik kapalı</STRING>
-	<STRING en="Click a unit to turn it off, with its later upgrades. The X turns off a whole column.">Bir birliği sonraki yükseltmeleriyle birlikte kapatmak için üzerine tıklayın. X tüm sütunu kapatır.</STRING>
+	<STRING en="Click a unit to turn only that one off: the line skips it. The X turns off a whole column.">Yalnızca o birliği kapatmak için üzerine tıklayın: hat onu atlar. X tüm sütunu kapatır.</STRING>
 	<STRING en="Only the host can change them.">Bunları yalnızca kurucu değiştirebilir.</STRING>
 	<STRING en="City Repair: On">Şehir onarımı: açık</STRING>
 	<STRING en="City Repair: Off">Şehir onarımı: kapalı</STRING>
@@ -149,4 +149,5 @@
 	<STRING en="%s food, timber, wealth and metal">%s yiyecek, kereste, servet ve metal</STRING>
 	<STRING en="two squads of your age's infantry join you">çağınızdan iki piyade birliği size katılır</STRING>
 	<STRING en="%s smaller">%s daha küçük</STRING>
+	<STRING en="Coming soon">Yakında</STRING>
 </ROOT>

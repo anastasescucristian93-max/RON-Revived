@@ -7,10 +7,11 @@
  *    Unique units (one column per nation, with its flag). The table is unitbans_data.h, made by
  *    camera-smooth\tools\gen_unitbans.py from unitrules.xml. Units are named by their internal
  *    NAME, so the several unit types of one NAME (the Tank in each nation's art) are one entry.
- *  - A click on a unit turns it off and every later upgrade of it with it (the game offers an
- *    upgrade only after the one before, so they could not be had anyway), or turns it back on
- *    with the units it is upgraded from. The X above a column turns the whole column off, or
- *    on again when it is all off. "Allow all" turns everything on.
+ *  - A click on a unit turns that unit alone off, or on again; the units before and after it in
+ *    its line stay as they are. The line then skips it: the unit before it is trained on until
+ *    the one after it can be researched, and that upgrade turns them straight into the later
+ *    unit (LeaderData::check_predecessor below). The X above a column turns the whole column
+ *    off, or on again when it is all off. "Allow all" turns everything on.
  *  - The rule: LeaderData::type_eligible (datacenter.c's hook) asks unitbans_type_blocked; 0 =
  *    not offered, as the Nukes slider's None. The game asks it about the type a nation really
  *    gets (LeaderData::get_graft first), so a nation's unique unit is its own entry.
@@ -190,31 +191,9 @@ static unsigned hash8(const unsigned char *l)
     return (h ^ h >> 8 ^ h >> 16 ^ h >> 24) & 0xFF;
 }
 
-/* A unit off takes its later upgrades with it. */
-static void normalize(unsigned char *l)
-{
-    for (int changed = 1; changed;) {
-        changed = 0;
-        for (int e = 0; e < UB_ENTRIES; e++)
-            if (k_ub_from[e] >= 0 && bit(l, k_ub_from[e]) && !bit(l, e)) {
-                set_bit(l, e, 1);
-                changed = 1;
-            }
-    }
-}
-
-static void turn_off(unsigned char *l, int e)
-{
-    set_bit(l, e, 1);
-    normalize(l);
-}
-
-/* On again with the units it is upgraded from. */
-static void turn_on(unsigned char *l, int e)
-{
-    for (int n = 0; e >= 0 && n < UB_ENTRIES; n++, e = k_ub_from[e])
-        set_bit(l, e, 0);
-}
+/* One unit alone: the rest of its line stays as it is (check_predecessor skips it). */
+static void turn_off(unsigned char *l, int e) { set_bit(l, e, 1); }
+static void turn_on(unsigned char *l, int e) { set_bit(l, e, 0); }
 
 static void to_text(const unsigned char *l, char *out, int size)
 {
@@ -240,7 +219,6 @@ static int from_text(const char *s, unsigned char *l)
             return 0;
         l[i] = (unsigned char)v;
     }
-    normalize(l);
     return 1;
 }
 
@@ -472,6 +450,12 @@ static void put_text(char *win, int l, int t, int r, int b, const char *s, int s
     lang_string(str, lang_text(s));
     put_string(win, l, t, r, b, str, size, bold, rgb, centred);
     ((fn_v)VA(VA_STRING_CLOSE))(str);
+}
+
+/* survival.c's setup buttons: centred text in a button's own coordinates */
+void unitbans_button_text(char *button, int l, int t, int r, int b, const char *s, int size, int bold, unsigned rgb)
+{
+    put_text(button, l, t, r, b, s, size, bold, rgb, 1);
 }
 
 static int string_width(char *win, const void *str, int size, int bold)
@@ -969,7 +953,7 @@ static void draw_panel(void)
     put_string(win, fr - sw2, ft, fr, ft + 18, str, 12, 1, n ? T_RED : T_GREY, 0);
     ((fn_v)VA(VA_STRING_CLOSE))(str);
     put_text(win, fl, ft + 20, fr, B[3] - 2,
-             edit ? "Click a unit to turn it off, with its later upgrades. The X turns off a whole column."
+             edit ? "Click a unit to turn only that one off: the line skips it. The X turns off a whole column."
                   : "Only the host can change them.",
              11, 0, T_GREY, 0);
     *depth() = base;
@@ -1041,7 +1025,6 @@ static void panel_click(int x, int y)
                     else
                         set_bit(g_local, tbl[k], 1);
                 }
-            normalize(g_local);
         } else if (c->kind == K_UNIT) {
             if (bit(g_local, c->arg))
                 turn_on(g_local, c->arg);
@@ -1278,7 +1261,6 @@ void unitbans_setup_game(char *sw)
         l = g_lobby_seen ? g_lobby : NULL;
     static const unsigned char none[UB_BYTES];
     memcpy(g_game, l ? l : none, UB_BYTES);
-    normalize(g_game);
     unsigned *f = game_flags();
     if (f) {
         *f &= ~(1u << BIT_ON | 0xFFu << HASH_SHIFT);
@@ -1387,6 +1369,47 @@ static void patch_call(UINT_PTR at, void *to)
     VirtualProtect(p, 5, old, &old);
 }
 
+/* LeaderData::check_predecessor(TypeIndex) 0x006DBCB0, rewritten: type_eligible's last test for a
+   unit, called with the unit's FROM. It walks down the line (FROM, through get_graft) and passes at
+   the first level the player can have (type_avail(level, 0) >= 3); a level missing for this
+   player (TypeData +0x10 bit [LeaderData+0xC] clear) is stepped over, any other one fails. A unit
+   turned off is stepped over too, so the unit after it is offered from the one before it (and
+   gain_tech turns every lower level of the line into the new one). */
+#define VA_CHECK_PRED  0x006DBCB0u
+#define VA_TYPE_AVAIL  0x006E33A0u /* LeaderData::type_avail(TypeIndex, int) */
+#define VA_GRAFT       0x006E30F0u /* LeaderData::get_graft(TypeIndex) */
+#define VA_TYPEDATA    0x00E85DDCu /* TypeData ** by type index */
+static int g_pred_skips;
+static int __attribute__((thiscall)) c_ub_check_predecessor(char *ld, int t)
+{
+    typedef int(__attribute__((thiscall)) * avail_t)(void *, int, int);
+    typedef int(__attribute__((thiscall)) * graft_t)(void *, int);
+    for (int n = 0; t >= 0 && n < 64; n++) {
+        if (((avail_t)VA(VA_TYPE_AVAIL))(ld, t, 0) >= 3)
+            return 1;
+        char *td = (*(char ***)VA(VA_TYPEDATA))[t];
+        if (unitbans_type_blocked(t)) {
+            if (g_pred_skips < 20 && ++g_pred_skips)
+                logf_("units: player %d's line skips type 0x%X (turned off)", *(int *)(ld + 8), t);
+        } else if (*(unsigned *)(td + 0x10) & 1u << (*(int *)(ld + 0xC) & 31))
+            return 0;
+        t = ((graft_t)VA(VA_GRAFT))(ld, *(int *)(td + 0x3C));
+    }
+    return 1;
+}
+
+static void install_check_predecessor(void)
+{
+    /* push ebp / mov ebp,esp / push esi / mov esi,[ebp+8] / push edi / mov edi,ecx / test esi,esi */
+    static const unsigned char sig[12] = { 0x55, 0x8B, 0xEC, 0x56, 0x8B, 0x75, 0x08, 0x57, 0x8B, 0xF9, 0x85, 0xF6 };
+    unsigned char *at = (unsigned char *)VA(VA_CHECK_PRED);
+    if (memcmp(at, sig, sizeof sig)) {
+        logf_("units: check_predecessor differs, a unit turned off ends its line there");
+        return;
+    }
+    hook_jmp5(at, (void *)c_ub_check_predecessor);
+}
+
 /* From nonukes_install, once its setup screen hooks are in. */
 void unitbans_install(void)
 {
@@ -1417,6 +1440,7 @@ void unitbans_install(void)
     } else {
         logf_("units: lobby code differs, units are turned off in single player games only");
     }
+    install_check_predecessor();
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
     logf_("units: Units window in the game setup (%d units, multiplayer %s)", UB_ENTRIES, lobby ? "yes" : "no");
 }

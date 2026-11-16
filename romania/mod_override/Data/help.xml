@@ -2463,6 +2463,11 @@ Click to load a saved game.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Click to apply pending changes to the game and players settings. Pending changes are marked with a transparent background. Button is disabled, if there are no pending changes.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{INFANTRY HERO}: Your hero is a squad of six soldiers of your infantry line. It ranks up to level 30 and becomes the new unit of every age.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{CAVALRY HERO}: Your hero is two riders of your cavalry line. They rank up to level 30 and become the new unit of every age.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{GOAL: A WONDER}: Coming soon. Build a Wonder to call the final assault.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{GOAL: THE INFORMATION AGE}: Coming soon. Reach the Information Age to call the final assault.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{GOAL: THE TIME}: Hold out until the end of the game's length; then the final assault comes, three waves in one from every side. Destroy it to win.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

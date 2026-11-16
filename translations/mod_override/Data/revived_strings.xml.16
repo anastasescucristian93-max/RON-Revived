@@ -72,7 +72,7 @@
 	<STRING en="Unique units">Unità uniche</STRING>
 	<STRING en="Allow all">Consenti tutte</STRING>
 	<STRING en="%d of %d units turned off">%d unità su %d disattivate</STRING>
-	<STRING en="Click a unit to turn it off, with its later upgrades. The X turns off a whole column.">Fare clic su un'unità per disattivarla insieme ai suoi potenziamenti successivi. La X disattiva un'intera colonna.</STRING>
+	<STRING en="Click a unit to turn only that one off: the line skips it. The X turns off a whole column.">Fare clic su un'unità per disattivare solo quella: la linea la salta. La X disattiva un'intera colonna.</STRING>
 	<STRING en="Only the host can change them.">Solo l'host può modificarle.</STRING>
 	<STRING en="City Repair: On">Riparazione città: sì</STRING>
 	<STRING en="City Repair: Off">Riparazione città: no</STRING>
@@ -149,4 +149,5 @@
 	<STRING en="%s food, timber, wealth and metal">%s di cibo, legname, ricchezza e metallo</STRING>
 	<STRING en="two squads of your age's infantry join you">due squadre di fanteria della tua epoca si uniscono a te</STRING>
 	<STRING en="%s smaller">%s più piccola</STRING>
+	<STRING en="Coming soon">Prossimamente</STRING>
 </ROOT>

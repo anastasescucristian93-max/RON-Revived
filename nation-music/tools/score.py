@@ -11,13 +11,13 @@ Notation, one token per note, spaces between, '|' is only a bar line for the eye
 import os
 import random
 import re
+import wave
 
 import mido
 import numpy as np
-from scipy.signal import butter, fftconvolve, lfilter
+from scipy.signal import butter, fftconvolve, lfilter, resample_poly
 from scipy.ndimage import maximum_filter1d
 
-import adpcm
 from sf2 import SoundFont
 
 SR = 44100
@@ -199,10 +199,16 @@ class Score:
         os.makedirs(wav_dir, exist_ok=True)
         os.makedirs(midi_dir, exist_ok=True)
         mix = self.render(seed)
-        # Microsoft ADPCM at 44.1 kHz: half the size of the game's 22 kHz PCM, the full treble,
-        # its noise about 40 dB down (nation-music/ENGINE_NOTES.md, "What ADPCM costs")
+        # The game's own format: PCM, 16 bit, stereo, 22050 Hz, only fmt and data chunks. The
+        # ADPCM tracks (2026-10-29..11-16) never played: the main menu stayed silent with the Doina
+        # in ADPCM as its only track (the user, 2026-11-16; nation-music/ENGINE_NOTES.md)
         path = os.path.join(wav_dir, name + ".wav")
-        adpcm.write(path, (np.clip(mix, -1, 1) * 32767).astype(np.int16), SR)
+        pcm = np.clip(resample_poly(mix, 1, 2, axis=0), -1, 1)
+        with wave.open(path, "wb") as w:
+            w.setnchannels(pcm.shape[1] if pcm.ndim > 1 else 1)
+            w.setsampwidth(2)
+            w.setframerate(SR // 2)
+            w.writeframes((pcm * 32767).astype("<i2").tobytes())
         self.save_midi(os.path.join(midi_dir, name + ".mid"))
         return path, len(mix) / SR
 

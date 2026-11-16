@@ -2459,6 +2459,11 @@ Clic ca să încarci un joc salvat.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Clic ca să aplici modificările în așteptare la setările jocului și ale jucătorilor. Modificările în așteptare sunt marcate cu un fundal transparent. Butonul este dezactivat dacă nu există modificări în așteptare.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{EROU DE INFANTERIE}: Eroul tău este o grupă de șase soldați din linia ta de infanterie. Urcă până la nivelul 30 și devine noua unitate a fiecărei epoci.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{EROU DE CAVALERIE}: Eroul tău sunt doi călăreți din linia ta de cavalerie. Urcă până la nivelul 30 și devin noua unitate a fiecărei epoci.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{OBIECTIV: O MINUNE}: În curând. Construiește o Minune ca să chemi asaltul final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{OBIECTIV: ERA INFORMAȚIEI}: În curând. Ajunge în Era Informației ca să chemi asaltul final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{OBIECTIV: TIMPUL}: Rezistă până la sfârșitul duratei jocului; atunci vine asaltul final, trei valuri într-unul din toate părțile. Distruge-l ca să câștigi.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

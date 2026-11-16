@@ -15,26 +15,17 @@ Once this version is installed, the game's launcher tells you when a new version
 
 The nation music and other optional content are downloaded from the launcher's **Extras** tray (on its left edge), only if you want them.
 
+Want the **Community Balance Patch (CBP)** too? It is a separate mod by other authors, on the Steam Workshop, and it runs together with RON Revived. The Extras tray has a row for it: its button opens CBP's Workshop page in Steam, and the row shows whether you have it and whether it is turned on in the game's Mods menu.
+
 The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the updater and the Extras tray; you do not need to download them.
 
 ## New in this version
 
-**Survival mode** (Solo menu, under Quick Battle): a new way to play.
-- Its own open plain, you in the middle; enemy Barracks, Stables and Siege Factories all over the map send the waves, guarded by Towers and Forts. The enemy builds a new camp or Tower every 2 minutes, never in your territory.
-- Choose your **hero** (a squad of six soldiers or two riders that ranks to level 30 and grows with every age), the **goal** (a Wonder, the Information Age or the time) and the **length** (30 minutes, 45, 1 hour or 1 hour 30).
-- Waves every few minutes, older and bigger as they come, a **boss wave** after every second one, and the **final assault** at the end: three waves in one from every side. Destroy it to win.
-- **Reward cards:** beat a boss wave and pick one of three cards, its bonus for the rest of the game (hit points, damage, range or attack speed for your buildings, your hero or your army; resources, mercenaries or a smaller next wave). Destroyed enemy buildings may leave **ruins**: explore them for a small card.
-- A wave bar at the right edge, a large next-wave clock, co-op with computer allies (they get a hero too).
-
-**Also new**
-- **Tank Traps in every age**, for Timber: stakes, spiked beams, timber hedgehogs, then steel, stronger with every age. **Shift + drag** lays a whole line of them, diagonals too.
-- **Farms in a block** with Shift; **Quicksave** with Ctrl+S; **more than 128** units in a selection or control group (single player).
-- **Turn units off** in the game setup (the Units button beside the Nukes slider).
-- **Shorter menus:** the main menu is Play, Options, Extras, Exit.
-- **Veteran ranks rebalanced:** +2 % damage, +3 % hit points, +3 % attack rate a level; healing from level 8.
-- The update now downloads inside the launcher, with a progress bar.
-
-**Fixes:** the AI assistant's NO CONTROL really stops the computer (the Cooperative AI too); the District Builder builds his district again; crops and units no longer show through Romania's buildings.
+- **The nation music now plays.** Its tracks were in a compressed format the game skipped without a word, so nobody heard them. They are now in the game's own format, and they also play when the game is in another language than English. If you have the Nation music extra, the launcher's Extras tray offers its update (about 520 MB now).
+- **Turn units off, one at a time:** in the game setup's Units window a click turns off only that unit. Its line skips it: you keep the unit before it and upgrade straight to the one after it when its Age comes.
+- **CBP in the Extras tray:** a row that opens the Community Balance Patch's Workshop page and shows whether you have it on.
+- **The jeep scene of the main menu**, painted anew; the Extras tray now hangs from the launcher's top left corner.
+- **Fix:** five empty buttons at the bottom left of the Skirmish setup are gone.
 
 ## What's in it
 

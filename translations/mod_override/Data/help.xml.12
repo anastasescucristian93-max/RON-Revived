@@ -2431,6 +2431,11 @@ Cliquez pour charger une partie enregistrée.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Cliquez pour appliquer les modifications en attente au jeu et aux paramètres des joueurs. Les modifications en attente sont identifiées par un arrière-plan transparent. Ce bouton est désactivé s'il n'y a aucune modification en attente.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{HÉROS D'INFANTERIE} : Votre héros est une escouade de six soldats de votre ligne d'infanterie. Il monte jusqu'au niveau 30 et devient la nouvelle unité de chaque âge.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{HÉROS DE CAVALERIE} : Votre héros est formé de deux cavaliers de votre ligne de cavalerie. Ils montent jusqu'au niveau 30 et deviennent la nouvelle unité de chaque âge.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{OBJECTIF : UNE MERVEILLE} : Bientôt disponible. Construisez une Merveille pour déclencher l'assaut final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{OBJECTIF : L'ÂGE DE L'INFORMATION} : Bientôt disponible. Atteignez l'âge de l'information pour déclencher l'assaut final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{OBJECTIF : LE TEMPS} : Tenez jusqu'à la fin de la durée de la partie ; alors arrive l'assaut final, trois vagues en une venues de tous les côtés. Détruisez-le pour gagner.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

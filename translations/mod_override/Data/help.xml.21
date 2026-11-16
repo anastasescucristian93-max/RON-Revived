@@ -2459,6 +2459,11 @@ Kliknij, aby wczytać zapisaną grę.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Kliknij, aby zastosować oczekujące zmiany ustawień gry i graczy. Oczekujące zmiany są oznaczone przezroczystym tłem. Przycisk jest nieaktywny, jeśli nie ma oczekujących zmian.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{BOHATER PIECHOTY}: Twój bohater to oddział sześciu żołnierzy twojej linii piechoty. Awansuje do poziomu 30 i w każdej epoce staje się nową jednostką.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{BOHATER KAWALERII}: Twój bohater to dwóch jeźdźców twojej linii kawalerii. Awansują do poziomu 30 i w każdej epoce stają się nową jednostką.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{CEL: CUD ŚWIATA}: Wkrótce. Zbuduj Cud świata, aby wywołać ostateczny szturm.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{CEL: ERA INFORMACJI}: Wkrótce. Osiągnij Erę informacji, aby wywołać ostateczny szturm.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{CEL: CZAS}: Wytrzymaj do końca długości gry; wtedy nadejdzie ostateczny szturm, trzy fale w jednej ze wszystkich stron. Zniszcz go, aby wygrać.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

@@ -2438,6 +2438,11 @@ Haz clic aquí para cargar una partida guardada.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Haz clic para aplicar los cambios pendientes a los ajustes del juego y los jugadores. Los cambios pendientes se indican con un fondo transparente. El botón está inactivo si no hay cambios pendientes.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{HÉROE DE INFANTERÍA}: Tu héroe es un pelotón de seis soldados de tu línea de infantería. Sube hasta el nivel 30 y se convierte en la nueva unidad de cada edad.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{HÉROE DE CABALLERÍA}: Tu héroe son dos jinetes de tu línea de caballería. Suben hasta el nivel 30 y se convierten en la nueva unidad de cada edad.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{OBJETIVO: UNA MARAVILLA}: Próximamente. Construye una Maravilla para provocar el asalto final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{OBJETIVO: LA ERA DE LA INFORMACIÓN}: Próximamente. Alcanza la Era de la Información para provocar el asalto final.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{OBJETIVO: EL TIEMPO}: Resiste hasta el final de la duración de la partida; entonces llega el asalto final, tres oleadas en una desde todos los lados. Destrúyelo para ganar.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

@@ -86,6 +86,18 @@ EXTRAS = {
 }
 CHUNK = 1900 * 2**20  # GitHub takes files under 2 GB: a bigger extra comes in several zips
 
+# other mods the tray points to, below the extras: id -> Steam Workshop item. Nothing of theirs is
+# downloaded or installed by us: the row shows whether the player has it (subscribed, turned on in
+# the game's Mods menu) and its button opens the item's Workshop page in Steam. On the list as
+# "links=<id>" with "name.<id>=", "desc.<id>=" and "workshop.<id>=<item id>" (launcher_extras.c).
+LINKS = {
+    "cbp": {
+        "workshop": "2287791153",
+        "name": "CBP",
+        "desc": "Community Balance Patch, a separate Steam Workshop mod",
+    },
+}
+
 
 def part_of(rel):
     r = rel.lower()
@@ -249,6 +261,10 @@ def build_parts(version, files):
              "extras=" + ",".join(EXTRAS)]
     for extra, e in EXTRAS.items():
         lines += [f"name.{extra}={e['name']}", f"desc.{extra}={e['desc']}"]
+    if LINKS:
+        lines.append("links=" + ",".join(LINKS))
+        for link, e in LINKS.items():
+            lines += [f"name.{link}={e['name']}", f"desc.{link}={e['desc']}", f"workshop.{link}={e['workshop']}"]
     content = {}
     for part in PARTS + list(EXTRAS):
         rels = sorted((r for r in files if part_of(r) == part), key=str.lower)

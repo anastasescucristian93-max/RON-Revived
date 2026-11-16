@@ -64,14 +64,16 @@ def tribe_block(nation, entries, moods, indent):
     return lines
 
 
-def write(path, tracks, game=GAME, track_dirs=(TRACKS,)):
-    """sound.xml with a block per nation in 'tracks' (nation -> entries as our_tracks gives)"""
-    for nation, entries in tracks.items():
-        for name, *_ in entries:
-            if not any(os.path.isfile(os.path.join(d, name + ".wav")) for d in track_dirs):
-                sys.exit(f"build_sound: {name}.wav is missing (run render_all.py)")
-    with open(os.path.join(game, "Data", "sound.xml"), encoding="utf-8", newline="") as fh:
-        text = fh.read()
+# The game reads Data\sound.xml<suffix> in its language (XML::init adds the suffix and falls back
+# to the plain English file): the game ships its own copies for its languages, translations\ makes
+# ours for the five it adds. Each copy gets the same nation blocks, or a player in that language
+# hears only the game's music (found 2026-11-16).
+LANG_IDS = (4, 7, 9, 10, 12, 16, 17, 18, 21, 22, 24, 25, 31)
+TRANSLATED = os.path.join(REPO, "translations", "mod_override", "Data")
+
+
+def with_nations(text, tracks):
+    """the sound.xml text with a <TRIBE> block per nation before the end of its first <TRACKS>"""
     nl = "\r\n" if "\r\n" in text else "\n"
     # the game's default block (the first <TRACKS>; a second one is commented out)
     tracks_end = text.index("</TRACKS>")
@@ -82,12 +84,35 @@ def write(path, tracks, game=GAME, track_dirs=(TRACKS,)):
     for nation in sorted(tracks):
         lines += tribe_block(nation, tracks[nation], moods, "    ")
     start = text.rindex("\n", 0, tracks_end) + 1
-    text = text[:start] + nl.join(lines) + nl + text[start:]
+    return text[:start] + nl.join(lines) + nl + text[start:]
+
+
+def write(path, tracks, game=GAME, track_dirs=(TRACKS,)):
+    """sound.xml with a block per nation in 'tracks' (nation -> entries as our_tracks gives), and
+    the same for every language copy there is (sound.xml.7, ...) next to it"""
+    for nation, entries in tracks.items():
+        for name, *_ in entries:
+            if not any(os.path.isfile(os.path.join(d, name + ".wav")) for d in track_dirs):
+                sys.exit(f"build_sound: {name}.wav is missing (run render_all.py)")
+    sources = [("", os.path.join(game, "Data", "sound.xml"))]
+    for lang in LANG_IDS:
+        for d in (TRANSLATED, os.path.join(game, "Data")):
+            src = os.path.join(d, f"sound.xml.{lang}")
+            if os.path.isfile(src):
+                sources.append((f".{lang}", src))
+                break
+        else:
+            print(f"build_sound: no sound.xml.{lang} (game or translations), that language keeps the English list")
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="") as fh:
-        fh.write(text)
+    for suffix, src in sources:
+        with open(src, "rb") as fh:
+            raw = fh.read()
+        enc = "utf-16" if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else "utf-8"  # some copies are UTF-16
+        text = raw.decode(enc)
+        with open(path + suffix, "w", encoding=enc, newline="") as fh:
+            fh.write(with_nations(text, tracks))
     count = sum(len(e) for e in tracks.values())
-    print(f"{path}: {len(tracks)} nations, {count} tracks")
+    print(f"{path}: {len(tracks)} nations, {count} tracks, and {len(sources) - 1} language copies")
 
 
 def enescu():

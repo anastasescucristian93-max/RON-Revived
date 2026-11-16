@@ -86,7 +86,7 @@ Standard units
 Unique units
 Allow all
 %d of %d units turned off
-Click a unit to turn it off, with its later upgrades. The X turns off a whole column.
+Click a unit to turn only that one off: the line skips it. The X turns off a whole column.
 Only the host can change them.
 # cityrepair.c, the city's repair switch (tooltip)
 City Repair: On
@@ -170,3 +170,5 @@ every soldier at least veteran level %s
 %s food, timber, wealth and metal
 two squads of your age's infantry join you
 %s smaller
+# survival.c: the setup's goal buttons
+Coming soon

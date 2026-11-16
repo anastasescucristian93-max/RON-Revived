@@ -2437,6 +2437,11 @@ Fai clic per caricare una partita salvata.
 			<!--QLOC_BEGIN-->
 			<ENTRY name="APPLY"><STRING>Fai clic per applicare le modifiche in sospeso alle impostazioni di gioco e giocatori. Le modifiche in sospeso sono contrassegnate da uno sfondo trasparente. Se non ci sono modifiche in sospeso, il pulsante è disattivato.</STRING></ENTRY>
 			<!--QLOC_END-->
+			<ENTRY name="HERO_INF"><STRING>{EROE DI FANTERIA}: Il tuo eroe è una squadra di sei soldati della tua linea di fanteria. Sale fino al livello 30 e diventa la nuova unità di ogni epoca.</STRING></ENTRY>
+			<ENTRY name="HERO_CAV"><STRING>{EROE DI CAVALLERIA}: Il tuo eroe sono due cavalieri della tua linea di cavalleria. Salgono fino al livello 30 e diventano la nuova unità di ogni epoca.</STRING></ENTRY>
+			<ENTRY name="GOAL_WONDER"><STRING>{OBIETTIVO: UNA MERAVIGLIA}: Prossimamente. Costruisci una Meraviglia per richiamare l'assalto finale.</STRING></ENTRY>
+			<ENTRY name="GOAL_TECH"><STRING>{OBIETTIVO: L'ERA DELL'INFORMAZIONE}: Prossimamente. Raggiungi l'Era dell'informazione per richiamare l'assalto finale.</STRING></ENTRY>
+			<ENTRY name="GOAL_TIME"><STRING>{OBIETTIVO: IL TEMPO}: Resisti fino alla fine della durata della partita; poi arriva l'assalto finale, tre ondate in una da ogni lato. Distruggilo per vincere.</STRING></ENTRY>
 		</BUTTON>
 		<EDITBOX>
 			<ENTRY name="CHAT_SEND">

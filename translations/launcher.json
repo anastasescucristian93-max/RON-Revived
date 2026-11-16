@@ -40,7 +40,15 @@
   "ron_extras_ask_remove": "Remove %s? You can download it again at any time.",
   "ron_extras_ask_cancel": "Stop downloading %s?",
   "ron_extra_music": "Nation music",
-  "ron_extra_music_desc": "54 tracks: each of the 25 nations with music of its own"
+  "ron_extra_music_desc": "54 tracks: each of the 25 nations with music of its own",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, a separate Steam Workshop mod",
+  "ron_extras_steam_get": "Get it",
+  "ron_extras_steam_where": "on Steam Workshop",
+  "ron_extras_steam_open": "Open in Steam",
+  "ron_extras_steam_sub": "Subscribed",
+  "ron_extras_steam_on": "Active",
+  "ron_extras_steam_turn_on": "Turn it on in Mods"
  },
  "DE": {
   "170023": "Spielen",
@@ -82,7 +90,15 @@
   "ron_extras_ask_remove": "%s entfernen? Du kannst es jederzeit wieder laden.",
   "ron_extras_ask_cancel": "Download von %s abbrechen?",
   "ron_extra_music": "Nationenmusik",
-  "ron_extra_music_desc": "54 Stücke: jede der 25 Nationen mit eigener Musik"
+  "ron_extra_music_desc": "54 Stücke: jede der 25 Nationen mit eigener Musik",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, eine separate Steam-Workshop-Mod",
+  "ron_extras_steam_get": "Holen",
+  "ron_extras_steam_where": "im Steam Workshop",
+  "ron_extras_steam_open": "In Steam öffnen",
+  "ron_extras_steam_sub": "Abonniert",
+  "ron_extras_steam_on": "Aktiv",
+  "ron_extras_steam_turn_on": "Unter Mods einschalten"
  },
  "ES": {
   "170023": "Jugar",
@@ -124,7 +140,15 @@
   "ron_extras_ask_remove": "¿Quitar %s? Puedes volver a descargarlo cuando quieras.",
   "ron_extras_ask_cancel": "¿Detener la descarga de %s?",
   "ron_extra_music": "Música de naciones",
-  "ron_extra_music_desc": "54 pistas: cada una de las 25 naciones con su propia música"
+  "ron_extra_music_desc": "54 pistas: cada una de las 25 naciones con su propia música",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, un mod aparte de Steam Workshop",
+  "ron_extras_steam_get": "Obtener",
+  "ron_extras_steam_where": "en Steam Workshop",
+  "ron_extras_steam_open": "Abrir en Steam",
+  "ron_extras_steam_sub": "Suscrito",
+  "ron_extras_steam_on": "Activo",
+  "ron_extras_steam_turn_on": "Actívalo en Mods"
  },
  "FR": {
   "170023": "Jouer",
@@ -166,7 +190,15 @@
   "ron_extras_ask_remove": "Retirer %s ? Vous pourrez le télécharger de nouveau à tout moment.",
   "ron_extras_ask_cancel": "Arrêter le téléchargement de %s ?",
   "ron_extra_music": "Musique des nations",
-  "ron_extra_music_desc": "54 morceaux : chacune des 25 nations avec sa propre musique"
+  "ron_extra_music_desc": "54 morceaux : chacune des 25 nations avec sa propre musique",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, un mod séparé du Steam Workshop",
+  "ron_extras_steam_get": "Obtenir",
+  "ron_extras_steam_where": "sur Steam Workshop",
+  "ron_extras_steam_open": "Ouvrir dans Steam",
+  "ron_extras_steam_sub": "Abonné",
+  "ron_extras_steam_on": "Actif",
+  "ron_extras_steam_turn_on": "Activez-le dans Mods"
  },
  "IT": {
   "170023": "Gioca",
@@ -208,7 +240,15 @@
   "ron_extras_ask_remove": "Rimuovere %s? Potrai scaricarlo di nuovo in qualsiasi momento.",
   "ron_extras_ask_cancel": "Interrompere il download di %s?",
   "ron_extra_music": "Musica delle nazioni",
-  "ron_extra_music_desc": "54 brani: ognuna delle 25 nazioni con la sua musica"
+  "ron_extra_music_desc": "54 brani: ognuna delle 25 nazioni con la sua musica",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, mod separata dello Steam Workshop",
+  "ron_extras_steam_get": "Prendi",
+  "ron_extras_steam_where": "su Steam Workshop",
+  "ron_extras_steam_open": "Apri in Steam",
+  "ron_extras_steam_sub": "Iscritto",
+  "ron_extras_steam_on": "Attiva",
+  "ron_extras_steam_turn_on": "Attivala in Mods"
  },
  "RU": {
   "170023": "Играть",
@@ -250,7 +290,15 @@
   "ron_extras_ask_remove": "Удалить «%s»? Его можно снова скачать в любое время.",
   "ron_extras_ask_cancel": "Остановить загрузку «%s»?",
   "ron_extra_music": "Музыка наций",
-  "ron_extra_music_desc": "54 трека: у каждой из 25 наций своя музыка"
+  "ron_extra_music_desc": "54 трека: у каждой из 25 наций своя музыка",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, отдельный мод Steam",
+  "ron_extras_steam_get": "Получить",
+  "ron_extras_steam_where": "в Steam Workshop",
+  "ron_extras_steam_open": "Открыть в Steam",
+  "ron_extras_steam_sub": "Подписка",
+  "ron_extras_steam_on": "Включён",
+  "ron_extras_steam_turn_on": "Включите в Mods"
  },
  "PT": {
   "170023": "Jogar",
@@ -292,7 +340,15 @@
   "ron_extras_ask_remove": "Remover %s? Você pode baixá-lo de novo a qualquer momento.",
   "ron_extras_ask_cancel": "Parar o download de %s?",
   "ron_extra_music": "Música das nações",
-  "ron_extra_music_desc": "54 faixas: cada uma das 25 nações com sua própria música"
+  "ron_extra_music_desc": "54 faixas: cada uma das 25 nações com sua própria música",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, um mod à parte do Steam Workshop",
+  "ron_extras_steam_get": "Obter",
+  "ron_extras_steam_where": "no Steam Workshop",
+  "ron_extras_steam_open": "Abrir no Steam",
+  "ron_extras_steam_sub": "Inscrito",
+  "ron_extras_steam_on": "Ativo",
+  "ron_extras_steam_turn_on": "Ative em Mods"
  },
  "PL": {
   "170023": "Graj",
@@ -334,7 +390,15 @@
   "ron_extras_ask_remove": "Usunąć %s? Możesz pobrać to ponownie w dowolnej chwili.",
   "ron_extras_ask_cancel": "Przerwać pobieranie: %s?",
   "ron_extra_music": "Muzyka narodów",
-  "ron_extra_music_desc": "54 utwory: każdy z 25 narodów z własną muzyką"
+  "ron_extra_music_desc": "54 utwory: każdy z 25 narodów z własną muzyką",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, osobny mod ze Steam Workshop",
+  "ron_extras_steam_get": "Pobierz",
+  "ron_extras_steam_where": "w Steam Workshop",
+  "ron_extras_steam_open": "Otwórz w Steam",
+  "ron_extras_steam_sub": "Subskrybowany",
+  "ron_extras_steam_on": "Aktywny",
+  "ron_extras_steam_turn_on": "Włącz w Mods"
  },
  "TR": {
   "170023": "Oyna",
@@ -376,7 +440,15 @@
   "ron_extras_ask_remove": "%s kaldırılsın mı? İstediğin zaman yeniden indirebilirsin.",
   "ron_extras_ask_cancel": "%s indirmesi durdurulsun mu?",
   "ron_extra_music": "Ulus müzikleri",
-  "ron_extra_music_desc": "54 parça: 25 ulusun her birine kendi müziği"
+  "ron_extra_music_desc": "54 parça: 25 ulusun her birine kendi müziği",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, ayrı bir Steam Workshop modu",
+  "ron_extras_steam_get": "Edin",
+  "ron_extras_steam_where": "Steam Workshop'ta",
+  "ron_extras_steam_open": "Steam'de aç",
+  "ron_extras_steam_sub": "Abone",
+  "ron_extras_steam_on": "Etkin",
+  "ron_extras_steam_turn_on": "Mods'ta açın"
  },
  "RO": {
   "170023": "Joacă",
@@ -418,6 +490,14 @@
   "ron_extras_ask_remove": "Ștergi %s? Îl poți descărca din nou oricând.",
   "ron_extras_ask_cancel": "Oprești descărcarea pentru %s?",
   "ron_extra_music": "Muzica națiunilor",
-  "ron_extra_music_desc": "54 de piese: fiecare dintre cele 25 de națiuni cu muzica ei"
+  "ron_extra_music_desc": "54 de piese: fiecare dintre cele 25 de națiuni cu muzica ei",
+  "ron_extra_cbp": "CBP",
+  "ron_extra_cbp_desc": "Community Balance Patch, un mod separat din Steam Workshop",
+  "ron_extras_steam_get": "Ia-l",
+  "ron_extras_steam_where": "din Steam Workshop",
+  "ron_extras_steam_open": "Deschide în Steam",
+  "ron_extras_steam_sub": "Abonat",
+  "ron_extras_steam_on": "Activ",
+  "ron_extras_steam_turn_on": "Activează-l din Mods"
  }
 }

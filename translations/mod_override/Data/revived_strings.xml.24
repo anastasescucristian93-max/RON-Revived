@@ -72,7 +72,7 @@
 	<STRING en="Unique units">Unități unice</STRING>
 	<STRING en="Allow all">Permite tot</STRING>
 	<STRING en="%d of %d units turned off">%d din %d unități oprite</STRING>
-	<STRING en="Click a unit to turn it off, with its later upgrades. The X turns off a whole column.">Clic pe o unitate ca s-o oprești, împreună cu îmbunătățirile ei de mai târziu. X-ul oprește o coloană întreagă.</STRING>
+	<STRING en="Click a unit to turn only that one off: the line skips it. The X turns off a whole column.">Clic pe o unitate ca s-o oprești doar pe ea: linia sare peste ea. X-ul oprește o coloană întreagă.</STRING>
 	<STRING en="Only the host can change them.">Doar gazda le poate schimba.</STRING>
 	<STRING en="City Repair: On">Reparare oraș: pornită</STRING>
 	<STRING en="City Repair: Off">Reparare oraș: oprită</STRING>
@@ -149,4 +149,5 @@
 	<STRING en="%s food, timber, wealth and metal">%s hrană, lemn, avere și metal</STRING>
 	<STRING en="two squads of your age's infantry join you">două grupuri de infanterie din epoca ta ți se alătură</STRING>
 	<STRING en="%s smaller">cu %s mai mic</STRING>
+	<STRING en="Coming soon">În curând</STRING>
 </ROOT>

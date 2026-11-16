@@ -72,7 +72,7 @@
 	<STRING en="Unique units">Unidades únicas</STRING>
 	<STRING en="Allow all">Permitir todas</STRING>
 	<STRING en="%d of %d units turned off">%d de %d unidades desactivadas</STRING>
-	<STRING en="Click a unit to turn it off, with its later upgrades. The X turns off a whole column.">Haga clic en una unidad para desactivarla junto con sus mejoras posteriores. La X desactiva toda una columna.</STRING>
+	<STRING en="Click a unit to turn only that one off: the line skips it. The X turns off a whole column.">Haga clic en una unidad para desactivar solo esa: la línea la omite. La X desactiva toda una columna.</STRING>
 	<STRING en="Only the host can change them.">Solo el anfitrión puede cambiarlas.</STRING>
 	<STRING en="City Repair: On">Reparación urbana: sí</STRING>
 	<STRING en="City Repair: Off">Reparación urbana: no</STRING>
@@ -149,4 +149,5 @@
 	<STRING en="%s food, timber, wealth and metal">%s de alimentos, madera, riqueza y metal</STRING>
 	<STRING en="two squads of your age's infantry join you">dos escuadras de infantería de tu época se unen a ti</STRING>
 	<STRING en="%s smaller">%s más pequeña</STRING>
+	<STRING en="Coming soon">Próximamente</STRING>
 </ROOT>

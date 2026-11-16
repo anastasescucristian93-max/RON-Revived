@@ -566,8 +566,16 @@ static char *g_hero_btn[2];
 static char *g_goal_btn[3]; /* the goal: 0 a Wonder, 1 the Information Age, 2 the 45 minutes */
 static int g_goal = -1;
 
+/* Only the time can be chosen for now: the Wonder and the Information Age are "coming soon" (the
+   user, 2026-11-11: "vreau sa il lasi doar pe ala de timer activ si restul coming soon"). Set
+   GOAL_SOON to 0 to offer them again (the script still handles goals 0 and 1). */
+#define GOAL_SOON 1
+static int goal_soon(int i) { return GOAL_SOON && i != 2; }
+
 int survival_goal(void)
 {
+    if (GOAL_SOON)
+        return 2;
     if (g_goal < 0)
         g_goal = g_ini[0] ? GetPrivateProfileIntA("survival", "goal", 0, g_ini) : 0;
     return g_goal < 0 || g_goal > 2 ? 0 : g_goal;
@@ -618,31 +626,71 @@ static void show_hero_buttons(char *sw)
     }
 }
 
+/* Any other setup (Skirmish, multiplayer): the five buttons hidden. The game keeps them shown
+   once the Survival setup showed them, and drew them there as empty plates (seen 2026-11-16). */
+static void hide_survival_buttons(char *sw)
+{
+    static const char *names[5] = { "hero_inf", "hero_cav", "goal_wonder", "goal_tech", "goal_time" };
+    char *players = sw + SW_PLAYERS;
+    for (int i = 0; i < 5; i++) {
+        char *b = find_named(players, VT_FIND_BUTTON, names[i]);
+        if (b)
+            ((void(__attribute__((thiscall)) *)(void *))VA(VA_WIN_HIDE))(b);
+        if (i < 2)
+            g_hero_btn[i] = b;
+        else
+            g_goal_btn[i - 2] = b;
+    }
+}
+
 /* unitbans.c's SetupWin::on_button_redraw hook: 1 when it drew one of the hero buttons */
-/* a goal button: the game's alert picture, the chosen one lit with a glow, the others dimmed */
+/* a goal button: the game's alert picture on a dark plate; the chosen one in a gold frame, the
+   others dimmed by a dark veil (a textured quad's colour does not tint it in the setup screen,
+   and the white glow vanished on the snowy background: the user saw no difference, 2026-11-11) */
+static void goal_fill(void *rm, int l, int t, int r, int b, unsigned color)
+{
+    short q[4] = { (short)l, (short)r, (short)t, (short)b };
+    ((add_rect_t)VA(VA_RM_ADD_RECT))(rm, NULL, q, color, RENDER_SOLID);
+}
+
 static int goal_button_redraw(char *sw, char *button, int i)
 {
     static const char *icons[3] = { "goal_wonder_icon", "goal_tech_icon", "goal_time_icon" };
     void *icon = find_named(sw, VT_FIND_TEX, icons[i]);
-    void *glow = find_named(sw, VT_FIND_TEX, "surv_glow");
     short *r = (short *)(button + WIN_RECT);
     int w = r[1] - r[0], h = r[3] - r[2], chosen = survival_goal() == i;
     add_rect_t add = (add_rect_t)VA(VA_RM_ADD_RECT);
     void *rm = (void *)VA(VA_IFACE_RM);
-    if (chosen && glow) {
-        short g[4] = { 0, (short)w, 0, (short)h };
-        add(rm, glow, g, ABGR(255, 196, 90, 200), 1);
-    }
+    goal_fill(rm, 0, 0, w, h, chosen ? ABGR(40, 30, 12, 225) : ABGR(14, 16, 20, 190));
     if (icon) {
         int sz = (w < h ? w : h) - 16, x = (w - sz) / 2, y = (h - sz) / 2;
         short q[4] = { (short)x, (short)(x + sz), (short)y, (short)(y + sz) };
-        add(rm, icon, q, chosen ? ABGR(255, 255, 255, 255) : ABGR(110, 110, 110, 255), 1);
+        add(rm, icon, q, ABGR(255, 255, 255, 255), 1);
+    }
+    if (chosen) {
+        unsigned gold = ABGR(255, 206, 90, 255);
+        goal_fill(rm, 0, 0, w, 3, gold);
+        goal_fill(rm, 0, h - 3, w, h, gold);
+        goal_fill(rm, 0, 3, 3, h - 3, gold);
+        goal_fill(rm, w - 3, 3, w, h - 3, gold);
+    } else {
+        goal_fill(rm, 0, 0, w, h, ABGR(0, 0, 0, goal_soon(i) ? 185 : 150));
+    }
+    if (goal_soon(i)) {
+        goal_fill(rm, 0, h / 2 - 11, w, h / 2 + 11, ABGR(20, 16, 8, 220));
+        unitbans_button_text(button, 0, h / 2 - 10, w, h / 2 + 10, "Coming soon", 11, 1, 0xE6BE5Au);
     }
     return 1;
 }
 
 int survival_button_redraw(char *sw, char *button)
 {
+    if (button && !survival_setup_active() &&
+        (button == g_hero_btn[0] || button == g_hero_btn[1] || button == g_goal_btn[0] || button == g_goal_btn[1] ||
+         button == g_goal_btn[2])) {
+        ((void(__attribute__((thiscall)) *)(void *))VA(VA_WIN_HIDE))(button); /* shown again: hidden, not drawn */
+        return 1;
+    }
     for (int g = 0; g < 3; g++)
         if (button && button == g_goal_btn[g] && survival_setup_active())
             return goal_button_redraw(sw, button, g);
@@ -682,6 +730,8 @@ __attribute__((used, thiscall)) static void c_setup_clicked(char *sw, void *name
         return;
     }
     if (survival_setup_active() && !strncmp(a, "goal_", 5)) {
+        if (GOAL_SOON)
+            return; /* only the time for now */
         g_goal = !strcmp(a, "goal_tech") ? 1 : !strcmp(a, "goal_time") ? 2 : 0;
         if (g_ini[0])
             WritePrivateProfileStringA("survival", "goal", g_goal == 1 ? "1" : g_goal == 2 ? "2" : "0", g_ini);
@@ -850,6 +900,8 @@ void survival_hide_box(char *box)
    setup the Survival button opened, one other nation, the rows hidden. */
 void survival_setup_checks(char *sw)
 {
+    if (g_enabled && !g_button && sw)
+        hide_survival_buttons(sw);
     if (!g_enabled || !g_button || !sw)
         return;
     g_coop_test = g_ini[0] ? GetPrivateProfileIntA("survival", "coop_test", 0, g_ini) != 0 : 0;
