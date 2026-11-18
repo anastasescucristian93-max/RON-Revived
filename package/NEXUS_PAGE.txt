@@ -5,7 +5,7 @@ NEXUS MODS PAGE TEXT (BBCode: paste into the Description box as it is)
 RON Revived
 
 --- Version ---
-2026.11.16
+2026.11.19
 
 --- Category ---
 Overhauls
@@ -14,9 +14,9 @@ Overhauls
 A big overhaul for Rise of Nations: Extended Edition: smooth camera, a cleaner interface, new building art, Romania as a 25th nation, ten languages, music for every nation, new gameplay and dozens of the game's own bugs fixed. One-click install, updates from the launcher.
 
 --- File to upload ---
-dist\RON_Revived-2026.11.16.zip  (main file, about 40 MB)
-File name on Nexus: RON Revived 2026.11.16
-Old file (2026.11.08): move it to Old versions / archive it.
+dist\RON_Revived-2026.11.19.zip  (main file, about 40 MB)
+File name on Nexus: RON Revived 2026.11.19
+Old file (2026.11.18): move it to Old versions / archive it.
 File description: The whole pack. Extract it and double-click install.bat. The nation music is downloaded from the launcher's Extras tray.
 
 --- Description ---
@@ -46,7 +46,7 @@ A mod pack for [b]Rise of Nations: Extended Edition[/b] (Steam). It makes the cl
 [*]Mixed building selection: train from Barracks, Stables, Factories and Airbases in one panel
 [*]Area strike: drag a circle from your Airbases and every plane takes a target in it
 [*]An AI assistant that can manage your economy, with limits on what it may spend
-[*]A new look for the launcher, the main menu (two redrawn animated scenes), the game setup and the menus
+[*]A new look for the launcher, the main menu (three redrawn animated scenes: a destroyer in a storm, a space station above the Earth and a jeep bursting out of an explosion), the game setup and the menus
 [/list]
 
 [size=4][b]New building art[/b][/size]

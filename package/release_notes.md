@@ -21,7 +21,8 @@ The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the u
 
 ## New in this version
 
-- **A space scene in the main menu:** a space station high above the night side of the Earth, an astronaut on a spacewalk beside it, city lights below and a missile climbing from the ground. Its stars, Earth, missile, station and astronaut drift apart slowly. The menu now plays the destroyer, the space scene and the jeep in turn.
+- **No more black between the main menu's scenes:** the next scene now rises over the old one in 1.5 seconds while both keep drifting, instead of the game's fade to black. `menu_crossfade` under `[ui]` in `ron_camera.ini` sets the length (0 = the game's fade).
+- **A space scene in the main menu** (since 2026.11.18): a space station high above the night side of the Earth, an astronaut on a spacewalk, city lights below and a missile climbing from the ground. The menu plays the destroyer, the space scene and the jeep in turn.
 
 ## What's in it
 

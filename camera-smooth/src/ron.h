@@ -226,6 +226,9 @@ void survival_install(void);
 /* menuhelp.c: the main menu's help line under the menu's frame, centred */
 void menuhelp_load_config(const char *ini_path);
 void menuhelp_install(void);
+/* menufade.c: the main menu's background scenes cross-fade instead of dipping to black */
+void menufade_load_config(const char *ini_path);
+void menufade_install(void);
 void survival_setup_game(void); /* nonukes.c's setup_game hook, after the game's */
 int survival_combo_text(char *combo, void *str_out); /* flags.c: a Survival setup's fixed combo text */
 int survival_list_text(char *combo, int item, void *str_out); /* flags.c: a row of its open lists */

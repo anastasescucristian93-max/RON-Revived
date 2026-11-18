@@ -189,6 +189,7 @@ static void load_config(void)
     selpanel_load_config(path);
     survival_load_config(path);
     menuhelp_load_config(path);
+    menufade_load_config(path);
     assistant_load_config(path);
     assist_orders_load_config(path);
     hover_load_config(path);
@@ -1591,6 +1592,7 @@ static void install_hooks(void)
     selpanel_install();
     survival_install();
     menuhelp_install();
+    menufade_install();
     assistant_install();
     assist_orders_install();
     assist_panel_install();
