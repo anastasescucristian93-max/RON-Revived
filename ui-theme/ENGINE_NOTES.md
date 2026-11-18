@@ -10,6 +10,8 @@ Findings about how the game and the launcher draw their interface, used by the b
 - `IFACEBORDER` (draw_border 0x51D260): corners are drawn inside the rect at their own texture size, edges are tiled. corner0..3 = TL, TR, BR, BL; edge0..3 = top, right, bottom, left; extra0..7 are optional ornaments (`TEX_NONE` hides them).
 - The logo (`<LOGO>`) is drawn lit: diffuse `ron_logo_texture_map.tga` with normal map `ron_logo_normal_map.tga`; the specular pass uses `ronlogo_specmap.tga` (uniform white, low alpha). Rows above ~60 of the 512x512 texture are off screen; rows below ~405 run into the title plate.
 - Background: `ANIM` blocks play in turn (30 s each). An `ANIMLAYER` is drawn at a size proportional to its `IFACETEX` rect, made for 1280x720: a bigger texture shows magnified, not sharper.
+- An `ANIMLAYER` only slides: `move_x` / `move_y` (a constant speed, the game's own scenes use 0.001 to 0.003) and `start_offset_x`; no rotation, scaling or swaying. Its layers are listed front first. A layer that moves uncovers a strip of the one under it at its trailing edge, so a cut part (a tether off the frame, a panel cut at the edge) has to move away from its cut, never toward it. The space scene (make_space_layers.py) moves its Earth down (move_y > 0 taken as downward), so only sky is uncovered; the background under the Earth is filled with sky anyway in case that sign is the other way.
+- The game's topmenu.xml declares four scenes' textures (anim_bg_0 .. 3; bg_0, bg_1 and bg_2 have five layers, bg_3 three). Our menu reuses the slots: destroyer bg_0, space bg_1 (the ambush's), jeep bg_3; bg_2 (horses) is free.
 
 ## Dialogs (Data\interface.xml)
 

@@ -5,7 +5,7 @@ NEXUS MODS PAGE TEXT (BBCode: paste into the Description box as it is)
 RON Revived
 
 --- Version ---
-2026.11.08
+2026.11.16
 
 --- Category ---
 Overhauls
@@ -14,8 +14,9 @@ Overhauls
 A big overhaul for Rise of Nations: Extended Edition: smooth camera, a cleaner interface, new building art, Romania as a 25th nation, ten languages, music for every nation, new gameplay and dozens of the game's own bugs fixed. One-click install, updates from the launcher.
 
 --- File to upload ---
-dist\RON_Revived-2026.11.08.zip  (main file, about 40 MB)
-File name on Nexus: RON Revived 2026.11.08
+dist\RON_Revived-2026.11.16.zip  (main file, about 40 MB)
+File name on Nexus: RON Revived 2026.11.16
+Old file (2026.11.08): move it to Old versions / archive it.
 File description: The whole pack. Extract it and double-click install.bat. The nation music is downloaded from the launcher's Extras tray.
 
 --- Description ---
@@ -62,17 +63,18 @@ New buildings for the Romans, Egyptians, French, Northern Europeans, Dutch, Amer
 [size=4][b]Ten languages and music for every nation[/b][/size]
 [list]
 [*]The whole game in Russian, Brazilian Portuguese, Polish, Turkish and Romanian, besides the game's own English, German, Spanish, French and Italian: pick one with the flag button in the launcher
-[*]54 pieces of music, 2 to 4 for each of the 25 nations, with each culture's own instruments (an optional download from the launcher's Extras tray)
+[*]54 pieces of music, 2 to 4 for each of the 25 nations, with each culture's own instruments, in every language (an optional download from the launcher's Extras tray)
 [/list]
 
 [size=4][b]New gameplay[/b][/size]
 [list]
-[*][b]Survival mode:[/b] its own button in the Solo menu; hold out for 45 minutes in the middle of an open plain against waves marching in from the edges of the map, with a wave bar at the right edge of the screen
+[*][b]Survival mode:[/b] its own button in the Solo menu. You start in the middle of an open plain; enemy Barracks, Stables and Siege Factories all over the map send ever bigger waves, a boss wave after every second one and a final assault at the end. Choose your hero (a squad that ranks up to level 30) and the length (30 minutes to 1 hour 30); beat a boss wave and pick one of three reward cards; destroyed enemy camps leave ruins to explore
 [*][b]City districts:[/b] late-game Housing, Commerce and Industrial districts built next to your cities
 [*][b]Airdrop:[/b] an Airbase sends a Chinook that drops two squads of Paratroopers behind enemy lines
-[*][b]Field Fortifications and Tank Traps:[/b] infantry dig in; Citizens lay steel obstacles nothing gets through
+[*][b]Field Fortifications and Tank Traps:[/b] infantry dig in; Citizens lay Tank Traps in every age, from sharpened stakes to steel hedgehogs, a whole line with Shift + drag
 [*][b]Missile defence:[/b] Missile Silos train Interceptors that shoot down enemy nukes; nukes leave radiation, and a radiation sign over the target closes in as the nuke falls
 [*][b]Nukes slider:[/b] in the game setup, None, 1 to 250 nuclear weapons, or Unlimited
+[*][b]Turn units off:[/b] a Units window in the game setup with every unit as a picture; turn off any one of them for the game (its line skips it), or a whole column
 [*][b]Veteran ranks:[/b] units, Spies, Generals and towers gain experience and rise through 10 ranks
 [*][b]Cities repair their own buildings[/b]
 [*][b]The General's Heal[/b] replaces Create Decoys
@@ -99,9 +101,8 @@ Almost everything can be turned off one by one in [i]ron_camera.ini[/i] in the g
 [list]
 [*]Made for the current Steam version of Extended Edition. After a game update the camera and gameplay part switches itself off safely until a new version is out.
 [*][b]Multiplayer:[/b] every player needs the same version of the pack and the same gameplay settings, or the game goes out of sync.
-[*]Not made to run together with other mods that change the rules: turn those off in the game's Mods menu.
+[*]The Community Balance Patch (CBP), a separate mod by other authors on the Steam Workshop, runs together with RON Revived: the launcher's Extras tray has a row that opens its Workshop page. Other mods that change the rules are untested with it.
 [*]Some antivirus tools flag [i]winmm.dll[/i] as a false positive: this is how the mod loads into the game (a DLL placed next to the exe). It does not touch anything outside the game.
-[*]If the game crashes, a panel offers to send a crash report to the RON Revived Discord. Nothing is sent unless you press Send.
 [*]The full list of changes is in CHANGES.md inside the zip and on [url=https://github.com/anastasescucristian93-max/RON-Revived]GitHub[/url].
 [/list]
 

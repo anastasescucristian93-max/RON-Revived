@@ -21,11 +21,7 @@ The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the u
 
 ## New in this version
 
-- **The nation music now plays.** Its tracks were in a compressed format the game skipped without a word, so nobody heard them. They are now in the game's own format, and they also play when the game is in another language than English. If you have the Nation music extra, the launcher's Extras tray offers its update (about 520 MB now).
-- **Turn units off, one at a time:** in the game setup's Units window a click turns off only that unit. Its line skips it: you keep the unit before it and upgrade straight to the one after it when its Age comes.
-- **CBP in the Extras tray:** a row that opens the Community Balance Patch's Workshop page and shows whether you have it on.
-- **The jeep scene of the main menu**, painted anew; the Extras tray now hangs from the launcher's top left corner.
-- **Fix:** five empty buttons at the bottom left of the Skirmish setup are gone.
+- **A space scene in the main menu:** a space station high above the night side of the Earth, an astronaut on a spacewalk beside it, city lights below and a missile climbing from the ground. Its stars, Earth, missile, station and astronaut drift apart slowly. The menu now plays the destroyer, the space scene and the jeep in turn.
 
 ## What's in it
 

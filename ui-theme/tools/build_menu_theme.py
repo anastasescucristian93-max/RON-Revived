@@ -16,6 +16,9 @@ Outputs (paths relative to the game folder, under <out>):
   art\anim\anim_bg_3_layer_N.tga  jeep scene layers redrawn (background, explosion, jeep), from
                                source\jeep_scene\hd (make_jeep_layers.py); the menu then plays
                                the destroyer and the jeep scenes in turn
+  art\anim\anim_bg_1_layer_N.tga  space scene layers (stars, Earth, missile, station, astronaut),
+                               from source\space_scene\hd (make_space_layers.py), in the
+                               ambush scene's slot: destroyer, space, jeep in turn
   Data\topmenu.xml             TOPMENUSELECTION pointed at menu_parts.tga
   Data\interface.xml, optionswin.xml, setupwin.xml, workshopwin.xml
                                dialog buttons (OK / Cancel...) pointed at menu_parts.tga
@@ -59,6 +62,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ELEMENTS = os.path.join(HERE, "..", "elements", "sheet_01")
 SHIP_HD = os.path.join(HERE, "..", "source", "ship_scene", "hd")
 JEEP_HD = os.path.join(HERE, "..", "source", "jeep_scene", "hd")
+SPACE_HD = os.path.join(HERE, "..", "source", "space_scene", "hd")
 # The menu draws an animation layer at a size proportional to its IFACETEX rect (made for
 # 1280x720), so a larger texture shows magnified, not sharper: keep the game's size.
 SCENE_SIZE = (1280, 720)
@@ -507,21 +511,50 @@ def build_ship_scene(game, out):
 def build_jeep_scene(out):
     """The jeep scene (anim_bg_3), from the layers make_jeep_layers.py cut out of the redrawn
     picture (background, explosion, jeep). Returns True when it was built."""
-    if not os.path.isdir(JEEP_HD):
+    return build_layer_scene(out, JEEP_HD, 3, 3, "jeep")
+
+
+def build_space_scene(out):
+    """The space scene (anim_bg_1, the game's ambush slot: five layers), from the layers
+    make_space_layers.py cut out of the picture (background, Earth, missile, station,
+    astronaut). Returns True when it was built."""
+    return build_layer_scene(out, SPACE_HD, 1, 5, "space")
+
+
+def build_layer_scene(out, hd, index, count, preview):
+    """Scene anim_bg_<index> from hd\\layer_N_*.png (N = 0 .. count-1)."""
+    if not os.path.isdir(hd):
         return False
-    names = sorted(n for n in os.listdir(JEEP_HD) if re.match(r"layer_\d_.*\.png$", n))
-    assert [int(n[6]) for n in names] == [0, 1, 2], names
+    names = sorted(n for n in os.listdir(hd) if re.match(r"layer_\d_.*\.png$", n))
+    assert [int(n[6]) for n in names] == list(range(count)), names
     for name in names:
-        img = Image.open(os.path.join(JEEP_HD, name)).convert("RGBA")
-        # Centre crop to 16:9 (the pictures are 1024x572), then scale to the scene size.
+        img = Image.open(os.path.join(hd, name)).convert("RGBA")
+        # Centre crop to 16:9 (the pictures are 1024x572 or 1024x559), then scale to the scene
+        # size.
         w, h = img.size
         cw, ch = min(w, round(h * 16 / 9)), min(h, round(w * 9 / 16))
         img = img.crop(((w - cw) // 2, (h - ch) // 2, (w - cw) // 2 + cw, (h - ch) // 2 + ch))
         img = img.resize(SCENE_SIZE, Image.LANCZOS)
         n = int(name[6])
-        write_tga(img, os.path.join(out, "art", "anim", f"anim_bg_3_layer_{n}.tga"))
-        img.save(os.path.join(HERE, "..", f"preview_jeep_layer_{n}.png"))
+        write_tga(img, os.path.join(out, "art", "anim", f"anim_bg_{index}_layer_{n}.tga"))
+        img.save(os.path.join(HERE, "..", f"preview_{preview}_layer_{n}.png"))
     return True
+
+
+# The space scene's movement, front layer first (the game's ANIMLAYER order): the astronaut
+# drifts left (his tether runs off the left edge, so it never shows its cut end), the station
+# right and up (its panels run off the top and right edges), the missile climbs along its trail,
+# the Earth sinks a little (uncovering sky only), the stars stay.
+SPACE_ANIM = """\t  <!-- Space animation -->
+\t  <ANIM duration="30">
+\t\t<ANIMLAYER texture="anim_overlay" move_x="0.0" move_y="0.0" />
+\t\t<ANIMLAYER texture="anim_bg1_tex4" move_x="-0.0012" move_y="0.0" />
+\t\t<ANIMLAYER texture="anim_bg1_tex3" move_x="0.0008" move_y="-0.0004" />
+\t\t<ANIMLAYER texture="anim_bg1_tex2" move_x="0.0004" move_y="-0.0011" />
+\t\t<ANIMLAYER texture="anim_bg1_tex1" move_x="0.0" move_y="0.0004" />
+\t\t<ANIMLAYER texture="anim_bg1_tex0" move_x="0.0" move_y="0.0" />
+\t  </ANIM>
+"""
 
 
 # ---- topmenu.xml ---------------------------------------------------------------------------
@@ -593,7 +626,7 @@ def tex(name, rect):
     return f'<IFACETEX name="{name}" texture="TEX_REVIVED_MENU" left="{x}" top="{y}" width="{w}" height="{h}"/>'
 
 
-def build_xml(game, rects, scene_sizes, jeep=False):
+def build_xml(game, rects, scene_sizes, jeep=False, space=False):
     src = open(os.path.join(game, "Data", "topmenu.xml"), encoding="utf-8").read()
     start = src.index("<TOPMENUSELECTION")
     end = src.index("</TOPMENUSELECTION>", start)
@@ -614,10 +647,13 @@ def build_xml(game, rects, scene_sizes, jeep=False):
     head = block[: block.index(">") + 1]
     new_block = head + "\n      " + "\n      ".join(lines) + "\n    "
     xml = src[:start] + new_block + src[end:]
-    # Background: the redrawn scenes only, in turn (destroyer, then jeep once it is built); the
-    # old ambush and horse scenes are dropped, their textures stay declared, unused.
+    # Background: the redrawn scenes only, in turn (destroyer, space, jeep, those that are
+    # built); the old ambush and horse scenes are dropped, the space scene takes the ambush's
+    # place and textures (anim_bg_1, five layers), the horse's textures stay declared, unused.
     for scene in ("Ambush", "Horse") + (() if jeep else ("Jeep",)):
-        xml, n = re.subn(r"[ \t]*<!-- %s animation -->\s*<ANIM\b.*?</ANIM>[ \t]*\r?\n" % scene, "", xml, flags=re.S)
+        new = SPACE_ANIM if scene == "Ambush" and space else ""
+        xml, n = re.subn(r"[ \t]*<!-- %s animation -->\s*<ANIM\b.*?</ANIM>[ \t]*\r?\n" % scene,
+                         lambda m: new, xml, flags=re.S)
         assert n == 1, scene
     # Menu buttons narrower and a little taller, and the menu windows (whose width the frame
     # follows) narrower by as much.
@@ -1108,7 +1144,8 @@ def main(game, out):
 
     scene_sizes = build_ship_scene(game, out)
     jeep = build_jeep_scene(out)
-    xml = build_xml(game, rects, scene_sizes, jeep)
+    space = build_space_scene(out)
+    xml = build_xml(game, rects, scene_sizes, jeep, space)
     path = os.path.join(out, "Data", "topmenu.xml")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     open(path, "w", encoding="utf-8").write(xml)

@@ -23,6 +23,10 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - Turn off the first units of a line and the line starts later: with the Hoplites and the Phalanx off, that column gives nothing until the Pikemen. The X above a column still turns the whole column off.
 - In multiplayer every player needs this version: an older one would still turn the later units off and the game would fall out of sync.
 
+## A space scene in the main menu (`ui-theme`), new 2026-11-18
+
+- **The main menu background plays a third scene:** a space station high above the night side of the Earth, an astronaut on a spacewalk beside it, the city lights below and a missile climbing from the ground, with the sun's glare in the upper right. The stars, the Earth, the missile, the station and the astronaut drift apart slowly. The menu now plays the destroyer, the space scene and the jeep in turn, 30 seconds each.
+
 ## The menu's jeep scene redrawn again (`ui-theme`), new 2026-11-16
 
 - **The jeep scene in the main menu is painted anew:** the Willys jeep and its helmeted driver race out of an explosion of fire, smoke and flying earth in a rainy night, in a painted style instead of the earlier 3D look. The three layers still drift apart slowly.

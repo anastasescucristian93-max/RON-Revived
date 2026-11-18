@@ -67,6 +67,15 @@
 		<ANIMLAYER texture="anim_bg0_tex0" move_x="0.0" move_y="0.0" />
 	  </ANIM>
 	  
+	  <!-- Space animation -->
+	  <ANIM duration="30">
+		<ANIMLAYER texture="anim_overlay" move_x="0.0" move_y="0.0" />
+		<ANIMLAYER texture="anim_bg1_tex4" move_x="-0.0012" move_y="0.0" />
+		<ANIMLAYER texture="anim_bg1_tex3" move_x="0.0008" move_y="-0.0004" />
+		<ANIMLAYER texture="anim_bg1_tex2" move_x="0.0004" move_y="-0.0011" />
+		<ANIMLAYER texture="anim_bg1_tex1" move_x="0.0" move_y="0.0004" />
+		<ANIMLAYER texture="anim_bg1_tex0" move_x="0.0" move_y="0.0" />
+	  </ANIM>
 	  
 	  
 	  <!-- Jeep animation -->
