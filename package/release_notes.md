@@ -21,6 +21,7 @@ The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the u
 
 ## New in this version
 
+- **Mod not working? Double-click `check.bat`** (new in the zip): it changes nothing, checks everything that decides whether the mod loads and saves a report, `RON_Revived_check.txt`, on your Desktop. Send it with your bug report.
 - **Fixed: the mod did nothing when the game folder's path has non-English letters** (Cyrillic, Lithuanian, Greek and others on a Windows set to a Western language): no new launcher, no changes in the game, no `ron_camera.log`. The mod now finds its files there. On the rare drive where Windows cannot help with that, `install.bat` says so and what to do.
 - **No more black between the main menu's scenes** (since 2026.11.19): the next scene rises over the old one while both keep drifting.
 

@@ -32,6 +32,15 @@ Manual install: copy everything inside the game\ folder into the game folder
 mod_override and nation_art folders.
 
 
+NOT WORKING?
+------------
+If the game shows no sign of the mod (the old launcher, no ron_camera.log in the game folder),
+double-click check.bat. It changes nothing; it looks at everything that decides whether the mod
+loads (the game folder, Steam's overlay, Windows' security settings, your antivirus) and saves a
+report, RON_Revived_check.txt, on your Desktop. Send that file with your bug report. It shows
+your Windows user name in the folder paths; nothing else personal.
+
+
 UNINSTALL
 ---------
 Double-click uninstall.bat. It removes the files listed in RON_Revived_files.txt and puts back

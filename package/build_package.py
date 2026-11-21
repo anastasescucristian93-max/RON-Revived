@@ -6,7 +6,7 @@ mod pack with a double-click.
 Run camera-smooth\build.ps1 and every data mod's tools\build_data.py first (in the order below);
 this script only gathers what they made, it builds nothing.
 
-The zip holds install.bat / uninstall.bat (and their .ps1), README.txt, CHANGES.md and game\,
+The zip holds install.bat / uninstall.bat / check.bat (and their .ps1), README.txt, CHANGES.md and game\,
 the files exactly as they go into the game folder:
   - winmm.dll and the settings files next to riseofnations.exe;
   - mod_override\: the mods' mod_override folders laid over each other in their build order, so
@@ -114,7 +114,7 @@ def part_of(rel):
 # (and the Survival map style, read by camera-smooth\src\survival.c in Survival games)
 SCRIPT_TREES = {r"survival\scenario": "scenario", r"survival\mapstyles": "mapstyles"}
 
-PLAYER_FILES = ["install.bat", "install.ps1", "uninstall.bat", "uninstall.ps1", "README.txt"]
+PLAYER_FILES = ["install.bat", "install.ps1", "uninstall.bat", "uninstall.ps1", "check.bat", "check.ps1", "README.txt"]
 
 
 def sha256(p):
