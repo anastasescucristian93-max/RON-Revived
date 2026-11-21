@@ -33,6 +33,12 @@ Addresses are virtual addresses in `riseofnations.exe` (Steam EE, timestamp 6674
 - States: not on the PC (Get it / on Steam Workshop), there but off (Subscribed, amber light / Turn it on in Mods), on (Active, green); with the mouse on it an item that is there says Open in Steam. Read again when the tray opens and when the mouse comes onto the row (the player comes back from Steam). Links are not counted in the "1/1" and never dimmed by a download running.
 - Tested 2026-11-16 off-screen with a harness that includes launcher_extras.c: the real game folder gives Active for CBP, a fake steamapps with the item and `No` in mod-status.txt gives Subscribed, a missing item Get it, a non-numeric item id is dropped; drawn in EN, DE, RU, TR.
 
+## The DLL's folder and non-ANSI paths (ron_camera.c find_dir, 2026-11-22)
+
+- `g_dir` is an ANSI path and every file of the mod goes through the ANSI functions (`fopen`, `GetPrivateProfile*A`, `CreateFileA`...). `GetModuleFileNameA` turns a character outside the system code page into '?', so in such a folder (Cyrillic `Игры` on code page 1252, tested by loading the DLL with LoadLibraryW in the 32-bit PowerShell) nothing opened: no `ron_camera.log`, no ini, no nation_art. The game itself and its `WINMM.dll` import (riseofnations.exe imports it statically, patriots.exe only through the Steam overlay) still load the DLL; it just sees nothing.
+- `find_dir` takes the wide path; if it does not convert losslessly (`WC_NO_BEST_FIT_CHARS` + used-default flag; with the UTF-8 code page every character fits), it uses `GetShortPathNameW` (8.3 names are ASCII). A drive without 8.3 names is left as it was, with a note in `%LOCALAPPDATA%\RON_Revived\ron_camera.log`; `install.ps1` checks the same thing and warns.
+- Found from a player (Windows 11, Smart App Control off, files in place, no log at all).
+
 ## Startup hang (ron_camera.c warm_up_bcrypt, 2026-10-30)
 
 - Symptom since about 2026-10-21 (Steam forum "Game is not starting", players of the plain game): after Play, `riseofnations.exe` stays alive with no window, 0% CPU, ~46 MB; about half the starts. Windows 11 26200 with 32-bit `bcrypt.dll` 10.0.26100.9711 (KB5127647/KB5127648, 2026-10-13) and Steam `steamclient.dll` / `gameoverlayrenderer.dll` 11.15.70.27 (2026-10-21); the game files are unchanged. This PC has the same versions.

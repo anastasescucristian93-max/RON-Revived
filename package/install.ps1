@@ -208,4 +208,18 @@ Write-Host "  $($installed.Count) files."
 if (Test-Path $backup) { Write-Host "  Game files it replaced are kept in $backupName\ (uninstall.bat puts them back)." }
 if ($kept) { Write-Host "  Your ron_camera.ini was kept; the new defaults are in ron_camera.default.ini." }
 if ($laa) { Write-Host "  riseofnations.exe can now use 4 GB of memory (run install.bat again after a Steam update or file check)." }
+# the mod opens its files through the ANSI code page: a folder name with a character outside it
+# works only through the folder's 8.3 short name (camera-smooth find_dir)
+$acp = [int](Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage").ACP
+if ($acp -ne 65001) {
+    $enc = [Text.Encoding]::GetEncoding($acp)
+    $short = try { (New-Object -ComObject Scripting.FileSystemObject).GetFolder($GameDir).ShortPath } catch { $null }
+    $fits = { param($p) $p -and $enc.GetString($enc.GetBytes($p)) -eq $p }
+    if (-not (& $fits $GameDir) -and -not (& $fits $short)) {
+        Write-Host ""
+        Write-Host "WARNING: the game folder's path has characters Windows cannot pass to the mod,"
+        Write-Host "and the drive has no short names, so the mod will not find its files."
+        Write-Host "Move the Steam library to a folder with plain English letters (Steam > Settings > Storage)."
+    }
+}
 Write-Host "Start the game from Steam as usual."

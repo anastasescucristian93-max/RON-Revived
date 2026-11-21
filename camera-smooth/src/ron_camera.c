@@ -1656,6 +1656,56 @@ static void warm_up_bcrypt(void)
     BCryptGenRandom(NULL, b, sizeof b, BCRYPT_USE_SYSTEM_PREFERRED_RNG);
 }
 
+/* Wide path -> ANSI g_dir; 0 when a character has no ANSI form (it would become '?'). */
+static int ansi_dir(const wchar_t *w)
+{
+    BOOL lossy = FALSE;
+    /* with the UTF-8 code page (a Windows beta option) every character fits, and
+       WideCharToMultiByte refuses the lossy flag for it */
+    int n = WideCharToMultiByte(CP_ACP, GetACP() == CP_UTF8 ? 0 : WC_NO_BEST_FIT_CHARS, w, -1, g_dir, MAX_PATH,
+                                NULL, GetACP() == CP_UTF8 ? NULL : &lossy);
+    return n > 0 && !lossy;
+}
+
+/*
+ * g_dir, the DLL's folder. Every file of the mod is opened through it with the ANSI
+ * functions, so a folder name with a character outside the system's code page (Cyrillic or
+ * Lithuanian letters on a Western Windows, say) turned into '?' and the mod found none of its
+ * files, not even its log: it looked as if it was not installed (a player, 2026-11-22).
+ * Then the folder's 8.3 short name stands in (plain ASCII); a drive without short names gets
+ * a log in %LOCALAPPDATA%\RON_Revived saying so.
+ */
+static void find_dir(HINSTANCE inst)
+{
+    wchar_t w[MAX_PATH], s[MAX_PATH];
+    DWORD len = GetModuleFileNameW(inst, w, MAX_PATH);
+    while (len > 0 && w[len - 1] != L'\\')
+        len--;
+    w[len] = 0;
+    if (ansi_dir(w))
+        return;
+    DWORD n = GetShortPathNameW(w, s, MAX_PATH);
+    if (n > 0 && n < MAX_PATH && ansi_dir(s))
+        return;
+
+    wchar_t log[MAX_PATH + 64];
+    DWORD e = GetEnvironmentVariableW(L"LOCALAPPDATA", log, MAX_PATH);
+    if (e == 0 || e >= MAX_PATH)
+        return;
+    wcscat(log, L"\\RON_Revived");
+    CreateDirectoryW(log, NULL);
+    wcscat(log, L"\\ron_camera.log");
+    FILE *f = _wfopen(log, L"w");
+    if (!f)
+        return;
+    char u[MAX_PATH * 3];
+    WideCharToMultiByte(CP_UTF8, 0, w, -1, u, sizeof u, NULL, NULL);
+    fprintf(f, "RON Revived cannot open its files: the game folder\n  %s\n"
+               "has a character Windows cannot pass to the mod, and the drive has no short names.\n"
+               "Move the Steam library to a folder with plain English letters, or ask on the GitHub page.\n", u);
+    fclose(f);
+}
+
 BOOL WINAPI DllMain(HINSTANCE inst, DWORD reason, LPVOID reserved)
 {
     (void)reserved;
@@ -1664,10 +1714,7 @@ BOOL WINAPI DllMain(HINSTANCE inst, DWORD reason, LPVOID reserved)
     DisableThreadLibraryCalls(inst);
     warm_up_bcrypt();
 
-    DWORD len = GetModuleFileNameA(inst, g_dir, MAX_PATH);
-    while (len > 0 && g_dir[len - 1] != '\\')
-        len--;
-    g_dir[len] = 0;
+    find_dir(inst);
 
     if (!load_real_winmm())
         return FALSE;
