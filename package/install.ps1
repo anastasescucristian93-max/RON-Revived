@@ -208,6 +208,34 @@ Write-Host "  $($installed.Count) files."
 if (Test-Path $backup) { Write-Host "  Game files it replaced are kept in $backupName\ (uninstall.bat puts them back)." }
 if ($kept) { Write-Host "  Your ron_camera.ini was kept; the new defaults are in ron_camera.default.ini." }
 if ($laa) { Write-Host "  riseofnations.exe can now use 4 GB of memory (run install.bat again after a Steam update or file check)." }
+# Windows compatibility settings on the game's exes (Properties > Compatibility): most of them,
+# "Disable fullscreen optimizations" among them, make Windows load its shim DLLs (AcLayers,
+# AcGenral) before the game, and AcGenral loads System32's winmm.dll, so the mod's never loads
+# (a player, 2026-11-22). HIGHDPIAWARE alone is fine (tested); the rest goes from the user's own
+# settings. The all-users settings need an administrator: those only get a warning.
+$layersKey = "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
+foreach ($f in "riseofnations.exe", "patriots.exe") {
+    $p = Join-Path $GameDir $f
+    foreach ($hive in "HKCU", "HKLM") {
+        $k = "${hive}:\$layersKey"
+        $v = (Get-ItemProperty -ErrorAction SilentlyContinue $k).$p
+        if (-not $v) { continue }
+        $tokens = @($v -split "\s+" | Where-Object { $_ -and $_ -ne "~" })
+        $bad = @($tokens | Where-Object { $_ -ne "HIGHDPIAWARE" })
+        if (-not $bad) { continue }
+        if ($hive -eq "HKCU") {
+            if ($tokens -contains "HIGHDPIAWARE") { Set-ItemProperty $k $p "~ HIGHDPIAWARE" } else { Remove-ItemProperty $k $p }
+            Write-Host ""
+            Write-Host "$f had Windows compatibility settings that stop the mod from loading ($($bad -join ', '))."
+            Write-Host ("  They were turned off (Properties > Compatibility)" + $(if ($tokens -contains "HIGHDPIAWARE") { "; the high-DPI setting stays." } else { "." }))
+        } else {
+            Write-Host ""
+            Write-Host "WARNING: $f has compatibility settings for all users that stop the mod from loading ($($bad -join ', '))."
+            Write-Host "  Right-click $f > Properties > Compatibility > Change settings for all users, and untick them."
+        }
+    }
+}
+
 # the mod opens its files through the ANSI code page: a folder name with a character outside it
 # works only through the folder's 8.3 short name (camera-smooth find_dir)
 $acp = [int](Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage").ACP

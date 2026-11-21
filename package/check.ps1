@@ -130,7 +130,13 @@ foreach ($f in @("riseofnations.exe", "patriots.exe")) {
 Try-Say "Compatibility settings" {
     $hits = foreach ($k in "HKCU:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers", "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers") {
         $item = Get-ItemProperty -ErrorAction SilentlyContinue $k
-        if ($item) { $item.PSObject.Properties | Where-Object { $_.Name -match "riseofnations|patriots" } | ForEach-Object { "$($_.Name) = $($_.Value)" } }
+        # anything but HIGHDPIAWARE loads Windows' shims, which bring System32's winmm.dll first
+        if ($item) {
+            $item.PSObject.Properties | Where-Object { $_.Name -match "riseofnations|patriots" } | ForEach-Object {
+                $bad = @("$($_.Value)" -split "\s+" | Where-Object { $_ -and $_ -ne "~" -and $_ -ne "HIGHDPIAWARE" })
+                "$($_.Name) = $($_.Value)" + $(if ($bad) { " (STOPS THE MOD: $($bad -join ', '))" } else { "" })
+            }
+        }
     }
     if ($hits) { $hits -join " | " } else { "none" }
 }
