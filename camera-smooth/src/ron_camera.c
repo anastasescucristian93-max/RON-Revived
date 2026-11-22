@@ -200,6 +200,7 @@ static void load_config(void)
     follow_load_config(path);
     rally_load_config(path);
     costs_load_config(path);
+    endstats_load_config(path);
     prodbar_load_config(path);
     facing_load_config(path);
     play_load_config(path);
@@ -1617,6 +1618,7 @@ static void install_hooks(void)
     follow_install();
     rally_install();
     costs_install();
+    endstats_install();
     prodbar_install();
     facing_install();
     play_install();

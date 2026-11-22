@@ -8,6 +8,12 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## The end-game statistics star for fewest losses (`camera-smooth`), new 2026-11-22
+
+- In the statistics after a game, on the Military tab, the star for Units Lost, Buildings Lost and Cities Lost now goes to the player who lost the fewest, not the most. When every player has the same number (for example nobody lost a city), no one gets the star, as in the other columns.
+- The same rule for ties now holds for the Ages tab, where the earliest time gets the star.
+- Only the statistics window changes, so games with players on older versions stay in sync. To turn it off: `fewest_losses_star=0` under `[ui]` in `ron_camera.ini`.
+
 ## The game window is called "Rise of Nations: Revived" (`camera-smooth`), new 2026-11-22
 
 - The game's window now reads **Rise of Nations: Revived** in the taskbar, in Alt+Tab, in Task Manager and in recording programs that capture a window (such as OBS or Game Bar). `window_title` under `[ui]` in `ron_camera.ini` sets another name; empty keeps the game's own. Nothing changes in the game itself, and it plays with players on any version.
