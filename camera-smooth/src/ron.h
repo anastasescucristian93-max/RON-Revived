@@ -444,6 +444,11 @@ extern int g_costs_enabled;
 void costs_load_config(const char *ini_path);
 void costs_install(void);
 
+/* endstats.c */
+extern int g_endstats_enabled;
+void endstats_load_config(const char *ini_path);
+void endstats_install(void);
+
 /* prodbar.c */
 extern int g_prodbar_enabled;
 void prodbar_load_config(const char *ini_path);
