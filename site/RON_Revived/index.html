@@ -2684,6 +2684,24 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="sub">Everything added or changed, newest first. Click a day to open or close it.</p>
 
   <details class="day" open>
+    <summary><time datetime="2026-11-22">22 Nov 2026<small>Day 32</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag new">New</span><span><b>The game window is called "Rise of Nations: Revived"</b> in the taskbar, Alt+Tab, Task Manager and window capture (OBS, Game Bar). <code>window_title</code> under <code>[ui]</code> in <code>ron_camera.ini</code> sets another name; empty keeps the game's own.</span></li>
+      <li><span class="tag chg">Changed</span><span><b>End-game statistics:</b> on the Military tab the star for Units, Buildings and Cities Lost goes to the fewest losses, not the most. When every player has the same number, no one gets the star, as in the other columns; the same tie rule holds on the Ages tab. <code>fewest_losses_star=0</code> under <code>[ui]</code> turns it off.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>The mod did not load with Windows compatibility settings on the game</b> (such as "Disable fullscreen optimizations"): Windows loaded its own <code>winmm.dll</code>. <code>install.bat</code> now turns those settings off and says so.</span></li>
+      <li><span class="tag new">New</span><span><b><code>check.bat</code></b> in the zip: it changes nothing, checks everything that decides whether the mod loads and saves a report on your Desktop to send with a bug report.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Game folders with non-English letters:</b> the mod did nothing when the folder's path had letters outside the Windows language (Cyrillic, Greek and others). It now finds its files there.</span></li>
+    </ul>
+  </details>
+
+  <details class="day">
+    <summary><time datetime="2026-11-19">19 Nov 2026<small>Day 29</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag chg">Changed</span><span><b><a href="#look">Main menu scenes cross-fade:</a></b> the next scene rises over the old one while both keep drifting, instead of a dip to black.</span></li>
+    </ul>
+  </details>
+
+  <details class="day">
     <summary><time datetime="2026-11-18">18 Nov 2026<small>Day 28</small></time><span class="digest"></span></summary>
     <ul>
       <li><span class="tag new">New</span><span><b><a href="#look">Space scene in the main menu:</a></b> a space station high above the night side of the Earth, an astronaut on a spacewalk beside it, city lights below and a missile climbing from the ground. The menu now plays the destroyer, the space scene and the jeep in turn.</span></li>
@@ -2972,7 +2990,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
 
 <footer>
   <p>RON Revived is a fan-made mod for Rise of Nations: Extended Edition. Rise of Nations is a trademark of its owners; this mod is not affiliated with them.</p>
-  <p>Made by <a href="https://codit.ro">Cristian Anastasescu</a>.</p>
+  <p>Made by <a href="https://codit.ro">Cristian Anastasescu</a> and <a href="https://github.com/UncleUncleRj">Rj Simas</a>.</p>
 </footer>
 
 </div>

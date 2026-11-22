@@ -79,3 +79,5 @@ Downloads, reviews, bug reports and ideas: https://github.com/anastasescucristia
 - Reviews:     https://github.com/anastasescucristian93-max/RON-Revived/discussions/1
 - Bug reports: the Issues tab (attach ron_camera.log from the game folder)
 Liked it? A star on the GitHub page helps other players find it.
+
+Authors: Cristian Anastasescu and Rj Simas.

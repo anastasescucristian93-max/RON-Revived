@@ -107,4 +107,6 @@ Almost everything can be turned off one by one in [i]ron_camera.ini[/i] in the g
 [/list]
 
 [size=4][b]Feedback[/b][/size]
+[b]Authors:[/b] Cristian Anastasescu and Rj Simas.
+
 Found a bug? Report it in the Bugs tab or on [url=https://github.com/anastasescucristian93-max/RON-Revived/issues]GitHub[/url], and attach [i]ron_camera.log[/i] from the game folder.

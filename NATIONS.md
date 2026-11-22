@@ -1,6 +1,6 @@
 # Nations
 
-What each nation looks like now, what is done and what to improve next, in order. Update it after every change to a nation. General work (engine, interface, tools) stays in `TODO.md`; finished work for players goes in `CHANGES.md`.
+What each nation looks like now, what is done and what to improve next, in order. Update it after every change to a nation. General work (engine, interface, tools) is in the GitHub Issues; finished work for players goes in `CHANGES.md`.
 
 The user plays a random match and improves the nation they get.
 
@@ -44,7 +44,7 @@ The user plays a random match and improves the nation they get.
   - Still unknown: the real value (2 or 3), and whether it counts against the Commerce Cap (70 in age 1, up to 500).
   - First step: a test in game. Note the income rates, make 10 soldiers, note them again; repeat at the cap.
   - Options if it is too strong: +1 instead of +3; only from age 4, when the Americans really exist; only the first N units count; wealth only. Changed values only work online when every player has the mod.
-- **Later:** maize fields (see "Farms per nation" in `TODO.md`). Balance: apart from the Barracks income, the units have only +6 % hit points, and the other bonuses come late.
+- **Later:** maize fields (see the "Farms: each nation grows its own crop" issue). Balance: apart from the Barracks income, the units have only +6 % hit points, and the other bonuses come late.
 
 ## Aztecs
 
@@ -334,7 +334,7 @@ The user plays a random match and improves the nation they get.
 - **Tower 1-3 redone 2026-10-27** (`roman-buildings/gemini/tower_age1-3_v3.jpg`): the old one (`work/before_tower_v3/`) was too clean and brighter than the game (`warm.py` had brightened it; no more warm.py). Now a rough log frontier watchtower with an open lookout, no warm pass, scaled 0.85 to leave room above the roof for a waving flag in the player's colour: 12 frames (`tools/flag_frames.py`), rule `tower_0m.tga~12:1200:loop`. Gemini lessons: "primitive and battered" made a ruin (the user: "primitiv nu ruina"); a closed upper storey is wrong for a watchtower; a painted band on wattle looked odd, a red cloak over the parapet worked.
 - **Done:** Barracks 1-3 and 4-5, Tower (all ages), Small City 1, 2 and 3, Large City 3, Small City 4-5, Large City 6-8, Market 1, 2 and 3, Fort 7-8 and the Data Center (`roman-buildings`).
 - **To improve:**
-  1. Test the depth meshes in game (see "Roman art" in `TODO.md`).
+  1. Test the depth meshes in game (`roman-buildings/ENGINE_NOTES.md`, "Depth (zbuffer) meshes").
   2. Ages 1-3, in this order: houses (`house1-6_0m`), Temple, Library, Granary, Lumber Mill, Smelter, Stable, Siege Factory, Dock, Fort, University, Lookout.
   3. Small City 6-8, Large City 4-5, Major City, Fort 4 and 5-6.
   4. Snow versions for winter maps (`<name>_snow.tga`).

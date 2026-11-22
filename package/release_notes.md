@@ -21,6 +21,13 @@ The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the u
 
 ## New in this version
 
+- **The game window is called "Rise of Nations: Revived"** in the taskbar, Alt+Tab, Task Manager and window capture (OBS, Game Bar). `window_title` under `[ui]` in `ron_camera.ini` sets another name.
+- **End-game statistics: the star for Units, Buildings and Cities Lost goes to the fewest losses**, not the most. When every player has the same number (nobody lost a city), no one gets the star, as in the other columns; the same tie rule now holds on the Ages tab. `fewest_losses_star=0` under `[ui]` turns it off.
+- Both change only what you see, so games with players on older versions stay in sync.
+- RON Revived now has two authors: Cristian Anastasescu and Rj Simas. Open work and ideas are in the [Issues](https://github.com/anastasescucristian93-max/RON-Revived/issues).
+
+Since 2026.11.22:
+
 - **Fixed: the mod did not load when the game had Windows compatibility settings** (Properties > Compatibility, such as "Disable fullscreen optimizations"): Windows then loads its own `winmm.dll` instead of the mod's. `install.bat` now turns those settings off and says so. If your game showed no sign of the mod, run `install.bat` from this version.
 - **Mod not working? Double-click `check.bat`** (new in the zip): it changes nothing, checks everything that decides whether the mod loads and saves a report, `RON_Revived_check.txt`, on your Desktop. Send it with your bug report.
 - **Fixed: the mod did nothing when the game folder's path has non-English letters** (Cyrillic, Lithuanian, Greek and others on a Windows set to a Western language): no new launcher, no changes in the game, no `ron_camera.log`. The mod now finds its files there. On the rare drive where Windows cannot help with that, `install.bat` says so and what to do.

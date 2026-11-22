@@ -211,6 +211,7 @@ The Windows Application event log gives the fault offset; **offset + 0x400000 = 
 - Everything in objects, leaders, the treasury, ammo, the nuke tables (`Nuke::add_nuke` runs inside `Objects::inc_time`), terrain craters, farms' growth (`Farms::grow`, `snip`), deaths (`CheckSums::check_deaths` 0x00936BB0 sums them, so corpse timing is checked), `Guy+0x1C` (previous angle), diplomacy (`LeaderData::is_ally` 0x006EDB50), rules.xml Constants.
 - **Drawing-only** (safe): tone mapper, camera shake, underlays, particles (`NukeOut` globals written after `init`), sprites, `FarmsOut`, facing interpolation, fog ramps, interface. The game's sound uses its own random generator (`SoundGlobal::random`), separate from the simulation's `game_random`.
 - Mod rule: simulation-side mod code (shove.c, follow.c, nukefx radiation and interceptors, attrition, nonukes) uses only the frame clock and game state, never randomness, and the same setting for all players. The settings travel through `Game+0x20` (§ 6.3).
+- **Desync debugging:** the exe has the developers' `SyncLogger`: `synclogger.ini` (game folder) `[Settings]` (`DesyncTrackingEnabled`, `DesyncTrackingFrameHistorySize`, `DesyncCategoryMask`, `CheckDesyncsEveryXFrames`, ...) or the host's lobby keys turn it on; it keeps the last N frames per category and writes `SyncLog ... .txt` on a desync. Details: CS § Desync (out-of-sync) logging.
 
 (CS § Nuclear weapons, § Dead units, § Units making way, § Unit facing; RB § Farms)
 
@@ -417,5 +418,5 @@ The Windows Application event log gives the fault offset; **offset + 0x400000 = 
 | Interface theme, launcher | [ui-theme/ENGINE_NOTES.md](ui-theme/ENGINE_NOTES.md) |
 | Damage modifiers | [tools/COMBAT_NOTES.md](tools/COMBAT_NOTES.md) |
 | Per-nation art state | [NATIONS.md](NATIONS.md) |
-| Open ideas | [TODO.md](TODO.md) |
+| Open ideas | [GitHub Issues](https://github.com/anastasescucristian93-max/RON-Revived/issues) |
 | What changed for players | [CHANGES.md](CHANGES.md) |

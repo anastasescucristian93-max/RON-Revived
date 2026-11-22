@@ -80,7 +80,7 @@ HELP = ("End-game building of the Information Age. Needs at least one of the fou
 # effect). HOUSE35 shares its name
 # "House" with 35 other Houses, so it takes "Lighthouse", a spare typenames string no building uses.
 # The order and the effects match datacenter.c (DC_EXP_* in ron.h) and data_center.ini.
-# 2026-10-29 the user turned the Expansions into city districts (TODO.md "Data Center"): 2x2, built
+# 2026-10-29 the user turned the Expansions into city districts: 2x2, built
 # from any city's panel next to that city or its districts, 3x the price and 3x the bonus, the price
 # rising 6% with each one owned; the Data Center itself is no longer offered (datacenter.c).
 # 2026-10-29 again (the user): Housing +10 for 6500 Food + 3400 Knowledge, Commerce +30 for 3000

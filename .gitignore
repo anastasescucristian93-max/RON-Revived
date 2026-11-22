@@ -19,3 +19,5 @@ __pycache__/
 nul
 # the Discord webhook the crash panel posts to (package/build_package.py puts it in the panel)
 package/crash_webhook.txt
+# guidance for collaborators, kept local (not published)
+CLAUDE.md

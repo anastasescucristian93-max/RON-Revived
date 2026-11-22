@@ -1,12 +1,16 @@
 # RON Revived
 
-A mod pack for Rise of Nations: Extended Edition (Steam). For players it is one mod; here it is split into one folder per part. Every change, for players: `CHANGES.md`. Open work: `TODO.md`.
+A mod pack for Rise of Nations: Extended Edition (Steam). For players it is one mod; here it is split into one folder per part. Every change, for players: `CHANGES.md`. Open work: [GitHub Issues](https://github.com/anastasescucristian93-max/RON-Revived/issues).
 
 ## For players
 
 Download `RON_Revived-<version>.zip` from the [latest release](https://github.com/anastasescucristian93-max/RON-Revived/releases/latest), extract it and double-click `install.bat` (`package/README.txt` is the text that comes with it). In multiplayer every player needs the same version. After that, the game's launcher offers each new version itself (an Update button over its picture).
 
 Liked it? Give the repository a star ⭐ and leave a [review](https://github.com/anastasescucristian93-max/RON-Revived/discussions/1). Found a bug: [report it](https://github.com/anastasescucristian93-max/RON-Revived/issues/new?template=bug_report.yml) with your `ron_camera.log`. Ideas are welcome [here](https://github.com/anastasescucristian93-max/RON-Revived/issues/new?template=idea.yml).
+
+## Authors
+
+Cristian Anastasescu ([codit.ro](https://codit.ro)) and Rj Simas ([@UncleUncleRj](https://github.com/UncleUncleRj)).
 
 ## The parts
 

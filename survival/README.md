@@ -58,7 +58,7 @@ Picking **Survival** under **Script** in a custom game does the same (also in mu
 
 - The button's title stays English ("Survival") in the other languages: the game translates menu titles through `translated_strings.xml` by a hash of the English text, and no mod adds entries there yet. "Wave" beside the bar is translated (`translations/dll_strings.txt`).
 - The setup screen keeps Quick Battle's other choices: more than one computer player can be set (the extra enemies are removed at the start), and Teams & Allies is not fixed.
-- Ideas for later versions: TODO.md, "Survival mode".
+- Ideas for later versions: the "Survival" issues on GitHub.
 
 ## To check in game (version 3)
 
