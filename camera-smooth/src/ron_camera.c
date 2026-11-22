@@ -190,6 +190,7 @@ static void load_config(void)
     survival_load_config(path);
     menuhelp_load_config(path);
     menufade_load_config(path);
+    wintitle_load_config(path);
     assistant_load_config(path);
     assist_orders_load_config(path);
     hover_load_config(path);
@@ -1579,6 +1580,7 @@ static void install_hooks(void)
     qol_install();
     override_install();
     msgbox_install();
+    wintitle_install();
     crash_install();
     ai_names_install();
     armageddon_install();

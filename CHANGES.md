@@ -14,6 +14,10 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - The same rule for ties now holds for the Ages tab, where the earliest time gets the star.
 - Only the statistics window changes, so games with players on older versions stay in sync. To turn it off: `fewest_losses_star=0` under `[ui]` in `ron_camera.ini`.
 
+## The game window is called "Rise of Nations: Revived" (`camera-smooth`), new 2026-11-22
+
+- The game's window now reads **Rise of Nations: Revived** in the taskbar, in Alt+Tab, in Task Manager and in recording programs that capture a window (such as OBS or Game Bar). `window_title` under `[ui]` in `ron_camera.ini` sets another name; empty keeps the game's own. Nothing changes in the game itself, and it plays with players on any version.
+
 ## Fixed: the mod did not load with Windows compatibility settings on the game (`package`), new 2026-11-22
 
 - With a setting under Properties > Compatibility on `riseofnations.exe` or `patriots.exe` (such as "Disable fullscreen optimizations", a compatibility mode or "Run as administrator"), Windows loads its own helper DLLs before the game, and they bring in Windows' `winmm.dll` instead of the mod's: no new launcher, no changes in the game, no `ron_camera.log`. `install.bat` now turns those settings off for both files (the high-DPI setting stays, it does no harm) and says so. Settings made "for all users" need an administrator: `install.bat` tells you where to untick them. `check.bat` points them out too.
