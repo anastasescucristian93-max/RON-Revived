@@ -1996,6 +1996,10 @@
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON_UNUSED>
         </POSITIONING>
+        <BUTTON name="groupchat" title="Group Chat" left="160" top="12" width="140" height="31">
+          <FONT size="12"/>
+          <FONTCOLOR r="255" g="255" b="255"/>
+        </BUTTON>
       </WINDOW>
     </GAMESPYCHAT>
     <GAMESPYCHATPERCENT>
@@ -2067,6 +2071,10 @@
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON_UNUSED>
         </POSITIONING>
+        <BUTTON name="groupchat" title="Group Chat" left="160" top="12" width="140" height="31">
+          <FONT size="12"/>
+          <FONTCOLOR r="255" g="255" b="255"/>
+        </BUTTON>
       </WINDOW>
     </GAMESPYCHATPERCENT>
     <GAMESPYGROUP name="gamespy" left_percent="40" top_percent="60" right_inverse_percent="40" bottom_inverse_percent="60">
@@ -2226,10 +2234,6 @@
       
       <IFACERECT name="number_of_current_players_text" left="300" bottom_inverse="27" width="260" height="-30"/>
 
-      <BUTTON name="groupchat" title="Group Chat" left="180" bottom_inverse="357" width="140" height="-31">
-        <FONT size="12"/>
-        <FONTCOLOR r="255" g="255" b="255"/>
-      </BUTTON>
 
       <BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="25" width="-270" height="-38">
 		<FONT size="18"/>

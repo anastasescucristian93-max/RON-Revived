@@ -1102,11 +1102,6 @@ LOBBY_BUTTONS = [
     # mouse through (LOBBY_TITLE).
     ('<BUTTON name="quit" title="Quit" bottom_inverse="27" right_inverse="25" width="-260" height="-30">',
      f'<BUTTON name="quit" title="Back" left="25" top="14" width="{LOBBY_BACK_W}" height="38">'),
-    # Group Chat beside the Lobby Chat tab, at its size: the chat window (GAMESPYCHATPERCENT) is
-    # 330 tall at 20 from the left and 70 from the bottom, its tabs from x 15, y 12, 145 apart.
-    ('<BUTTON name="groupchat" title="Group Chat" bottom_inverse="27" left="25" width="260" height="-30">',
-     f'<BUTTON name="groupchat" title="Group Chat" left="{20 + 15 + 145}" bottom_inverse="{70 + 330 - 12 - LOBBY_TAB_H}" '
-     f'width="{LOBBY_TAB_W}" height="-{LOBBY_TAB_H}">'),
     # View Game Invite alone at the bottom right now
     ('<BUTTON name="invite" title="View Game Invite" bottom_inverse="27" right_inverse="295" width="-240" height="-30">',
      f'<BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="25" '
@@ -1178,9 +1173,12 @@ def lobby_layout(src):
     for old, new in [LOBBY_ROOT, LOBBY_RIBBON, LOBBY_TITLE] + LOBBY_BUTTONS:
         assert g.count(old) == (3 if "180" in old else 1), old
         g = g.replace(old, new)
-    # Group Chat in the tab's font
-    g, n = re.subn(r'(<BUTTON name="groupchat"[^>]*>\s*)<FONT size="18"/>', r'\1<FONT size="12"/>', g)
-    assert n == 1, "groupchat font"
+    # Group Chat moves into the chat window, beside the Lobby Chat tab (below). Placed in the
+    # group window over the chat, it lay under the chat window: the chat's frame lines were drawn
+    # across it and the chat window took its clicks. The game finds it with find_button_recurse
+    # (GameSpyGroup::on_redraw 0x0096ED60) and answers it by name, so a child window is fine.
+    g, n = re.subn(r'\n[ \t]*<BUTTON name="groupchat" title="Group Chat"[^>]*>.*?</BUTTON>', "", g, flags=re.S)
+    assert n == 1, "groupchat"
     # the glossy 19 / 30 px pieces out, the steel sets in, after the atlas's load
     g, n = re.subn(r'\n\s*<IFACETEX name="button_(?:up|down)_\d+" texture="TEX_WRAPPER_1"[^>]*/>', "", g)
     assert n == 12, ("lobby button pieces", n)
@@ -1240,6 +1238,11 @@ def lobby_layout(src):
         c = c.replace(LOBBY_SEND[0], LOBBY_SEND[1])
         c, n = re.subn(r'(<BUTTON name="send" title="Send"[^>]*>\s*)<FONT size="12"/>', r'\1<FONT size="15" style="B"/>', c)
         assert n == 1, block_name
+        # Group Chat: the tabs' second slot (x 15 + 145, y 12), at the tab's size and font
+        tabs_end = c.index("</POSITIONING>", c.index('name="tab_staging_chat"')) + len("</POSITIONING>")
+        c = (c[:tabs_end] + f'\n        <BUTTON name="groupchat" title="Group Chat" left="{15 + 145}" top="12" '
+             f'width="{LOBBY_TAB_W}" height="{LOBBY_TAB_H}">\n          <FONT size="12"/>\n'
+             '          <FONTCOLOR r="255" g="255" b="255"/>\n        </BUTTON>' + c[tabs_end:])
         src = src[:s] + c + src[e:]
     return src
 
