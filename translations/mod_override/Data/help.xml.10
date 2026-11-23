@@ -12202,10 +12202,10 @@ Muestra a qué nación pertenece esta unidad o construcción.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Muestra los salones de partida disponibles. Haz clic en una partida y, a continuación, haz clic en el botón situado debajo de ésta para unirte a un salón de partida.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Muestra los jugadores situados en este momento en la zona de encuentro de Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Muestra tu lista de amigos.</STRING>
@@ -12214,12 +12214,12 @@ Muestra a qué nación pertenece esta unidad o construcción.
 				<STRING>Muestra los salones de grupo disponibles.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Shows selected player details.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Para conversar con otros jugadores en este salón, escribe aquí tu mensaje y haz clic en el botón Enviar.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

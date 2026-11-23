@@ -12187,10 +12187,10 @@ Le {dialogue} vous permet de taper un message destiné aux autres joueurs.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Affiche les salles de jeu disponibles. Cliquez sur une partie puis cliquez sur le bouton Rejoindre ci-dessous pour entrer dans une salle de jeu.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Affiche les joueurs qui se trouvent actuellement dans la salle de rencontre de Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Affiche votre Liste d'amis.</STRING>
@@ -12199,12 +12199,12 @@ Le {dialogue} vous permet de taper un message destiné aux autres joueurs.
 				<STRING>Indique les salles de groupe disponibles.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Shows selected player details.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Pour dialoguer avec les autres joueurs dans cette salle, entrez un message ici, puis cliquez sur le bouton Envoyer.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

@@ -12120,10 +12120,10 @@ SHIFT+щелчок увеличивает требования на 500, ALT+щ�
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Показывает доступные игровые комнаты. Щёлкните по игре, а затем нажмите кнопку «Присоединиться» ниже, чтобы войти в игровую комнату.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Показывает игроков, находящихся сейчас в лобби Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Показывает ваш список друзей.</STRING>
@@ -12132,12 +12132,12 @@ SHIFT+щелчок увеличивает требования на 500, ALT+щ�
 				<STRING>Показывает доступные групповые комнаты.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Показывает сведения о выбранном игроке.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Чтобы написать другим игрокам в этой комнате, введите сообщение здесь и нажмите кнопку «Отпр.».</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

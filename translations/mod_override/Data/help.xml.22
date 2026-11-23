@@ -11205,10 +11205,10 @@ O {chat} permite digitar mensagens para os outros jogadores.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Mostra as salas de jogo disponíveis. Clique em uma partida e depois no botão Entrar abaixo para entrar em uma sala de jogo.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Mostra os jogadores que estão no momento no saguão do Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Mostra sua Lista de Amigos.</STRING>
@@ -11217,12 +11217,12 @@ O {chat} permite digitar mensagens para os outros jogadores.
 				<STRING>Mostra as salas de grupo disponíveis.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Mostra os detalhes do jogador selecionado.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Para conversar com outros jogadores nesta sala, digite uma mensagem aqui e clique no botão Enviar.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

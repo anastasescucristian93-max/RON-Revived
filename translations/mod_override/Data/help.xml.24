@@ -10904,10 +10904,10 @@ Arată ce națiune deține această unitate sau clădire.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Arată camerele de joc disponibile. Dă clic pe un joc și apoi pe butonul Alătură-te de mai jos ca să intri într-o cameră de joc.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Arată jucătorii aflați acum în Lobby-ul Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Arată Lista ta de prieteni.</STRING>
@@ -10916,12 +10916,12 @@ Arată ce națiune deține această unitate sau clădire.
 				<STRING>Arată camerele de grup disponibile.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Arată detaliile jucătorului selectat.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Ca să vorbești cu ceilalți jucători din această cameră, scrie aici un mesaj și dă clic pe butonul Trimite.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

@@ -12122,10 +12122,10 @@ Możesz też przeciągnąć myszą, aby narysować strzałkę.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Pokazuje dostępne pokoje gry. Kliknij grę, a potem przycisk Dołącz poniżej, aby wejść do pokoju gry.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Pokazuje graczy obecnych w poczekalni Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Pokazuje twoją listę znajomych.</STRING>
@@ -12134,12 +12134,12 @@ Możesz też przeciągnąć myszą, aby narysować strzałkę.
 				<STRING>Pokazuje dostępne pokoje grupowe.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Pokazuje szczegóły wybranego gracza.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Aby porozmawiać z innymi graczami w tym pokoju, wpisz tu wiadomość i kliknij przycisk Wyślij.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

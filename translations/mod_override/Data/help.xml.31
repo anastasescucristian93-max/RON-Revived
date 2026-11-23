@@ -11046,10 +11046,10 @@ Bu birimin veya binanın hangi ulusa ait olduğunu gösterir.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Mevcut oyun odalarını gösterir. Bir oyun odasına katılmak için bir oyuna, ardından aşağıdaki Katıl düğmesine tıklayın.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Şu anda Rise of Nations Lobisinde bulunan oyuncuları gösterir.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Arkadaş Listenizi gösterir.</STRING>
@@ -11058,12 +11058,12 @@ Bu birimin veya binanın hangi ulusa ait olduğunu gösterir.
 				<STRING>Mevcut grup odalarını gösterir.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Seçili oyuncunun ayrıntılarını gösterir.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Bu odadaki diğer oyuncularla sohbet etmek için buraya bir mesaj yazıp Gönder düğmesine tıklayın.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

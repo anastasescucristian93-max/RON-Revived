@@ -12202,10 +12202,10 @@ Indica la nazione cui appartiene l'unità o la costruzione.
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Visualizza le stanze delle partite disponibili. Fai clic su una partita, quindi sul pulsante Partecipa per entrare in una stanza.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Visualizza i giocatori attualmente presenti nella stanza principale di Rise of Nations.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Mostra l'Elenco compagni.</STRING>
@@ -12214,12 +12214,12 @@ Indica la nazione cui appartiene l'unità o la costruzione.
 				<STRING>Mostra le stanze di gruppo disponibili.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Shows selected player details.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>Per inviare un messaggio di chat ad altri giocatori nella stanza, digita qui il messaggio e fai clic su Invia.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>
