@@ -2684,6 +2684,13 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <p class="sub">Everything added or changed, newest first. Click a day to open or close it.</p>
 
   <details class="day" open>
+    <summary><time datetime="2026-11-24">24 Nov 2026<small>Day 34</small></time><span class="digest"></span></summary>
+    <ul>
+      <li><span class="tag fix">Fix</span><span><b><a href="#install">Antivirus programs stopped the launcher's update</a></b> (Kaspersky asked you to act and removed the update script). The update no longer looks at Windows' compatibility settings, and from the next update on it runs in a small window of its own instead of hidden. If an update was stopped, run <code>install.bat</code> from the release's zip once.</span></li>
+    </ul>
+  </details>
+
+  <details class="day">
     <summary><time datetime="2026-11-22">22 Nov 2026<small>Day 32</small></time><span class="digest"></span></summary>
     <ul>
       <li><span class="tag new">New</span><span><b>The game window is called "Rise of Nations: Revived"</b> in the taskbar, Alt+Tab, Task Manager and window capture (OBS, Game Bar). <code>window_title</code> under <code>[ui]</code> in <code>ron_camera.ini</code> sets another name; empty keeps the game's own.</span></li>

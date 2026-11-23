@@ -8,6 +8,13 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## Fixed: antivirus programs stopped the launcher's update (`package`, `camera-smooth`), new 2026-11-24
+
+- Updating from the launcher could stop halfway with Kaspersky (and maybe other antivirus programs) asking you to act and removing the update script: since 2026.11.22 the installer the update runs in the background also looked at Windows' compatibility settings, which made it look like malware. Nothing was changed in the game when that happened.
+- An update from the launcher now skips those checks (an install with `install.bat` still does them, and `check.bat` reports them), so the update to this version goes through.
+- From the next update on, the launcher's update runs in a small window of its own titled "RON Revived update", where you can see what it does, instead of hidden.
+- If an update was stopped this way, run `install.bat` from the release's zip once.
+
 ## The end-game statistics star for fewest losses (`camera-smooth`), new 2026-11-22
 
 - In the statistics after a game, on the Military tab, the star for Units Lost, Buildings Lost and Cities Lost now goes to the player who lost the fewest, not the most. When every player has the same number (for example nobody lost a city), no one gets the star, as in the other columns.
