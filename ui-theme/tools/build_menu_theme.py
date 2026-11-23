@@ -135,7 +135,7 @@ POP_FILES = ("interface.xml", "optionswin.xml", "setupwin.xml", "workshopwin.xml
 # for the other windows' 30 px buttons (steel_buttons).
 LOBBY_X = 200
 LOBBY_M = 250
-LOBBY_SETS = {26: 145, 38: 200, 19: 279, 30: 320}  # height -> row of the normal piece (pressed: + h + 1)
+LOBBY_SETS = {26: 145, 38: 200, 19: 279, 30: 320, 31: 383}  # height -> row of the normal piece (pressed: + h + 1)
 LOBBY_FILL = (27, 31, 38)  # the grained panels' colour (LOBBY_GRAIN)
 
 
@@ -214,6 +214,39 @@ def button_states(plate):
         return out
 
     return tuple(framed(s) for s in plate_states(plate, BTN_PLATE_H, BTN_L, BTN_M, BTN_R))
+
+
+def flat_plate(plate, bevel=3):
+    """The plate with the same brightness along its length. It is lighter in the middle (about
+    60) than toward its ends (about 40): drawn whole (the main menu) that is a soft light, but a
+    button drawn from end pieces and a repeated middle piece shows it as bands, the middle's
+    start lighter than the end piece next to it. Each column is scaled to the plate's mean
+    (from a smoothed profile, so the grain stays); the outer `bevel` columns keep their shade
+    relative to their neighbour."""
+    a = np.asarray(plate).astype(float)
+    lum = a[..., :3].mean(axis=2)
+    on = a[..., 3] > 128
+    col = np.array([lum[:, x][on[:, x]].mean() if on[:, x].any() else 0.0 for x in range(a.shape[1])])
+    inner = col[bevel:-bevel]
+    k = 9
+    smooth = np.convolve(np.pad(inner, k, mode="edge"), np.ones(2 * k + 1) / (2 * k + 1), mode="same")[k:-k]
+    factor = np.concatenate([np.full(bevel, inner.mean() / smooth[0]), inner.mean() / smooth,
+                             np.full(bevel, inner.mean() / smooth[-1])])
+    a[..., :3] = np.clip(a[..., :3] * factor[None, :, None], 0, 255)
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
+
+
+def plain_plate(plate, h, w, end=12):
+    """Only the plate's middle (the user, 2026-11-24: "keep just the color in the middle"): its
+    columns past `end` from either side, without the end bevels and their light lines, at
+    height h, repeated to width w. The end pieces are cut from the same strip, so every joint
+    of a button is the same plain steel."""
+    mid = plate.crop((end, 0, plate.width - end, plate.height))
+    mid = mid.resize((max(1, round(mid.width * h / mid.height)), h), Image.LANCZOS)
+    out = Image.new("RGBA", (w, h))
+    for x in range(0, w, mid.width):
+        out.alpha_composite(mid, (x, 0))
+    return out
 
 
 def sliced_bled(img, l, m):
@@ -314,9 +347,10 @@ def build_parts():
         atlas.alpha_composite(sliced(img, POP_L, POP_M), (POP_X, POP_Y + i * (POP_H + 1)))
     # Game Browser buttons at their own heights (normal, then pressed / disabled one row down).
     plate = element(11)
-    plate = plate.crop(plate.getchannel("A").point(lambda a: 255 if a >= 128 else 0).getbbox())
+    plate = flat_plate(plate.crop(plate.getchannel("A").point(lambda a: 255 if a >= 128 else 0).getbbox()))
     for h, y in LOBBY_SETS.items():
-        normal, hover, pressed = plate_states(plate, h, POP_L, LOBBY_M, POP_R)
+        normal = plain_plate(plate, h, POP_L + LOBBY_M + POP_R)
+        pressed = ImageEnhance.Color(ImageEnhance.Brightness(normal).enhance(0.62)).enhance(0.6)
         for i, img in enumerate((normal, pressed)):
             solid = Image.new("RGBA", img.size, LOBBY_FILL + (255,))
             solid.alpha_composite(img)
@@ -1032,7 +1066,8 @@ LOBBY_LIST_W = 1600
 LOBBY_SORT_H = 26
 LOBBY_ROW_W = 128      # Join / Create / Filter ("Teilnehmen" 108 in Georgia 18 + 2 x 10)
 LOBBY_REFRESH_W = 80   # the refresh icon is 30 wide
-LOBBY_BOTTOM_W = 160   # Quit / Group Chat ("Group Chat" 107 + 2 x 24)
+LOBBY_BACK_W = 114     # Back (was Quit), top left ("Indietro" 75 + 2 x 10; 3:1)
+LOBBY_TAB_W, LOBBY_TAB_H = 140, 31  # the Lobby Chat tab; Group Chat sits beside it at its size
 LOBBY_INVITE_W = 270   # "Ver invitaciones de partida" 248 + 2 x 10
 LOBBY_SMALL_W = 176    # Private Chat / Block User / Unblock User ("Debloquer l'utilisateur" 155)
 LOBBY_SEND_W = 84      # Send ("Send" 36 + 2 x 24)
@@ -1041,15 +1076,23 @@ LOBBY_BUTTONS = [
     # Join / Create / Filter / refresh: 38 tall (was 30), fixed widths
     ('bottom_inverse="18" percent_width="180" height="-30"', f'bottom_inverse="12" width="{LOBBY_ROW_W}" height="-38"'),
     ('bottom_inverse="18" percent_width="60" height="-30"', f'bottom_inverse="12" width="{LOBBY_REFRESH_W}" height="-38"'),
-    # Quit / Group Chat / View Game Invite under the chat
+    # Quit becomes Back, at the top left beside the title ribbon (the user, 2026-11-24). It stays
+    # in the group window, where the game looks it up; the title strip over that corner lets the
+    # mouse through (LOBBY_TITLE).
     ('<BUTTON name="quit" title="Quit" bottom_inverse="27" right_inverse="25" width="-260" height="-30">',
-     f'<BUTTON name="quit" title="Quit" bottom_inverse="22" right_inverse="25" width="-{LOBBY_BOTTOM_W}" height="-38">'),
+     f'<BUTTON name="quit" title="Back" left="25" top="14" width="{LOBBY_BACK_W}" height="38">'),
+    # Group Chat beside the Lobby Chat tab, at its size: the chat window (GAMESPYCHATPERCENT) is
+    # 330 tall at 20 from the left and 70 from the bottom, its tabs from x 15, y 12, 145 apart.
     ('<BUTTON name="groupchat" title="Group Chat" bottom_inverse="27" left="25" width="260" height="-30">',
-     f'<BUTTON name="groupchat" title="Group Chat" bottom_inverse="22" left="25" width="{LOBBY_BOTTOM_W}" height="-38">'),
+     f'<BUTTON name="groupchat" title="Group Chat" left="{20 + 15 + 145}" bottom_inverse="{70 + 330 - 12 - LOBBY_TAB_H}" '
+     f'width="{LOBBY_TAB_W}" height="-{LOBBY_TAB_H}">'),
+    # View Game Invite alone at the bottom right now
     ('<BUTTON name="invite" title="View Game Invite" bottom_inverse="27" right_inverse="295" width="-240" height="-30">',
-     f'<BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="{25 + LOBBY_BOTTOM_W + 10}" '
+     f'<BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="25" '
      f'width="-{LOBBY_INVITE_W}" height="-38">'),
 ]
+LOBBY_TITLE = ('<WINDOW name="title" left="0" top="3" right_inverse="0" height="60">\n        <STYLE PASS_CONTROLS="1" CHILD="1"/>',
+               '<WINDOW name="title" left="0" top="3" right_inverse="0" height="60">\n        <STYLE PASS_CONTROLS="1" CHILD="1" MOUSE_THRU="1"/>')
 # The player details' buttons (one row each): 26 tall, Arial 15, fixed width.
 LOBBY_DETAIL_BUTTONS = ("playerDetailsPrivateChat", "playerDetailsBlockUser", "playerDetailsUnblockUser")
 # Send, beside the chat's typing field (its frame 26 tall at bottom_inverse 17): the same height.
@@ -1097,7 +1140,7 @@ def lobby_sort_rects():
 
 def lobby_buttons_tex():
     out = []
-    for h in (26, 38, 19):
+    for h in (26, 38, 19, 31):
         for state, pressed in (("up", False), ("down", True)):
             for part in range(3):
                 out.append(tex(f"button_{state}_{h}", lobby_piece(h, pressed, part)))
@@ -1108,9 +1151,12 @@ def lobby_layout(src):
     start = src.index("<GAMESPYGROUP ")
     end = src.index("</GAMESPYGROUP>", start)
     g = src[start:end]
-    for old, new in [LOBBY_ROOT, LOBBY_RIBBON] + LOBBY_BUTTONS:
+    for old, new in [LOBBY_ROOT, LOBBY_RIBBON, LOBBY_TITLE] + LOBBY_BUTTONS:
         assert g.count(old) == (3 if "180" in old else 1), old
         g = g.replace(old, new)
+    # Group Chat in the tab's font
+    g, n = re.subn(r'(<BUTTON name="groupchat"[^>]*>\s*)<FONT size="18"/>', r'\1<FONT size="12"/>', g)
+    assert n == 1, "groupchat font"
     # the glossy 19 / 30 px pieces out, the steel sets in, after the atlas's load
     g, n = re.subn(r'\n\s*<IFACETEX name="button_(?:up|down)_\d+" texture="TEX_WRAPPER_1"[^>]*/>', "", g)
     assert n == 12, ("lobby button pieces", n)
@@ -1160,13 +1206,14 @@ def lobby_layout(src):
 # main menu's steel plate at its own height (the UI rules in CLAUDE.md): (left, top) of a glossy
 # piece -> (part, the steel set's height, pressed). The 19 / 30 px buttons of the lobby windows
 # (button_up_ / button_down_<h>, small / large / select_button, button_tex) and the chat tabs
-# (the open tab, "tab_down", normal; the others pressed, so darker).
+# (both tab states the normal plate: the lobby draws its only tab, Lobby Chat, with "tab", and
+# the pressed plate made it darker than every other button).
 GLOSSY = {(400, 0): (0, 19, 0), (405, 0): (1, 19, 0), (508, 0): (2, 19, 0),
           (400, 40): (0, 19, 1), (405, 40): (1, 19, 1), (508, 40): (2, 19, 1),
           (193, 47): (0, 30, 0), (211, 47): (1, 30, 0), (354, 47): (2, 30, 0),
           (193, 109): (0, 30, 1), (211, 109): (1, 30, 1), (354, 109): (2, 30, 1),
           (1, 139): (0, 38, 0), (14, 139): (1, 38, 0), (100, 139): (2, 38, 0),
-          (1, 256): (0, 38, 1), (14, 256): (1, 38, 1), (100, 256): (2, 38, 1)}
+          (1, 256): (0, 38, 0), (14, 256): (1, 38, 0), (100, 256): (2, 38, 0)}
 MENU_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\\art\\revived\\menu_parts.tga" pixformat="PF_32"/>'
 GLOSSY_PIECE = re.compile(r'<IFACETEX name="([^"]*)" texture="TEX_WRAPPER_1" left="(\d+)" top="(\d+)" '
                           r'width="\d+" height="(\d+)"/>')

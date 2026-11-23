@@ -1933,9 +1933,9 @@
       <IFACETEX name="tab_down0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
       <IFACETEX name="tab_down1" texture="TEX_REVIVED_MENU" left="218" top="200" width="250" height="38"/>
       <IFACETEX name="tab_down2" texture="TEX_REVIVED_MENU" left="469" top="200" width="17" height="38"/>
-      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
-      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="239" width="250" height="38"/>
-      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="469" top="239" width="17" height="38"/>
+      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="200" width="250" height="38"/>
+      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="469" top="200" width="17" height="38"/>
       <WINDOW name="chatwin" title="" left="20" right_inverse="296" top="428" bottom_inverse="70">
         <STYLE PASS_CONTROLS="1" CHILD="1"/>
         <IFACETEX name="status" texture="TEX_GAMESPY" id="1" left="119" top="50" width="10" height="10"/>
@@ -2004,9 +2004,9 @@
       <IFACETEX name="tab_down0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
       <IFACETEX name="tab_down1" texture="TEX_REVIVED_MENU" left="218" top="200" width="250" height="38"/>
       <IFACETEX name="tab_down2" texture="TEX_REVIVED_MENU" left="469" top="200" width="17" height="38"/>
-      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
-      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="239" width="250" height="38"/>
-      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="469" top="239" width="17" height="38"/>
+      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="200" width="250" height="38"/>
+      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="469" top="200" width="17" height="38"/>
       <WINDOW name="chatwin" title="" left="20" right_inverse="296" height="-330" bottom_inverse="70">
         <STYLE PASS_CONTROLS="1" CHILD="1"/>
         <IFACETEX name="status" texture="TEX_GAMESPY" id="1" left="119" top="50" width="10" height="10"/>
@@ -2072,7 +2072,7 @@
     <GAMESPYGROUP name="gamespy" left_percent="40" top_percent="60" right_inverse_percent="40" bottom_inverse_percent="60">
       <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_REVIVED_GRAIN" file=".\art\revived\lobby_grain.tga" pixformat="PF_32"/>
-      <BUTTON name="quit" title="Quit" bottom_inverse="22" right_inverse="25" width="-160" height="-38">
+      <BUTTON name="quit" title="Back" left="25" top="14" width="114" height="38">
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
@@ -2225,12 +2225,12 @@
       
       <IFACERECT name="number_of_current_players_text" left="300" bottom_inverse="27" width="260" height="-30"/>
 
-      <BUTTON name="groupchat" title="Group Chat" bottom_inverse="22" left="25" width="160" height="-38">
-        <FONT size="18"/>
+      <BUTTON name="groupchat" title="Group Chat" left="180" bottom_inverse="357" width="140" height="-31">
+        <FONT size="12"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
 
-      <BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="195" width="-270" height="-38">
+      <BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="25" width="-270" height="-38">
 		<FONT size="18"/>
 		<FONTCOLOR r="255" g="255" b="255"/>
 	  </BUTTON>
@@ -2241,9 +2241,9 @@
       <IFACETEX name="tab_down0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
       <IFACETEX name="tab_down1" texture="TEX_REVIVED_MENU" left="218" top="200" width="250" height="38"/>
       <IFACETEX name="tab_down2" texture="TEX_REVIVED_MENU" left="469" top="200" width="17" height="38"/>
-      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
-      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="239" width="250" height="38"/>
-      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="469" top="239" width="17" height="38"/>
+      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="200" width="250" height="38"/>
+      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="469" top="200" width="17" height="38"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
       <IFACETEX name="combo_mid" texture="TEX_WRAPPER_1" left="198" top="1" width="130" height="21"/>
       <IFACETEX name="combo_right" texture="TEX_WRAPPER_1" left="329" top="1" width="4" height="21"/>
@@ -2290,6 +2290,12 @@
       <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
       <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="250" height="19"/>
       <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="469" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_31" texture="TEX_REVIVED_MENU" left="200" top="383" width="17" height="31"/>
+      <IFACETEX name="button_up_31" texture="TEX_REVIVED_MENU" left="218" top="383" width="250" height="31"/>
+      <IFACETEX name="button_up_31" texture="TEX_REVIVED_MENU" left="469" top="383" width="17" height="31"/>
+      <IFACETEX name="button_down_31" texture="TEX_REVIVED_MENU" left="200" top="415" width="17" height="31"/>
+      <IFACETEX name="button_down_31" texture="TEX_REVIVED_MENU" left="218" top="415" width="250" height="31"/>
+      <IFACETEX name="button_down_31" texture="TEX_REVIVED_MENU" left="469" top="415" width="17" height="31"/>
       <IFACETEX name="button_border_left" texture="TEX_WRAPPER_0" left="229" top="436" width="36" height="75"/>
       <IFACETEX name="button_border_mid" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
       <IFACETEX name="button_border_right" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
@@ -2297,7 +2303,7 @@
       <IFACETEX name="sort_arrow_down" texture="TEX_COMMON" left="301" top="113" width="20" height="11"/>
       <IFACETEX name="password_icon" texture="TEX_GAMESPY" left="268" top="104" width="17" height="16"/>
       <WINDOW name="title" left="0" top="3" right_inverse="0" height="60">
-        <STYLE PASS_CONTROLS="1" CHILD="1"/>
+        <STYLE PASS_CONTROLS="1" CHILD="1" MOUSE_THRU="1"/>
         <IFACERECT name="title" left="20" top="9" right_inverse="30" bottom_inverse="10"/>
         <IFACETEX name="gamespy_logo" texture="TEX_GAMESPY" left="0" top="50" width="118" height="27"/>
 	<!--

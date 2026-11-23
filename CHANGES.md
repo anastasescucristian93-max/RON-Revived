@@ -11,7 +11,8 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 ## The Game Browser in the theme's style (`ui-theme`), new 2026-11-24
 
 - The multiplayer Game Browser now sits inside the theme's frame instead of running to the screen's edges, and its red title ribbon is only a little longer than its title.
-- Its buttons are the main menu's steel plates, sized to their text: the sort buttons over the game list are taller, only as wide as their titles need (in every language) and in a larger font, so they read well; Join, Create, Filter, Quit, Group Chat and Send are taller and narrower, and the buttons in one row share one height.
+- Its buttons are plain plates of the main menu's steel, the same shade from end to end, sized to their text: the sort buttons over the game list are taller, only as wide as their titles need (in every language) and in a larger font, so they read well; Join, Create, Filter and Send are taller and narrower, and the buttons in one row share one height.
+- Quit is now **Back**, at the top left beside the title, and **Group Chat** sits next to the Lobby Chat tab, at the tab's size.
 - The same steel buttons in the other online windows too (log in, create a game, filters, invites, friends, leaderboards, quick match, the Lobby Chat tab and others): no glossy buttons are left.
 - The game list, the chat and the player details sit on the launcher's dark grained steel instead of plain black.
 - Resting the mouse over the game list, the player list, the player details or the chat field no longer pops up a box of help text (the buttons keep theirs).
