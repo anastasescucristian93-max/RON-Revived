@@ -2072,6 +2072,7 @@
     <GAMESPYGROUP name="gamespy" left_percent="40" top_percent="60" right_inverse_percent="40" bottom_inverse_percent="60">
       <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_REVIVED_GRAIN" file=".\art\revived\lobby_grain.tga" pixformat="PF_32"/>
+      <IFACETEXLOAD id="TEX_REVIVED_COMBO" file=".\art\revived\setup_combo.tga" pixformat="PF_32"/>
       <BUTTON name="quit" title="Back" left="25" top="14" width="114" height="38">
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
@@ -2331,14 +2332,14 @@
       <WINDOW name="sessionwin" left="20" top="59" right_inverse="20" bottom_inverse="400">
           <STYLE PASS_CONTROLS="1" CHILD="1"/>
         <!--Textures for combos.-->
-        <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
-        <IFACETEX name="combo_mid" texture="TEX_WRAPPER_1" left="198" top="1" width="130" height="21"/>
-        <IFACETEX name="combo_right" texture="TEX_WRAPPER_1" left="329" top="1" width="3" height="21"/>
-        <IFACETEX name="combo_arrow" texture="TEX_WRAPPER_1" left="123" top="1" width="23" height="21"/>
-        <IFACETEX name="combo_left_d" texture="TEX_WRAPPER_1" left="193" top="24" width="4" height="21"/>
-        <IFACETEX name="combo_mid_d" texture="TEX_WRAPPER_1" left="198" top="24" width="130" height="21"/>
-        <IFACETEX name="combo_right_d" texture="TEX_WRAPPER_1" left="329" top="24" width="3" height="21"/>
-        <IFACETEX name="combo_arrow_d" texture="TEX_WRAPPER_1" left="123" top="24" width="23" height="21"/>
+        <IFACETEX name="combo_left" texture="TEX_REVIVED_COMBO" left="1" top="57" width="4" height="38"/>
+        <IFACETEX name="combo_mid" texture="TEX_REVIVED_COMBO" left="6" top="57" width="130" height="38"/>
+        <IFACETEX name="combo_right" texture="TEX_REVIVED_COMBO" left="137" top="57" width="4" height="38"/>
+        <IFACETEX name="combo_arrow" texture="TEX_REVIVED_COMBO" left="142" top="57" width="41" height="38"/>
+        <IFACETEX name="combo_left_d" texture="TEX_REVIVED_COMBO" left="1" top="96" width="4" height="38"/>
+        <IFACETEX name="combo_mid_d" texture="TEX_REVIVED_COMBO" left="6" top="96" width="130" height="38"/>
+        <IFACETEX name="combo_right_d" texture="TEX_REVIVED_COMBO" left="137" top="96" width="4" height="38"/>
+        <IFACETEX name="combo_arrow_d" texture="TEX_REVIVED_COMBO" left="142" top="96" width="41" height="38"/>
         <COMBOBOX_UNUSED name="room_cat" title="" top="0" right_inverse="25" width="-280" height="21"/>
         <!--Back tinting-->
         <IFACERECT name="back" left="10" top="37" right_inverse="10" bottom_inverse="10"/>
@@ -2486,7 +2487,7 @@
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
         </POSITIONING>
-        <COMBOBOX name="region" title="Region: " id="0" bottom_inverse="22" right_inverse="49" width="-160" height="-21">
+        <COMBOBOX name="region" title="Region: " id="0" bottom_inverse="12" right_inverse="49" width="-180" height="-38">
           <FONT size="18"/>
           <FONTCOLOR r="255" g="255" b="255"/>
         </COMBOBOX>

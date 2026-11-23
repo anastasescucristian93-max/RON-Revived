@@ -1096,6 +1096,12 @@ LOBBY_TITLE = ('<WINDOW name="title" left="0" top="3" right_inverse="0" height="
 # The player details' buttons (one row each): 26 tall, Arial 15, fixed width.
 LOBBY_DETAIL_BUTTONS = ("playerDetailsPrivateChat", "playerDetailsBlockUser", "playerDetailsUnblockUser")
 # Send, beside the chat's typing field (its frame 26 tall at bottom_inverse 17): the same height.
+# Region, beside the Join row: as tall as its buttons (38), from revived\setup_combo.tga's 38 px
+# rows (build_reskin.py LOBBY_COMBO_*); the list window's own combo pieces point there.
+LOBBY_REGION = ('<COMBOBOX name="region" title="Region: " id="0" bottom_inverse="22" right_inverse="49" width="-160" height="-21">',
+                '<COMBOBOX name="region" title="Region: " id="0" bottom_inverse="12" right_inverse="49" width="-180" height="-38">')
+COMBO_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_COMBO" file=".\\art\\revived\\setup_combo.tga" pixformat="PF_32"/>'
+LOBBY_COMBO_PIECES = {"combo_left": (1, 4), "combo_mid": (6, 130), "combo_right": (137, 4), "combo_arrow": (142, 41)}
 LOBBY_SEND = ('<BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="20" width="-80" height="-19">',
               f'<BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="17" width="-{LOBBY_SEND_W}" height="-26">')
 # The black panels (game list, chat, player details) get the launcher's dark grained steel:
@@ -1181,11 +1187,24 @@ def lobby_layout(src):
                        r'\1 right_inverse="80" bottom_inverse="298" width="-%d" height="-26">\2<FONT size="15" style="B"/>'
                        % LOBBY_SMALL_W, g)
         assert n == 1, name
+    # Region: taller, and the list window's combo pieces (only Region uses them) the 38 px ones
+    assert g.count(LOBBY_REGION[0]) == 1
+    g = g.replace(LOBBY_REGION[0], LOBBY_REGION[1])
+    s = g.index('<WINDOW name="sessionwin"')
+    e = g.index("</WINDOW>", g.index('<LISTBOX2 name="sessions"', s))
+    win = g[s:e]
+    for name, (x, w) in LOBBY_COMBO_PIECES.items():
+        for suffix, top in (("", 57), ("_d", 96)):
+            win, n = re.subn(r'<IFACETEX name="%s%s" texture="TEX_WRAPPER_1"[^>]*/>' % (name, suffix),
+                             f'<IFACETEX name="{name}{suffix}" texture="TEX_REVIVED_COMBO" left="{x}" top="{top}" '
+                             f'width="{w}" height="38"/>', win)
+            assert n == 1, (name, suffix, n)
+    g = g[:s] + win + g[e:]
     # grained panels: the player details (the window's own "back") and the game list
     assert g.count(BLACK_BACK) == 2
     g = g.replace(BLACK_BACK, BLACK_BACK + "\n        " + GRAIN_BACK)
     head = g.index(">") + 1
-    g = g[:head] + "\n      " + GRAIN_LOAD + g[head:]
+    g = g[:head] + "\n      " + GRAIN_LOAD + "\n      " + COMBO_LOAD + g[head:]
     src = src[:start] + g + src[end:]
     # the chat window (both variants of the chat block)
     for block_name in ("GAMESPYCHAT", "GAMESPYCHATPERCENT"):

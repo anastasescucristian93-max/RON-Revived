@@ -202,6 +202,12 @@ TALL_ROWS = (1, 29)
 COMBO_TALL = dict(rows=[(1, FIELD_GREY), (29, FIELD_GREY_D)], height=TALL_H,
                   cols=[(3, 5), (6, 136), (137, 139)], mid=(6, 130),
                   rims=[(1, 5), (6, 136), (137, 141)], sides=[1, 140])
+# The Game Browser's Region drop-down, as tall as the buttons beside it (38): the same pieces
+# in rows 57 (normal) and 96 (disabled), the arrow 41 wide; the atlas is 256x256 for it.
+LOBBY_COMBO_H = 38
+LOBBY_COMBO_ARROW_W = 41
+LOBBY_COMBO_ROWS = (57, 96)
+COMBO_LOBBY = dict(COMBO_TALL, rows=[(57, FIELD_GREY), (96, FIELD_GREY_D)], height=LOBBY_COMBO_H)
 
 
 def grain(width, height, rng):
@@ -255,14 +261,15 @@ def stretch_piece(piece, height):
 
 def tall_combo_atlas(w2):
     r"""revived\setup_combo.tga from the recoloured (not yet grained) wrapper_pieces_02."""
-    atlas = Image.new("RGBA", (256, 64))
-    for top, src_top in zip(TALL_ROWS, (1, 24)):
-        for name, x0, w in (("left", 193, 4), ("mid", 198, 130), ("right", 329, 4)):
-            atlas.paste(stretch_piece(w2.crop((x0, src_top, x0 + w, src_top + COMBO_H)), TALL_H),
-                        (TALL_X[name], top))
-        arrow = w2.crop((123, src_top, 146, src_top + COMBO_H)).resize((TALL_ARROW_W, TALL_H), Image.LANCZOS)
-        atlas.paste(arrow, (TALL_X["arrow"], top))
-    return grain_fields(atlas, **COMBO_TALL)
+    atlas = Image.new("RGBA", (256, 256))
+    for rows, h, arrow_w in ((TALL_ROWS, TALL_H, TALL_ARROW_W), (LOBBY_COMBO_ROWS, LOBBY_COMBO_H, LOBBY_COMBO_ARROW_W)):
+        for top, src_top in zip(rows, (1, 24)):
+            for name, x0, w in (("left", 193, 4), ("mid", 198, 130), ("right", 329, 4)):
+                atlas.paste(stretch_piece(w2.crop((x0, src_top, x0 + w, src_top + COMBO_H)), h),
+                            (TALL_X[name], top))
+            arrow = w2.crop((123, src_top, 146, src_top + COMBO_H)).resize((arrow_w, h), Image.LANCZOS)
+            atlas.paste(arrow, (TALL_X["arrow"], top))
+    return grain_fields(grain_fields(atlas, **COMBO_TALL), **COMBO_LOBBY)
 
 
 def main(game, out):
