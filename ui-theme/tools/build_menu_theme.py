@@ -1092,21 +1092,51 @@ LOBBY_TAB_W, LOBBY_TAB_H = 140, 31  # the Lobby Chat tab; Group Chat sits beside
 LOBBY_INVITE_W = 270   # "Ver invitaciones de partida" 248 + 2 x 10
 LOBBY_SMALL_W = 176    # Private Chat / Block User / Unblock User ("Debloquer l'utilisateur" 155)
 LOBBY_SEND_W = 84      # Send ("Send" 36 + 2 x 24)
+LOBBY_ROW_BOTTOM = 20  # the Join row and Region above the list window's bottom frame
 LOBBY_BUTTONS = [
     ('<POSITIONING x="18" y="45">', f'<POSITIONING x="{LOBBY_TITLE_X}" y="37">'),  # 37..63, the list frame at 65
-    # Join / Create / Filter / refresh: 38 tall (was 30), fixed widths
-    ('bottom_inverse="18" percent_width="180" height="-30"', f'bottom_inverse="12" width="{LOBBY_ROW_W}" height="-38"'),
-    ('bottom_inverse="18" percent_width="60" height="-30"', f'bottom_inverse="12" width="{LOBBY_REFRESH_W}" height="-38"'),
+    # Join / Create / Filter / refresh: 38 tall (was 30), fixed widths, LOBBY_ROW_BOTTOM above the
+    # list window's bottom frame and 10 apart (were 12 and 6: "lipite", the user, 2026-11-24)
+    ('bottom_inverse="18" percent_width="180" height="-30"', f'bottom_inverse="{LOBBY_ROW_BOTTOM}" width="{LOBBY_ROW_W}" height="-38"'),
+    ('bottom_inverse="18" percent_width="60" height="-30"', f'bottom_inverse="{LOBBY_ROW_BOTTOM}" width="{LOBBY_REFRESH_W}" height="-38"'),
+    ('<POSITIONING inc_x="6" variable_inc="1" x="49">', '<POSITIONING inc_x="10" variable_inc="1" x="49">'),
     # Quit becomes Back, at the top left beside the title ribbon (the user, 2026-11-24). It stays
     # in the group window, where the game looks it up; the title strip over that corner lets the
     # mouse through (LOBBY_TITLE).
     ('<BUTTON name="quit" title="Quit" bottom_inverse="27" right_inverse="25" width="-260" height="-30">',
      f'<BUTTON name="quit" title="Back" left="25" top="14" width="{LOBBY_BACK_W}" height="38">'),
-    # View Game Invite alone at the bottom right now
+    # View Game Invite (shown only when a friend has invited you) at the top right, opposite Back:
+    # the bottom row is gone, the chat moves down into it (LOBBY_DOWN)
     ('<BUTTON name="invite" title="View Game Invite" bottom_inverse="27" right_inverse="295" width="-240" height="-30">',
-     f'<BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="25" '
-     f'width="-{LOBBY_INVITE_W}" height="-38">'),
+     f'<BUTTON name="invite" title="View Game Invite" top="14" right_inverse="25" '
+     f'width="-{LOBBY_INVITE_W}" height="38">'),
 ]
+# The bottom row (Group Chat / Quit) is gone, so the chat, the player list and the player details
+# move down by LOBBY_DROP into its place, and the game list window grows down by as much. The
+# list's own frame and list end higher, so the Join row has room above and below it.
+LOBBY_DROP = 55
+LOBBY_DOWN = [
+    ('<IFACERECT name="back"  right_inverse="22" bottom_inverse="75" width="-265" height="-290"/>',
+     f'<IFACERECT name="back"  right_inverse="22" bottom_inverse="{75 - LOBBY_DROP}" width="-265" height="-290"/>'),
+    ('<IFACERECT name="misc_border" right_inverse="22" bottom_inverse="75" width="-265" height="-290"/>',
+     f'<IFACERECT name="misc_border" right_inverse="22" bottom_inverse="{75 - LOBBY_DROP}" width="-265" height="-290"/>'),
+    ('<IFACERECT name="playerDetailsName" right_inverse="22" bottom_inverse="325" width="-265" height="-30"/>',
+     f'<IFACERECT name="playerDetailsName" right_inverse="22" bottom_inverse="{325 - LOBBY_DROP}" width="-265" height="-30"/>'),
+    ('<LISTBOX2 name="playerDetails" right_inverse="32" bottom_inverse="85" width="-245" height="-205">',
+     f'<LISTBOX2 name="playerDetails" right_inverse="32" bottom_inverse="{85 - LOBBY_DROP}" width="-245" height="-205">'),
+    ('<IFACERECT name="buddywin" right_inverse="20" bottom_inverse="65" width="-270" height="-330"/>',
+     f'<IFACERECT name="buddywin" right_inverse="20" bottom_inverse="{65 - LOBBY_DROP}" width="-270" height="-330"/>'),
+    ('<IFACERECT name="number_of_current_players_text" left="300" bottom_inverse="27" width="260" height="-30"/>',
+     f'<IFACERECT name="number_of_current_players_text" left="{25 + LOBBY_BACK_W + 20}" top="14" width="260" height="38"/>'),
+    ('<WINDOW name="sessionwin" left="20" top="59" right_inverse="20" bottom_inverse="400">',
+     f'<WINDOW name="sessionwin" left="20" top="59" right_inverse="20" bottom_inverse="{400 - LOBBY_DROP}">'),
+    ('<IFACERECT name="misc_border" left="15" top="65" right_inverse="15" bottom_inverse="58"/>',
+     '<IFACERECT name="misc_border" left="15" top="65" right_inverse="15" bottom_inverse="72"/>'),
+    ('<LISTBOX2 name="sessions" left="19" top="69" right_inverse="18" bottom_inverse="61"/>',
+     '<LISTBOX2 name="sessions" left="19" top="69" right_inverse="18" bottom_inverse="75"/>'),
+]
+LOBBY_CHAT_DOWN = [('right_inverse="296" height="-330" bottom_inverse="70">', f'right_inverse="296" height="-330" bottom_inverse="{70 - LOBBY_DROP}">'),
+                   ('right_inverse="296" top="428" bottom_inverse="70">', f'right_inverse="296" top="428" bottom_inverse="{70 - LOBBY_DROP}">')]
 LOBBY_TITLE = ('<WINDOW name="title" left="0" top="3" right_inverse="0" height="60">\n        <STYLE PASS_CONTROLS="1" CHILD="1"/>',
                '<WINDOW name="title" left="0" top="3" right_inverse="0" height="60">\n        <STYLE PASS_CONTROLS="1" CHILD="1" MOUSE_THRU="1"/>')
 # The player details' buttons (one row each): 26 tall, Arial 15, fixed width.
@@ -1115,7 +1145,7 @@ LOBBY_DETAIL_BUTTONS = ("playerDetailsPrivateChat", "playerDetailsBlockUser", "p
 # Region, beside the Join row: as tall as its buttons (38), from revived\setup_combo.tga's 38 px
 # rows (build_reskin.py LOBBY_COMBO_*); the list window's own combo pieces point there.
 LOBBY_REGION = ('<COMBOBOX name="region" title="Region: " id="0" bottom_inverse="22" right_inverse="49" width="-160" height="-21">',
-                '<COMBOBOX name="region" title="Region: " id="0" bottom_inverse="12" right_inverse="49" width="-180" height="-38">')
+                f'<COMBOBOX name="region" title="Region: " id="0" bottom_inverse="{LOBBY_ROW_BOTTOM}" right_inverse="49" width="-180" height="-38">')
 COMBO_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_COMBO" file=".\\art\\revived\\setup_combo.tga" pixformat="PF_32"/>'
 LOBBY_COMBO_PIECES = {"combo_left": (1, 4), "combo_mid": (6, 130), "combo_right": (137, 4), "combo_arrow": (142, 41)}
 LOBBY_SEND = ('<BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="20" width="-80" height="-19">',
@@ -1170,8 +1200,9 @@ def lobby_layout(src):
     start = src.index("<GAMESPYGROUP ")
     end = src.index("</GAMESPYGROUP>", start)
     g = src[start:end]
-    for old, new in [LOBBY_ROOT, LOBBY_RIBBON, LOBBY_TITLE] + LOBBY_BUTTONS:
-        assert g.count(old) == (3 if "180" in old else 1), old
+    for old, new in [LOBBY_ROOT, LOBBY_RIBBON, LOBBY_TITLE] + LOBBY_BUTTONS + LOBBY_DOWN:
+        # the Join row's three buttons; the list window's tag twice (once in a comment)
+        assert g.count(old) == (3 if "180" in old else 2 if 'name="sessionwin"' in old else 1), old
         g = g.replace(old, new)
     # Group Chat moves into the chat window, beside the Lobby Chat tab (below). Placed in the
     # group window over the chat, it lay under the chat window: the chat's frame lines were drawn
@@ -1205,8 +1236,8 @@ def lobby_layout(src):
     for name in LOBBY_DETAIL_BUTTONS:
         g, n = re.subn(r'(<BUTTON name="%s" title="[^"]*") right_inverse="80" bottom_inverse="302" width="-150" '
                        r'height="-19">(\s*)<FONT size="12"/>' % name,
-                       r'\1 right_inverse="80" bottom_inverse="298" width="-%d" height="-26">\2<FONT size="15" style="B"/>'
-                       % LOBBY_SMALL_W, g)
+                       r'\1 right_inverse="80" bottom_inverse="%d" width="-%d" height="-26">\2<FONT size="15" style="B"/>'
+                       % (298 - LOBBY_DROP, LOBBY_SMALL_W), g)
         assert n == 1, name
     # Region: taller, and the list window's combo pieces (only Region uses them) the 38 px ones
     assert g.count(LOBBY_REGION[0]) == 1
@@ -1236,6 +1267,9 @@ def lobby_layout(src):
         c = c.replace(BLACK_BACK, BLACK_BACK + "\n        " + GRAIN_BACK)
         assert c.count(LOBBY_SEND[0]) == 1, block_name
         c = c.replace(LOBBY_SEND[0], LOBBY_SEND[1])
+        for old, new in LOBBY_CHAT_DOWN:
+            c = c.replace(old, new)
+        assert sum(new in c for _, new in LOBBY_CHAT_DOWN) == 1, ("chat window down", block_name)
         c, n = re.subn(r'(<BUTTON name="send" title="Send"[^>]*>\s*)<FONT size="12"/>', r'\1<FONT size="15" style="B"/>', c)
         assert n == 1, block_name
         # Group Chat: the tabs' second slot (x 15 + 145, y 12), at the tab's size and font
