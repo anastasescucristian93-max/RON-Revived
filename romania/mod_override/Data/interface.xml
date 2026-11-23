@@ -917,11 +917,12 @@
   </OBJECTIVESDLG>
   <GAMESPY>
     <GAMESPYREJOIN name="gamespyrejoin" title="Reconnecting to Gamespy" left="0" top="0" width="600" height="130">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga"/>
-      <IFACETEX name="large_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="large_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="large_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+      <IFACETEX name="large_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="large_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="large_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
       <IFACETEX name="check_off" texture="TEX_WRAPPER_1" left="359" top="1" width="10" height="9"/>
       <IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="359" top="11" width="10" height="9"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
@@ -971,11 +972,12 @@
       </BUTTON>
     </GAMESPYREJOIN>
     <GAMESPYLOGIN name="gamespycreate" title="GameSpy Login" left="0" top="0" width="600" height="380">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga"/>
-      <IFACETEX name="large_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="large_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="large_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+      <IFACETEX name="large_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="large_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="large_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
       <IFACETEX name="check_off" texture="TEX_WRAPPER_1" left="359" top="1" width="10" height="9"/>
       <IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="359" top="11" width="10" height="9"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
@@ -1052,9 +1054,9 @@
       <WINDOW name="gamespynewlogin" title="New GameSpy Profile" left="0" top="0" width="600" height="380">
         <STYLE NO_SET_RENDERTARGET="1" PASS_CONTROLS="1"/>
         <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga"/>
-        <IFACETEX name="large_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-        <IFACETEX name="large_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-        <IFACETEX name="large_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+        <IFACETEX name="large_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+        <IFACETEX name="large_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+        <IFACETEX name="large_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
         <IFACETEX name="check_off" texture="TEX_WRAPPER_1" left="359" top="1" width="10" height="9"/>
         <IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="359" top="11" width="10" height="9"/>
         <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
@@ -1127,6 +1129,7 @@
       </WINDOW>
     </GAMESPYLOGIN>
     <GAMESPYCREATE name="gamespycreate" title="Create Game" left="0" top="0" width="670" height="248">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\wrapper_pieces_gamespy.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
@@ -1151,18 +1154,18 @@
       <IFACETEX name="combo_mid_d" texture="TEX_WRAPPER_1" left="198" top="24" width="130" height="21"/>
       <IFACETEX name="combo_right_d" texture="TEX_WRAPPER_1" left="329" top="24" width="3" height="21"/>
       <IFACETEX name="combo_arrow_d" texture="TEX_WRAPPER_1" left="123" top="24" width="23" height="21"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="divider" texture="TEX_GAMESPY" left="228" top="0" width="265" height="18"/>
       <IFACETEX name="gamespy_logo" texture="TEX_GAMESPY" left="0" top="50" width="118" height="27"/>
       <IFACERECT name="title" left="10" top="15" right_inverse="10" height="30"/>
@@ -1270,6 +1273,7 @@
       </BUTTON>
     </GAMESPYCREATE>
     <STEAMINVITEWIN name="steaminvitewin" title="Game Invite" left="0" top="0" width="450" height="380">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\wrapper_pieces_gamespy.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
@@ -1294,18 +1298,18 @@
       <IFACETEX name="combo_mid_d" texture="TEX_WRAPPER_1" left="198" top="24" width="130" height="21"/>
       <IFACETEX name="combo_right_d" texture="TEX_WRAPPER_1" left="329" top="24" width="3" height="21"/>
       <IFACETEX name="combo_arrow_d" texture="TEX_WRAPPER_1" left="123" top="24" width="23" height="21"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="divider" texture="TEX_GAMESPY" left="228" top="0" width="265" height="18"/>
       <IFACETEX name="gamespy_logo" texture="TEX_GAMESPY" left="0" top="50" width="118" height="27"/>
       <IFACERECT name="title" left="10" top="15" right_inverse="10" height="30"/>
@@ -1355,6 +1359,7 @@
     </STEAMINVITEWIN>	
 	
     <LEADERBOARDWIN name="LEADERBOARDWIN" left="0" top="0" width="450" height="500">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\wrapper_pieces_gamespy.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
@@ -1379,18 +1384,18 @@
       <IFACETEX name="combo_mid_d" texture="TEX_WRAPPER_1" left="198" top="24" width="130" height="21"/>
       <IFACETEX name="combo_right_d" texture="TEX_WRAPPER_1" left="329" top="24" width="3" height="21"/>
       <IFACETEX name="combo_arrow_d" texture="TEX_WRAPPER_1" left="123" top="24" width="23" height="21"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="divider" texture="TEX_GAMESPY" left="228" top="0" width="265" height="18"/>      
       <IFACERECT name="title" left="10" top="15" right_inverse="10" height="30"/>
       <IFACERECT name="back" left="10" top="10" right_inverse="10" bottom_inverse="10"/>
@@ -1442,13 +1447,14 @@
     </LEADERBOARDWIN>	
 	
     <GAMESPYFILTERWIN name="gamespy" title="Steam Filters" left="0" top="0" width="995" height="768">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1" TOP="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\wrapper_pieces_gamespy.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga"/>
-      <IFACETEX name="button_tex0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_tex1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_tex2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+      <IFACETEX name="button_tex0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_tex1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_tex2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
       <IFACETEX name="check_off" texture="TEX_WRAPPER_1" left="1" top="1" width="25" height="22"/>
       <IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="1" top="70" width="25" height="22"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
@@ -1841,13 +1847,14 @@
 
 
     <STEAMGROUPCHAT name="steam" title="Steam Chat Groups" left="0" top="0" width="640" height="420">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1" TOP="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\wrapper_pieces_gamespy.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga"/>
-      <IFACETEX name="button_tex0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_tex1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_tex2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+      <IFACETEX name="button_tex0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_tex1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_tex2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
       <IFACETEX name="check_off" texture="TEX_WRAPPER_1" left="1" top="1" width="25" height="22"/>
       <IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="1" top="70" width="25" height="22"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
@@ -1921,13 +1928,14 @@
     </STEAMGROUPCHAT>
     
     <GAMESPYCHAT>
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEX name="ping_indicator" texture="TEX_GAMESPY" left="268" top="19" width="17" height="16"/>
-      <IFACETEX name="tab_down0" texture="TEX_WRAPPER_1" left="1" top="139" width="12" height="38"/>
-      <IFACETEX name="tab_down1" texture="TEX_WRAPPER_1" left="14" top="139" width="85" height="38"/>
-      <IFACETEX name="tab_down2" texture="TEX_WRAPPER_1" left="100" top="139" width="12" height="38"/>
-      <IFACETEX name="tab0" texture="TEX_WRAPPER_1" left="1" top="256" width="12" height="38"/>
-      <IFACETEX name="tab1" texture="TEX_WRAPPER_1" left="14" top="256" width="85" height="38"/>
-      <IFACETEX name="tab2" texture="TEX_WRAPPER_1" left="100" top="256" width="12" height="38"/>
+      <IFACETEX name="tab_down0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="tab_down1" texture="TEX_REVIVED_MENU" left="218" top="200" width="142" height="38"/>
+      <IFACETEX name="tab_down2" texture="TEX_REVIVED_MENU" left="361" top="200" width="17" height="38"/>
+      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
+      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="239" width="142" height="38"/>
+      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="361" top="239" width="17" height="38"/>
       <WINDOW name="chatwin" title="" left="20" right_inverse="296" top="428" bottom_inverse="70">
         <STYLE PASS_CONTROLS="1" CHILD="1"/>
         <IFACETEX name="status" texture="TEX_GAMESPY" id="1" left="119" top="50" width="10" height="10"/>
@@ -1951,6 +1959,7 @@
         <IFACERECT name="back" left="10" top="42" right_inverse="10" bottom_inverse="10"/>
         <IFACERECT name="title" left="10" top="10" right_inverse="10" height="23"/>
         <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>
+        <IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>
         <!--Chat box receive and send-->
         <STRINGBOX_UNUSED name="receive_staging" left="13" top="46" right_inverse="215" bottom_inverse="46"/>
         <STRINGBOX name="receive_chat" left="13" top="46" right_inverse="215" bottom_inverse="46"/>
@@ -1967,8 +1976,8 @@
         </IFACEBORDER>
         <IFACERECT name="misc_border" left="13" bottom_inverse="17" right_inverse="330" height="-26"/>
         <EDITBOX name="send" left="16" bottom_inverse="20" right_inverse="333" height="-20" text_limit="256"/>
-        <BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="20" width="-80" height="-19">
-          <FONT size="12"/>
+        <BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="17" width="-84" height="-26">
+          <FONT size="15" style="B"/>
           <FONTCOLOR r="255" g="255" b="255"/>
         </BUTTON>
         <!--Player box.-->
@@ -1990,13 +1999,14 @@
       </WINDOW>
     </GAMESPYCHAT>
     <GAMESPYCHATPERCENT>
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEX name="ping_indicator" texture="TEX_GAMESPY" left="268" top="19" width="17" height="16"/>
-      <IFACETEX name="tab_down0" texture="TEX_WRAPPER_1" left="1" top="139" width="12" height="38"/>
-      <IFACETEX name="tab_down1" texture="TEX_WRAPPER_1" left="14" top="139" width="85" height="38"/>
-      <IFACETEX name="tab_down2" texture="TEX_WRAPPER_1" left="100" top="139" width="12" height="38"/>
-      <IFACETEX name="tab0" texture="TEX_WRAPPER_1" left="1" top="256" width="12" height="38"/>
-      <IFACETEX name="tab1" texture="TEX_WRAPPER_1" left="14" top="256" width="85" height="38"/>
-      <IFACETEX name="tab2" texture="TEX_WRAPPER_1" left="100" top="256" width="12" height="38"/>
+      <IFACETEX name="tab_down0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="tab_down1" texture="TEX_REVIVED_MENU" left="218" top="200" width="142" height="38"/>
+      <IFACETEX name="tab_down2" texture="TEX_REVIVED_MENU" left="361" top="200" width="17" height="38"/>
+      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
+      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="239" width="142" height="38"/>
+      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="361" top="239" width="17" height="38"/>
       <WINDOW name="chatwin" title="" left="20" right_inverse="296" height="-330" bottom_inverse="70">
         <STYLE PASS_CONTROLS="1" CHILD="1"/>
         <IFACETEX name="status" texture="TEX_GAMESPY" id="1" left="119" top="50" width="10" height="10"/>
@@ -2020,6 +2030,7 @@
         <IFACERECT name="back" left="10" top="42" right_inverse="10" bottom_inverse="10"/>
         <IFACERECT name="title" left="10" top="10" right_inverse="10" height="23"/>
         <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>
+        <IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>
         <!--Chat box receive and send-->
         <STRINGBOX_UNUSED name="receive_staging" left="13" top="46" right_inverse="215" bottom_inverse="46"/>
         <STRINGBOX name="receive_chat" left="13" top="46" right_inverse="215" bottom_inverse="46"/>
@@ -2036,8 +2047,8 @@
         </IFACEBORDER>
         <IFACERECT name="misc_border" left="13" bottom_inverse="17" right_inverse="330" height="-26"/>
         <EDITBOX name="send" left="16" bottom_inverse="20" right_inverse="333" height="-20" text_limit="256"/>
-        <BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="20" width="-80" height="-19">
-          <FONT size="12"/>
+        <BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="17" width="-84" height="-26">
+          <FONT size="15" style="B"/>
           <FONTCOLOR r="255" g="255" b="255"/>
         </BUTTON>
         <!--Player box.-->
@@ -2058,8 +2069,10 @@
         </POSITIONING>
       </WINDOW>
     </GAMESPYCHATPERCENT>
-    <GAMESPYGROUP name="gamespy" left="0" top="0" right_inverse="0" bottom_inverse="0">
-      <BUTTON name="quit" title="Quit" bottom_inverse="27" right_inverse="25" width="-260" height="-30">
+    <GAMESPYGROUP name="gamespy" left_percent="40" top_percent="60" right_inverse_percent="40" bottom_inverse_percent="60">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
+      <IFACETEXLOAD id="TEX_REVIVED_GRAIN" file=".\art\revived\lobby_grain.tga" pixformat="PF_32"/>
+      <BUTTON name="quit" title="Quit" bottom_inverse="22" right_inverse="25" width="-160" height="-38">
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
@@ -2119,6 +2132,7 @@
         <!-- Player Details -->
  		<IFACERECT name="back"  right_inverse="22" bottom_inverse="75" width="-265" height="-290"/> 
  		<IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>
+        <IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>
         <IFACEBORDER name="misc">
           <IFACETEX name="corner0" texture="TEX_WRAPPER_0" left="329" top="292" width="4" height="4"/>
           <IFACETEX name="corner1" texture="TEX_WRAPPER_0" left="346" top="292" width="4" height="4"/>
@@ -2140,16 +2154,16 @@
         	<FONTCOLOR r="255" g="255" b="255"/>
           	<FONT size="12" style="B"/>
         </LISTBOX2>
-      <BUTTON name="playerDetailsPrivateChat" title="Private Chat" right_inverse="80" bottom_inverse="302" width="-150" height="-19">
-        <FONT size="12"/>
+      <BUTTON name="playerDetailsPrivateChat" title="Private Chat" right_inverse="80" bottom_inverse="298" width="-176" height="-26">
+        <FONT size="15" style="B"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
-      <BUTTON name="playerDetailsBlockUser" title="Block User" right_inverse="80" bottom_inverse="302" width="-150" height="-19">
-        <FONT size="12"/>
+      <BUTTON name="playerDetailsBlockUser" title="Block User" right_inverse="80" bottom_inverse="298" width="-176" height="-26">
+        <FONT size="15" style="B"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
-      <BUTTON name="playerDetailsUnblockUser" title="Unblock User" right_inverse="80" bottom_inverse="302" width="-150" height="-19">
-        <FONT size="12"/>
+      <BUTTON name="playerDetailsUnblockUser" title="Unblock User" right_inverse="80" bottom_inverse="298" width="-176" height="-26">
+        <FONT size="15" style="B"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
  
@@ -2211,12 +2225,12 @@
       
       <IFACERECT name="number_of_current_players_text" left="300" bottom_inverse="27" width="260" height="-30"/>
 
-      <BUTTON name="groupchat" title="Group Chat" bottom_inverse="27" left="25" width="260" height="-30">
+      <BUTTON name="groupchat" title="Group Chat" bottom_inverse="22" left="25" width="160" height="-38">
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
 
-      <BUTTON name="invite" title="View Game Invite" bottom_inverse="27" right_inverse="295" width="-240" height="-30">
+      <BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="195" width="-270" height="-38">
 		<FONT size="18"/>
 		<FONTCOLOR r="255" g="255" b="255"/>
 	  </BUTTON>
@@ -2224,12 +2238,12 @@
       <IFACERECT name="tab_numbers" left="10" top="3" width="31" height="12"/>
       <IFACERECT name="room_dots" left="10" top="15" width="31" height="12"/>
       <IFACETEX name="room_dots" texture="TEX_GAMESPY" left="306" top="19" width="31" height="12"/>
-      <IFACETEX name="tab_down0" texture="TEX_WRAPPER_1" left="1" top="139" width="12" height="38"/>
-      <IFACETEX name="tab_down1" texture="TEX_WRAPPER_1" left="14" top="139" width="85" height="38"/>
-      <IFACETEX name="tab_down2" texture="TEX_WRAPPER_1" left="100" top="139" width="12" height="38"/>
-      <IFACETEX name="tab0" texture="TEX_WRAPPER_1" left="1" top="256" width="12" height="38"/>
-      <IFACETEX name="tab1" texture="TEX_WRAPPER_1" left="14" top="256" width="85" height="38"/>
-      <IFACETEX name="tab2" texture="TEX_WRAPPER_1" left="100" top="256" width="12" height="38"/>
+      <IFACETEX name="tab_down0" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="tab_down1" texture="TEX_REVIVED_MENU" left="218" top="200" width="142" height="38"/>
+      <IFACETEX name="tab_down2" texture="TEX_REVIVED_MENU" left="361" top="200" width="17" height="38"/>
+      <IFACETEX name="tab0" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
+      <IFACETEX name="tab1" texture="TEX_REVIVED_MENU" left="218" top="239" width="142" height="38"/>
+      <IFACETEX name="tab2" texture="TEX_REVIVED_MENU" left="361" top="239" width="17" height="38"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
       <IFACETEX name="combo_mid" texture="TEX_WRAPPER_1" left="198" top="1" width="130" height="21"/>
       <IFACETEX name="combo_right" texture="TEX_WRAPPER_1" left="329" top="1" width="4" height="21"/>
@@ -2244,33 +2258,38 @@
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
       <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
 	  <IFACETEX name="refresh_img" texture="TEX_GAMESPY" left="458" top="165" width="30" height="24"/>
       <!--Title Banner-->
       <STRETCHSPRITE name="misc">
-        <IFACERECT left="30" top="4" right_inverse="30" height="69"/>
+        <IFACERECT left_percent="370" top="4" right_inverse_percent="370" height="69"/>
         <IFACETEX ref="scroll_left"/>
         <IFACETEX ref="scroll_mid"/>
         <IFACETEX ref="scroll_right"/>
       </STRETCHSPRITE>
-      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
       <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
       <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
+      <IFACETEX name="button_up_26" texture="TEX_REVIVED_MENU" left="200" top="145" width="17" height="26"/>
+      <IFACETEX name="button_up_26" texture="TEX_REVIVED_MENU" left="218" top="145" width="142" height="26"/>
+      <IFACETEX name="button_up_26" texture="TEX_REVIVED_MENU" left="361" top="145" width="17" height="26"/>
+      <IFACETEX name="button_down_26" texture="TEX_REVIVED_MENU" left="200" top="172" width="17" height="26"/>
+      <IFACETEX name="button_down_26" texture="TEX_REVIVED_MENU" left="218" top="172" width="142" height="26"/>
+      <IFACETEX name="button_down_26" texture="TEX_REVIVED_MENU" left="361" top="172" width="17" height="26"/>
+      <IFACETEX name="button_up_38" texture="TEX_REVIVED_MENU" left="200" top="200" width="17" height="38"/>
+      <IFACETEX name="button_up_38" texture="TEX_REVIVED_MENU" left="218" top="200" width="142" height="38"/>
+      <IFACETEX name="button_up_38" texture="TEX_REVIVED_MENU" left="361" top="200" width="17" height="38"/>
+      <IFACETEX name="button_down_38" texture="TEX_REVIVED_MENU" left="200" top="239" width="17" height="38"/>
+      <IFACETEX name="button_down_38" texture="TEX_REVIVED_MENU" left="218" top="239" width="142" height="38"/>
+      <IFACETEX name="button_down_38" texture="TEX_REVIVED_MENU" left="361" top="239" width="17" height="38"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
       <IFACETEX name="button_border_left" texture="TEX_WRAPPER_0" left="229" top="436" width="36" height="75"/>
       <IFACETEX name="button_border_mid" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
       <IFACETEX name="button_border_right" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
@@ -2319,6 +2338,7 @@
         <IFACERECT name="back" left="10" top="37" right_inverse="10" bottom_inverse="10"/>
         <IFACERECT name="password_rect" left="0" top="2" width="17" height="16"/>
         <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>
+        <IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>
         <!--Rects for sort buttons-->
         <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">
           <IFACERECT name="players" percent_width="30" height="19"/>
@@ -2329,6 +2349,13 @@
           <IFACERECT name="game_rules" percent_width="160" height="19"/>
           <IFACERECT name="ranked_elo" percent_width="70" height="19"/>
         </POSITIONING>
+        <!--Rects for the sort buttons: fixed widths, centred on the columns-->
+        <IFACERECT name="sort_description" left_percent="113" top="0" width="130" height="26"/>
+        <IFACERECT name="sort_team_style" left_percent="298" top="0" width="152" height="26"/>
+        <IFACERECT name="sort_map_style" left_percent="489" top="0" width="118" height="26"/>
+        <IFACERECT name="sort_map_size" left_percent="631" top="0" width="118" height="26"/>
+        <IFACERECT name="sort_game_rules" left_percent="739" top="0" width="158" height="26"/>
+        <IFACERECT name="sort_ranked_elo" left_percent="880" top="0" width="80" height="26"/>
         <IFACEBORDER name="misc">
           <IFACETEX name="corner0" texture="TEX_GAMESPY" left="209" top="0" width="18" height="18"/>
           <IFACETEX name="corner1" texture="TEX_GAMESPY" left="494" top="0" width="18" height="18"/>
@@ -2352,29 +2379,29 @@
         <IFACERECT name="misc_border" left="0" top="26" right_inverse="0" bottom_inverse="0"/>
         <IFACERECT name="misc_border" left="15" top="65" right_inverse="15" bottom_inverse="58"/>
         <!--Sorting buttons-->
-        <POSITIONING x="18" y="45">
-          <BUTTON name="sort" id="0" title="Description" ref_rect="description">
-            <FONT size="12"/>
+        <POSITIONING x="18" y="37">
+          <BUTTON name="sort" id="0" title="Description" ref_rect="sort_description">
+            <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="sort" id="1" title="Teams &amp; Allies" ref_rect="team_style">
-            <FONT size="12"/>
+          <BUTTON name="sort" id="1" title="Teams &amp; Allies" ref_rect="sort_team_style">
+            <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="sort" id="2" title="Map Style" ref_rect="map_style">
-            <FONT size="12"/>
+          <BUTTON name="sort" id="2" title="Map Style" ref_rect="sort_map_style">
+            <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="sort" id="3" title="Map Size" ref_rect="map_size">
-            <FONT size="12"/>
+          <BUTTON name="sort" id="3" title="Map Size" ref_rect="sort_map_size">
+            <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="sort" id="4" title="Game Rules" ref_rect="game_rules">
-            <FONT size="12"/>
+          <BUTTON name="sort" id="4" title="Game Rules" ref_rect="sort_game_rules">
+            <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="sort" id="12" title="ELO" ref_rect="ranked_elo">
-            <FONT size="12"/>
+          <BUTTON name="sort" id="12" title="ELO" ref_rect="sort_ranked_elo">
+            <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
         </POSITIONING>
@@ -2436,19 +2463,19 @@
         </POSITIONING>
          END STEAM -->
         <POSITIONING inc_x="6" variable_inc="1" x="49">
-          <BUTTON name="join" title="Join" bottom_inverse="18" percent_width="180" height="-30">
+          <BUTTON name="join" title="Join" bottom_inverse="12" width="128" height="-38">
             <FONT size="18"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="create" title="Create" bottom_inverse="18" percent_width="180" height="-30">
+          <BUTTON name="create" title="Create" bottom_inverse="12" width="128" height="-38">
             <FONT size="18"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="filter" title="Filter" bottom_inverse="18" percent_width="180" height="-30">
+          <BUTTON name="filter" title="Filter" bottom_inverse="12" width="128" height="-38">
             <FONT size="18"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>		  
-          <BUTTON name="refresh" bottom_inverse="18" percent_width="60" height="-30">
+          <BUTTON name="refresh" bottom_inverse="12" width="80" height="-38">
             <FONT size="18"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
@@ -2460,6 +2487,7 @@
       </WINDOW>
     </GAMESPYGROUP>
     <GAMESPYCHOICE name="gamespychoice" left="0" top="0" width="415" height="175">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE TOP="1"/>
       <IFACECOLOR name="back" red="0" green="0" blue="0"/>
       <IFACETEXLOAD id="TEX_TOPMENU_0" file="art\iface_wrapper1.tga" pixformat="PF_32" sort="0"/>
@@ -2467,22 +2495,21 @@
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
       <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
-      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
       <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
       <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
@@ -2546,6 +2573,7 @@
       </POSITIONING>
     </GAMESPYCHOICE>
     <GAMESPYQUICKMATCH name="gamespy" left="0" top="0" right_inverse="0" bottom_inverse="0">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_TOPMENU_0" file="art\iface_wrapper1.tga" pixformat="PF_32" sort="0"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga" pixformat="PF_32"/>
@@ -2564,18 +2592,18 @@
       <IFACETEX name="combo_right_d" texture="TEX_WRAPPER_1" left="329" top="24" width="4" height="21"/>
       <IFACETEX name="combo_arrow_d" texture="TEX_WRAPPER_1" left="123" top="24" width="23" height="21"/>
       <IFACERECT name="buddywin" right_inverse="20" bottom_inverse="65" width="-270" top="428"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
       <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
@@ -2586,7 +2614,6 @@
         <IFACETEX ref="scroll_mid"/>
         <IFACETEX ref="scroll_right"/>
       </STRETCHSPRITE>
-      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
       <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
       <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
@@ -2714,6 +2741,7 @@
       </WINDOW>
     </GAMESPYQUICKMATCH>
     <GAMESPYQMSEARCH name="gamespyqmsearch" left="0" top="0" width="400" height="200" show="0">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE CLIENTDRAG="1" TOP="1" NOKEYINPUT="1"/>
       <IFACETEXLOAD id="TEX_TOPMENU_0" file="art\iface_wrapper1.tga" pixformat="PF_32" sort="0"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
@@ -2722,22 +2750,21 @@
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
       <IFACERECT name="back" left="0" top="0" right_inverse="0" bottom_inverse="0"/>
       <IFACECOLOR name="back" red="0" green="0" blue="0"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
       <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
-      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
       <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
       <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
@@ -2767,6 +2794,7 @@
       </BUTTON>
     </GAMESPYQMSEARCH>
     <GAMESPYQMINVITE name="gamespyqminvite" left="0" top="0" width="290" height="544">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE CLIENTDRAG="1" TOP="1"/>
       <IFACECOLOR name="back" red="0" green="0" blue="0"/>
       <IFACERECT name="back" left="0" right_inverse="0" top="0" bottom_inverse="0"/>
@@ -2796,22 +2824,21 @@
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
       <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
-      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
       <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
       <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
@@ -2833,6 +2860,7 @@
       <LISTBOX2 name="players" left="20" right_inverse="20" top="52" bottom_inverse="57"/>
     </GAMESPYQMINVITE>
     <GAMESPYSTAGING name="gamespy" left="0" top="0" right_inverse="0" bottom_inverse="0">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEX name="combo_left" texture="TEX_WRAPPER_1" left="193" top="1" width="4" height="21"/>
       <IFACETEX name="combo_mid" texture="TEX_WRAPPER_1" left="198" top="1" width="130" height="21"/>
       <IFACETEX name="combo_right" texture="TEX_WRAPPER_1" left="329" top="1" width="4" height="21"/>
@@ -2847,18 +2875,18 @@
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="gamespy_logo" texture="TEX_GAMESPY" left="0" top="50" width="118" height="27"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
@@ -3014,16 +3042,17 @@
       <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
     </GAMESPYBACKWIN>
     <GAMESPYPASSWORD name="gamespypassword" title="Password Required" width="350" height="150">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga"/>
       <IFACERECT name="back" left="10" top="10" right_inverse="10" bottom_inverse="10"/>
       <IFACERECT name="title" left="10" top="15" right_inverse="10" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="back" texture="TEX_GAMESPY" left="355" top="311" width="116" height="43"/>
       <IFACEBORDER name="main">
         <IFACETEX name="corner0" texture="TEX_GAMESPY" left="209" top="0" width="18" height="18"/>
@@ -3043,23 +3072,24 @@
       <BUTTON name="cancel" title="Cancel" right_inverse="30" bottom_inverse="20" width="-140" height="-30"/>
     </GAMESPYPASSWORD>
     <GAMESPYIGNORELIST name="gamespyignorelist" title="Ignore List" width="300" height="480">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_TOPMENU_0" file="art\iface_wrapper1.tga" pixformat="PF_32" sort="0"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga" pixformat="PF_32"/>
       <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
       <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
       <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
@@ -3099,6 +3129,7 @@
       </BUTTON>
     </GAMESPYIGNORELIST>
     <BUDDYLISTWIN name="buddylist" title="Buddies" left="0" top="0" width="270" height="322" show="0">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACECOLOR name="selected_back_color" red="255" green="160" blue="0" alpha="55"/>
       <IFACECOLOR name="selected_outline_color" red="255" green="160" blue="0" alpha="100"/>
       <IFACECOLOR name="selected_back_focus_color" red="255" green="160" blue="0" alpha="100"/>
@@ -3127,18 +3158,18 @@
       <IFACETEX name="combo_mid_d" texture="TEX_WRAPPER_1" left="198" top="24" width="130" height="21"/>
       <IFACETEX name="combo_right_d" texture="TEX_WRAPPER_1" left="329" top="24" width="3" height="21"/>
       <IFACETEX name="combo_arrow_d" texture="TEX_WRAPPER_1" left="123" top="24" width="23" height="21"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-      <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-      <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+      <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+      <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="ignore_list" texture="TEX_GAMESPY" left="248" top="19" width="19" height="19"/>
       <IFACETEX name="status" texture="TEX_GAMESPY" id="1" left="119" top="50" width="10" height="10"/>
       <IFACETEX name="status" texture="TEX_GAMESPY" id="0" left="130" top="50" width="10" height="10"/>
@@ -3171,6 +3202,7 @@
       </POSITIONING>
     </BUDDYLISTWIN>
     <BUDDYADDWIN name="buddyaddwin" title="Add a Buddy" left="0" top="1" width="500" height="350">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <IFACEBORDER name="edit">
         <IFACETEX name="corner0" texture="TEX_WRAPPER_0" left="329" top="292" width="4" height="4"/>
         <IFACETEX name="corner1" texture="TEX_WRAPPER_0" left="346" top="292" width="4" height="4"/>
@@ -3181,12 +3213,12 @@
         <IFACETEX name="edge2" texture="TEX_WRAPPER_0" left="334" top="298" width="11" height="3"/>
         <IFACETEX name="edge3" texture="TEX_WRAPPER_0" left="357" top="292" width="3" height="6"/>
       </IFACEBORDER>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="divider" texture="TEX_GAMESPY" left="228" top="0" width="265" height="18"/>
       <IFACERECT name="text" left="15" top="25" right_inverse="15" bottom_inverse="120"/>
       <!--Back tinting.-->
@@ -3237,13 +3269,14 @@
       </POSITIONING>
     </BUDDYADDWIN>
     <BUDDYCHATWIN name="buddychatwin" title="Chat" left="0" top="0" width="400" height="400">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1" CLIENTDRAG="1" TOP="1" PASS_CONTROLS="1" RESIZE="1"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-      <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-      <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+      <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+      <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
       <IFACETEX name="minimized_but" texture="TEX_GAMESPY" left="228" top="174" width="6" height="21"/>
       <IFACETEX name="minimized_but" texture="TEX_GAMESPY" left="235" top="174" width="153" height="21"/>
       <IFACETEX name="minimized_but" texture="TEX_GAMESPY" left="389" top="174" width="6" height="21"/>
@@ -5259,6 +5292,7 @@
     </POSITIONING>
   </LOADWIN>
   <SKILLTESTWIN title="Skills Test Menu" name="skilltestwin" left="0" top="0" width="1024" height="768">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga"/>
@@ -5289,9 +5323,9 @@
     <IFACETEX name="button_border_left" texture="TEX_WRAPPER_0" left="229" top="436" width="36" height="75"/>
     <IFACETEX name="button_border_mid" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
     <IFACETEX name="button_border_right" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
-    <IFACETEX name="select_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="select_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="select_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+    <IFACETEX name="select_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="select_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="select_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
     <IFACETEX name="arrow_up" texture="TEX_CTW_4" left="466" top="168" width="46" height="30"/>
     <IFACETEX name="arrow_down" texture="TEX_CTW_4" left="419" top="168" width="46" height="30"/>
     <IFACETEX name="number_button" texture="TEX_CTW_4" left="0" top="292" width="30" height="30"/>
@@ -5344,6 +5378,7 @@
     </POSITIONING>
   </SKILLTESTWIN>
   <TUTORIALWIN title="Tutorial Menu" name="tutorialwin" left="0" top="0" width="1024" height="768" texture="TEX_WRAPPER_2">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_4" file="art\wrapper_pieces_05.tga"/>
@@ -5381,9 +5416,9 @@
     </IFACEBORDER>
     <IFACETEX name="check_off" texture="TEX_WRAPPER_1" left="1" top="1" width="25" height="22"/>
     <IFACETEX name="check_on" texture="TEX_WRAPPER_1" left="1" top="70" width="25" height="22"/>
-    <IFACETEX name="small_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="small_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="small_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+    <IFACETEX name="small_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="small_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="small_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
     <IFACETEX name="large_button_left" texture="TEX_WRAPPER_2" left="1" top="415" width="15" height="39"/>
     <IFACETEX name="large_button_mid" texture="TEX_WRAPPER_2" left="17" top="415" width="143" height="39"/>
     <IFACETEX name="large_button_right" texture="TEX_WRAPPER_2" left="161" top="415" width="15" height="39"/>
@@ -5508,6 +5543,7 @@
     <BUTTON name="ok" title="OK" left="0" top="0" width="180" height="30"/>
   </TUTORIALPROMPTWIN>
   <SCENARIOSPLASH title="Scenario Introduction" name="scenariosplash" left="0" top="0" percent_width="1000" percent_height="1000">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEXLOAD id="TEX_WRAPPER_0" file="art\wrapper_pieces_01.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga"/>
@@ -5524,9 +5560,9 @@
       <IFACETEX name="edge3" texture="TEX_WRAPPER_0" left="395" top="1" width="13" height="167"/>
     </IFACEBORDER>
     <IFACETEX name="back" texture="TEX_TOPMENU_0" left="0" top="0" width="1024" height="768"/>
-    <IFACETEX name="small_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="small_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="small_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+    <IFACETEX name="small_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="small_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="small_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
     <IFACETEX name="button_border0" texture="TEX_WRAPPER_0" left="229" top="436" width="36" height="75"/>
     <IFACETEX name="button_border1" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
     <IFACETEX name="button_border2" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
@@ -5602,15 +5638,16 @@
     <IFACETEX name="objectives_close" texture="TEX_WRAPPER_5" left="0" top="134" width="18" height="18"/>
   </MESSAGEWIN>
   <MPDROPWIN name="mpdropwin" left="0" top="0" width="650" height="712" show="0">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <STYLE NO_SET_RENDERTARGET="1" CLIENTDRAG="1" TOP="1"/>
     <IFACERECT name="back" left="3" top="3" right_inverse="3" bottom_inverse="3"/>
     <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="220"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
     <IFACERECT name="title" left="10" top="10" right_inverse="10" height="25"/>
     <IFACERECT name="player" left="14" top="190" right_inverse="14" height="18"/>
     <IFACERECT name="instructions" left="10" top="40" right_inverse="14" height="25" bottom="135"/>
@@ -5733,15 +5770,16 @@
     </EDITBOX>
   </MPDROPWIN>
   <MPDROPWINRANKED name="mpdropwinranked" left="0" top="0" width="650" height="580" show="0">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <STYLE NO_SET_RENDERTARGET="1" CLIENTDRAG="1" TOP="1"/>
     <IFACERECT name="back" left="3" top="3" right_inverse="3" bottom_inverse="3"/>
     <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="220"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
     <IFACERECT name="title" left="10" top="10" right_inverse="10" height="25"/>
     <IFACERECT name="player" left="14" top="190" right_inverse="14" height="18"/>
     <IFACERECT name="instructions" left="10" top="40" right_inverse="14" height="25" bottom="135"/>
@@ -5926,6 +5964,7 @@
     </IFACEBORDER>
   </MESSAGEBOX>
   <NETSEARCHWIN name="netsearchwin" left="0" top="0" width="1024" height="768">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <STYLE CHILD="0" NO_SET_RENDERTARGET="1" TOP="1"/>
     <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga"/>
     <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga"/>
@@ -5933,9 +5972,9 @@
     <IFACETEXLOAD id="TEX_TOPMENU_0" file="art\iface_wrapper1.tga" pixformat="PF_32" sort="0"/>
     <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
     <IFACETEXLOAD id="TEX_WRAPPER_LOGO" file="art\wrapper_main_logo_01.tga" sort="0" pixformat="PF_32"/>
-    <IFACETEX name="large_button0" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="large_button1" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="large_button2" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
+    <IFACETEX name="large_button0" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="large_button1" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="large_button2" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
     <IFACERECT name="logo" right_inverse="30" bottom_inverse="30" width="-512" height="-273"/>
     <WINDOW name="window" left="20" top="100" width="984" height="600">
       <STYLE CHILD="1" PASS_CONTROLS="1" NO_SET_RENDERTARGET="1"/>
@@ -6622,6 +6661,7 @@
     <BUTTON name="close" title="Close" left="10" bottom_inverse="10" right_inverse="10" height="-30"/>
   </SECTIONPROFWIN>
   <SYNCDISPLAY name="gamespychoice" left="0" top="0" width="450" height="195">
+      <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <STYLE TOP="1" CHILD="1" DIALOG="1"/>
     <IFACECOLOR name="back" red="0" green="0" blue="0"/>
     <IFACECOLOR name="progress_front" red="0" green="204" blue="0"/>
@@ -6631,22 +6671,21 @@
     <IFACETEXLOAD id="TEX_WRAPPER_1" file="art\wrapper_pieces_02.tga" pixformat="PF_32"/>
     <IFACETEXLOAD id="TEX_WRAPPER_2" file="art\wrapper_pieces_03.tga" pixformat="PF_32" sort=""/>
     <IFACETEXLOAD id="TEX_GAMESPY" file="art\Wrapper_pieces_gamespy.tga" pixformat="PF_32"/>
-    <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-    <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-    <IFACETEX name="button_up_19" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
-    <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="400" top="40" width="4" height="19"/>
-    <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="405" top="40" width="102" height="19"/>
-    <IFACETEX name="button_down_19" texture="TEX_WRAPPER_1" left="508" top="40" width="4" height="19"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="193" top="47" width="17" height="30"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="211" top="47" width="142" height="30"/>
-    <IFACETEX name="button_up_30" texture="TEX_WRAPPER_1" left="354" top="47" width="17" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="193" top="109" width="17" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="211" top="109" width="142" height="30"/>
-    <IFACETEX name="button_down_30" texture="TEX_WRAPPER_1" left="354" top="109" width="17" height="30"/>
+    <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+    <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+    <IFACETEX name="button_up_19" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+    <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="200" top="299" width="17" height="19"/>
+    <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="218" top="299" width="142" height="19"/>
+    <IFACETEX name="button_down_19" texture="TEX_REVIVED_MENU" left="361" top="299" width="17" height="19"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="1" top="181" width="17" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="19" top="181" width="142" height="30"/>
+    <IFACETEX name="button_up_30" texture="TEX_REVIVED_MENU" left="162" top="181" width="17" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="1" top="212" width="17" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="19" top="212" width="142" height="30"/>
+    <IFACETEX name="button_down_30" texture="TEX_REVIVED_MENU" left="162" top="212" width="17" height="30"/>
     <IFACETEX name="scroll_left" texture="TEX_GAMESPY" left="1" top="443" width="58" height="69"/>
     <IFACETEX name="scroll_mid" texture="TEX_GAMESPY" left="60" top="443" width="391" height="69"/>
     <IFACETEX name="scroll_right" texture="TEX_GAMESPY" left="452" top="443" width="60" height="69"/>
-    <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
     <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
     <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>

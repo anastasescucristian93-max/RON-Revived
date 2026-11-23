@@ -8,6 +8,22 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## The Game Browser in the theme's style (`ui-theme`), new 2026-11-24
+
+- The multiplayer Game Browser now sits inside the theme's frame instead of running to the screen's edges, and its red title ribbon is only a little longer than its title.
+- Its buttons are the main menu's steel plates, sized to their text: the sort buttons over the game list are taller, only as wide as their titles need (in every language) and in a larger font, so they read well; Join, Create, Filter, Quit, Group Chat and Send are taller and narrower, and the buttons in one row share one height.
+- The same steel buttons in the other online windows too (log in, create a game, filters, invites, friends, leaderboards, quick match, the Lobby Chat tab and others): no glossy buttons are left.
+- The game list, the chat and the player details sit on the launcher's dark grained steel instead of plain black.
+- Only the look changes: it plays with players on any version.
+
+## The multiplayer game setup looks like the single player one (`ui-theme`, `camera-smooth`), new 2026-11-24
+
+- Start and Back sit in their frame at the bottom right, as in single player, instead of across the whole panel.
+- Invite Friend, Options and Reset are the steel buttons, a little taller; in single player Options and Reset are as wide as these instead of half the panel each.
+- The rules panel is one row taller, so the last option (Require Random Nations) no longer runs past its bottom edge.
+- Fixed: the Cooperative AI box looked ticked, and could not be changed. Multiplayer has no Cooperative AI, so the box is now greyed out and unticked. The game had also put the options under it one place off: Allow Observer Chat was missing, and the others sat one row too high. They are now back in their places, the same rows as in single player.
+- Only the setup screen changes: it plays with players on any version.
+
 ## The end-game statistics star for fewest losses (`camera-smooth`), new 2026-11-22
 
 - In the statistics after a game, on the Military tab, the star for Units Lost, Buildings Lost and Cities Lost now goes to the player who lost the fewest, not the most. When every player has the same number (for example nobody lost a city), no one gets the star, as in the other columns.

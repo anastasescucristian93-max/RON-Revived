@@ -119,6 +119,14 @@ BTN_L_TEX, BTN_R_TEX = BTN_L + BTN_PAD, BTN_R + BTN_PAD  # widths of the padded 
 POP_X, POP_Y, POP_H = 1, 150, 30
 POP_L, POP_M, POP_R = 17, 142, 17
 POP_FILES = ("interface.xml", "optionswin.xml", "setupwin.xml", "workshopwin.xml")
+# Game Browser (multiplayer lobby) buttons: GameSpyChatBase::on_button_redraw takes the
+# pieces "button_up_<h>" / "button_down_<h>" by the button's height h and stretches them to
+# it; the up piece is tinted brighter on hover and for the selected sort column, the down
+# piece is drawn pressed or disabled. The same steel plate as the dialog buttons, drawn at
+# each height used there: 26 the sort buttons, 38 Join / Create / Quit..., 19 Send and the
+# player details' buttons. In the atlas's free rows right of the dialog buttons.
+LOBBY_X = 200
+LOBBY_SETS = {26: 145, 38: 200, 19: 279}  # height -> row of the normal piece (pressed: + h + 1)
 TITLE_Y, TITLE_H, TITLE_CAP, TITLE_MID = 300, 74, 48, 32
 SMALL_CORNER, SMALL_EDGE = 40, 15  # the half-size frame for message boxes
 
@@ -279,6 +287,11 @@ def build_parts():
     normal, hover, pressed = plate_states(element(11), POP_H, POP_L, POP_M, POP_R)
     for i, img in enumerate((hover, normal, pressed)):
         atlas.alpha_composite(sliced(img, POP_L, POP_M), (POP_X, POP_Y + i * (POP_H + 1)))
+    # Game Browser buttons at their own heights (normal, then pressed / disabled one row down).
+    for h, y in LOBBY_SETS.items():
+        normal, hover, pressed = plate_states(element(11), h, POP_L, POP_M, POP_R)
+        for i, img in enumerate((normal, pressed)):
+            atlas.alpha_composite(sliced(img, POP_L, POP_M), (LOBBY_X, y + i * (h + 1)))
     return atlas, rects
 
 
@@ -874,6 +887,8 @@ def build_popup_xml(game, name, rects, flags):
         src = capital_star(src)
         src = hud_layout(src)
         src = qol_buttons(src)
+        src = lobby_layout(src)
+        src = steel_buttons(src)
     if name == "setupwin.xml":
         src = setup_margins(src)
         src = setup_flags(src, flags)
@@ -919,13 +934,37 @@ SETUP_BUTTONS = [
     ('<IFACERECT left="30" right_inverse="30" bottom_inverse="15" height="-69"/>',
      '<IFACERECT left_percent="492" right_inverse="0" bottom_inverse="15" height="-86"/>'),
 ]
-SETUP_BUTTON_WINDOWS = ("PLAYERSWINSOLO", "PLAYERSWINMP")
+SETUP_BUTTON_WINDOWS = ("PLAYERSWINSOLO", "PLAYERSWINMP", "PLAYERSWINGAMESPY", "PLAYERSWINRANKED")
+# The rules panel one row taller: in an online game its left column has five boxes (Require
+# Random Nations too), and the fifth ran past the panel's bottom edge.
+RULES_HEIGHT = [('percent_width="-395" height="725">', 'percent_width="-395" height="751">')]
+# Invite Friend / Options / Reset at the top of the rules panel: the small glossy pieces
+# become the steel plate (the lobby's 19 px set), the buttons a little taller; single
+# player's Options / Reset as wide as these (they were 45% of the panel, mostly empty).
+SMALL_BUTTONS = [
+    ('<BUTTON name="invite" title="Invite Friend" left_percent="40" percent_width="300" top="20" height="18"/>',
+     '<BUTTON name="invite" title="Invite Friend" left_percent="40" percent_width="300" top="18" height="24"/>'),
+    ('<BUTTON name="options" title="Options" left_percent="352" percent_width="300" top="20" height="18"/>',
+     '<BUTTON name="options" title="Options" left_percent="352" percent_width="300" top="18" height="24"/>'),
+    ('<BUTTON name="reset" title="Reset" right_inverse_percent="40" percent_width="-300" top="20" height="18"/>',
+     '<BUTTON name="reset" title="Reset" right_inverse_percent="40" percent_width="-300" top="18" height="24"/>'),
+    ('<BUTTON name="options_solo" title="Options" left_percent="40" percent_width="450" top="20" height="18"/>',
+     '<BUTTON name="options_solo" title="Options" left_percent="40" percent_width="300" top="18" height="24"/>'),
+    ('<BUTTON name="reset_solo" title="Reset" right_inverse_percent="40" percent_width="-450" top="20" height="18"/>',
+     '<BUTTON name="reset_solo" title="Reset" right_inverse_percent="40" percent_width="-300" top="18" height="24"/>'),
+]
 
 
 def setup_margins(src):
-    for old, new in SETUP_MARGINS:
+    for old, new in SETUP_MARGINS + RULES_HEIGHT + SMALL_BUTTONS:
         assert src.count(old) == 1, old
         src = src.replace(old, new)
+    y = LOBBY_SETS[19]
+    for part, x, w in (("left", LOBBY_X, POP_L), ("mid", LOBBY_X + POP_L + 1, POP_M),
+                       ("right", LOBBY_X + POP_L + 1 + POP_M + 1, POP_R)):
+        src, n = re.subn(r'<IFACETEX name="small_button_%s" texture="TEX_WRAPPER_1"[^>]*/>' % part,
+                         tex(f"small_button_{part}", (x, y, w, 19)), src)
+        assert n == 1, ("small_button", part, n)
     for win in SETUP_BUTTON_WINDOWS:
         start = src.index("<%s " % win)
         end = src.index("</%s>" % win, start)
@@ -934,6 +973,215 @@ def setup_margins(src):
             assert block.count(old) == 1, (win, old)
             block = block.replace(old, new)
         src = src[:start] + block + src[end:]
+    return src
+
+
+# ---- Game Browser (multiplayer lobby: interface.xml GAMESPYGROUP + GAMESPYCHATPERCENT) ----
+# The lobby window filled the screen, over the theme's frame. GameSpyChatBase::init adds the
+# chat block's windows into the same window and exec centres it (Window::center), so making
+# the window smaller moves everything inside the frame: 4% from the sides, 6% from the top
+# and bottom (the frame's corner brackets reach 5% down).
+LOBBY_ROOT = ('<GAMESPYGROUP name="gamespy" left="0" top="0" right_inverse="0" bottom_inverse="0">',
+              '<GAMESPYGROUP name="gamespy" left_percent="40" top_percent="60" right_inverse_percent="40" '
+              'bottom_inverse_percent="60">')
+# The red title ribbon across the whole width -> a little longer than its title, centred.
+LOBBY_RIBBON = ('<IFACERECT left="30" top="4" right_inverse="30" height="69"/>',
+                '<IFACERECT left_percent="370" top="4" right_inverse_percent="370" height="69"/>')
+# Button sizes (the UI rules in CLAUDE.md): wide enough for the text in every language the
+# game shows (string_lookup.xml.*), without much empty space in English: the width is the
+# larger of the English text + 2 x 24 and the longest translation + 2 x 10, and buttons in one
+# row share one height (and here one width). Measured with the game's fonts: Arial Bold 15
+# (sort buttons, Send, player details), Georgia Bold 18 (Join row, Quit row).
+# Sort buttons over the game list, 26 tall (was 19), Arial 15: each one a fixed width,
+# centred on its column. The list draws its columns from the column rects (per mille of the
+# list window, from x 20, 2 px apart), which stay; the button rects sit at the column's
+# centre minus half the button, that half turned into per mille for a list LOBBY_LIST_W wide
+# (the list window is about 1500..1800 units wide on 16:10 and 16:9 screens, so a button is
+# off its centre by a few units at most). (column rect, column per mille, button width)
+LOBBY_COLUMNS = [("description", 220, 130), ("team_style", 160, 152), ("map_style", 200, 118),
+                 ("map_size", 80, 118), ("game_rules", 160, 158), ("ranked_elo", 70, 80)]
+LOBBY_FIRST_COLUMN = 30  # "players", no button
+LOBBY_LIST_W = 1600
+LOBBY_SORT_H = 26
+LOBBY_ROW_W = 128      # Join / Create / Filter ("Teilnehmen" 108 in Georgia 18 + 2 x 10)
+LOBBY_REFRESH_W = 80   # the refresh icon is 30 wide
+LOBBY_BOTTOM_W = 160   # Quit / Group Chat ("Group Chat" 107 + 2 x 24)
+LOBBY_INVITE_W = 270   # "Ver invitaciones de partida" 248 + 2 x 10
+LOBBY_SMALL_W = 176    # Private Chat / Block User / Unblock User ("Debloquer l'utilisateur" 155)
+LOBBY_SEND_W = 84      # Send ("Send" 36 + 2 x 24)
+LOBBY_BUTTONS = [
+    ('<POSITIONING x="18" y="45">', '<POSITIONING x="18" y="37">'),  # 37..63, the list frame at 65
+    # Join / Create / Filter / refresh: 38 tall (was 30), fixed widths
+    ('bottom_inverse="18" percent_width="180" height="-30"', f'bottom_inverse="12" width="{LOBBY_ROW_W}" height="-38"'),
+    ('bottom_inverse="18" percent_width="60" height="-30"', f'bottom_inverse="12" width="{LOBBY_REFRESH_W}" height="-38"'),
+    # Quit / Group Chat / View Game Invite under the chat
+    ('<BUTTON name="quit" title="Quit" bottom_inverse="27" right_inverse="25" width="-260" height="-30">',
+     f'<BUTTON name="quit" title="Quit" bottom_inverse="22" right_inverse="25" width="-{LOBBY_BOTTOM_W}" height="-38">'),
+    ('<BUTTON name="groupchat" title="Group Chat" bottom_inverse="27" left="25" width="260" height="-30">',
+     f'<BUTTON name="groupchat" title="Group Chat" bottom_inverse="22" left="25" width="{LOBBY_BOTTOM_W}" height="-38">'),
+    ('<BUTTON name="invite" title="View Game Invite" bottom_inverse="27" right_inverse="295" width="-240" height="-30">',
+     f'<BUTTON name="invite" title="View Game Invite" bottom_inverse="22" right_inverse="{25 + LOBBY_BOTTOM_W + 10}" '
+     f'width="-{LOBBY_INVITE_W}" height="-38">'),
+]
+# The player details' buttons (one row each): 26 tall, Arial 15, fixed width.
+LOBBY_DETAIL_BUTTONS = ("playerDetailsPrivateChat", "playerDetailsBlockUser", "playerDetailsUnblockUser")
+# Send, beside the chat's typing field (its frame 26 tall at bottom_inverse 17): the same height.
+LOBBY_SEND = ('<BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="20" width="-80" height="-19">',
+              f'<BUTTON name="send" title="Send" right_inverse="220" bottom_inverse="17" width="-{LOBBY_SEND_W}" height="-26">')
+# The black panels (game list, chat, player details) get the launcher's dark grained steel:
+# GraphicWinXML::draw_background tiles an IFACETEX named "back" over the "back" rect when the
+# window has one, and fills the rect with the "back" colour only when it has none.
+LOBBY_GRAIN = (27, 31, 38)  # between the launcher panel's base (23,26,31) and its light (36,43,56)
+LOBBY_GRAIN_NOISE = 5.0     # the launcher's grain
+GRAIN_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_GRAIN" file=".\\art\\revived\\lobby_grain.tga" pixformat="PF_32"/>'
+GRAIN_BACK = '<IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>'
+BLACK_BACK = '<IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>'
+
+
+def build_lobby_grain(n=256):
+    """A tile of the launcher's grain: dark steel blue, a faint cloudiness made of waves that
+    repeat every n pixels (so the tiles join without a seam), and a fine grey grain."""
+    rng = np.random.default_rng(5)
+    yy, xx = np.mgrid[0:n, 0:n] * (2 * np.pi / n)
+    cloud = np.zeros((n, n))
+    for k in range(1, 5):
+        for _ in range(3):
+            a, b = rng.integers(-k, k + 1, 2)
+            cloud += np.cos(a * xx + b * yy + rng.uniform(0, 2 * np.pi)) / k
+    cloud /= max(np.abs(cloud).max(), 1e-6)
+    rgb = np.array(LOBBY_GRAIN, dtype=float) * (1 + 0.10 * cloud[..., None])
+    rgb += rng.normal(0, LOBBY_GRAIN_NOISE, (n, n))[..., None]
+    alpha = np.full((n, n, 1), 255.0)
+    return Image.fromarray(np.dstack([rgb, alpha]).clip(0, 255).astype(np.uint8), "RGBA")
+
+
+def lobby_sort_rects():
+    """The sort buttons' rects: at each column's centre minus half the button (per mille of
+    the list window, see LOBBY_COLUMNS), fixed widths."""
+    out = ['        <!--Rects for the sort buttons: fixed widths, centred on the columns-->']
+    left = LOBBY_FIRST_COLUMN
+    for k, (name, w, b) in enumerate(LOBBY_COLUMNS):
+        centre = left + w / 2 + (20 + 2 * (k + 1)) * 1000 / LOBBY_LIST_W
+        pm = round(centre - b / 2 * 1000 / LOBBY_LIST_W)
+        out.append(f'        <IFACERECT name="sort_{name}" left_percent="{pm}" top="0" width="{b}" height="{LOBBY_SORT_H}"/>')
+        left += w
+    return "\n".join(out) + "\n"
+
+
+def lobby_buttons_tex():
+    out = []
+    for h, y in LOBBY_SETS.items():
+        for state, yy in (("up", y), ("down", y + h + 1)):
+            for x, w in ((LOBBY_X, POP_L), (LOBBY_X + POP_L + 1, POP_M), (LOBBY_X + POP_L + 1 + POP_M + 1, POP_R)):
+                out.append(tex(f"button_{state}_{h}", (x, yy, w, h)))
+    return "\n      ".join(out)
+
+
+def lobby_layout(src):
+    start = src.index("<GAMESPYGROUP ")
+    end = src.index("</GAMESPYGROUP>", start)
+    g = src[start:end]
+    for old, new in [LOBBY_ROOT, LOBBY_RIBBON] + LOBBY_BUTTONS:
+        assert g.count(old) == (3 if "180" in old else 1), old
+        g = g.replace(old, new)
+    # the glossy 19 / 30 px pieces out, the steel sets in, after the atlas's load
+    g, n = re.subn(r'\n\s*<IFACETEX name="button_(?:up|down)_\d+" texture="TEX_WRAPPER_1"[^>]*/>', "", g)
+    assert n == 12, ("lobby button pieces", n)
+    anchor = re.search(r'<IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU"[^>]*/>', g)
+    assert anchor, "TEX_REVIVED_MENU in GAMESPYGROUP"
+    g = g[:anchor.end()] + "\n      " + lobby_buttons_tex() + g[anchor.end():]
+    # sort buttons: own rects, taller, larger font
+    cols = '<IFACERECT name="ranked_elo" percent_width="70" height="19"/>\n        </POSITIONING>\n'
+    assert g.count(cols) == 1
+    g = g.replace(cols, cols + lobby_sort_rects())
+    s = g.index('<POSITIONING x="18" y="37">')
+    e = g.index("</POSITIONING>", s)
+    block = g[s:e]
+    for name, _, _ in LOBBY_COLUMNS:
+        assert block.count(f'ref_rect="{name}"') == 1, name
+        block = block.replace(f'ref_rect="{name}"', f'ref_rect="sort_{name}"')
+    block = block.replace('<FONT size="12"/>', '<FONT size="15" style="B"/>')
+    g = g[:s] + block + g[e:]
+    for name in LOBBY_DETAIL_BUTTONS:
+        g, n = re.subn(r'(<BUTTON name="%s" title="[^"]*") right_inverse="80" bottom_inverse="302" width="-150" '
+                       r'height="-19">(\s*)<FONT size="12"/>' % name,
+                       r'\1 right_inverse="80" bottom_inverse="298" width="-%d" height="-26">\2<FONT size="15" style="B"/>'
+                       % LOBBY_SMALL_W, g)
+        assert n == 1, name
+    # grained panels: the player details (the window's own "back") and the game list
+    assert g.count(BLACK_BACK) == 2
+    g = g.replace(BLACK_BACK, BLACK_BACK + "\n        " + GRAIN_BACK)
+    head = g.index(">") + 1
+    g = g[:head] + "\n      " + GRAIN_LOAD + g[head:]
+    src = src[:start] + g + src[end:]
+    # the chat window (both variants of the chat block)
+    for block_name in ("GAMESPYCHAT", "GAMESPYCHATPERCENT"):
+        s = src.index(f"<{block_name}>")
+        e = src.index(f"</{block_name}>", s)
+        c = src[s:e]
+        assert c.count(BLACK_BACK) == 1, block_name
+        c = c.replace(BLACK_BACK, BLACK_BACK + "\n        " + GRAIN_BACK)
+        assert c.count(LOBBY_SEND[0]) == 1, block_name
+        c = c.replace(LOBBY_SEND[0], LOBBY_SEND[1])
+        c, n = re.subn(r'(<BUTTON name="send" title="Send"[^>]*>\s*)<FONT size="12"/>', r'\1<FONT size="15" style="B"/>', c)
+        assert n == 1, block_name
+        src = src[:s] + c + src[e:]
+    return src
+
+
+# Every button of interface.xml still on the game's glossy pieces (wrapper_pieces_02) gets the
+# main menu's steel plate at its own height (the UI rules in CLAUDE.md): (left, top) of a glossy
+# piece -> (part, the steel set's height, pressed). The 19 / 30 px buttons of the lobby windows
+# (button_up_ / button_down_<h>, small / large / select_button, button_tex) and the chat tabs
+# (the open tab, "tab_down", normal; the others pressed, so darker).
+GLOSSY = {(400, 0): (0, 19, 0), (405, 0): (1, 19, 0), (508, 0): (2, 19, 0),
+          (400, 40): (0, 19, 1), (405, 40): (1, 19, 1), (508, 40): (2, 19, 1),
+          (193, 47): (0, 30, 0), (211, 47): (1, 30, 0), (354, 47): (2, 30, 0),
+          (193, 109): (0, 30, 1), (211, 109): (1, 30, 1), (354, 109): (2, 30, 1),
+          (1, 139): (0, 38, 0), (14, 139): (1, 38, 0), (100, 139): (2, 38, 0),
+          (1, 256): (0, 38, 1), (14, 256): (1, 38, 1), (100, 256): (2, 38, 1)}
+MENU_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\\art\\revived\\menu_parts.tga" pixformat="PF_32"/>'
+GLOSSY_PIECE = re.compile(r'<IFACETEX name="([^"]*)" texture="TEX_WRAPPER_1" left="(\d+)" top="(\d+)" '
+                          r'width="\d+" height="(\d+)"/>')
+NOT_WINDOWS = {"WINDOW", "BUTTON", "POSITIONING", "COMBOBOX", "LISTBOX2", "STRETCHSPRITE", "IFACEBORDER",
+               "UNUSED", "CHECKBOX", "EDITBOX", "STRINGBOX", "SPOT", "AREA"}
+
+
+def steel_piece(part, h, pressed):
+    if h == 30:  # the dialog buttons' set: hover, normal, pressed rows
+        x, y = POP_X, POP_Y + (2 if pressed else 1) * (POP_H + 1)
+    else:
+        x, y = LOBBY_X, LOBBY_SETS[h] + (h + 1 if pressed else 0)
+    xs = (x, x + POP_L + 1, x + POP_L + 1 + POP_M + 1)
+    return xs[part], y, (POP_L, POP_M, POP_R)[part], h
+
+
+def steel_buttons(src):
+    """The glossy pieces -> steel; the atlas loaded once at the top of each window block that
+    uses it (texture ids are declared per window block; an existing load further down, after
+    a piece that uses it, is dropped)."""
+    starts = {}
+    for m in GLOSSY_PIECE.finditer(src):
+        if (int(m.group(2)), int(m.group(3))) not in GLOSSY:
+            continue
+        for o in reversed(list(re.finditer(r'<([A-Z][A-Z0-9_]+)\b[^>]*?(?<!/)>', src[:m.start()]))):
+            if o.group(1) not in NOT_WINDOWS and src.find("</%s>" % o.group(1), o.end()) > m.start():
+                starts[o.end()] = o.group(1)
+                break
+    for at in sorted(starts, reverse=True):  # last block first, so earlier positions stay valid
+        end = src.index("</%s>" % starts[at], at)
+        body = re.sub(r"\n[ \t]*" + re.escape(MENU_LOAD), "", src[at:end])
+        src = src[:at] + "\n      " + MENU_LOAD + body + src[end:]
+
+    def swap(m):
+        key = (int(m.group(2)), int(m.group(3)))
+        if key not in GLOSSY:
+            return m.group(0)
+        part, h, pressed = GLOSSY[key]
+        return tex(m.group(1), steel_piece(part, h, pressed))
+    src = GLOSSY_PIECE.sub(swap, src)
+    left = [m.group(0) for m in GLOSSY_PIECE.finditer(src) if (int(m.group(2)), int(m.group(3))) in GLOSSY]
+    assert not left, left[:3]
     return src
 
 
@@ -1131,6 +1379,7 @@ def main(game, out):
         fixed.alpha_composite(row.crop((BTN_L + BTN_M, 0, BTN_L + BTN_M + BTN_R, BTN_H)),
                               (BTN_X + BTN_L_TEX + 1 + BTN_M + 1, yy))
     write_tga(fixed, os.path.join(out, "art", "revived", "menu_parts.tga"))
+    write_tga(build_lobby_grain(), os.path.join(out, "art", "revived", "lobby_grain.tga"))
     fixed.save(os.path.join(HERE, "..", "preview_menu_parts.png"))
 
     logo, nmap = build_logo(game)

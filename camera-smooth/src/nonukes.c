@@ -112,6 +112,7 @@
 #define CB_BUFFER   0x154
 #define CB_FONT     0x1D0
 #define CB_TITLE    0x270
+#define CB_TICK     0x284 /* & 1: ticked (SetupWin::on_check_redraw draws check_on) */
 #define WIN_RECT    0x126 /* short left, right, top, bottom (screen) */
 #define BUF_FONT    0x7C
 #define BUF_COLORS  0x90
@@ -546,31 +547,41 @@ static void own_vtable(char *box)
     *(void ***)box = mine;
 }
 
-/* Multiplayer has no Cooperative AI (setup_checks skips box 4 there). So that the setup screen
-   looks the same as in single player, its box is shown anyway, greyed and dead: set up as
-   setup_checks sets up a box (title from the category, font, colours), with an id no game code
-   uses (so the game's check box logic and its slot 4, empty in multiplayer, stay untouched), a
-   vtable copy without mouse slots (no click, no tooltip) and disabled. */
+/* Multiplayer has no Cooperative AI: setup_checks skips box 4 there, and it numbers the XML
+   names only for the boxes it sets up, so boxes 5..10 get "check4".."check9" and "check10" is
+   never used. ui-theme's setupwin.xml places the boxes by their own numbers (check4 under check3,
+   check5..9 in the left column, check10 under check4), as single player shows them. So in
+   multiplayer each of boxes 5..10 moves to the box of its own name, set up as setup_checks sets
+   up a box (title from the category, id, font, colours, the tick from Game+0x20, shown), and
+   "check4" is left over for the Cooperative AI: title from category 4, unticked, with an id no
+   game code uses (so the game's check box logic and its slot 4, empty in multiplayer, stay
+   untouched), a vtable copy without mouse slots (no click, no tooltip) and disabled, so it draws
+   greyed. Without "check10" (the game's own setupwin.xml) the game's layout is left as it is. */
 #define VA_CATEGORIES 0x00E80560u /* the gameinfo_flags categories, 0x58 each; the box title */
 #define COOP_ID       16
+#define N_CHECKS      11
 static void *g_coop_vt[VT_COPY / 4 + 1];
+static void **g_coop_orig_vt; /* the class's vtable, for a single player screen after a lobby */
 
 __attribute__((used, thiscall)) static void c_coop_nothing(char *box, int x, int y) { (void)box, (void)x, (void)y; }
 
-static void coop_ai_greyed(char *sw)
+static char *find_check(char *sw, int n)
 {
-    if (solo(sw))
-        return;
     char *rules = sw + SW_RULES;
+    char name[16];
     unsigned char str[64];
-    game_string("check4", str);
+    snprintf(name, sizeof name, "check%d", n);
+    game_string(name, str);
     char *box = ((find_t)(*(void ***)rules)[VT_FIND / 4])(rules, str, 0);
     ((fn0_t)VA(VA_STRING_CLOSE))(str);
-    char *cats = *(char **)VA(VA_CATEGORIES);
-    if (!box || !cats)
-        return;
-    ((assign_t)VA(VA_STRING_ASSIGN))(box + CB_TITLE, cats + 4 * 0x58);
-    ((fn1_t)VA(VA_SET_ID))(box, COOP_ID);
+    return box;
+}
+
+/* As setup_checks does it for one box (0x005C1919..0x005C19DC), the tick and show aside. */
+static void set_up_box(char *sw, char *box, const char *cats, int cat, int id)
+{
+    ((assign_t)VA(VA_STRING_ASSIGN))(box + CB_TITLE, cats + cat * 0x58);
+    ((fn1_t)VA(VA_SET_ID))(box, id);
     void **font = *(void ***)(sw + SW_FONT);
     if (font) {
         if (*font)
@@ -583,17 +594,59 @@ static void coop_ai_greyed(char *sw)
     memcpy(buf + 0xCC, (void *)VA(VA_COLOR_NONE), 12);
     buf[0x108] = 1;
     buf[0x10D] = 1;
-    *(unsigned char *)(box + 0x284) &= ~1u; /* not ticked */
-    void **vt = *(void ***)box;
+}
+
+static void set_tick(char *box, int on)
+{
+    if (on)
+        *(unsigned char *)(box + CB_TICK) |= 1;
+    else
+        *(unsigned char *)(box + CB_TICK) &= ~1u;
+}
+
+static void coop_ai_greyed(char *sw)
+{
+    char *coop = find_check(sw, 4);
+    if (solo(sw)) { /* the real Cooperative AI box: its mouse back if a lobby had taken it */
+        if (coop && g_coop_orig_vt && *(void ***)coop == g_coop_vt + 1) {
+            *(void ***)coop = g_coop_orig_vt;
+            ((fn1_t)VA(VA_SET_ENABLED))(coop, 1);
+        }
+        return;
+    }
+    char *cats = *(char **)VA(VA_CATEGORIES);
+    char **slots = (char **)(sw + SW_CHECKS);
+    char *box[N_CHECKS] = { 0 };
+    for (int i = 5; i < N_CHECKS; i++)
+        if (!(box[i] = find_check(sw, i)) || !slots[i]) {
+            static int said;
+            if (!said++)
+                logf_("nukes: multiplayer setup keeps the game's check box layout (no check%d)", i);
+            return;
+        }
+    if (!coop || !cats)
+        return;
+    unsigned *f = game_flags();
+    unsigned flags = f ? *f : 0;
+    for (int i = 5; i < N_CHECKS; i++) {
+        set_up_box(sw, box[i], cats, i, i);
+        set_tick(box[i], (flags >> i) & 1);
+        ((fn1_t)(*(void ***)box[i])[VT_SHOW / 4])(box[i], 0);
+        slots[i] = box[i];
+    }
+    set_up_box(sw, coop, cats, 4, COOP_ID);
+    set_tick(coop, 0);
+    void **vt = *(void ***)coop;
     if (vt != g_coop_vt + 1) {
+        g_coop_orig_vt = vt;
         memcpy(g_coop_vt, vt - 1, sizeof g_coop_vt);
         void **mine = g_coop_vt + 1;
         mine[VT_MOVE / 4] = mine[VT_CLICK / 4] = mine[VT_LDOWN / 4] = mine[VT_LUP / 4] = (void *)c_coop_nothing;
         mine[VT_RCLICK / 4] = mine[VT_RDOWN / 4] = (void *)c_coop_nothing;
-        *(void ***)box = mine;
+        *(void ***)coop = mine;
     }
-    ((fn1_t)VA(VA_SET_ENABLED))(box, 0);
-    ((fn1_t)(*(void ***)box)[VT_SHOW / 4])(box, 0);
+    ((fn1_t)VA(VA_SET_ENABLED))(coop, 0);
+    ((fn1_t)(*(void ***)coop)[VT_SHOW / 4])(coop, 0);
 }
 
 /* After setup_checks: the box set up as the game sets up its own (font, colours), its own mouse

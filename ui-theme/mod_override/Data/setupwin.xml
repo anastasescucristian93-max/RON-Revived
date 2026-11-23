@@ -107,9 +107,9 @@
     <IFACETEX name="large_button_left" texture="TEX_REVIVED_MENU" left="1" top="150" width="17" height="30"/>
     <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
     <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
-    <IFACETEX name="small_button_left" texture="TEX_WRAPPER_1" left="400" top="0" width="4" height="19"/>
-    <IFACETEX name="small_button_mid" texture="TEX_WRAPPER_1" left="405" top="0" width="102" height="19"/>
-    <IFACETEX name="small_button_right" texture="TEX_WRAPPER_1" left="508" top="0" width="4" height="19"/>
+    <IFACETEX name="small_button_left" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
+    <IFACETEX name="small_button_mid" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
+    <IFACETEX name="small_button_right" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
     <IFACERECT name="ip_address" left="40" height="-25" right_inverse="10" bottom_inverse="13"/>
     <IFACERECT name="title" left="0" top="10" percent_width="550" height="40"/>
     <POSITIONING x="50" y="61" inc_x="125">
@@ -461,8 +461,12 @@
       <!--Back tinting-->
       <IFACERECT name="back" left="10" top="10" right_inverse="10" bottom_inverse="120"/>
       <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>
-      <BUTTON name="start" title="Start" left="54" bottom_inverse="40" percent_width="395" height="-30"/>
-      <BUTTON name="cancel" title="Back" right_inverse="59" bottom_inverse="40" percent_width="-395" height="-30"/>
+      <BUTTON name="start" title="Start" left_percent="535" bottom_inverse="47" percent_width="197" height="-38">
+        <FONT size="18" style="B"/>
+      </BUTTON>
+      <BUTTON name="cancel" title="Back" right_inverse_percent="47" bottom_inverse="47" percent_width="-197" height="-38">
+        <FONT size="18" style="B"/>
+      </BUTTON>
       <!--QLOC: Apply button-->
       <BUTTON name="apply" title="Apply Changes" left="54" right_inverse="59" top="244" height="25"/>
       <!--END_QLOC-->
@@ -472,7 +476,7 @@
       <IFACETEX name="button_border_mid" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
       <IFACETEX name="button_border_right" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
       <STRETCHSPRITE name="misc">
-        <IFACERECT left="30" right_inverse="30" bottom_inverse="15" height="-69"/>
+        <IFACERECT left_percent="492" right_inverse="0" bottom_inverse="15" height="-86"/>
         <IFACETEX ref="button_border_left"/>
         <IFACETEX ref="button_border_mid"/>
         <IFACETEX ref="button_border_right"/>
@@ -647,8 +651,12 @@
       <!--Back tinting-->
       <IFACERECT name="back" left="10" top="10" right_inverse="10" bottom_inverse="120"/>
       <IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>
-      <BUTTON name="start" title="Start" left="54" bottom_inverse="40" percent_width="395" height="-30"/>
-      <BUTTON name="cancel" title="Back" right_inverse="59" bottom_inverse="40" percent_width="-395" height="-30"/>
+      <BUTTON name="start" title="Start" left_percent="535" bottom_inverse="47" percent_width="197" height="-38">
+        <FONT size="18" style="B"/>
+      </BUTTON>
+      <BUTTON name="cancel" title="Back" right_inverse_percent="47" bottom_inverse="47" percent_width="-197" height="-38">
+        <FONT size="18" style="B"/>
+      </BUTTON>
       <!--QLOC: Apply button-->
       <BUTTON name="apply" title="Apply Changes" left="54" right_inverse="59" top="244" height="25"/>
       <!--END_QLOC-->
@@ -658,7 +666,7 @@
       <IFACETEX name="button_border_mid" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
       <IFACETEX name="button_border_right" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
       <STRETCHSPRITE name="misc">
-        <IFACERECT left="30" right_inverse="30" bottom_inverse="15" height="-69"/>
+        <IFACERECT left_percent="492" right_inverse="0" bottom_inverse="15" height="-86"/>
         <IFACETEX ref="button_border_left"/>
         <IFACETEX ref="button_border_mid"/>
         <IFACETEX ref="button_border_right"/>
@@ -807,7 +815,7 @@
       <COMBOBOX name="rules3" title="" left="161" top="81" width="40" height="21"/>
       <IFACETEXLOAD id="TEX_WRAPPER_0" file=".\art\wrapper_pieces_01.tga"/>
     </PLAYERSWINRANKED>	
-    <RULESWIN name="ruleswin" right_inverse_percent="40" top_percent="65" percent_width="-395" height="725">
+    <RULESWIN name="ruleswin" right_inverse_percent="40" top_percent="65" percent_width="-395" height="751">
       <STYLE CHILD="1" PASS_CONTROLS="1" MOUSE_THRU="1"/>
       <IFACERECT name="first_major_rule" right_inverse="12" top="47" percent_width="-600" height="21"/>
       <IFACERECT name="second_major_rule" right_inverse="12" top="73" percent_width="-600" height="21"/>
@@ -835,11 +843,11 @@
 	  <!--
 	  <BUTTON name="invite" title="Invite Friend" right_inverse_percent="20" percent_width="100" top="0" height="18"/>
 	  -->
-	  <BUTTON name="invite" title="Invite Friend" left_percent="40" percent_width="300" top="20" height="18"/>
-	  <BUTTON name="options" title="Options" left_percent="352" percent_width="300" top="20" height="18"/>
-	  <BUTTON name="reset" title="Reset" right_inverse_percent="40" percent_width="-300" top="20" height="18"/>
-    <BUTTON name="options_solo" title="Options" left_percent="40" percent_width="450" top="20" height="18"/>
-    <BUTTON name="reset_solo" title="Reset" right_inverse_percent="40" percent_width="-450" top="20" height="18"/>
+	  <BUTTON name="invite" title="Invite Friend" left_percent="40" percent_width="300" top="18" height="24"/>
+	  <BUTTON name="options" title="Options" left_percent="352" percent_width="300" top="18" height="24"/>
+	  <BUTTON name="reset" title="Reset" right_inverse_percent="40" percent_width="-300" top="18" height="24"/>
+    <BUTTON name="options_solo" title="Options" left_percent="40" percent_width="300" top="18" height="24"/>
+    <BUTTON name="reset_solo" title="Reset" right_inverse_percent="40" percent_width="-300" top="18" height="24"/>
       <POSITIONING x="192" y="55">
         <POSITIONING inc_y="24">
           <COMBOBOX name="rules0" width="230" height="21"/>
