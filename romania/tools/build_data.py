@@ -311,8 +311,32 @@ def survival_button_help(text):
     return text[:line_start] + entries + text[line_start:]
 
 
+# The Game Browser's tooltips that pop up just from resting the mouse over a large area (the game
+# list, the player list, the player details, the chat field) are emptied: an empty STRING shows
+# no tooltip, as the game's own CLOSE entry does. The buttons keep theirs. (ui-theme's lobby.)
+# (the kind of control, its entry): the chat field's SEND is an EDITBOX entry, the Send button
+# has its own under BUTTON and keeps it.
+LOBBY_QUIET = (("LISTBOX", "SESSIONS"), ("LISTBOX", "PLAYERS"), ("LISTBOX", "PLAYERDETAILS"),
+               ("EDITBOX", "SEND"))
+
+
+def lobby_quiet_help(text):
+    start = text.index("<GAMESPYTITLE>")
+    for kind, name in LOBBY_QUIET:
+        end = text.index("</GAMESPYTITLE>", start)
+        s = text.index("<%s>" % kind, start)
+        e = text.index("</%s>" % kind, s)
+        if e > end:
+            raise SystemExit(f"help.xml: no {kind} in GAMESPYTITLE")
+        sub, n = re.subn(r'(<ENTRY name="%s">\s*)<STRING>[^<]*</STRING>' % name, r"\1<STRING/>", text[s:e])
+        if n != 1:
+            raise SystemExit(f"help.xml: GAMESPYTITLE {kind} {name} found {n} times")
+        text = text[:s] + sub + text[e:]
+    return text
+
+
 def build_help(game, rules):
-    text = survival_button_help(read(base_of(game, "help.xml")))
+    text = lobby_quiet_help(survival_button_help(read(base_of(game, "help.xml"))))
     bullets = "".join("\n         <BULLET/>" + line.format(*[constant(rules, c) for c in consts])
                       for consts, line in POWER)
     entry = '\t\t<ENTRY name="TRIBE%d">\n\t\t\t<STRING>%s%s\n         </STRING>\n\t\t</ENTRY>\n' % (

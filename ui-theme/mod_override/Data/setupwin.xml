@@ -108,8 +108,8 @@
     <IFACETEX name="large_button_mid" texture="TEX_REVIVED_MENU" left="19" top="150" width="142" height="30"/>
     <IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU" left="162" top="150" width="17" height="30"/>
     <IFACETEX name="small_button_left" texture="TEX_REVIVED_MENU" left="200" top="279" width="17" height="19"/>
-    <IFACETEX name="small_button_mid" texture="TEX_REVIVED_MENU" left="218" top="279" width="142" height="19"/>
-    <IFACETEX name="small_button_right" texture="TEX_REVIVED_MENU" left="361" top="279" width="17" height="19"/>
+    <IFACETEX name="small_button_mid" texture="TEX_REVIVED_MENU" left="218" top="279" width="250" height="19"/>
+    <IFACETEX name="small_button_right" texture="TEX_REVIVED_MENU" left="469" top="279" width="17" height="19"/>
     <IFACERECT name="ip_address" left="40" height="-25" right_inverse="10" bottom_inverse="13"/>
     <IFACERECT name="title" left="0" top="10" percent_width="550" height="40"/>
     <POSITIONING x="50" y="61" inc_x="125">

@@ -12495,10 +12495,10 @@ Any players you've set to receive "chat" will receive the signal (e.g., in a tea
 		</BUTTON>
 		<LISTBOX>
 			<ENTRY name="SESSIONS">
-				<STRING>Shows the game rooms available. Click on a game and then click the Join button below to join a game room.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="PLAYERS">
-				<STRING>Shows the players currently in the Rise of Nations Lobby.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="BUDDYLIST">
 				<STRING>Shows your Buddy List.</STRING>
@@ -12507,12 +12507,12 @@ Any players you've set to receive "chat" will receive the signal (e.g., in a tea
 				<STRING>Shows the group rooms available.</STRING>
 			</ENTRY>
 			<ENTRY name="PLAYERDETAILS">
-				<STRING>Shows selected player details.</STRING>
+				<STRING/>
 			</ENTRY>
 		</LISTBOX>
 		<EDITBOX>
 			<ENTRY name="SEND">
-				<STRING>To chat to other players in this room, type a message here and click the Send button.</STRING>
+				<STRING/>
 			</ENTRY>
 			<ENTRY name="SEND2">
 				<STRING/>

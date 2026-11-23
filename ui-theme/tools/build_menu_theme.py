@@ -125,8 +125,24 @@ POP_FILES = ("interface.xml", "optionswin.xml", "setupwin.xml", "workshopwin.xml
 # piece is drawn pressed or disabled. The same steel plate as the dialog buttons, drawn at
 # each height used there: 26 the sort buttons, 38 Join / Create / Quit..., 19 Send and the
 # player details' buttons. In the atlas's free rows right of the dialog buttons.
+# Unlike the dialog set, these pieces are opaque over the whole button: a window does not draw
+# its own background under a child window, so a transparent margin or corner of a button shows
+# what lies under the whole lobby, not the panel (a light outline around every button, seen
+# 2026-11-24). The plate is cropped to its edges, its rounded corners filled with the panel's
+# colour (LOBBY_FILL), and the 1 px gaps between pieces hold their neighbours' pixels, so the
+# filtering at a piece's edge picks up no transparency. The middle piece is LOBBY_M wide, so it
+# is not repeated (with a visible joint) on any button up to about that width. 30 is the set
+# for the other windows' 30 px buttons (steel_buttons).
 LOBBY_X = 200
-LOBBY_SETS = {26: 145, 38: 200, 19: 279}  # height -> row of the normal piece (pressed: + h + 1)
+LOBBY_M = 250
+LOBBY_SETS = {26: 145, 38: 200, 19: 279, 30: 320}  # height -> row of the normal piece (pressed: + h + 1)
+LOBBY_FILL = (27, 31, 38)  # the grained panels' colour (LOBBY_GRAIN)
+
+
+def lobby_piece(h, pressed, part):
+    """(x, y, w, h) in menu_parts.tga of part 0 / 1 / 2 (left, middle, right) of a lobby set."""
+    xs = (LOBBY_X, LOBBY_X + POP_L + 1, LOBBY_X + POP_L + 1 + LOBBY_M + 1)
+    return xs[part], LOBBY_SETS[h] + (h + 1 if pressed else 0), (POP_L, LOBBY_M, POP_R)[part], h
 TITLE_Y, TITLE_H, TITLE_CAP, TITLE_MID = 300, 74, 48, 32
 SMALL_CORNER, SMALL_EDGE = 40, 15  # the half-size frame for message boxes
 
@@ -198,6 +214,15 @@ def button_states(plate):
         return out
 
     return tuple(framed(s) for s in plate_states(plate, BTN_PLATE_H, BTN_L, BTN_M, BTN_R))
+
+
+def sliced_bled(img, l, m):
+    """sliced, with each 1 px gap holding the mean of the columns on either side of it."""
+    out = sliced(img, l, m)
+    a = np.asarray(out).astype(np.uint16)
+    for gap in (l, l + m + 1):
+        a[:, gap] = (a[:, gap - 1] + a[:, gap + 1]) // 2
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
 
 
 def sliced(img, l, m):
@@ -288,10 +313,14 @@ def build_parts():
     for i, img in enumerate((hover, normal, pressed)):
         atlas.alpha_composite(sliced(img, POP_L, POP_M), (POP_X, POP_Y + i * (POP_H + 1)))
     # Game Browser buttons at their own heights (normal, then pressed / disabled one row down).
+    plate = element(11)
+    plate = plate.crop(plate.getchannel("A").point(lambda a: 255 if a >= 128 else 0).getbbox())
     for h, y in LOBBY_SETS.items():
-        normal, hover, pressed = plate_states(element(11), h, POP_L, POP_M, POP_R)
+        normal, hover, pressed = plate_states(plate, h, POP_L, LOBBY_M, POP_R)
         for i, img in enumerate((normal, pressed)):
-            atlas.alpha_composite(sliced(img, POP_L, POP_M), (LOBBY_X, y + i * (h + 1)))
+            solid = Image.new("RGBA", img.size, LOBBY_FILL + (255,))
+            solid.alpha_composite(img)
+            atlas.alpha_composite(sliced_bled(solid, POP_L, LOBBY_M), (LOBBY_X, y + i * (h + 1)))
     return atlas, rects
 
 
@@ -959,11 +988,9 @@ def setup_margins(src):
     for old, new in SETUP_MARGINS + RULES_HEIGHT + SMALL_BUTTONS:
         assert src.count(old) == 1, old
         src = src.replace(old, new)
-    y = LOBBY_SETS[19]
-    for part, x, w in (("left", LOBBY_X, POP_L), ("mid", LOBBY_X + POP_L + 1, POP_M),
-                       ("right", LOBBY_X + POP_L + 1 + POP_M + 1, POP_R)):
+    for i, part in enumerate(("left", "mid", "right")):
         src, n = re.subn(r'<IFACETEX name="small_button_%s" texture="TEX_WRAPPER_1"[^>]*/>' % part,
-                         tex(f"small_button_{part}", (x, y, w, 19)), src)
+                         tex(f"small_button_{part}", lobby_piece(19, False, i)), src)
         assert n == 1, ("small_button", part, n)
     for win in SETUP_BUTTON_WINDOWS:
         start = src.index("<%s " % win)
@@ -1070,10 +1097,10 @@ def lobby_sort_rects():
 
 def lobby_buttons_tex():
     out = []
-    for h, y in LOBBY_SETS.items():
-        for state, yy in (("up", y), ("down", y + h + 1)):
-            for x, w in ((LOBBY_X, POP_L), (LOBBY_X + POP_L + 1, POP_M), (LOBBY_X + POP_L + 1 + POP_M + 1, POP_R)):
-                out.append(tex(f"button_{state}_{h}", (x, yy, w, h)))
+    for h in (26, 38, 19):
+        for state, pressed in (("up", False), ("down", True)):
+            for part in range(3):
+                out.append(tex(f"button_{state}_{h}", lobby_piece(h, pressed, part)))
     return "\n      ".join(out)
 
 
@@ -1148,12 +1175,7 @@ NOT_WINDOWS = {"WINDOW", "BUTTON", "POSITIONING", "COMBOBOX", "LISTBOX2", "STRET
 
 
 def steel_piece(part, h, pressed):
-    if h == 30:  # the dialog buttons' set: hover, normal, pressed rows
-        x, y = POP_X, POP_Y + (2 if pressed else 1) * (POP_H + 1)
-    else:
-        x, y = LOBBY_X, LOBBY_SETS[h] + (h + 1 if pressed else 0)
-    xs = (x, x + POP_L + 1, x + POP_L + 1 + POP_M + 1)
-    return xs[part], y, (POP_L, POP_M, POP_R)[part], h
+    return lobby_piece(h, pressed, part)
 
 
 def steel_buttons(src):

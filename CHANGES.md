@@ -14,6 +14,7 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - Its buttons are the main menu's steel plates, sized to their text: the sort buttons over the game list are taller, only as wide as their titles need (in every language) and in a larger font, so they read well; Join, Create, Filter, Quit, Group Chat and Send are taller and narrower, and the buttons in one row share one height.
 - The same steel buttons in the other online windows too (log in, create a game, filters, invites, friends, leaderboards, quick match, the Lobby Chat tab and others): no glossy buttons are left.
 - The game list, the chat and the player details sit on the launcher's dark grained steel instead of plain black.
+- Resting the mouse over the game list, the player list, the player details or the chat field no longer pops up a box of help text (the buttons keep theirs).
 - Only the look changes: it plays with players on any version.
 
 ## The multiplayer game setup looks like the single player one (`ui-theme`, `camera-smooth`), new 2026-11-24
