@@ -150,4 +150,5 @@
 	<STRING en="two squads of your age's infantry join you">dołączają dwa oddziały piechoty twojej epoki</STRING>
 	<STRING en="%s smaller">mniejsza o %s</STRING>
 	<STRING en="Coming soon">Wkrótce</STRING>
+	<STRING en="Host">Host</STRING>
 </ROOT>

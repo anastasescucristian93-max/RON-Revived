@@ -150,4 +150,5 @@
 	<STRING en="two squads of your age's infantry join you">deux escouades d'infanterie de votre âge vous rejoignent</STRING>
 	<STRING en="%s smaller">%s plus petite</STRING>
 	<STRING en="Coming soon">Bientôt</STRING>
+	<STRING en="Host">Hôte</STRING>
 </ROOT>

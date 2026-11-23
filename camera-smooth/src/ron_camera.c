@@ -189,6 +189,7 @@ static void load_config(void)
     selpanel_load_config(path);
     survival_load_config(path);
     menuhelp_load_config(path);
+    lobby_list_load_config(path);
     menufade_load_config(path);
     wintitle_load_config(path);
     assistant_load_config(path);
@@ -1252,6 +1253,10 @@ static hook_t g_hooks[] = {
     /* draw_template: push ebp / mov ebp,esp / push -1 | push offset ehhandler (address relocated, not compared) */
     { "draw_template", 0x00634250u, { 0x55, 0x8B, 0xEC, 0x6A, 0xFF, 0x68 }, 6, 5,
       (void *)hk_draw_template, &g_orig_draw_template, &g_grid_enabled },
+    /* GameSpyGroup::on_listbox_entry_redraw (the Game Browser's rows, lobby_list.c):
+       push ebp / mov ebp,esp / push -1 | push offset ehhandler (address relocated, not compared) */
+    { "lobby_row", 0x0096D4B0u, { 0x55, 0x8B, 0xEC, 0x6A, 0xFF, 0x68 }, 6, 5,
+      (void *)hk_lobby_row, &g_orig_lobby_row, &g_lobby_list_enabled },
     /* add_windows: push ebp / mov ebp,esp / and esp,-8 / sub esp,0x2c */
     { "add_windows", 0x00809610u, { 0x55, 0x8B, 0xEC, 0x83, 0xE4, 0xF8, 0x83, 0xEC, 0x2C }, 9, 9,
       (void *)hk_add_windows, (void **)&g_orig_add_windows, &g_qol_enabled },
@@ -1595,6 +1600,7 @@ static void install_hooks(void)
     selpanel_install();
     survival_install();
     menuhelp_install();
+    lobby_list_install(); /* after the hook table: its row function hook */
     menufade_install();
     assistant_install();
     assist_orders_install();

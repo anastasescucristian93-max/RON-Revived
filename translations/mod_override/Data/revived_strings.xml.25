@@ -150,4 +150,5 @@
 	<STRING en="two squads of your age's infantry join you">к вам присоединяются два отряда пехоты вашей эпохи</STRING>
 	<STRING en="%s smaller">меньше на %s</STRING>
 	<STRING en="Coming soon">Скоро</STRING>
+	<STRING en="Host">Хост</STRING>
 </ROOT>

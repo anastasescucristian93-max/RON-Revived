@@ -1,8 +1,9 @@
 r"""Writes <out>\Data\fonts.xml: the game's fonts.xml with the larger fonts of the game setup
 screen added (Georgia 20 bold, Arial 15 bold, in both resolution lists). camera-smooth's
 flags.c asks for them (setup_font_percent=125: 12 -> 15, 14 -> 18, 16 -> 20; Georgia 18 bold
-is already the game's). The game only has the fonts this file lists; a size it does not list
-gives the closest one.
+is already the game's). Arial 16 (regular) is the Game Browser's game list (lobby_list.c,
+lobby_list_font=16; the game's list was Arial 12). The game only has the fonts this file
+lists; a size it does not list gives the closest one.
 
     python build_fonts.py <game folder> <out mod_override folder>
 """
@@ -11,7 +12,9 @@ import sys
 
 ADD = ("\t\t\t\t<!-- RON Revived: the game setup screen's fonts 25% larger (ui-theme, flags.c) -->\r\n"
        "\t\t\t\t<FONT filename=\"Data\\Fonts\\georgiab.ttf\" name=\"Georgia\" size=\"20\" style=\"B\"/>\r\n"
-       "\t\t\t\t<FONT filename=\"Data\\Fonts\\arialbd.ttf\" name=\"Arial\" size=\"15\" style=\"B\"/>\r\n")
+       "\t\t\t\t<FONT filename=\"Data\\Fonts\\arialbd.ttf\" name=\"Arial\" size=\"15\" style=\"B\"/>\r\n"
+       "\t\t\t\t<!-- RON Revived: the Game Browser's game list (ui-theme, lobby_list.c) -->\r\n"
+       "\t\t\t\t<FONT filename=\"Data\\Fonts\\arial.ttf\" name=\"Arial\" size=\"16\" style=\"\"/>\r\n")
 
 
 def main(game, out):

@@ -150,4 +150,5 @@
 	<STRING en="two squads of your age's infantry join you">çağınızdan iki piyade birliği size katılır</STRING>
 	<STRING en="%s smaller">%s daha küçük</STRING>
 	<STRING en="Coming soon">Yakında</STRING>
+	<STRING en="Host">Kurucu</STRING>
 </ROOT>

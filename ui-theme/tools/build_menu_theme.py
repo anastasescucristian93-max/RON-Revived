@@ -137,6 +137,12 @@ LOBBY_X = 200
 LOBBY_M = 250
 LOBBY_SETS = {26: 145, 38: 200, 19: 279, 30: 320, 31: 383}  # height -> row of the normal piece (pressed: + h + 1)
 LOBBY_FILL = (27, 31, 38)  # the grained panels' colour (LOBBY_GRAIN)
+# The game list's column titles (camera-smooth lobby_list.c) are plain labels: the panel's grain
+# under them (a strip of lobby_grain.tga, "list_grain") and a white cell tinted orange for the
+# sorted column's underline ("list_mark"), both in this atlas, as the plates were: the render
+# manager draws its quads by texture, and this atlas is known to come out under the text.
+LIST_GRAIN_XY, LIST_GRAIN_H = (0, 455), 48
+LIST_MARK_XY = (262, 457)  # a 2 x 2 middle of a 6 x 6 white block
 
 
 def lobby_piece(h, pressed, part):
@@ -355,6 +361,13 @@ def build_parts():
             solid = Image.new("RGBA", img.size, LOBBY_FILL + (255,))
             solid.alpha_composite(img)
             atlas.alpha_composite(sliced_bled(solid, POP_L, LOBBY_M), (LOBBY_X, y + i * (h + 1)))
+    # the list titles' grain (with a 1 px border of the tile's own wrap-around, so filtering at
+    # the strip's edges and between its repeats picks up grain, not the atlas's empty pixels)
+    tile = np.array(build_lobby_grain())
+    rows = [255] + list(range(LIST_GRAIN_H + 1))
+    strip = tile[rows][:, list(range(256)) + [0, 1]]
+    atlas.paste(Image.fromarray(strip, "RGBA"), (LIST_GRAIN_XY[0], LIST_GRAIN_XY[1] - 1))
+    atlas.paste((255, 255, 255, 255), (LIST_MARK_XY[0] - 2, LIST_MARK_XY[1] - 2, LIST_MARK_XY[0] + 4, LIST_MARK_XY[1] + 4))
     return atlas, rects
 
 
@@ -1053,17 +1066,25 @@ LOBBY_RIBBON = ('<IFACERECT left="30" top="4" right_inverse="30" height="69"/>',
 # larger of the English text + 2 x 24 and the longest translation + 2 x 10, and buttons in one
 # row share one height (and here one width). Measured with the game's fonts: Arial Bold 15
 # (sort buttons, Send, player details), Georgia Bold 18 (Join row, Quit row).
-# Sort buttons over the game list, 26 tall (was 19), Arial 15: each one a fixed width,
-# centred on its column. The list draws its columns from the column rects (per mille of the
-# list window, from x 20, 2 px apart), which stay; the button rects sit at the column's
-# centre minus half the button, that half turned into per mille for a list LOBBY_LIST_W wide
-# (the list window is about 1500..1800 units wide on 16:10 and 16:9 screens, so a button is
-# off its centre by a few units at most). (column rect, column per mille, button width)
-LOBBY_COLUMNS = [("description", 220, 130), ("team_style", 160, 152), ("map_style", 200, 118),
-                 ("map_size", 80, 118), ("game_rules", 160, 158), ("ranked_elo", 70, 80)]
-LOBBY_FIRST_COLUMN = 30  # "players", no button
-LOBBY_LIST_W = 1600
+# The game list's columns (the user, 2026-11-24, after Age of Empires IV's list): the list
+# draws them from these rects (per mille of the list window, from x 20, 2 px apart, in this
+# order: the game walks the rects after "description" one by one). One line per game now
+# (camera-smooth lobby_list.c): "description" holds the room name and, in its right 40%, the
+# host (the game wrote "Host: name" on a second line). The widths fit the titles in every
+# language at a list about 1100 units wide (1920 px at 150%). (column rect, per mille)
+LOBBY_COLUMNS = [("players", 35), ("description", 320), ("team_style", 125), ("map_style", 150),
+                 ("map_size", 95), ("game_rules", 130), ("ranked_elo", 65)]
+# The column titles (BUTTON "sort", none for "players") are plain labels drawn by lobby_list.c,
+# each starting where its column's text starts: their rects are the column rects again (the
+# same per mille widths and gaps, 26 tall), and their POSITIONING is LOBBY_TITLE_X to the right
+# of the list window's: the list box at 19, its rows 1 in, the text 5 in.
 LOBBY_SORT_H = 26
+LOBBY_TITLE_X = 25
+# the titles' background and underline (menu_parts.tga, LIST_GRAIN_XY / LIST_MARK_XY)
+LIST_GRAIN = (f'<IFACETEX name="list_grain" texture="TEX_REVIVED_MENU" left="{LIST_GRAIN_XY[0]}" '
+              f'top="{LIST_GRAIN_XY[1]}" width="256" height="{LIST_GRAIN_H}"/>\n      '
+              f'<IFACETEX name="list_mark" texture="TEX_REVIVED_MENU" left="{LIST_MARK_XY[0]}" '
+              f'top="{LIST_MARK_XY[1]}" width="2" height="2"/>')
 LOBBY_ROW_W = 128      # Join / Create / Filter ("Teilnehmen" 108 in Georgia 18 + 2 x 10)
 LOBBY_REFRESH_W = 80   # the refresh icon is 30 wide
 LOBBY_BACK_W = 114     # Back (was Quit), top left ("Indietro" 75 + 2 x 10; 3:1)
@@ -1072,7 +1093,7 @@ LOBBY_INVITE_W = 270   # "Ver invitaciones de partida" 248 + 2 x 10
 LOBBY_SMALL_W = 176    # Private Chat / Block User / Unblock User ("Debloquer l'utilisateur" 155)
 LOBBY_SEND_W = 84      # Send ("Send" 36 + 2 x 24)
 LOBBY_BUTTONS = [
-    ('<POSITIONING x="18" y="45">', '<POSITIONING x="18" y="37">'),  # 37..63, the list frame at 65
+    ('<POSITIONING x="18" y="45">', f'<POSITIONING x="{LOBBY_TITLE_X}" y="37">'),  # 37..63, the list frame at 65
     # Join / Create / Filter / refresh: 38 tall (was 30), fixed widths
     ('bottom_inverse="18" percent_width="180" height="-30"', f'bottom_inverse="12" width="{LOBBY_ROW_W}" height="-38"'),
     ('bottom_inverse="18" percent_width="60" height="-30"', f'bottom_inverse="12" width="{LOBBY_REFRESH_W}" height="-38"'),
@@ -1132,15 +1153,12 @@ def build_lobby_grain(n=256):
 
 
 def lobby_sort_rects():
-    """The sort buttons' rects: at each column's centre minus half the button (per mille of
-    the list window, see LOBBY_COLUMNS), fixed widths."""
-    out = ['        <!--Rects for the sort buttons: fixed widths, centred on the columns-->']
-    left = LOBBY_FIRST_COLUMN
-    for k, (name, w, b) in enumerate(LOBBY_COLUMNS):
-        centre = left + w / 2 + (20 + 2 * (k + 1)) * 1000 / LOBBY_LIST_W
-        pm = round(centre - b / 2 * 1000 / LOBBY_LIST_W)
-        out.append(f'        <IFACERECT name="sort_{name}" left_percent="{pm}" top="0" width="{b}" height="{LOBBY_SORT_H}"/>')
-        left += w
+    """The column titles' rects: the column rects again (see LOBBY_COLUMNS), 26 tall."""
+    out = ['        <!--Rects for the column titles: the columns again-->',
+           '        <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">']
+    for name, w in LOBBY_COLUMNS:
+        out.append(f'          <IFACERECT name="sort_{name}" percent_width="{w}" height="{LOBBY_SORT_H}"/>')
+    out.append('        </POSITIONING>')
     return "\n".join(out) + "\n"
 
 
@@ -1168,15 +1186,20 @@ def lobby_layout(src):
     assert n == 12, ("lobby button pieces", n)
     anchor = re.search(r'<IFACETEX name="large_button_right" texture="TEX_REVIVED_MENU"[^>]*/>', g)
     assert anchor, "TEX_REVIVED_MENU in GAMESPYGROUP"
-    g = g[:anchor.end()] + "\n      " + lobby_buttons_tex() + g[anchor.end():]
-    # sort buttons: own rects, taller, larger font
-    cols = '<IFACERECT name="ranked_elo" percent_width="70" height="19"/>\n        </POSITIONING>\n'
+    g = g[:anchor.end()] + "\n      " + lobby_buttons_tex() + "\n      " + LIST_GRAIN + g[anchor.end():]
+    # the columns' widths
+    for name, w in LOBBY_COLUMNS:
+        g, n = re.subn(r'<IFACERECT name="%s" percent_width="\d+" height="19"/>' % name,
+                       f'<IFACERECT name="{name}" percent_width="{w}" height="19"/>', g)
+        assert n == 1, ("column", name, n)
+    # the column titles: own rects (the columns), taller, larger font
+    cols = '<IFACERECT name="ranked_elo" percent_width="%d" height="19"/>\n        </POSITIONING>\n' % LOBBY_COLUMNS[-1][1]
     assert g.count(cols) == 1
     g = g.replace(cols, cols + lobby_sort_rects())
-    s = g.index('<POSITIONING x="18" y="37">')
+    s = g.index(f'<POSITIONING x="{LOBBY_TITLE_X}" y="37">')
     e = g.index("</POSITIONING>", s)
     block = g[s:e]
-    for name, _, _ in LOBBY_COLUMNS:
+    for name, _ in LOBBY_COLUMNS[1:]:
         assert block.count(f'ref_rect="{name}"') == 1, name
         block = block.replace(f'ref_rect="{name}"', f'ref_rect="sort_{name}"')
     block = block.replace('<FONT size="12"/>', '<FONT size="15" style="B"/>')

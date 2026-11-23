@@ -8,15 +8,19 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
-## The Game Browser in the theme's style (`ui-theme`), new 2026-11-24
+## The Game Browser in the theme's style (`ui-theme`, `camera-smooth`), new 2026-11-24
 
 - The multiplayer Game Browser now sits inside the theme's frame instead of running to the screen's edges, and its red title ribbon is only a little longer than its title.
-- Its buttons are plain plates of the main menu's steel, the same shade from end to end, sized to their text: the sort buttons over the game list are taller, only as wide as their titles need (in every language) and in a larger font, so they read well; Join, Create, Filter and Send are taller and narrower, and the buttons in one row share one height.
+- Its buttons are plain plates of the main menu's steel, the same shade from end to end, sized to their text: Join, Create, Filter and Send are taller and narrower, and the buttons in one row share one height.
+- The game list reads like a modern lobby list: one line per game, with the room name and then its host in a column of its own (**Host**) instead of a second line under the name. Every column is left-aligned, its text in a larger font and centred in the row's height.
+- The column titles are plain soft gold names on the panel, no longer buttons, each starting exactly where its column's text starts. Clicking a title still sorts the list; the sorted column's title is lighter and underlined in orange.
+- A thin grey line, fading out toward both ends, separates the games, and the selected game sits in a blue band with white text.
+- To get the game's own list back: `lobby_list=0` under `[ui]` in `ron_camera.ini` (`lobby_list_font` sets the list's font size).
 - Quit is now **Back**, at the top left beside the title, and **Group Chat** sits next to the Lobby Chat tab, at the tab's size.
 - The same steel buttons in the other online windows too (log in, create a game, filters, invites, friends, leaderboards, quick match, the Lobby Chat tab and others): no glossy buttons are left.
 - The game list, the chat and the player details sit on the launcher's dark grained steel instead of plain black.
 - Resting the mouse over the game list, the player list, the player details or the chat field no longer pops up a box of help text (the buttons keep theirs).
-- Only the look changes: it plays with players on any version.
+- Only the look changes, on your own screen: it plays with players on any version.
 
 ## The multiplayer game setup looks like the single player one (`ui-theme`, `camera-smooth`), new 2026-11-24
 

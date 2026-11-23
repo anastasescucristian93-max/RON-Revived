@@ -172,3 +172,5 @@ two squads of your age's infantry join you
 %s smaller
 # survival.c: the setup's goal buttons
 Coming soon
+# lobby_list.c: the Game Browser, the title of the host column
+Host

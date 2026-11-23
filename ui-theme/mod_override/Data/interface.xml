@@ -2295,6 +2295,8 @@
       <IFACETEX name="button_down_31" texture="TEX_REVIVED_MENU" left="200" top="415" width="17" height="31"/>
       <IFACETEX name="button_down_31" texture="TEX_REVIVED_MENU" left="218" top="415" width="250" height="31"/>
       <IFACETEX name="button_down_31" texture="TEX_REVIVED_MENU" left="469" top="415" width="17" height="31"/>
+      <IFACETEX name="list_grain" texture="TEX_REVIVED_MENU" left="0" top="455" width="256" height="48"/>
+      <IFACETEX name="list_mark" texture="TEX_REVIVED_MENU" left="262" top="457" width="2" height="2"/>
       <IFACETEX name="button_border_left" texture="TEX_WRAPPER_0" left="229" top="436" width="36" height="75"/>
       <IFACETEX name="button_border_mid" texture="TEX_WRAPPER_0" left="266" top="436" width="201" height="75"/>
       <IFACETEX name="button_border_right" texture="TEX_WRAPPER_0" left="468" top="436" width="43" height="75"/>
@@ -2346,21 +2348,24 @@
         <IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>
         <!--Rects for sort buttons-->
         <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">
-          <IFACERECT name="players" percent_width="30" height="19"/>
-          <IFACERECT name="description" percent_width="220" height="19"/>
-          <IFACERECT name="team_style" percent_width="160" height="19"/>
-          <IFACERECT name="map_style" percent_width="200" height="19"/>
-          <IFACERECT name="map_size" percent_width="80" height="19"/>
-          <IFACERECT name="game_rules" percent_width="160" height="19"/>
-          <IFACERECT name="ranked_elo" percent_width="70" height="19"/>
+          <IFACERECT name="players" percent_width="35" height="19"/>
+          <IFACERECT name="description" percent_width="320" height="19"/>
+          <IFACERECT name="team_style" percent_width="125" height="19"/>
+          <IFACERECT name="map_style" percent_width="150" height="19"/>
+          <IFACERECT name="map_size" percent_width="95" height="19"/>
+          <IFACERECT name="game_rules" percent_width="130" height="19"/>
+          <IFACERECT name="ranked_elo" percent_width="65" height="19"/>
         </POSITIONING>
-        <!--Rects for the sort buttons: fixed widths, centred on the columns-->
-        <IFACERECT name="sort_description" left_percent="113" top="0" width="130" height="26"/>
-        <IFACERECT name="sort_team_style" left_percent="298" top="0" width="152" height="26"/>
-        <IFACERECT name="sort_map_style" left_percent="489" top="0" width="118" height="26"/>
-        <IFACERECT name="sort_map_size" left_percent="631" top="0" width="118" height="26"/>
-        <IFACERECT name="sort_game_rules" left_percent="739" top="0" width="158" height="26"/>
-        <IFACERECT name="sort_ranked_elo" left_percent="880" top="0" width="80" height="26"/>
+        <!--Rects for the column titles: the columns again-->
+        <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">
+          <IFACERECT name="sort_players" percent_width="35" height="26"/>
+          <IFACERECT name="sort_description" percent_width="320" height="26"/>
+          <IFACERECT name="sort_team_style" percent_width="125" height="26"/>
+          <IFACERECT name="sort_map_style" percent_width="150" height="26"/>
+          <IFACERECT name="sort_map_size" percent_width="95" height="26"/>
+          <IFACERECT name="sort_game_rules" percent_width="130" height="26"/>
+          <IFACERECT name="sort_ranked_elo" percent_width="65" height="26"/>
+        </POSITIONING>
         <IFACEBORDER name="misc">
           <IFACETEX name="corner0" texture="TEX_GAMESPY" left="209" top="0" width="18" height="18"/>
           <IFACETEX name="corner1" texture="TEX_GAMESPY" left="494" top="0" width="18" height="18"/>
@@ -2384,7 +2389,7 @@
         <IFACERECT name="misc_border" left="0" top="26" right_inverse="0" bottom_inverse="0"/>
         <IFACERECT name="misc_border" left="15" top="65" right_inverse="15" bottom_inverse="58"/>
         <!--Sorting buttons-->
-        <POSITIONING x="18" y="37">
+        <POSITIONING x="25" y="37">
           <BUTTON name="sort" id="0" title="Description" ref_rect="sort_description">
             <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>

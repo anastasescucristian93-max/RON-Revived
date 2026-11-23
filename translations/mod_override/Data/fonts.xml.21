@@ -6,6 +6,8 @@
 				<!-- RON Revived: the game setup screen's fonts 25% larger (ui-theme, flags.c) -->
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="20" style="B"/>
 				<FONT filename="Data\Fonts\arialbd.ttf" name="Arial" size="15" style="B"/>
+				<!-- RON Revived: the Game Browser's game list (ui-theme, lobby_list.c) -->
+				<FONT filename="Data\Fonts\arial.ttf" name="Arial" size="16" style=""/>
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="22" style="B"/>
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="18" style="B"/>
 				<FONT filename="Data\Fonts\georgia.ttf" name="Georgia" size="18" style=""/>
@@ -28,6 +30,8 @@
 				<!-- RON Revived: the game setup screen's fonts 25% larger (ui-theme, flags.c) -->
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="20" style="B"/>
 				<FONT filename="Data\Fonts\arialbd.ttf" name="Arial" size="15" style="B"/>
+				<!-- RON Revived: the Game Browser's game list (ui-theme, lobby_list.c) -->
+				<FONT filename="Data\Fonts\arial.ttf" name="Arial" size="16" style=""/>
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="22" style="B"/>
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="18" style="B"/>
 				<FONT filename="Data\Fonts\georgiab.ttf" name="Georgia" size="14" style="B"/>
