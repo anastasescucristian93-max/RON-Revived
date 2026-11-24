@@ -176,6 +176,7 @@ static void load_config(void)
     ngrid_load_config(path);
     override_load_config(path);
     crash_load_config(path);
+    synclog_load_config(path);
     ai_names_load_config(path);
     armageddon_load_config(path);
     corpses_load_config(path);

@@ -10,7 +10,9 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 
 ## The game's desync logs keep every line (`camera-smooth`), new 2026-11-25
 
-- When a multiplayer game goes out of sync, the game writes logs that show where the two computers first differed (`%APPDATA%\Microsoft Games\Rise of Nations\Logs`, with tracking on in `synclogger.ini`). A player name with an emoji or another letter outside the Western alphabets cut those logs short on every machine, before the part that names the cause. Such letters are now written as "?" in the logs, and the logs are whole.
+- When a multiplayer game goes out of sync, the game writes logs that show where the computers first differed, in `%APPDATA%\Microsoft Games\Rise of Nations\Logs`. Their tracking was off by default, so they held only a header. The mod now turns it on in the game's `synclogger.ini` when the game starts (one checksum line per part of the game per turn). `desync_log=0` under `[debug]` in `ron_camera.ini` leaves that file alone.
+- A player name with an emoji or another letter outside the Western alphabets cut those logs short on every machine, before the part that names the cause. Such letters are now written as "?" in the logs, and the logs are whole.
+- Send the four `SyncLog` files of that folder with a desync report, from every player of the game.
 - Only the log files change: it plays with players on any version.
 
 ## Computer allies ask you to join an attack or to defend a city (`camera-smooth`, `translations`), new 2026-11-25
