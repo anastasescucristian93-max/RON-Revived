@@ -358,7 +358,7 @@ def build_parts():
         normal = plain_plate(plate, h, POP_L + LOBBY_M + POP_R)
         pressed = ImageEnhance.Color(ImageEnhance.Brightness(normal).enhance(0.62)).enhance(0.6)
         for i, img in enumerate((normal, pressed)):
-            solid = Image.new("RGBA", img.size, LOBBY_FILL + (255,))
+            solid = Image.new("RGBA", img.size, LOBBY_FILL + (LOBBY_GRAIN_ALPHA,))  # the panel, as see-through
             solid.alpha_composite(img)
             atlas.alpha_composite(sliced_bled(solid, POP_L, LOBBY_M), (LOBBY_X, y + i * (h + 1)))
     # the list titles' grain (with a 1 px border of the tile's own wrap-around, so filtering at
@@ -1156,6 +1156,12 @@ LOBBY_SEND = ('<BUTTON name="send" title="Send" right_inverse="220" bottom_inver
 # window has one, and fills the rect with the "back" colour only when it has none.
 LOBBY_GRAIN = (27, 31, 38)  # between the launcher panel's base (23,26,31) and its light (36,43,56)
 LOBBY_GRAIN_NOISE = 5.0     # the launcher's grain
+# How solid the lobby's grained panels are (game list, chat, player list, player details), 0..255.
+# 64 (the user, 2026-11-24: "maybe 75% transparent, like in C&C Generals") lets the menu's scene
+# show through. The same alpha goes to everything else that paints the panel itself, so it stays
+# seamless: the column titles' grain strip and the lobby buttons' corners in menu_parts.tga
+# (lobby_list.c's lines under the rows fade to nothing, not to the panel colour). 255 = opaque.
+LOBBY_GRAIN_ALPHA = 64
 GRAIN_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_GRAIN" file=".\\art\\revived\\lobby_grain.tga" pixformat="PF_32"/>'
 GRAIN_BACK = '<IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>'
 BLACK_BACK = '<IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>'
@@ -1174,7 +1180,7 @@ def build_lobby_grain(n=256):
     cloud /= max(np.abs(cloud).max(), 1e-6)
     rgb = np.array(LOBBY_GRAIN, dtype=float) * (1 + 0.10 * cloud[..., None])
     rgb += rng.normal(0, LOBBY_GRAIN_NOISE, (n, n))[..., None]
-    alpha = np.full((n, n, 1), 255.0)
+    alpha = np.full((n, n, 1), float(LOBBY_GRAIN_ALPHA))
     return Image.fromarray(np.dstack([rgb, alpha]).clip(0, 255).astype(np.uint8), "RGBA")
 
 

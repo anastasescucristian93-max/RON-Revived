@@ -34,6 +34,9 @@
  * widths, a POSITIONING 25 to the right: the list box at 19, its rows 1 in, the text 5 in), so a
  * title's left edge is its column's text. The Description title covers the room name and host
  * columns; the "Host" label is drawn at the same split.
+ * The chat's player list (GameSpyGroup::on_listbox_entry_custom_redraw_player_list, called from
+ * the same row function) is drawn here in the same way: the font, rows one line tall, the band,
+ * the lines; the player details keep the game's drawing in the same font.
  * Interface only, client-side: nothing here reaches the simulation or other players.
  */
 #include "ron.h"
@@ -66,9 +69,23 @@
 #define VA_FONT_PUSH     0x0096FC9Fu /* GameSpyGroup::pre_modal: push -1 / push 12 (FontFamily::get of the list) */
 #define VA_ROW_HEIGHT    0x0096FCFFu /* ...: lea ecx, [eax*2 + 10] (the list's row height from the font height) */
 #define VA_FILL_CALL     0x0096D6A2u /* the row function: call GraphicWin::fill (the selected row) */
+#define VA_PLAYER_CALL   0x0096D575u /* the row function: call ..._custom_redraw_player_list ("players") */
+#define VA_PLAYER_ROW    0x0096BE70u /* GameSpyGroup::on_listbox_entry_custom_redraw_player_list */
+#define VA_DETAILS_CALL  0x0096D551u /* the row function: call ..._custom_redraw_player_details */
+#define VA_DETAILS_ROW   0x0096BCE0u /* GameSpyGroup::on_listbox_entry_custom_redraw_player_details */
+#define VA_WRITE_RIGHT_L 0x0050FA40u /* Buffer::write_right_l(const String &, const Rect *, len): the text's left x */
+#define VA_LINE_HEIGHT   0x0050F370u /* Buffer::text_line_height() */
+#define VA_FONTS         0x00ED8160u /* FontFamily */
+#define VA_FONT_GET      0x00522810u /* FontFamily::get(size, style) */
+#define VA_LIGHT_BLUE    0x00C8D200u
+#define VA_GREEN         0x00C8D1D0u
 #define VA_ICON_CALL     0x0096D77Cu /* ...: call IFaceRenderManager::add (the password padlock) */
 
 #define LB_SELECTED   0x278 /* ListBox2: the selected entry */
+#define LB_FONT       0x1D0 /* ListBox2: its Buffer's font (Buffer +0x7C), 12 bytes */
+#define LB_ROW_H      0x298 /* ListBox2: row height */
+#define LB_FLAGS      0x274 /* ListBox2: bit 0 = lay out again (ListBox2::recalc) */
+#define VT_RESET_CLIP 0xC0
 #define WIN_ID        0x0C
 #define WIN_BUFFER    0x154
 #define WIN_SURFACE   0x184 /* its vtable +0x4c sets the clip, +0xcc the window's own rect */
@@ -81,6 +98,7 @@
 #define VT_FIND_TEX   0xA4
 #define VT_SET_CLIP   0x4C
 #define VT_GET_RECT   0xCC
+#define RENDER_SOLID  5 /* IFaceRenderType: untextured rectangle */
 #define RENDER_PLATE  4 /* the lobby plates' type (draw_expander in on_button_redraw): colour x2 */
 #define VA_GRAPHSYS   0x00E335A0u
 #define GS_DEPTH      0x164 /* GraphSys update depth: +2 per window, the z of what is added */
@@ -89,6 +107,10 @@
 #define NAME_GAP  10
 #define ROW_PAD   16 /* row height = font height + this */
 #define SEGMENTS  24 /* the line under a row, in pieces fading toward the ends */
+#define SEP_ALPHA 200     /* the line's alpha in its middle */
+#define PLAYER_PAD 10     /* player list rows: font height + this */
+#define PLAYER_INDENT 4   /* the names a little in from the list's edge */
+#define DETAILS_PAD 6     /* player details rows */
 
 typedef struct {
     unsigned char r, g, b, a;
@@ -107,8 +129,9 @@ static struct {
     int sel, active, drawn;
 } g_row;
 
-static color_t g_panel, g_name, g_text, g_name_sel, g_text_sel, g_gold, g_gold_hi, g_gold_sorted;
-static color_t g_sep[SEGMENTS];
+static color_t g_name, g_text, g_name_sel, g_text_sel, g_gold, g_gold_hi, g_gold_sorted;
+static unsigned g_sep[SEGMENTS]; /* 0xAABBGGRR: grey, fading to nothing at the ends */
+static void *g_font;             /* FontFamily::get(g_font_size, regular), once the fonts are loaded */
 __attribute__((used)) color_t g_ll_band;
 __attribute__((used)) void *g_ll_fill_fn;
 __attribute__((used)) float g_ll_minus_one = -1.0f;
@@ -139,6 +162,7 @@ typedef void(__attribute__((thiscall)) *tile_t)(void *rm, const void *tex, int x
 typedef int(__attribute__((thiscall)) *redraw_t)(void *self, void *btn, void *name);
 typedef int(__attribute__((thiscall)) *row_fn_t)(void *self, char *lb, const short *rect, void *entry);
 typedef int(__attribute__((thiscall)) *fn_i_t)(void *self);
+typedef void *(__attribute__((thiscall)) *font_get_t)(void *family, int size, int style);
 
 void ll_fill_call(char *lb, const short *rect, const color_t *c); /* asm below: xmm3 = -1 */
 
@@ -254,16 +278,88 @@ __attribute__((used, thiscall)) void c_ll_icon(void *rm, void *tex, int x, int y
     ((add_xy_t)VA(VA_RM_ADD_XY))(rm, tex, x, y, color, type);
 }
 
-static void draw_separator(char *lb, const short *e)
+
+/* The line under a row: 1 px solid rectangles of the render manager in grey, their alpha fading
+   to nothing toward both ends, so the line lies on the panel whatever shows through it (a fill
+   of the window's surface would be opaque). Nothing textured of the list window lies under it. */
+static void draw_separator(char *group, const short *e)
 {
+    (void)group;
     int l = e[0] + 4, r = e[1] - 4, y = e[3] - 1;
     if (r - l < 2 * SEGMENTS)
         return;
     for (int i = 0; i < SEGMENTS; i++) {
         short seg[4] = { (short)(l + (r - l) * i / SEGMENTS), (short)(l + (r - l) * (i + 1) / SEGMENTS), (short)y,
                          (short)(y + 1) };
-        ll_fill_call(lb, seg, &g_sep[i]);
+        ((add_rect_t)VA(VA_RM_ADD_RECT))((void *)VA(VA_IFACE_RM), NULL, seg, g_sep[i], RENDER_SOLID);
     }
+}
+
+/* the list's font: regular, g_font_size; its rows the font's height + pad (the list lays itself
+   out again on its next redraw) */
+static void set_list_font(char *lb, int pad)
+{
+    if (!g_font)
+        g_font = ((font_get_t)VA(VA_FONT_GET))((void *)VA(VA_FONTS), g_font_size, 0);
+    if (!g_font || !*(void **)g_font)
+        return;
+    if (*(void **)(lb + LB_FONT) != g_font) {
+        *(void **)(lb + LB_FONT) = g_font;
+        *(int *)(lb + LB_FONT + 4) = 0;
+        *(int *)(lb + LB_FONT + 8) = 0;
+    }
+    int h = ((fn_i_t)VA(VA_LINE_HEIGHT))(lb + WIN_BUFFER) + pad;
+    if (h > 12 && h < 80 && *(int *)(lb + LB_ROW_H) != h) {
+        *(int *)(lb + LB_ROW_H) = h;
+        lb[LB_FLAGS] |= 1; /* lay out again: entry positions and the scroll bar */
+    }
+}
+
+/* In place of GameSpyGroup::on_listbox_entry_custom_redraw_player_list (the lobby's player
+   list, right of the chat): the same, with the game list's band, font, rows and lines. The game
+   writes the entry's right text (+0x1C) right-aligned, then its name (+8, icons inline) in the
+   rest, in light blue (entry state 0), green (1) or white; the selected row on a light band in
+   black. */
+__attribute__((used, thiscall)) int c_ll_player_row(char *self, char *lb, const short *rect, int *entry)
+{
+    if (!lb || !rect || !entry)
+        return ((row_fn_t)VA(VA_PLAYER_ROW))(self, lb, rect, entry);
+    set_list_font(lb, PLAYER_PAD);
+    char *buf = lb + WIN_BUFFER;
+    int sel = *(int **)(lb + LB_SELECTED) == entry;
+    const void *c = sel ? (const void *)&g_name_sel
+                  : entry[0] == 0 ? (const void *)VA(VA_LIGHT_BLUE)
+                  : entry[0] == 1 ? (const void *)VA(VA_GREEN) : (const void *)&g_name;
+    if (sel)
+        ll_fill_call(lb, rect, &g_ll_band);
+    ((color_fn_t)VA(VA_SET_TEXT_COLOR))(buf, c, (void *)VA(VA_COLOR_NONE), 1, 1);
+    short r[4] = { (short)(rect[0] + PLAYER_INDENT), rect[1], rect[2], rect[3] };
+    char *e = (char *)entry;
+    int rlen = *(unsigned short *)(e + 0x1C + 8);
+    if (rlen) {
+        int x = ((writel_t)VA(VA_WRITE_RIGHT_L))(buf, e + 0x1C, r, rlen);
+        if (x - 10 > r[0])
+            r[1] = (short)(x - 10);
+    }
+    int len = *(unsigned short *)(e + 8 + 8);
+    if (len) {
+        set_clip(buf, r);
+        ((writel_t)VA(VA_WRITE_L))(buf, e + 8, r, len);
+        void *obj = *(void **)(buf + BUF_CLIP_OBJ);
+        if (obj)
+            ((fn_i_t)(*(void ***)obj)[VT_RESET_CLIP / 4])(obj);
+    }
+    if (!sel)
+        draw_separator(self, rect);
+    return 1;
+}
+
+/* the player details (Played, Wins, Losses...): the game's drawing in the list's font */
+__attribute__((used, thiscall)) int c_ll_details_row(char *self, char *lb, const short *rect, void *entry)
+{
+    if (lb)
+        set_list_font(lb, DETAILS_PAD);
+    return ((row_fn_t)VA(VA_DETAILS_ROW))(self, lb, rect, entry);
 }
 
 /* GameSpyGroup::on_listbox_entry_redraw, from its first instruction (g_hooks "lobby_row") */
@@ -280,7 +376,7 @@ __attribute__((thiscall)) int hk_lobby_row(void *self, char *lb, const short *re
     g_row.sel = *(void **)(lb + LB_SELECTED) == entry && !*(void **)VA(VA_SETUPWIN);
     int r = orig(self, lb, rect, entry);
     if (g_row.drawn && !g_row.sel)
-        draw_separator(lb, rect);
+        draw_separator(self, rect);
     g_row = saved;
     return r;
 }
@@ -332,9 +428,7 @@ static int draw_header(char *group, char *btn)
         if (t[5] - t[4] > h)
             t[5] = (short)(t[4] + h);
         ((tile_t)VA(VA_TILE_HORIZ))(rm, t, R[0], R[1], R[2], h, 0xFF808080u, RENDER_PLATE);
-    } else {
-        ll_fill_call(btn, R, &g_panel); /* the window's own surface, under every quad */
-    }
+    } /* (without it nothing: the panel may be see-through, an opaque fill would show) */
     char *buf = btn + WIN_BUFFER;
     unsigned char saved[BUF_COLORS_N];
     memcpy(saved, buf + BUF_COLORS, BUF_COLORS_N);
@@ -437,14 +531,14 @@ void lobby_list_install(void)
     static const unsigned char height_sig[7] = { 0x8D, 0x0C, 0x45, 0x0A, 0x00, 0x00, 0x00 };
     int ok = !memcmp((void *)VA(VA_FONT_PUSH), font_sig, 4) && !memcmp((void *)VA(VA_ROW_HEIGHT), height_sig, 7) &&
              call_to(VA_FILL_CALL, VA_FILL) && call_to(VA_ICON_CALL, VA_RM_ADD_XY) &&
-             call_to(VA_REDRAW_CALL, VA_CHAT_REDRAW);
+             call_to(VA_REDRAW_CALL, VA_CHAT_REDRAW) && call_to(VA_PLAYER_CALL, VA_PLAYER_ROW) &&
+             call_to(VA_DETAILS_CALL, VA_DETAILS_ROW);
     for (int i = 0; i < 8; i++)
         ok = ok && call_to(k_write_site[i], k_write_target[i]);
     if (!ok) {
         logf_("lobby list: signature mismatch, the Game Browser's list left as it is");
         return;
     }
-    make_color(&g_panel, 27, 31, 38);
     make_color(&g_name, 236, 238, 242);
     make_color(&g_text, 172, 180, 192);
     make_color(&g_name_sel, 255, 255, 255);
@@ -457,7 +551,7 @@ void lobby_list_install(void)
     for (int i = 0; i < SEGMENTS; i++) {
         float t = (i + 0.5f) / SEGMENTS, d = t < 0.5f ? 1 - 2 * t : 2 * t - 1;
         float k = 1 - d * d * d;
-        make_color(&g_sep[i], (int)(27 + (92 - 27) * k), (int)(31 + (100 - 31) * k), (int)(38 + (112 - 38) * k));
+        g_sep[i] = ((unsigned)(SEP_ALPHA * k) << 24) | (112u << 16) | (100u << 8) | 92u; /* (92, 100, 112) */
     }
     g_ll_fill_fn = (void *)VA(VA_FILL);
     for (int i = 0; i < 8; i++)
@@ -465,6 +559,8 @@ void lobby_list_install(void)
     write_call(VA_FILL_CALL, hk_ll_fill);
     write_call(VA_ICON_CALL, c_ll_icon);
     write_call(VA_REDRAW_CALL, c_ll_button_redraw);
+    write_call(VA_PLAYER_CALL, c_ll_player_row);
+    write_call(VA_DETAILS_CALL, c_ll_details_row);
     /* the list's font: FontFamily::get(size, regular); its rows one line tall */
     const unsigned char font[4] = { 0x6A, 0x00, 0x6A, (unsigned char)g_font_size };
     const unsigned char height[7] = { 0x8D, 0x48, ROW_PAD, 0x90, 0x90, 0x90, 0x90 }; /* lea ecx, [eax + ROW_PAD] */
