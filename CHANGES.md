@@ -57,6 +57,12 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - The rules panel is one row taller, so the last option (Require Random Nations) no longer runs past its bottom edge.
 - Fixed: the Cooperative AI box looked ticked, and could not be changed. Multiplayer has no Cooperative AI, so the box is now greyed out and unticked. The game had also put the options under it one place off: Allow Observer Chat was missing, and the others sat one row too high. They are now back in their places, the same rows as in single player.
 - Only the setup screen changes: it plays with players on any version.
+## Fixed: antivirus programs stopped the launcher's update (`package`, `camera-smooth`), new 2026-11-24
+
+- Updating from the launcher could stop halfway with Kaspersky (and maybe other antivirus programs) asking you to act and removing the update script: since 2026.11.22 the installer the update runs in the background also looked at Windows' compatibility settings, which made it look like malware. Nothing was changed in the game when that happened.
+- An update from the launcher now skips those checks (an install with `install.bat` still does them, and `check.bat` reports them), so the update to this version goes through.
+- From the next update on, the launcher's update runs in a small window of its own titled "RON Revived update", where you can see what it does, instead of hidden.
+- If an update was stopped this way, run `install.bat` from the release's zip once.
 
 ## The end-game statistics star for fewest losses (`camera-smooth`), new 2026-11-22
 

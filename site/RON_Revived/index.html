@@ -2695,6 +2695,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
       <li><span class="tag chg">Changed</span><span><b>Multiplayer game setup:</b> Start and Back sit in their frame at the bottom right as in single player, Invite Friend, Options and Reset are steel buttons, and the rules panel is one row taller so its last option fits.</span></li>
       <li><span class="tag fix">Fix</span><span><b><code>install.bat</code> on Windows 7:</b> the installer and <code>uninstall.bat</code> now run on Windows 7 without updates. On Windows 7 and 8 the installer first checks for the Universal C Runtime the mod needs (without it the game would not start) and, if it is missing, changes nothing and says what to install.</span></li>
       <li><span class="tag fix">Fix</span><span><b>Cooperative AI in the multiplayer setup</b> looked ticked and could not be changed. Multiplayer has none, so the box is now greyed out and unticked, and Allow Observer Chat and the options after it are back in their places.</span></li>
+      <li><span class="tag fix">Fix</span><span><b><a href="#install">Antivirus programs stopped the launcher's update</a></b> (Kaspersky asked you to act and removed the update script). The update no longer looks at Windows' compatibility settings, and from the next update on it runs in a small window of its own instead of hidden. If an update was stopped, run <code>install.bat</code> from the release's zip once.</span></li>
     </ul>
   </details>
 

@@ -13,7 +13,7 @@
  *
  * Update downloads the changed parts here, into %TEMP%\RON_Revived_dl\, with a progress bar in
  * the button's place ("Cancel" under the mouse) and each zip's SHA-256 checked. Then it starts
- * RON_Revived_update.ps1 hidden with -Staged <that folder> -Quiet and closes the launcher: the
+ * RON_Revived_update.ps1 in a console window with -Staged <that folder> and closes the launcher: the
  * script waits for it to exit (winmm.dll cannot be replaced while it is loaded), installs the
  * parts with RON_Revived_install.ps1 and starts the game again through Steam. A failed download
  * says so on the plate and the button retries.
@@ -587,7 +587,11 @@ static void start_update(void)
     logf_("update: downloading %d zips, %.1f MB", g_nz, g_bytes / 1048576.0);
 }
 
-/* every zip is here: the script installs them once the launcher is gone */
+/* every zip is here: the script installs them once the launcher is gone. In a console window of
+   its own (its title "RON Revived update", what it does as it goes), not hidden: a hidden
+   PowerShell with -ExecutionPolicy Bypass, started by a program that has just downloaded files,
+   is what antivirus programs watch for (Kaspersky stopped the 2026.11.23 update and deleted the
+   script). */
 static void hand_over(void)
 {
     char script[MAX_PATH];
@@ -598,14 +602,14 @@ static void hand_over(void)
     wcscpy(stage, g_stage);
     stage[wcslen(stage) - 1] = 0; /* no trailing backslash: it would escape the closing quote */
     _snwprintf(cmd, 2048,
-               L"powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File \"%ls\" -Index \"%ls\" "
-               L"-WaitPid %lu -Staged \"%ls\" -Quiet",
+               L"powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"%ls\" -Index \"%ls\" "
+               L"-WaitPid %lu -Staged \"%ls\"",
                wscript, windex, GetCurrentProcessId(), stage);
     cmd[2047] = 0;
     STARTUPINFOW si = {sizeof si};
     PROCESS_INFORMATION pi;
     if (GetFileAttributesA(script) == INVALID_FILE_ATTRIBUTES ||
-        !CreateProcessW(NULL, cmd, NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
+        !CreateProcessW(NULL, cmd, NULL, NULL, FALSE, CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi)) {
         logf_("update: could not start %s (error %lu), the releases page instead", script, GetLastError());
         ShellExecuteW(NULL, L"open", RELEASES_PAGE, NULL, NULL, SW_SHOWNORMAL);
         InterlockedExchange(&g_st, ST_FAILED);

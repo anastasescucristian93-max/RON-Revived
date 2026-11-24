@@ -1,7 +1,8 @@
 # Updates RON Revived from its latest GitHub release. Installed in the game folder as
 # RON_Revived_update.ps1; the launcher's Update button (winmm.dll, launcher_update.c) downloads
-# the changed parts itself, with a progress bar on its plate, then starts this hidden with
-# -Staged <the folder with the zips> -Quiet and closes. It waits for the launcher to exit, takes
+# the changed parts itself, with a progress bar on its plate, then starts this in a console
+# window with -Staged <the folder with the zips> and closes (launchers 2026.11.09 to 2026.11.23
+# started it hidden with -Quiet; antivirus programs took that for malware). It waits for the launcher to exit, takes
 # the parts of the pack that changed (RON_Revived_update.txt lists them with their hashes;
 # RON_Revived_parts.txt holds the ones installed) from -Staged, downloading any that are not
 # there, checks their SHA-256, installs them with RON_Revived_install.ps1 and starts the game
