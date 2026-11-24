@@ -8,8 +8,8 @@
  *  - a thin grey line under each game that fades out toward both ends; the selected game a
  *    steel-blue band with white text;
  *  - the column titles plain soft gold labels on the panel's grain (no plate), each starting
- *    where its column's text starts; the sorted column's title lighter and underlined in the
- *    theme's orange; a "Host" title over the host column. Clicking a title still sorts.
+ *    where its column's text starts; the sorted column's title a lighter gold (no underline);
+ *    a "Host" title over the host column. Clicking a title still sorts.
  *
  * GameSpyGroup::on_listbox_entry_redraw (0x0096D4B0) draws every row of the list in code:
  * players "n/max", the room name, "Host: " + Lobby::GetHostName one line lower, then team
@@ -347,21 +347,8 @@ static int draw_header(char *group, char *btn)
     int right = split ? split - NAME_GAP : R[1];
     const color_t *c = sorted ? &g_gold_sorted : hover ? &g_gold_hi : &g_gold;
     header_text(buf, title, len, R[0], right, R[2], R[3], c);
-    if (sorted && len > 0) {
-        int tw = ((width_t)VA(VA_TEXT_WIDTH))(buf, title, len);
-        if (tw > right - R[0])
-            tw = right - R[0];
-        int y = R[2] + h - 4;
-        short bar[4] = { R[0], (short)(R[0] + tw), (short)y, (short)(y + 2) };
-        void *mark = find_tex(group, "list_mark"); /* a white cell of the same atlas */
-        if (tw > 0 && mark) {
-            /* one step of depth in front of the grain (windows are 2 apart; flags.c) */
-            int *depth = (int *)(*(char **)VA(VA_GRAPHSYS) + GS_DEPTH);
-            (*depth)++;
-            ((add_rect_t)VA(VA_RM_ADD_RECT))(rm, mark, bar, 0xFF144B80u, RENDER_PLATE); /* x2: (255, 150, 40) */
-            (*depth)--;
-        }
-    }
+    /* (the sorted column's title had an orange underline; removed 2026-11-24 at the user's
+       request: only its lighter gold marks it now) */
     if (split) {
         unsigned char s[64] __attribute__((aligned(4))) = { 0 };
         lang_string(s, lang_text("Host"));
