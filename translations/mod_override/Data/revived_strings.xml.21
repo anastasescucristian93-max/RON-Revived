@@ -151,4 +151,5 @@
 	<STRING en="%s smaller">mniejsza o %s</STRING>
 	<STRING en="Coming soon">Wkrótce</STRING>
 	<STRING en="Host">Host</STRING>
+	<STRING en="Mod">Mod</STRING>
 </ROOT>

@@ -40,6 +40,7 @@
  * Interface only, client-side: nothing here reaches the simulation or other players.
  */
 #include "ron.h"
+#include <stdio.h>
 #include <string.h>
 #include <wchar.h>
 
@@ -79,6 +80,13 @@
 #define VA_FONT_GET      0x00522810u /* FontFamily::get(size, style) */
 #define VA_LIGHT_BLUE    0x00C8D200u
 #define VA_GREEN         0x00C8D1D0u
+#define VA_KEY_VALUE_STR 0x00A47E50u /* Lobby::get_key_value_str(const char *key) const */
+#define VA_MP_INSTANCE   0x00CC4B40u /* MultiplayerManager::m_instance */
+#define VA_LOBBY_SET_KEY 0x00A30B70u /* MultiplayerManager::LobbySetKey(key ecx, value edx) */
+#define LOBBY_VERSION_KEY "rr_ver"
+#define FRAME_LOBBY      (-0x28) /* the row function's locals: the Lobby */
+#define FRAME_SESSIONWIN (-0x24) /* ... the sessionwin window */
+#define VT_FIND_RECT     0x488   /* GraphicWinXML::find_rect(const String &, int, int *) */
 #define VA_ICON_CALL     0x0096D77Cu /* ...: call IFaceRenderManager::add (the password padlock) */
 
 #define LB_SELECTED   0x278 /* ListBox2: the selected entry */
@@ -127,14 +135,17 @@ static struct {
     char *lb;
     const short *rect;
     int sel, active, drawn;
+    char *lobby, *sw, *buf; /* the row's Lobby and the sessionwin window, the list's Buffer */
 } g_row;
 
-static color_t g_name, g_text, g_name_sel, g_text_sel, g_gold, g_gold_hi, g_gold_sorted;
+static color_t g_name, g_text, g_name_sel, g_text_sel, g_gold, g_gold_hi, g_gold_sorted, g_orange, g_dim;
 static unsigned g_sep[SEGMENTS]; /* 0xAABBGGRR: grey, fading to nothing at the ends */
 static void *g_font;             /* FontFamily::get(g_font_size, regular), once the fonts are loaded */
 __attribute__((used)) color_t g_ll_band;
 __attribute__((used)) void *g_ll_fill_fn;
 __attribute__((used)) float g_ll_minus_one = -1.0f;
+__attribute__((used)) char *g_ll_frame; /* ebp of the row function at its last text call */
+static char g_version[32];             /* this install's RON Revived version (RON_Revived_version.txt) */
 
 static const UINT_PTR k_write_site[8] = { 0x0096D858u, 0x0096D923u, 0x0096D9BFu, 0x0096DAA9u,
                                           0x0096DB7Bu, 0x0096DC7Eu, 0x0096DD5Au, 0x0096DE36u };
@@ -163,11 +174,34 @@ typedef int(__attribute__((thiscall)) *redraw_t)(void *self, void *btn, void *na
 typedef int(__attribute__((thiscall)) *row_fn_t)(void *self, char *lb, const short *rect, void *entry);
 typedef int(__attribute__((thiscall)) *fn_i_t)(void *self);
 typedef void *(__attribute__((thiscall)) *font_get_t)(void *family, int size, int style);
+typedef const char *(__attribute__((thiscall)) *key_str_t)(void *lobby, const char *key);
+typedef short *(__attribute__((thiscall)) *find_rect_t)(void *win, const void *name, int id, int *iter);
+typedef void(__attribute__((fastcall)) *set_key_t)(const char *key, const char *value);
 
 void ll_fill_call(char *lb, const short *rect, const color_t *c); /* asm below: xmm3 = -1 */
 
+static void read_version(void)
+{
+    char path[MAX_PATH];
+    _snprintf(path, sizeof path, "%sRON_Revived_version.txt", g_dir);
+    path[sizeof path - 1] = 0;
+    HANDLE f = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+    if (f == INVALID_HANDLE_VALUE)
+        return;
+    char t[sizeof g_version] = { 0 };
+    DWORD n = 0;
+    ReadFile(f, t, sizeof t - 1, &n, NULL);
+    CloseHandle(f);
+    int k = 0;
+    while (k < (int)n && ((t[k] >= '0' && t[k] <= '9') || t[k] == '.'))
+        k++;
+    memcpy(g_version, t, k);
+    g_version[k] = 0;
+}
+
 void lobby_list_load_config(const char *ini_path)
 {
+    read_version();
     g_lobby_list_enabled = GetPrivateProfileIntA("ui", "lobby_list", 1, ini_path) != 0;
     g_font_size = GetPrivateProfileIntA("ui", "lobby_list_font", 16, ini_path);
     if (g_font_size < 10 || g_font_size > 24)
@@ -207,6 +241,11 @@ __attribute__((used)) int c_ll_write(char *buf, void *str, short *rect, int site
         return 0;
     if (!g_row.active || !g_row.rect || !rect || !str || !buf)
         return ((write2_t)VA(k_write_target[site]))(buf, str, rect);
+    if (g_ll_frame) {
+        g_row.lobby = *(char **)(g_ll_frame + FRAME_LOBBY);
+        g_row.sw = *(char **)(g_ll_frame + FRAME_SESSIONWIN);
+        g_row.buf = buf;
+    }
     int len = *(unsigned short *)((char *)str + 8);
     if (len <= 0)
         return 0;
@@ -357,6 +396,71 @@ __attribute__((used, thiscall)) int c_ll_player_row(char *self, char *lb, const 
 /* The player details (Played, Wins, Losses...) keep the game's own font and drawing: in the list's
    larger font their rows no longer fit the panel and a scroll bar came up (2026-11-24). */
 
+/* The Mod column (the sessionwin rect "rr_mod", after the game's last column): the version the
+   room's host published as the lobby key "rr_ver" (lobby_list_publish), in the row's text colour
+   when it is this install's, orange when it differs (a different version can go out of sync),
+   a grey dash when the room has none (a host without the mod, or with an older version). */
+static void draw_mod_cell(const short *e)
+{
+    char *sw = g_row.sw, *buf = g_row.buf;
+    if (!g_row.lobby || !sw || !buf)
+        return;
+    unsigned char name[64] __attribute__((aligned(4))) = { 0 };
+    ((ctor_t)VA(VA_STRING_CTOR))(name, "rr_mod");
+    int iter = 0;
+    short *col = ((find_rect_t)(*(void ***)sw)[VT_FIND_RECT / 4])(sw, name, -1, &iter);
+    ((close_t)VA(VA_STRING_CLOSE))(name);
+    if (!col)
+        return;
+    short cell[4] = { (short)(e[0] + col[0] + 5), (short)(e[0] + col[1] - 5), e[2], e[3] };
+    if (cell[1] > e[1])
+        cell[1] = e[1];
+    if (cell[1] <= cell[0])
+        return;
+    const char *v = ((key_str_t)VA(VA_KEY_VALUE_STR))(g_row.lobby, LOBBY_VERSION_KEY);
+    char ver[32];
+    int n = 0;
+    while (v && v[n] && n < (int)sizeof ver - 1 && ((v[n] >= '0' && v[n] <= '9') || v[n] == '.')) {
+        ver[n] = v[n];
+        n++;
+    }
+    ver[n] = 0;
+    unsigned char str[0x14] __attribute__((aligned(4))) = { 0 };
+    const color_t *c;
+    if (n) {
+        ((ctor_t)VA(VA_STRING_CTOR))(str, ver);
+        c = strcmp(ver, g_version) ? &g_orange : g_row.sel ? &g_text_sel : &g_text;
+    } else {
+        static const wchar_t dash[2] = { 0x2014, 0 };
+        ((wctor_t)VA(VA_STR_WCTOR))(str, dash);
+        c = &g_dim;
+    }
+    set_clip(buf, cell);
+    ((color_fn_t)VA(VA_SET_TEXT_COLOR))(buf, c, (void *)VA(VA_COLOR_NONE), 1, 1);
+    int len = *(unsigned short *)(str + 8);
+    if (len)
+        ((writel_t)VA(VA_WRITE_L))(buf, str, cell, len);
+    ((close_t)VA(VA_STRING_CLOSE))(str);
+    void *obj = *(void **)(buf + BUF_CLIP_OBJ);
+    if (obj)
+        ((fn_i_t)(*(void ***)obj)[VT_RESET_CLIP / 4])(obj);
+}
+
+/* The host's version into its lobby (unitbans.c's ConnectionData::send_game hook, the host only):
+   the key "rr_ver". Other machines without it ignore the key. */
+void lobby_list_publish(void)
+{
+    char **mm = *(char ***)VA(VA_MP_INSTANCE);
+    if (!mm || !*mm || !g_version[0])
+        return;
+    ((set_key_t)VA(VA_LOBBY_SET_KEY))(LOBBY_VERSION_KEY, g_version);
+    static int logged;
+    if (!logged) {
+        logged = 1;
+        logf_("lobby list: this game's lobby says RON Revived %s (key %s)", g_version, LOBBY_VERSION_KEY);
+    }
+}
+
 /* GameSpyGroup::on_listbox_entry_redraw, from its first instruction (g_hooks "lobby_row") */
 __attribute__((thiscall)) int hk_lobby_row(void *self, char *lb, const short *rect, void *entry)
 {
@@ -369,7 +473,11 @@ __attribute__((thiscall)) int hk_lobby_row(void *self, char *lb, const short *re
     g_row.active = 1;
     g_row.drawn = 0;
     g_row.sel = *(void **)(lb + LB_SELECTED) == entry && !*(void **)VA(VA_SETUPWIN);
+    g_row.lobby = g_row.sw = g_row.buf = NULL;
+    g_ll_frame = NULL;
     int r = orig(self, lb, rect, entry);
+    if (g_row.drawn)
+        draw_mod_cell(rect);
     if (g_row.drawn && !g_row.sel)
         draw_separator(self, rect);
     g_row = saved;
@@ -396,13 +504,14 @@ static void header_text(char *buf, void *str, int len, int l, int r, int t, int 
     ((writel_t)VA(VA_WRITE_L))(buf, str, rect, len);
 }
 
-static int is_sort(void *name)
+static int is_name(void *name, const wchar_t *want)
 {
     const wchar_t *w = ((str_t)VA(VA_STR_STR))(name);
-    return w && *(unsigned short *)((char *)name + 8) == 4 && !wcsncmp(w, L"sort", 4);
+    int n = (int)wcslen(want);
+    return w && *(unsigned short *)((char *)name + 8) == n && !wcsncmp(w, want, n);
 }
 
-static int draw_header(char *group, char *btn)
+static int draw_header(char *group, char *btn, const char *label)
 {
     void *surf = *(void **)(btn + WIN_SURFACE);
     if (!surf)
@@ -435,6 +544,15 @@ static int draw_header(char *group, char *btn)
     int split = id == 0 && w >= 200 ? split_of(w) : 0; /* Description: room name | host */
     int right = split ? split - NAME_GAP : R[1];
     const color_t *c = sorted ? &g_gold_sorted : hover ? &g_gold_hi : &g_gold;
+    if (label) {
+        /* our own column's title (a disabled button: it does not sort) */
+        unsigned char s[64] __attribute__((aligned(4))) = { 0 };
+        lang_string(s, lang_text(label));
+        header_text(buf, s, *(unsigned short *)(s + 8), R[0], R[1], R[2], R[3], &g_gold);
+        ((close_t)VA(VA_STRING_CLOSE))(s);
+        memcpy(buf + BUF_COLORS, saved, BUF_COLORS_N);
+        return 1;
+    }
     header_text(buf, title, len, R[0], right, R[2], R[3], c);
     /* (the sorted column's title had an orange underline; removed 2026-11-24 at the user's
        request: only its lighter gold marks it now) */
@@ -451,8 +569,12 @@ static int draw_header(char *group, char *btn)
 /* in place of GameSpyGroup::on_button_redraw's call of GameSpyChatBase::on_button_redraw */
 __attribute__((used, thiscall)) int c_ll_button_redraw(char *self, char *btn, void *name)
 {
-    if (g_ready && self && btn && name && is_sort(name) && draw_header(self, btn))
-        return 1;
+    if (g_ready && self && btn && name) {
+        if (is_name(name, L"sort") && draw_header(self, btn, NULL))
+            return 1;
+        if (is_name(name, L"rr_mod") && draw_header(self, btn, "Mod"))
+            return 1;
+    }
     return ((redraw_t)VA(VA_CHAT_REDRAW))(self, btn, name);
 }
 
@@ -468,6 +590,7 @@ __asm__(".intel_syntax noprefix\n"
         WSTUB(0) WSTUB(1) WSTUB(2) WSTUB(3) WSTUB(4) WSTUB(5) WSTUB(6) WSTUB(7)
         /* thiscall write(str, rect), ecx = the buffer -> c_ll_write(buf, str, rect, site) */
         "ll_write_common:\n"
+        "    mov dword ptr [_g_ll_frame], ebp\n" /* the row function's frame: its Lobby, its sessionwin */
         "    push eax\n"
         "    push dword ptr [esp+12]\n" /* rect */
         "    push dword ptr [esp+12]\n" /* str */
@@ -539,6 +662,8 @@ void lobby_list_install(void)
     make_color(&g_text_sel, 226, 232, 242);
     make_color(&g_gold, 200, 172, 116);
     make_color(&g_gold_hi, 228, 202, 148);
+    make_color(&g_orange, 255, 150, 40);
+    make_color(&g_dim, 110, 118, 130);
     make_color(&g_gold_sorted, 244, 216, 160);
     make_color(&g_ll_band, 40, 70, 116);
     /* the line under a row: grey in the middle, the panel's colour (27, 31, 38) at the ends */
@@ -560,5 +685,6 @@ void lobby_list_install(void)
     write_bytes(VA_FONT_PUSH, font, 4);
     write_bytes(VA_ROW_HEIGHT, height, 7);
     g_ready = 1;
-    logf_("lobby list: one line per game, a Host column, font %d, title labels", g_font_size);
+    logf_("lobby list: one line per game, a Host column, a Mod column (this is %s), font %d, title labels",
+          g_version[0] ? g_version : "?", g_font_size);
 }

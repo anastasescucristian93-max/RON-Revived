@@ -174,3 +174,5 @@ two squads of your age's infantry join you
 Coming soon
 # lobby_list.c: the Game Browser, the title of the host column
 Host
+# lobby_list.c: the Game Browser, the title of the column with the host's RON Revived version
+Mod

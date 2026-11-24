@@ -1288,6 +1288,8 @@ __attribute__((used, thiscall)) static void c_ub_send_game(void *cd)
     char *net = *(char **)VA(VA_NETSYS);
     if (g_unitbans_enabled && net && is_host())
         send_lobby();
+    if (net && is_host())
+        lobby_list_publish(); /* the host's RON Revived version, for the Game Browser's Mod column */
 }
 
 /* A std::wstring (MSVC: 16-byte buffer or pointer, size +0x10, capacity +0x14) into ASCII. */

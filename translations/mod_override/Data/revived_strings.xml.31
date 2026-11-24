@@ -151,4 +151,5 @@
 	<STRING en="%s smaller">%s daha küçük</STRING>
 	<STRING en="Coming soon">Yakında</STRING>
 	<STRING en="Host">Kurucu</STRING>
+	<STRING en="Mod">Mod</STRING>
 </ROOT>

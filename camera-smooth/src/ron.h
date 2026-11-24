@@ -235,6 +235,7 @@ extern void *g_orig_lobby_row;
 int __attribute__((thiscall)) hk_lobby_row(void *self, char *lb, const short *rect, void *entry);
 void lobby_list_load_config(const char *ini_path);
 void lobby_list_install(void);
+void lobby_list_publish(void); /* unitbans.c's send_game hook, the host: the lobby key "rr_ver" */
 /* window_title.c: the game window's title reads "Rise of Nations: Revived" ([ui] window_title) */
 void wintitle_load_config(const char *ini_path);
 void wintitle_install(void);

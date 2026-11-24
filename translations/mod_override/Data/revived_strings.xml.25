@@ -151,4 +151,5 @@
 	<STRING en="%s smaller">меньше на %s</STRING>
 	<STRING en="Coming soon">Скоро</STRING>
 	<STRING en="Host">Хост</STRING>
+	<STRING en="Mod">Мод</STRING>
 </ROOT>

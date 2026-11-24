@@ -1073,8 +1073,17 @@ LOBBY_RIBBON = ('<IFACERECT left="30" top="4" right_inverse="30" height="69"/>',
 # (camera-smooth lobby_list.c): "description" holds the room name and, in its right 40%, the
 # host (the game wrote "Host: name" on a second line). The widths fit the titles in every
 # language at a list about 1100 units wide (1920 px at 150%). (column rect, per mille)
-LOBBY_COLUMNS = [("players", 35), ("description", 320), ("team_style", 125), ("map_style", 150),
-                 ("map_size", 95), ("game_rules", 130), ("ranked_elo", 65)]
+LOBBY_COLUMNS = [("players", 35), ("description", 290), ("team_style", 122), ("map_style", 105),
+                 ("map_size", 95), ("game_rules", 128), ("ranked_elo", 55)]
+# Columns of our own after the game's (the game stops reading rects after "ranked_elo"; drawn by
+# lobby_list.c): "rr_mod", the host's RON Revived version (the lobby key "rr_ver"), wide enough
+# for "2026.11.24.2" in the list's Arial 16 (93 units) at a list 1140 units wide. Its title is a
+# BUTTON "rr_mod" (disabled: it does not sort) that lobby_list.c draws like the others.
+LOBBY_EXTRA_COLUMNS = [("rr_mod", 90)]
+LOBBY_EXTRA_TITLES = ('          <BUTTON name="rr_mod" id="0" disable="1" title="Mod" ref_rect="sort_rr_mod">\n'
+                      '            <FONT size="15" style="B"/>\n'
+                      '            <FONTCOLOR r="255" g="255" b="255"/>\n'
+                      '          </BUTTON>\n')
 # The column titles (BUTTON "sort", none for "players") are plain labels drawn by lobby_list.c,
 # each starting where its column's text starts: their rects are the column rects again (the
 # same per mille widths and gaps, 26 tall), and their POSITIONING is LOBBY_TITLE_X to the right
@@ -1190,7 +1199,7 @@ def lobby_sort_rects():
     """The column titles' rects: the column rects again (see LOBBY_COLUMNS), 26 tall."""
     out = ['        <!--Rects for the column titles: the columns again-->',
            '        <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">']
-    for name, w in LOBBY_COLUMNS:
+    for name, w in LOBBY_COLUMNS + LOBBY_EXTRA_COLUMNS:
         out.append(f'          <IFACERECT name="sort_{name}" percent_width="{w}" height="{LOBBY_SORT_H}"/>')
     out.append('        </POSITIONING>')
     return "\n".join(out) + "\n"
@@ -1230,8 +1239,13 @@ def lobby_layout(src):
         g, n = re.subn(r'<IFACERECT name="%s" percent_width="\d+" height="19"/>' % name,
                        f'<IFACERECT name="{name}" percent_width="{w}" height="19"/>', g)
         assert n == 1, ("column", name, n)
+    # our own columns after the game's last one
+    last = '<IFACERECT name="ranked_elo" percent_width="%d" height="19"/>\n' % LOBBY_COLUMNS[-1][1]
+    assert g.count(last) == 1
+    g = g.replace(last, last + "".join(f'          <IFACERECT name="{name}" percent_width="{w}" height="19"/>\n'
+                                       for name, w in LOBBY_EXTRA_COLUMNS))
     # the column titles: own rects (the columns), taller, larger font
-    cols = '<IFACERECT name="ranked_elo" percent_width="%d" height="19"/>\n        </POSITIONING>\n' % LOBBY_COLUMNS[-1][1]
+    cols = '<IFACERECT name="%s" percent_width="%d" height="19"/>\n        </POSITIONING>\n' % LOBBY_EXTRA_COLUMNS[-1]
     assert g.count(cols) == 1
     g = g.replace(cols, cols + lobby_sort_rects())
     s = g.index(f'<POSITIONING x="{LOBBY_TITLE_X}" y="37">')
@@ -1244,6 +1258,7 @@ def lobby_layout(src):
     # the ELO column's title reads "Rank" (the game's string table has it, so it is translated)
     assert block.count('title="ELO"') == 1
     block = block.replace('title="ELO"', 'title="Rank"')
+    block = block.rstrip(" ") + LOBBY_EXTRA_TITLES + "        "
     g = g[:s] + block + g[e:]
     for name in LOBBY_DETAIL_BUTTONS:
         g, n = re.subn(r'(<BUTTON name="%s" title="[^"]*") right_inverse="80" bottom_inverse="302" width="-150" '

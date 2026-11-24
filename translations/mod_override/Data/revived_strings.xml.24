@@ -151,4 +151,5 @@
 	<STRING en="%s smaller">cu %s mai mic</STRING>
 	<STRING en="Coming soon">În curând</STRING>
 	<STRING en="Host">Gazdă</STRING>
+	<STRING en="Mod">Mod</STRING>
 </ROOT>

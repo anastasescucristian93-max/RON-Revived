@@ -2353,22 +2353,24 @@
         <!--Rects for sort buttons-->
         <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">
           <IFACERECT name="players" percent_width="35" height="19"/>
-          <IFACERECT name="description" percent_width="320" height="19"/>
-          <IFACERECT name="team_style" percent_width="125" height="19"/>
-          <IFACERECT name="map_style" percent_width="150" height="19"/>
+          <IFACERECT name="description" percent_width="290" height="19"/>
+          <IFACERECT name="team_style" percent_width="122" height="19"/>
+          <IFACERECT name="map_style" percent_width="105" height="19"/>
           <IFACERECT name="map_size" percent_width="95" height="19"/>
-          <IFACERECT name="game_rules" percent_width="130" height="19"/>
-          <IFACERECT name="ranked_elo" percent_width="65" height="19"/>
+          <IFACERECT name="game_rules" percent_width="128" height="19"/>
+          <IFACERECT name="ranked_elo" percent_width="55" height="19"/>
+          <IFACERECT name="rr_mod" percent_width="90" height="19"/>
         </POSITIONING>
         <!--Rects for the column titles: the columns again-->
         <POSITIONING inc_x="2" variable_inc="1" x="20" y="0">
           <IFACERECT name="sort_players" percent_width="35" height="26"/>
-          <IFACERECT name="sort_description" percent_width="320" height="26"/>
-          <IFACERECT name="sort_team_style" percent_width="125" height="26"/>
-          <IFACERECT name="sort_map_style" percent_width="150" height="26"/>
+          <IFACERECT name="sort_description" percent_width="290" height="26"/>
+          <IFACERECT name="sort_team_style" percent_width="122" height="26"/>
+          <IFACERECT name="sort_map_style" percent_width="105" height="26"/>
           <IFACERECT name="sort_map_size" percent_width="95" height="26"/>
-          <IFACERECT name="sort_game_rules" percent_width="130" height="26"/>
-          <IFACERECT name="sort_ranked_elo" percent_width="65" height="26"/>
+          <IFACERECT name="sort_game_rules" percent_width="128" height="26"/>
+          <IFACERECT name="sort_ranked_elo" percent_width="55" height="26"/>
+          <IFACERECT name="sort_rr_mod" percent_width="90" height="26"/>
         </POSITIONING>
         <IFACEBORDER name="misc">
           <IFACETEX name="corner0" texture="TEX_GAMESPY" left="209" top="0" width="18" height="18"/>
@@ -2415,6 +2417,10 @@
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
           <BUTTON name="sort" id="12" title="Rank" ref_rect="sort_ranked_elo">
+            <FONT size="15" style="B"/>
+            <FONTCOLOR r="255" g="255" b="255"/>
+          </BUTTON>
+          <BUTTON name="rr_mod" id="0" disable="1" title="Mod" ref_rect="sort_rr_mod">
             <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
