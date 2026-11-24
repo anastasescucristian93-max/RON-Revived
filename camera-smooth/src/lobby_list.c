@@ -354,13 +354,8 @@ __attribute__((used, thiscall)) int c_ll_player_row(char *self, char *lb, const 
     return 1;
 }
 
-/* the player details (Played, Wins, Losses...): the game's drawing in the list's font */
-__attribute__((used, thiscall)) int c_ll_details_row(char *self, char *lb, const short *rect, void *entry)
-{
-    if (lb)
-        set_list_font(lb, DETAILS_PAD);
-    return ((row_fn_t)VA(VA_DETAILS_ROW))(self, lb, rect, entry);
-}
+/* The player details (Played, Wins, Losses...) keep the game's own font and drawing: in the list's
+   larger font their rows no longer fit the panel and a scroll bar came up (2026-11-24). */
 
 /* GameSpyGroup::on_listbox_entry_redraw, from its first instruction (g_hooks "lobby_row") */
 __attribute__((thiscall)) int hk_lobby_row(void *self, char *lb, const short *rect, void *entry)
@@ -531,8 +526,7 @@ void lobby_list_install(void)
     static const unsigned char height_sig[7] = { 0x8D, 0x0C, 0x45, 0x0A, 0x00, 0x00, 0x00 };
     int ok = !memcmp((void *)VA(VA_FONT_PUSH), font_sig, 4) && !memcmp((void *)VA(VA_ROW_HEIGHT), height_sig, 7) &&
              call_to(VA_FILL_CALL, VA_FILL) && call_to(VA_ICON_CALL, VA_RM_ADD_XY) &&
-             call_to(VA_REDRAW_CALL, VA_CHAT_REDRAW) && call_to(VA_PLAYER_CALL, VA_PLAYER_ROW) &&
-             call_to(VA_DETAILS_CALL, VA_DETAILS_ROW);
+             call_to(VA_REDRAW_CALL, VA_CHAT_REDRAW) && call_to(VA_PLAYER_CALL, VA_PLAYER_ROW);
     for (int i = 0; i < 8; i++)
         ok = ok && call_to(k_write_site[i], k_write_target[i]);
     if (!ok) {
@@ -560,7 +554,6 @@ void lobby_list_install(void)
     write_call(VA_ICON_CALL, c_ll_icon);
     write_call(VA_REDRAW_CALL, c_ll_button_redraw);
     write_call(VA_PLAYER_CALL, c_ll_player_row);
-    write_call(VA_DETAILS_CALL, c_ll_details_row);
     /* the list's font: FontFamily::get(size, regular); its rows one line tall */
     const unsigned char font[4] = { 0x6A, 0x00, 0x6A, (unsigned char)g_font_size };
     const unsigned char height[7] = { 0x8D, 0x48, ROW_PAD, 0x90, 0x90, 0x90, 0x90 }; /* lea ecx, [eax + ROW_PAD] */

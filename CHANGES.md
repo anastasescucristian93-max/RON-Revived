@@ -16,11 +16,11 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - The column titles are plain soft gold names on the panel, no longer buttons, each starting exactly where its column's text starts. Clicking a title still sorts the list; the sorted column's title is a lighter gold. The ELO column is now called Rank.
 - The Create Game window is narrower, with less empty space on the left, and Create and Cancel are the same size, side by side.
 - A thin grey line, fading out toward both ends, separates the games, and the selected game sits in a blue band with white text.
-- The player list beside the chat looks the same: names in the larger font, one roomy row each, a fading line between them and the selected player in the blue band (the star and status colours stay). The player details on the right (Played, Wins, Losses ...) use the larger font too.
+- The player list beside the chat looks the same: names in the larger font, one roomy row each, a fading line between them and the selected player in the blue band (the star and status colours stay).
 - To get the game's own list back: `lobby_list=0` under `[ui]` in `ron_camera.ini` (`lobby_list_font` sets the list's font size).
 - Quit is now **Back**, at the top left beside the title, and **Group Chat** sits next to the Lobby Chat tab, at the tab's size; View Game Invite (shown when a friend invites you) is at the top right. The chat and the player panels move down into the freed bottom row, and the game list grows by as much. Join, Create, Filter and Region stand further from the frame and further apart.
 - The same steel buttons in the other online windows too (log in, create a game, filters, invites, friends, leaderboards, quick match, the Lobby Chat tab and others): no glossy buttons are left.
-- The game list, the chat and the player details sit on the launcher's dark grained steel instead of plain black. The steel is see-through (about a quarter solid), so the menu's scene shows behind the panels, as in Command & Conquer: Generals; the buttons, the fields, the selected row's band and the text stay solid. (For builders: `LOBBY_GRAIN_ALPHA` in `ui-theme/tools/build_menu_theme.py`, 255 = solid.)
+- The game list, the chat and the player details sit on the launcher's dark grained steel instead of plain black.
 - Resting the mouse over the game list, the player list, the player details or the chat field no longer pops up a box of help text (the buttons keep theirs).
 - Only the look changes, on your own screen: it plays with players on any version.
 

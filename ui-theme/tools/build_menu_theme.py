@@ -1161,7 +1161,9 @@ LOBBY_GRAIN_NOISE = 5.0     # the launcher's grain
 # show through. The same alpha goes to everything else that paints the panel itself, so it stays
 # seamless: the column titles' grain strip and the lobby buttons' corners in menu_parts.tga
 # (lobby_list.c's lines under the rows fade to nothing, not to the panel colour). 255 = opaque.
-LOBBY_GRAIN_ALPHA = 64
+# Back to 255 the same day: in game only part of the panels came out see-through (the game list's
+# top left corner) and the user preferred the solid panels.
+LOBBY_GRAIN_ALPHA = 255
 GRAIN_LOAD = '<IFACETEXLOAD id="TEX_REVIVED_GRAIN" file=".\\art\\revived\\lobby_grain.tga" pixformat="PF_32"/>'
 GRAIN_BACK = '<IFACETEX name="back" texture="TEX_REVIVED_GRAIN" left="0" top="0" width="256" height="256"/>'
 BLACK_BACK = '<IFACECOLOR name="back" red="0" green="0" blue="0" alpha="120"/>'
