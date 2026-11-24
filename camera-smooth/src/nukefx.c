@@ -1183,6 +1183,7 @@ static int c_nuke_underlays(void)
 {
     int r = ((fn0_t)VA(VA_NUKE_UNDERLAYS))(NULL);
     airstrike_draw(); /* airstrike.c: the area strike's circle (the hook is shared) */
+    allyreq_draw_ground(); /* allyreq.c: the rings of the allies' map marks */
     int mode = *(int *)VA(VA_NUKE_MODE);
     if (!game() || g_scorch_pct <= 100 || (mode != 0 && mode != 7 && mode != 9))
         return r;
@@ -1223,7 +1224,7 @@ void nukefx_install(void)
             g_radiation = 0, g_scorch_pct = 100;
     }
     /* the draw_underlays hook also draws airstrike.c's area strike circle */
-    int under = (g_scorch_pct > 100 || airstrike_area_wanted()) &&
+    int under = (g_scorch_pct > 100 || airstrike_area_wanted() || allyreq_marks_wanted()) &&
                 patch_call(VA_CALL_UNDERLAYS, VA_NUKE_UNDERLAYS, (void *)c_nuke_underlays, "Scene::render (draw_underlays)");
     airstrike_area_install(under);
     if (g_scorch_pct > 100) {

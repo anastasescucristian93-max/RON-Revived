@@ -178,4 +178,17 @@
 	<STRING en="Oil">Petróleo</STRING>
 	<STRING en="Thank you, ally!">¡Gracias, aliado!</STRING>
 	<STRING en="Understood. I will manage.">Entendido. Me las arreglaré.</STRING>
+	<STRING en="I am gathering my army for an attack. Will you join me? I will wait for your troops.">Estoy reuniendo mi ejército para un ataque. ¿Te unes? Esperaré a tus tropas.</STRING>
+	<STRING en="My city is under attack by a large army! Will you help me defend it?">¡Mi ciudad está siendo atacada por un gran ejército! ¿Me ayudas a defenderla?</STRING>
+	<STRING en="Good. My army waits for you at the signal.">Bien. Mi ejército te espera en la señal.</STRING>
+	<STRING en="Then I attack alone.">Entonces atacaré solo.</STRING>
+	<STRING en="Your troops are here. We march together!">Tus tropas están aquí. ¡Marchamos juntos!</STRING>
+	<STRING en="I cannot wait any longer. My army marches now.">No puedo esperar más. Mi ejército marcha ya.</STRING>
+	<STRING en="We attack $NAME!">¡Atacamos a $NAME!</STRING>
+	<STRING en="the enemy">el enemigo</STRING>
+	<STRING en="Thank you! Hurry, I am holding the city.">¡Gracias! Date prisa, resisto en la ciudad.</STRING>
+	<STRING en="Understood. I will hold as long as I can.">Entendido. Resistiré todo lo que pueda.</STRING>
+	<STRING en="GATHER HERE">REUNIRSE AQUÍ</STRING>
+	<STRING en="ATTACK HERE">ATACAR AQUÍ</STRING>
+	<STRING en="DEFEND HERE">DEFENDER AQUÍ</STRING>
 </ROOT>

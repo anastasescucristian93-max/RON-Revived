@@ -178,4 +178,17 @@
 	<STRING en="Oil">Нефть</STRING>
 	<STRING en="Thank you, ally!">Спасибо, союзник!</STRING>
 	<STRING en="Understood. I will manage.">Понял. Справлюсь сам.</STRING>
+	<STRING en="I am gathering my army for an attack. Will you join me? I will wait for your troops.">Я собираю армию для атаки. Присоединитесь? Я подожду ваши войска.</STRING>
+	<STRING en="My city is under attack by a large army! Will you help me defend it?">Мой город атакует большая армия! Поможете его защитить?</STRING>
+	<STRING en="Good. My army waits for you at the signal.">Хорошо. Моя армия ждёт вас у сигнала.</STRING>
+	<STRING en="Then I attack alone.">Тогда я атакую один.</STRING>
+	<STRING en="Your troops are here. We march together!">Ваши войска здесь. Выступаем вместе!</STRING>
+	<STRING en="I cannot wait any longer. My army marches now.">Я не могу больше ждать. Моя армия выступает.</STRING>
+	<STRING en="We attack $NAME!">Мы атакуем $NAME!</STRING>
+	<STRING en="the enemy">врага</STRING>
+	<STRING en="Thank you! Hurry, I am holding the city.">Спасибо! Поторопитесь, я удерживаю город.</STRING>
+	<STRING en="Understood. I will hold as long as I can.">Понял. Буду держаться, сколько смогу.</STRING>
+	<STRING en="GATHER HERE">СБОР ЗДЕСЬ</STRING>
+	<STRING en="ATTACK HERE">АТАКОВАТЬ ЗДЕСЬ</STRING>
+	<STRING en="DEFEND HERE">ОБОРОНЯТЬ ЗДЕСЬ</STRING>
 </ROOT>

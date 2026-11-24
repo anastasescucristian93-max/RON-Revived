@@ -178,4 +178,17 @@
 	<STRING en="Oil">Petrol</STRING>
 	<STRING en="Thank you, ally!">Mulțumesc, aliatule!</STRING>
 	<STRING en="Understood. I will manage.">Am înțeles. Mă descurc.</STRING>
+	<STRING en="I am gathering my army for an attack. Will you join me? I will wait for your troops.">Îmi adun armata pentru un atac. Te alături? Îți aștept trupele.</STRING>
+	<STRING en="My city is under attack by a large army! Will you help me defend it?">Orașul meu e atacat de o armată mare! Mă ajuți să-l apăr?</STRING>
+	<STRING en="Good. My army waits for you at the signal.">Bine. Armata mea te așteaptă la semnal.</STRING>
+	<STRING en="Then I attack alone.">Atunci atac singur.</STRING>
+	<STRING en="Your troops are here. We march together!">Trupele tale au sosit. Mărșăluim împreună!</STRING>
+	<STRING en="I cannot wait any longer. My army marches now.">Nu mai pot aștepta. Armata mea pornește acum.</STRING>
+	<STRING en="We attack $NAME!">Atacăm: $NAME!</STRING>
+	<STRING en="the enemy">inamicul</STRING>
+	<STRING en="Thank you! Hurry, I am holding the city.">Mulțumesc! Grăbește-te, țin orașul.</STRING>
+	<STRING en="Understood. I will hold as long as I can.">Am înțeles. Rezist cât pot.</STRING>
+	<STRING en="GATHER HERE">ADUNARE AICI</STRING>
+	<STRING en="ATTACK HERE">ATACĂ AICI</STRING>
+	<STRING en="DEFEND HERE">APĂRĂ AICI</STRING>
 </ROOT>

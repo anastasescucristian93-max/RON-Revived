@@ -496,6 +496,14 @@ void allyreq_panel_create(char *iface, char *parent); /* qol.c, with the assista
 int allyreq_panel_is(void *btn);
 int allyreq_panel_redraw(void *btn);            /* panel.c's IFaceButton::on_redraw hook */
 void allyreq_panel_click(void);                 /* qol.c's on_button_clicked hook */
+int allyreq_marks_wanted(void);                 /* the allies' marks on the map (this machine only): */
+void allyreq_draw_ground(void);                 /*   nukefx.c's Nuke::draw_underlays hook, the rings */
+void allyreq_draw_labels(void);                 /*   rankfx.c's Console::on_redraw, the text */
+int rankfx_project(float x, float y, float z, float *sx, float *sy); /* world -> map window pixels */
+void allyreq_install(void);                     /* joint attacks: Army::do_mustering's release_mustering call */
+extern int g_allyreq_chat;                      /* g_hooks "ally_chat": the answers to attack / defence requests */
+extern void *g_orig_ally_chat;
+int __attribute__((thiscall)) hk_ally_chat(void *pkg, char *cmd);
 /* play_button.c */
 extern int g_play_enabled;
 void play_load_config(const char *ini_path);

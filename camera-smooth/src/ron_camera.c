@@ -1259,6 +1259,10 @@ static hook_t g_hooks[] = {
        push ebp / mov ebp,esp / push -1 | push offset ehhandler (address relocated, not compared) */
     { "lobby_row", 0x0096D4B0u, { 0x55, 0x8B, 0xEC, 0x6A, 0xFF, 0x68 }, 6, 5,
       (void *)hk_lobby_row, &g_orig_lobby_row, &g_lobby_list_enabled },
+    /* CommandPackage::process_chat (allyreq.c, the answers to allied requests):
+       push ebp / mov ebp,esp / push -1 | push offset ehhandler (address relocated, not compared) */
+    { "ally_chat", 0x009454F0u, { 0x55, 0x8B, 0xEC, 0x6A, 0xFF, 0x68 }, 6, 5,
+      (void *)hk_ally_chat, &g_orig_ally_chat, &g_allyreq_chat },
     /* add_windows: push ebp / mov ebp,esp / and esp,-8 / sub esp,0x2c */
     { "add_windows", 0x00809610u, { 0x55, 0x8B, 0xEC, 0x83, 0xE4, 0xF8, 0x83, 0xEC, 0x2C }, 9, 9,
       (void *)hk_add_windows, (void **)&g_orig_add_windows, &g_qol_enabled },
@@ -1630,6 +1634,7 @@ static void install_hooks(void)
     prodbar_install();
     facing_install();
     play_install();
+    allyreq_install(); /* after the hook table: needs its ally_chat hook */
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
 }
 

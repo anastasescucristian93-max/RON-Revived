@@ -219,6 +219,17 @@ static int anchor(char *o, float *sx, float *sy)
         y = (float)(*(int *)(o + 0x14) ^ COORD_KEY);
         z = (float)((*(int *)(o + OBJ_Z) ^ COORD_KEY) + 0x180);
     }
+    return rankfx_project(x, y, z, sx, sy);
+}
+
+/* A world point (x, y, z in world units) in the map window's logical pixels, as
+   MiscAccess::world_to_console does; 0 when it is behind the camera. allyreq.c's map marks too. */
+int rankfx_project(float x, float y, float z, float *sx, float *sy)
+{
+    const char *cam = *(const char **)VA(VA_ACTIVE_CAMERA), *gs = *(const char **)VA(VA_GRAPHSYS);
+    const char *con = *(const char **)VA(VA_CONSOLE);
+    if (!cam || !gs || !con)
+        return 0;
     /* MiscAccess::world_to_console */
     const float *m = (const float *)(cam + CAM_VIEWPROJ);
     float cx = m[4] * y + m[0] * x + m[8] * z + m[12];
@@ -377,6 +388,7 @@ __attribute__((thiscall)) static void rankfx_redraw(void *console)
     cityrepair_draw_overhead();
     ranks_draw_insignia_queue();
     ranks_draw_hero_marks(); /* the Survival heroes' medallions */
+    allyreq_draw_labels();   /* the allies' "ATTACK HERE" marks */
     (*depth)--;
 }
 
@@ -387,7 +399,7 @@ void rankfx_install(void)
     if (g_mode && !g_ranks_enabled)
         g_mode = 0;
     if (!g_mode && !g_prodbar_enabled && !g_ranks_enabled && !g_heal_enabled &&
-        !cityrepair_wanted() && !minimap_frame_wanted())
+        !cityrepair_wanted() && !minimap_frame_wanted() && !allyreq_marks_wanted())
         /* ranks: the insignia beside health bars; heal: its crosses; city repair: its pliers; the minimap's frame */
         return;
     static const unsigned char sig[5] = { 0xC3, 0xCC, 0xCC, 0xCC, 0xCC }; /* ret, int3 padding */

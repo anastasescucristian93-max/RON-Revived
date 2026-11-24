@@ -206,3 +206,19 @@ Oil
 # allyreq.c: the ally's answer in the chat
 Thank you, ally!
 Understood. I will manage.
+# allyreq.c: an ally asks you to join an attack or to help defend a city
+I am gathering my army for an attack. Will you join me? I will wait for your troops.
+My city is under attack by a large army! Will you help me defend it?
+# allyreq.c: the ally's answers in the chat ($NAME = the enemy player's name)
+Good. My army waits for you at the signal.
+Then I attack alone.
+Your troops are here. We march together!
+I cannot wait any longer. My army marches now.
+We attack $NAME!
+the enemy
+Thank you! Hurry, I am holding the city.
+Understood. I will hold as long as I can.
+# allyreq.c: the mark on the map where an ally wants you (large text over the spot)
+GATHER HERE
+ATTACK HERE
+DEFEND HERE

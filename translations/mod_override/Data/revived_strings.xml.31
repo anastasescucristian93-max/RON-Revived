@@ -178,4 +178,17 @@
 	<STRING en="Oil">Petrol</STRING>
 	<STRING en="Thank you, ally!">Teşekkürler, müttefik!</STRING>
 	<STRING en="Understood. I will manage.">Anlaşıldı. Bir yolunu bulurum.</STRING>
+	<STRING en="I am gathering my army for an attack. Will you join me? I will wait for your troops.">Bir saldırı için ordumu topluyorum. Bana katılır mısınız? Birliklerinizi bekleyeceğim.</STRING>
+	<STRING en="My city is under attack by a large army! Will you help me defend it?">Şehrim büyük bir ordunun saldırısı altında! Savunmama yardım eder misiniz?</STRING>
+	<STRING en="Good. My army waits for you at the signal.">Güzel. Ordum sizi işaretin olduğu yerde bekliyor.</STRING>
+	<STRING en="Then I attack alone.">O hâlde tek başıma saldırırım.</STRING>
+	<STRING en="Your troops are here. We march together!">Birlikleriniz geldi. Birlikte yürüyoruz!</STRING>
+	<STRING en="I cannot wait any longer. My army marches now.">Daha fazla bekleyemem. Ordum şimdi yürüyor.</STRING>
+	<STRING en="We attack $NAME!">Saldırıyoruz: $NAME!</STRING>
+	<STRING en="the enemy">düşman</STRING>
+	<STRING en="Thank you! Hurry, I am holding the city.">Teşekkürler! Acele edin, şehri tutuyorum.</STRING>
+	<STRING en="Understood. I will hold as long as I can.">Anlaşıldı. Dayanabildiğim kadar dayanacağım.</STRING>
+	<STRING en="GATHER HERE">BURADA TOPLAN</STRING>
+	<STRING en="ATTACK HERE">BURAYA SALDIR</STRING>
+	<STRING en="DEFEND HERE">BURAYI SAVUN</STRING>
 </ROOT>
