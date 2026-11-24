@@ -1,5 +1,6 @@
 # Uninstalls RON Revived: removes the files listed in RON_Revived_files.txt and puts back the game
 # files kept in RON_Revived_backup\.
+# Runs on PowerShell 2.0 (Windows 7 without updates): no -Raw, -File or -Directory.
 param([string]$GameDir)
 
 $ErrorActionPreference = "Stop"
@@ -14,7 +15,7 @@ function Find-GameDir {
         $libs += $steam
         $vdf = Join-Path $steam "steamapps\libraryfolders.vdf"
         if (Test-Path $vdf) {
-            foreach ($m in [regex]::Matches((Get-Content -Raw $vdf), '"path"\s+"([^"]+)"')) {
+            foreach ($m in [regex]::Matches([IO.File]::ReadAllText($vdf), '"path"\s+"([^"]+)"')) {
                 $libs += $m.Groups[1].Value -replace '\\\\', '\'
             }
         }
@@ -45,7 +46,7 @@ if (Get-Process -ErrorAction SilentlyContinue riseofnations) {
 }
 
 $n = 0
-foreach ($rel in Get-Content $manifest) {
+foreach ($rel in @(Get-Content $manifest)) {
     $rel = $rel.Trim()
     if (-not $rel) { continue }
     Remove-Item -ErrorAction SilentlyContinue (Join-Path $GameDir $rel)
@@ -58,7 +59,7 @@ foreach ($f in "ron_camera.log", "ron_camera.old.log", "ron_zoom_trace.csv", "RO
 # the game files it had replaced
 $restored = 0
 if (Test-Path $backup) {
-    foreach ($f in Get-ChildItem -Recurse -File $backup) {
+    foreach ($f in @(Get-ChildItem -Recurse $backup | Where-Object { -not $_.PSIsContainer })) {
         $rel = $f.FullName.Substring($backup.Length + 1)
         $dst = Join-Path $GameDir $rel
         New-Item -ItemType Directory -Force (Split-Path $dst) | Out-Null
@@ -86,7 +87,7 @@ if (Test-Path $laaMark) {
 foreach ($top in "mod_override", "nation_art") {
     $dir = Join-Path $GameDir $top
     if (-not (Test-Path $dir)) { continue }
-    Get-ChildItem -Recurse -Directory $dir | Sort-Object { $_.FullName.Length } -Descending | ForEach-Object {
+    Get-ChildItem -Recurse $dir | Where-Object { $_.PSIsContainer } | Sort-Object { $_.FullName.Length } -Descending | ForEach-Object {
         if (-not (Get-ChildItem -Force $_.FullName)) { Remove-Item $_.FullName }
     }
     if (-not (Get-ChildItem -Force $dir)) { Remove-Item $dir }

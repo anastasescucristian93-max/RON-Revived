@@ -7,10 +7,11 @@
 # The extras (optional parts, such as the nation music) are not in the whole zip: the launcher's
 # Extras tray installs them through RON_Revived_extras.ps1, which passes -Parts <extra>, and
 # removes them with -Remove <extra>. A whole install keeps the extras already installed.
+# Runs on PowerShell 2.0 (Windows 7 without updates): no $PSScriptRoot, -Raw, -File or -Directory.
 param([string]$GameDir, [string]$Payload, [string]$Parts, [string]$Remove)
 
 $ErrorActionPreference = "Stop"
-$here = $PSScriptRoot
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 if (-not $payload) { $payload = Join-Path $here "game" }
 # the optional parts (package\build_package.py EXTRAS)
 $extras = @("music")
@@ -40,7 +41,7 @@ function Find-GameDir {
         $libs += $steam
         $vdf = Join-Path $steam "steamapps\libraryfolders.vdf"
         if (Test-Path $vdf) {
-            foreach ($m in [regex]::Matches((Get-Content -Raw $vdf), '"path"\s+"([^"]+)"')) {
+            foreach ($m in [regex]::Matches([IO.File]::ReadAllText($vdf), '"path"\s+"([^"]+)"')) {
                 $libs += $m.Groups[1].Value -replace '\\\\', '\'
             }
         }
@@ -78,12 +79,12 @@ $manifest = Join-Path $GameDir $manifestName
 $backup = Join-Path $GameDir $backupName
 $old = @{}
 if (Test-Path $manifest) {
-    foreach ($l in Get-Content $manifest) { if ($l.Trim()) { $old[$l.Trim().ToLower()] = $l.Trim() } }
+    foreach ($l in @(Get-Content $manifest)) { if ($l.Trim()) { $old[$l.Trim().ToLower()] = $l.Trim() } }
 }
 $partsFile = Join-Path $GameDir "RON_Revived_parts.txt"
 $oldParts = @{}
 if (Test-Path $partsFile) {
-    foreach ($l in Get-Content $partsFile) { if ($l -match '^\s*([A-Za-z0-9]+)\s*=\s*(\S+)') { $oldParts[$Matches[1].ToLower()] = $Matches[2] } }
+    foreach ($l in @(Get-Content $partsFile)) { if ($l -match '^\s*([A-Za-z0-9]+)\s*=\s*(\S+)') { $oldParts[$Matches[1].ToLower()] = $Matches[2] } }
 }
 
 # -Remove <extra>: its files go, the game files they had replaced come back
@@ -122,8 +123,24 @@ if ((Test-Path $dll) -and -not $old.ContainsKey("winmm.dll") -and -not (Test-Pat
     exit 1
 }
 
+# winmm.dll needs the Universal C Runtime (ucrtbase.dll). Windows 10 and 11 have it; Windows 7 and 8
+# get it only through a Windows update or a Visual C++ runtime. Without it the game cannot load
+# winmm.dll and does not start at all, so nothing is installed.
+if ([Environment]::OSVersion.Version.Major -lt 10) {
+    $sys32 = Join-Path $env:windir "SysWOW64"
+    if (-not (Test-Path $sys32)) { $sys32 = Join-Path $env:windir "System32" }
+    if (-not (Test-Path (Join-Path $sys32 "ucrtbase.dll"))) {
+        Write-Host "This Windows is missing the Universal C Runtime, which RON Revived needs:"
+        Write-Host "without it the game would not start. Install one of these from Microsoft, then run"
+        Write-Host "install.bat again (nothing was changed):"
+        Write-Host "  - Microsoft Visual C++ 2015 Redistributable (x86), or"
+        Write-Host "  - the Windows update KB2999226 (Update for Universal C Runtime in Windows)."
+        exit 1
+    }
+}
+
 $smoothCamera = (Test-Path (Join-Path $GameDir "ron_camera.ini")) -and -not (Test-Path $manifest)
-$files = Get-ChildItem -Recurse -File $payload | ForEach-Object { $_.FullName.Substring($payload.Length + 1) }
+$files = Get-ChildItem -Recurse $payload | Where-Object { -not $_.PSIsContainer } | ForEach-Object { $_.FullName.Substring($payload.Length + 1) }
 $new = @{}
 $installed = New-Object System.Collections.Generic.List[string]
 $kept = $false
@@ -241,7 +258,8 @@ foreach ($f in "riseofnations.exe", "patriots.exe") {
 $acp = [int](Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage").ACP
 if ($acp -ne 65001) {
     $enc = [Text.Encoding]::GetEncoding($acp)
-    $short = try { (New-Object -ComObject Scripting.FileSystemObject).GetFolder($GameDir).ShortPath } catch { $null }
+    $short = $null
+    try { $short = (New-Object -ComObject Scripting.FileSystemObject).GetFolder($GameDir).ShortPath } catch { }
     $fits = { param($p) $p -and $enc.GetString($enc.GetBytes($p)) -eq $p }
     if (-not (& $fits $GameDir) -and -not (& $fits $short)) {
         Write-Host ""
