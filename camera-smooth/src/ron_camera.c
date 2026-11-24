@@ -1635,6 +1635,7 @@ static void install_hooks(void)
     facing_install();
     play_install();
     allyreq_install(); /* after the hook table: needs its ally_chat hook */
+    synclog_install();
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
 }
 

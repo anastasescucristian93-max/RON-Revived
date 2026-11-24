@@ -500,6 +500,7 @@ int allyreq_marks_wanted(void);                 /* the allies' marks on the map 
 void allyreq_draw_ground(void);                 /*   nukefx.c's Nuke::draw_underlays hook, the rings */
 void allyreq_draw_labels(void);                 /*   rankfx.c's Console::on_redraw, the text */
 int rankfx_project(float x, float y, float z, float *sx, float *sy); /* world -> map window pixels */
+void synclog_install(void);                     /* synclog.c: desync logs survive wide letters in names */
 void allyreq_install(void);                     /* joint attacks: Army::do_mustering's release_mustering call */
 extern int g_allyreq_chat;                      /* g_hooks "ally_chat": the answers to attack / defence requests */
 extern void *g_orig_ally_chat;
