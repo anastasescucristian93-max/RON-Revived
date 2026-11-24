@@ -1126,7 +1126,7 @@
         -->
       </WINDOW>
     </GAMESPYLOGIN>
-    <GAMESPYCREATE name="gamespycreate" title="Create Game" left="0" top="0" width="670" height="248">
+    <GAMESPYCREATE name="gamespycreate" title="Create Game" left="0" top="0" width="600" height="248">
       <IFACETEXLOAD id="TEX_REVIVED_MENU" file=".\art\revived\menu_parts.tga" pixformat="PF_32"/>
       <STYLE NO_SET_RENDERTARGET="1"/>
       <IFACETEXLOAD id="TEX_GAMESPY" file="art\wrapper_pieces_gamespy.tga"/>
@@ -1183,12 +1183,12 @@
         <IFACETEX name="edge3" texture="TEX_GAMESPY" left="209" top="19" width="18" height="265"/>
       </IFACEBORDER>
       <!--Various option controls-->
-      <POSITIONING x="253" y="80" inc_y="30">
-        <EDITBOX name="description" title="Description: " width="370" height="21"/>
+      <POSITIONING x="235" y="80" inc_y="30">
+        <EDITBOX name="description" title="Description: " width="340" height="21"/>
         <COMBOBOX name="max_players" title="Max Players: " width="200" height="21"/>
 		<COMBOBOX name="visibility" title="Game Visibility: " width="200" height="21"/>		
       </POSITIONING>
-      <POSITIONING x="74" y="170" inc_y="30">
+      <POSITIONING x="56" y="170" inc_y="30">
 		<CHECK name="ranked" title="Ranked: " width="200" height="21">
            <FONT size="14"/>
            <FONTCOLOR r="255" g="255" b="255"/>
@@ -1257,7 +1257,7 @@
           </CHECKBOX>
         </POSITIONING>
       </POSITIONING2>
-      <BUTTON name="create" title="Create" left="20" bottom_inverse="15" width="400" height="-30">
+      <BUTTON name="create" title="Create" left="166" bottom_inverse="15" width="124" height="-30">
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>
@@ -1265,7 +1265,7 @@
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON_UNUSED>
-      <BUTTON name="cancel" title="Cancel" right_inverse="20" bottom_inverse="15" width="-220" height="-30">
+      <BUTTON name="cancel" title="Cancel" right_inverse="166" bottom_inverse="15" width="-124" height="-30">
         <FONT size="18"/>
         <FONTCOLOR r="255" g="255" b="255"/>
       </BUTTON>

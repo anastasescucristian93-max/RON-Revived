@@ -965,6 +965,7 @@ def build_popup_xml(game, name, rects, flags):
         src = qol_buttons(src)
         src = lobby_layout(src)
         src = steel_buttons(src)
+        src = create_dialog(src)
     if name == "setupwin.xml":
         src = setup_margins(src)
         src = setup_flags(src, flags)
@@ -1282,6 +1283,40 @@ def lobby_layout(src):
              '          <FONTCOLOR r="255" g="255" b="255"/>\n        </BUTTON>' + c[tabs_end:])
         src = src[:s] + c + src[e:]
     return src
+
+
+# Create Game (the lobby's Create): its labels end at x 253 of a 670 wide window, so the window
+# was mostly empty on the left, and Create was 400 wide beside a 220 wide Cancel. The game draws
+# each label right-aligned against its field, so the label column must fit the longest
+# translation (Italian "Numero massimo giocatori:", 204 in Georgia 14 bold): the fields start at
+# 25 + 204 + 6, the window ends 25 past the Description field, Ranked's box sits in the fields'
+# column (a CHECK draws its box at the right end of its width), and Create / Cancel are one size
+# (German "Abbrechen" 101 in Georgia 18 + 2 x 10, and "Create" + 2 x 24), centred, 20 apart.
+CREATE_W, CREATE_FIELD_X, CREATE_DESC_W, CREATE_BTN_W = 600, 235, 340, 124
+CREATE_DIALOG = [
+    ('<GAMESPYCREATE name="gamespycreate" title="Create Game" left="0" top="0" width="670" height="248">',
+     f'<GAMESPYCREATE name="gamespycreate" title="Create Game" left="0" top="0" width="{CREATE_W}" height="248">'),
+    ('<POSITIONING x="253" y="80" inc_y="30">', f'<POSITIONING x="{CREATE_FIELD_X}" y="80" inc_y="30">'),
+    ('<EDITBOX name="description" title="Description: " width="370" height="21"/>',
+     f'<EDITBOX name="description" title="Description: " width="{CREATE_DESC_W}" height="21"/>'),
+    ('<POSITIONING x="74" y="170" inc_y="30">', f'<POSITIONING x="{CREATE_FIELD_X + 21 - 200}" y="170" inc_y="30">'),
+    ('<BUTTON name="create" title="Create" left="20" bottom_inverse="15" width="400" height="-30">',
+     f'<BUTTON name="create" title="Create" left="{CREATE_W // 2 - 10 - CREATE_BTN_W}" bottom_inverse="15" '
+     f'width="{CREATE_BTN_W}" height="-30">'),
+    ('<BUTTON name="cancel" title="Cancel" right_inverse="20" bottom_inverse="15" width="-220" height="-30">',
+     f'<BUTTON name="cancel" title="Cancel" right_inverse="{CREATE_W // 2 - 10 - CREATE_BTN_W}" bottom_inverse="15" '
+     f'width="-{CREATE_BTN_W}" height="-30">'),
+]
+
+
+def create_dialog(src):
+    start = src.index("<GAMESPYCREATE ")
+    end = src.index("</GAMESPYCREATE>", start)
+    block = src[start:end]
+    for old, new in CREATE_DIALOG:
+        assert block.count(old) == 1, old
+        block = block.replace(old, new)
+    return src[:start] + block + src[end:]
 
 
 # Every button of interface.xml still on the game's glossy pieces (wrapper_pieces_02) gets the
