@@ -176,3 +176,33 @@ Coming soon
 Host
 # lobby_list.c: the Game Browser, the title of the column with the host's RON Revived version
 Mod
+# allyreq.c: a computer ally's request panel ($NAME = the ally's name)
+$NAME asks for your help
+Your ally
+Accept
+Decline
+%d s to answer
+# allyreq.c: the request ($AGE = the Age, $NUM = the amount, $RES = the resource)
+I am saving for the $AGE, but I need $NUM more $RES. Can you send it?
+I am building a Wonder, but I need $NUM more $RES. Can you send it?
+I want to research a new technology, but I need $NUM more $RES. Can you send it?
+I want to build, but I need $NUM more $RES. Can you send it?
+My economy needs $NUM more $RES. Can you send it?
+My army needs $NUM more $RES. Can you send it?
+# allyreq.c: the Ages and resources inside the request
+Classical Age
+Medieval Age
+Gunpowder Age
+Enlightenment Age
+Industrial Age
+Modern Age
+Information Age
+Food
+Timber
+Wealth
+Knowledge
+Metal
+Oil
+# allyreq.c: the ally's answer in the chat
+Thank you, ally!
+Understood. I will manage.

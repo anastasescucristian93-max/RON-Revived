@@ -109,6 +109,19 @@ static void *find_flag(char *sw, int tribe)
     return find_tex(sw, name);
 }
 
+/* The badge of a nation box's other choice (Random, Offensive, Defensive, Economic, X-Pack:
+   ids g_num_tribes.. in TribeIndex order), or the flag of a nation; NULL for anything else */
+static const char *const k_choice_tex[] = { "flag_random", "flag_offensive", "flag_defensive", "flag_economic",
+                                            "flag_xpack" };
+
+static void *find_choice(char *sw, int id)
+{
+    if (id >= 0 && id < g_num_tribes)
+        return find_flag(sw, id);
+    id -= g_num_tribes;
+    return id >= 0 && id < 5 ? find_tex(sw, k_choice_tex[id]) : NULL;
+}
+
 static int is_nation_combo(char *sw, char *combo)
 {
     /* compared by address only: for a list that is not in a combo, `combo` is not an object */
@@ -124,6 +137,13 @@ void *flags_tex(int tribe)
 {
     char *sw = *(char **)VA(VA_SETUPWIN);
     return sw && tribe >= 0 && tribe < g_num_tribes ? find_flag(sw, tribe) : NULL;
+}
+
+/* for nation_grid.c: the flag or badge of any nation box item (find_choice) */
+void *flags_choice_tex(int id)
+{
+    char *sw = *(char **)VA(VA_SETUPWIN);
+    return sw ? find_choice(sw, id) : NULL;
 }
 
 /* Draws a flag in front of the window's other pieces. The render manager batches by
@@ -184,7 +204,7 @@ static int flag_write(void *buf, const void *str, const short *rect, int len)
     void *tex = NULL;
     if (flag) {
         int id = g_flag_item < 0 ? *(int *)(g_flag_combo + COMBO_SEL) : g_flag_item;
-        tex = id >= 0 && id < g_num_tribes ? find_flag(sw, id) : NULL;
+        tex = find_choice(sw, id); /* a nation's flag, or Random's... badge */
     }
     /* in a list every row moves, flag or not (Random), so the names stay in one column;
        a centred field centres the flag and the name together */

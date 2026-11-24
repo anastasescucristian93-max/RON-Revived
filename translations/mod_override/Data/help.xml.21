@@ -236,6 +236,81 @@
          <BULLET/>Darmowe ulepszenia do Milicji, Minutemana i Partyzanta.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{AZTEKOWIE}<LINE/>{Unikalne jednostki:} Atlatlowie, Królewscy atlatlowie, Atlatlowie xopilli, Piechota jaguarów, Szturmowa piechota jaguarów</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAJOWIE}<LINE/>{Unikalne jednostki:} Procarze balamob, Królewscy procarze balamob, Orli procarze balamob, Działo bezodrzutowe, Pocisk ppanc. Dragon</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{INKOWIE}<LINE/>{Unikalne jednostki:} Pałkarze inti, Maczugnicy inti, Moździerz, Moździerz oblężniczy</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTU}<LINE/>{Unikalne jednostki:} Umpakati, Umpakati yangombi, Impi, Myśliwiec Hawk, Myśliwiec Eagle</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NUBIJCZYCY}<LINE/>{Unikalne jednostki:} Łucznicy kuszyccy, Łucznik na wielbłądzie, Królewscy łucznicy kuszyccy, Ciężki łucznik na wielbłądzie, Łucznicy Apedemaka, Najeźdźca na wielbłądzie, Korpus wielbłądzi</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{GRECY}<LINE/>{Unikalne jednostki:} Hetajr, Królewski hetajr, Stradiota, Królewski stradiota</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{RZYMIANIE}<LINE/>{Unikalne jednostki:} Legiony, Legiony Cezara, Gwardia pretoriańska</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{EGIPCJANIE}<LINE/>{Unikalne jednostki:} Rydwan, Lekka jazda wielbłądzia, Ciężki rydwan, Wojownik na wielbłądzie, Mameluk, Elitarny wojownik na wielbłądzie, Królewski mameluk</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TURCY}<LINE/>{Unikalne jednostki:} Janczarzy, Bombarda Bazylika, Królewscy janczarzy, Armata Bazylika</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{HISZPANIE}<LINE/>{Unikalne jednostki:} Scutari, Królewscy scutari, Tercios, Królewskie tercios</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRANCUZI}<LINE/>{Unikalne jednostki:} Chevalier, Ciężki chevalier, Konny grenadier, Konny grenadier gwardii</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{BRYTYJCZYCY}<LINE/>{Unikalne jednostki:} Długołucznicy, Królewscy długołucznicy, Królewscy yeomeni, Górale szkoccy, Black Watch, Bombowiec Lancaster</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{NIEMCY}<LINE/>{Unikalne jednostki:} Solduri, Barbarzyńcy, Wandalowie, Lancknechci, Volksgrenadierzy, MG42, Czołg Tiger, Czołg Leopard</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{ROSJANIE}<LINE/>{Unikalne jednostki:} Lansjer rusiński, Kozak, Kozak doński, Piechota Czerwonej Gwardii, Katiusza, Piechota uderzeniowa, Czołg T80</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{CHIŃCZYCY}<LINE/>{Unikalne jednostki:} Ogniste lance, Ciężkie ogniste lance, Muszkieterowie mandżurscy, Strzelcy mandżurscy, Piechota mandżurska</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{JAPOŃCZYCY}<LINE/>{Unikalne jednostki:} Włócznicy ashigaru, Bushi, Elitarni bushi, Samuraje, Samuraje strzelcy</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{KOREAŃCZYCY}<LINE/>{Unikalne jednostki:} Hwarang, Elitarni hwarang, Płonąca strzała, Królewscy hwarang, Ciężka płonąca strzała, Elitarni królewscy hwarang</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MONGOŁOWIE}<LINE/>{Unikalne jednostki:} Koczownik, Koczownik stepowy, Horda, Złota Orda</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{IROKEZI}<LINE/>{Unikalne jednostki:} Takohs, Włócznicy, Włócznicy mohawk, Akweks, Ciężcy włócznicy mohawk, Elitarni włócznicy mohawk, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTA}<LINE/>{Unikalne jednostki:} Sunka Wakan, Koń Orlego Pióra, Jazda z muszkietami, Jazda z repetierami</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{AMERYKANIE}<LINE/>{Unikalne jednostki:} Marines, Strzelcy piechoty morskiej, Piechota morska, Szturmowi marines</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{HINDUSI}<LINE/>{Unikalne jednostki:} Słoń bojowy, Kornak, Kornak z bronią palną, Kornak z kolubryną</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{HOLENDRZY}<LINE/>{Unikalne jednostki:} Uzbrojona karawana, Uzbrojony kupiec, Uzbrojony wóz zaopatrzeniowy, Bryg, Fluita, Kliper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERSOWIE}<LINE/>{Unikalne jednostki:} Nieśmiertelni, Anusiya, Słoń bojowy, Athanatoi, Kornak, Nieśmiertelny z arkebuzem, Kornak z bronią palną, Kornak z kolubryną</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{RUMUNIA}<LINE/>{Unikalne jednostki:} Falkarze, Comati, Lansjerzy roksolańscy, Voinici, Viteji, Darabani, Automitraliera, Dorobanti, Renault FT, Vanatori de Munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

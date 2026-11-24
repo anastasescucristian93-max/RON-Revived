@@ -8,6 +8,31 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## `install.bat` on Windows 7 (`package`), new 2026-11-24
+
+- `install.bat` and `uninstall.bat` now also run on Windows 7 without updates (PowerShell 2.0). Before, the installer stopped at once there.
+- On Windows 7 and 8 the installer first checks for the Universal C Runtime, which the mod needs. Without it the game would not start at all, so the installer stops, changes nothing and names what to install: the Microsoft Visual C++ 2015 Redistributable (x86) or the Windows update KB2999226. Windows 10 and 11 always have it.
+- The launcher's Update button and the Extras tray need PowerShell 3 or newer; on Windows 7 install Windows Management Framework 5.1 from Microsoft for them, or install new versions by hand.
+- Only the installer changes: it plays with players on any version.
+
+## Computer allies ask you for resources (`camera-smooth`, `ui-theme`, `romania`, `translations`), new 2026-11-24
+
+- A computer ally that is short of a resource for what it is saving for (the next Age, a Wonder, research, buildings, its army or its economy) now asks you for it. A panel opens near the top of the screen with the ally's nation medallion, its name and the request ("I am saving for the Medieval Age, but I need 300 more Metal. Can you send it?"), a gold countdown bar and **Accept** / **Decline** buttons.
+- **Accept** sends the resources with the game's own tribute, as the tribute buttons do; the ally thanks you in the chat. **Decline** closes the panel and the ally says it will manage. With no answer, the panel closes by itself after 60 seconds of game time (a paused game stops the clock).
+- An ally asks only for what it really lacks (rounded up to 50, at most 100 + 150 per Age), only when it has lacked it for the same thing for a while, and only from an allied human who would still keep 200 of it. Each ally asks at most once every 3 minutes, and none asks in the first 5 minutes of a game. With several requests, they come one after another.
+- Settings under `[gameplay]` in `ron_camera.ini`: `ally_requests=0` turns it off; `ally_request_answer`, `ally_request_minutes`, `ally_request_first` and `ally_request_wish` set the times.
+- In all ten languages.
+- Plays with players on any version: the requests only show on your screen, and an accepted one is the game's ordinary tribute.
+
+## Nation tooltips and badges in the flag picker (`camera-smooth`, `romania`, `ui-theme`, `translations`), new 2026-11-24
+
+- Resting the mouse on a flag in the nation picker now shows a tooltip beside the panel: the nation's name as a gold heading, its unique units (in Age order, by the names you see in the game), and under them the nation's powers with their numbers. The Random, Offensive, Defensive, Economic and X-Pack buttons show what they pick.
+- Before, the tooltip did not come up in the flag picker at all.
+- Random, Offensive, Defensive, Economic and X-Pack are now round badges in the flags' style (a question mark, crossed swords, a shield with a tower, coins and wheat, a crown), cards of the flags' size in a column left of the nations, without text (the tooltip names them). The badge also shows in the closed nation box when one of them is chosen.
+- The card under the mouse lights up again: in the picker the mouse was not followed at all.
+- In all ten languages.
+- Only the setup screen's display changes: it plays with players on any version.
+
 ## The Game Browser in the theme's style (`ui-theme`, `camera-smooth`), new 2026-11-24
 
 - The multiplayer Game Browser now sits inside the theme's frame instead of running to the screen's edges, and its red title ribbon is only a little longer than its title.
@@ -592,7 +617,7 @@ These change only your interface, apart from auto-trade, training from a mixed s
 - Game setup screen: the players and rules panels sit further from the screen edges (4% instead of 2% at the sides, 6.5% at the top), clear of the screen frame's corner brackets, and their frames are steel all round (a strip on the right side was still bronze).
 - Game setup screen: **Start and Back** are wide buttons with larger text, in a holder twice the original width at the bottom right of the players panel (single player and LAN setup). The holder was then made 10% wider and 7% taller, with the buttons centred in it.
 - **Nation flags** on the game setup screen: each nation box shows the nation's round flag left of its name, and so does every row of the open nation list. The nation column is wider (the player name column gives up the space). All 24 nations have a flag. The flags need both this theme and `winmm.dll` (`nation_flags` in `ron_camera.ini`).
-- **Nation picker as flag cards:** opening a nation box on the game setup screen shows a panel instead of the long list: the 24 nations as a grid of round flags (6 per row, no names), and Random, Offensive, Defensive, Economic and X-Pack as buttons on its left. The card under the mouse lights up and the chosen nation has a gold frame. Hovering a flag shows the game's own tooltip for that nation (its name and powers) beside the panel. Click a card to choose it; the keyboard still works as in the list. Needs the flags above (`nation_grid` in `ron_camera.ini`).
+- **Nation picker as flag cards:** opening a nation box on the game setup screen shows a panel instead of the long list: the 24 nations as a grid of round flags (6 per row, no names), and Random, Offensive, Defensive, Economic and X-Pack as buttons on its left. The card under the mouse lights up and the chosen nation has a gold frame. Hovering a flag shows a tooltip for that nation beside the panel (its name, unique units and powers; see "Nation tooltips in the flag picker"). Click a card to choose it; the keyboard still works as in the list. Needs the flags above (`nation_grid` in `ron_camera.ini`).
   - The card under the mouse now glows with pulsing gold rings. Fix attempt for the tooltip not showing over the flags: its hover zone is now matched to where the game reads the mouse (with interface scaling the two differ).
 - The nation flags have clean round edges (no white fringe or bits of background) and are twice as sharp. The grey ring that still showed around them in the flag panel is gone.
 - Dialog buttons (OK / Cancel in pop-ups such as "Are you sure you want to quit?", and the buttons of the game setup, options and Workshop screens) are steel plates in the same style instead of blue.

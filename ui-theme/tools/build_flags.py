@@ -35,7 +35,9 @@ ATLAS = "art\\revived\\nation_flags.tga"
 TRIBES = ["aztecs", "maya", "inca", "bantu", "nubians", "greeks", "romans", "egyptians", "turks",
           "spanish", "french", "british", "germans", "russians", "chinese", "japanese", "koreans",
           "mongols", "iroquois", "lakota", "americans", "indians", "dutch", "persian",
-          "romania", "italy"]
+          "romania", "italy",
+          # the nation box's other choices (nation_grid.c, flags.c): "flag_<key>"
+          "random", "offensive", "defensive", "economic", "xpack"]
 NUM_TRIBES = 25
 
 # Medallions per sheet, 3 per row, left to right, top row first; None skips one (flags_2 has
@@ -46,6 +48,9 @@ SHEETS = {
     "flags_3.jpg": ["romans", "romania", "russians", "spanish", "turks", "americans"],
     "flags_4.jpg": ["iroquois", "lakota", "dutch", "persian", "indians", "italy"],
     "flags_5.jpg": ["inca", "koreans", "maya"],
+    # Random (question mark), Offensive (crossed swords), Defensive (shield with a tower),
+    # Economic (coins and wheat), X-Pack (crown); the sixth medallion is blank
+    "badges_1.webp": ["random", "offensive", "defensive", "economic", "xpack", None],
 }
 
 

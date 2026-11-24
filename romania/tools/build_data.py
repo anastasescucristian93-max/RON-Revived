@@ -16,7 +16,8 @@ Romania is a 25th nation, tribe 24 (the exe side is camera-smooth\src\romania.c)
   (Cossacks, Red Guards, T-80, Katyusha...). Lines the Russians do not have, Romania does not
   have either.
 - Data\help.xml: TRIBE24, the nation power shown in the setup screen and the game, with the
-  numbers read from rules.xml.
+  numbers read from rules.xml; and TRIBETIP0..24, the nation picker's tooltip heading (the
+  nation's name and unique units, camera-smooth\src\nation_grid.c), for all 25 nations.
 
 Every file is built on the newest version another mod of this repo made of it (BASES), so
 build those mods first; after rebuilding one of them, build this one again, or Romania has no
@@ -335,7 +336,65 @@ def lobby_quiet_help(text):
     return text
 
 
-def build_help(game, rules):
+# The nation grid's tooltip (camera-smooth\src\nation_grid.c): TRIBETIP<n> is the heading, the
+# nation's name and its unique units, and TRIBE<n> (the game's power text) follows it in the same
+# box. Unique units are the ones the loading screen lists: FLAGS with "y" and the nation's bit in
+# TRIBE_MASK, in Age order, by the name typenames.xml shows.
+AGES = ["none", "Classical Age", "Medieval Age", "Gunpowder Age", "Enlightenment Age", "Industrial Age",
+        "Modern Age", "Information Age"]
+UNIQUE_LABEL = "Unique Units:"
+
+
+def tribe_names(game, rules):
+    """the nations' names in rules.xml order, as their tribes\\*.xml name them"""
+    start = rules.index("<TRIBES>")
+    files = re.findall(r"<FILE>\s*(\S+)\s*</FILE>", rules[start:rules.index("</TRIBES>", start)])
+    names = []
+    for f in files:
+        path = os.path.join(SOURCE, "romania.xml") if f.upper() == "ROMANIA.XML" else os.path.join(game, "tribes", f.lower())
+        names.append(re.search(r'<TRIBE name="([^"]+)"', read(path)).group(1))
+    return names
+
+
+def unique_units(unit_text, typenames, num):
+    """per nation, the shown names of its unique units"""
+    shown = {}
+    for name in re.findall(r'<STRING hash="\d+" needed="1">([^<]+)</STRING>', typenames):
+        shown.setdefault(name.lower(), name)
+    slot_shown = {slot_name.lower(): name for _, slot_name, _, name, *_ in ROMANIAN_UNITS}
+    out = [[] for _ in range(num)]
+    for block in re.findall(r"<UNIT>(.*?)</UNIT>", unit_text, re.S):
+        mask = field(block, "TRIBE_MASK") or ""
+        if "y" not in (field(block, "FLAGS") or "") or "1" not in mask:
+            continue
+        key = (field(block, "TYPENAME") or field(block, "NAME")).lower()
+        name = slot_shown.get(key) or shown.get(key)
+        if not name:
+            raise SystemExit("typenames.xml: no shown name for unit " + key)
+        age = AGES.index(field(block, "PREQ0")) if field(block, "PREQ0") in AGES else 0
+        for t in range(num):
+            if len(mask) > t and mask[len(mask) - 1 - t] == "1" and name not in [n for _, n in out[t]]:
+                out[t].append((age, name))
+    return [[n for _, n in sorted(u, key=lambda x: x[0])] for u in out]
+
+
+def nation_tips(text, game, rules, unit_text, typenames):
+    names = tribe_names(game, rules)
+    units = unique_units(unit_text, typenames, len(names))
+    text = re.sub(r'\t*<ENTRY name="TRIBETIP\d+">.*?</ENTRY>\r?\n', "", text, flags=re.S)
+    nl = newline(text)
+    entries = ""
+    for t, name in enumerate(names):
+        body = "{%s}" % name.upper()
+        if units[t]:
+            body += "<LINE/>{%s} %s" % (UNIQUE_LABEL, ", ".join(units[t]))
+        entries += '\t\t<ENTRY name="TRIBETIP%d">%s\t\t\t<STRING>%s</STRING>%s\t\t</ENTRY>%s' % (t, nl, body, nl, nl)
+    end = text.index("</TRIBES>")
+    line_start = text.rindex("\n", 0, end) + 1
+    return text[:line_start] + entries + text[line_start:]
+
+
+def build_help(game, rules, unit_text, typenames):
     text = lobby_quiet_help(survival_button_help(read(base_of(game, "help.xml"))))
     bullets = "".join("\n         <BULLET/>" + line.format(*[constant(rules, c) for c in consts])
                       for consts, line in POWER)
@@ -351,7 +410,7 @@ def build_help(game, rules):
                           text, flags=re.S)
         if n != 1:
             raise SystemExit("help.xml: %s found %d times" % (family, n))
-    return text
+    return nation_tips(text, game, rules, unit_text, typenames)
 
 
 def build_unit_graphics(game):
@@ -510,8 +569,10 @@ def main(game, out):
         print("%s (from %s): Romania has %d types" % (name, os.path.relpath(src, ROOT) if src.startswith(ROOT) else src, n))
         for line in report:
             print("   ", line)
-    write(os.path.join(data, "help.xml"), build_help(game, rules))
-    write(os.path.join(data, "typenames.xml"), build_typenames(game))
+    typenames = build_typenames(game)
+    write(os.path.join(data, "help.xml"),
+          build_help(game, rules, read(os.path.join(data, "unitrules.xml")), typenames))
+    write(os.path.join(data, "typenames.xml"), typenames)
     write(os.path.join(data, "unit_graphics.xml"), build_unit_graphics(game))
     write(os.path.join(data, "soundtypes.xml"), build_soundtypes(game))
     print("unit_graphics.xml, soundtypes.xml: %s" % ", ".join(

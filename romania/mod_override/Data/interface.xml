@@ -3560,6 +3560,39 @@
     <IFACETEX name="assist_fill" texture="TEX_REVIVED_ASSIST" left="324" top="142" width="16" height="8"/>
     <IFACETEX name="assist_line" texture="TEX_REVIVED_ASSIST" left="344" top="142" width="32" height="4"/>
     <IFACETEX name="assist_glow" texture="TEX_REVIVED_ASSIST" left="380" top="142" width="32" height="16"/>
+    <IFACETEXLOAD id="TEX_REVIVED_ALLY" file=".\art\revived\ally_panel.tga" pixformat="PF_32"/>
+    <IFACETEX name="ally_back" texture="TEX_REVIVED_ALLY" left="0" top="0" width="460" height="178"/>
+    <IFACETEX name="ally_btn" texture="TEX_REVIVED_ALLY" left="0" top="180" width="132" height="30"/>
+    <IFACETEX name="ally_btn_hover" texture="TEX_REVIVED_ALLY" left="134" top="180" width="132" height="30"/>
+    <IFACETEX name="ally_btn_down" texture="TEX_REVIVED_ALLY" left="268" top="180" width="132" height="30"/>
+    <IFACETEX name="ally_bar" texture="TEX_REVIVED_ALLY" left="0" top="214" width="346" height="10"/>
+    <IFACETEX name="ally_fill" texture="TEX_REVIVED_ALLY" left="350" top="214" width="16" height="6"/>
+    <IFACETEXLOAD id="TEX_REVIVED_ALLY_FLAGS" file=".\art\revived\nation_flags.tga" pixformat="PF_32"/>
+    <IFACETEX name="ally_flag_0" texture="TEX_REVIVED_ALLY_FLAGS" left="0" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_1" texture="TEX_REVIVED_ALLY_FLAGS" left="64" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_2" texture="TEX_REVIVED_ALLY_FLAGS" left="128" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_3" texture="TEX_REVIVED_ALLY_FLAGS" left="192" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_4" texture="TEX_REVIVED_ALLY_FLAGS" left="256" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_5" texture="TEX_REVIVED_ALLY_FLAGS" left="320" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_6" texture="TEX_REVIVED_ALLY_FLAGS" left="384" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_7" texture="TEX_REVIVED_ALLY_FLAGS" left="448" top="0" width="64" height="64"/>
+    <IFACETEX name="ally_flag_8" texture="TEX_REVIVED_ALLY_FLAGS" left="0" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_9" texture="TEX_REVIVED_ALLY_FLAGS" left="64" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_10" texture="TEX_REVIVED_ALLY_FLAGS" left="128" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_11" texture="TEX_REVIVED_ALLY_FLAGS" left="192" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_12" texture="TEX_REVIVED_ALLY_FLAGS" left="256" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_13" texture="TEX_REVIVED_ALLY_FLAGS" left="320" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_14" texture="TEX_REVIVED_ALLY_FLAGS" left="384" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_15" texture="TEX_REVIVED_ALLY_FLAGS" left="448" top="64" width="64" height="64"/>
+    <IFACETEX name="ally_flag_16" texture="TEX_REVIVED_ALLY_FLAGS" left="0" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_17" texture="TEX_REVIVED_ALLY_FLAGS" left="64" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_18" texture="TEX_REVIVED_ALLY_FLAGS" left="128" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_19" texture="TEX_REVIVED_ALLY_FLAGS" left="192" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_20" texture="TEX_REVIVED_ALLY_FLAGS" left="256" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_21" texture="TEX_REVIVED_ALLY_FLAGS" left="320" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_22" texture="TEX_REVIVED_ALLY_FLAGS" left="384" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_23" texture="TEX_REVIVED_ALLY_FLAGS" left="448" top="128" width="64" height="64"/>
+    <IFACETEX name="ally_flag_24" texture="TEX_REVIVED_ALLY_FLAGS" left="0" top="192" width="64" height="64"/>
     <IFACETEXLOAD id="TEX_REVIVED_DIGITS" file=".\art\revived\hud_digits.tga" pixformat="PF_32"/>
     <IFACETEX name="hud_char_0" texture="TEX_REVIVED_DIGITS" left="0" top="0" width="33" height="51"/>
     <IFACETEX name="hud_char_1" texture="TEX_REVIVED_DIGITS" left="33" top="0" width="31" height="51"/>

@@ -240,6 +240,81 @@
          <BULLET/>Receive the Militia, Minuteman, and Partisan upgrades for free.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{AZTECS}<LINE/>{Unique Units:} Atl-Atls, Royal Atl-Atls, Xopilli Atl-Atls, Jaguar Infantry, Jaguar Assault Infantry</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAYA}<LINE/>{Unique Units:} Balamob Slingers, Royal Balamob Slingers, Eagle Balamob Slingers, Recoilless Gun, Dragon AT Missile</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{INCA}<LINE/>{Unique Units:} Inti Clubmen, Inti Macemen, Mortar, Siege Mortar</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTU}<LINE/>{Unique Units:} Umpakati, Yangombi Umpakati, Impi, Hawk Fighter, Eagle Fighter</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NUBIANS}<LINE/>{Unique Units:} Kushite Archers, Camel Archer, Royal Kushite Archers, Heavy Camel Archer, Apedemak Archers, Camel Raider, Camel Corps</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{GREEKS}<LINE/>{Unique Units:} Companion, Royal Companion, Stratiotai, Royal Stratiotai</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{ROMANS}<LINE/>{Unique Units:} Legions, Caesar's Legions, Praetorian Guards</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{EGYPTIANS}<LINE/>{Unique Units:} Chariot, Light Camel, Heavy Chariot, Camel Warrior, Mameluke, Elite Camel Warrior, Royal Mameluke</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TURKS}<LINE/>{Unique Units:} Janissaries, Basilica Bombard, Royal Janissaries, Basilica Cannon</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{SPANISH}<LINE/>{Unique Units:} Scutari, Royal Scutari, Tercios, Royal Tercios</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRENCH}<LINE/>{Unique Units:} Chevalier, Heavy Chevalier, Horse Grenadier, Horse Guard Grenadier</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{BRITISH}<LINE/>{Unique Units:} Longbowmen, King's Longbowmen, King's Yeomanry, Highlanders, Black Watch, Lancaster Bomber</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{GERMANS}<LINE/>{Unique Units:} Solduri, Barbarians, Vandals, Landsknechts, Volksgrenadiers, MG42, Tiger Tank, Leopard Tank</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{RUSSIANS}<LINE/>{Unique Units:} Rusiny Lancer, Cossack, Don Cossack, Red Guards Infantry, Katyusha Rocket, Shock Infantry, T80 Tank</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{CHINESE}<LINE/>{Unique Units:} Fire Lances, Heavy Fire Lances, Manchu Musketeers, Manchu Riflemen, Manchu Infantry</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{JAPANESE}<LINE/>{Unique Units:} Ashigaru Spearmen, Bushi, Elite Bushi, Samurai, Gun Samurai</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{KOREANS}<LINE/>{Unique Units:} Hwarang, Elite Hwarang, Flaming Arrow, Royal Hwarang, Heavy Flaming Arrow, Elite Royal Hwarang</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MONGOLS}<LINE/>{Unique Units:} Nomad, Steppe Nomad, Horde, Golden Horde</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{IROQUOIS}<LINE/>{Unique Units:} Takohs, Spearmen, Mohawk Spearmen, Akweks, Heavy Mohawk Spearmen, Elite Mohawk Spearmen, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTA}<LINE/>{Unique Units:} Sunka Wakan, Eagle Feather Horse, Musket Horse, Repeating Rifle Horse</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{AMERICANS}<LINE/>{Unique Units:} Marines, Marine Riflemen, Marine Infantry, Assault Marines</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{INDIANS}<LINE/>{Unique Units:} War Elephant, Mahout, Gun Mahout, Culverin Mahout</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{DUTCH}<LINE/>{Unique Units:} Armed Caravan, Armed Merchant, Armed Supply Wagon, Brig, Fluyt, Clipper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERSIANS}<LINE/>{Unique Units:} Immortals, Anusiya, War Elephant, Athanatoi, Mahout, Arquebus Immortal, Gun Mahout, Culverin Mahout</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{ROMANIA}<LINE/>{Unique Units:} Falxmen, Comati, Roxolani Lancers, Voinici, Viteji, Darabani, Automitraliera, Dorobanti, Renault FT, Vanatori de Munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

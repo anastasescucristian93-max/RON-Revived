@@ -36,6 +36,7 @@ Outputs (paths relative to the game folder, under <out>):
   art\revived\minimap_frame.tga the steel frame round the folded minimap (build_minimap_frame.py),
                                declared there too
   art\revived\assist_panel.tga the AI assistant panel (build_assist_panel.py), declared there too
+  art\revived\ally_panel.tga   the allied requests panel (build_ally_panel.py), declared there too
   art\revived\unit_bans.tga    the game setup's Units window (build_unit_bans.py), in setupwin.xml
   art\revived\hud_digits.tga   the resource panel's digits from a real font (build_hud_digits.py),
                                declared there too
@@ -48,6 +49,7 @@ import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
+import build_ally_panel
 import build_assist_panel
 import build_unit_bans
 import build_flags
@@ -1482,6 +1484,7 @@ def qol_buttons(src):
     lines += build_rank_icons.tex_lines()  # the rank insignia (ranks.c), looked up the same way
     lines += build_minimap_frame.tex_lines()  # the folded minimap's steel frame (minimap.c)
     lines += build_assist_panel.tex_lines()  # the AI assistant panel (assist_panel.c)
+    lines += build_ally_panel.tex_lines()  # the allied requests panel (allyreq.c)
     lines += [build_hud_digits.load_line()] + build_hud_digits.tex_lines()  # the panel's digits (hud.c)
     lines += build_survival_bar.tex_lines()  # the Survival wave bar (survival.c)
     lines += build_survival_cards.tex_lines()  # the Survival reward cards (cards.c)
@@ -1616,6 +1619,7 @@ def main(game, out):
     build_rank_icons.main(out)
     build_minimap_frame.main(out)
     build_assist_panel.main(out)
+    build_ally_panel.main(out)
     build_unit_bans.main(out, game)
     build_hud_digits.main(out)
     build_survival_bar.main(out)

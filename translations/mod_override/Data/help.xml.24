@@ -236,6 +236,81 @@
 <BULLET/>Primești gratuit îmbunătățirile Miliție, Miliție de elită și Partizan.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{AZTECI}<LINE/>{Unități unice:} Atl-Atl, Atl-Atl regali, Atl-Atl xopilli, Infanterie Jaguar, Infanterie de asalt Jaguar</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAYA}<LINE/>{Unități unice:} Praștiași Balamob, Praștiași Balamob regali, Praștiași Balamob Vultur, Tun fără recul, Rachetă AT Dragon</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{INCA}<LINE/>{Unități unice:} Bâtași Inti, Buzduganari Inti, Mortier, Mortier de asediu</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTU}<LINE/>{Unități unice:} Umpakati, Umpakati Yangombi, Impi, Vânător Hawk, Vânător Eagle</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NUBIENI}<LINE/>{Unități unice:} Arcași kușiți, Arcaș pe cămilă, Arcași kușiți regali, Arcaș greu pe cămilă, Arcași Apedemak, Hărțuitor pe cămilă, Corpul cămilelor</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{GRECI}<LINE/>{Unități unice:} Însoțitor, Însoțitor regal, Stratiot, Stratiot regal</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{ROMANI}<LINE/>{Unități unice:} Legiuni, Legiunile lui Cezar, Garda pretoriană</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{EGIPTENI}<LINE/>{Unități unice:} Car de luptă, Cămilar ușor, Car de luptă greu, Cămilar războinic, Mameluc, Cămilar de elită, Mameluc regal</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TURCI}<LINE/>{Unități unice:} Ieniceri, Bombarda Basilica, Ieniceri regali, Tunul Basilica</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{SPANIOLI}<LINE/>{Unități unice:} Scutari, Scutari regali, Tercios, Tercios regali</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRANCEZI}<LINE/>{Unități unice:} Paladin, Paladin greu, Grenadier călare, Grenadier călare din gardă</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{BRITANICI}<LINE/>{Unități unice:} Arcași cu arc lung, Arcașii regelui, Yeomanry regală, Highlanderi, Black Watch, Bombardier Lancaster</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{GERMANI}<LINE/>{Unități unice:} Solduri, Barbari, Vandali, Landsknechți, Volksgrenadiers, MG42, Tanc Tiger, Tanc Leopard</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{RUȘI}<LINE/>{Unități unice:} Lăncier ruten, Cazac, Cazac de Don, Infanterie Garda Roșie, Rachetă Katiușa, Infanterie de șoc, Tanc T80</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{CHINEZI}<LINE/>{Unități unice:} Lănci de foc, Lănci de foc grele, Muschetari manciurieni, Pușcași manciurieni, Infanterie manciuriană</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{JAPONEZI}<LINE/>{Unități unice:} Lăncieri ashigaru, Bushi, Bushi de elită, Samurai, Samurai cu pușcă</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{COREENI}<LINE/>{Unități unice:} Hwarang, Hwarang de elită, Săgeată de foc, Hwarang regali, Săgeată de foc grea, Hwarang regali de elită</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MONGOLI}<LINE/>{Unități unice:} Nomad, Nomad din stepă, Hoardă, Hoarda de Aur</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{IROCHEZI}<LINE/>{Unități unice:} Takohs, Lăncieri, Lăncieri mohawk, Akweks, Lăncieri mohawk grei, Lăncieri mohawk de elită, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTA}<LINE/>{Unități unice:} Sunka Wakan, Călăreț Pană de Vultur, Călăreț cu muschetă, Călăreț cu pușcă cu repetiție</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{AMERICANI}<LINE/>{Unități unice:} Pușcași marini, Trăgători marini, Infanterie marină, Pușcași marini de asalt</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{INDIENI}<LINE/>{Unități unice:} Elefant de război, Mahout, Mahout cu pușcă, Mahout cu culevrină</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{OLANDEZI}<LINE/>{Unități unice:} Caravană înarmată, Negustor înarmat, Car de provizii înarmat, Bric, Fluyt, Clipper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERȘI}<LINE/>{Unități unice:} Nemuritori, Anusiya, Elefant de război, Athanatoi, Mahout, Nemuritor cu archebuză, Mahout cu pușcă, Mahout cu culevrină</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{ROMÂNIA}<LINE/>{Unități unice:} Falcari, Comați, Lăncieri roxolani, Voinici, Viteji, Darabani, Automitralieră, Dorobanți, Renault FT, Vânători de munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

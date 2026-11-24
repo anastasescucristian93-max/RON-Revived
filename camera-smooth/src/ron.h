@@ -133,6 +133,7 @@ extern int g_flags_enabled;
 void flags_load_config(const char *ini_path);
 void flags_install(void);
 void *flags_tex(int tribe);
+void *flags_choice_tex(int id);
 int flags_nation_combo(char *combo);
 void flags_draw(void *tex, const short *rect, unsigned color);
 void flags_draw_bg(const short *rect, unsigned color);
@@ -487,6 +488,14 @@ void cityrepair_make_options(char *self); /* airdrop.c's BuildOut::make_options 
 int cityrepair_describe(const int *opt);  /* ranks.c's Options::describe: 1 = the text is ours */
 int cityrepair_button_off(char *btn);     /* panel.c: the switch of cities that are off */
 void cityrepair_draw_overhead(void);      /* rankfx.c's map window redraw: the pliers */
+/* allyreq.c (a computer ally asks you for resources through a panel; Accept = the game's tribute) */
+void allyreq_load_config(const char *ini_path);
+void allyreq_frame(void);                       /* airdrop.c's Objects::process_all */
+void allyreq_tick(void);                        /* once per rendered frame */
+void allyreq_panel_create(char *iface, char *parent); /* qol.c, with the assistant panel */
+int allyreq_panel_is(void *btn);
+int allyreq_panel_redraw(void *btn);            /* panel.c's IFaceButton::on_redraw hook */
+void allyreq_panel_click(void);                 /* qol.c's on_button_clicked hook */
 /* play_button.c */
 extern int g_play_enabled;
 void play_load_config(const char *ini_path);

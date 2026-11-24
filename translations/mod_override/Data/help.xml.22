@@ -236,6 +236,81 @@
          <BULLET/>Receba os aprimoramentos Milícia, Miliciano e Partisano de graça.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{ASTECAS}<LINE/>{Unidades Exclusivas:} Atlatls, Atlatls Reais, Atlatls Xopilli, Infantaria Jaguar, Inf. de Assalto Jaguar</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAIAS}<LINE/>{Unidades Exclusivas:} Fundeiros Balamob, Fundeiros Balamob Reais, Fundeiros Balamob Águia, Canhão sem Recuo, Míssil AT Dragon</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{INCAS}<LINE/>{Unidades Exclusivas:} Porreteiros Inti, Maceiros Inti, Morteiro, Morteiro de Cerco</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTOS}<LINE/>{Unidades Exclusivas:} Umpakati, Umpakati Yangombi, Impi, Caça Hawk, Caça Eagle</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NÚBIOS}<LINE/>{Unidades Exclusivas:} Arqueiros Kushitas, Arqueiro em Camelo, Arq. Kushitas Reais, Arq. em Camelo Pesado, Arqueiros Apedemak, Saqueador em Camelo, Corpo de Camelos</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{GREGOS}<LINE/>{Unidades Exclusivas:} Companheiro, Companheiro Real, Stratiotai, Stratiotai Reais</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{ROMANOS}<LINE/>{Unidades Exclusivas:} Legiões, Legiões de César, Guarda Pretoriana</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{EGÍPCIOS}<LINE/>{Unidades Exclusivas:} Biga, Cameleiro Leve, Biga Pesada, Cameleiro Guerreiro, Mameluco, Cameleiro Guerreiro Elite, Mameluco Real</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TURCOS}<LINE/>{Unidades Exclusivas:} Janízaros, Bombarda Basílica, Janízaros Reais, Canhão Basílica</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{ESPANHÓIS}<LINE/>{Unidades Exclusivas:} Scutari, Scutari Reais, Tercios, Tercios Reais</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRANCESES}<LINE/>{Unidades Exclusivas:} Chevalier, Chevalier Pesado, Granadeiro a Cavalo, Granadeiro da Guarda a Cavalo</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{BRITÂNICOS}<LINE/>{Unidades Exclusivas:} Arqueiros de Arco Longo, Arq. Arco Longo Reais, Yeomanry Real, Highlanders, Guarda Negra, Bombardeiro Lancaster</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{ALEMÃES}<LINE/>{Unidades Exclusivas:} Solduri, Bárbaros, Vândalos, Lansquenetes, Volksgrenadiers, MG42, Tanque Tiger, Tanque Leopard</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{RUSSOS}<LINE/>{Unidades Exclusivas:} Lanceiro Ruteno, Cossaco, Cossaco do Don, Infantaria Guarda Vermelha, Foguete Katyusha, Infantaria de Choque, Tanque T80</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{CHINESES}<LINE/>{Unidades Exclusivas:} Lanças de Fogo, Lanças de Fogo Pesadas, Mosqueteiros Manchus, Fuzileiros Manchus, Infantaria Manchu</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{JAPONESES}<LINE/>{Unidades Exclusivas:} Lanceiros Ashigaru, Bushi, Bushi de Elite, Samurai, Samurai Atirador</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{COREANOS}<LINE/>{Unidades Exclusivas:} Hwarang, Hwarang de Elite, Flecha Flamejante, Hwarang Real, Flecha Flamejante Pesada, Hwarang Real de Elite</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MONGÓIS}<LINE/>{Unidades Exclusivas:} Nômade, Nômade da Estepe, Horda, Horda Dourada</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{IROQUESES}<LINE/>{Unidades Exclusivas:} Takohs, Lanceiros, Lanceiros Mohawk, Akweks, Lanceiros Mohawk Pesados, Lanceiros Mohawk de Elite, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTAS}<LINE/>{Unidades Exclusivas:} Sunka Wakan, Cavaleiro Pena de Águia, Cavaleiro Mosqueteiro, Cav. Rifle de Repetição</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{AMERICANOS}<LINE/>{Unidades Exclusivas:} Marines, Fuzileiros Navais, Infantaria de Marinha, Marines de Assalto</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{INDIANOS}<LINE/>{Unidades Exclusivas:} Elefante de Guerra, Mahout, Mahout Atirador, Mahout de Colubrina</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{HOLANDESES}<LINE/>{Unidades Exclusivas:} Caravana Armada, Mercador Armado, Carroça de Suprimentos Armada, Brigue, Fluyt, Clíper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERSAS}<LINE/>{Unidades Exclusivas:} Imortais, Anusiya, Elefante de Guerra, Athanatoi, Mahout, Imortal Arcabuzeiro, Mahout Atirador, Mahout de Colubrina</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{ROMÊNIA}<LINE/>{Unidades Exclusivas:} Guerreiros Falx, Comati, Lanceiros Roxolanos, Voinici, Viteji, Darabani, Automitraliera, Dorobanti, Renault FT, Vanatori de Munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

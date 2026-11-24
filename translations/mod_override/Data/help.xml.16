@@ -235,6 +235,81 @@
          <BULLET/>Ricevi gratuitamente i potenziamenti Milizia, Milizia scelta e Partigiano.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{AZTECHI}<LINE/>{Unità riservate:} Atl-atl, Atl-atl reali, Atl-atl xopilli, Fanteria Giaguaro, Fanteria d'assalto Giaguaro</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAYA}<LINE/>{Unità riservate:} Fromb. balamob, Frombolieri reali balamob, Frombolieri aquila balamob, Cannone senza retrocarica, Miss. anticarro Dragon</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{INCA}<LINE/>{Unità riservate:} Guerrieri inti con clava, Guerrieri inti con mazza, Mortaio, Mortaio d'assedio</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTU}<LINE/>{Unità riservate:} Umpakati, Yangombi umpakati, Impi, Caccia Hawk, Caccia Eagle</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NUBIANI}<LINE/>{Unità riservate:} Arc. kushiti, Arciere su cammello, Arc. reali kushiti, Arc. camm. corazzato, Arcieri apedemak, Predone su camm., Truppe su cammello</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{GRECI}<LINE/>{Unità riservate:} Gregario, Gregario reale, Stratiotai, Stratiotai reali</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{ROMANI}<LINE/>{Unità riservate:} Legioni, Legioni di Cesare, Guardie pretoriane</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{EGIZI}<LINE/>{Unità riservate:} Biga, Cammelliere leggero, Biga avanzata, Cammelliere, Mamelucco, Cammelliere scelto, Mamelucco reale</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TURCHI}<LINE/>{Unità riservate:} Giannizzeri, Bombarda turca, Giannizzeri reali, Cannone turco</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{SPAGNOLI}<LINE/>{Unità riservate:} Scutari, Scutari reali, Tercios, Tercios reali</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRANCESI}<LINE/>{Unità riservate:} Cavaliere francese, Cavaliere francese avanzato, Granatiere a cavallo, Granatiere scelto a cavallo</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{INGLESI}<LINE/>{Unità riservate:} Arcieri con arco lungo, Arc. reali con arco lungo, Guardia reale, Highlander, Guardia nera, B. Lancaster</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{TEDESCHI}<LINE/>{Unità riservate:} Solduri, Barbari, Vandali, Lanzichenecchi, Volksgrenadier, MG42, Carro armato Tiger, Carro armato Leopard</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{RUSSI}<LINE/>{Unità riservate:} Lanciere rusyn, Cosacco, Cosacco Don, Fant. d. Guardia Rossa, Razzo per Katjusha, Fanteria d'attacco, Carro armato T80</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{CINESI}<LINE/>{Unità riservate:} Lancieri di fuoco, Lancieri di fuoco avanzati, Moschettieri manciù, Fucilieri manciù, Fanteria manciù</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{GIAPPONESI}<LINE/>{Unità riservate:} Lancieri ashigaru, Bushi, Bushi scelti, Samurai, Fuciliere samurai</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{COREANI}<LINE/>{Unità riservate:} Hwarang, Hwarang sc., Freccia incendiaria, Hwarang reali, Freccia incend. avanz., Hwarang reali scelti</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MONGOLI}<LINE/>{Unità riservate:} Nomade, Nomadi della steppa, Orda, Orda d'oro</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{IROCHESI}<LINE/>{Unità riservate:} Takohs, Lancieri, Lancieri Mohawk, Akweks, Lancieri Pesanti Mohawk, Lancieri Mohawk d'élite, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTA}<LINE/>{Unità riservate:} Sunka Wakan, Cavallo Piuma D'aquila, Unità a cavallo con Moschetto, Unità a cavallo con fucile a ripetizione</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{AMERICANI}<LINE/>{Unità riservate:} Marines, Fucilieri Marines, Fanteria Marines, Marines d'assalto</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{INDIANI}<LINE/>{Unità riservate:} Elefante da Guerra, Mahout, Gun Mahout, Colubrina Mahout</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{OLANDESI}<LINE/>{Unità riservate:} Carovana armata, Mercante Armato, Carro Rifornimenti Armato, Brigantino, Fluyt, Clipper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERSIANI}<LINE/>{Unità riservate:} Immortali, Anusiya, Elefante da Guerra, Athanatoi, Mahout, Archibugio Immortale, Gun Mahout, Colubrina Mahout</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{ROMANIA}<LINE/>{Unità riservate:} Guerrieri con falce, Comati, Lancieri roxolani, Voinici, Viteji, Darabani, Automitraliera, Dorobanti, Renault FT, Vanatori de Munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

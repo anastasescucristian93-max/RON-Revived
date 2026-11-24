@@ -508,6 +508,8 @@ __attribute__((used)) void c_btn_redraw(char *btn)
         return;
     if (cards_panel_redraw(btn)) /* and the Survival reward cards (cards.c) */
         return;
+    if (allyreq_panel_redraw(btn)) /* and the allied requests (allyreq.c) */
+        return;
     if (qol_button_redraw(btn)) /* the round buttons of the qol row */
         return;
     int look = g_panel_enabled ? button_look(btn) : LOOK_NORMAL; /* depth, padlock, darker: command_panel */

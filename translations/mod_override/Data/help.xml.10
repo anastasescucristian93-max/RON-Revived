@@ -234,6 +234,81 @@
          <BULLET/>Recibes gratis las mejoras Milicia, Miliciano y Partisano.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{AZTECAS}<LINE/>{Unidades únicas:} Atlatles, Atlatles de élite, Xopilliatlatles, Infantería Jaguar, Infantería de asalto Jaguar</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAYAS}<LINE/>{Unidades únicas:} Honderos Balamob, Honderos Balamob reales, Honderos Balamob Águila, Arma sin retroceso, Misil AT Dragón</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{INCAS}<LINE/>{Unidades únicas:} Cachiporreros Inti, Maceros Inti, Mortero, Mortero de asedio</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTÚES}<LINE/>{Unidades únicas:} Umpakati, Yangombi Umpakati, Impi, Cazabombardero Hawk, Caza Eagle</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NUBIOS}<LINE/>{Unidades únicas:} Arqueros kushitas, Arquero en camello, Arq. kushitas reales, Arq. en camello armadura, Arqueros Apedemak, Camello de asalto, Cuerpo de camellos</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{GRIEGOS}<LINE/>{Unidades únicas:} Compañero, Compañero real, Stratiotai, Stratiotai reales</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{ROMANOS}<LINE/>{Unidades únicas:} Legiones, Legiones del César, Guardia pretoriana</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{EGIPCIOS}<LINE/>{Unidades únicas:} Carro, Camellería lig., Carro pesado, Guerreros en camello, Mameluco, Guerr. de élite (camello), Mameluco real</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TURCOS}<LINE/>{Unidades únicas:} Jenízaros, Bombarda Basílica, Jenízaros reales, Cañón Basílica</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{ESPAÑOLES}<LINE/>{Unidades únicas:} Escuderos, Escuderos reales, Tercios, Tercios reales</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRANCESES}<LINE/>{Unidades únicas:} Caballero, Caballero pesado, Granadero a caballo, Granadero de la guardia a caballo</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{BRITÁNICOS}<LINE/>{Unidades únicas:} Arqueros de tiro largo, Arq. tiro largo reales, Yeomanry real, Highlanders escoceses, Guardia negra, Bombardear. Lancaster</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{ALEMANES}<LINE/>{Unidades únicas:} Solduri, Bárbaros, Vándalos, Lansquenetes, Volksgrenadiers, MG42, Tanque Tiger, Tanque Leopard</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{RUSOS}<LINE/>{Unidades únicas:} Lancero rusini, Cosaco, Cosaco de Don, Infantería Guardia roja, Cohete Katiuska, Infantería de choque, Tanque T80</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{CHINOS}<LINE/>{Unidades únicas:} Lanzas incendiarias, Lanz. incend. pesadas, Mosqueteros manchúes, Fusileros manchúes, Infantería manchú</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{JAPONESES}<LINE/>{Unidades únicas:} Lanceros Ashigaru, Bushi, Bushi de élite, Samurai, Samurai armado</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{COREANOS}<LINE/>{Unidades únicas:} Hwarang, Hwarang de élite, Flecha incendiaria, Hwarang real, Flecha incendiaria pesada, Hwarang real de élite</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MONGOLES}<LINE/>{Unidades únicas:} Nómada, Nómada estepario, Horda, Horda dorada</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{IROQUESES}<LINE/>{Unidades únicas:} Takohs, Lanceros, Lanceros Mohawk, Akweks, Lancero pesado Mohawk, Lancero de élite Mohawk, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTA}<LINE/>{Unidades únicas:} Sunka Wakan, Caballo pluma de águila, Caballería con mosquete, Repitiendo jinete con rifle</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{ESTADOUNIDENSES}<LINE/>{Unidades únicas:} Marines, Fusilero marine, Infantería de marina, Marines de asalto</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{INDIOS}<LINE/>{Unidades únicas:} Elefante de guerra, Mahout, Gun Mahout, Mahout con parapeto</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{NEERLANDESES}<LINE/>{Unidades únicas:} Caravana armada, Mercader armado, Vagón de suministros armado, Bergantín, Filibote, Clíper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERSAS}<LINE/>{Unidades únicas:} Inmortales, Anusiya, Elefante de guerra, Athanatoi, Mahout, Inmortal arcabucero, Gun Mahout, Mahout con parapeto</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{RUMANÍA}<LINE/>{Unidades únicas:} Guerreros falx, Comati, Lanceros roxolanos, Voinici, Viteji, Darabani, Automitraliera, Dorobanti, Renault FT, Vanatori de Munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

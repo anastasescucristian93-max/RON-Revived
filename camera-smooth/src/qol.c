@@ -470,6 +470,7 @@ void qol_create_buttons(void *iface)
     g_btn_shown = ~0u;
     assist_panel_create(iface, con);
     cards_panel_create(iface, con); /* the Survival reward cards (cards.c) */
+    allyreq_panel_create(iface, con); /* the allied requests (allyreq.c) */
 }
 
 static int is_our_button(void *b)
@@ -546,6 +547,10 @@ int qol_button_clicked(void *button)
     }
     if (cards_panel_is(button)) {
         cards_panel_click();
+        return 1;
+    }
+    if (allyreq_panel_is(button)) {
+        allyreq_panel_click();
         return 1;
     }
     int i = is_our_button(button);
@@ -632,7 +637,7 @@ static void button_help(int i, char *text, int size)
 
 __attribute__((used)) void c_button_move(void *self, void *button)
 {
-    if (assist_panel_is(button) || cards_panel_is(button)) /* no help over the assistant or card panel */
+    if (assist_panel_is(button) || cards_panel_is(button) || allyreq_panel_is(button)) /* no help over our panels */
         return;
     int i = g_btn_made ? is_our_button(button) : -1;
     if (i < 0) {
@@ -758,7 +763,7 @@ static void bring_buttons_to_front(void)
     for (int k = 0; k < count && ours < B_COUNT; k++) {
         if (is_our_button(kids[k]) >= 0)
             ours++;
-        else if (!assist_panel_is(kids[k]) && !cards_panel_is(kids[k]))
+        else if (!assist_panel_is(kids[k]) && !cards_panel_is(kids[k]) && !allyreq_panel_is(kids[k]))
             break;
     }
     if (ours == B_COUNT)

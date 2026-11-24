@@ -236,6 +236,81 @@
          <BULLET/>Milis, Minuteman ve Partizan yükseltmelerini ücretsiz alırsınız.
          </STRING>
 		</ENTRY>
+		<ENTRY name="TRIBETIP0">
+			<STRING>{AZTEKLER}<LINE/>{Özel Birlikler:} Atlatlcılar, Kraliyet Atlatlcıları, Xopilli Atlatlcıları, Jaguar Piyadesi, Jaguar Hücum Piyadesi</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP1">
+			<STRING>{MAYALAR}<LINE/>{Özel Birlikler:} Balamob Sapancıları, Kraliyet Balamob Sapancıları, Kartal Balamob Sapancıları, Geri Tepmesiz Top, Dragon Tanksavar</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP2">
+			<STRING>{İNKALAR}<LINE/>{Özel Birlikler:} Inti Sopacıları, Inti Topuzcuları, Havan, Kuşatma Havanı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP3">
+			<STRING>{BANTULAR}<LINE/>{Özel Birlikler:} Umpakati, Yangombi Umpakati, Impi, Hawk Avcısı, Eagle Avcısı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP4">
+			<STRING>{NÜBYALILAR}<LINE/>{Özel Birlikler:} Kuş Okçuları, Develi Okçu, Kraliyet Kuş Okçusu, Ağır Develi Okçu, Apedemak Okçuları, Deve Akıncısı, Deve Kolordusu</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP5">
+			<STRING>{YUNANLAR}<LINE/>{Özel Birlikler:} Hetairos, Kraliyet Hetairosu, Stratiotai, Kraliyet Stratiotai</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP6">
+			<STRING>{ROMALILAR}<LINE/>{Özel Birlikler:} Lejyonlar, Sezar Lejyonları, Pretoryen Muhafızlar</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP7">
+			<STRING>{MISIRLILAR}<LINE/>{Özel Birlikler:} Savaş Arabası, Hafif Deveci, Ağır Harp Arabası, Deveci Savaşçı, Memlük, Seçkin Deveci Savaşçı, Kraliyet Memlükü</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP8">
+			<STRING>{TÜRKLER}<LINE/>{Özel Birlikler:} Yeniçeriler, Bazilika Balyemez, Kraliyet Yeniçerileri, Bazilika Topu</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP9">
+			<STRING>{İSPANYOLLAR}<LINE/>{Özel Birlikler:} Scutari, Kraliyet Scutari, Terciolar, Kraliyet Tercioları</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP10">
+			<STRING>{FRANSIZLAR}<LINE/>{Özel Birlikler:} Chevalier, Ağır Chevalier, Atlı Humbaracı, Atlı Muhafız Humbaracı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP11">
+			<STRING>{BRİTANYALILAR}<LINE/>{Özel Birlikler:} Uzun Yaycılar, Kralın Uzun Yaycıları, Yeomanlar, Highlanderlar, Black Watch, Lancaster Bombacı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP12">
+			<STRING>{ALMANLAR}<LINE/>{Özel Birlikler:} Solduri, Barbarlar, Vandallar, Landsknechtler, Volksgrenadier, MG42, Tiger Tankı, Leopard Tankı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP13">
+			<STRING>{RUSLAR}<LINE/>{Özel Birlikler:} Rusiny Mızraklı, Kazak, Don Kazağı, Kızıl Muhafız Piyadesi, Katyuşa Roketi, Şok Piyadesi, T80 Tankı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP14">
+			<STRING>{ÇİNLİLER}<LINE/>{Özel Birlikler:} Ateş Mızrakları, Ağır Ateş Mızrakları, Mançu Misketçileri, Mançu Tüfekçileri, Mançu Piyadesi</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP15">
+			<STRING>{JAPONLAR}<LINE/>{Özel Birlikler:} Ashigaru Mızrakçı, Bushi, Seçkin Bushi, Samuray, Tüfekli Samuray</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP16">
+			<STRING>{KORELİLER}<LINE/>{Özel Birlikler:} Hwarang, Seçkin Hwarang, Ateşli Ok, Kraliyet Hwarang, Ağır Ateşli Ok, Seçkin Kraliyet Hwarang</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP17">
+			<STRING>{MOĞOLLAR}<LINE/>{Özel Birlikler:} Göçebe, Bozkır Göçebesi, Orda, Altın Orda</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP18">
+			<STRING>{İROKUALAR}<LINE/>{Özel Birlikler:} Takohs, Mızrakçılar, Mohawk Mızrakçıları, Akweks, Ağır Mohawk Mızrakçıları, Seçkin Mohawk Mızrakçı, Okwari</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP19">
+			<STRING>{LAKOTALAR}<LINE/>{Özel Birlikler:} Sunka Wakan, Kartal Tüyü Atlısı, Misketli Atlı, Tekrarlı Tüfekli Atlı</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP20">
+			<STRING>{AMERİKALILAR}<LINE/>{Özel Birlikler:} Bahriyeli, Bahriyeli Tüfekçi, Deniz Piyadesi, Hücum Deniz Piyadesi</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP21">
+			<STRING>{HİNTLİLER}<LINE/>{Özel Birlikler:} Savaş Fili, Mahut, Tüfekli Mahut, Kolombornalı Mahut</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP22">
+			<STRING>{HOLLANDALILAR}<LINE/>{Özel Birlikler:} Silahlı Kervan, Silahlı Tüccar, Silahlı İkmal Arabası, Brik, Fluyt, Klipper</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP23">
+			<STRING>{PERSLER}<LINE/>{Özel Birlikler:} Ölümsüzler, Anusiya, Savaş Fili, Athanatoi, Mahut, Arkebüzlü Ölümsüz, Tüfekli Mahut, Kolombornalı Mahut</STRING>
+		</ENTRY>
+		<ENTRY name="TRIBETIP24">
+			<STRING>{ROMANYA}<LINE/>{Özel Birlikler:} Falx Savaşçıları, Comati, Roksolan Mızraklı, Voinici, Viteji, Darabani, Automitraliera, Dorobanti, Renault FT, Vanatori de Munte, IAR-80, R-2</STRING>
+		</ENTRY>
 	</TRIBES>
 	<LIBRARY>
 		<TECHCATS>

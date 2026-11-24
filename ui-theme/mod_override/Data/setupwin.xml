@@ -81,6 +81,11 @@
     <IFACETEX name="flag_23" texture="TEX_REVIVED_FLAGS" left="448" top="128" width="64" height="64"/>
     <IFACETEX name="flag_24" texture="TEX_REVIVED_FLAGS" left="0" top="192" width="64" height="64"/>
     <IFACETEX name="flag_italy" texture="TEX_REVIVED_FLAGS" left="64" top="192" width="64" height="64"/>
+    <IFACETEX name="flag_random" texture="TEX_REVIVED_FLAGS" left="128" top="192" width="64" height="64"/>
+    <IFACETEX name="flag_offensive" texture="TEX_REVIVED_FLAGS" left="192" top="192" width="64" height="64"/>
+    <IFACETEX name="flag_defensive" texture="TEX_REVIVED_FLAGS" left="256" top="192" width="64" height="64"/>
+    <IFACETEX name="flag_economic" texture="TEX_REVIVED_FLAGS" left="320" top="192" width="64" height="64"/>
+    <IFACETEX name="flag_xpack" texture="TEX_REVIVED_FLAGS" left="384" top="192" width="64" height="64"/>
     <IFACETEX name="flag_bg" texture="TEX_REVIVED_FLAGS" left="456" top="200" width="48" height="48"/>
     <IFACETEXLOAD id="TEX_REVIVED_SURVIVAL" file=".\art\revived\survival_bar.tga" pixformat="PF_32"/>
     <IFACETEX name="surv_disc" texture="TEX_REVIVED_SURVIVAL" left="0" top="0" width="64" height="64"/>

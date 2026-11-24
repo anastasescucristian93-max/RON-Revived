@@ -613,6 +613,7 @@ __attribute__((used)) int c_ad_objects(void *self)
     nonukes_frame();               /* and nonukes.c (the chosen Armageddon count) */
     romania_frame();               /* and romania.c (unit names by age) */
     cityrepair_frame();            /* and cityrepair.c (Large and Major Cities repair) */
+    allyreq_frame();               /* and allyreq.c (allied requests) */
     mem_frame();                   /* and ron_camera.c (memory in the log) */
     if (!g_airdrop_enabled)
         return 0;

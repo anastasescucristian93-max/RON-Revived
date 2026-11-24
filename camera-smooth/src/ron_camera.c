@@ -207,6 +207,7 @@ static void load_config(void)
     play_load_config(path);
     airstrike_load_config(path);
     cityrepair_load_config(path);
+    allyreq_load_config(path);
     lang_load_config(path);
     postfx_load_config(path);
     g_fish_retry = GetPrivateProfileIntA("gameplay", "fishing_retry", 1, path);
@@ -434,6 +435,7 @@ __attribute__((used)) void c_check_scroll(void *self)
     if (g_qol_enabled)
         qol_tick(now_s());
     minimap_tick();
+    allyreq_tick();
     bigsel_tick();
     placement_tick();
     if (g_airdrop_enabled)
