@@ -1232,6 +1232,9 @@ def lobby_layout(src):
         assert block.count(f'ref_rect="{name}"') == 1, name
         block = block.replace(f'ref_rect="{name}"', f'ref_rect="sort_{name}"')
     block = block.replace('<FONT size="12"/>', '<FONT size="15" style="B"/>')
+    # the ELO column's title reads "Rank" (the game's string table has it, so it is translated)
+    assert block.count('title="ELO"') == 1
+    block = block.replace('title="ELO"', 'title="Rank"')
     g = g[:s] + block + g[e:]
     for name in LOBBY_DETAIL_BUTTONS:
         g, n = re.subn(r'(<BUTTON name="%s" title="[^"]*") right_inverse="80" bottom_inverse="302" width="-150" '

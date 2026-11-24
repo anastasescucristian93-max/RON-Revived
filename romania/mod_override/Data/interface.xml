@@ -2416,7 +2416,7 @@
             <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
-          <BUTTON name="sort" id="12" title="ELO" ref_rect="sort_ranked_elo">
+          <BUTTON name="sort" id="12" title="Rank" ref_rect="sort_ranked_elo">
             <FONT size="15" style="B"/>
             <FONTCOLOR r="255" g="255" b="255"/>
           </BUTTON>
