@@ -2059,6 +2059,15 @@ Unit
     <CATEGORY name="200">
       <DATA>200</DATA>
     </CATEGORY>
+    <CATEGORY name="300">
+      <DATA>300</DATA>
+    </CATEGORY>
+    <CATEGORY name="400">
+      <DATA>400</DATA>
+    </CATEGORY>
+    <CATEGORY name="500">
+      <DATA>500</DATA>
+    </CATEGORY>
   </CATEGORIES>
   <CATEGORIES id="rushrules" title="Rush Rules:">
     <CATEGORY name="Standard" key="Standard"/>

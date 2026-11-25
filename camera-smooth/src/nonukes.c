@@ -654,6 +654,7 @@ static void coop_ai_greyed(char *sw)
 __attribute__((used, thiscall)) void c_nn_setup_checks(char *sw)
 {
     ((fn0_t)VA(VA_SETUP_CHECKS))(sw);
+    setup_memory_teams(sw);    /* no teams left over on a style without teams */
     survival_setup_checks(sw); /* the Survival setup: one computer player, its rows hidden */
     g_sw = sw;
     g_drag = 0;

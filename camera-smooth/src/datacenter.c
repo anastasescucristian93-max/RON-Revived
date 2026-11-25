@@ -183,9 +183,10 @@ __attribute__((used)) int c_type_eligible(char *self, int type, int a)
 
 __attribute__((used)) int c_calc_pop_cap(char *self)
 {
+    popcap_prepare(); /* POP_CAP scaled with a limit above 200 (popcap.c) */
     int r = ((fn0_t)g_orig_calc_pop_cap)(self);
     int p = *(int *)(self + LD_PLAYER);
-    if (p < 0 || p > 7)
+    if (!g_dc_enabled || p < 0 || p > 7)
         return r;
     g_pop_seen[p] = owned(self, DC_EXP_POPULATION);
     *(int *)(self + LD_POP_CAP) += g_pop_seen[p] * g_step[0];
@@ -649,7 +650,7 @@ static void swarm_builder(void)
 void dc_install(void)
 {
     /* the type_eligible hook also serves armageddon.c and nonukes.c */
-    if (!g_dc_enabled && !g_arm_enabled && !g_nonukes_enabled)
+    if (!g_dc_enabled && !g_arm_enabled && !g_nonukes_enabled && !g_popcap_enabled)
         return;
     /* `steal` whole instructions */
     static const struct {
@@ -679,14 +680,15 @@ void dc_install(void)
     for (int i = 0; i < n; i++)
         if (memcmp((void *)VA(hooks[i].va), hooks[i].sig, hooks[i].sig_len) != 0) {
             logf_("data center: signature mismatch at %s, turned off", hooks[i].name);
-            g_dc_enabled = g_arm_enabled = g_nonukes_enabled = g_unitbans_enabled = 0;
+            g_dc_enabled = g_arm_enabled = g_nonukes_enabled = g_unitbans_enabled = g_popcap_enabled = 0;
             return;
         }
     unsigned char *mem = VirtualAlloc(NULL, 4096, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
     if (!mem)
         return;
     for (int i = 0; i < n; i++) {
-        if (!g_dc_enabled && hooks[i].hook != (void *)hk_dc_type_eligible)
+        if (!g_dc_enabled && hooks[i].hook != (void *)hk_dc_type_eligible &&
+            !(g_popcap_enabled && hooks[i].hook == (void *)hk_dc_calc_pop_cap))
             continue;
         unsigned char *at = (unsigned char *)VA(hooks[i].va);
         *hooks[i].orig = hook_trampoline(at, hooks[i].steal, mem + i * 32);

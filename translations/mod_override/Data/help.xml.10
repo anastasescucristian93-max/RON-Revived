@@ -2453,10 +2453,13 @@ más reducidos serán los ejércitos y los enfrentamientos. [Esta opción no se 
 				<STRING>El límite de población de las naciones es de 200 habitantes.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>El límite de población de las naciones es 250. Los dos últimos niveles de la investigación militar proporcionan un incremento del límite de población.</STRING>
+				<STRING>El límite de población de las naciones es 300. Cada nivel de la investigación militar aumenta tu límite de población en un octavo de esa cifra.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>El límite de población de las naciones es 300. Los cuatro últimos niveles de la investigación militar proporcionan un incremento al límite de población.</STRING>
+				<STRING>El límite de población de las naciones es 400. Cada nivel de la investigación militar aumenta tu límite de población en un octavo de esa cifra.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>El límite de población de las naciones es 500. Cada nivel de la investigación militar aumenta tu límite de población en un octavo de esa cifra.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

@@ -2452,10 +2452,13 @@ e combattimenti di dimensioni ridotte. Non è possibile modificare l'opzione se 
 				<STRING>Il limite di popolazione per le nazioni è 200.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>Il limite di popolazione di ciascuna nazione è di 250. Gli ultimi due livelli di sviluppo militare consentono di aumentare ulteriormente il limite di popolazione.</STRING>
+				<STRING>Il limite di popolazione di ciascuna nazione è di 300. Ogni livello di sviluppo militare aumenta il limite di popolazione di un ottavo di questo valore.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>Il limite di popolazione di ciascuna nazione è di 300. Gli ultimi quattro livelli di sviluppo militare consentono di aumentare ulteriormente il limite di popolazione.</STRING>
+				<STRING>Il limite di popolazione di ciascuna nazione è di 400. Ogni livello di sviluppo militare aumenta il limite di popolazione di un ottavo di questo valore.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>Il limite di popolazione di ciascuna nazione è di 500. Ogni livello di sviluppo militare aumenta il limite di popolazione di un ottavo di questo valore.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

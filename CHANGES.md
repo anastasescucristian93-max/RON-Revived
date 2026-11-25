@@ -8,6 +8,32 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## The game setup remembers your last game (`camera-smooth`), new 2026-11-25
+
+- The game setup now comes back as you left it in your last game, or in the last multiplayer game you hosted: Cooperative AI, the map, the rules, the nukes slider and the rest. Before, it came back every time as it was saved the last time Save to Profile was ticked, so an unticked Cooperative AI was ticked again in the next game.
+- A setup that opens on Diplomacy, Survival of the Fittest or Assassin no longer shows greyed teams (1 1 2 2 ...) left over from an older team game. These styles have no teams; the game cleared them only when you changed Teams & Allies by hand.
+- The Survival setup keeps its own rules and does not change what the next setup remembers.
+- `remember_setup=0` under `[qol]` in `ron_camera.ini` brings back the game's way (only with Save to Profile ticked).
+- Interface only: it plays with players on any version.
+
+## Population limits up to 500 (`camera-smooth`, `romania`, `translations`), new 2026-11-25
+
+- The game setup's Population box now also offers **300, 400 and 500**, after the game's 50 to 200.
+- With a limit above 200, every level of Military research at the Library raises your Population Limit by an eighth of the limit, as the game does at 200 (25, 50, ... 200). At 500: 63, 125, 188, 250, 313, 375, 438, 500. Before, the game had no such choices, and its hidden rule for limits above 200 gave nearly all of the extra only with the last Military research.
+- Bantu, Housing Districts and the Colossus add to it as before.
+- `pop_limits_500=0` under `[gameplay]` in `ron_camera.ini` brings back the game's box.
+- A rule change: in multiplayer every player needs this version (older versions do not know the new choices).
+
+## Housing District cheaper (`data-center`), new 2026-11-25
+
+- The Housing District (+10 population limit) now costs 5200 Food + 2700 Knowledge instead of 6500 Food + 3400 Knowledge. Each one you own still makes the next 5% dearer.
+- A rule change: every player of a multiplayer game needs this version.
+
+## Selecting an Aircraft Carrier no longer crashes the game (`camera-smooth`), new 2026-11-25
+
+- Selecting an Aircraft Carrier crashed the game as soon as its Build Aircraft button could be used, with any nation (since 2026.11.08). The darker look of buttons you cannot afford took that button for an ability, and the game has no ability under that name. The button now keeps its normal look.
+- Interface only: it plays with players on any version.
+
 ## The game's desync logs keep every line (`camera-smooth`), new 2026-11-25
 
 - When a multiplayer game goes out of sync, the game writes logs that show where the computers first differed, in `%APPDATA%\Microsoft Games\Rise of Nations\Logs`. Their tracking was off by default, so they held only a header. The mod now turns it on in the game's `synclogger.ini` when the game starts (one checksum line per part of the game per turn). `desync_log=0` under `[debug]` in `ron_camera.ini` leaves that file alone.
@@ -806,7 +832,7 @@ Buildings of the late ages that every nation shares, made to look like their age
 The Data Center is gone: its Expansions became **city districts**, for every nation.
 - **Where:** built from the panel of any of your cities (bottom row), on a 2x2 plot next to that city or to one of its districts, with at most 2 empty tiles between them so units can pass. A builder comes out of the nearest city.
 - **When:** once you have researched every Library technology up to the last Age of the game (the four last Information Age ones excepted). A game that stops at the Modern or Industrial Age gets them too.
-- **What:** Housing District +10 population above 200 (6500 Food + 3400 Knowledge), Commerce District +30 to every resource-rate limit above 999 (3000 Knowledge + 3000 Wealth), Industrial District +3% to all income (3000 Knowledge + 2000 Wealth). As many as you like; each one of a kind makes the next 5% dearer. (Cheaper and smaller since 2026-10-29: they were +20 / +75 / +9% for 15000 + 7500, 7500 + 7500 and 9000 + 6000, 6% dearer each.) A destroyed district takes its bonus with it.
+- **What:** Housing District +10 population above 200 (6500 Food + 3400 Knowledge; 5200 Food + 2700 Knowledge since 2026-11-25), Commerce District +30 to every resource-rate limit above 999 (3000 Knowledge + 3000 Wealth), Industrial District +3% to all income (3000 Knowledge + 2000 Wealth). As many as you like; each one of a kind makes the next 5% dearer. (Cheaper and smaller since 2026-10-29: they were +20 / +75 / +9% for 15000 + 7500, 7500 + 7500 and 9000 + 6000, 6% dearer each.) A destroyed district takes its bonus with it.
 - **Look:** grey communist blocks, a department store and a workshop, the same for every nation for now.
 
 - **The Data Center is removed** (2026-10-29): it is no longer in the game at all, not even hidden; its slot is the game's own scenario-only Washington Monument again, and its pictures are gone. The districts' builder is called District Builder.

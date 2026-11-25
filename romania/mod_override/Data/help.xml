@@ -2478,10 +2478,13 @@ in smaller armies and engagements. [Cannot be changed while Game Rules set to St
 				<STRING>Nations are limited to a population of 200.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>Nations are limited to a population of 250. The last two levels of Military research provide an extra increase to your Population Limit.</STRING>
+				<STRING>Nations are limited to a population of 300. Each level of Military research raises your Population Limit by an eighth of that.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>Nations are limited to a population of 300. The last four levels of Military research provide an extra increase to your Population Limit.</STRING>
+				<STRING>Nations are limited to a population of 400. Each level of Military research raises your Population Limit by an eighth of that.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>Nations are limited to a population of 500. Each level of Military research raises your Population Limit by an eighth of that.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

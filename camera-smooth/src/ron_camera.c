@@ -184,6 +184,8 @@ static void load_config(void)
     nonukes_load_config(path);
     unitbans_load_config(path);
     attrition_load_config(path);
+    popcap_load_config(path);
+    setup_memory_load_config(path);
     defenseramp_load_config(path);
     notices_load_config(path);
     minimap_load_config(path);
@@ -1601,6 +1603,8 @@ static void install_hooks(void)
     nukefx_install();
     nonukes_install();
     attrition_install();
+    popcap_install();
+    setup_memory_install();
     defenseramp_install();
     notices_install();
     minimap_install();

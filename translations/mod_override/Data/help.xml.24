@@ -2474,10 +2474,13 @@ la armate și confruntări mai mici. [Nu se poate schimba cât timp Regulile de 
 				<STRING>Populația națiunilor este limitată la 200.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>Populația națiunilor este limitată la 250. Ultimele două niveluri de cercetare militară îți măresc suplimentar limita de populație.</STRING>
+				<STRING>Națiunile sunt limitate la o populație de 300. Fiecare nivel de cercetare militară îți crește limita de populație cu o optime din aceasta.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>Populația națiunilor este limitată la 300. Ultimele patru niveluri de cercetare militară îți măresc suplimentar limita de populație.</STRING>
+				<STRING>Națiunile sunt limitate la o populație de 400. Fiecare nivel de cercetare militară îți crește limita de populație cu o optime din aceasta.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>Națiunile sunt limitate la o populație de 500. Fiecare nivel de cercetare militară îți crește limita de populație cu o optime din aceasta.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

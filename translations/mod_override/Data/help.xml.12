@@ -2446,10 +2446,13 @@ moins les armées sont nombreuses et les engagements importants. [Impossible de 
 				<STRING>La population des nations est limitée à 200.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>La population des nations est limitée à 250. Les deux derniers niveaux de recherche militaire procurent un bonus d'augmentation de votre limite de population.</STRING>
+				<STRING>La population des nations est limitée à 300. Chaque niveau de recherche militaire augmente votre limite de population d'un huitième de ce total.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>La population des nations est limitée à 300. Les quatre derniers niveaux de recherche militaire procurent un bonus d'augmentation de votre limite de population.</STRING>
+				<STRING>La population des nations est limitée à 400. Chaque niveau de recherche militaire augmente votre limite de population d'un huitième de ce total.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>La population des nations est limitée à 500. Chaque niveau de recherche militaire augmente votre limite de population d'un huitième de ce total.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

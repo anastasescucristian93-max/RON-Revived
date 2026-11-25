@@ -26,6 +26,20 @@ Tools: `capstone` + `pefile` with the names from `rise_z.map` (a small disassemb
 
 Computes the cap into `[this+0x7E4]` and returns it. It clamps to the game's pop limit setting (`pop_limits` in the game options, e.g. 200) in the middle. After the clamp it only adds the tribe bonus and wonder 0x20F. A bonus added after the original function therefore goes above 200. It is called from `Build::finished` (new buildings) and from `calc_gather` when territory changes.
 
+The whole function (read 2026-11-25):
+
+- Scenarios with their own cap (`ScenarioData::pop_cap` 0x00CC21F0 per player, game flags `+0x821 & 0x10` / `+0x822 & 2`) and leaders with flag 0x100000 take the cap as it is and skip the rest.
+- Base = `POP_CAP[level]` (rules.xml `<POP_CAP entry0..7>` = 25, 50, ... 200; Constants +0x3C4, 8 ints), level = the Military research level (`[leader+0x6EB8]+0xE8 ^ 0x63187`, 0..7). Limit L = the setup's choice: `pop_limits` (`Categories`, data `[0x00E80030]`, 0x58 per entry, +0x3C the DATA value) at index `game+0x31` (byte).
+- If L > `POP_CAP[7]` (Constants +0x3E0): at level 7 the cap is L; else +25 per level above 3 when L - 200 >= 100, or above 5 when L - 200 >= 50 (the game's hidden 250 / 300 limits; help.xml still has POPLIMIT6 / 7 for them, rules.xml no longer lists them). MAX_POP_LIMIT (300) is not read by this code.
+- `+= CityData::pop_cap` 0x00737D40 of every city (VILLAGE_POP etc., Constants +0x3E8); Bantu (`has_tribe_bonus(3)`): cap and L x (100 + BANTU_POP_CAP) / 100 and (100 + BANTU_FINAL_POP_CAP) / 100 (Constants +0x5A8 / +0x5B0); cap = min(cap, L); `has_preq(0x2B7)` -> cap = L; leader flags `+0x6DA6 & 8` / `+0x6DCE & 8` x (100 + Constants+0x924) / 100; wonder 0x20F (Colossus) + COLOSSUS_POP_CAP (Constants +0x43C).
+- Only this function reads POP_CAP (Constants +0x3C4..+0x3E0; a scan of the code for those offsets near the Constants pointer finds only it and Conquer the World).
+- The setup's Population box: `SetupWin::setup_combos` 0x005BF490 calls `IFaceComboBox::category(count, categories, index, 1)` with a fixed count for each box; for `pop_limits` it is `push 6` at 0x005C0264 (the other boxes: rush_rules 0xF, cannon_times 5, ...). The list itself is loaded with a fixed count too: `Game::init_rules_data` calls `Categories::init(6, xml, "poplimits")` 0x006F21D0 (`push 6` at 0x0058F7B9; the count sizes the `ObjectArray<Category>`), so entries past the sixth in rules.xml are never read: with only the box's count raised, the box still showed 6 (2026-11-25). The other readers of `pop_limits` (`Build::queue_up`, `Build::do_queue`, `Unit::process`, `Leader::create_units`, `Leader::end_process`, `Leaders::end_process_all`, `IFaceSelected::draw_build_text`, `Game::list_rules`) index it with `game+0x31` and read the value.
+- popcap.c (2026-11-25): rules.xml gets 300, 400, 500 after 200 (romania/tools/build_data.py), both counts become 9, and before the game's function (datacenter.c's hook) POP_CAP[i] = L x (i + 1) / 8 for L > 200, the game's values otherwise.
+
+## Unit slots per player
+
+- `Objects::init_unit` 0x0065E0C0 takes a free slot with `Objects::find_free(player, 0, 2000, ...)`: a player's units are object slots 0..1999; `Objects::init_build` takes 2000..2999 (`push 0xBB8 / push 0x7D0`). Every soldier of a squad is an object of its own (95 unit types have UBER_SIZE 3 and POP 1), so a population of about 650 squads fills the 2000 unit slots. What the game does when `find_free` finds none was not looked at.
+
 ## Resource caps: `Leader::calc_resource_caps` 0x006CE900
 
 For r = 0..6: base by commerce level, tribe and wonder bonuses, plus `[this + 0x918 + 4*r]` (per-player additive bonus). Then `min(x, 999)`, then `<< 4`, stored encrypted. Resource 3 is always 999. It is called every time from `Leader::gather` (0x006CE280), so a bonus added after it applies immediately.

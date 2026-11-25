@@ -2374,10 +2374,13 @@ em exércitos e combates menores. [Não pode ser alterado com as Regras do jogo 
 				<STRING>As nações ficam limitadas a uma população de 200.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>As nações ficam limitadas a uma população de 250. Os dois últimos níveis de pesquisa Militar dão um aumento extra ao seu Limite de população.</STRING>
+				<STRING>As nações estão limitadas a uma população de 300. Cada nível de pesquisa militar aumenta seu limite de população em um oitavo desse valor.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>As nações ficam limitadas a uma população de 300. Os quatro últimos níveis de pesquisa Militar dão um aumento extra ao seu Limite de população.</STRING>
+				<STRING>As nações estão limitadas a uma população de 400. Cada nível de pesquisa militar aumenta seu limite de população em um oitavo desse valor.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>As nações estão limitadas a uma população de 500. Cada nível de pesquisa militar aumenta seu limite de população em um oitavo desse valor.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

@@ -12,7 +12,7 @@ They unlock once every Library technology up to the last Age of the game is rese
 
 | District | Bonus each | Price of the first |
 |---|---|---|
-| Housing District | +10 population limit, beyond the usual 200 | 6500 Food + 3400 Knowledge |
+| Housing District | +10 population limit, beyond the usual 200 | 5200 Food + 2700 Knowledge |
 | Commerce District | +30 to the resource-rate limit of every resource, beyond the usual 999 | 3000 Knowledge + 3000 Wealth |
 | Industrial District | +3% to all resource income | 3000 Knowledge + 2000 Wealth |
 

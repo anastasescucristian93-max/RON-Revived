@@ -85,9 +85,10 @@ HELP = ("End-game building of the Information Age. Needs at least one of the fou
 # rising 6% with each one owned; the Data Center itself is no longer offered (datacenter.c).
 # 2026-10-29 again (the user): Housing +10 for 6500 Food + 3400 Knowledge, Commerce +30 for 3000
 # Knowledge + 3000 Wealth, Industrial +3% for 3000 Knowledge + 2000 Wealth, rising 5% each.
+# 2026-11-25 (the user): Housing 20% cheaper, 5200 Food + 2700 Knowledge.
 EXPANSIONS = [
     ("housing", "ELDORADO", None, "El Dorado", "Housing District", (0, 5), (4, 2),
-     "650f/340k", "+10 population limit, beyond the usual maximum of 200"),
+     "520f/270k", "+10 population limit, beyond the usual maximum of 200"),
     ("commerce", "COURTYARDFOUNTAIN", None, "Courtyard Fountain", "Commerce District", (3, 5), (4, 3),
      "300k/300g", "+30 to the resource-rate limit of every resource, beyond the usual 999"),
     ("industry", "HOUSE35", "Lighthouse", "Lighthouse", "Industrial District", (3, 4), (3, 3),

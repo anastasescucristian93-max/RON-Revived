@@ -189,6 +189,8 @@ enum { LOOK_NORMAL, LOOK_READY, LOOK_LOCKED, LOOK_POOR, LOOK_DISABLED, LOOK_DIM 
 #define VA_GET_CASTER   0x0070CA10u /* GroupData::get_spellcaster(type) const, -1 = none, ret 4 */
 #define VA_GET_VCASTER  0x0070C770u /* GroupData::get_valid_spellcaster(type) const, ret 4 */
 #define VA_SELECTIONS   0x00E8D444u /* SelectGroup[], 0x9F0 each; Console +0x2A0 = the local one */
+#define VA_SPELLTYPES   0x00C0AB10u /* PtrArray<SpellType> spelltypes +0x10: SpellType *[type], NULL for non-spells */
+#define SPELL_END       0x2AC       /* UnitOut::make_options walks the spells below this */
 typedef int(__attribute__((thiscall)) *caster_t)(void *group, int type);
 
 static int g_button_depth, g_poor_percent;
@@ -197,6 +199,12 @@ static int spell_look(int type)
 {
     if (airdrop_is_option(OPT_SPELL, type)) /* its clock already darkens it while it recharges */
         return airdrop_cooldown_permille() > 0 ? LOOK_DISABLED : LOOK_READY;
+    /* Not every spell option holds a spell: the Carrier's Build Aircraft (spell 0x295) is added
+       with the aircraft it builds (current_upgrade of Fighter Bomber, 0x134 / 0x135), and
+       get_spellcaster reads spelltypes[type]->FROM without a NULL check (crash, 2026-11-25). */
+    char **spells = *(char ***)VA(VA_SPELLTYPES);
+    if (type < 0 || type >= SPELL_END || !spells || !spells[type])
+        return LOOK_READY;
     char *console = *(char **)VA(VA_CONSOLE_PTR), *sel = *(char **)VA(VA_SELECTIONS);
     if (!console || !sel)
         return LOOK_READY;

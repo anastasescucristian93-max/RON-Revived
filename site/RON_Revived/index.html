@@ -734,7 +734,7 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
       <div class="body">
         <h4>Housing District</h4>
         <p class="effect">+10 population limit each</p>
-        <p class="repeat">6500 Food + 3400 Knowledge. The limit can go past the game's maximum of 200.</p>
+        <p class="repeat">5200 Food + 2700 Knowledge. The limit can go past the game's maximum of 200.</p>
       </div>
     </article>
     <article class="branch">
@@ -2692,7 +2692,11 @@ footer { border-top: 1px solid var(--rivet); margin-top: 56px; padding-block: 26
   <details class="day" open>
     <summary><time datetime="2026-11-25">25 Nov 2026<small>Day 35</small></time><span class="digest"></span></summary>
     <ul>
+      <li><span class="tag fix">Fix</span><span><b>The game setup remembers your last game:</b> Cooperative AI, the map, the rules and the rest come back as you left them in your last game (or the last multiplayer game you hosted), not as they were the last time Save to Profile was ticked, so an unticked Cooperative AI no longer comes back ticked. Diplomacy, Survival of the Fittest and Assassin no longer show greyed teams left over from an older team game (<code>remember_setup</code> under <code>[qol]</code>).</span></li>
       <li><span class="tag new">New</span><span><b><a href="#interface">Allies ask you to join an attack or defend a city:</a></b> a computer ally whose army is ready to march asks you to join, and the minimap flashes where it gathers. After Accept the army waits up to 90 seconds or until your troops reach it, then marches with you and names its target. When a large enemy army reaches one of its cities, it asks you to help defend it. The spot gets a mark on the map for 60 seconds: rings on the ground and a large GATHER HERE, ATTACK HERE or DEFEND HERE with the ally's name. Your answer is the game's own taunt in the allies' chat. In a multiplayer game with computer allies every player needs this version.</span></li>
+      <li><span class="tag new">New</span><span><b>Population limits up to 500:</b> the game setup's Population box also offers 300, 400 and 500. Above 200, every level of Military research at the Library raises your Population Limit by an eighth of the limit (at 500: 63, 125, ... 500), as the game does at 200 (<code>pop_limits_500</code> under <code>[gameplay]</code>). In multiplayer every player needs this version.</span></li>
+      <li><span class="tag chg">Changed</span><span><b><a href="#districts">Housing District cheaper:</a></b> 5200 Food + 2700 Knowledge instead of 6500 Food + 3400 Knowledge, still 5% dearer for each one you own. In multiplayer every player needs this version.</span></li>
+      <li><span class="tag fix">Fix</span><span><b>Aircraft Carrier crash:</b> selecting a Carrier crashed the game as soon as its Build Aircraft button could be used, with any nation. It no longer does.</span></li>
       <li><span class="tag fix">Fix</span><span><b>Desync logs:</b> the game's own out-of-sync tracking is now on by default, so after a desync the <code>SyncLog</code> files in <code>%APPDATA%\Microsoft Games\Rise of Nations\Logs</code> show where the computers first differed (send them from every player with a report). A player name with an emoji no longer cuts them short (<code>desync_log</code> under <code>[debug]</code>).</span></li>
       <li><span class="tag chg">Changed</span><span><b>Resource requests come more readily:</b> an ally asks when it has lacked the same resource for 20 seconds, even if what it saves for changes in the meantime; before, it changed its plans so often that it never asked.</span></li>
     </ul>

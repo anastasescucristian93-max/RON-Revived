@@ -2345,10 +2345,13 @@ daha küçük ordulara ve çatışmalara yol açar. [Oyun Kuralları Standart ol
 				<STRING>Ulusların nüfusu 200 ile sınırlıdır.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>Ulusların nüfusu 250 ile sınırlıdır. Askerî araştırmanın son iki seviyesi Nüfus Sınırınızı ayrıca artırır.</STRING>
+				<STRING>Ulusların nüfusu 300 ile sınırlıdır. Her askeri araştırma seviyesi nüfus sınırınızı bunun sekizde biri kadar artırır.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>Ulusların nüfusu 300 ile sınırlıdır. Askerî araştırmanın son dört seviyesi Nüfus Sınırınızı ayrıca artırır.</STRING>
+				<STRING>Ulusların nüfusu 400 ile sınırlıdır. Her askeri araştırma seviyesi nüfus sınırınızı bunun sekizde biri kadar artırır.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>Ulusların nüfusu 500 ile sınırlıdır. Her askeri araştırma seviyesi nüfus sınırınızı bunun sekizde biri kadar artırır.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

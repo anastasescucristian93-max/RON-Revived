@@ -92,8 +92,48 @@ def constant(rules, name):
     return int(m.group(1))
 
 
+# Population limits above 200 (the user, 2026-11-25; camera-smooth\src\popcap.c fills the setup's box
+# with 9 entries and scales the Military research with the limit). They go here because Romania's
+# rules.xml and help.xml are the ones installed. The new entries come after 200, so the game's
+# indices 0..5 keep their values in saved setups.
+POP_LIMITS = [300, 400, 500]
+POP_LIMIT_HELP = ("Nations are limited to a population of {0}. Each level of Military research raises your "
+                  "Population Limit by an eighth of that.")
+
+
+def newline_of(text):
+    return "\r\n" if "\r\n" in text else "\n"
+
+
+def pop_limit_rules(text):
+    start = text.index('<CATEGORIES id="poplimits"')
+    end = text.index("</CATEGORIES>", start)
+    if '<CATEGORY name="300">' in text[start:end]:
+        return text
+    if '<CATEGORY name="200">' not in text[start:end]:
+        raise SystemExit("rules.xml: no 200 in poplimits")
+    nl = newline_of(text)
+    line_start = text.rindex("\n", 0, end) + 1
+    add = "".join('    <CATEGORY name="%d">%s      <DATA>%d</DATA>%s    </CATEGORY>%s' % (n, nl, n, nl, nl)
+                  for n in POP_LIMITS)
+    return text[:line_start] + add + text[line_start:]
+
+
+def pop_limit_help(text):
+    """POPLIMIT6..8, the tooltips of 300, 400 and 500 (the game's 6 and 7 were for 250 and 300)."""
+    for i in range(6, 6 + len(POP_LIMITS)):
+        text = re.sub(r'[ \t]*<ENTRY name="POPLIMIT%d">.*?</ENTRY>\r?\n' % i, "", text, flags=re.S)
+    m = re.search(r'[ \t]*<ENTRY name="POPLIMIT5">.*?</ENTRY>\r?\n', text, re.S)
+    if not m:
+        raise SystemExit("help.xml: no POPLIMIT5")
+    nl = newline_of(text)
+    add = "".join('\t\t\t<ENTRY name="POPLIMIT%d">%s\t\t\t\t<STRING>%s</STRING>%s\t\t\t</ENTRY>%s'
+                  % (6 + k, nl, POP_LIMIT_HELP.format(n), nl, nl) for k, n in enumerate(POP_LIMITS))
+    return text[:m.end()] + add + text[m.end():]
+
+
 def build_rules(game):
-    text = read(base_of(game, "rules.xml"))  # the bug fixes change some constants
+    text = pop_limit_rules(read(base_of(game, "rules.xml")))  # the bug fixes change some constants
     start = text.index("<TRIBES>")
     end = text.index("</TRIBES>", start)
     if "ROMANIA.XML" in text[start:end]:
@@ -395,7 +435,7 @@ def nation_tips(text, game, rules, unit_text, typenames):
 
 
 def build_help(game, rules, unit_text, typenames):
-    text = lobby_quiet_help(survival_button_help(read(base_of(game, "help.xml"))))
+    text = pop_limit_help(lobby_quiet_help(survival_button_help(read(base_of(game, "help.xml")))))
     bullets = "".join("\n         <BULLET/>" + line.format(*[constant(rules, c) for c in consts])
                       for consts, line in POWER)
     entry = '\t\t<ENTRY name="TRIBE%d">\n\t\t\t<STRING>%s%s\n         </STRING>\n\t\t</ENTRY>\n' % (

@@ -2474,10 +2474,13 @@ mniejsze armie i starcia. [Nie można zmienić, gdy zasady gry są ustawione na 
 				<STRING>Populacja nacji jest ograniczona do 200.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT6">
-				<STRING>Populacja nacji jest ograniczona do 250. Dwa ostatnie poziomy badań wojskowych dodatkowo zwiększają twój limit populacji.</STRING>
+				<STRING>Populacja narodów jest ograniczona do 300. Każdy poziom badań wojskowych zwiększa twój limit populacji o jedną ósmą tej liczby.</STRING>
 			</ENTRY>
 			<ENTRY name="POPLIMIT7">
-				<STRING>Populacja nacji jest ograniczona do 300. Cztery ostatnie poziomy badań wojskowych dodatkowo zwiększają twój limit populacji.</STRING>
+				<STRING>Populacja narodów jest ograniczona do 400. Każdy poziom badań wojskowych zwiększa twój limit populacji o jedną ósmą tej liczby.</STRING>
+			</ENTRY>
+			<ENTRY name="POPLIMIT8">
+				<STRING>Populacja narodów jest ograniczona do 500. Każdy poziom badań wojskowych zwiększa twój limit populacji o jedną ósmą tej liczby.</STRING>
 			</ENTRY>
 		</POPLIMITS>
 		<MISC>

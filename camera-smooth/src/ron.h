@@ -264,6 +264,15 @@ void defenseramp_install(void);
 /* attrition.c */
 void attrition_load_config(const char *ini_path);
 void attrition_install(void);
+/* setup_memory.c (the game setup kept from the last game, teams left over cleared) */
+void setup_memory_load_config(const char *ini_path);
+void setup_memory_install(void);
+void setup_memory_teams(char *sw); /* nonukes.c's setup_checks hook */
+/* popcap.c (population limits up to 500, Military research scaled with the limit) */
+extern int g_popcap_enabled;
+void popcap_load_config(const char *ini_path);
+void popcap_install(void);
+void popcap_prepare(void); /* datacenter.c's calc_pop_cap hook, before the game's function */
 /* datacenter.c (data-center mod: the Data Center and its Expansions) */
 extern int g_dc_enabled;
 void dc_load_config(const char *dir);
