@@ -21,17 +21,21 @@ The `-core`, `-art` and `-music` zips and `RON_Revived_update.txt` are for the u
 
 ## New in this version
 
-- **The game window is called "Rise of Nations: Revived"** in the taskbar, Alt+Tab, Task Manager and window capture (OBS, Game Bar). `window_title` under `[ui]` in `ron_camera.ini` sets another name.
-- **End-game statistics: the star for Units, Buildings and Cities Lost goes to the fewest losses**, not the most. When every player has the same number (nobody lost a city), no one gets the star, as in the other columns; the same tie rule now holds on the Ages tab. `fewest_losses_star=0` under `[ui]` turns it off.
-- Both change only what you see, so games with players on older versions stay in sync.
-- RON Revived now has two authors: Cristian Anastasescu and Rj Simas. Open work and ideas are in the [Issues](https://github.com/anastasescucristian93-max/RON-Revived/issues).
+A livelier picture (it changes only what you see, so games with players on older versions stay in sync):
 
-Since 2026.11.22:
+- **Contact shadows**: a soft shade where things meet the ground, at the foot of buildings and walls, under and between units, along field edges and inside groups of trees.
+- **Cloud shadows**: soft shadows of a few clouds drift slowly over the map with the wind, over the ground, buildings and units alike.
+- **Trees sway in the wind**: the tops of the trees sway gently while the trunks stay rooted.
+- **Softer light**: bright parts (snow, sand, white walls, fire) keep their colour instead of turning into flat patches, with a soft glow, even with the game's Bloom setting off.
+- **The fog of war comes and goes gradually**: the fog on the ground and the darkening of trees no longer switch at once when your units' sight leaves an area.
+- In a game, **Ctrl+F10** shows the game's own picture on the left half and the new one on the right; **Ctrl+F9** turns the new look off and on. Every effect has its own setting under `[graphics]` and `[fog]` in `ron_camera.ini`.
 
-- **Fixed: the mod did not load when the game had Windows compatibility settings** (Properties > Compatibility, such as "Disable fullscreen optimizations"): Windows then loads its own `winmm.dll` instead of the mod's. `install.bat` now turns those settings off and says so. If your game showed no sign of the mod, run `install.bat` from this version.
-- **Mod not working? Double-click `check.bat`** (new in the zip): it changes nothing, checks everything that decides whether the mod loads and saves a report, `RON_Revived_check.txt`, on your Desktop. Send it with your bug report.
-- **Fixed: the mod did nothing when the game folder's path has non-English letters** (Cyrillic, Lithuanian, Greek and others on a Windows set to a Western language): no new launcher, no changes in the game, no `ron_camera.log`. The mod now finds its files there. On the rare drive where Windows cannot help with that, `install.bat` says so and what to do.
-- **No more black between the main menu's scenes** (since 2026.11.19): the next scene rises over the old one while both keep drifting.
+Since 2026.11.26:
+
+- **Queue as many missiles as you want in a Missile Silo**: the next one goes in, ready, as soon as you launch; with several silos selected, one click queues one in each. In multiplayer every player needs this version.
+- **Selecting the whole army no longer moves the camera** (the Cycle Military key pressed twice).
+- **Unit cards**: with several units selected, a button on the selection panel shows one card per unit with its own health bar.
+- **Fixed: Aircraft Carrier planes looked like the Airdrop's Chinook.**
 
 ## What's in it
 
