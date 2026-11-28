@@ -6607,7 +6607,8 @@ destruir excepto con armas pesadas.
 			<STRING>
 				<BULLET/>
              {Cazas}, Edad Moderna #ICON33 - desplegados en portaaviones; potentes contra aviones enemigos y útiles para ametrallar tropas de tierra enemigas.
-            <!--Fighter Bomber--></STRING>
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -6710,6 +6711,10 @@ destruir excepto con armas pesadas.
 
          
             <!--Helicopter--></STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Lleva un pelotón de élite de paracaidistas desde una base aérea al punto que elijas, lo desembarca y regresa. Parte del precio se recupera cuando vuelve a aterrizar en su base aérea.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

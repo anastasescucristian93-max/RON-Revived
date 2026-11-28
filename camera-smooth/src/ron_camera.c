@@ -190,6 +190,9 @@ static void load_config(void)
     notices_load_config(path);
     minimap_load_config(path);
     selpanel_load_config(path);
+    unitcards_load_config(path);
+    armycam_load_config(path);
+    siloqueue_load_config(path);
     survival_load_config(path);
     menuhelp_load_config(path);
     lobby_list_load_config(path);
@@ -200,6 +203,7 @@ static void load_config(void)
     hover_load_config(path);
     squad_hp_load_config(path);
     outline_load_config(path);
+    tree_sway_load_config(path);
     bribe_load_config(path);
     follow_load_config(path);
     rally_load_config(path);
@@ -440,6 +444,8 @@ __attribute__((used)) void c_check_scroll(void *self)
     minimap_tick();
     allyreq_tick();
     bigsel_tick();
+    unitcards_tick();
+    armycam_tick();
     placement_tick();
     if (g_airdrop_enabled)
         airdrop_ui_tick();
@@ -1256,6 +1262,12 @@ static hook_t g_hooks[] = {
     { "draw_build", 0x008E7610u, { 0x53, 0x8B, 0xDC, 0x83, 0xEC, 0x08, 0x83, 0xE4, 0xF8 }, 9, 6,
       (void *)hk_draw_build, &g_orig_draw_build, &g_hook_draw_build },
     /* draw_template: push ebp / mov ebp,esp / push -1 | push offset ehhandler (address relocated, not compared) */
+    /* Options::do_cycle_military: push ebp / mov ebp,esp / sub esp,0x9f4 */
+    { "cycle_military", 0x0071FDE0u, { 0x55, 0x8B, 0xEC, 0x81, 0xEC, 0xF4, 0x09, 0x00, 0x00 }, 9, 9,
+      (void *)hk_cycle_military, &g_orig_cycle_military, &g_armycam_enabled },
+    /* Build::finished: push ebp / mov ebp,esp / mov eax,[unittypes] (address relocated, copied whole) */
+    { "silo_finished", 0x00628490u, { 0x55, 0x8B, 0xEC, 0xA1 }, 4, 8,
+      (void *)hk_silo_finished, &g_orig_silo_finished, &g_silo_enabled },
     { "draw_template", 0x00634250u, { 0x55, 0x8B, 0xEC, 0x6A, 0xFF, 0x68 }, 6, 5,
       (void *)hk_draw_template, &g_orig_draw_template, &g_grid_enabled },
     /* GameSpyGroup::on_listbox_entry_redraw (the Game Browser's rows, lobby_list.c):
@@ -1609,6 +1621,9 @@ static void install_hooks(void)
     notices_install();
     minimap_install();
     selpanel_install();
+    unitcards_install();
+    armycam_install();
+    siloqueue_install();
     survival_install();
     menuhelp_install();
     lobby_list_install(); /* after the hook table: its row function hook */
@@ -1631,6 +1646,7 @@ static void install_hooks(void)
     hover_install();
     squad_hp_install();
     outline_install();
+    tree_sway_install();
     bribe_install();
     follow_install();
     rally_install();

@@ -222,3 +222,5 @@ Understood. I will hold as long as I can.
 GATHER HERE
 ATTACK HERE
 DEFEND HERE
+# unitcards.c: the button on the selection panel's top row (several units selected)
+Unit cards

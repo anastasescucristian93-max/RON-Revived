@@ -6603,7 +6603,8 @@ sauf avec des armements lourds.
 			<STRING>
 				<BULLET/>
              {Chasseur}, âge moderne #ICON33 : déployé sur les porte-avions ; puissant contre les appareils aériens de l'ennemi et utile pour mitrailler ses troupes terrestres.
-            <!--Fighter Bomber--></STRING>
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -6706,6 +6707,10 @@ sauf avec des armements lourds.
 
          
             <!--Helicopter--></STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Transporte une escouade d'élite de parachutistes depuis une base aérienne jusqu'au point choisi, la dépose et rentre. Une partie du prix est remboursée quand il se pose de nouveau sur sa base aérienne.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

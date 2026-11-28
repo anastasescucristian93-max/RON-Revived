@@ -5617,7 +5617,10 @@ altfel decât cu arme grele.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Duce o grupă de elită de parașutiști de la o bază aeriană la locul ales de tine, îi debarcă și se întoarce. O parte din preț îți revine când aterizează din nou la baza sa aeriană.</STRING>
+				<BULLET/>
+             {Avioane de vânătoare}, Epoca modernă #ICON33 - staționate pe portavioane; puternice împotriva aeronavelor inamice și utile pentru a mitralia trupele terestre inamice.
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -5727,6 +5730,10 @@ altfel decât cu arme grele.
          
             <!--Helicopter-->
 			</STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Duce o grupă de elită de parașutiști de la o bază aeriană la locul ales de tine, îi debarcă și se întoarce. O parte din preț îți revine când aterizează din nou la baza sa aeriană.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

@@ -191,4 +191,5 @@
 	<STRING en="GATHER HERE">СБОР ЗДЕСЬ</STRING>
 	<STRING en="ATTACK HERE">АТАКОВАТЬ ЗДЕСЬ</STRING>
 	<STRING en="DEFEND HERE">ОБОРОНЯТЬ ЗДЕСЬ</STRING>
+	<STRING en="Unit cards">Карточки юнитов</STRING>
 </ROOT>

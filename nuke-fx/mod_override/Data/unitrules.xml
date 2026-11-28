@@ -19374,7 +19374,7 @@
   </UNIT>
   <UNIT>
     <NAME>Harrier Jet</NAME>
-    <GRAPH>FIGHTERBOMBER</GRAPH>
+    <GRAPH>CHINOOK</GRAPH>
     <OBJ_MASK>3T</OBJ_MASK>
     <FLAGS>fh</FLAGS>
     <WHERE>None</WHERE>

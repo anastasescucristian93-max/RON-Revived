@@ -6699,7 +6699,10 @@ except with heavy weapons.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Flies an elite squad of Paratroopers from an Airbase to the spot you choose, lands them and flies home. Part of the price comes back when it lands at its Airbase again.</STRING>
+				<BULLET/>
+             {Fighter Aircraft}, Modern Age #ICON33 - deployed on Aircraft Carriers; powerful against enemy aircraft and useful for strafing enemy ground troops.
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -6809,6 +6812,10 @@ except with heavy weapons.
          
             <!--Helicopter-->
 			</STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Flies an elite squad of Paratroopers from an Airbase to the spot you choose, lands them and flies home. Part of the price comes back when it lands at its Airbase again.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

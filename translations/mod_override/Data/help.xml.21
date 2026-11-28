@@ -6765,7 +6765,10 @@ inaczej niż ciężką bronią.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Przewozi elitarny oddział spadochroniarzy z bazy lotniczej w wybrane miejsce, wysadza go i wraca. Część ceny wraca, gdy znów wyląduje w swojej bazie lotniczej.</STRING>
+				<BULLET/>
+             {Myśliwce}, Epoka nowoczesna #ICON33 – stacjonują na lotniskowcach; groźne dla wrogich samolotów i przydatne do ostrzeliwania wrogich wojsk lądowych.
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -6875,6 +6878,10 @@ inaczej niż ciężką bronią.
          
             <!--Helicopter-->
 			</STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Przewozi elitarny oddział spadochroniarzy z bazy lotniczej w wybrane miejsce, wysadza go i wraca. Część ceny wraca, gdy znów wyląduje w swojej bazie lotniczej.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

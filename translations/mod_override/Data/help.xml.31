@@ -5486,7 +5486,10 @@ yok edilmesi zor.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Seçkin bir Paraşütçü mangasını Hava Üssünden seçtiğiniz noktaya uçurur, indirir ve geri döner. Hava Üssüne geri indiğinde fiyatın bir kısmı iade edilir.</STRING>
+				<BULLET/>
+             {Avcı Uçakları}, Modern Çağ #ICON33 - Uçak Gemilerinde konuşlanır; düşman uçaklarına karşı güçlü, düşman kara birliklerini taramak için de yararlı.
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -5596,6 +5599,10 @@ yok edilmesi zor.
          
             <!--Helicopter-->
 			</STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Seçkin bir Paraşütçü mangasını Hava Üssünden seçtiğiniz noktaya uçurur, indirir ve geri döner. Hava Üssüne geri indiğinde fiyatın bir kısmı iade edilir.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

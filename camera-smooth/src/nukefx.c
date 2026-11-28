@@ -891,8 +891,8 @@ static void __attribute__((fastcall)) c_scen_walk(char *walker)
    or is making SILO_MAX is disabled. Options entries: 0x14 bytes, +4 type, +0xC disabled. */
 void nukefx_make_options(char *b)
 {
-    if (!g_interceptors || type_of(b) != SILO)
-        return;
+    if (!g_interceptors || type_of(b) != SILO || siloqueue_open(b))
+        return; /* siloqueue.c: a human player's silo queues any number */
     struct silo *s = silo_rec((unsigned char)b[OBJ_OWNER], *(short *)(b + OBJ_ID), 0);
     if ((s ? s->n : 0) + queued(b, INTERCEPTOR) < SILO_MAX)
         return;
@@ -902,6 +902,13 @@ void nukefx_make_options(char *b)
         if (*(int *)(e + 4) == INTERCEPTOR)
             *(int *)(e + 0xC) = 1;
     }
+}
+
+/* For siloqueue.c: the Interceptors counted at a silo (it waits with the next one at SILO_MAX). */
+int nukefx_silo_stock(int p, int id)
+{
+    struct silo *s = silo_rec(p, id, 0);
+    return s ? s->n : 0;
 }
 
 int nukefx_is_option(int code, int type)

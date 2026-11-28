@@ -11201,82 +11201,36 @@
       <FILE file="ProduceUnit"/>
     </CREATED>
     <SELECT>
-      <FILE file="HelicopterSelect"/>
+      <FILE file="Select_FighterBomber"/>
     </SELECT>
     <MOVE_ACK>
-      <FILE file="HelicopterSelect"/>
+      <FILE file="Select_FighterBomber"/>
     </MOVE_ACK>
     <PATROL_ACK>
-      <FILE file="HelicopterSelect"/>
+      <FILE file="Select_FighterBomber"/>
     </PATROL_ACK>
     <ATTACK_ACK>
-      <FILE file="HelicopterSelect"/>
+      <FILE file="Select_FighterBomber"/>
     </ATTACK_ACK>
     <CAST_ACK>
-      <FILE file="HelicopterSelect"/>
+      <FILE file="Select_FighterBomber"/>
     </CAST_ACK>
     <FORM_ACK>
-      <FILE file="HelicopterSelect"/>
+      <FILE file="Select_FighterBomber"/>
     </FORM_ACK>
     <DEATH>
-      <FILE file="HelicopterDeath"/>
+      <FILE file="Explo1"/>
+      <FILE file="Explo2"/>
+      <FILE file="Explo3"/>
+      <FILE file="Explo4"/>
+      <FILE file="Explo5"/>
+      <FILE file="Explo6"/>
+      <FILE file="Explo7"/>
+      <FILE file="Explo8"/>
     </DEATH>
     <ATTACK>
-      <FILE file="Attack_Helicopter1"/>
+      <FILE file="WW2_AirplaneGunfire"/>
     </ATTACK>
-    <DO_DAMAGE_UNIT>
-      <FILE file="Explo1"/>
-      <FILE file="Explo2"/>
-      <FILE file="Explo3"/>
-      <FILE file="Explo4"/>
-      <FILE file="Explo5"/>
-      <FILE file="Explo6"/>
-      <FILE file="Explo7"/>
-      <FILE file="Explo8"/>
-    </DO_DAMAGE_UNIT>
-    <DO_DAMAGE_SIEGE>
-      <FILE file="Explo1"/>
-      <FILE file="Explo2"/>
-      <FILE file="Explo3"/>
-      <FILE file="Explo4"/>
-      <FILE file="Explo5"/>
-      <FILE file="Explo6"/>
-      <FILE file="Explo7"/>
-      <FILE file="Explo8"/>
-    </DO_DAMAGE_SIEGE>
-    <DO_DAMAGE_BUILDING>
-      <FILE file="Explo1"/>
-      <FILE file="Explo2"/>
-      <FILE file="Explo3"/>
-      <FILE file="Explo4"/>
-      <FILE file="Explo5"/>
-      <FILE file="Explo6"/>
-      <FILE file="Explo7"/>
-      <FILE file="Explo8"/>
-    </DO_DAMAGE_BUILDING>
-    <DO_DAMAGE_CITY>
-      <FILE file="Explo1"/>
-      <FILE file="Explo2"/>
-      <FILE file="Explo3"/>
-      <FILE file="Explo4"/>
-      <FILE file="Explo5"/>
-      <FILE file="Explo6"/>
-      <FILE file="Explo7"/>
-      <FILE file="Explo8"/>
-    </DO_DAMAGE_CITY>
-    <DO_MISS_LAND>
-      <FILE file="Explo1"/>
-      <FILE file="Explo2"/>
-      <FILE file="Explo3"/>
-      <FILE file="Explo4"/>
-      <FILE file="Explo5"/>
-      <FILE file="Explo6"/>
-      <FILE file="Explo7"/>
-      <FILE file="Explo8"/>
-    </DO_MISS_LAND>
-    <DO_MISS_OCEAN>
-      <FILE file="SplishySplash"/>
-    </DO_MISS_OCEAN>
   </FIGHTERBOMBER>
   <JETFIGHTERBOMBER>
     <CREATED>
@@ -11718,6 +11672,88 @@
       <FILE file="SplishySplash"/>
     </DO_MISS_OCEAN>
   </HELICOPTER>
+  <CHINOOK>
+    <CREATED>
+      <FILE file="ProduceUnit"/>
+    </CREATED>
+    <SELECT>
+      <FILE file="HelicopterSelect"/>
+    </SELECT>
+    <MOVE_ACK>
+      <FILE file="HelicopterSelect"/>
+    </MOVE_ACK>
+    <PATROL_ACK>
+      <FILE file="HelicopterSelect"/>
+    </PATROL_ACK>
+    <ATTACK_ACK>
+      <FILE file="HelicopterSelect"/>
+    </ATTACK_ACK>
+    <CAST_ACK>
+      <FILE file="HelicopterSelect"/>
+    </CAST_ACK>
+    <FORM_ACK>
+      <FILE file="HelicopterSelect"/>
+    </FORM_ACK>
+    <DEATH>
+      <FILE file="HelicopterDeath"/>
+    </DEATH>
+    <ATTACK>
+      <FILE file="Attack_Helicopter1"/>
+    </ATTACK>
+    <DO_DAMAGE_UNIT>
+      <FILE file="Explo1"/>
+      <FILE file="Explo2"/>
+      <FILE file="Explo3"/>
+      <FILE file="Explo4"/>
+      <FILE file="Explo5"/>
+      <FILE file="Explo6"/>
+      <FILE file="Explo7"/>
+      <FILE file="Explo8"/>
+    </DO_DAMAGE_UNIT>
+    <DO_DAMAGE_SIEGE>
+      <FILE file="Explo1"/>
+      <FILE file="Explo2"/>
+      <FILE file="Explo3"/>
+      <FILE file="Explo4"/>
+      <FILE file="Explo5"/>
+      <FILE file="Explo6"/>
+      <FILE file="Explo7"/>
+      <FILE file="Explo8"/>
+    </DO_DAMAGE_SIEGE>
+    <DO_DAMAGE_BUILDING>
+      <FILE file="Explo1"/>
+      <FILE file="Explo2"/>
+      <FILE file="Explo3"/>
+      <FILE file="Explo4"/>
+      <FILE file="Explo5"/>
+      <FILE file="Explo6"/>
+      <FILE file="Explo7"/>
+      <FILE file="Explo8"/>
+    </DO_DAMAGE_BUILDING>
+    <DO_DAMAGE_CITY>
+      <FILE file="Explo1"/>
+      <FILE file="Explo2"/>
+      <FILE file="Explo3"/>
+      <FILE file="Explo4"/>
+      <FILE file="Explo5"/>
+      <FILE file="Explo6"/>
+      <FILE file="Explo7"/>
+      <FILE file="Explo8"/>
+    </DO_DAMAGE_CITY>
+    <DO_MISS_LAND>
+      <FILE file="Explo1"/>
+      <FILE file="Explo2"/>
+      <FILE file="Explo3"/>
+      <FILE file="Explo4"/>
+      <FILE file="Explo5"/>
+      <FILE file="Explo6"/>
+      <FILE file="Explo7"/>
+      <FILE file="Explo8"/>
+    </DO_MISS_LAND>
+    <DO_MISS_OCEAN>
+      <FILE file="SplishySplash"/>
+    </DO_MISS_OCEAN>
+  </CHINOOK>
   <ATTACKHELICOPTER>
     <CREATED>
       <FILE file="ProduceUnit"/>
