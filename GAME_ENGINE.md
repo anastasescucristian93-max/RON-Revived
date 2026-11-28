@@ -392,6 +392,7 @@ The Windows Application event log gives the fault offset; **offset + 0x400000 = 
 21. **A test DLL that waits in DllMain** was removed by the PC's security software.
 22. `near` and `far` are macros in the Windows headers: not usable as variable names.
 23. **A game method called with one argument too many** crashes later, not there: thiscall callees pop their own arguments, so the caller's stack is left off by 4 (the Survival setup, find_button with 3 arguments instead of 2). To find a crash in winmm.dll: build the same flags without `-s` (the linker writes a PDB) and ask dbghelp's SymFromAddr for the report's `WINMM.dll+offset`.
+24. **Local code that calls the game's script functions can desync multiplayer** without touching a unit: `ScenarioFuncSet::find_idle_caravan` moves `ScenarioData::find_counters`, which is in the `scenario_data` checksum, so auto-trade (run on one player's machine) desynced every game with idle merchants. Leave the ScenarioData statics as they were (CS § Desync).
 
 ## 15. Open questions
 

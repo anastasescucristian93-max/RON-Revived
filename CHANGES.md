@@ -20,6 +20,11 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - `tree_sway` under `[graphics]` in `ron_camera.ini` sets how much (0 = still, default 1.15, up to 4).
 - Drawing only: it plays with players on any version.
 
+## Fixed: multiplayer games went out of sync when a player had idle merchants (`camera-smooth`), new 2026-11-28
+
+- Multiplayer games stopped with an out-of-sync error a few minutes in when one player had a merchant with nothing to do. The automatic trading for your idle merchants looked them up in a way that changed a counter the game compares between players, on that player's computer only. It now leaves that counter as it was.
+- Every player of a multiplayer game needs this version.
+
 ## Cloud shadows drifting over the map (`camera-smooth`), new 2026-11-28
 
 - Soft shadows of a few clouds drift slowly over the map with the wind, over the ground, buildings and units alike. They are sparse (about a quarter of the map at a time) and have soft edges.

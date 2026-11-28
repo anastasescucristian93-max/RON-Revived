@@ -42,6 +42,8 @@
 #define VA_FIND_IDLE_CARAVAN  0x009EAF70u /* ScenarioFuncSet::find_idle_caravan(const int &player1) */
 #define VA_NUM_ROUTES         0x009F3240u /* ScenarioFuncSet::num_caravan_routes(const int &player1) */
 #define VA_MAX_ROUTES         0x009F32B0u /* ScenarioFuncSet::max_caravan_routes(const int &player1) */
+#define VA_FIND_COUNTERS      0x00CC2210u /* int ScenarioData::find_counters[31]: the find_* functions' places */
+#define FIND_COUNTERS_N       31
 #define VA_FIND_CITY          0x0065BA90u /* ObjectsData::find_city(...) */
 #define VA_GROUP_CLEAR        0x00713E80u /* Group::clear(int) */
 #define VA_GROUP_ADD          0x00714350u /* Group::add(id, player, 0, 0) */
@@ -247,7 +249,12 @@ static void scan_merchants(double now, int send_all_now)
     g_routes = CALL(fn_i_pi, VA_NUM_ROUTES)(NULL, &p1);
     g_route_max = CALL(fn_i_pi, VA_MAX_ROUTES)(NULL, &p1);
 
-    /* find_idle_caravan cycles through idle caravans and returns -1 after the last. */
+    /* find_idle_caravan cycles through idle caravans and returns -1 after the last. Its place in
+       the cycle is ScenarioData::find_counters, which is in the multiplayer checksums
+       (scenario_data): this runs on the local player's machine only, so the counters are put back
+       as they were, or the other players' games call it a desync (seen 2026-11-26 and -28). */
+    int keep[FIND_COUNTERS_N];
+    memcpy(keep, (void *)VA(VA_FIND_COUNTERS), sizeof keep);
     int seen[MAX_TRACK], n = 0;
     for (int i = 0; i < 200 && n < MAX_TRACK; i++) {
         int id = CALL(fn_i_pi, VA_FIND_IDLE_CARAVAN)(NULL, &p1);
@@ -260,6 +267,7 @@ static void scan_merchants(double now, int send_all_now)
             break;
         seen[n++] = id;
     }
+    memcpy((void *)VA(VA_FIND_COUNTERS), keep, sizeof keep);
 
     /* Keep the timers of merchants that are still idle, start new ones. */
     typeof(g_idle) next;
