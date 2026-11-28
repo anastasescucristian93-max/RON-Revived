@@ -12,6 +12,13 @@
  * result in their place (override_redirect). The includes still come from the game's shaders
  * folder: the compiler resolves them from the name it was given, not from the file it got.
  *
+ * Light (ps_tonemap, ps_gaussian): bright parts keep their colour and fade to white instead of
+ * being cut flat at 1, and a soft glow around bright parts, drawn by the game's bloom passes
+ * (run whatever the game's own bloom setting is, with our bright pass and an even blur).
+ *
+ * Contact and cloud shadows (ao.c): a soft shade where things meet and drifting cloud shade, from
+ * the depth buffer, multiplied into the HDR scene just before the tone mapper runs.
+ *
  * Also fixed in ps_tonemap: FXAA takes the brightness from the alpha channel, which only the
  * bloom pass writes. With bloom off the tone mapper's alpha 1 reached FXAA, which then smoothed
  * nothing. The new code writes the brightness into alpha itself.
@@ -30,12 +37,17 @@
 
 #define VA_GRAPHSYS 0x00E335A0u /* GraphSys *: d3dgl's D3D11GLSys, +0x47C the immediate context */
 #define SYS_CONTEXT 0x47C
+#define SYS_DEPTH   0xD04 /* the scene's depth texture (ID3D11Texture2D), what ReflectionManager copies */
+#define SYS_PROJECTION 0x5A0 /* D3D11Context (+0x4F0) +0xB0: the projection set last, 16 floats */
+#define SYS_VIEW       0x560 /* D3D11Context +0x70: the view set last, 16 floats */
 
 /* d3dgl.dll, built 2024-06-20 */
 #define D3DGL_TIMESTAMP     0x667485A4u
 #define D3DGL_PREF_BASE     0x10000000u
 #define D3DGL_TONEMAP_VTBL  0x100E4FC4u /* D3D11ToneMapper vtable: +4 do_run(bool bloom) */
 #define D3DGL_TONEMAP_RUN   0x10044A30u
+#define D3DGL_SYS_VTBL      0x100E5084u /* D3D11GLSys vtable: +0x228 end_hdr() */
+#define D3DGL_END_HDR       0x1001D9B0u
 
 #define COM_FN(obj, idx) ((*(void ***)(obj))[idx])
 #define DC_GET_DEVICE    3
@@ -54,6 +66,7 @@ typedef void *(__stdcall *blob_ptr_t)(void *blob);
 typedef long(__stdcall *d3dcompile_t)(const void *src, SIZE_T len, const char *name, const void *defines, void *include,
                                       const char *entry, const char *target, UINT f1, UINT f2, void **code, void **err);
 typedef void(__attribute__((thiscall)) *do_run_t)(void *self, int bloom);
+typedef void(__attribute__((thiscall)) *end_hdr_t)(void *self);
 
 int g_postfx_enabled;
 static struct {
@@ -61,13 +74,23 @@ static struct {
     int fix_fxaa, keys;
     int water;
     float reflect, glint, sky, waves;
+    int highlights;
+    float bloom, bloom_threshold, bloom_radius;
+    float ao, ao_size;
+    int ao_debug;
+    float clouds, cloud_cover, cloud_size, cloud_speed;
 } cfg;
 
-static float g_mode[4];         /* x: 1 = the game's own look, y: 1 = comparison */
+/* x: 1 = the game's own look, y: 1 = comparison, z: 1 = the game's own bloom setting is on,
+   w: 1 = the look as it was before soft highlights, glow and contact shadows (test pictures) */
+static float g_mode[4];
 static float g_have[4] = { -1.0f };
 static void *g_dev, *g_cb;
 static do_run_t g_real_run;
+static end_hdr_t g_real_end_hdr;
+static int g_ao_drawn; /* the contact shade went into this frame's scene */
 static int g_shots; /* [debug] postfx_shots: test pictures, then quit */
+static int g_anim;  /* [debug] postfx_anim: that many frames of the first spot after it */
 static int g_water_debug; /* [debug] water_debug: water pixels with a reflection in magenta */
 
 void postfx_load_config(const char *ini_path)
@@ -86,7 +109,19 @@ void postfx_load_config(const char *ini_path)
     cfg.glint = ini_float(ini_path, "graphics", "water_glints", 1.5f);
     cfg.sky = ini_float(ini_path, "graphics", "water_sky", 0.25f);
     cfg.waves = ini_float(ini_path, "graphics", "water_waves", 1.25f);
+    cfg.highlights = GetPrivateProfileIntA("graphics", "soft_highlights", 1, ini_path);
+    cfg.bloom = ini_float(ini_path, "graphics", "glow", 0.5f);
+    cfg.bloom_threshold = ini_float(ini_path, "graphics", "glow_threshold", 0.8f);
+    cfg.bloom_radius = ini_float(ini_path, "graphics", "glow_size", 1.0f);
+    cfg.ao = ini_float(ini_path, "graphics", "contact_shadows", 0.6f);
+    cfg.ao_size = ini_float(ini_path, "graphics", "contact_shadow_size", 0.75f);
+    cfg.ao_debug = GetPrivateProfileIntA("debug", "contact_shadow_debug", 0, ini_path);
+    cfg.clouds = ini_float(ini_path, "graphics", "cloud_shadows", 0.25f);
+    cfg.cloud_cover = ini_float(ini_path, "graphics", "cloud_cover", 0.25f);
+    cfg.cloud_size = ini_float(ini_path, "graphics", "cloud_size", 8.0f);
+    cfg.cloud_speed = ini_float(ini_path, "graphics", "cloud_speed", 2.0f);
     g_shots = GetPrivateProfileIntA("debug", "postfx_shots", 0, ini_path);
+    g_anim = GetPrivateProfileIntA("debug", "postfx_anim", 0, ini_path);
     g_water_debug = GetPrivateProfileIntA("debug", "water_debug", 0, ini_path);
 #define CLAMP(v, lo, hi) v = v < lo ? lo : v > hi ? hi : v
     CLAMP(cfg.sharpen, 0.0f, 1.0f);
@@ -99,6 +134,15 @@ void postfx_load_config(const char *ini_path)
     CLAMP(cfg.glint, 0.0f, 10.0f);
     CLAMP(cfg.sky, 0.0f, 2.0f);
     CLAMP(cfg.waves, 0.25f, 3.0f);
+    CLAMP(cfg.bloom, 0.0f, 2.0f);
+    CLAMP(cfg.bloom_threshold, 0.3f, 1.0f);
+    CLAMP(cfg.bloom_radius, 0.25f, 3.0f);
+    CLAMP(cfg.ao, 0.0f, 1.0f);
+    CLAMP(cfg.ao_size, 0.1f, 2.0f);
+    CLAMP(cfg.clouds, 0.0f, 0.8f);
+    CLAMP(cfg.cloud_cover, 0.0f, 1.0f);
+    CLAMP(cfg.cloud_size, 2.0f, 60.0f);
+    CLAMP(cfg.cloud_speed, 0.0f, 30.0f);
 #undef CLAMP
 }
 
@@ -129,6 +173,48 @@ static const char k_grade[] =
     "\tc *= 1.0f - RV_VIGNETTE * smoothstep(0.1f, 0.5f, dot(d, d));\n"
     "\tc = saturate(c);\n"
     "\treturn float4(c, RV_FIX_FXAA ? dot(c, cLuminanceWeight) : src.a);\n"
+    "}\n\n";
+
+/* In the tone mapper, before the game's saturation. u is the game's colour before its clip at 1
+   (the filmic curve divided by the white point's, up to umax when the scene is very bright). The
+   game cut every channel at 1 on its own, so bright parts went flat and changed colour (orange fire
+   to yellow). Here a pixel over 1 keeps its colour and fades to white as it gets brighter; nothing
+   at or under 1 changes. The glow source: a soft knee over the threshold, in the pixel's colour, in
+   place of the game's pow(colour, 12.5), which lit only near-white pixels. */
+static const char k_tone[] =
+    "float3 rv_highlights(float3 u, float umax)\n"
+    "{\n"
+    "\tfloat m = max(u.r, max(u.g, u.b));\n"
+    "\tif (!RV_HIGHLIGHTS || gRvMode.w > 0.5f || m <= 1.0f || umax <= 1.001f)\n"
+    "\t\treturn u;\n"
+    "\tfloat a = saturate((m - 1.0f) / (umax - 1.0f));\n"
+    "\treturn lerp(u / m, 1.0f, a * (2.0f - a));\n"
+    "}\n"
+    "float3 rv_bright(float3 c, float l)\n"
+    "{\n"
+    "\tfloat q = clamp(l - RV_GLOW_THRESHOLD + RV_GLOW_KNEE, 0.0f, 2.0f * RV_GLOW_KNEE);\n"
+    "\tq = q * q / (4.0f * RV_GLOW_KNEE);\n"
+    "\treturn 2.0f * RV_GLOW * min(c, 1.0f) * (max(q, l - RV_GLOW_THRESHOLD) / max(l, 0.0001f));\n"
+    "}\n\n";
+
+/* The glow's blur (run across, then down). The game's 9 taps sat at i/2 times their offset, so
+   they were lopsided: -6..-4.5 pixel units on one side, 7.5..48 on the other, which pushed the glow
+   right and down. Here 17 even, symmetric taps with Gaussian weights. */
+static const char k_blur[] =
+    "PS_OUTPUT rv_blur(float2 uv0)\n"
+    "{\n"
+    "\tPS_OUTPUT o = (PS_OUTPUT)0;\n"
+    "\tfloat2 step = RV_GLOW_STEP / (gScreenSize.xy * gUVScale);\n"
+    "\tfloat3 sum = 0.0f;\n"
+    "\tfloat wsum = 0.0f;\n"
+    "\t[unroll] for (int k = -8; k <= 8; k++) {\n"
+    "\t\tfloat w = exp(-(float)(k * k) / (2.0f * 3.5f * 3.5f));\n"
+    "\t\tfloat2 uv = clamp(uv0 * gUVScale + gDirection * (float)k * step, 0.0f, gUVScale);\n"
+    "\t\tsum += BrightTexture.SampleLevel(Sampler, uv, 0).rgb * w;\n"
+    "\t\twsum += w;\n"
+    "\t}\n"
+    "\to.Color = float4(sum / wsum, 1.0f);\n"
+    "\treturn o;\n"
     "}\n\n";
 
 /* After FXAA: contrast-adaptive sharpening (AMD's CAS, the 5-tap form) from the four neighbours. */
@@ -292,8 +378,21 @@ typedef struct {
 
 static const edit_t k_tonemap_edits[] = {
     { "PS_OUTPUT PS(", 0, NULL },
+    { "PS_OUTPUT PS(", 0, k_tone },
+    /* tonemap() tends to 1 - 0.02/0.3 = 0.93333, so whiteScale times that is the brightest u */
+    { "color = color * whiteScale;", 1,
+      "\n\tif (!rv_original(IN.UV))\n\t\tcolor = rv_highlights(color, 0.93333f * whiteScale.x);" },
+    { "float luminance = dot(color.xyz, cLuminanceWeight);", 1, "\n\tfloat3 rv_c = color;" },
     { "OUT.Color = float4(lerp(desaturated, color.xyz, gSaturation), 1.0f) * finalTint;", 1,
       "\n\tOUT.Color = rv_grade(OUT.Color, IN.UV);" },
+    /* the game's half of the comparison gets no glow when the game's bloom is off (we run it) */
+    { "OUT.Bright = float4(gStrength * color.xyz  * brightLuminance / luminance, 1.0f);", 1,
+      "\n\tif (rv_original(IN.UV)) {\n\t\tif (gRvMode.z < 0.5f)\n\t\t\tOUT.Bright = float4(0.0f, 0.0f, 0.0f, 1.0f);\n"
+      "\t} else if (RV_GLOW > 0.0f)\n\t\tOUT.Bright = float4(rv_bright(rv_c, luminance), 1.0f);" },
+};
+static const edit_t k_gaussian_edits[] = {
+    { "PS_OUTPUT PS(", 0, NULL },
+    { "OUT.Color = float4(0.0, 0.0, 0.0, 0.0);", 1, "\n\tif (!rv_original(IN.UV))\n\t\treturn rv_blur(IN.UV);" },
 };
 static const edit_t k_fxaa_edits[] = {
     { "PS_OUTPUT PS(", 0, NULL },
@@ -314,12 +413,13 @@ static const struct {
     const char *funcs;
     const edit_t *edits;
     int nedits;
-} k_shaders[3] = {
-    { "ps_tonemap.hlsl", k_grade, k_tonemap_edits, 2 },
+} k_shaders[4] = {
+    { "ps_tonemap.hlsl", k_grade, k_tonemap_edits, 6 },
     { "ps_fxaa.hlsl", k_sharpen, k_fxaa_edits, 2 },
     { "ps_global.hlsl", k_water, k_global_edits, 5 },
+    { "ps_gaussian.hlsl", k_blur, k_gaussian_edits, 2 },
 };
-#define NSHADERS 3
+#define NSHADERS 4
 static char g_out[NSHADERS][MAX_PATH]; /* our versions, served in place of the game's */
 static int g_made[NSHADERS];
 
@@ -364,14 +464,17 @@ static int make_shader(int i, const char *dir)
         logf_("postfx: %s not found", path);
         return 0;
     }
-    char defs[768];
+    char defs[1024];
     snprintf(defs, sizeof defs,
              "#define RV_SHARPEN %.4ff\n#define RV_VIBRANCE %.4ff\n#define RV_CONTRAST %.4ff\n"
              "#define RV_WARMTH %.4ff\n#define RV_BLACK %.4ff\n#define RV_VIGNETTE %.4ff\n#define RV_FIX_FXAA %d\n"
              "#define RV_REFLECT %.4ff\n#define RV_GLINT %.4ff\n#define RV_SKY %.4ff\n#define RV_WAVES %.4ff\n"
-             "#define RV_SSR_STEP 20.0f\n#define RV_SSR_THICK 200.0f\n#define RV_DEBUG %d\n",
+             "#define RV_SSR_STEP 20.0f\n#define RV_SSR_THICK 200.0f\n#define RV_DEBUG %d\n"
+             "#define RV_HIGHLIGHTS %d\n#define RV_GLOW %.4ff\n#define RV_GLOW_THRESHOLD %.4ff\n"
+             "#define RV_GLOW_KNEE 0.15f\n#define RV_GLOW_STEP %.4ff\n",
              cfg.sharpen, cfg.vibrance, cfg.contrast, cfg.warmth, cfg.black, cfg.vignette, cfg.fix_fxaa ? 1 : 0,
-             cfg.reflect, cfg.glint, cfg.sky, cfg.waves, g_water_debug);
+             cfg.reflect, cfg.glint, cfg.sky, cfg.waves, g_water_debug, cfg.highlights ? 1 : 0, cfg.bloom,
+             cfg.bloom_threshold, 3.0f * cfg.bloom_radius);
     /* each edit splices into the text built so far; every anchor must be there exactly once */
     for (int e = 0; e < k_shaders[i].nedits; e++) {
         const edit_t *ed = &k_shaders[i].edits[e];
@@ -443,9 +546,13 @@ void postfx_init(void)
         return;
     }
     logf_("postfx: sharpen %.2f, vibrance %.2f, contrast %.2f, warmth %.2f, black %.3f, vignette %.2f, fxaa fix %d; "
-          "water %s (reflections %.2f, glints %.2f, sky %.2f, waves %.2f)",
+          "water %s (reflections %.2f, glints %.2f, sky %.2f, waves %.2f); soft highlights %d, glow %.2f "
+          "(threshold %.2f, size %.2f); contact shadows %.2f (size %.2f tiles); clouds %.2f (cover %.2f, "
+          "size %.0f tiles, %.1f tiles a minute)",
           cfg.sharpen, cfg.vibrance, cfg.contrast, cfg.warmth, cfg.black, cfg.vignette, cfg.fix_fxaa,
-          g_made[2] ? "on" : "off", cfg.reflect, cfg.glint, cfg.sky, cfg.waves);
+          g_made[2] ? "on" : "off", cfg.reflect, cfg.glint, cfg.sky, cfg.waves, cfg.highlights, cfg.bloom,
+          cfg.bloom_threshold, cfg.bloom_radius, cfg.ao, cfg.ao_size, cfg.clouds, cfg.cloud_cover, cfg.cloud_size,
+          cfg.cloud_speed);
 }
 
 /* The uber shader is compiled per permutation: try the water's two (d3dgl's "Normal Water" with
@@ -510,6 +617,7 @@ static void check_compile(void)
             logf_("postfx: %s compiles", k_shaders[i].name);
             continue;
         }
+        g_made[i] = 0; /* the game's own text is served: no glow forced on its passes */
         char name[MAX_PATH];
         snprintf(name, sizeof name, "%sshaders\\%s", g_dir, k_shaders[i].name);
         char *orig = read_all(name, &n);
@@ -576,15 +684,40 @@ static void bind_switch(void)
     ((cb_t)COM_FN(dc, DC_PS_SET_CB))(dc, 7, 1, &g_cb);
 }
 
+/* The glow runs the game's bloom passes (blur and screen blend, our shaders) even when the game's
+   bloom setting is off: D3D11ToneMapper::init makes their buffers either way. */
 static void __attribute__((thiscall)) pf_do_run(void *self, int bloom)
 {
     read_keys();
+    g_mode[2] = (bloom & 0xFF) ? 1.0f : 0.0f;
     bind_switch();
-    g_real_run(self, bloom);
+    int glow = g_made[0] && g_made[3] && cfg.bloom > 0.0f && g_mode[0] < 0.5f && g_mode[3] < 0.5f;
+    g_real_run(self, (bloom & 0xFF) || glow);
+    g_ao_drawn = 0;
+}
+
+/* Scene::render ends the HDR scene (D3D11GLSys::end_hdr: the screen target goes back in) just
+   before the tone mapper. Before it, the HDR scene and its depth are still bound: the contact
+   shade goes in then (ao.c), once per frame. */
+static void __attribute__((thiscall)) pf_end_hdr(void *self)
+{
+    char *sys = self;
+    if (!g_ao_drawn && (cfg.ao > 0.0f || cfg.clouds > 0.0f) && g_mode[0] < 0.5f && g_mode[3] < 0.5f) {
+        static DWORD t0;
+        if (!t0)
+            t0 = GetTickCount();
+        g_ao_drawn = 1;
+        /* a tile is 192 world units; cloud_speed is in tiles a minute */
+        ao_params_t ap = { cfg.ao_size * 192.0f, cfg.ao, cfg.clouds, cfg.cloud_cover, cfg.cloud_size * 192.0f,
+                           cfg.cloud_speed * 192.0f / 60.0f, (GetTickCount() - t0) / 1000.0f };
+        ao_run(*(void **)(sys + SYS_CONTEXT), &ap, *(void **)(sys + SYS_DEPTH), (const float *)(sys + SYS_PROJECTION),
+               (const float *)(sys + SYS_VIEW), g_mode[1] > 0.5f, cfg.ao_debug);
+    }
+    g_real_end_hdr(self);
 }
 
 /* ---- test pictures ([debug] postfx_shots, for development) ---------------------------------
-   Once a game is on screen: the comparison (left the game's look, right ours) at the start
+   Once a game is on screen: the game's look, ours before 2026-11-27 and ours now, at the start
    position and at points around it, each saved from the screen target right after FXAA (the
    scene without the interface) to %TEMP%\RON Revived\shots\, then the game quits. */
 
@@ -706,7 +839,7 @@ static int find_spots(float (*xy)[2], int max)
 static void __attribute__((thiscall)) pf_aa_run(void *self)
 {
     g_real_aa(self);
-    /* each spot twice, the game's look ("old") and ours ("new"), the same view */
+    /* each spot three times, the same view: the game's look, ours before 2026-11-27, ours now */
     static int frame, step, spots;
     static float xy[12][2];
     static DWORD start;
@@ -730,23 +863,39 @@ static void __attribute__((thiscall)) pf_aa_run(void *self)
         if (!spots)
             return;
     }
-    int spot = step / 2, ours = step & 1;
-    if (frame == 0) {
-        if (!ours)
-            camera_set_loc(xy[spot][0], xy[spot][1]);
-        g_mode[0] = ours ? 0.0f : 1.0f;
-        g_mode[1] = 0.0f;
+    /* 0 the game's look ("old"), 1 ours before 2026-11-27 ("prev"), 2 ours now ("new") */
+    int spot = step / 3, variant = step % 3;
+    /* moving effects: once the first spot is done, every 6th frame of the same view, our look */
+    static int anim;
+    if (step == 3 && anim < g_anim) {
+        if (++frame < 6)
+            return;
+        frame = 0;
+        char adir[MAX_PATH], apath[MAX_PATH];
+        GetTempPathA(sizeof adir, adir);
+        strcat(adir, "RON Revived\\shots\\");
+        snprintf(apath, sizeof apath, "%sanim_%02d.bmp", adir, anim++);
+        save_screen(apath);
+        return;
     }
-    if (++frame < SETTLE)
+    if (frame == 0) {
+        if (!variant)
+            camera_set_loc(xy[spot][0], xy[spot][1]);
+        g_mode[0] = variant == 0 ? 1.0f : 0.0f;
+        g_mode[1] = 0.0f;
+        g_mode[3] = variant == 1 ? 1.0f : 0.0f;
+    }
+    /* the smooth camera glides to a new spot: the first picture of a spot waits longer */
+    if (++frame < (variant == 0 ? 5 * SETTLE : SETTLE))
         return;
     char dir[MAX_PATH], path[MAX_PATH];
     GetTempPathA(sizeof dir, dir);
     strcat(dir, "RON Revived\\shots\\");
     CreateDirectoryA(dir, NULL);
-    snprintf(path, sizeof path, "%sspot%02d_%s.bmp", dir, spot, ours ? "new" : "old");
+    snprintf(path, sizeof path, "%sspot%02d_%s.bmp", dir, spot, variant == 0 ? "old" : variant == 1 ? "prev" : "new");
     save_screen(path);
     frame = 0;
-    if (++step >= 2 * spots) {
+    if (++step >= 3 * spots) {
         logf_("postfx shots: done, quitting");
         ExitProcess(0);
     }
@@ -797,6 +946,12 @@ void postfx_display(void)
         *slot = (void *)pf_do_run;
         VirtualProtect(slot, sizeof *slot, old, &old);
         logf_("postfx: Ctrl+F9 look off / on, Ctrl+F10 comparison");
+    }
+    void **eh = (void **)(D3DGL_SYS_VTBL + delta) + 0x228 / 4;
+    if ((cfg.ao > 0.0f || cfg.clouds > 0.0f) && (UINT_PTR)*eh == D3DGL_END_HDR + delta && VirtualProtect(eh, sizeof *eh, PAGE_READWRITE, &old)) {
+        g_real_end_hdr = (end_hdr_t)*eh;
+        *eh = (void *)pf_end_hdr;
+        VirtualProtect(eh, sizeof *eh, old, &old);
     }
     if (g_shots)
         hook_shots(delta);

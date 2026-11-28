@@ -6606,7 +6606,8 @@ se non con armi pesanti.
 			<STRING>
 				<BULLET/>
              {Caccia}: età moderna #ICON33 - unità trasportate da portaerei, potenti contro i velivoli nemici e utili per il mitragliamento a bassa quota delle truppe di terra.
-            <!--Fighter Bomber--></STRING>
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -6709,6 +6710,10 @@ se non con armi pesanti.
 
          
             <!--Helicopter--></STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Trasporta una squadra scelta di paracadutisti da una base aerea al punto scelto, la sbarca e torna indietro. Parte del prezzo viene restituita quando atterra di nuovo alla sua base aerea.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

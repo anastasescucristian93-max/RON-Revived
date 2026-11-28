@@ -26344,23 +26344,58 @@
       <SOUNDEVENT starttime="0" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="0" anim="CHAR_ATTACK3" file="ATTACK"/>
     </UNIT>
-    <UNIT name="FIGHTERBOMBER-DEFAULT-AGE0" model=".\art\chinook.bh3" texture=".\art\chinook.tga" cache="1" scale="1" trackdist="-1" tracktype="" shadowtype="Helicopter Shadow" shadowwidth="90" shadowheight="160" tex_id="TEX_UNITS_2" tex_col="0" tex_row="3" tex_x="-1" tex_y="-1" tex_clip="0">
-      <ANIM name="CHAR_DEFAULT" file="LightBomber Default"/>
-      <ANIM name="CHAR_WALK" file="LightBomber Default"/>
-      <ANIM name="CHAR_ATTACK2" file="LightBomber Default"/>
+    <UNIT name="FIGHTERBOMBER-DEFAULT-AGE0" model=".\art\fighterbomber7.bh3" texture=".\art\fighterbomber7.tga" cache="0" scale="0.765" trackdist="-1" tracktype="" shadowtype="Fighter Shadow" shadowwidth="80" shadowheight="80" tex_id="TEX_UNITS_2" tex_col="4" tex_row="2" tex_x="-1" tex_y="-1" tex_clip="0">
+      <ANIM name="CHAR_DEFAULT" file="Fighter Move"/>
+      <ANIM name="CHAR_SLOG" file="Fighter Move"/>
+      <ANIM name="CHAR_WALK" file="Fighter Move"/>
+      <ANIM name="CHAR_ATTACK2" file="Fighter Attack"/>
       <BOUNDINGVOLUMES>
-        <BOX x="0" y="-15" z="30" x_width="190" y_width="265" z_width="75"/>
+        <SPHERE x="0" y="0" z="0" rad="80"/>
       </BOUNDINGVOLUMES>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_WALK" type="CopterBlade" node="2"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_DEFAULT" type="CopterBlade" node="2"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_ATTACK2" type="CopterBlade" node="2"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_JOG" type="CopterBlade" node="2"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_WALK" type="CopterBlade" node="3"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_DEFAULT" type="CopterBlade" node="3"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_ATTACK2" type="CopterBlade" node="3"/>
-      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_JOG" type="CopterBlade" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_WALK" type="B-25Prop0" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_WALK" type="B-25Prop1" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_SLOG" type="B-25Prop0" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_SLOG" type="B-25Prop1" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_DEFAULT" type="B-25Prop0" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_DEFAULT" type="B-25Prop1" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_ATTACK2" type="B-25Prop0" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_ATTACK2" type="B-25Prop1" node="3"/>
+      <PARTICLEEVENT starttime="0" endtime="0" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="250" endtime="250" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="500" endtime="500" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="750" endtime="750" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="1000" endtime="1000" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="1250" endtime="1250" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="1500" endtime="1500" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="1750" endtime="1750" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="0" axis="-2"/>
+      <PARTICLEEVENT starttime="0" endtime="0" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="250" endtime="250" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="500" endtime="500" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="750" endtime="750" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="1000" endtime="1000" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="1250" endtime="1250" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="1500" endtime="1500" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <PARTICLEEVENT starttime="1750" endtime="1750" anim="CHAR_ATTACK2" type="BIPLANE FLASH" node="1" axis="-2"/>
+      <RELEASEEVENT starttime="0" anim="CHAR_ATTACK2" type="Tracer" node="0"/>
+      <RELEASEEVENT starttime="250" anim="CHAR_ATTACK2" type="NoDamage Tracer" node="0"/>
+      <RELEASEEVENT starttime="500" anim="CHAR_ATTACK2" type="Tracer" node="0"/>
+      <RELEASEEVENT starttime="750" anim="CHAR_ATTACK2" type="Tracer" node="0"/>
+      <RELEASEEVENT starttime="1000" anim="CHAR_ATTACK2" type="Tracer" node="0"/>
+      <RELEASEEVENT starttime="1250" anim="CHAR_ATTACK2" type="NoDamage Tracer" node="0"/>
+      <RELEASEEVENT starttime="1500" anim="CHAR_ATTACK2" type="Tracer" node="0"/>
+      <RELEASEEVENT starttime="1750" anim="CHAR_ATTACK2" type="NoDamage Tracer" node="0"/>
+      <RELEASEEVENT starttime="0" anim="CHAR_ATTACK2" type="Tracer" node="1"/>
+      <RELEASEEVENT starttime="250" anim="CHAR_ATTACK2" type="Tracer" node="1"/>
+      <RELEASEEVENT starttime="500" anim="CHAR_ATTACK2" type="NoDamage Tracer" node="1"/>
+      <RELEASEEVENT starttime="750" anim="CHAR_ATTACK2" type="Tracer" node="1"/>
+      <RELEASEEVENT starttime="1000" anim="CHAR_ATTACK2" type="Tracer" node="1"/>
+      <RELEASEEVENT starttime="1250" anim="CHAR_ATTACK2" type="NoDamage Tracer" node="1"/>
+      <RELEASEEVENT starttime="1500" anim="CHAR_ATTACK2" type="Tracer" node="1"/>
+      <RELEASEEVENT starttime="1750" anim="CHAR_ATTACK2" type="NoDamage Tracer" node="1"/>
       <SOUNDEVENT starttime="0" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="500" anim="CHAR_ATTACK2" file="ATTACK"/>
+      <SOUNDEVENT starttime="1000" anim="CHAR_ATTACK2" file="ATTACK"/>
+      <SOUNDEVENT starttime="1500" anim="CHAR_ATTACK2" file="ATTACK"/>
     </UNIT>
     <UNIT name="JETFIGHTERBOMBER-DEFAULT-AGE0" model=".\art\jetfighterbomber.bh3" texture=".\art\jetfighterbomber.tga" cache="0" scale="0.765" trackdist="-1" tracktype="" shadowtype="Jet Shadow" shadowwidth="80" shadowheight="80" tex_id="TEX_UNITS_2" tex_col="5" tex_row="2" tex_x="-1" tex_y="-1" tex_clip="0">
       <ANIM name="CHAR_DEFAULT" file="Fighter Default"/>
@@ -26488,6 +26523,24 @@
       <PARTICLEEVENT starttime="500" endtime="500" anim="CHAR_ATTACK2" type="MUSKET BLAST" node="8" axis="3"/>
       <RELEASEEVENT starttime="0" anim="CHAR_ATTACK2" type="SmallRocket" node="0"/>
       <RELEASEEVENT starttime="500" anim="CHAR_ATTACK2" type="SmallRocket" node="1"/>
+      <SOUNDEVENT starttime="0" anim="CHAR_ATTACK2" file="ATTACK"/>
+      <SOUNDEVENT starttime="500" anim="CHAR_ATTACK2" file="ATTACK"/>
+    </UNIT>
+    <UNIT name="CHINOOK-DEFAULT-AGE0" model=".\art\chinook.bh3" texture=".\art\chinook.tga" cache="1" scale="1" trackdist="-1" tracktype="" shadowtype="Helicopter Shadow" shadowwidth="90" shadowheight="160" tex_id="TEX_UNITS_2" tex_col="0" tex_row="3" tex_x="-1" tex_y="-1" tex_clip="0">
+      <ANIM name="CHAR_DEFAULT" file="LightBomber Default"/>
+      <ANIM name="CHAR_WALK" file="LightBomber Default"/>
+      <ANIM name="CHAR_ATTACK2" file="LightBomber Default"/>
+      <BOUNDINGVOLUMES>
+        <BOX x="0" y="-15" z="30" x_width="190" y_width="265" z_width="75"/>
+      </BOUNDINGVOLUMES>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_WALK" type="CopterBlade" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_DEFAULT" type="CopterBlade" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_ATTACK2" type="CopterBlade" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_JOG" type="CopterBlade" node="2"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_WALK" type="CopterBlade" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_DEFAULT" type="CopterBlade" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_ATTACK2" type="CopterBlade" node="3"/>
+      <EXISTEVENT starttime="0" endtime="9999" anim="CHAR_JOG" type="CopterBlade" node="3"/>
       <SOUNDEVENT starttime="0" anim="CHAR_ATTACK2" file="ATTACK"/>
       <SOUNDEVENT starttime="500" anim="CHAR_ATTACK2" file="ATTACK"/>
     </UNIT>

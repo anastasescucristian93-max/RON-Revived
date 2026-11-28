@@ -39,6 +39,7 @@ int g_fog_enabled;
 static float g_sigma;
 static float g_edge;
 static int g_soft_edge;
+static int g_fade; /* [fog] fog_fade: the game's own gradual fade of the fog */
 
 void *g_orig_fill_fog_texcoords;
 void *g_orig_invalidate_fog_cache;
@@ -65,6 +66,7 @@ void fog_load_config(const char *ini_path)
     g_sigma = ini_float(ini_path, "fog", "fog_blur", 1.0f);
     g_edge = ini_float(ini_path, "fog", "fog_edge", 1.0f);
     g_soft_edge = GetPrivateProfileIntA("fog", "soft_edge", 1, ini_path);
+    g_fade = GetPrivateProfileIntA("fog", "fog_fade", 1, ini_path);
     if (g_sigma < 0.3f)
         g_sigma = 0.3f;
     if (g_sigma > 1.5f)
@@ -272,6 +274,14 @@ static float sample(const unsigned char *cells, int w, int h, int hx, int hy)
 
 __attribute__((used)) void c_fill_fog_texcoords(void *self, char *ft, int code)
 {
+    /* TerrainOut::inc_fog_time steps the ground's fog towards its new value only while the
+       graphics flag [[graphsys+0x13C]+2] is set (Scene::reset_scaling copies it from a
+       preference the options never show); else it jumps. Nothing else reads it. */
+    if (g_fade) {
+        char *gs = *(char **)VA(0x00E335A0u), *flags = gs ? *(char **)(gs + 0x13C) : NULL;
+        if (flags)
+            flags[2] = 1;
+    }
     ((fill_fog_t)g_orig_fill_fog_texcoords)(self, ft, code);
 
     const unsigned char *cells = *(const unsigned char **)VA(VA_FOG_CELLS);

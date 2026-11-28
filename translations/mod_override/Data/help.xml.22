@@ -5879,7 +5879,10 @@ exceto com armas pesadas.
 		</ENTRY>
 		<ENTRY name="FIGHTERBOMBER">
 			<STRING>
-				<BULLET/>Leva um esquadrão de elite de Paraquedistas de uma Base Aérea até o ponto que você escolher, desembarca-o e volta para casa. Parte do preço é devolvida quando ele pousa de novo na sua Base Aérea.</STRING>
+				<BULLET/>
+             {Aviões de caça}, Era Moderna #ICON33 - operam a partir de Porta-Aviões; poderosos contra aeronaves inimigas e úteis para metralhar tropas terrestres inimigas.
+            <!--Fighter Bomber-->
+			</STRING>
 		</ENTRY>
 		<ENTRY name="JETFIGHTERBOMBER">
 			<STRING>
@@ -5989,6 +5992,10 @@ exceto com armas pesadas.
          
             <!--Helicopter-->
 			</STRING>
+		</ENTRY>
+		<ENTRY name="CHINOOK">
+			<STRING>
+				<BULLET/>Leva um esquadrão de elite de Paraquedistas de uma Base Aérea até o ponto que você escolher, desembarca-o e volta para casa. Parte do preço é devolvida quando ele pousa de novo na sua Base Aérea.</STRING>
 		</ENTRY>
 		<ENTRY name="ATTACKHELICOPTER">
 			<STRING>

@@ -8,6 +8,71 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 - **One package for everything** (2026-10-28): the whole pack comes as one zip, `RON_Revived-<version>.zip`. Extract it and double-click `install.bat`: it finds the game through Steam, copies everything into place, keeps a copy of any game file it replaces, keeps your `ron_camera.ini` on an update, and removes files an older version had that the new one no longer has. `uninstall.bat` removes it all and puts back what it replaced. It refuses to run while the game is open or when another mod already uses `winmm.dll`. Romania's Enescu music is not in it (the recording is not free in the US).
 - **Updates from the launcher** (2026-10-31): when a new version is out, the game's launcher shows it over its picture, with how much there is to download and an **Update** button. Update downloads only the parts of the pack that changed, right in the launcher, with a progress bar in the button's place (click it to cancel), checks that they arrived whole, then closes the launcher for a few seconds, installs them the same way `install.bat` does and starts the game again. The extras (the nation music) are not part of it: the Extras tray shows when one of yours has a new version. Without internet, or with no new version, nothing shows. `check=0` under `[update]` in `ron_camera.ini` turns it off. Works from the first version that has it on; the one before has to be installed by hand one last time.
 
+## Fog of war comes and goes gradually (`camera-smooth`), new 2026-11-28
+
+- When your units' sight leaves an area, the fog on the ground and the darkening of the trees there now come gradually instead of at once, and they lift the same way when you see the area again.
+- Under `[fog]` in `ron_camera.ini`: `fog_fade=0` brings back the game's sudden change, `fog_fade_time` sets how long the trees take (default 1.5 seconds).
+- Drawing only: it plays with players on any version.
+
+## Trees sway in the wind (`camera-smooth`), new 2026-11-28
+
+- The tops of the trees sway gently to one side and back, the trunks bend a little and stay rooted, and waves of wind roll across the forests.
+- `tree_sway` under `[graphics]` in `ron_camera.ini` sets how much (0 = still, default 1.15, up to 4).
+- Drawing only: it plays with players on any version.
+
+## Cloud shadows drifting over the map (`camera-smooth`), new 2026-11-28
+
+- Soft shadows of a few clouds drift slowly over the map with the wind, over the ground, buildings and units alike. They are sparse (about a quarter of the map at a time) and have soft edges.
+- They stay on the map when you scroll, and they move whether the game is paused or not. Only the map gets them, not the dark ground outside its edge.
+- Ctrl+F10 shows the game's picture on the left half and the new one on the right, Ctrl+F9 turns the new look off and on.
+- Under `[graphics]` in `ron_camera.ini`: `cloud_shadows` sets how dark they are (0 = off, default 0.25), `cloud_cover` how much of the map lies under clouds (default 0.25), `cloud_size` how big a cloud is, in tiles (default 8), `cloud_speed` how fast they drift, in tiles a minute (default 2).
+- Drawing only: it plays with players on any version.
+
+## Contact shadows: a soft shade where things meet the ground (`camera-smooth`), new 2026-11-27
+
+- A soft shade now falls where things meet: at the foot of buildings and walls, under and between units, along the edges of fields and inside groups of trees. Buildings and forests look like they stand on the ground instead of lying on top of it.
+- It is worked out every frame from the depth of the picture, so it follows everything that moves and every building, including the nations' new ones.
+- Ctrl+F10 shows the game's picture on the left half and the new one on the right, Ctrl+F9 turns the new look off and on.
+- Under `[graphics]` in `ron_camera.ini`: `contact_shadows` sets how dark the shade is (0 = off, default 0.6, 1 = strong), `contact_shadow_size` how far it reaches, in tiles (default 0.75).
+- Drawing only: it plays with players on any version.
+
+## Softer light: bright parts keep their colour, and a soft glow (`camera-smooth`), new 2026-11-27
+
+- Bright parts of the map (snow, sand, white walls, fire, the sun on the water) keep their colour and fade gently to white as they get brighter. The game cut each colour off on its own, so they turned into flat patches and changed colour: an orange fire turned yellow. Nothing darker changes.
+- Bright parts get a soft glow around them, even with the game's own Bloom setting off (it is hidden in the options and off for most players). With the game's Bloom on, the new glow takes its place. The game's bloom pushed its glow to the right and down; the new one spreads evenly on every side.
+- Ctrl+F10 shows the game's picture on the left half and the new one on the right, Ctrl+F9 turns the new look off and on.
+- Under `[graphics]` in `ron_camera.ini`: `soft_highlights=0` brings back the game's bright parts, `glow` sets how strong the glow is (0 = off, default 0.5), `glow_threshold` how bright a part must be to glow (default 0.8), `glow_size` how wide it spreads (default 1).
+- Drawing only: it plays with players on any version.
+
+## Queue as many missiles as you want in a Missile Silo (`camera-smooth`), new 2026-11-26
+
+- Your Missile Silos now take any number of missiles in their queue. A silo still holds what it did: one nuclear missile, or one other missile, or two Interceptors. The first missile in the queue is built and waits, finished, until the silo is empty; as soon as you launch, the next one goes in, ready, and the one after it is built. No more selecting the silo again after every launch.
+- With several silos selected, a click on a missile queues one in every selected silo (Shift + click: five each), so 8 silos are loaded with one click. Before, a silo took nothing while it had a missile queued or ready, so with every silo loaded the buttons were greyed out.
+- The computer players keep the game's rule.
+- `silo_queue=0` under `[gameplay]` in `ron_camera.ini` brings back the game's rule.
+- A rule change: in multiplayer every player needs this version and the same `silo_queue`.
+
+## Selecting the whole army no longer moves the camera (`camera-smooth`), new 2026-11-26
+
+- Pressing the Cycle Military key twice (the comma) to select your whole army moved the camera into the middle of your units, away from the battle you were watching. The first press of the two had already sent the camera to the next military unit. Now the camera stays where you are looking.
+- A single press still selects the next military unit and takes the camera there, now 0.4 seconds later: the game needs that long to know whether a second press is coming.
+- Control groups (Ctrl + a number, then the number twice) still move the camera to the group, as in the game.
+- `army_double_press_keeps_camera=0` under `[qol]` in `ron_camera.ini` brings back the game's way.
+- Interface only: it plays with players on any version.
+
+## Unit cards: every selected unit with its own health bar (`camera-smooth`, `translations`), new 2026-11-26
+
+- With several units selected, the selection panel's top row (where the kills are) has a **Unit cards** button at its right end. It switches the panel between one picture per kind of unit with how many there are, and one card per unit, each with its own health bar. Select the aircraft of an Airbase and you see the hit points of every plane.
+- Up to 18 units get full-size cards with the bottom interface folded (more when it is unfolded); with more units selected, the cards get smaller so that all of them fit.
+- Click a card to select only that unit, as in the game.
+- The button stays pressed while the cards show, and the panel remembers your choice for the next game (`unit_cards` under `[ui]` in `ron_camera.ini`; `unit_cards_button=0` removes the button). The button's text is in all ten languages.
+- Interface only: it plays with players on any version.
+
+## Aircraft Carrier planes look like planes again (`paradrop`), new 2026-11-26
+
+- The planes an Aircraft Carrier builds (Fighter Bombers, before the jet upgrade) were drawn as the Airdrop's Chinook helicopter, with helicopter sounds and the helicopter's description. The Chinook had taken over their look. It now has a look of its own, and the Carrier's planes have the game's look, sounds and description again.
+- Every player of a multiplayer game needs this version.
+
 ## The game setup remembers your last game (`camera-smooth`), new 2026-11-25
 
 - The game setup now comes back as you left it in your last game, or in the last multiplayer game you hosted: Cooperative AI, the map, the rules, the nukes slider and the rest. Before, it came back every time as it was saved the last time Save to Profile was ticked, so an unticked Cooperative AI was ticked again in the next game.

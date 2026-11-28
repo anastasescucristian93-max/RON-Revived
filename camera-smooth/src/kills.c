@@ -307,6 +307,7 @@ typedef void(__attribute__((thiscall)) *group_name_t)(void *self, const short *r
 __attribute__((used, thiscall)) void c_kills_group_name(char *self, const short *rect)
 {
     ((group_name_t)VA(VA_GROUP_NAME))(self, rect);
+    unitcards_draw(self, rect); /* the Unit cards button at the row's right end */
     char *console = *(char **)VA(VA_CONSOLE), *sel = *(char **)VA(VA_SELECTIONS);
     if (!g_kills_enabled || !console || !sel || !rect)
         return;
@@ -394,8 +395,30 @@ __asm__(".intel_syntax noprefix\n"
         ".att_syntax prefix\n");
 
 /* Called from install_hooks once the exe is known to be the supported version. */
+/* on_redraw's draw_group_name call goes to c_kills_group_name: the group's kills and
+   unitcards.c's button */
+static void install_group_name(void)
+{
+    static int done;
+    unsigned char *gn = (unsigned char *)VA(VA_GROUP_NAME_CALL);
+    if (done)
+        return;
+    if (gn[0] == 0xE8 && (UINT_PTR)(gn + 5 + *(INT32 *)(gn + 1)) == VA(VA_GROUP_NAME)) {
+        DWORD old;
+        VirtualProtect(gn, 5, PAGE_EXECUTE_READWRITE, &old);
+        *(INT32 *)(gn + 1) = (INT32)((UINT_PTR)c_kills_group_name - (UINT_PTR)(gn + 5));
+        VirtualProtect(gn, 5, old, &old);
+        FlushInstructionCache(GetCurrentProcess(), NULL, 0);
+        done = 1;
+    } else {
+        logf_("kills: call site mismatch at draw_group_name, no kills and no Unit cards button for a group");
+    }
+}
+
 void kills_install(void)
 {
+    if (unitcards_wanted())
+        install_group_name();
     if (!g_kills_enabled && !g_ranks_enabled)
         return;
     /* take_damage: push ebp / mov ebp,esp / sub esp,0x9ec */
@@ -417,17 +440,8 @@ void kills_install(void)
         g_orig_stats_done = hook_trampoline(sd, 5, mem + 32);
         hook_jmp5(sd, hk_kills_stat);
     }
-    if (g_kills_enabled) {
-        unsigned char *gn = (unsigned char *)VA(VA_GROUP_NAME_CALL);
-        if (gn[0] == 0xE8 && (UINT_PTR)(gn + 5 + *(INT32 *)(gn + 1)) == VA(VA_GROUP_NAME)) {
-            DWORD old;
-            VirtualProtect(gn, 5, PAGE_EXECUTE_READWRITE, &old);
-            *(INT32 *)(gn + 1) = (INT32)((UINT_PTR)c_kills_group_name - (UINT_PTR)(gn + 5));
-            VirtualProtect(gn, 5, old, &old);
-        } else {
-            logf_("kills: call site mismatch at draw_group_name, no kills for a group");
-        }
-    }
+    if (g_kills_enabled)
+        install_group_name();
     FlushInstructionCache(GetCurrentProcess(), NULL, 0);
     logf_("hook take_damage installed (kill counter %d, ranks %d)", g_kills_enabled, g_ranks_enabled);
 }

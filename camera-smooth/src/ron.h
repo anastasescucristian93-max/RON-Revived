@@ -120,6 +120,26 @@ void kills_load_config(const char *ini_path);
 void kills_install(void);
 extern int g_sel_kills_row; /* selpanel.c keeps the group grid's top row for the kills */
 void kills_draw_count(char *panel, int kills, int right, int y, int h); /* skull + number, ending at right */
+/* unitcards.c (several selected: the Unit cards button, one card per unit or grouped by kind) */
+void unitcards_load_config(const char *ini_path);
+void unitcards_install(void);
+int unitcards_wanted(void);
+void unitcards_draw(char *panel, const short *rect); /* from kills.c's draw_group_name wrapper */
+void unitcards_tick(void);
+/* armycam.c (a double press of Cycle Military selects the army without moving the camera) */
+extern int g_armycam_enabled;
+extern void *g_orig_cycle_military;
+void hk_cycle_military(void);
+void armycam_load_config(const char *ini_path);
+void armycam_install(void);
+void armycam_tick(void);
+/* siloqueue.c (a Missile Silo holds several missiles; a rule of the simulation) */
+extern int g_silo_enabled;
+extern void *g_orig_silo_finished;
+void hk_silo_finished(void);
+int siloqueue_open(const char *obj); /* a human player's silo: no queue limit (nukefx.c's button) */
+void siloqueue_load_config(const char *ini_path);
+void siloqueue_install(void);
 /* hud.c */
 void hud_load_config(const char *ini_path);
 void hud_install(void);
@@ -431,6 +451,14 @@ extern int g_postfx_enabled;
 void postfx_load_config(const char *ini_path);
 void postfx_init(void);    /* at DLL load, before override_install */
 void postfx_display(void); /* before the display is made (init_display_quick pre-hook) */
+/* ao.c (contact and cloud shadows from the depth buffer, run from postfx's end_hdr hook) */
+typedef struct {
+    float radius, strength;            /* contact shadows: world units, 0..1 */
+    float clouds, cover, size, speed;  /* cloud shadows: 0..1, share of the map, world units, units/s */
+    float seconds;                     /* time for the drift */
+} ao_params_t;
+int ao_run(void *context, const ao_params_t *ap, void *depth, const float *proj, const float *viewm, int split,
+           int view);
 int camera_get_loc(float *x, float *y); /* ron_camera.c: the screen centre on the ground */
 void camera_set_loc(float x, float y);
 
@@ -438,6 +466,10 @@ void camera_set_loc(float x, float y);
 extern int g_outline_enabled;
 void outline_load_config(const char *ini_path);
 void outline_install(void);
+/* treesway.c (tree tops sway in the wind) */
+extern int g_tree_sway_enabled;
+void tree_sway_load_config(const char *ini_path);
+void tree_sway_install(void);
 
 /* squadhp.c (a health bar over every soldier of a squad) */
 extern int g_squad_hp_enabled;

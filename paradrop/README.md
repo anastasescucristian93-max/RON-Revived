@@ -43,7 +43,7 @@ The game refuses extra unit types, so two campaign-only units are taken over (as
 | Unit slot | Becomes | Look |
 |---|---|---|
 | 330 "Guerilla Fighters" (type 0x17C) | Paratroopers | Assault Infantry's model, animations and sounds in a black uniform (`art/paratrooper.tga`), under `GRAPH FOUCHE`: the campaign-only Advisor Fouché's graphics entry, sounds and description, taken over (no graphics family is free) |
-| 338 "Harrier Jet" (type 0x184) | Transport Helicopter | the Chinook (`GRAPH FIGHTERBOMBER`, whose one graphics entry belonged to the campaign-only Fighter Bomber) |
+| 338 "Harrier Jet" (type 0x184) | Transport Helicopter | the Chinook, under a graphics family of its own (`GRAPH CHINOOK`) |
 
 The Conquest campaigns that use those units may look wrong with the mod installed.
 
@@ -52,9 +52,9 @@ The Conquest campaigns that use those units may look wrong with the mod installe
 | `Data/unitrules.xml` | the two slots (on top of the Data Center's version) |
 | `Data/typenames.xml` | shown names "Paratroopers", "Transport Helicopter" (on top of the Data Center's version) |
 | `Data/help.xml` | the helicopter's description (on top of the Data Center's version) |
-| `Data/unit_graphics.xml` | `FIGHTERBOMBER-DEFAULT-AGE0` = the gunship's entry with the Chinook model, both rotor discs, no weapon |
+| `Data/unit_graphics.xml` | a new `CHINOOK-DEFAULT-AGE0` = the gunship's entry with the Chinook model, both rotor discs, no weapon |
 | `Data/anim_graphics.xml` | the unused "LightBomber Default" plays `chinook_propspin.bha` (the game may not take extra animations) |
-| `Data/soundtypes.xml` | `FIGHTERBOMBER` gets the helicopter's sounds |
+| `Data/soundtypes.xml` | a new `CHINOOK` block with the helicopter's sounds |
 | `Data/craftrules.xml` | "Paradrop" switched on (`PREQ0 None`; `FROM` stays None, so no unit gets it); `COST2 40f/35o` so the tooltip shows the price with resource icons (the DLL charges it) |
 | `Data/typenames.xml`, `help.xml` | the craft is shown as "Airdrop", with its description |
 | `art/iface_unit_orders.tga` | the button's icon in the craft's own cell (4, 4) |

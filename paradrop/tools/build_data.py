@@ -8,8 +8,10 @@ Center's upgrades):
     Infantry's model, animations and sounds in a black uniform, under GRAPH FOUCHE (the campaign-only
     "Advisor Fouche"'s graphics entry, sounds and help, taken over: new graphics families cannot be
     added safely, and every family is in use);
-  - unit 338 "Harrier Jet" (type 0x184) becomes the Transport Helicopter: GRAPH FIGHTERBOMBER,
-    whose one graphics entry (used only by the campaign Fighter Bomber) now draws the Chinook.
+  - unit 338 "Harrier Jet" (type 0x184) becomes the Transport Helicopter: GRAPH CHINOOK, a graphics
+    family of its own (a new unit_graphics entry, soundtypes block and help entry). Until 2026-11-26
+    it took over FIGHTERBOMBER, which is not campaign-only: the Carrier's Build Aircraft makes the
+    Fighter Bomber line, so the Carrier's planes looked like the Chinook.
 Neither is trained anywhere: the mod's winmm.dll creates them. With --test both can be trained
 (Paratroopers at the Barracks, the helicopter at the Airbase) to look at them in game.
 
@@ -31,7 +33,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_CENTER = os.path.join(HERE, "..", "..", "data-center", "mod_override", "Data")
 
 PARA_UNIT, HELI_UNIT = 330, 338
-HELI_GRAPH = "FIGHTERBOMBER"
+HELI_GRAPH = "CHINOOK"  # a new family; the game finds a type's graphics by its GRAPH name
 ALL_TRIBES = "1" * 24
 
 PARA_FIELDS = {
@@ -163,6 +165,14 @@ def type_names(text):
 def help_text(text):
     for graph, desc in HELP.items():
         new = f'<ENTRY name="{graph}">\r\n\t\t\t<STRING>\r\n\t\t\t\t<BULLET/>{desc}</STRING>\r\n\t\t</ENTRY>'
+        if graph == HELI_GRAPH:  # a new entry, after the helicopter's
+            if f'<ENTRY name="{graph}">' in text:
+                sys.exit(f"help.xml: entry {graph} already there")
+            m = re.search(r'<ENTRY name="HELICOPTER">.*?</ENTRY>', text, re.S)
+            if not m:
+                sys.exit("help.xml: entry HELICOPTER not found")
+            text = text[:m.end()] + "\r\n\t\t" + new + text[m.end():]
+            continue
         text, n = re.subn(rf'<ENTRY name="{graph}">.*?</ENTRY>', lambda m: new, text, flags=re.S)
         if n != 1:
             sys.exit(f"help.xml: entry {graph} found {n} times")
@@ -177,8 +187,8 @@ def unit_block(text, name):
 
 
 def unit_graphics(text):
-    """FIGHTERBOMBER-DEFAULT-AGE0 becomes the gunship's entry (icon, shadow, events) drawn as the
-    Chinook, with the main rotor's disc on both hubs (nodes 2 and 3) and the reused spin."""
+    """A new CHINOOK-DEFAULT-AGE0 entry after the gunship's, with its icon, shadow and events, drawn as
+    the Chinook, with the main rotor's disc on both hubs (nodes 2 and 3) and the reused spin."""
     block = unit_block(text, "HELICOPTER-DEFAULT-AGE0").group(0)
     block = block.replace('name="HELICOPTER-DEFAULT-AGE0"', f'name="{HELI_GRAPH}-DEFAULT-AGE0"')
     block = re.sub(r'model="[^"]*"', r'model=".\\art\\chinook.bh3"', block, count=1)
@@ -190,8 +200,10 @@ def unit_graphics(text):
     block = block.replace('type="B-25Prop0" node="3"', 'type="CopterBlade" node="3"')
     # no weapon: no rockets, no muzzle smoke
     block = re.sub(r'\s*<(RELEASEEVENT|PARTICLEEVENT)[^>]*anim="CHAR_ATTACK2"[^>]*/>', "", block)
-    m = unit_block(text, f"{HELI_GRAPH}-DEFAULT-AGE0")
-    return text[:m.start()] + block + text[m.end():]
+    if f'<UNIT name="{HELI_GRAPH}-' in text:
+        sys.exit(f"unit_graphics.xml: {HELI_GRAPH} already there")
+    m = unit_block(text, "HELICOPTER-DEFAULT-AGE0")
+    return text[:m.end()] + block + text[m.end():]
 
 
 def anim_graphics(text):
@@ -202,12 +214,12 @@ def anim_graphics(text):
 
 
 def sound_types(text):
-    heli = re.search(r"  <HELICOPTER>\r?\n(.*?)  </HELICOPTER>", text, re.S).group(1)
-    new, n = re.subn(rf"(  <{HELI_GRAPH}>\r?\n).*?(  </{HELI_GRAPH}>)", lambda m: m.group(1) + heli + m.group(2),
-                     text, flags=re.S)
-    if n != 1:
-        sys.exit(f"soundtypes.xml: {HELI_GRAPH} found {n} times")
-    return new
+    """A new CHINOOK block with the helicopter's sounds, after the HELICOPTER block."""
+    m = re.search(r"  <HELICOPTER>\r?\n.*?  </HELICOPTER>\r?\n", text, re.S)
+    if not m or f"<{HELI_GRAPH}>" in text:
+        sys.exit(f"soundtypes.xml: HELICOPTER not found, or {HELI_GRAPH} already there")
+    block = m.group(0).replace("<HELICOPTER>", f"<{HELI_GRAPH}>").replace("</HELICOPTER>", f"</{HELI_GRAPH}>")
+    return text[:m.end()] + block + text[m.end():]
 
 
 PARA_GRAPH = "FOUCHE"  # campaign-only "Advisor Fouche" (unit 321): one graphics entry, on foot
