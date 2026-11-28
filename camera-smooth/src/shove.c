@@ -86,6 +86,16 @@ UINT_PTR g_peer_next, g_peer_pass;
 static void *g_orig_resolve;
 UINT_PTR g_va_find_angle;
 static int g_moved[8][FIRST_BUILD]; /* frame + 1 of the last time the unit was moved aside */
+static int g_last_t = -1;            /* the latest frame seen, to notice another game */
+
+/* A new game (datacenter.c's Leaders::init hook, on every machine): the table is part of the
+   simulation and must start empty. Carried over from an earlier game of the same session, it
+   kept one machine from moving a unit the others moved: a units desync (seen 2026-11-28). */
+void make_way_new_game(void)
+{
+    memset(g_moved, 0, sizeof g_moved);
+    g_last_t = -1;
+}
 
 /* find_angle's own convention: dx in ecx, dy in edx. */
 unsigned sh_find_angle(int dx, int dy);
@@ -164,6 +174,9 @@ static void make_way(char *mover)
     if (group != -1 && group == *(short *)(mover + U_GROUP))
         return; /* moving together: the game sorts that out */
     int t = now(), cid = id_of(cap);
+    if (t < g_last_t)
+        make_way_new_game(); /* the frame went back: another game (should Leaders::init be missed) */
+    g_last_t = t;
     if (cid < 0 || cid >= FIRST_BUILD || (g_moved[p][cid] && t - (g_moved[p][cid] - 1) < g_cooldown))
         return;
     char *soldiers[32];

@@ -519,6 +519,7 @@ void dc_frame(void)
 
 __attribute__((used)) int c_leaders_init(void *self)
 {
+    make_way_new_game(); /* shove.c: its cooldowns start empty in every game */
     memset(g_pop_seen, 0, sizeof g_pop_seen);
     memset(g_unlock_seen, 0xFF, sizeof g_unlock_seen);
     for (int p = 0; p < 8; p++) {
@@ -688,7 +689,8 @@ void dc_install(void)
         return;
     for (int i = 0; i < n; i++) {
         if (!g_dc_enabled && hooks[i].hook != (void *)hk_dc_type_eligible &&
-            !(g_popcap_enabled && hooks[i].hook == (void *)hk_dc_calc_pop_cap))
+            !(g_popcap_enabled && hooks[i].hook == (void *)hk_dc_calc_pop_cap) &&
+            !(g_make_way_enabled && hooks[i].hook == (void *)hk_dc_leaders_init))
             continue;
         unsigned char *at = (unsigned char *)VA(hooks[i].va);
         *hooks[i].orig = hook_trampoline(at, hooks[i].steal, mem + i * 32);

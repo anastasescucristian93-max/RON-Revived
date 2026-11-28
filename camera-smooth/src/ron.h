@@ -433,6 +433,7 @@ void farmsnap_install(void);
 extern int g_make_way_enabled, g_pass_enabled;
 void make_way_load_config(const char *ini_path);
 void make_way_install(void);
+void make_way_new_game(void); /* datacenter.c's Leaders::init hook: a new game */
 int entrench_holds(char *u); /* entrench.c: a soldier held in a Nest */
 
 /* formation.c (mixed groups move without a formation; formations are compact blocks) */

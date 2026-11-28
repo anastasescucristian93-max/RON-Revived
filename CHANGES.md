@@ -23,6 +23,7 @@ The game's own files are never modified. The mods load through `winmm.dll` in th
 ## Fixed: multiplayer games went out of sync when a player had idle merchants (`camera-smooth`), new 2026-11-28
 
 - Multiplayer games stopped with an out-of-sync error a few minutes in when one player had a merchant with nothing to do. The automatic trading for your idle merchants looked them up in a way that changed a counter the game compares between players, on that player's computer only. It now leaves that counter as it was.
+- A second cause: idle units stepping aside for your moving units remembered, from an earlier match of the same session, which units had just stepped aside, so a player who had played before skipped a step the others made. Every match now starts fresh.
 - Every player of a multiplayer game needs this version.
 
 ## Cloud shadows drifting over the map (`camera-smooth`), new 2026-11-28
